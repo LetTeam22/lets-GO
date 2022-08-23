@@ -1,0 +1,253 @@
+.detailContainer {
+  /* background-image: url('../images/gray.jpg'); */
+  background-image: url('../images/landing.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh; 
+}
+
+.loadingDetail {
+  margin: 150px auto;
+  padding: 15px;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.734);
+  border-radius: 20px;
+}
+
+.gifLoadingDetail {
+  border-radius: 20px;
+}
+
+.brokenLinkContainer {
+  background-image: url('../images/gray.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh; 
+}
+
+.btnHomeDetail {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid white;
+  width: fit-content;
+  background-color: rgba(66, 66, 66, 0.94);
+}
+
+.btnHomeDetail {
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.btnHomeDetail:hover {
+  color: rgb(66, 66, 66);
+  border: 1px solid rgb(66, 66, 66);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.brokenLink {
+  margin: 50px auto;
+  padding: 15px;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.brokenLinkTitle {
+  color: white;
+  margin-top: 5px;
+}
+
+.brokenLinkImage {
+  border-radius: 20px;
+  /* height: 300px; */
+  width: 300px;
+}
+
+.allContainer {
+  /* padding: 5px; */
+  width: fit-content;
+  /* background-color: rgba(0, 0, 0, 0.884); */
+  background-color: rgba(66, 66, 66, 0.94);
+  left: 3%;
+  position: absolute;
+  height: 610px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.titleDetail {
+  color: white;
+  text-align: center;
+}
+
+.buttonsContainer {
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 130px;
+  top: 32px
+}
+
+.btnUpdate, .btnDelete {
+  font-size: 18px;
+  padding: 10px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 12px;
+  margin: auto 20px;
+  cursor: pointer;
+  display: inline;
+}
+
+.btnUpdate {
+  background-color: rgb(0, 0, 200);
+}
+
+.btnDelete {
+  background-color: rgb(200, 0, 0);
+}
+
+.btnUpdate:hover {
+  background-color: white;
+  color: rgb(0, 0, 200);
+  border: 1px solid rgb(0, 0, 200);
+}
+
+.btnDelete:hover {
+  background-color: white;
+  color: rgb(200, 0, 0);
+  border: 1px solid rgb(200, 0, 0);
+}
+
+.dataContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.imgDetailContainer {
+  width: 50%;
+}
+
+.imgDetail, .imgDefault {
+  height: 350px;
+  border-radius: 20px;
+  margin-left: 120px;
+}
+
+.imgDetail {
+  width: 450px;
+}
+
+.imgDefault {
+  width: 400px;
+}
+
+.descriptionContainer {
+  width: fit-content;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 10px;
+  margin: auto 70px
+}
+
+.descriptionTitle {
+  margin: 1px;
+  color: white;
+}
+
+.description {
+  width: 700px;
+  height: 300px;
+  overflow: auto;
+  color: white;
+}
+
+.otherDetails {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  height: 175px;
+}
+
+.detailCol1 {
+  width: 20%;
+}
+
+.detailCol2 {
+  width: 20%;
+}
+
+.detailCol3 {
+  width: 30%;
+}
+
+.detailCol4 {
+  width: 30%;
+}
+
+.dataTitle {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.data {
+  color: white;
+  font-size: 18px;
+}
+
+.ratingDContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+
+.ratingDImg {
+  width: 100px;
+  height: 21px;
+  margin-right: 10px;
+}
+
+.ratingD {
+  /* padding: auto; */
+  color: rgb(232, 232, 16);
+  width: fit-content;
+  font-size: 18px;
+  font-weight: bold;
+  /* height: 20px; */
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.groupContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.groupGen, .groupPlat {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 1px;
+}
+
+.groupGen {
+  border: 1px solid rgb(84, 249, 255);
+  color: rgb(84, 249, 255);
+}
+
+.groupPlat {
+  border: 1px solid rgb(214, 119, 255);
+  color: rgb(214, 119, 255);
+}

@@ -1,0 +1,300 @@
+.createContainer {
+  /* background-image: url('../images/gray.jpg'); */
+  background-image: url('../images/landing.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh;
+}
+
+.btnHomeCreate {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid white;
+  width: fit-content;
+  background-color: rgba(66, 66, 66, 0.94);
+}
+
+.btnHomeCreate {
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.btnHomeCreate:hover {
+  color: rgb(66, 66, 66);
+  border: 1px solid rgb(66, 66, 66);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.titleCreate {
+  color: white;
+  margin-bottom: 40px;
+  padding: 15px;
+  background-color: rgba(66, 66, 66, 0.94);
+  width: fit-content;
+  border-radius: 20px;
+  position: absolute;
+  top: 12%;
+  left: 18%;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 27%;
+  left: 18%;
+}
+
+.form {
+  display: flex;
+  justify-content: space-around;
+  width: 1000px;
+  height: 400px;
+  border: 1px solid white;
+  border-radius: 20px;
+  /* background-color: rgba(0, 0, 0, 0.234); */
+  background-color: rgba(66, 66, 66, 0.94);
+  padding: 20px;
+}
+
+.formData {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+}
+
+.column1, .column2, .column3 {
+  display: flex;
+  flex-direction: column;
+  margin: 1px 10px;
+}
+
+.column1 {
+  width: 700px;
+}
+
+.column2 {
+  width: 400px;
+  padding-left: 20px;
+}
+
+.column3 {
+  width: 500px;
+}
+
+label {
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  border-radius: 4px;
+  height: 20px;
+  font-size: 16px;
+}
+
+.nameInput:focus, .nameInputError:focus, .imgURL:focus, 
+.dateInput:focus, .dateInputError:focus, .ratInput:focus, .ratInputError:focus {
+  background-color: lightgreen;
+}
+
+.error {
+  color: orange;
+  margin-top: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.nameContainer {
+  height: 110px;
+}
+
+.nameInput, .nameInputError {
+  width: 300px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.nameInput {
+  border: 2px solid black;
+}
+
+.nameInputError {
+  border: 3px solid orange;
+}
+
+.descContainer {
+  height: 190px;
+}
+
+.descArea, .descAreaError {
+  height: 100px;
+  width: 300px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.descArea {
+  border: 2px solid black;
+}
+
+.descAreaError {
+  border: 3px solid orange;
+}
+
+.descArea:focus, .descAreaError:focus {
+  background-color: lightgreen;
+}
+
+.imageContainer {
+  height: 100px;
+}
+
+.imgURL {
+  width: 300px;
+  font-size: 14px;
+}
+
+.dateContainer {
+  height: 130px;
+}
+
+.dateInput, .dateInputError {
+  width: 100px;
+  text-align: center;
+}
+
+.dateInput {
+  border: 2px solid black;
+}
+
+.dateInputError {
+  border: 3px solid orange;
+}
+
+.ratInput, .ratInputError {
+  text-align: center;
+  width: 60px;
+}
+
+.ratInput {
+  border: 2px solid black;
+}
+
+.ratInputError {
+  border: 3px solid orange;
+}
+
+select {
+  border-radius: 4px;
+  height: 30px;
+  width: 150px;
+}
+
+.selClass {
+  border: 2px solid black;
+}
+
+.selClassError {
+  border: 3px solid orange;
+}
+
+.dropContainer {
+  height: 171px;
+  margin-top: 25px;
+}
+
+.selContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.selGroupGen, .selGroupPlat {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.selGroupGen {
+  border: 1px solid rgb(84, 249, 255);
+  color: rgb(84, 249, 255);
+}
+
+.selGroupPlat {
+  border: 1px solid rgb(214, 119, 255);
+  color: rgb(214, 119, 255);
+}
+
+.btnXGen, .btnXPlat {
+  border: none;
+  font-size: 12px;
+  font: inherit;
+  background-color: transparent;
+}
+
+.btnXGen {
+  color: rgb(84, 249, 255);
+}
+
+.btnXPlat {
+  color: rgb(214, 119, 255);
+}
+
+.btnXGen:hover, .btnXPlat:hover {
+  color: black;
+}
+
+.btnCreateContainer {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.btnCreateEnabled, .btnCreateDisabled, .btnUpdateEnabled, .btnUpdateDisabled {
+  height: fit-content;
+  font-size: 22px;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid white;
+  top: 35%;
+  position: relative;
+}
+
+.btnCreateEnabled, .btnCreateDisabled {
+  background-color: green;
+}
+
+.btnUpdateEnabled, .btnUpdateDisabled {
+  background-color: rgb(0, 0, 200);
+}
+
+.btnCreateEnabled, .btnUpdateEnabled {
+  cursor: pointer;
+}
+
+.btnCreateEnabled:hover {
+  background-color: white;
+  border: 2px solid green;
+  color: green;
+}
+
+.btnUpdateEnabled:hover {
+  background-color: white;
+  border: 2px solid rgb(0, 0, 200);
+  color: rgb(0, 0, 200);
+}
+
+.btnCreateDisabled, .btnUpdateDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

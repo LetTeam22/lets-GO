@@ -1,0 +1,50 @@
+.deadLinkContainer {
+  background-image: url('../images/gray.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh; 
+}
+
+.btnHomeDeadLink {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid white;
+  width: fit-content;
+  background-color: rgba(66, 66, 66, 0.94);
+}
+
+.btnHomeDeadLink {
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.btnHomeDeadLink:hover {
+  color: rgb(66, 66, 66);
+  border: 1px solid rgb(66, 66, 66);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.deadLink {
+  margin: auto auto 200px auto;
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.deadLinkTitle {
+  color: white;
+  margin-top: 5px;
+}
+
+.deadLinkImage {
+  background-color: rgba(0, 0, 0, 0.701);
+  padding: 25px;
+  border-radius: 30px;
+  /* height: 300px; */
+  width: 400px;
+}
