@@ -1,0 +1,20 @@
+nav {
+    position: absolute;
+    width: 1920px;
+    height: 130px;
+    left: calc(50% - 1920px/2);
+    top: calc(50% - 130px/2 - 428px);
+
+    background: #333333;
+    opacity: .85;
+    display: flex;
+}
+
+.icon {
+    position: absolute;
+    width: 174px; 
+    left: 2.5%; 
+    top: 18px; 
+    bottom: 924px;
+    cursor: pointer;
+}

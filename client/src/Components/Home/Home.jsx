@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/Navbar';
 import s from './Home.module.css';
 import { GoLocation } from 'react-icons/go';

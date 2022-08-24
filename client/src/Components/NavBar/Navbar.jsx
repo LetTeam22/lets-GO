@@ -1,10 +1,15 @@
 import React from 'react';
-
+import s from './NavBar.module.css'
+import logo from '../../image/logo.png';
+import { Link } from 'react-router-dom'
 
 export default function LandingPage () {
     return (
         <nav>
-            <h4> Este es el navbar </h4>
+            <Link to='/'>
+                <img src={logo} alt="logo" className={s.icon}/>
+            </Link>
+            
         </nav>
     )
 }
