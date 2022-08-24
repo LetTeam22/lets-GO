@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import s from './LandingPage.module.css';
+import image from '../../image/img_landing.png';
+import NavBar from '../NavBar/Navbar';
 
 export default function LandingPage () {
     return (
-        <>
-            <h1> Estas en la Landing Page</h1>
-            <Link to={'/home'}>
-                <button>go to home</button>
-            </Link>
-        </>
-    )
-}
+        <div>
+            <h3 className={s.location}>San Miguel de Tucuman, Argentina</h3>
+            <img src={image} alt="landing" />
+            <NavBar />       
+        </div>
+    );
+};
