@@ -10,7 +10,7 @@ import gifLoading from '../images/pacman.gif'
 import imgNotFound from '../images/pacmanSad.png'
 
 function Home() {
-  // prueba
+  // prueba 2
   const dispatch = useDispatch()
   const videogamesAll = useSelector(state => state.videogamesAll)
   const videogamesSearched = useSelector(state => state.videogamesSearched)
