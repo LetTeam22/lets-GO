@@ -18,12 +18,19 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
+const { loadUsersInDB, loadBikesInDB, loadBookingsInDB } = require('./src/data/loadData.js');
 const { conn } = require('./src/db.js');
+const jsonUser = require('./src/data/users.json')
+const jsonBike = require('./src/data/bikes.json')
+const jsonBooking = require('./src/data/bookings.json')
 
 
 // Syncing all the models at once.
-conn.sync({ force: true}).then(() => {
+conn.sync({ force: false}).then(() => {
   server.listen(3001, async() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+    // loadUsersInDB(jsonUser)
+    // loadBikesInDB(jsonBike)
+    // loadBookingsInDB(jsonBooking)
   });
 });
