@@ -6,13 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 
-const {REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENT_ID} = process.env
-console.log(REACT_APP_AUTH0_DOMAIN)
-console.log(REACT_APP_AUTH0_CLIENT_ID)
-console.log(process.env)
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID
+const profile = 'http://localhost:3000/profile'
+
 ReactDOM.render(
   <BrowserRouter>
-    <Auth0Provider domain='dev-wa153fm3.us.auth0.com' clientId='yIYBjSJoScCDVa3oug1Zw8okSyloqVb3' redirectUri={window.location.origin}>
+    <Auth0Provider domain={domain} clientId={clientID} redirectUri={profile}>
       <App />
     </Auth0Provider>
   </BrowserRouter>,
