@@ -1,10 +1,11 @@
 nav {
-    position: fixed;
+    position: sticky;
     height: 130px;
     left: 0;
-    top: 35px;
+    top: 0;
     right: 0;
-    z-index: 1;
+    margin-top:30px;
+    z-index: 100;
 
     background: #333333;
     opacity: .85;
