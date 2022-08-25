@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../NavBar/Navbar';
+import NavBar from '../NavBar/NavBar'
 import s from './Home.module.css';
 import { GoLocation } from 'react-icons/go';
 
