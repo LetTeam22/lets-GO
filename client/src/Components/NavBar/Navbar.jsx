@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import LogIn from "./Authentication/LogIn";
 import LogOut from "./Authentication/LogOut";
+import Menu from '../Menu/Menu'
 
 export default function NavBar() {
   const { isAuthenticated } = useAuth0();
@@ -13,7 +14,7 @@ export default function NavBar() {
       <Link to="/">
         <img src={logo} alt="logo" className={s.icon} />
       </Link>
-      {isAuthenticated ? (
+      {/* {isAuthenticated ? (
         <>
           <LogOut />
           <Link to='/profile'>
@@ -22,7 +23,8 @@ export default function NavBar() {
         </>
       ) : (
         <LogIn />
-      )}
+      )} */}
+      <Menu />
     </nav>
   );
 }

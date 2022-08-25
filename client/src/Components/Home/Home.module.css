@@ -20,8 +20,9 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     align-items: center;
-    width: 460px;
+    width: 100%;
     height: 30px;
+    background: #F5F5F5;
 }
 
 .title {
@@ -34,5 +35,5 @@
     margin-bottom: 0;
     margin-top: 0;
 
-    color: #BEB9B9;
+    color: #A4A3A3;
 }

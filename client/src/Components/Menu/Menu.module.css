@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+span {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.menu {
+    margin-left: 160px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+
+hr {
+    width: 80px;
+}
+
+
+.dropdown {
+    padding: 10px;
+    background: #F9B621;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+}
+
+
+.persona, .carrito {
+    width: 30px;
+}
+
+.loginSpan {
+    color: #FFFFFF;
+}
+
+.persona {
+    margin-left: 10px;
+    margin-right: 25px;
+}
+
+
+
+
