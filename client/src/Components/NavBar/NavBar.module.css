@@ -1,9 +1,10 @@
 nav {
-    position: absolute;
-    width: 1920px;
+    position: fixed;
     height: 130px;
-    left: calc(50% - 1920px/2);
-    top: calc(50% - 130px/2 - 428px);
+    left: 0;
+    top: 35px;
+    right: 0;
+    z-index: 1;
 
     background: #333333;
     opacity: .85;
