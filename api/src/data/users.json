@@ -1,0 +1,189 @@
+[
+    {   
+        "userName": "nico",
+        "password": "1234",
+        "email": "nico@gmail.com",
+        "firstName": "Nicolas",
+        "lastName": "Balbi",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "maxi",
+        "password": "1234",
+        "email": "maxi@gmail.com",
+        "firstName": "Maximo",
+        "lastName": "Tovar",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "lean",
+        "password": "1234",
+        "email": "lean@gmail.com",
+        "firstName": "Leandro",
+        "lastName": "Pappalardo",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "lu",
+        "password": "1234",
+        "email": "lu@gmail.com",
+        "firstName": "Lucia",
+        "lastName": "Meyer",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "sole",
+        "password": "1234",
+        "email": "sole@gmail.com",
+        "firstName": "Soledad",
+        "lastName": "Dato",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "tincho",
+        "password": "1234",
+        "email": "tincho@gmail.com",
+        "firstName": "Juan Martin",
+        "lastName": "Silva",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "feli",
+        "password": "1234",
+        "email": "feli@gmail.com",
+        "firstName": "Felipe",
+        "lastName": "Jure",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "juanperez",
+        "password": "1234",
+        "email": "juanperez@gmail.com",
+        "firstName": "Juan",
+        "lastName": "Perez",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "mariagonzalez",
+        "password": "1234",
+        "email": "mariagonzalez@gmail.com",
+        "firstName": "Maria",
+        "lastName": "Gonzalez",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "marianoromero",
+        "password": "1234",
+        "email": "marianoromero@gmail.com",
+        "firstName": "Mariano",
+        "lastName": "Romero",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "tomascaceres",
+        "password": "1234",
+        "email": "tomascaceres@gmail.com",
+        "firstName": "Tomas",
+        "lastName": "Caceres",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "rominagarcia",
+        "password": "1234",
+        "email": "rominagarcia@gmail.com",
+        "firstName": "Romina",
+        "lastName": "Garcia",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "patriciarodriguez",
+        "password": "1234",
+        "email": "patriciarodriguez@gmail.com",
+        "firstName": "Patricia",
+        "lastName": "Rodriguez",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "luisbarreto",
+        "password": "1234",
+        "email": "luisbarreto@gmail.com",
+        "firstName": "Luis",
+        "lastName": "Barreto",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "pedrososa",
+        "password": "1234",
+        "email": "pedrososa@gmail.com",
+        "firstName": "Pedro",
+        "lastName": "Sosa",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "camilarobles",
+        "password": "1234",
+        "email": "camilarobles@gmail.com",
+        "firstName": "Camila",
+        "lastName": "Robles",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "lucasolmedo",
+        "password": "1234",
+        "email": "lucasolmedo@gmail.com",
+        "firstName": "Lucas",
+        "lastName": "Olmedo",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": false,
+        "creditCard": "1111222233334444"
+    }
+]

@@ -1,0 +1,65 @@
+[
+    {      
+        "startDate": "2022-07-14",
+        "endDate": "2022-07-15",
+        "idBike": "3",
+        "idUser": "3",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-07-20",
+        "endDate": "2022-07-22",
+        "idBike": "2",
+        "idUser": "1",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-08-14",
+        "endDate": "2022-08-15",
+        "idBike": "3",
+        "idUser": "3",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-08-24",
+        "endDate": "2022-08-26",
+        "idBike": "1",
+        "idUser": "3",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-08-25",
+        "endDate": "2022-08-26",
+        "idBike": "3",
+        "idUser": "1",
+        "status": "unpaid"
+    },
+
+    {      
+        "startDate": "2022-08-25",
+        "endDate": "2022-08-29",
+        "idBike": "1",
+        "idUser": "2",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-08-25",
+        "endDate": "2022-08-28",
+        "idBike": "2",
+        "idUser": "4",
+        "status": "paid"
+    },
+
+    {      
+        "startDate": "2022-09-01",
+        "endDate": "2022-09-01",
+        "idBike": "3",
+        "idUser": "5",
+        "status": "unpaid"
+    }
+]

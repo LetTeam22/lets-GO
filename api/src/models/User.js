@@ -1,8 +1,8 @@
-const { DataTypes, BOOLEAN } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    sequelize.define('usuario', {
+    sequelize.define('user', {
         idUser: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -41,8 +41,5 @@ module.exports = (sequelize) => {
         creditCard: {
             type: DataTypes.BIGINT,
         },
-        idMyBikes: {
-            type: DataTypes.STRING
-        }
     });
 };
