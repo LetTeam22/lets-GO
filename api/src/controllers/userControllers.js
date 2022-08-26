@@ -1,14 +1,15 @@
-const { Router } = require('express');
-
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
-const router = Router();
-// router.use('/', nombre )
+const {User, Bike, Booking} = require ('../db.js')
 
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+
+// devuelve un arreglo de objetos con todos los usuarios
+async function getAllUsers(req, res, next) {
+   let users = await User.findAll();
+    // console.log(users[0].toJSON())
+}
 
 
-module.exports = router;
+
+
+module.exports = {getAllUsers}
+
