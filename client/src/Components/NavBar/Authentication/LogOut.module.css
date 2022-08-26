@@ -1,0 +1,35 @@
+.loginSpan {
+    font-family: 'Roboto';
+    font-style: normal;
+    color: #FFFFFF;
+    cursor:pointer;
+    margin-right: 10px;
+}
+
+.personaBtn {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+}
+
+.persona {
+    width: 30px;
+    cursor:pointer;
+    margin-right: 15px;
+}
+
+.containerLog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.name{
+    position: absolute;
+    top: 3rem;
+    width: 10rem;
+    color:#FFFFFF;
+    text-align: center;
+    font-size: 1rem;
+}

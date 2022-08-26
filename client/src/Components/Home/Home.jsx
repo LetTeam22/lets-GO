@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Home.module.css';
 import { GoLocation } from 'react-icons/go';
-
+import { Link } from 'react-router-dom';
 import {VscChevronRight, VscChevronLeft} from 'react-icons/vsc';
 
 
