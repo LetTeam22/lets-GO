@@ -22,3 +22,10 @@ input {
     width: 30px;
     margin-right: 10px;
 }
+
+.lupaBtn {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+}

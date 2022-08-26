@@ -6,7 +6,7 @@ const SearchBar = () => {
     
     return (
         <div className={s.searchBar}>
-            <img src={lupa} className={s.lupa}></img>
+            <button className={s.lupaBtn}><img src={lupa} className={s.lupa} alt='lupa' /></button>
             <input type='text' placeholder='Buscar..'></input>
         </div>
     )

@@ -10,7 +10,9 @@ span {
 
 .menu {
     margin-left: 160px;
-    width: 95%;
+    width: 90%;
+    margin-left: 170px;
+    margin-right: auto;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -20,6 +22,7 @@ span {
     display: flex;
     flex-direction: column;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 hr {
@@ -40,6 +43,7 @@ hr {
 
 .persona, .carrito {
     width: 30px;
+    cursor: pointer;
 }
 
 .loginSpan {
@@ -50,6 +54,13 @@ hr {
     margin-left: 10px;
     margin-right: 25px;
 }
+
+.personaBtn, .carritoBtn {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+}
+
 
 
 

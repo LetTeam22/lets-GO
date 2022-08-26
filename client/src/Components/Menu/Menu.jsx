@@ -1,17 +1,19 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import s from './Menu.module.css'
-import persona from '../../image/persona.png';
 import carrito from '../../image/carrito.png';
-import vector from '../../image/Vector.png';
+
+import LogIn from "../NavBar/Authentication/LogIn";
+
 
 const Menu = () => {
 
 
     return (
         <div className={s.menu}>
-            <div className={s.dropdown}> 
-                <span>BICICLETAS</span>  
+            <div className={s.options} > 
+                <span>BICICLETAS</span>
+                <hr color="#F9B621" />
             </div>
             <div className={s.options}>
                 <span>AVENTURAS</span>
@@ -31,12 +33,11 @@ const Menu = () => {
             </div>
             <SearchBar />
             <div className={s.login}>
-                <span className={s.loginSpan}>Registrarse</span>
-                
-                <img src={persona} className={s.persona}></img>
                
+                <LogIn />
                 
-                <img src={carrito} className={s.carrito}></img>
+                {/* <HiOutlineShoppingBag size='40px' color="#F9B621" /> */}
+                <button className={s.carritoBtn}><img className={s.carrito} src={ carrito } alt="carrito" /></button>
             </div>
         </div>
     )
