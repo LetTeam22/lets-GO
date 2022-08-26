@@ -5,6 +5,7 @@ import BikeDetail from "./Components/BikeDetail/BikeDetail";
 import NavBar from './Components/NavBar/Navbar';
 
 import "./App.css";
+import PrivateComponent from "./Components/PrivateComponent/PrivateComponent";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       </Route>
       <Route path="/profile">
         <Profile />
+      </Route>
+      <Route path='/privateRoute'>
+        <PrivateComponent/>
       </Route>
     </>
   );
