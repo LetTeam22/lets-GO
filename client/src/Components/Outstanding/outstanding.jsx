@@ -3,7 +3,7 @@ import s from './outstanding.module.css';
 import img1 from '../../image/outstanding.png'
 import img2 from '../../image/separador1.png'
 
-const OutstandingBikes = () => {
+export const  OutstandingBikes = () => {
     return (
         <>
             <div>
@@ -13,6 +13,4 @@ const OutstandingBikes = () => {
 
         </>
     )
-}
-
-export default OutstandingBikes
+};

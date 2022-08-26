@@ -2,7 +2,7 @@ import React from 'react'
 import s from './SearchBar.module.css';
 import lupa from '../../image/lupita.png'
 
-const SearchBar = () => {
+export const SearchBar = () => {
     
     return (
         <div className={s.searchBar}>
@@ -10,6 +10,5 @@ const SearchBar = () => {
             <input type='text' placeholder='Buscar..'></input>
         </div>
     )
-}
+};
 
-export default SearchBar;

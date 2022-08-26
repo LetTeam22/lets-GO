@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
-export default function Profile() {
+export const Profile = () => {
   const { user, isLoading } = useAuth0();
   console.log(user)
   if (isLoading) return <h1>Loading...</h1>
@@ -17,4 +17,4 @@ export default function Profile() {
       </Link>
     </>
   );
-}
+};

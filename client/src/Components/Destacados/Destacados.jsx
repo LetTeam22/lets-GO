@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Destacados.module.css';
 
 
-const Destacados = () => {
+export const Destacados = () => {
     
     
     
@@ -12,7 +12,4 @@ const Destacados = () => {
 
         </div>
     )
-}
-
-
-export default Destacados;
+};
