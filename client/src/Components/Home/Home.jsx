@@ -3,13 +3,13 @@ import s from './Home.module.css';
 import { GoLocation } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import {VscChevronRight, VscChevronLeft} from 'react-icons/vsc';
-
+// import Destacados from '../Destacados/Destacados';
 
 
 
 export default function Home () {
     return (
-        <>
+        <div className={s.container} >
             <div className={s.home}>  
                 <div className={s.location}>
                     <h3 className={s.title}>San Miguel de Tucuman, Argentina</h3>
@@ -23,9 +23,10 @@ export default function Home () {
                 </div>
             </div>
             <Link to={'/privateRoute'} className={s.prueba}>
-            <button>Go to the private component</button>
+                <button>Go to the private component</button>
             </Link>
-        </>
+            {/* <Destacados /> */}
+        </div>
 
     )
 }

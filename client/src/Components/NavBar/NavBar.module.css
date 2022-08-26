@@ -1,6 +1,6 @@
 nav {
     position: sticky;
-    height: 130px;
+    height: 100px;
     left: 0;
     top: 0;
     right: 0;
@@ -13,7 +13,7 @@ nav {
 
 .icon {
     position: absolute;
-    width: 174px; 
+    width: 140px; 
     left: 2.5%; 
     top: 18px; 
     bottom: 924px;

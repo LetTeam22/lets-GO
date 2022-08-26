@@ -2,8 +2,8 @@
     border: 1px solid #f9f5ef71;
     border-radius: 2rem;
     z-index: 1;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     padding-left: 15px;
     display: flex;
     align-items: center;
@@ -14,12 +14,12 @@ input {
     text-decoration: none;
     background-color: transparent;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 15px;
     outline: none;
 }
 
 .lupa {
-    width: 30px;
+    width: 20px;
     margin-right: 10px;
 }
 
