@@ -36,8 +36,8 @@ const { User, Bike, Booking } = sequelize.models;
 // Product.hasMany(Reviews);
 User.hasMany(Booking)
 Booking.belongsTo(User)
-Bike.hasMany(Booking)
-Booking.belongsTo(Bike)
+Bike.belongsToMany(Booking,{through:'bikes_bookings'})
+Booking.belongsToMany(Bike,{through:'bikes_bookings'})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
