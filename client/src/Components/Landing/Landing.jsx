@@ -6,6 +6,7 @@ import { VscChevronRight, VscChevronLeft } from 'react-icons/vsc';
 import fondo from '../../image/img_fondo1.png';
 import Destacados from '../Destacados/Destacados';
 import Accesories from '../Accesories/Accesories';
+import Experiencies from '../Experiencies/Experiencies';
 
 
 export const Landing = () => {
@@ -40,6 +41,9 @@ export const Landing = () => {
 
             <div className={s.separador} id={s.second}><div className={s.triangle}></div></div>
             <Accesories />
+
+            <div className={s.separador} id={s.second}><div className={s.triangle}></div></div>
+            <Experiencies />
 
         </div>
 
