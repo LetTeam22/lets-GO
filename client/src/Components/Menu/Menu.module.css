@@ -4,14 +4,14 @@ span {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
 .menu {
-    margin-left: 160px;
+    margin-left: 10rem;
     width: 90%;
-    margin-left: 170px;
+    margin-left: 10.625rem;
     margin-right: auto;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@ span {
     flex-direction: column;
     color: #FFFFFF;
     cursor: pointer;
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .options:hover > hr {
@@ -35,13 +35,22 @@ span {
     background: #F9B621;
 }
 
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+}
+
 hr {
-    width: 80px;
+    width: 5rem;
 }
 
 
 .dropdown {
-    padding: 10px;
+    padding: 0.625rem;
     background: #F9B621;
 }
 
@@ -52,7 +61,7 @@ hr {
 
 
 .persona, .carrito {
-    width: 30px;
+    width: 1.875rem;
     cursor: pointer;
 }
 
@@ -61,8 +70,8 @@ hr {
 }
 
 .persona {
-    margin-left: 10px;
-    margin-right: 25px;
+    margin-left: 0.625rem;
+    margin-right: 1.563rem;
 }
 
 .personaBtn, .carritoBtn {

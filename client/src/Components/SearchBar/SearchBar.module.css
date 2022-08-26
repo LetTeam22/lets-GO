@@ -1,10 +1,10 @@
 .searchBar {
-    border: 1px solid #f9f5ef71;
+    border: 0.063rem solid #f9f5ef71;
     border-radius: 2rem;
     z-index: 1;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
+    padding-top: 0.938rem;
+    padding-bottom: 0.938rem;
+    padding-left: 0.938rem;
     display: flex;
     align-items: center;
 }
@@ -14,13 +14,13 @@ input {
     text-decoration: none;
     background-color: transparent;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 0.938rem;
     outline: none;
 }
 
 .lupa {
-    width: 20px;
-    margin-right: 10px;
+    width: 1.25rem;
+    margin-right: 0.625rem;
 }
 
 .lupaBtn {
