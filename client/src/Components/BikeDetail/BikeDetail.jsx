@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function BikeDetail () {
+
+export const  BikeDetail = () => {
     return (
         <>
             <h1> Estas en Bike Detail</h1>
@@ -10,4 +11,4 @@ export default function BikeDetail () {
             </Link>
         </>
     )
-}
+};

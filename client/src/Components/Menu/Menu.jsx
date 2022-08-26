@@ -1,12 +1,12 @@
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar";
+import { SearchBar } from "../SearchBar/SearchBar";
 import s from "./Menu.module.css";
 import carrito from "../../image/carrito.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../NavBar/Authentication/LogIn";
 import LogOut from "../NavBar/Authentication/LogOut";
 
-const Menu = () => {
+export const Menu = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <div className={s.menu}>
@@ -41,4 +41,3 @@ const Menu = () => {
   );
 };
 
-export default Menu;
