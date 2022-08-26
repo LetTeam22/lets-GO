@@ -9,7 +9,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { IoSend } from "react-icons/io5";
-import rueda from "../../image/rueda_bici.png";
+import Loading from '../Loading/Loading';
 import theme from "./MaterialUIColors";
 import s from "./Profile.module.css";
 import { ThemeProvider } from "@emotion/react";
@@ -18,13 +18,8 @@ export const Profile = () => {
   const { user, isLoading } = useAuth0();
   const history = useHistory();
   console.log(user);
-  if (isLoading) {
-    return (
-      <div className={s.spinner}>
-        <img src={rueda} alt="Loading..." className={s.spinnerImg} />
-      </div>
-    );
-  }
+  if (isLoading) return <Loading/>
+  
   return (
     <>
       <div className={s.container}>
