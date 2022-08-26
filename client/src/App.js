@@ -7,6 +7,7 @@ import { NavBar } from './Components/NavBar/Navbar';
 import Private from './Components/Private/Private';
 import { Error } from './Components/Error/Error'
 import './App.css';
+import AllAccesories from './Components/AllAccessories/AllAccesories';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path= '/bike/:id' component= { BikeDetail } />
         <Route exact path= '/bike/profile' component= { Profile } />
         <Route exact path= '/bike/privateRoute' component= { Private } />
+        <Route exact path='/allAccessories' component={ AllAccesories }></Route>
         <Route path='*' component={ Error } />
       </Switch>
     </>
