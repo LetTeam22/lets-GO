@@ -1,0 +1,15 @@
+.separator{
+position: absolute;
+left: 0%;
+right: 0%;
+top: 40.33%;
+bottom: 77.96%;
+}
+
+.out{
+position: absolute;
+width: 1920px;
+height: 810px;
+left: 0px;
+top: 940px;
+}
