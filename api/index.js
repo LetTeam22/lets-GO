@@ -30,7 +30,10 @@ conn.sync({ force: false}).then(() => {
   server.listen(3001, async() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     // loadUsersInDB(jsonUser)
+    // console.log('Users loaded ok to DB'); // eslint-disable-line no-console
     // loadBikesInDB(jsonBike)
+    // console.log('Bikes loaded ok to DB'); // eslint-disable-line no-console
     // loadBookingsInDB(jsonBooking)
+    // console.log('Bookings loaded ok to DB'); // eslint-disable-line no-console
   });
 });
