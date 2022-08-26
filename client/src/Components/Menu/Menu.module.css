@@ -23,6 +23,16 @@ span {
     flex-direction: column;
     color: #FFFFFF;
     cursor: pointer;
+    padding: 10px;
+}
+
+.options:hover > hr {
+    display: none;
+}
+
+.options:hover {
+    color: #000000;
+    background: #F9B621;
 }
 
 hr {

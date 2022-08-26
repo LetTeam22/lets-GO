@@ -3,7 +3,6 @@ import Home from "./Components/Home/Home";
 import Profile from "./Components/Profile/Profile";
 import BikeDetail from "./Components/BikeDetail/BikeDetail";
 import NavBar from './Components/NavBar/Navbar';
-
 import "./App.css";
 import PrivateComponent from "./Components/PrivateComponent/PrivateComponent";
 
