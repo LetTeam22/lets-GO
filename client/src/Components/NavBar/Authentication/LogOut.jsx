@@ -16,7 +16,7 @@ export default function LogOut() {
         Log out
       </span>
       <div className={s.containerLog}>
-        <button className={s.personaBtn} onClick={() => history.push('/profile')}>
+        <button className={s.personaBtn} onClick={() => history.push('/bike/profile')}>
           <img src={logedPerson} className={s.persona} alt="persona"></img>
         </button>
         <span className={s.name}>{user.name}</span>
