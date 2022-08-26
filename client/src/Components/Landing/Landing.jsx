@@ -22,9 +22,10 @@ export const Landing = () => {
                 </div>
                 
                 <img src={fondo} alt='fondo' className={s.fondo} />
-                <p className={s.text}>para mantener el equilibrio, segui en movimiento</p>
-
-                <button className={s.searchBtn}>BUSCAR BICI</button>
+                <div className={s.textDiv}>
+                    <p className={s.text}>para mantener el equilibrio, segui en movimiento</p>
+                    <button className={s.searchBtn}>BUSCAR BICI</button>
+                </div>
 
                 <div className={s.flechas}>
                     <VscChevronRight color='white' size='50px' cursor='pointer' />
