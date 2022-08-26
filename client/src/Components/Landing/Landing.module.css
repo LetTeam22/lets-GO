@@ -114,3 +114,8 @@
     border-width: 3.125rem 4.063rem 0 4.063rem;
     border-color: #CECECE transparent transparent transparent;
 }
+
+#second {
+    position: relative;
+    top: 47rem;
+}

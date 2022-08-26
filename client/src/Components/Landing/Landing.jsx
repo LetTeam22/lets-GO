@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { VscChevronRight, VscChevronLeft } from 'react-icons/vsc';
 import fondo from '../../image/img_fondo1.png';
 import Destacados from '../Destacados/Destacados';
+import Accesories from '../Accesories/Accesories';
 
 
 export const Landing = () => {
@@ -34,8 +35,11 @@ export const Landing = () => {
                 <button>Go to the private component</button>
             </Link> */}
             
-            <div className={s.separador}><div className={s.triangle}></div></div>
+            <div className={s.separador} id={s.first}><div className={s.triangle}></div></div>
             <Destacados />
+
+            <div className={s.separador} id={s.second}><div className={s.triangle}></div></div>
+            <Accesories />
 
         </div>
 
