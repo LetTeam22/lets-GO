@@ -41,5 +41,7 @@ module.exports = (sequelize) => {
         creditCard: {
             type: DataTypes.BIGINT,
         },
+    }, {
+        timestamps: false
     });
 };

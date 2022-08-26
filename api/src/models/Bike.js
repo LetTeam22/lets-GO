@@ -33,5 +33,7 @@ module.exports = (sequelize) => {
     rating: {
       type: DataTypes.DECIMAL,
     }
+  }, {
+    timestamps: false
   });
 };
