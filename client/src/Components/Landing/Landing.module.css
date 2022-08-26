@@ -6,43 +6,47 @@
 }
 
 .landing {
-    display: flex;
-    flex-direction: column;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0rem;
+    top: 0rem;
     right: 0;
     bottom: 0;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-image: url(../../image//img_landing.png);
+}
+
+.fondo {
+    width: 100%;
+
 }
 
 .title {
-    margin-left: 20px;
+    margin-left: 1.25rem;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: 100;
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 10;
-    margin-top: 0;
+    font-weight: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     color: #A4A3A3;
+    margin-top: 0;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .text {
     position: relative;
-    width: 588px;
-    height: 141px;
-    left: 666px;
-    top: 280px;
+    width: 36.75rem;
+    height: 8.813rem;
+    left: 41.625rem;
+    bottom: 36rem;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 60px;
-    line-height: 70px;
-    /* or 117% */
+    font-size: 3.75rem;
+    line-height: 4.375rem;
 
     text-align: center;
     letter-spacing: 0.07em;
@@ -53,30 +57,60 @@
 .searchBtn {
     color: #FFFFFF;
     font-family: 'Roboto';
-    font-size: 20px;
+    font-size: 1.25rem;
     position: relative;
     width: fit-content;
-    padding: 15px;
-    height: 60;
-    width: 200px;
+    padding: 0.938rem;
+    height: 3.75rem;
+    width: 12.5rem;
     border: none;
     background: #F9B621;
     left: 45%;
-    top: 35%;
+    bottom: 50%;
     cursor: pointer;
 }
 
 .flechas {
     display: flex;
     flex-direction: row-reverse;
+    position: relative;
     justify-content: space-between;
-    margin-top: 130px;
-    margin-right: 10px;
-    margin-left: 10px;
+    bottom: 85%;
+    margin-right: 0.625rem;
+    margin-left: 0.625rem;
     color: #BEB9B9;
 }
 
 .prueba {
     position: relative;
     z-index: 1;
+}
+
+.out{
+    position: relative;
+    width: 100%;
+    height: 45.625rem;
+    left: 0rem;
+    top: 10rem;
+    margin-top: 44.375rem;
+}
+
+.separador {
+    position: relative;
+    top: 50rem;
+    width: 100%;
+    z-index: 4;
+    background-color: #CECECE;
+    height: 4rem;
+}
+
+.triangle {
+    position: relative;
+    top: 3rem;
+    left: 46.54%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 3.125rem 4.063rem 0 4.063rem;
+    border-color: #CECECE transparent transparent transparent;
 }

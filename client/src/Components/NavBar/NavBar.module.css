@@ -1,10 +1,10 @@
 nav {
     position: sticky;
-    height: 100px;
+    height: 6.25rem;
     left: 0;
     top: 0;
     right: 0;
-    margin-top:30px;
+    margin-top: 1.875rem;
     z-index: 100;
 
     background: #333333;
@@ -13,10 +13,10 @@ nav {
 
 .icon {
     position: absolute;
-    width: 140px; 
+    width: 8.75rem; 
     left: 2.5%; 
-    top: 18px; 
-    bottom: 924px;
+    top: 1.125rem; 
+    bottom: 57.75rem;
     cursor: pointer;
 }
 
@@ -26,6 +26,6 @@ nav {
     justify-content: flex-end;
     align-items: flex-start;
     width: 100%;
-    height: 50px;
+    height: 3.125rem;
     background: #F9F5EF;
 }
