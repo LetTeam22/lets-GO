@@ -1,0 +1,506 @@
+[
+    {
+        "name": "Let BlackMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1300",
+        "rating": "8.5",
+        "color":"black"
+    },
+    {
+        "name": "Let Xgrey",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "mechanic",
+        "wheelSize": "20",
+        "price": "400",
+        "rating": "5.8",
+        "color": "grey"
+    },
+    {
+        "name": "Let BlackCity",
+        "type": "city",
+        "image": "img 3",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "630",
+        "rating": "7.3",
+        "color": "black"
+    },
+    {
+        "name": "Let Whitedem",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "900",
+        "rating": "9.2",
+        "color": "white"
+    },
+    {
+        "name": "Let TouRed Large",
+        "type": "touring",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1320",
+        "rating": "9.6",
+        "color":"red"
+    },
+    {
+        "name": "Let Follow",
+        "type": "folding",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "20",
+        "price": "750",
+        "rating": "9.8",
+        "color":"yellow"
+    },
+
+    {
+        "name": "Let GreenMountain XL",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "mechanic",
+        "wheelSize": "29",
+        "price": "1450",
+        "rating": "8.5",
+        "color":"grey"
+    },
+    {
+        "name": "Let XBlack Large",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "500",
+        "rating": "5.8",
+        "color": "black"
+    },
+    {
+        "name": "Let WhiteCity Small",
+        "type": "city",
+        "image": "img 3",
+        "traction": "mechanic",
+        "wheelSize": "20",
+        "price": "550",
+        "rating": "7.3",
+        "color": "white"
+    },
+    {
+        "name": "Let Blackdem Large",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1050",
+        "rating": "9.2",
+        "color": "black"
+    },
+    {
+        "name": "Let Bluering XL",
+        "type": "touring",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "29",
+        "price": "1320",
+        "rating": "9.6",
+        "color":"blue"
+    },
+    {
+        "name": "Let Foldreen XS",
+        "type": "folding",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "16",
+        "price": "650",
+        "rating": "9.8",
+        "color":"green"
+    },
+    {
+        "name": "Let electric RedMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1700",
+        "rating": "8.5",
+        "color":"red"
+    },
+    {
+        "name": "Let Xwhite",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "electric",
+        "wheelSize": "20",
+        "price": "750",
+        "rating": "5.8",
+        "color": "white"
+    },
+    {
+        "name": "Let RedCity Large",
+        "type": "city",
+        "image": "img 3",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1230",
+        "rating": "7.3",
+        "color": "red"
+    },
+    {
+        "name": "Let Greendem Small",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1300",
+        "rating": "9.2",
+        "color": "green"
+    },
+    {
+        "name": "Let Blacking",
+        "type": "touring",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1600",
+        "rating": "9.6",
+        "color":"black"
+    },
+    {
+        "name": "Let electric Foldred",
+        "type": "folding",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "20",
+        "price": "1050",
+        "rating": "9.8",
+        "color":"red"
+    },
+
+    {
+        "name": "Let WhiteMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1700",
+        "rating": "8.5",
+        "color":"white"
+    },
+    {
+        "name": "Let Xgreen XL",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "850",
+        "rating": "5.8",
+        "color": "green"
+    },
+    {
+        "name": "Let GreenCity Small",
+        "type": "city",
+        "image": "img 3",
+        "traction": "electric",
+        "wheelSize": "20",
+        "price": "800",
+        "rating": "7.3",
+        "color": "green"
+    },
+    {
+        "name": "Let electric Whitedem",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1300",
+        "rating": "9.2",
+        "color": "white"
+    },
+    {
+        "name": "Let Tourite",
+        "type": "touring",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1500",
+        "rating": "9.6",
+        "color":"white"
+    },
+    {
+        "name": "Let Foldack Small",
+        "type": "folding",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "16",
+        "price": "900",
+        "rating": "9.8",
+        "color":"black"
+    },
+    {
+        "name": "Let RedMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1450",
+        "rating": "8.5",
+        "color":"red"
+    },
+    {
+        "name": "Let Xgrey XL",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "400",
+        "rating": "5.8",
+        "color": "grey"
+    },
+    {
+        "name": "Let BlackCity small",
+        "type": "city",
+        "image": "img 3",
+        "traction": "mechanic",
+        "wheelSize": "20",
+        "price": "630",
+        "rating": "7.3",
+        "color": "black"
+    },
+    {
+        "name": "Let Whitedem Large",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1050",
+        "rating": "9.2",
+        "color": "white"
+    },
+    {
+        "name": "Let Toullow",
+        "type": "touring",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "26",
+        "price": "1320",
+        "rating": "9.6",
+        "color":"yellow"
+    },
+    {
+        "name": "Let Foldred",
+        "type": "folding",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "20",
+        "price": "650",
+        "rating": "9.8",
+        "color":"red"
+    },
+    {
+        "name": "Let GreyMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "1300",
+        "rating": "8.5",
+        "color":"grey"
+    },
+    {
+        "name": "Let XBlack",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "500",
+        "rating": "5.8",
+        "color": "black"
+    },
+    {
+        "name": "Let electric WhiteCity",
+        "type": "city",
+        "image": "img 3",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "800",
+        "rating": "7.3",
+        "color": "white"
+    },
+    {
+        "name": "Let Blackdem",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "900",
+        "rating": "9.2",
+        "color": "black"
+    },
+    {
+        "name": "Let TouRed",
+        "type": "touring",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "24",
+        "price": "1200",
+        "rating": "9.6",
+        "color":"red"
+    },
+    {
+        "name": "Let Foldrey small",
+        "type": "folding",
+        "image": "img",
+        "traction": "mechanic",
+        "wheelSize": "16",
+        "price": "650",
+        "rating": "9.8",
+        "color":"grey"
+    },
+    {
+        "name": "Let GreenMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1900",
+        "rating": "8.5",
+        "color":"red"
+    },
+    {
+        "name": "Let electric Xred",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "electric",
+        "wheelSize": "20",
+        "price": "750",
+        "rating": "5.8",
+        "color": "red"
+    },
+    {
+        "name": "Let electric WhiteCity Large",
+        "type": "city",
+        "image": "img 3",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1230",
+        "rating": "7.3",
+        "color": "white"
+    },
+    {
+        "name": "Let Tanllow",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1300",
+        "rating": "9.2",
+        "color": "yellow"
+    },
+    {
+        "name": "Let Bluering",
+        "type": "touring",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1600",
+        "rating": "9.6",
+        "color":"red"
+    },
+    {
+        "name": "Let electric Follow",
+        "type": "folding",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "1050",
+        "price": "18",
+        "rating": "9.8",
+        "color":"red"
+    },
+
+    {
+        "name": "Let electric BlackMountain",
+        "type": "mtb",
+        "image": "img 1",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1700",
+        "rating": "8.5",
+        "color":"yellow"
+    },
+    {
+        "name": "Let electric Xgrey",
+        "type": "bmx",
+        "image": "img 2",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "850",
+        "rating": "5.8",
+        "color": "grey"
+    },
+    {
+        "name": "Let electric RedCity Small",
+        "type": "city",
+        "image": "img 3",
+        "traction": "electric",
+        "wheelSize": "20",
+        "price": "1100",
+        "rating": "7.3",
+        "color": "red"
+    },
+    {
+        "name": "Let electric Tanllow Large",
+        "type": "tandem",
+        "image": "img 5",
+        "traction": "electric",
+        "wheelSize": "26",
+        "price": "1430",
+        "rating": "9.2",
+        "color": "yellow"
+    },
+    {
+        "name": "Let electric Blackring",
+        "type": "touring",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1500",
+        "rating": "9.6",
+        "color":"black"
+    },
+    {
+        "name": "Let Folgreen",
+        "type": "folding",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "16",
+        "price": "900",
+        "rating": "9.8",
+        "color":"green"
+    },
+    {
+        "name": "Let electric WhiteRing",
+        "type": "touring",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "24",
+        "price": "1500",
+        "rating": "9.6",
+        "color":"white"
+    },
+    {
+        "name": "Let Folblue",
+        "type": "folding",
+        "image": "img",
+        "traction": "electric",
+        "wheelSize": "16",
+        "price": "900",
+        "rating": "9.8",
+        "color":"blue"
+    }
+
+  ]
