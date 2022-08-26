@@ -9,24 +9,19 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     startDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     endDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    idBike: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    idUser: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     status: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: 'confirmed'
     },
+  }, {
+    timestamps: false
   });
 };

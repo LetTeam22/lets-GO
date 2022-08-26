@@ -1,0 +1,44 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    top: 48rem;
+}
+
+.title {
+    position: relative;
+    z-index: 4;
+    color: #787877;
+    top: 53rem;
+    left: 47.3%;
+}
+
+.destacadas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 45rem;
+}
+
+img {    
+    width: 20rem;
+}
+
+#one, #three {
+    background-color: #F2F2F2;
+}
+
+#two, #four {
+    background-color: #EBEAEA;
+}
+.price {
+    color: #D6802B;
+    font-size: 1.3rem;
+}
