@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.loginSpan {
+    font-family: 'Roboto';
+    font-style: normal;
+    color: #FFFFFF;
+    cursor:pointer;
+    margin-right: 10px;
+}
+
+.personaBtn {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+}
+
+.persona {
+    width: 30px;
+    cursor:pointer;
+    margin-right: 15px;
+}
