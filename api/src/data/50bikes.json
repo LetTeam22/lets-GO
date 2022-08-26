@@ -2,17 +2,17 @@
     {
         "name": "Let BlackMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1300",
         "rating": "8.5",
-        "color":"black"
+        "color": "black"
     },
     {
         "name": "Let Xgrey",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "mechanic",
         "wheelSize": "20",
         "price": "400",
@@ -22,7 +22,7 @@
     {
         "name": "Let BlackCity",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "630",
@@ -32,7 +32,7 @@
     {
         "name": "Let Whitedem",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "900",
@@ -42,38 +42,37 @@
     {
         "name": "Let TouRed Large",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1320",
         "rating": "9.6",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let Follow",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "20",
         "price": "750",
         "rating": "9.8",
-        "color":"yellow"
+        "color": "yellow"
     },
-
     {
         "name": "Let GreenMountain XL",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "mechanic",
         "wheelSize": "29",
         "price": "1450",
         "rating": "8.5",
-        "color":"grey"
+        "color": "grey"
     },
     {
         "name": "Let XBlack Large",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "500",
@@ -83,7 +82,7 @@
     {
         "name": "Let WhiteCity Small",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "20",
         "price": "550",
@@ -93,7 +92,7 @@
     {
         "name": "Let Blackdem Large",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1050",
@@ -103,37 +102,37 @@
     {
         "name": "Let Bluering XL",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "29",
         "price": "1320",
         "rating": "9.6",
-        "color":"blue"
+        "color": "blue"
     },
     {
         "name": "Let Foldreen XS",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "16",
         "price": "650",
         "rating": "9.8",
-        "color":"green"
+        "color": "green"
     },
     {
         "name": "Let electric RedMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1700",
         "rating": "8.5",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let Xwhite",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "electric",
         "wheelSize": "20",
         "price": "750",
@@ -143,7 +142,7 @@
     {
         "name": "Let RedCity Large",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1230",
@@ -153,7 +152,7 @@
     {
         "name": "Let Greendem Small",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1300",
@@ -163,38 +162,37 @@
     {
         "name": "Let Blacking",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1600",
         "rating": "9.6",
-        "color":"black"
+        "color": "black"
     },
     {
         "name": "Let electric Foldred",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "20",
         "price": "1050",
         "rating": "9.8",
-        "color":"red"
+        "color": "red"
     },
-
     {
         "name": "Let WhiteMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1700",
         "rating": "8.5",
-        "color":"white"
+        "color": "white"
     },
     {
         "name": "Let Xgreen XL",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "electric",
         "wheelSize": "24",
         "price": "850",
@@ -204,7 +202,7 @@
     {
         "name": "Let GreenCity Small",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "20",
         "price": "800",
@@ -214,7 +212,7 @@
     {
         "name": "Let electric Whitedem",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1300",
@@ -224,37 +222,37 @@
     {
         "name": "Let Tourite",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color":"white"
+        "color": "white"
     },
     {
         "name": "Let Foldack Small",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color":"black"
+        "color": "black"
     },
     {
         "name": "Let RedMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1450",
         "rating": "8.5",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let Xgrey XL",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "400",
@@ -264,7 +262,7 @@
     {
         "name": "Let BlackCity small",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "20",
         "price": "630",
@@ -274,7 +272,7 @@
     {
         "name": "Let Whitedem Large",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1050",
@@ -284,37 +282,37 @@
     {
         "name": "Let Toullow",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "26",
         "price": "1320",
         "rating": "9.6",
-        "color":"yellow"
+        "color": "yellow"
     },
     {
         "name": "Let Foldred",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "20",
         "price": "650",
         "rating": "9.8",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let GreyMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "1300",
         "rating": "8.5",
-        "color":"grey"
+        "color": "grey"
     },
     {
         "name": "Let XBlack",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "500",
@@ -324,7 +322,7 @@
     {
         "name": "Let electric WhiteCity",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "800",
@@ -334,7 +332,7 @@
     {
         "name": "Let Blackdem",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "900",
@@ -344,37 +342,37 @@
     {
         "name": "Let TouRed",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "24",
         "price": "1200",
         "rating": "9.6",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let Foldrey small",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "mechanic",
         "wheelSize": "16",
         "price": "650",
         "rating": "9.8",
-        "color":"grey"
+        "color": "grey"
     },
     {
         "name": "Let GreenMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1900",
         "rating": "8.5",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let electric Xred",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "electric",
         "wheelSize": "20",
         "price": "750",
@@ -384,7 +382,7 @@
     {
         "name": "Let electric WhiteCity Large",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1230",
@@ -394,7 +392,7 @@
     {
         "name": "Let Tanllow",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1300",
@@ -404,38 +402,37 @@
     {
         "name": "Let Bluering",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1600",
         "rating": "9.6",
-        "color":"red"
+        "color": "red"
     },
     {
         "name": "Let electric Follow",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "1050",
         "price": "18",
         "rating": "9.8",
-        "color":"red"
+        "color": "red"
     },
-
     {
         "name": "Let electric BlackMountain",
         "type": "mtb",
-        "image": "img 1",
+        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1700",
         "rating": "8.5",
-        "color":"yellow"
+        "color": "yellow"
     },
     {
         "name": "Let electric Xgrey",
         "type": "bmx",
-        "image": "img 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
         "traction": "electric",
         "wheelSize": "24",
         "price": "850",
@@ -445,7 +442,7 @@
     {
         "name": "Let electric RedCity Small",
         "type": "city",
-        "image": "img 3",
+        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "20",
         "price": "1100",
@@ -455,7 +452,7 @@
     {
         "name": "Let electric Tanllow Large",
         "type": "tandem",
-        "image": "img 5",
+        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
         "traction": "electric",
         "wheelSize": "26",
         "price": "1430",
@@ -465,42 +462,41 @@
     {
         "name": "Let electric Blackring",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color":"black"
+        "color": "black"
     },
     {
         "name": "Let Folgreen",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color":"green"
+        "color": "green"
     },
     {
         "name": "Let electric WhiteRing",
         "type": "touring",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color":"white"
+        "color": "white"
     },
     {
         "name": "Let Folblue",
         "type": "folding",
-        "image": "img",
+        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
         "traction": "electric",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color":"blue"
+        "color": "blue"
     }
-
-  ]
+]
