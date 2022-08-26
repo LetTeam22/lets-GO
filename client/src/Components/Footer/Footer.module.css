@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.footer {
+    position: relative;
+    top: 47rem;
+    width: 100%;
+    background-color: #333333;
+    height: 23.813rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.services, .guia, .company {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin-top: 3rem;
+}
+
+h5 {
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 0%;
+}
+
+.footerSpan {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 0.95rem;
+    color: #ffffffce;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+    margin-right: 7rem;
+}
+
+span {
+    cursor: pointer;
+}
