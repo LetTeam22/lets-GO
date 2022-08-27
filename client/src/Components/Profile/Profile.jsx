@@ -7,19 +7,35 @@ import {
   Input,
   Button,
   FormHelperText,
+  IconButton
 } from "@mui/material";
 import { IoSend } from "react-icons/io5";
+import { BsCameraFill } from 'react-icons/bs';
 import Loading from '../Loading/Loading';
 import theme from "./MaterialUIColors";
 import s from "./Profile.module.css";
 import { ThemeProvider } from "@emotion/react";
+import image from '../../image/persona_logeada.png';
 
-const validate = (input, id) => {
-  let errors = {}
-  console.log(id)
-  if(id === 'firstName' && !/^[A-Z]+$/i.test(input.firstName)) errors.firstName = 'Solo se aceptan letras'
-  if(id === 'lastName' && !/^[A-Z]+$/i.test(input.lastName)) errors.lastName = 'Solo se aceptan letras'
-  if(id === 'cellphone' && !/^[0-9]\d{9}$/.test(input.cellphone)) errors.cellphone = 'Solo se aceptan numeros'
+const validate = (input, id, errors) => {
+  if(id === 'firstName'){
+    !/^[A-Z]+$/i.test(input.firstName)?
+    errors = {...errors, firstName: 'Solo se aceptan letras'}
+    :
+    delete errors.firstName
+  }  
+  if(id === 'lastName'){
+    !/^[A-Z]+$/i.test(input.lastName)? 
+    errors = {...errors, lastName: 'Solo se aceptan letras'}
+    :
+    delete errors.lastName
+  } 
+  if(id === 'cellphone'){
+    !/^[0-9]\d{10}$/.test(input.cellphone)? 
+    errors = {...errors, cellphone: 'Solo se aceptan numeros'}
+    :
+    delete errors.cellphone
+  }
   return errors
 }
 
@@ -29,11 +45,11 @@ export const Profile = () => {
   const [input, setInput] = useState({
     firstName:'',
     lastName:'',
-    cellphone:''
+    cellphone:'',
+    profilePic:''
   })
-  // const [desabled, setDesabled] = useState(true)
   const [errors, setErrors] = useState({})
-  // console.log(user);
+  const [photo, setPhoto] = useState(undefined)
   if (isLoading) return <Loading/>
   
   const handleChange = e => {
@@ -41,27 +57,34 @@ export const Profile = () => {
       ...input,
       [e.target.id]: e.target.value
     })
+    if(e.target.id === 'profilePic') setPhoto(URL.createObjectURL(e.target.files[0]))
     setErrors(validate({
       ...input,
       [e.target.id]: e.target.value
-    }, e.target.id))
+    }, e.target.id, errors))
   }
   const handleSubmit = e => {
     e.preventDefault()
     setInput({
       firstName:'',
       lastName:'',
-      cellphone:''
+      cellphone:'',
+      profilePic: ''
     })
+    history.push('/')
   }
-  // console.log(input)
+  console.log(input)
   const disabled = Object.keys(errors).length > 0 || !input.firstName || !input.lastName || !input.cellphone
   return (
     <>
       <div className={s.container}>
         <div className={s.nameAndImg}>
           <h2>{user.name}</h2>
-          <img src={user.picture} alt={user.name} className={s.img} />
+          <IconButton color="primary" aria-label="upload picture" component="label" className={s.imgContainer} >
+            <input hidden accept="image/*" type="file" onChange={handleChange} value={input.profilePic} id='profilePic'/>
+            <img src={photo?photo:image} alt={user.name} className={s.img} />
+            <BsCameraFill className={s.iconCamera}/>
+          </IconButton>
         </div>
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
@@ -90,15 +113,14 @@ export const Profile = () => {
           </ThemeProvider>
         </form>
       </div>
-      <Button
+      {/* <Button
         variant="contained"
         color="success"
         className={s.btnHome}
         onClick={() => history.push("/")}
-        
       >
         Go Home
-      </Button>
+      </Button> */}
     </>
   );
 };
