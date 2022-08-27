@@ -5,7 +5,11 @@ const { Bike, Booking, User } = require('../db')
 const getAllBikes = async (req, res, next) => {
     try {
         const allBikes = await Bike.findAll({
-            include: { model: Booking }
+            include: {
+                model: Booking,
+                arrtibutes: ['startDate', 'endDate'],
+                through: { attributes: [] }
+            }
         })
         res.send(allBikes)
     } catch (error) {
