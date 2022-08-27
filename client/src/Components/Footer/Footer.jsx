@@ -59,7 +59,7 @@ const Footer = () => {
                         cursor='pointer'
                     />
                     
-                    <a href={github} target="_blank">
+                    <a href={github} target="_blank" rel="noopener noreferrer">
                         <BsGithub 
                             color='white'  
                             size='1.5rem'
