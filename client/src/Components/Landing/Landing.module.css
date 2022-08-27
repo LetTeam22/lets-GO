@@ -108,7 +108,8 @@
 .triangle {
     position: relative;
     top: 3rem;
-    left: 46.54%;
+    margin-left: auto;
+    margin-right: auto;
     width: 0;
     height: 0;
     border-style: solid;
