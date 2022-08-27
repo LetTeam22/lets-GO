@@ -45,6 +45,40 @@ export const BikeDetail = () => {
                         <Link to='/cart'>
                             <button > Reservar </button>
                         </Link>
+
+                        <p>
+                            <label>Accesorios</label>
+                            <p>
+                                <label>Canasto</label>
+                                <input type='checkbox' />
+
+                                <label>Silla porta bebes</label>
+                                <input type='checkbox' />
+
+                                <label>Luces</label>
+                                <input type='checkbox' />
+
+                                <label>Casco</label>
+                                <input type='checkbox' />
+
+                                <label>Candado</label>
+                                <input type='checkbox' />
+
+                                <label>Portacelular</label>
+                                <input type='checkbox' />
+
+                                <label>Lentes</label>
+                                <input type='checkbox' />
+
+                                <label>Botella</label>
+                                <input type='checkbox' />
+
+                                <label>Calzado</label>
+                                <input type='checkbox' />
+                            </p>
+
+                        </p>
+
                     </div>
                     :
                     <Loading />

@@ -1,13 +1,14 @@
 import { CURRENT_PAGE, GET_BIKES, GET_BIKES_DETAIL, TYPE_FILTER, TRACTION_FILTER } from '../actions/actiontypes';
 
 
-const  initialState = {
+const initialState = {
     currentPage: 1,
     allBikes: [],
-    bikeDetail:[],
+    bikeDetail: [],
+    accesories: [],
 
     // filters
-    useFilters: {type: false, traction: false, wheeelSize: false, color: false, name: false },
+    useFilters: { type: false, traction: false, wheeelSize: false, color: false, name: false },
     type: [],
     traction: [],
     wheeelSize: [],
@@ -15,39 +16,39 @@ const  initialState = {
     name: [],
 };
 
-function rootReducer(state = initialState, action){
+function rootReducer(state = initialState, action) {
     switch (action.type) {
 
-            case CURRENT_PAGE:
-                return {
+        case CURRENT_PAGE:
+            return {
                 ...state,
                 currentPage: action.payload
-                }
-            case GET_BIKES:
-                return {
-                    ...state,
-                    allBikes: action.payload
-                }
+            }
+        case GET_BIKES:
+            return {
+                ...state,
+                allBikes: action.payload
+            }
 
-            case GET_BIKES_DETAIL:
-                return {
-                    ...state,
-                    bikeDetail: action.payload
-                }
+        case GET_BIKES_DETAIL:
+            return {
+                ...state,
+                bikeDetail: action.payload
+            }
 
-            case TYPE_FILTER:
-                return {
-                    ...state,
-                    type: action.payload,
-                    useFilters: {...state.useFilters, type: true }
-                }
-            case TRACTION_FILTER:
-                return {
-                    ...state,
-                    traction: action.payload,
-                    useFilters: {...state.useFilters, traction: true }
-                }
-                    
+        case TYPE_FILTER:
+            return {
+                ...state,
+                type: action.payload,
+                useFilters: { ...state.useFilters, type: true }
+            }
+        case TRACTION_FILTER:
+            return {
+                ...state,
+                traction: action.payload,
+                useFilters: { ...state.useFilters, traction: true }
+            }
+
         default: return state
     }
 }
