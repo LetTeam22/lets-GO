@@ -16,9 +16,9 @@ function App() {
       <Switch>
         <Route exact path= '/' component= { Landing } />
         <Route exact path= '/home' component= { Home } />
+        <Route exact path= '/bike/:bikeId' component= { BikeDetail } />
         <Route exact path= '/bike/profile' component= { Profile } />
         <Route exact path= '/bike/privateRoute' component= { Private } />
-        <Route exact path= '/bike/:id' component= { BikeDetail } />
         <Route exact path='/allAccessories' component={ AllAccesories }></Route>
         <Route path='*' component={ Error } />
       </Switch>

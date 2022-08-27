@@ -1,9 +1,11 @@
-import { CURRENT_PAGE, GET_BIKES, TYPE_FILTER, TRACTION_FILTER } from '../actions/actiontypes';
+import { CURRENT_PAGE, GET_BIKES, GET_BIKES_DETAIL, TYPE_FILTER, TRACTION_FILTER } from '../actions/actiontypes';
 
 
 const  initialState = {
     currentPage: 1,
     allBikes: [],
+    bikeDetail:[],
+
     // filters
     useFilters: {type: false, traction: false, wheeelSize: false, color: false, name: false },
     type: [],
@@ -11,7 +13,7 @@ const  initialState = {
     wheeelSize: [],
     color: [],
     name: [],
-}
+};
 
 function rootReducer(state = initialState, action){
     switch (action.type) {
@@ -26,6 +28,13 @@ function rootReducer(state = initialState, action){
                     ...state,
                     allBikes: action.payload
                 }
+
+            case GET_BIKES_DETAIL:
+                return {
+                    ...state,
+                    bikeDetail: action.payload
+                }
+
             case TYPE_FILTER:
                 return {
                     ...state,
