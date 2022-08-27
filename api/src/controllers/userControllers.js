@@ -13,9 +13,39 @@ async function getAllUsers(req, res, next) {
 
 // crea un usuario
 async function createUser(req, res, next) {
-    const {userEmail} = req.query
-    
+    const {userName,email,firstName,lastName,cellphone,profilePic} = req.body
+
+    const [user, created] = await User.findOrCreate({
+        where: { email: email },
+        defaults: {
+          userName,
+          firstName,
+          lastName,
+          cellphone,
+          profilePic
+        }
+    });
+    res.send({user,created})
 }
 
-module.exports = {getAllUsers}
+// Devuelve true si el correo esta en la DB, de lo contrario devuelve false
+async function isInDB (req, res, next) {
+    const {email} = req.query
+    const user = await User.findOne({ where: { email: email } });
+    if (user === null) {
+    res.send(false)
+    } else {
+    res.send(true)
+    }
+}
 
+// Devuelve los detalles de un usuario dado su email por query
+async function getDetails (req, res, next) {
+    const {email} = req.query
+    const user = await User.findAll({
+        where: { email: email }
+    });
+    res.send(user[0])
+}
+
+module.exports = {getAllUsers, isInDB, createUser,getDetails}
