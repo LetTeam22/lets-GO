@@ -2,8 +2,14 @@ import React from 'react';
 import s from './Footer.module.css';
 import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
 
+
+const github = 'https://github.com/LetTeam22/PF-Let';
+
 const Footer = () => {
 
+   
+
+    
 
     return (
         <div className={s.footer}>
@@ -28,6 +34,7 @@ const Footer = () => {
                 <span className={s.footerSpan}>Sobre nosotros</span>
                 <span className={s.footerSpan}>Contacto</span>
                 <div className={s.icons} >
+                    
                     <BsFacebook
                         color='white'  
                         size='1.5rem' 
@@ -35,6 +42,7 @@ const Footer = () => {
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer' 
                     />
+
                     <BsInstagram 
                         color='white'  
                         size='1.5rem'
@@ -42,20 +50,25 @@ const Footer = () => {
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer'
                     />
+
                     <BsWhatsapp 
                         color='white'  
                         size='1.5rem'
                         onMouseOver={({target})=>target.style.color="#F9B621"}
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer'
-                    />                
-                    <BsGithub 
-                        color='white'  
-                        size='1.5rem'
-                        onMouseOver={({target})=>target.style.color="#F9B621"}
-                        onMouseOut={({target})=>target.style.color="white"} 
-                        cursor='pointer'  
-                    />                
+                    />
+                    
+                    <a href={github} target="_blank" rel="noopener noreferrer">
+                        <BsGithub 
+                            color='white'  
+                            size='1.5rem'
+                            onMouseOver={({target})=>target.style.color="#F9B621"}
+                            onMouseOut={({target})=>target.style.color="white"} 
+                            cursor='pointer'
+                        />  
+                    </a>              
+                      
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
 .container, .form{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     padding-top: 2rem;
