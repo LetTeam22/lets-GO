@@ -1,12 +1,12 @@
 import React from 'react';
+import s from './Card.module.css';
 
-
-export const Card = ({ name, type, image, traction, wheelSize, price }) => {
+const Card = ({ name, type, image, traction, wheelSize, price }) => {
 
     return (
         <div >
             <img src={image} alt='img not found' /> 
-            <div>
+            <div className={s.card}>
                 <h3>{name}</h3>              
                 <h4>{type} </h4>
                 <h4>{traction}</h4>
@@ -16,3 +16,5 @@ export const Card = ({ name, type, image, traction, wheelSize, price }) => {
         </div>
     )
 };
+
+export default Card;
