@@ -39,9 +39,11 @@ const Menu = () => {
       <SearchBar />
       <div className={s.login}>
         {isAuthenticated ? <LogOut /> : <LogIn />}
-        <button className={s.carritoBtn}>
-          <img className={s.carrito} src={carrito} alt="carrito" />
-        </button>
+        <Link to='/cart'>
+          <button className={s.carritoBtn}>
+            <img className={s.carrito} src={carrito} alt="carrito" />
+          </button>
+        </Link>
       </div>
     </div>
   );
