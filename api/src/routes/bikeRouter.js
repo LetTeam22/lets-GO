@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllBikes, getBikeType, getBikeTraction, getBikeWheelSize, orderBikeName, orderBikeRating, orderBikePrice, getBikeColor } = require('../controllers/bikeControllers')
+const { getAllBikes, getBikeType, getBikeTraction, getBikeWheelSize, getBikePrice, orderBikeName, orderBikeRating, orderBikePrice, getBikeColor, getBikeId, deleteBike } = require('../controllers/bikeControllers')
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -14,8 +14,12 @@ router.use('/wheelsize/:bikeWheeelSize', getBikeWheelSize);
 router.use('/color/:bikeColor', getBikeColor)
 router.use('/name/:orderName', orderBikeName);
 router.use('/price/:orderPrice', orderBikePrice);
+router.use('/price', getBikePrice)
 router.use('/rating/:orderRating', orderBikeRating);
+router.use('/:bikeId', getBikeId)
+router.use('/id', deleteBike)
 router.use('/', getAllBikes);
+
 
 
 // Configurar los routers
