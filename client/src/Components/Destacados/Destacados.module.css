@@ -15,7 +15,11 @@
     z-index: 4;
     color: #787877;
     top: 53rem;
+
     text-align:center
+    margin-right: auto;
+    margin-left: auto;
+
 }
 
 .destacadas {
