@@ -17,6 +17,33 @@ async function getAllBookings(req, res, next) {
         } 
       ]
     })
+    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
+    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
+    res.send(bookings)
+  } catch (error) {
+    next(error)
+  }
+}
+
+async function getBookingsByUserId(req, res, next) {
+  const { userId } = req.params
+  if (!userId) return res.sendStatus(400)
+  try {
+    let bookings = await Booking.findAll({
+      where: { userIdUser: userId },
+      include: [
+        {
+          model: Bike,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        } 
+      ]
+    })
+    if (!bookings.length) return res.status(422).send('This user has no bookings')
+    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
+    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
     res.send(bookings)
   } catch (error) {
     next(error)
@@ -35,28 +62,29 @@ async function postBooking(req, res, next) {
       } 
     })
     bookingCreated.addBike(bikes)
-    res.send('Booking created')
+    res.send('The booking was created successfully')
   } catch (error) {
     next(error)
   }
 }
 
-async function test(req, res, next) {
+async function cancelBooking(req, res, next) {
+  const { bookingId } = req.params
+  if (!bookingId) return res.sendStatus(400)
   try {
-    let user = await User.findByPk(1)
-    let has = await user.getBookings()
-    let count = await user.countBookings()
-    res.send(has)
-    console.log(count)
+    let booking = await Booking.findByPk(bookingId)
+    if (!booking) return res.status(422).send(`The booking with id ${bookingId} does not exist`)
+    booking.update({ status: 'cancelled' })
+    res.send(`The booking with id ${bookingId} was cancelled successfully`)
   } catch (error) {
     next(error)
   }
 }
-
 
 
 module.exports = {
   getAllBookings,
+  getBookingsByUserId,
   postBooking,
-  test
+  cancelBooking
 }
