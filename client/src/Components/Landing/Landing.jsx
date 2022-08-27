@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Landing.module.css';
 import { GoLocation } from 'react-icons/go';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { VscChevronRight, VscChevronLeft } from 'react-icons/vsc';
 import fondo from '../../image/img_fondo1.png';
 import Destacados from '../Destacados/Destacados';
@@ -34,9 +34,7 @@ export const Landing = () => {
                 </div>
 
             </div>
-            {/* <Link to={'/privateRoute'} className={s.prueba}>
-                <button>Go to the private component</button>
-            </Link> */}
+            
             
             <div className={s.separador} id={s.first}><div className={s.triangle}></div></div>
             <Destacados />
@@ -53,3 +51,8 @@ export const Landing = () => {
 
     )
 };
+
+
+/* <Link to={'/privateRoute'} className={s.prueba}>
+                <button>Go to the private component</button>
+            </Link> */
