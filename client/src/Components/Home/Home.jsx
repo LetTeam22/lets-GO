@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading'
 // import { NotFound } from '../NotFound/NotFound'
-import { Card } from '../Card/Card';
+import  Card  from '../Card/Card.jsx';
 import { Pagination } from '../Pagination/Pagination';
 import { getBikes } from '../../Redux/actions/'
 // import s from './Home.module.css';
