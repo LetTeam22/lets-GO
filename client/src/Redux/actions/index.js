@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CURRENT_PAGE, GET_BIKES } from './actiontypes'
+import { CURRENT_PAGE, GET_BIKES, GET_BIKES_DETAIL } from './actiontypes'
 
 
 export const changeCurrentPage = payload => {
@@ -20,3 +20,8 @@ export const getBikes = () => {
 //     }
 // };
 
+export const getBikeDetail = (bikeId) => {
+    return dispatch => axios(`http://localhost:3001/bikes/${bikeId}`)
+    .then(res => dispatch({ type: GET_BIKES_DETAIL, payload: res.data }))
+    .catch(err => console.log(err));
+}

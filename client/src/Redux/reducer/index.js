@@ -1,9 +1,10 @@
-import { CURRENT_PAGE, GET_BIKES } from '../actions/actiontypes';
+import { CURRENT_PAGE, GET_BIKES, GET_BIKES_DETAIL } from '../actions/actiontypes';
 
 
 const  initialState = {
     currentPage: 1,
     allBikes: [],
+    bikeDetail:[],
 }
 
 function rootReducer(state = initialState, action){
@@ -18,6 +19,11 @@ function rootReducer(state = initialState, action){
                 return {
                     ...state,
                     allBikes: action.payload
+                }
+            case GET_BIKES_DETAIL:
+                return {
+                    ...state,
+                    bikeDetail: action.payload
                 }
 
         default: return state
