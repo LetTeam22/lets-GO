@@ -3,7 +3,9 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 
 // Nota mental: hay que importar las funciones del controller!!!!!!!!!
-const {isInDB, getAllUsers, createUser, getDetails} = require ('../controllers/userControllers.js')
+const {isInDB, getAllUsers, 
+    createUser, getDetails, updateUser
+} = require ('../controllers/userControllers.js')
 
 const router = Router();
 
@@ -20,7 +22,9 @@ router.get('/detail',getDetails)
 // crear un nuevo usuario, se pasan los datos por body
 router.post('/create',createUser)
 
-
+// actualiza los datos de un usuario y lo devuelve. (recibe por body)
+// Si el email no esta en la DB arroja un error "el usuario no existe"
+router.put('/update', updateUser)
 
 
 module.exports = router;
