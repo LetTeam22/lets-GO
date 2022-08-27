@@ -35,6 +35,17 @@
     height: 4rem;
     align-self: center;
 }
+.iconCamera{
+    opacity: 0;
+    position: absolute;
+    color:#333333!important;
+}
+.imgContainer:hover > .img {
+    opacity: 0.5;
+}
+.imgContainer:hover > .iconCamera{
+    opacity: 1;
+}
 
 .btnHome, .btnSend{
     color:#F9B621!important;
@@ -42,11 +53,15 @@
     font-weight: 1000!important;
     position: absolute!important;
 }
-.btnHome{
+/* .btnHome{
     top: 10rem;
     left: 20rem;
-}
+} */
 .btnSend{
-    top: 17.5rem;
+    bottom: 0.7rem;
     right: 0.7rem;
+}
+.btnSend:disabled{
+    background-color: #525252!important;
+    color:#ffd57a!important
 }
