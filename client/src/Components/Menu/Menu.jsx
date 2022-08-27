@@ -8,8 +8,10 @@ import LogOut from "../NavBar/Authentication/LogOut";
 import { Link } from "react-router-dom";
 
 
-export const Menu = () => {
+const Menu = () => {
+
   const { isAuthenticated } = useAuth0();
+
   return (
     <div className={s.menu}>
       <div className={s.options}>
@@ -45,3 +47,4 @@ export const Menu = () => {
   );
 };
 
+export default Menu;
