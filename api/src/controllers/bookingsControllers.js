@@ -2,7 +2,21 @@ const { User, Bike, Booking } = require('../db');
 
 async function getAllBookings(req, res, next) {
   try {
-    let bookings = await Booking.findAll({include: [User, Bike]})
+    let bookings = await Booking.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['userName'],
+        }, 
+        {
+          model: Bike,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        } 
+      ]
+    })
     res.send(bookings)
   } catch (error) {
     next(error)
@@ -10,11 +24,17 @@ async function getAllBookings(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeId } = req.body
-  if (!startDate || !endDate || !userId || !bikeId) return res.sendStatus(400)
+  const { startDate, endDate, userId, bikeIds } = req.body
+  if (!startDate || !endDate || !userId || !bikeIds.length) return res.sendStatus(400)
   try {
-    let booking = {startDate, endDate, userIdUser: userId, bikeIdBike: bikeId}
+    let booking = {startDate, endDate, userIdUser: userId}
     let bookingCreated = await Booking.create(booking)
+    let bikes = await Bike.findAll({
+      where: {
+        idBike: bikeIds
+      } 
+    })
+    bookingCreated.addBike(bikes)
     res.send('Booking created')
   } catch (error) {
     next(error)
