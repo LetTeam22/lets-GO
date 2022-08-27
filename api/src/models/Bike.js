@@ -32,6 +32,9 @@ module.exports = (sequelize) => {
     },
     rating: {
       type: DataTypes.DECIMAL,
+    },
+    color: {
+      type: DataTypes.STRING,
     }
   }, {
     timestamps: false

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Landing.module.css';
 import { GoLocation } from 'react-icons/go';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { VscChevronRight, VscChevronLeft } from 'react-icons/vsc';
 import fondo from '../../image/img_fondo1.png';
 import Destacados from '../Destacados/Destacados';
