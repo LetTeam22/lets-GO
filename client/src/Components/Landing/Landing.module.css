@@ -6,11 +6,12 @@
 }
 
 .landing {
-    position: absolute;
+    position: fixed;
     left: 0rem;
     top: 0rem;
     right: 0;
     bottom: 0;
+    overflow: hidden;
 }
 
 .fondo {
@@ -98,7 +99,7 @@
 
 .separador {
     position: relative;
-    top: 50rem;
+    top: 49.7rem;
     width: 100%;
     z-index: 4;
     background-color: #CECECE;
