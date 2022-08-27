@@ -1,21 +1,21 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCurrentPage } from '../../Redux/actions';
+import { setCurrentPage } from '../../Redux/actions';
 
 
-export const Pagination = ({ allBikes , bikesPerPage }) => {
+export const Pagination = ({ bikes , bikesPerPage }) => {
 
     const dispatch = useDispatch();
     const currentPage = useSelector(state => state.currentPage)
 
     const pageNumber = [];
 
-    for(let i = 1; i <= Math.ceil(allBikes / bikesPerPage); i++) { 
+    for(let i = 1; i <= Math.ceil(bikes / bikesPerPage); i++) { 
         pageNumber.push(i)
     }
 
     const handlePage = num => {
-        if (currentPage !== num) dispatch(changeCurrentPage(num))
+        if (currentPage !== num) dispatch(setCurrentPage(num))
     }
 
     return (

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { IoSend } from "react-icons/io5";
 import { BsCameraFill } from 'react-icons/bs';
-import Loading from '../Loading/Loading';
+import { Loading } from '../Loading/Loading';
 import theme from "./MaterialUIColors";
 import s from "./Profile.module.css";
 import { ThemeProvider } from "@emotion/react";
