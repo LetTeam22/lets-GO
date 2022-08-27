@@ -6,7 +6,9 @@ const Loading = () => {
 
     return (
         <div className={s.spinner}>
-            <img src={rueda} alt="Loading..." className={s.spinnerImg} />
+            <div className={s.gira}>
+                <img src={rueda} alt="Loading..." className={s.mueve} />
+            </div>
         </div>
     )
 };

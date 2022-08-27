@@ -7,17 +7,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
-.spinnerImg{
+.gira{
+    width: 100%;
+    animation: gira 5s linear infinite
+}
+.mueve{
     width: 15rem;
-    animation: spinner 2.5s linear infinite;
+    animation: mueve 2.5s linear infinite
 }
 
-@keyframes spinner {
+@keyframes mueve {
     0%{
         transform: rotate(0deg);
     }
     100%{
         transform: rotate(360deg);
+    }
+}
+@keyframes gira {
+    0%{
+        transform: translateX(-20%);
+    }
+    100%{
+        transform: translateX(100%);
     }
 }
