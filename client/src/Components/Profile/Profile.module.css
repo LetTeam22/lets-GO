@@ -50,3 +50,7 @@
     top: 17.5rem;
     right: 0.7rem;
 }
+.btnSend:disabled{
+    background-color: #525252!important;
+    color:#ffd57a!important
+}
