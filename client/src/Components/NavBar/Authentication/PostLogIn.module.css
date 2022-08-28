@@ -1,0 +1,34 @@
+.background{
+    background-color: #333333;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 200;
+}
+
+.btnBack, .btnProfile{
+    position: absolute;
+    top: 50%;
+    width: 10rem;
+    height: 4rem;
+    color: #333333;
+    background-color:#F9B621 ;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor:pointer;
+}
+
+.btnBack{
+    left: 30%;
+}
+
+.btnProfile{
+    left: 60%;
+}
+
+.btnProfile:hover, .btnBack:hover{
+    background-color: #d39307;
+}

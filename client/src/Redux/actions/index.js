@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, LAST_URL } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -55,4 +55,10 @@ export const createUser = user => {
     return dispatch => axios.post('http://localhost:3001/user/create', user)
     .then(res => dispatch({type: CREATE_USER, payload: res}))
     .catch(err => console.log(err));
+}
+
+export const saveURL = url => {
+    return dispatch => {
+        dispatch({type: LAST_URL, payload: url})
+    }
 }
