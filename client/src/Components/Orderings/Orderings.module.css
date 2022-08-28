@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 8rem;
+    margin-top: 6rem;
+}
+
+
+.spanOrderings {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    color: #333333;
+    margin-bottom: 0.8rem;
+}
+
+.orderings {
+    width: 15rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: transparent;
+    margin-bottom: 1rem;
+    border-color: #C1BFBF; 
+    -webkit-appearance: none;
+    color: #333333;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+}
