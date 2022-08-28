@@ -1,10 +1,16 @@
 import axios from 'axios';
-import { CURRENT_PAGE, GET_BIKES, TYPE_FILTER, TRACTION_FILTER } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES } from './actiontypes'
 
 
 export const setCurrentPage = payload => {
     return dispatch => {
         dispatch({ type: CURRENT_PAGE, payload})
+    }
+};
+
+export const setParameters = payload => {
+    return dispatch => {
+        dispatch({ type: SET_PARAMETERS, payload})
     }
 };
 
@@ -14,14 +20,22 @@ export const getBikes = () => {
     .catch(err => console.log(err));
 };
 
-export const setTypeFilter = type => {
-    return dispatch => axios(`http://localhost:3001/bikes/type/${type}`)
-    .then(res => dispatch({ type: TYPE_FILTER, payload: res.data }))
-    .catch(err => console.log(err));
-};
+export const getRenderedBikes = parameters => {
 
-export const setTractionFilter = traction => {
-    return dispatch => axios(`http://localhost:3001/bikes/traction/${traction}`)
-    .then(res => dispatch({ type: TRACTION_FILTER, payload: res.data }))
+    const arrQuery = []
+    if (parameters.filters.type) arrQuery.push(`typeFilter=${parameters.filters.type}`)
+    if (parameters.filters.traction) arrQuery.push(`tractionFilter=${parameters.filters.traction}`)
+    if (parameters.filters.wheelSize) arrQuery.push(`wheelSizeFilter=${parameters.filters.wheelSize}`)
+    if (parameters.filters.color) arrQuery.push(`colorFilter=${parameters.filters.color}`)
+    if (parameters.filters.price.min) arrQuery.push(`minPriceFilter=${parameters.filters.price.min}`)
+    if (parameters.filters.price.max) arrQuery.push(`maxPriceFilter=${parameters.filters.price.max}`)
+    if (parameters.sorts.price) arrQuery.push(`priceSort=${parameters.sorts.price}`)
+    if (parameters.sorts.rating) arrQuery.push(`ratingSort=${parameters.sorts.rating}`)
+    if (parameters.sorts.name) arrQuery.push(`nameSort=${parameters.sorts.name}`)
+    if (parameters.search) arrQuery.push(`search=${parameters.search}`)
+    const query = !arrQuery.length ? '' : '?' + arrQuery.join('&')
+
+    return dispatch => axios.get(`http://localhost:3001/bikes/rendered${query}`)
+    .then(res => dispatch({ type: GET_RENDERED_BIKES, payload: res.data }))
     .catch(err => console.log(err));
 };

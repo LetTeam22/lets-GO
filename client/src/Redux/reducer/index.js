@@ -1,16 +1,31 @@
-import { CURRENT_PAGE, GET_BIKES, TYPE_FILTER, TRACTION_FILTER } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES } from '../actions/actiontypes';
 
 
 const  initialState = {
-    currentPage: 1,
     allBikes: [],
-    // filters
-    useFilters: {type: false, traction: false, wheeelSize: false, color: false, name: false },
-    type: [],
-    traction: [],
-    wheeelSize: [],
-    color: [],
-    name: [],
+    renderedBikes: [],
+    paginate: {
+        bikesPerPage: 9,
+        currentPage: 1,
+    },
+    parameters: {
+        filters: {
+          type: '',
+          traction: '',
+          wheelSize: '',
+          color: '',
+          price: {
+            min: '',
+            max: ''
+          }
+        },
+        sorts: {
+          price: '',
+          rating: '',
+          name: ''
+        },
+        search: ''
+    }
 }
 
 function rootReducer(state = initialState, action){
@@ -18,25 +33,23 @@ function rootReducer(state = initialState, action){
 
             case CURRENT_PAGE:
                 return {
-                ...state,
-                currentPage: action.payload
+                    ...state,
+                    paginate: { ...state.paginate, currentPage: action.payload }
+                }
+            case SET_PARAMETERS:
+                return {
+                    ...state,
+                    parameters: action.payload
                 }
             case GET_BIKES:
                 return {
                     ...state,
                     allBikes: action.payload
                 }
-            case TYPE_FILTER:
+            case GET_RENDERED_BIKES:
                 return {
                     ...state,
-                    type: action.payload,
-                    useFilters: {...state.useFilters, type: true }
-                }
-            case TRACTION_FILTER:
-                return {
-                    ...state,
-                    traction: action.payload,
-                    useFilters: {...state.useFilters, traction: true }
+                    renderedBikes: action.payload,
                 }
                     
         default: return state
