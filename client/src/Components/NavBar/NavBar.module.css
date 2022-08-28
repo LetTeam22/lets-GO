@@ -1,5 +1,5 @@
 nav {
-    position: sticky;
+    position: fixed;
     height: 6.25rem;
     left: 0;
     top: 0;
@@ -13,19 +13,44 @@ nav {
 
 .icon {
     position: absolute;
-    width: 8.75rem; 
+    width: 7rem; 
     left: 2.5%; 
     top: 1.125rem; 
     bottom: 57.75rem;
     cursor: pointer;
 }
 
+.title {
+    margin-left: .5rem;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: .8rem;
+    font-size: .9rem;
+    line-height: 1.75rem;
+    color: #b2b1b1;
+    margin-top: 0;
+}
+
 .location {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    flex-direction: row;
     align-items: flex-start;
     width: 100%;
-    height: 3.125rem;
+    height: 2rem;
     background: #F9F5EF;
+    overflow: hidden;
+}
+
+.goLocation {
+    color: #b2b1b1;
+    height: 1rem;
+    margin-left: 1rem;
+    margin-top: .4rem;
+
 }

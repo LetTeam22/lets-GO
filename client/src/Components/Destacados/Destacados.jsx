@@ -5,7 +5,7 @@ import bici2 from '../../image/bicisDestacadas/img_bici2.png';
 import bici3 from '../../image/bicisDestacadas/img_bici3.png';
 import bici4 from '../../image/bicisDestacadas/img_bici4.png';
 
-const Destacados = () => {
+export const Destacados = () => {
     
     return (
         <>
@@ -44,5 +44,3 @@ const Destacados = () => {
         
     )
 };
-
-export default Destacados;

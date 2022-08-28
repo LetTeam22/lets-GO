@@ -19,22 +19,6 @@
 
 }
 
-.title {
-    margin-left: 1.25rem;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 1rem;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    color: #A4A3A3;
-    margin-top: 0;
-}
-
-.location {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
 .textDiv{
     position: absolute;
     top: 0;

@@ -4,10 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { getBikeDetail } from '../../Redux/actions';
-import Loading from '../Loading/Loading';
-import Footer from '../Footer/Footer.jsx'
-
-
+import { Loading } from '../Loading/Loading';
 
 
 export const BikeDetail = () => {
@@ -47,7 +44,6 @@ export const BikeDetail = () => {
                     :
                     <Loading />
             }
-            <Footer />
         </>
     )
 };
