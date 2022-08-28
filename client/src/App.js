@@ -14,6 +14,7 @@ import { Contact } from './Components/Contact/Contact'
 import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
 import Private from './Components/Private/Private';
 import './App.css';
+import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route exact path= '/allExperiencies' component={ AllExperiencies } />
         <Route exact path= '/contact' component={ Contact } />
         <Route exact path= '/cart' component={ ShoppingCart } />
+        <Route exact path= '/postLogin' component={ PostLogIn } />
         <Route path='*' component={ Error } />
       </Switch>
       <Footer/>
