@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-  sequelize.define('accesories', {
+  sequelize.define('bike', {
     idBike: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
