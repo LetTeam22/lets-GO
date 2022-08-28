@@ -41,7 +41,7 @@ async function getBookingsByUserId(req, res, next) {
         } 
       ]
     })
-    if (!bookings.length) return res.status(422).send('This user has no bookings')
+    if (!bookings.length) return res.send('This user has no bookings')
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
     bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
     res.send(bookings)
@@ -73,7 +73,7 @@ async function cancelBooking(req, res, next) {
   if (!bookingId) return res.sendStatus(400)
   try {
     let booking = await Booking.findByPk(bookingId)
-    if (!booking) return res.status(422).send(`The booking with id ${bookingId} does not exist`)
+    if (!booking) return res.send(`The booking with id ${bookingId} does not exist`)
     booking.update({ status: 'cancelled' })
     res.send(`The booking with id ${bookingId} was cancelled successfully`)
   } catch (error) {

@@ -1,53 +1,62 @@
-import { CURRENT_PAGE, GET_BIKES, GET_BIKES_DETAIL, TYPE_FILTER, TRACTION_FILTER } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL } from '../actions/actiontypes';
 
-
-const initialState = {
-    currentPage: 1,
+const  initialState = {
     allBikes: [],
+    renderedBikes: [],
+    paginate: {
+        bikesPerPage: 9,
+        currentPage: 1,
+    },
+    parameters: {
+        filters: {
+          type: '',
+          traction: '',
+          wheelSize: '',
+          color: '',
+          price: {
+            min: '',
+            max: ''
+          }
+        },
+        sorts: {
+          price: '',
+          rating: '',
+          name: ''
+        },
+        search: ''
+    },
     bikeDetail: [],
-    accesories: [],
-
-    // filters
-    useFilters: { type: false, traction: false, wheeelSize: false, color: false, name: false },
-    type: [],
-    traction: [],
-    wheeelSize: [],
-    color: [],
-    name: [],
-};
+    accesories: []
+}
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
 
-        case CURRENT_PAGE:
-            return {
-                ...state,
-                currentPage: action.payload
-            }
-        case GET_BIKES:
-            return {
-                ...state,
-                allBikes: action.payload
-            }
-
-        case GET_BIKES_DETAIL:
-            return {
-                ...state,
-                bikeDetail: action.payload
-            }
-
-        case TYPE_FILTER:
-            return {
-                ...state,
-                type: action.payload,
-                useFilters: { ...state.useFilters, type: true }
-            }
-        case TRACTION_FILTER:
-            return {
-                ...state,
-                traction: action.payload,
-                useFilters: { ...state.useFilters, traction: true }
-            }
+            case CURRENT_PAGE:
+                return {
+                    ...state,
+                    paginate: { ...state.paginate, currentPage: action.payload }
+                }
+            case SET_PARAMETERS:
+                return {
+                    ...state,
+                    parameters: action.payload
+                }
+            case GET_BIKES:
+                return {
+                    ...state,
+                    allBikes: action.payload
+                }
+            case GET_RENDERED_BIKES:
+                return {
+                    ...state,
+                    renderedBikes: action.payload,
+                }
+            case GET_BIKES_DETAIL:
+                return {
+                    ...state,
+                    bikeDetail: action.payload
+                }
 
         default: return state
     }

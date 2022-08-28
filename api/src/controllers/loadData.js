@@ -1,34 +1,19 @@
-const { Bike, Booking, User } = require("../db");
+const { User, Bike, Booking } = require("../db");
 const jsonUser = require('../data/users.json')
-const jsonBike = require('../data/50bikes.json')
+const jsonBike = require('../data/bikes.json')
 const jsonBooking = require('../data/bookings.json')
 
-function loadUsersInDB() {
-  User.bulkCreate(jsonUser)
-}
-
-function loadBikesInDB() {
-  Bike.bulkCreate(jsonBike)
-}
-
-function loadBookingsInDB() {
-  Booking.bulkCreate(jsonBooking)
-}
-
 function loadAllModelsInDB() {
-  loadUsersInDB()
+  User.bulkCreate(jsonUser)
   console.log('Users loaded ok to DB');
-  loadBikesInDB()
+  Bike.bulkCreate(jsonBike)
   console.log('Bikes loaded ok to DB');
-  // loadBookingsInDB()
+  // Booking.bulkCreate(jsonBooking)
   // console.log('Bookings loaded ok to DB');
 }
 
 
 
 module.exports = {
-  loadUsersInDB,
-  loadBikesInDB,
-  loadBookingsInDB,
   loadAllModelsInDB
 }
