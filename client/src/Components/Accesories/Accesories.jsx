@@ -4,9 +4,7 @@ import accesorios from '../../image/accesorios.png';
 import family from '../../image/family.png';
 import { Link } from 'react-router-dom';
 
-const Accesories = () => {
-    
-    
+export const Accesories = () => {
     
     return (
         <div className={s.accesories} >
@@ -27,6 +25,4 @@ const Accesories = () => {
             <img src={family} alt="family" className={s.familyImage}/>
         </div>
     )
-}
-
-export default Accesories;
+};

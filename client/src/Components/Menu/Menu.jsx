@@ -8,32 +8,30 @@ import LogOut from "../NavBar/Authentication/LogOut";
 import { Link } from "react-router-dom";
 
 
-const Menu = () => {
+export const Menu = () => {
 
   const { isAuthenticated } = useAuth0();
 
   return (
     <div className={s.menu}>
       <div className={s.options}>
-        <Link to='/home'>
-          <span>BICICLETAS</span>
-        </Link>
+        <Link to='/home'><span>BICICLETAS</span></Link>
         <hr color="#F9B621" />
       </div>
       <div className={s.options}>
-        <span>AVENTURAS</span>
+        <Link to='/adventure'><span>AVENTURAS</span></Link>
         <hr color="#F9B621" />
       </div>
       <div className={s.options}>
-        <span>VENTAJAS</span>
+        <Link to='/promotions'><span>VENTAJAS</span></Link>
         <hr color="#F9B621" />
       </div>
       <div className={s.options}>
-        <span>EXPERIENCIAS</span>
+        <Link to='/allExperiencies'><span>EXPERIENCIAS</span></Link>
         <hr color="#F9B621" />
       </div>
       <div className={s.options}>
-        <span>CONTACTO</span>
+        <Link to='/contact'><span>CONTACTO</span></Link>
         <hr color="#F9B621" />
       </div>
       <SearchBar />
@@ -48,5 +46,3 @@ const Menu = () => {
     </div>
   );
 };
-
-export default Menu;

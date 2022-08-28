@@ -4,7 +4,7 @@ span {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.75rem;
 }
 
@@ -20,10 +20,11 @@ span {
 
 .options {
     display: flex;
+    font-size: .1rem;
     flex-direction: column;
     color: #FFFFFF;
     cursor: pointer;
-    padding: 0.625rem;
+    /* padding: 0.625rem; */
 }
 
 .options:hover > hr {

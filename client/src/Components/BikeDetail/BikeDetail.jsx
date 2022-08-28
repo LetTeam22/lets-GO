@@ -6,9 +6,6 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom'
 import { getBikeDetail } from '../../Redux/actions';
 import { Loading } from '../Loading/Loading';
-import Footer from '../Footer/Footer.jsx'
-
-
 
 
 export const BikeDetail = () => {
@@ -83,7 +80,6 @@ export const BikeDetail = () => {
                     :
                     <Loading />
             }
-            <Footer />
         </>
     )
 };

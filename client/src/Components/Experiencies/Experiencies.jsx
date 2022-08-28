@@ -1,8 +1,8 @@
 import React from 'react';
-import s from './/Experiencies.module.css';
+import s from './Experiencies.css'
 import experiencies from '../../image/experiencias1.png'
 
-const Experiencies = () => {
+export const Experiencies = () => {
 
     return (
         <div className={s.experiencies}>
@@ -12,6 +12,4 @@ const Experiencies = () => {
             <img src={experiencies} alt="experiencies" className={s.imgExperiencies} />
         </div>
     )
-}
-
-export default Experiencies;
+};

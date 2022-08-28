@@ -5,12 +5,9 @@ import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
 
 const github = 'https://github.com/LetTeam22/PF-Let';
 
-const Footer = () => {
+export const Footer = () => {
 
    
-
-    
-
     return (
         <div className={s.footer}>
             <div className={s.services}>
@@ -37,7 +34,7 @@ const Footer = () => {
                     
                     <BsFacebook
                         color='white'  
-                        size='1.5rem' 
+                        size='20px' 
                         onMouseOver={({target})=>target.style.color="#F9B621"}
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer' 
@@ -45,7 +42,7 @@ const Footer = () => {
 
                     <BsInstagram 
                         color='white'  
-                        size='1.5rem'
+                        size='20px'
                         onMouseOver={({target})=>target.style.color="#F9B621"}
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer'
@@ -53,7 +50,7 @@ const Footer = () => {
 
                     <BsWhatsapp 
                         color='white'  
-                        size='1.5rem'
+                        size='20px'
                         onMouseOver={({target})=>target.style.color="#F9B621"}
                         onMouseOut={({target})=>target.style.color="white"} 
                         cursor='pointer'
@@ -62,7 +59,7 @@ const Footer = () => {
                     <a href={github} target="_blank" rel="noopener noreferrer">
                         <BsGithub 
                             color='white'  
-                            size='1.5rem'
+                            size='20px'
                             onMouseOver={({target})=>target.style.color="#F9B621"}
                             onMouseOut={({target})=>target.style.color="white"} 
                             cursor='pointer'
@@ -73,6 +70,4 @@ const Footer = () => {
             </div>
         </div>
     )
-}
-
-export default Footer;
+};
