@@ -12,6 +12,7 @@ import { Promotions } from './Components/Promotions/Promotions';
 import { AllExperiencies } from './Components/AllExperiencies/AllExperiencies';
 import { Contacto } from './Components/Contacto/Contacto'
 import Private from './Components/Private/Private';
+import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route exact path= '/promotions' component={ Promotions } />
         <Route exact path= '/allExperiencies' component={ AllExperiencies } />
         <Route exact path= '/contact' component={ Contacto } />
+        <Route exact path='/cart' component={ ShoppingCart } />
         <Route path='*' component={ Error } />
       </Switch>
       <Footer/>
