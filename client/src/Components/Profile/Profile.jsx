@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 import {
@@ -17,9 +17,15 @@ import s from "./Profile.module.css";
 import { ThemeProvider } from "@emotion/react";
 import image from '../../image/persona_logeada.png';
 import validate from './validateFunction';
+import { useDispatch } from "react-redux";
+import { createUser } from "../../Redux/actions";
 
 export const Profile = () => {
+  const dispatch = useDispatch()
   const { user, isLoading } = useAuth0();
+  // useEffect(() => {
+  //     dispatch(getUser(user.email))
+  // },[])
   const history = useHistory();
   const [input, setInput] = useState({
     firstName:'',
@@ -29,8 +35,9 @@ export const Profile = () => {
   })
   const [errors, setErrors] = useState({})
   const [photo, setPhoto] = useState(undefined)
+  // if (user.email === 'felipe.jure05@gmail.com') return <h1>Entro bien</h1>
   if (isLoading) return <Loading/>
-  
+  console.log(user.email)
   const handleChange = e => {
     setInput({
       ...input,
@@ -44,15 +51,17 @@ export const Profile = () => {
   }
   const handleSubmit = e => {
     e.preventDefault()
+    dispatch(createUser({...input, email:user.email}))
     setInput({
       firstName:'',
       lastName:'',
       cellphone:'',
       profilePic: ''
     })
+    alert('Usuario creado con exito')
     history.push('/')
   }
-  console.log(input)
+  // console.log(input)
   const disabled = Object.keys(errors).length > 0 || !input.firstName || !input.lastName || !input.cellphone
   return (
     <>
