@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES } from './actiontypes'
-
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -37,5 +36,11 @@ export const getRenderedBikes = parameters => {
 
     return dispatch => axios.get(`http://localhost:3001/bikes/rendered${query}`)
     .then(res => dispatch({ type: GET_RENDERED_BIKES, payload: res.data }))
+    .catch(err => console.log(err));
+};
+
+export const getBikeDetail = bikeId => {
+    return dispatch => axios(`http://localhost:3001/bikes/${bikeId}`)
+    .then(res => dispatch({ type: GET_BIKES_DETAIL, payload: res.data }))
     .catch(err => console.log(err));
 };

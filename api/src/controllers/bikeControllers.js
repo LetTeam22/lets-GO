@@ -84,10 +84,10 @@ const getRenderedBikes = async (req, res, next) => {
 const getBikeId = async (req, res, next) => {
     const { bikeId } = req.params;
     try {
-        const filterType = await Bike.findAll({
+        const filterId = await Bike.findOne({
             where: { idBike: bikeId }
         })
-        res.send(filterType)
+        res.send(filterId)
     } catch (error) {
         next(error)
     }

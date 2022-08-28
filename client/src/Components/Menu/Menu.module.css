@@ -1,38 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-span {
+.options {
+    display: flex;
+    font-size: .1rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-left: 4rem;
+}
+
+.span {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.75rem;
+    padding: .8rem;
 }
 
-.menu {
-    margin-left: 10rem;
-    width: 90%;
-    margin-left: 10.625rem;
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding: 0.625rem;
-}
-
-.options:hover > hr {
+div:hover > hr {
     display: none;
 }
 
-.options:hover {
-    color: #000000;
+.span:hover {
+    color: #ffffff;
     background: #F9B621;
+    padding: .8rem;
+    border-radius: .2rem;
+}
+
+.menu {
+    margin-left:10%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 a {
@@ -48,37 +49,61 @@ hr {
     width: 5rem;
 }
 
-
 .dropdown {
     padding: 0.625rem;
     background: #F9B621;
 }
 
 .login {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
-
-.persona, .carrito {
-    width: 1.875rem;
+.carrito {
+    width: 1.4rem;
     cursor: pointer;
 }
 
-.loginSpan {
-    color: #FFFFFF;
-}
-
-.persona {
-    margin-left: 0.625rem;
-    margin-right: 1.563rem;
-}
-
-.personaBtn, .carritoBtn {
+.carritoBtn {
     background-color: transparent;
     width: fit-content;
     border: none;
 }
+
+
+
+
+/* .options:hover {
+    background: #F9B621;
+} */
+
+/* .options:hover > hr {
+    display: none;
+} */
+
+
+/* .persona, .carrito {
+    width: 1.6rem;
+    cursor: pointer;
+} */
+
+/* .loginSpan {
+    color: #FFFFFF;
+} */
+
+/* .persona {
+    margin-left: 0.625rem;
+    margin-right: 1.563rem;
+} */
+
+/* .personaBtn, .carritoBtn {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+} */
+
+
 
 
 

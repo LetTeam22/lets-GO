@@ -10,7 +10,9 @@ export default function LogIn () {
     return (
         <>
             <span onClick={ loginWithRedirect } className={s.loginSpan}>Registrarse</span>
-            <button className={s.personaBtn} onClick={ loginWithRedirect }><img src={persona} className={s.persona} alt='persona' ></img></button>
+            <button className={s.personaBtn} onClick={ loginWithRedirect }>
+                <img src={persona} className={s.persona} alt='persona' ></img>
+            </button>
         </>
     )
 }

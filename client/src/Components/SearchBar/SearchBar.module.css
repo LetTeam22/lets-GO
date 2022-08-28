@@ -1,12 +1,19 @@
 .searchBar {
-    border: 0.063rem solid #f9f5ef71;
-    border-radius: 2rem;
-    z-index: 1;
-    padding-top: 0.938rem;
-    padding-bottom: 0.938rem;
-    padding-left: 0.938rem;
+    margin: 0;
+    position: relative;
     display: flex;
+    right: -3rem;
     align-items: center;
+    border: 0.063rem solid rgb(80, 80, 80);
+    border-radius: 2rem;
+    width: 12%;
+    height: 13%;
+    z-index: 1;
+    padding:0.938rem;
+}
+
+.searchBar:hover {
+    background-color: #ffffff0e;
 }
 
 input {
@@ -28,4 +35,8 @@ input {
     width: fit-content;
     border: none;
     cursor: pointer;
+}
+
+.text {
+    font-family: Roboto;
 }

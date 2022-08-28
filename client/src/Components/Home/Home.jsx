@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Loading } from '../Loading/Loading';
 import { Filters } from '../Filters/Filters'
 import { Card } from '../Card/Card';
@@ -47,7 +47,7 @@ export const Home = () => {
             <div>              
                 {currentBikes?.map(e => (
                 <div key={e.idBike} >
-                    {/* <Link to={'/bike/' + e.idBike }> */}
+                    <Link to={'/bike/' + e.idBike }>
                         <Card
                             key= {e.idBike}
                             name={e.name}
@@ -59,7 +59,7 @@ export const Home = () => {
                             rating= {e.rating}
                             color= {e.color}
                         />
-                    {/* </Link> */}
+                    </Link>
                 </div>                           
                 ))}
             </div>        
