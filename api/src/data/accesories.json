@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Casco",
+        "description": "Para viajar protegido",
+        "image": "../../../client/src/image/casco.png",
+        "price": "150"
+    },
+    {
+        "name": "Botellita",
+        "description": "Para disfrutar de tu Let tenés que estar en todos los detalles",
+        "image": "https://xtrbikes.com/wp-content/uploads/03592_1-3.jpg",
+        "price": "50"
+    },
+    {
+        "name": "Silla portabebés",
+        "description": "Disfrutá de Let con buena compañía",
+        "image": "https://contents.mediadecathlon.com/p1534634/k$ee4c4df7db23f0216fb96c5571eca827/sq/PORTABEB+S+BICICLETA+SILLA+ELOPS+100+FIJACI+N+AL+PORTAEQUIPAJES+AZUL.jpg",
+        "price": "250"
+    },
+    {
+        "name": "Calzado",
+        "description": "Tenemos todo lo que necesitás para pedalear preparado en tu Let",
+        "image": "../../../client/src/image/zapatillas_bici.png",
+        "price": "300"
+    },
+    {
+        "name": "Canasto",
+        "description": "Sumá comodidad a tu Let",
+        "image": "../../../client/src/image/canasto.png",
+        "price": "230"
+    },
+    {
+        "name": "Luces",
+        "description": "Que la noche no te agarre desprevenido",
+        "image": "../../../client/src/image/luces.png",
+        "price": "80"
+    },
+    {
+        "name": "Candado",
+        "description": "Dejá tu Let donde quieras",
+        "image": "../../../client/src/image/candado.png",
+        "price": "60"
+    },
+    {
+        "name": "Lentes",
+        "description": "El accesorio que te faltaba para esa subida al cerro en pleno día de sol",
+        "image": "../../../client/src/image/lentes.png",
+        "price": "320"
+    }
+]
