@@ -5,7 +5,11 @@
     font-style: normal;
     color: #FFFFFF;
     cursor:pointer;
-    margin-right: 10px;
+    margin-right: 1rem;
+}
+
+.loginSpan:hover {
+    color: #F9B621
 }
 
 .personaBtn {
@@ -15,7 +19,8 @@
 }
 
 .persona {
-    width: 30px;
+    width: 1.5rem;
     cursor:pointer;
     margin-right: 15px;
 }
+

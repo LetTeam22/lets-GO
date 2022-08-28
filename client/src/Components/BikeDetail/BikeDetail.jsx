@@ -21,64 +21,57 @@ export const BikeDetail = () => {
     }, [dispatch, bikeId])
 
     return (
-        < >
-            {/* <h1> Estas en Bike Detail</h1> */}
-            {/* <Link to={'/home'}>
-                <button>go back to Home</button>
-            </Link> */}
-
-            {
-                bike.length ?
+        <>
+            { !!bike.length ? <Loading /> :
+                <div>
+                    <img src={bike.image} alt='img not found' />
                     <div>
-                        <img src={bike[0].image} alt='img not found' />
+                        <h3>{bike.name}</h3>
+                        <h4>{bike.type} </h4>
+                        <h4>{bike.traction}</h4>
+                        <p>${bike.price}</p>
+                        <p>Rodado {bike.wheelSize}</p>
+                        <p>{bike.rating}/10</p>
+                    </div>
+                    <Link to='/cart'>
+                        <button > Reservar </button>
+                    </Link>
+
+                    <div>
+                        <label>Accesorios</label>
                         <div>
-                            <h3>{bike[0].name}</h3>
-                            <h4>{bike[0].type} </h4>
-                            <h4>{bike[0].traction}</h4>
-                            <p>${bike[0].price}</p>
-                            <p>Rodado {bike[0].wheelSize}</p>
-                            <p>{bike[0].rating}/10</p>
+                            <label>Canasto</label>
+                            <input type='checkbox' />
+
+                            <label>Silla porta bebes</label>
+                            <input type='checkbox' />
+
+                            <label>Luces</label>
+                            <input type='checkbox' />
+
+                            <label>Casco</label>
+                            <input type='checkbox' />
+
+                            <label>Candado</label>
+                            <input type='checkbox' />
+
+                            <label>Portacelular</label>
+                            <input type='checkbox' />
+
+                            <label>Lentes</label>
+                            <input type='checkbox' />
+
+                            <label>Botella</label>
+                            <input type='checkbox' />
+
+                            <label>Calzado</label>
+                            <input type='checkbox' />
                         </div>
-                        <Link to='/cart'>
-                            <button > Reservar </button>
-                        </Link>
-
-                        <p>
-                            <label>Accesorios</label>
-                            <p>
-                                <label>Canasto</label>
-                                <input type='checkbox' />
-
-                                <label>Silla porta bebes</label>
-                                <input type='checkbox' />
-
-                                <label>Luces</label>
-                                <input type='checkbox' />
-
-                                <label>Casco</label>
-                                <input type='checkbox' />
-
-                                <label>Candado</label>
-                                <input type='checkbox' />
-
-                                <label>Portacelular</label>
-                                <input type='checkbox' />
-
-                                <label>Lentes</label>
-                                <input type='checkbox' />
-
-                                <label>Botella</label>
-                                <input type='checkbox' />
-
-                                <label>Calzado</label>
-                                <input type='checkbox' />
-                            </p>
-
-                        </p>
 
                     </div>
-                    :
-                    <Loading />
+
+                </div>
+                    
             }
         </>
     )

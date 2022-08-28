@@ -15,25 +15,28 @@ export const Menu = () => {
   return (
     <div className={s.menu}>
       <div className={s.options}>
-        <Link to='/home'><span>BICICLETAS</span></Link>
-        <hr color="#F9B621" />
+        <div >
+          <Link to='/home'><span className={s.span}>BICICLETAS</span></Link>
+          <hr color="#F9B621" />
+        </div>
+        <div >
+          <Link to='/adventure'><span className={s.span}>AVENTURAS</span></Link>
+          <hr color="#F9B621" />
+        </div>
+        <div >
+          <Link to='/promotions'><span className={s.span}>BENEFICIOS</span></Link>
+          <hr color="#F9B621" />
+        </div>
+        <div >
+          <Link to='/allExperiencies'><span className={s.span}>EXPERIENCIAS</span></Link>
+          <hr color="#F9B621" />
+        </div>
+        <div >
+          <Link to='/contact'><span className={s.span}>CONTACTO</span></Link>
+          <hr color="#F9B621" />
+        </div>
       </div>
-      <div className={s.options}>
-        <Link to='/adventure'><span>AVENTURAS</span></Link>
-        <hr color="#F9B621" />
-      </div>
-      <div className={s.options}>
-        <Link to='/promotions'><span>VENTAJAS</span></Link>
-        <hr color="#F9B621" />
-      </div>
-      <div className={s.options}>
-        <Link to='/allExperiencies'><span>EXPERIENCIAS</span></Link>
-        <hr color="#F9B621" />
-      </div>
-      <div className={s.options}>
-        <Link to='/contact'><span>CONTACTO</span></Link>
-        <hr color="#F9B621" />
-      </div>
+
       <SearchBar />
       <div className={s.login}>
         {isAuthenticated ? <LogOut /> : <LogIn />}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import s from './Destacados.module.css';
 import bici1 from '../../image/bicisDestacadas/img_bici1.png';
 import bici2 from '../../image/bicisDestacadas/img_bici2.png';
