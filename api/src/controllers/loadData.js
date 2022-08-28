@@ -8,8 +8,8 @@ function loadAllModelsInDB() {
   console.log('Users loaded ok to DB');
   Bike.bulkCreate(jsonBike)
   console.log('Bikes loaded ok to DB');
-  // Booking.bulkCreate(jsonBooking)
-  // console.log('Bookings loaded ok to DB');
+  Booking.bulkCreate(jsonBooking)
+  console.log('Bookings loaded ok to DB');
 }
 
 
