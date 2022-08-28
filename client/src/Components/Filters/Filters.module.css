@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.title {
+    color: #333333;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    margin-top: 4rem;
+}
+
+.spanFilters {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    color: #333333;
+    margin-bottom: 0.8rem;
+}
+
+.select {
+    width: 15rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: transparent;
+    margin-bottom: 1rem;
+    border-color: #C1BFBF; 
+    -webkit-appearance: none;
+    color: #333333;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+}
+
+select > option {
+    color: #333333;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+}
+
+.input {
+    display: flex;
+    width: 14rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: 1px solid #C1BFBF;
+}
+
+.priceInputs {
+    width: 10rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: none;
+    color: #333333;
+    margin-left: 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
