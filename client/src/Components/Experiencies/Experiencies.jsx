@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './Experiencies.css'
-import experiencies from '../../image/experiencias1.png'
+import s from './Experiencies.module.css';
+import experiencies from '../../image/experiencias1.png';
 
 export const Experiencies = () => {
 

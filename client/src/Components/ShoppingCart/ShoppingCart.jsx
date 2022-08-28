@@ -1,7 +1,9 @@
 import React from "react";
+import s from './ShoppingCart.module.css';
+import aux_carrito from '../../image/aux_/aux_carrito.png';
 
-export default function ShoppingCart() {
+export const ShoppingCart = () => {
     return (
-        <h1h>Este es el carrito de reservas</h1h>
+        <img src={aux_carrito} alt='aux_carrito' className={s.img_aux} />
     )
-} 
+};

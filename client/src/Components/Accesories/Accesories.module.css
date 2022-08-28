@@ -57,13 +57,14 @@
     background-color: transparent;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: 1rem;
+    font-weight: 700;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    color: #F9B621;
+    color: #d3991c;
     margin-right: auto;
     margin-left: auto;
     cursor: pointer;
+    border-radius: .2rem;
 }
 
 .btn:hover {
@@ -74,12 +75,13 @@
 .familyImage { 
     grid-area: 2 / 7 / 8 / 12;
     margin-top: 6.5rem; 
-    width: 80%;
+    width: 100%;
 }
 
 .title { 
     grid-area: 1 / 6 / 2 / 8; 
     margin-top: 3.2rem;
     margin-left: 3.5rem;
+    font-weight: 600;
 }
 

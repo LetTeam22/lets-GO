@@ -12,9 +12,9 @@ nav {
 }
 
 .icon {
-    position: absolute;
+    position: relative;
     width: 7rem; 
-    left: 2.5%; 
+    left: 30%; 
     top: 1.125rem; 
     bottom: 57.75rem;
     cursor: pointer;
