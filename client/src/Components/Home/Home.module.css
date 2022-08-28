@@ -1,0 +1,268 @@
+.container{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display:block
+}
+
+.inicio{
+    display: block;
+    margin-bottom: 1.25rem !important;
+    width: 65rem;
+    height: 3.5rem;
+    text-align: right !important;
+    margin-top: 3rem;
+}
+.dselect{
+    display: block;
+    width: 155%;
+    text-align: right;
+    border: 2px lightblue solid; 
+}
+
+.select{
+    width: 13.75rem;
+    height: 1.25rem;
+    display: inline-block;
+    text-align: right;
+    padding-top: 4rem;
+    
+    /* margin-left: 80rem */
+}
+
+.filterwrapp{
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    width: 17rem;
+    height: 246.5rem;
+    margin-left: 5%;
+    border: 3px dashed blue;
+}
+.filter{
+    display: block;
+    padding-bottom: 2.25rem;
+    padding-top: 1rem;
+    width: 16.5rem;
+    height: 14rem;
+    margin-top: 1rem;
+    border: 2px solid pink;
+}
+/*#region ----ENCABEZADO----*/
+.encabezado {
+    display: block;
+    /* position: absolute; */
+    width: 100%;
+    height: 32.837rem;
+    left: -2.68rem;
+    /* top: 11.25rem;
+    margin-top: -3%; */
+    border: 2px solid black;
+    color: black;
+}
+
+.huellas-oscuras {
+    position: absolute;
+    left: -2.24%;
+    right: -2.21%;
+    top: 14.48%;
+    bottom: 82.72%;
+}
+
+.huellas-claras {
+    position: absolute;
+    left: -1.41%;
+    right: -3.05%;
+    top: 16.44%;
+    bottom: 78.09%;
+    Width: 125.343rem;
+    Height: 13.962rem;
+    Top: 41.938rem;
+    Left: -1.688rem
+}
+
+.encontra {
+    /* position: absolute; */
+    width: 17.188rem;
+    height: 0rem;
+    left: 11.563rem;
+    top: 53.5rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 0rem;
+    /* identical to box height, or 0% */
+    display: flex;
+    align-items: center;
+    color: #D6802B;
+}
+/*#endregion */
+
+/*#region ----FILTROS----*/
+.filtros {
+    position: absolute;
+    width: 10.353rem;
+    height: 187.5rem;
+    left: 11.438rem;
+    top: 60.75;
+}
+
+.filtros-titulo {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.1em;
+    color: #333333;
+}
+
+.ordenamiento {
+    position: absolute;
+    width: 23.779rem;
+    height: 2.563rem;
+    left: 85.625rem;
+    top: 60.625rem;
+}
+
+.fechas {
+    position: absolute;
+    width: 16.615rem;
+    height: 10.829rem;
+    left: 11.438rem;
+    top: 64.311rem;
+}
+
+.fDesde {
+    position: absolute;
+    width: 263.47px;
+    height: 41.14px;
+    left: 185.37px;
+    top: 1055.08px;
+}
+
+.txtFecha {
+    position: absolute;
+    width: 9.741rem;
+    height: 1.632rem;
+    left: 11.438rem;
+    top: 64.311rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.1em;
+    color: #333333;
+}
+
+.fhasta {
+    position: absolute;
+    width: 9.741rem;
+    height: 1.632rem;
+    left: 11.438rem;
+    top: 70.937rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.1em;
+    color: #333333;
+}
+
+.precio {
+    position: absolute;
+    width: 16.615rem;
+    height: 13.203rem;
+    left: 11.438x;
+    top: 77.513rem;
+}
+
+.pDesde {
+    position: absolute;
+    width: 9.741;
+    height: 1.632rem;
+    left: 11.438rem;
+    top: 79.887rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.1em;
+    color: #333333;
+}
+
+p.hasta {
+    box-sizing: border-box;
+    position: absolute;
+    width: 16.467rem;
+    height: 2.571rem;
+    left: 11.586rem;
+    top: 88.145rem;
+    border: 0.063rem solid #C1BFBF;
+}
+
+.tracción {
+    position: absolute;
+    width: 10.438rem;
+    height: 8.101rem;
+    left: 11.438rem;
+    top: 93.337rem;
+}
+
+.tipo {
+    position: absolute;
+    width: 17.011rem;
+    height: 17.308rem;
+    left: 11.438rem;
+    top: 104.068rem;
+}
+/*#endregion*/
+
+/*#region ---ACCESORIOS---*/
+.nuestros {
+    position: absolute;
+    width: 125.343rem;
+    height: 223.39px;
+    left: -1.688;
+    top: 171.25;
+}
+
+.accesorios {
+    position: absolute;
+    width: 120.25rem;
+    height: 41.188rem;
+    left: -0.25;
+    top: -186.75rem;
+    background: #EBEAEA;
+}
+/*#endregion*/
+
+/*#region ---BICICLETAS---*/
+.wrapper{
+    display: block;
+    width:100%;
+    margin-top: 3rem;
+    border: 3px red solid;
+}
+
+.grid{
+    float: left;
+    width: 100%;
+    padding: 0 5px;
+    display: block;
+}
+
+.row-fluid{
+    display: block;
+    float: left;
+    margin-left: 2.564102564102564%;
+    box-sizing: border-box;
+    margin-bottom: 10px!important;
+}
+
+
+/*#endregion*/
