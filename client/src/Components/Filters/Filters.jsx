@@ -4,7 +4,7 @@ import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
 import { useState } from "react";
-import FiltersSelected from "../FiltersSelected/FiltersSelected";
+// import FiltersSelected from "../FiltersSelected/FiltersSelected";
 
 const Filters = ({handleChangeIdCard}) => {
 
@@ -18,11 +18,11 @@ const Filters = ({handleChangeIdCard}) => {
         setSelect([...select, type]);
     }
 
-    const handleDelete = (e, type) => {
-        e.preventDefault();
-        let filterSelect = select.filter(s => s !== type);
-        setSelect(filterSelect);
-    }
+    // const handleDelete = (e, type) => {
+    //     e.preventDefault();
+    //     let filterSelect = select.filter(s => s !== type);
+    //     setSelect(filterSelect);
+    // }
 
     const handleTypeFilter = e => {
         e.preventDefault();
@@ -70,13 +70,20 @@ const Filters = ({handleChangeIdCard}) => {
         handleChangeIdCard();
     };
 
+    const handleResetAll = (e, type) => {
+        e.preventDefault();
+        dispatch(setParameters('resetAll'));
+        dispatch(setCurrentPage(1));
+    };
+
     return (
         <>
-            <FiltersSelected select={select} handleDelete={handleDelete} />
+            {/* <FiltersSelected select={select} /> */}
+            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button> 
 
             <h4 className={s.title}>Filtros</h4>
 
-            <span className={s.spanFilters}>Tamaño rueda</span>
+            <span className={s.spanFilters}>Rodado</span>
             <select value='wheelSize' onChange={handleWheelSizeFilter} className={s.select}>
                 <option value=''>todas</option>
                 <option value='16'>16</option>
@@ -85,8 +92,6 @@ const Filters = ({handleChangeIdCard}) => {
                 <option value='26'>26</option>
                 <option value='29'>28</option>
             </select>
-
-            
 
             <span className={s.spanFilters}>Color</span>
             <select value='color' onChange={handleColorFilter} className={s.select}>

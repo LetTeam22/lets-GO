@@ -43,6 +43,13 @@ function rootReducer(state = initialState, action) {
                     paginate: { ...state.paginate, currentPage: action.payload }
                 }
             case SET_PARAMETERS:
+                
+                if(action.payload === 'resetAll') {
+                    action.payload = {
+                    filters: { type: '',traction: '',wheelSize: '',color: '', price: {min: '',max: ''} },
+                    sorts: { price: '', rating: '', name: '' }, search: '', date: { from: '', to: '' }
+                    }
+                } 
                 return {
                     ...state,
                     parameters: action.payload
