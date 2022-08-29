@@ -61,12 +61,6 @@ export const createUser = user => {
     .catch(err => console.log(err));
 }
 
-export const saveURL = url => {
-    return dispatch => {
-        dispatch({type: LAST_URL, payload: url})
-
-    }
-}
 export const addBooking = (payload) => {
     return ({
         type: ADD_BOOKING,
@@ -78,7 +72,5 @@ export const postBookings = (payload) => {
     return async function (payload) {
         let postedBookings = await axios.post('http://localhost:3001/bikes/', payload)
         return postedBookings
+    }
   }
-  }
-        
-     
