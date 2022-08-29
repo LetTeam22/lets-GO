@@ -75,7 +75,6 @@ function rootReducer(state = initialState, action) {
             case UPDATE_USER:
                 return {
                     ...state,
-                    user: action.payload
                 }
             case ADD_BOOKING:
               return {

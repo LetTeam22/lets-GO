@@ -63,15 +63,15 @@ export const Home = () => {
 
                 <Orderings handleChangeIdCard={handleChangeIdCard} />
 
-                <p>{`Resultados: ${renderedBikes.length}`}</p>
+                {/* <p>{`Resultados: ${renderedBikes.length}`}</p> */}
 
-                <Dates />
+                {/* <Dates /> */}
 
                 <div className={s.filterwrapp}>
-                    {
-                        allSelectedFilters?.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
-                    }
                     <Filters handleChangeIdCard={handleChangeIdCard} />
+                    {/* {
+                        allSelectedFilters?.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
+                    } */}
                 </div>
                 
 
