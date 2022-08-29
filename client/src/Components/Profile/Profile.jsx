@@ -13,7 +13,9 @@ export const Profile = () => {
   const history = useHistory();
   const loggedUser = JSON.parse(localStorage.getItem('user'))
   const editedUser = JSON.parse(localStorage.getItem('userEdited'))
- 
+  
+  console.log(loggedUser)
+  console.log(editedUser)
 
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export const Profile = () => {
                   <h4>Email: {loggedUser?.email}</h4>
               </div>
             <img
-              src={/*editedUser?.profilePic || */image}
+              src={editedUser?.profilePic || image}
               alt={editedUser?.firstName || null}
               className={s.img}
               />
