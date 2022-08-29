@@ -12,6 +12,7 @@ import encabezado from '../../image/encabezado.png';
 import huellas from '../../image/Group.png';
 import Orderings from '../Orderings/Orderings';
 import ruedas from '../../image/Group.png';
+import FiltersSelected from '../FiltersSelected/FiltersSelected';
 
 export const Home = () => {
 
@@ -20,6 +21,7 @@ export const Home = () => {
     const renderedBikes = useSelector(state => state.renderedBikes)
     const paginate = useSelector(state => state.paginate);
     const parameters = useSelector(state => state.parameters);
+    const allSelectedFilters = useSelector(state => state.selectedFilters);
     let [ cardId, setCardId ] = useState(1);
 
     useEffect(() => loadParameters(), [parameters])     // eslint-disable-line react-hooks/exhaustive-deps
@@ -61,8 +63,12 @@ export const Home = () => {
                 <Orderings handleChangeIdCard={handleChangeIdCard} />
 
                 <div className={s.filterwrapp}>
+                    {
+                        allSelectedFilters.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
+                    }
                     <Filters handleChangeIdCard={handleChangeIdCard} />
                 </div>
+                
 
                 <div>
                     {renderedBikes.length && <Pagination />}

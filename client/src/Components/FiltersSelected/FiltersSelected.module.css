@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1rem;
+    position: relative;
+    z-index: 5;
+    color: black;
+    border: 1px solid #C1BFBF;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    width: 8rem;
+}
+
+.div {
+    position: relative;
+    z-index: 5;
+    color: black;
+    border: none;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+.filterType {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    color: #333333;
+}
+
+.deleteBtn {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    z-index: 30;
+    cursor: pointer;
+}
