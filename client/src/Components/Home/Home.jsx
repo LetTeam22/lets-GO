@@ -5,6 +5,7 @@ import { Loading } from '../Loading/Loading';
 import  Filters  from '../Filters/Filters'
 import { Card } from '../Card/Card';
 import { Pagination } from '../Pagination/Pagination';
+import Dates from '../Dates/Dates';
 import { getBikes, getRenderedBikes } from '../../Redux/actions/'
 // import { NotFound } from '../NotFound/NotFound'
 import s from './Home.module.css';
@@ -61,6 +62,10 @@ export const Home = () => {
                 <h3 className={s.title}>ENCONTRÁ TU LET</h3>
 
                 <Orderings handleChangeIdCard={handleChangeIdCard} />
+
+                <p>{`Resultados: ${renderedBikes.length}`}</p>
+
+                <Dates />
 
                 <div className={s.filterwrapp}>
                     {

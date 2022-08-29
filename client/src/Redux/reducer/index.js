@@ -9,7 +9,6 @@ const initialState = {
     },
     parameters: {
         filters: {
-
           type: '',
           traction: '',
           wheelSize: '',
@@ -17,10 +16,6 @@ const initialState = {
           price: {
             min: '',
             max: ''
-          },
-          date: {
-            from: '',
-            to: ''
           }
         },
         sorts: {
@@ -28,7 +23,11 @@ const initialState = {
             rating: '',
             name: ''
         },
-        search: ''
+        search: '',
+        date: {
+          from: '',
+          to: ''
+        }
     },
     bikeDetail: [],
     accesories: [],
