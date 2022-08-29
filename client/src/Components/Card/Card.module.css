@@ -1,8 +1,57 @@
-.card {
-    color: black;
+.card, .cardTwo {
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
+
+.card {
+    background-color: #EBEAEA;
+}
+
+.cardTwo {
+    background-color: #A7E9AF;
+    opacity: 0.9;
+}
+
+
 
 .imgCard {
     filter: brightness(1.28);
     mix-blend-mode: multiply;
+    height: 14rem;
+    width: 20rem;
+    z-index: 50;
+}
+
+.name {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.8rem;
+    line-height: 0%;
+    color: #000000;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.data {
+    color: #333333;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 0%;
+}
+
+.price {
+    color: #D6802B;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 0%;
 }
