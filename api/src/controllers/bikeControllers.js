@@ -21,14 +21,15 @@ const getRenderedBikes = async (req, res, next) => {
 
     // query
     const { typeFilter, tractionFilter, wheelSizeFilter, colorFilter, minPriceFilter, maxPriceFilter, 
-            priceSort, ratingSort, nameSort, 
-            search } = req.query
+            fromDateFilter, toDateFilter, priceSort, ratingSort, nameSort, search } = req.query
 
     // ajusto algunos parametros de query
     const priceMin = !minPriceFilter ? 0 : minPriceFilter
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
     const searchLow = search ? search.toUpperCase() : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
+    const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
+    const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
 
     // array de ordenamiento de sequelize
     const arrSorts = []
@@ -71,6 +72,15 @@ const getRenderedBikes = async (req, res, next) => {
 
         })
 
+        // filtro de fecha
+        bikes = bikes.filter(bike => {
+            let available = true
+            bike.bookings.forEach(booking => {
+                if (!(booking.startDate > toDate || booking.endDate < fromDate)) available = false
+            })
+            return available
+        })
+        
         // bikes a renderizar
         res.send(bikes)
 

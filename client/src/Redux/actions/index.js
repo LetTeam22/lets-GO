@@ -28,6 +28,8 @@ export const getRenderedBikes = parameters => {
     if (parameters.filters.color) arrQuery.push(`colorFilter=${parameters.filters.color}`)
     if (parameters.filters.price.min) arrQuery.push(`minPriceFilter=${parameters.filters.price.min}`)
     if (parameters.filters.price.max) arrQuery.push(`maxPriceFilter=${parameters.filters.price.max}`)
+    if (parameters.filters.date.from) arrQuery.push(`fromDateFilter=${parameters.filters.date.from}`)
+    if (parameters.filters.date.to) arrQuery.push(`toDateFilter=${parameters.filters.date.to}`)
     if (parameters.sorts.price) arrQuery.push(`priceSort=${parameters.sorts.price}`)
     if (parameters.sorts.rating) arrQuery.push(`ratingSort=${parameters.sorts.rating}`)
     if (parameters.sorts.name) arrQuery.push(`nameSort=${parameters.sorts.name}`)
