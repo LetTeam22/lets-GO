@@ -16,6 +16,10 @@ const  initialState = {
           price: {
             min: '',
             max: ''
+          },
+          date: {
+            from: '',
+            to: ''
           }
         },
         sorts: {
