@@ -20,6 +20,7 @@ import { Loading } from '../../Loading/Loading';
 import image from '../../../image/persona_logeada.png';
 import validate from '../validateFunction';
 import { updateUser } from "../../../Redux/actions";
+import background from '../../../image/fondo_huellas.png';
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
@@ -159,6 +160,7 @@ export const ProfileToEdit = () => {
       >
         Go Home
       </Button>
+      <img src={background} alt='fondo' className={s.background} />
     </>
   );
 };

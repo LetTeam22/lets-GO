@@ -6,6 +6,7 @@ import image from '../../image/persona_logeada.png';
 import { useDispatch } from "react-redux";
 import { getUser } from "../../Redux/actions";
 import { Loading } from "../Loading/Loading";
+import background from '../../image/fondo_huellas.png';
 
 export const Profile = () => {
 
@@ -56,6 +57,7 @@ export const Profile = () => {
             Editar Perfil
           </Button>
             </div>
+            <img src={background} alt='fondo' className={s.background} />
         </>)
     )
   
