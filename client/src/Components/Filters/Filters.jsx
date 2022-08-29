@@ -90,13 +90,13 @@ const Filters = ({handleChangeIdCard}) => {
             <span className={s.spanFilters}>Color</span>
             <select value='color' onChange={handleColorFilter} className={s.select}>
                 <option value=''>todas</option>
-                <option value='black'>black</option>
-                <option value='grey'>grey</option>
-                <option value='white'>white</option>
-                <option value='red'>red</option>
-                <option value='yellow'>yellow</option>
-                <option value='blue'>blue</option>
-                <option value='green'>green</option>
+                <option value='negro'>negro</option>
+                <option value='gris'>gris</option>
+                <option value='blanco'>blanco</option>
+                <option value='rojo'>rojo</option>
+                <option value='amarillo'>amarillo</option>
+                <option value='azul'>azul</option>
+                <option value='verde'>verde</option>
             </select>
 
         
@@ -127,8 +127,8 @@ const Filters = ({handleChangeIdCard}) => {
             <span className={s.spanFilters}>Tracción</span>
             <select value='traction' onChange={handleTractionFilter} className={s.select}>
                 <option value=''>todas</option>
-                <option value='mechanic'>mechanic</option>
-                <option value='electric'>electric</option>
+                <option value='mecánica'>mecánica</option>
+                <option value='eléctrica'>eléctrica</option>
             </select>
 
 
