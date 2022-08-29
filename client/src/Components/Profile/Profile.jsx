@@ -14,7 +14,7 @@ export const Profile = () => {
   const { user } = useAuth0();
   const loggedUser = useSelector(state => state.user)
   const history = useHistory();
-  const [renderUser, setRenderUser] = useState({})
+  const [renderUser, setRenderUser] = useState(null)
   useEffect(() => {
     dispatch(getUser(user?.email))
     setRenderUser(user?.email)
@@ -26,16 +26,16 @@ export const Profile = () => {
       <>
       <div className={s.container}>
         <div className={s.nameAndImg}>
-          <h2>{`${loggedUser.firstName || null } ${loggedUser.lastName || null}`}</h2>
+          <h2>{`${loggedUser?.firstName || null } ${loggedUser?.lastName || null}`}</h2>
             <img
-              src={loggedUser.profilePic ? loggedUser.profilePic : image}
-              alt={loggedUser.firstName || null}
+              src={loggedUser?.profilePic ? loggedUser.profilePic : image}
+              alt={loggedUser?.firstName || null}
               className={s.img}
             />
         </div>
         <div>
-            <h4>Telefono : {loggedUser.cellphone || null}</h4>
-            <h4>Email: {loggedUser.email}</h4>
+            <h4>Telefono : {loggedUser?.cellphone || null}</h4>
+            <h4>Email: {loggedUser?.email}</h4>
         </div>
       </div>
       <Button
