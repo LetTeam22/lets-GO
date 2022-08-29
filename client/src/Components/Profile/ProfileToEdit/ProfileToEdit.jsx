@@ -54,7 +54,7 @@ export const ProfileToEdit = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('user', JSON.stringify({ ...input, email: user.email, profilePic: `${photo}` }));
+    localStorage.setItem('userEdited', JSON.stringify({ ...input, email: user.email, profilePic: `${photo}` }));
     dispatch(
       updateUser({ ...input, email: user.email, profilePic: `${photo}` })
     );

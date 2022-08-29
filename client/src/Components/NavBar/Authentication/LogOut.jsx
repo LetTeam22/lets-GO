@@ -5,10 +5,11 @@ import { useHistory } from "react-router-dom";
 import logedPerson from '../../../image/persona_logeada.png';
 
 export default function LogOut() {
-  const { logout, user } = useAuth0();
+  const { logout } = useAuth0();
   const history = useHistory();
 
   const loggedUser = JSON.parse(localStorage.getItem('user'));
+  const editedUser = JSON.parse(localStorage.getItem('userEdited'));
 
   return (
     <>
@@ -22,7 +23,7 @@ export default function LogOut() {
         <button className={s.personaBtn} onClick={() => history.push('/bike/profile')}>
           <img src={logedPerson} className={s.persona} alt="persona"></img>
         </button>
-        <span className={s.name}>{ loggedUser.firstName ? `${loggedUser.firstName}` : loggedUser.email }</span>
+        <span className={s.name}>{ editedUser?.firstName || loggedUser?.email }</span>
       </div>
     </>
   );

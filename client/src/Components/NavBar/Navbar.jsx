@@ -7,7 +7,6 @@ import { GoLocation } from 'react-icons/go';
 
 
 export const NavBar = () => {
-  
   return (
     <nav>
       <div className={s.location}>
