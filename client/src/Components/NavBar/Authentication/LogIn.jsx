@@ -2,15 +2,14 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import s from './LogIn.module.css';
 import persona from '../../../image/persona.png';
-import { saveURL } from "../../../Redux/actions";
-import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export default function LogIn () {
-    const dispatch = useDispatch()
     const { loginWithRedirect} = useAuth0();
+    const history = useHistory()
 
     const login = () => {
-        dispatch(saveURL(window.location.href))
+        localStorage.setItem('url',history.location.pathname)
         loginWithRedirect()
     }
 
