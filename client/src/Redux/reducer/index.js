@@ -1,4 +1,4 @@
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER } from '../actions/actiontypes';
 
 const initialState = {
     allBikes: [],
@@ -72,6 +72,11 @@ function rootReducer(state = initialState, action) {
                 return {
                     ...state,
                     user: action.payload.user
+                }
+            case UPDATE_USER:
+                return {
+                    ...state,
+                    user: action.payload
                 }
             case ADD_BOOKING:
               return {

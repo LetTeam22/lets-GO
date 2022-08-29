@@ -1,114 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import s from './Profile.module.css';
 import { useHistory } from "react-router-dom";
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-  FormHelperText,
-  IconButton
-} from "@mui/material";
-import { IoSend } from "react-icons/io5";
-import { BsCameraFill } from 'react-icons/bs';
-import { Loading } from '../Loading/Loading';
-import theme from "./MaterialUIColors";
-import s from "./Profile.module.css";
-import { ThemeProvider } from "@emotion/react";
+import { Button } from "@mui/material"
 import image from '../../image/persona_logeada.png';
-import validate from './validateFunction';
-import { useDispatch } from "react-redux";
-import { createUser } from "../../Redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../Redux/actions";
+import { useState } from "react";
+import { Loading } from "../Loading/Loading";
 
 export const Profile = () => {
   const dispatch = useDispatch()
-  const { user, isLoading } = useAuth0();
-  // useEffect(() => {
-  //     dispatch(getUser(user.email))
-  // },[])
+  const { user } = useAuth0();
+  const loggedUser = useSelector(state => state.user)
   const history = useHistory();
-  const [input, setInput] = useState({
-    firstName:'',
-    lastName:'',
-    cellphone:'',
-    profilePic:''
-  })
-  const [errors, setErrors] = useState({})
-  const [photo, setPhoto] = useState(undefined)
-  // if (user.email === 'felipe.jure05@gmail.com') return <h1>Entro bien</h1>
-  if (isLoading) return <Loading/>
-  console.log(user.email)
-  const handleChange = e => {
-    setInput({
-      ...input,
-      [e.target.id]: e.target.value
-    })
-    if(e.target.id === 'profilePic') setPhoto(URL.createObjectURL(e.target.files[0]))
-    setErrors(validate({
-      ...input,
-      [e.target.id]: e.target.value
-    }, e.target.id, errors))
-  }
-  const handleSubmit = e => {
-    e.preventDefault()
-    dispatch(createUser({...input, email:user.email}))
-    setInput({
-      firstName:'',
-      lastName:'',
-      cellphone:'',
-      profilePic: ''
-    })
-    alert('Usuario creado con exito')
-    history.push('/')
-  }
-  // console.log(input)
-  const disabled = Object.keys(errors).length > 0 || !input.firstName || !input.lastName || !input.cellphone
-  return (
-    <>
+  const [renderUser, setRenderUser] = useState({})
+  useEffect(() => {
+    dispatch(getUser(user?.email))
+    setRenderUser(user?.email)
+  },[])
+  if (!renderUser) return <Loading/>
+  else {
+    console.log(renderUser)
+    return (
+      <>
       <div className={s.container}>
         <div className={s.nameAndImg}>
-          <h2>{user.name}</h2>
-          <IconButton color="primary" aria-label="upload picture" component="label" className={s.imgContainer} >
-            <input hidden accept="image/*" type="file" onChange={handleChange} value={input.profilePic} id='profilePic'/>
-            <img src={photo?photo:image} alt={user.name} className={s.img} />
-            <BsCameraFill className={s.iconCamera}/>
-          </IconButton>
+          <h2>{`${loggedUser.firstName || null } ${loggedUser.lastName || null}`}</h2>
+            <img
+              src={loggedUser.profilePic ? loggedUser.profilePic : image}
+              alt={loggedUser.firstName || null}
+              className={s.img}
+            />
         </div>
-        <form className={s.form} onSubmit={handleSubmit}>
-          <ThemeProvider theme={theme}>
-            <FormControl>
-              <InputLabel htmlFor="firstName">Nombre</InputLabel>
-              <Input id="firstName" aria-describedby="my-helper-text" error={errors.firstName?true:false} value={input.firstName} onChange={handleChange} required/>
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="lastName">Apellido</InputLabel>
-              <Input id="lastName" aria-describedby="my-helper-text" error={errors.lastName?true:false} value={input.lastName} onChange={handleChange} required/>
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="cellphone">Telefono</InputLabel>
-              <Input id="cellphone" aria-describedby="my-helper-text" error={errors.cellphone?true:false} type="tel" placeholder="0111234567" value={input.cellphone} onChange={handleChange} required/>
-            </FormControl>
-            <Button
-              variant="contained"
-              endIcon={<IoSend />}
-              className={s.btnSend}
-              type='submit'
-              disabled={disabled}
-            >
-              Send
-            </Button>
-          </ThemeProvider>
-        </form>
+        <div>
+            <h4>Telefono : {loggedUser.cellphone || null}</h4>
+            <h4>Email: {loggedUser.email}</h4>
+        </div>
       </div>
-      {/* <Button
+      <Button
         variant="contained"
         color="success"
         className={s.btnHome}
-        onClick={() => history.push("/")}
+        onClick={() => history.push("/home")}
       >
         Go Home
-      </Button> */}
-    </>
-  );
-};
+      </Button>
+      <Button
+        variant="contained"
+        color="success"
+        className={s.btnEdit}
+        onClick={() => history.push("/editProfile")}
+      >
+        Editar Perfil
+      </Button>
+    </>)
+  }
+}

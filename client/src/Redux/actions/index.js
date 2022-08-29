@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, LAST_URL, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
 
 
 export const setCurrentPage = payload => {
@@ -58,6 +58,12 @@ export const getUser = email => {
 export const createUser = user => {
     return dispatch => axios.post('http://localhost:3001/user/create', user)
     .then(res => dispatch({type: CREATE_USER, payload: res}))
+    .catch(err => console.log(err));
+}
+
+export const updateUser = user => {
+    return dispatch => axios.put('http://localhost:3001/user/update', user)
+    .then(res => dispatch({type: UPDATE_USER, payload: res}))
     .catch(err => console.log(err));
 }
 
