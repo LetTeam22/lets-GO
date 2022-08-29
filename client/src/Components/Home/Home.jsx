@@ -64,7 +64,7 @@ export const Home = () => {
 
                 <div className={s.filterwrapp}>
                     {
-                        allSelectedFilters.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
+                        allSelectedFilters?.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
                     }
                     <Filters handleChangeIdCard={handleChangeIdCard} />
                 </div>

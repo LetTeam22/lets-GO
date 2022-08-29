@@ -18,14 +18,21 @@ import { ThemeProvider } from "@emotion/react";
 import image from '../../image/persona_logeada.png';
 import validate from './validateFunction';
 import { useDispatch } from "react-redux";
-import { createUser } from "../../Redux/actions";
+import { getUser, updateUser } from "../../Redux/actions";
+// import ViewProfile from './ViewProfile/ViewProfile';
+import swal from 'sweetalert';
 
 export const Profile = () => {
   const dispatch = useDispatch()
   const { user, isLoading } = useAuth0();
-  // useEffect(() => {
-  //     dispatch(getUser(user.email))
-  // },[])
+  // const loggedUser = useSelector(state => state.user)
+  useEffect(() => {
+    dispatch(getUser(user?.email))
+  },[])
+  // if (loggedUser.hasOwnProperty('email')) return<ViewProfile/>
+  // else {
+
+  // }
   const history = useHistory();
   const [input, setInput] = useState({
     firstName:'',
@@ -35,9 +42,7 @@ export const Profile = () => {
   })
   const [errors, setErrors] = useState({})
   const [photo, setPhoto] = useState(undefined)
-  // if (user.email === 'felipe.jure05@gmail.com') return <h1>Entro bien</h1>
   if (isLoading) return <Loading/>
-  console.log(user.email)
   const handleChange = e => {
     setInput({
       ...input,
@@ -51,17 +56,16 @@ export const Profile = () => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(createUser({...input, email:user.email}))
+    dispatch(updateUser({...input, email:user.email}))
     setInput({
       firstName:'',
       lastName:'',
       cellphone:'',
       profilePic: ''
     })
-    alert('Usuario creado con exito')
-    history.push('/')
+    history.push(localStorage.getItem('url')?localStorage.getItem('url'):'/')
+    return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   }
-  // console.log(input)
   const disabled = Object.keys(errors).length > 0 || !input.firstName || !input.lastName || !input.cellphone
   return (
     <>
