@@ -34,22 +34,22 @@ const Orderings = ({handleChangeIdCard}) => {
             <span className={s.spanOrderings}>Ordenar por precio:</span>
             <select value='price' onChange={handlePriceSort} className={s.orderings}>
                 <option value=''></option>
-                <option value='asc'>asc</option>
-                <option value='desc'>desc</option>
+                <option value='asc'>menor precio</option>
+                <option value='desc'>mayor precio</option>
             </select>
 
             <span className={s.spanOrderings}>Ordenar por Rating:</span>
             <select value='rating' onChange={handleRatingSort} className={s.orderings}>
                 <option value=''></option>
-                <option value='asc'>asc</option>
-                <option value='desc'>desc</option>
+                <option value='asc'>menor raiting</option>
+                <option value='desc'>mayor raiting</option>
             </select>
 
             <span className={s.spanOrderings}>Ordenar por nombre:</span>
             <select value='name' onChange={handleNameSort} className={s.orderings}>
                 <option value=''></option>
-                <option value='asc'>asc</option>
-                <option value='desc'>desc</option>
+                <option value='asc'>A-Z</option>
+                <option value='desc'>Z-A</option>
             </select>
         </div>    
     )
