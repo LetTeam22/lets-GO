@@ -12,6 +12,7 @@ export const Profile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedUser = JSON.parse(localStorage.getItem('user'))
+  const editedUser = JSON.parse(localStorage.getItem('userEdited'))
  
 
 
@@ -25,15 +26,15 @@ export const Profile = () => {
       : (<>
           <div className={s.container}>
             <div className={s.nameAndImg}>
-              <h2>{`${loggedUser?.firstName || null } ${loggedUser?.lastName || null}`}</h2>
+              <h2> { editedUser? `${editedUser.firstName} ${editedUser.lastName}` : loggedUser?.email } </h2>
                 <img
-                  src={loggedUser?.profilePic ? loggedUser.profilePic : image}
-                  alt={loggedUser?.firstName || null}
+                  src={editedUser?.profilePic || image}
+                  alt={editedUser?.firstName || null}
                   className={s.img}
                 />
             </div>
             <div>
-                <h4>Telefono : {loggedUser?.cellphone || null}</h4>
+                <h4>Telefono : {editedUser?.cellphone || null}</h4>
                 <h4>Email: {loggedUser?.email}</h4>
             </div>
           </div>
