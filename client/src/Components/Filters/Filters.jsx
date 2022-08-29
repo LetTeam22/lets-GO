@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
@@ -12,7 +13,7 @@ const Filters = ({handleChangeIdCard}) => {
         e.preventDefault();
         dispatch(setParameters({...parameters, filters: {...parameters.filters, type: e.target.value}}));    
         dispatch(setCurrentPage(1));
-        handleChangeIdCard();
+        handleChangeIdCard(); 
     };
 
     const handleTractionFilter = e => {
