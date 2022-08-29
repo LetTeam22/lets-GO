@@ -2,8 +2,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom'
+// import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router-dom'
 import { getBikeDetail } from '../../Redux/actions';
 import { Loading } from '../Loading/Loading';
 

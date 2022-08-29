@@ -56,9 +56,3 @@ export const createUser = user => {
     .then(res => dispatch({type: CREATE_USER, payload: res}))
     .catch(err => console.log(err));
 }
-
-export const saveURL = url => {
-    return dispatch => {
-        dispatch({type: LAST_URL, payload: url})
-    }
-}
