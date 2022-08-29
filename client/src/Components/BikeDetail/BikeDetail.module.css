@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 .container {
     display: block;
     width: 100%;
@@ -127,5 +129,6 @@ input {
     display: block;
     width: 33rem;
     padding: 1rem;
+    font-family: 'Roboto';
 }
 

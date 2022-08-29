@@ -10,7 +10,7 @@ export const Card = ({ name, type, image, traction, wheelSize, price, id }) => {
             
             <h3 className={s.name}>{name}</h3>              
             <h4 className={s.data}>{type} </h4>
-            <h4 className={s.data}>{traction} traction</h4>
+            <h4 className={s.data}>tracción {traction}</h4>
             <h4 className={s.data}>{wheelSize}</h4>
             <h4 className={s.price}>${price}/día</h4>
                               

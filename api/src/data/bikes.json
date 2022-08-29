@@ -2,501 +2,551 @@
     {
         "name": "Let BlackMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1300",
         "rating": "8.5",
-        "color": "black"
+        "color": "negro",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let Xgrey",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "mecánica",
         "wheelSize": "20",
         "price": "400",
         "rating": "5.8",
-        "color": "grey"
+        "color": "gris",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let BlackCity",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "630",
         "rating": "7.3",
-        "color": "black"
+        "color": "negro",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Whitedem",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "900",
         "rating": "9.2",
-        "color": "white"
+        "color": "blanco",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let TouRed Large",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1320",
         "rating": "9.6",
-        "color": "red"
+        "color": "rojo",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Follow",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "traction": "mecánica",
         "wheelSize": "20",
         "price": "750",
         "rating": "9.8",
-        "color": "yellow"
+        "color": "amarillo",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let GreenMountain XL",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "mecánica",
         "wheelSize": "29",
         "price": "1450",
         "rating": "8.5",
-        "color": "grey"
+        "color": "verde",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let XBlack Large",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "500",
         "rating": "5.8",
-        "color": "black"
+        "color": "negro",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let WhiteCity Small",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "mecánica",
         "wheelSize": "20",
         "price": "550",
         "rating": "7.3",
-        "color": "white"
+        "color": "blanco",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Blackdem Large",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1050",
         "rating": "9.2",
-        "color": "black"
+        "color": "negro",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let Bluering XL",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "traction": "mecánica",
         "wheelSize": "29",
         "price": "1320",
         "rating": "9.6",
-        "color": "blue"
+        "color": "azul",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Foldreen XS",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "16",
         "price": "650",
         "rating": "9.8",
-        "color": "green"
+        "color": "verde",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let electric RedMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1700",
         "rating": "8.5",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let Xwhite",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "20",
         "price": "750",
         "rating": "5.8",
-        "color": "white"
+        "color": "blanco",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let RedCity Large",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1230",
         "rating": "7.3",
-        "color": "red"
+        "color": "rojo",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Greendem Small",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1300",
         "rating": "9.2",
-        "color": "green"
+        "color": "verde",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let Blacking",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1600",
         "rating": "9.6",
-        "color": "black"
+        "color": "negro",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let electric Foldred",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "20",
         "price": "1050",
         "rating": "9.8",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let WhiteMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1700",
         "rating": "8.5",
-        "color": "white"
+        "color": "blanco",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let Xgreen XL",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "850",
         "rating": "5.8",
-        "color": "green"
+        "color": "verde",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let GreenCity Small",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "20",
         "price": "800",
         "rating": "7.3",
-        "color": "green"
+        "color": "verde",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let electric Whitedem",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1300",
         "rating": "9.2",
-        "color": "white"
+        "color": "blanco",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let Tourite",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color": "white"
+        "color": "blanco",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Foldack Small",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color": "black"
+        "color": "negro",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let RedMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1450",
         "rating": "8.5",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let Xgrey XL",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "400",
         "rating": "5.8",
-        "color": "grey"
+        "color": "gris",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let BlackCity small",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "20",
         "price": "630",
         "rating": "7.3",
-        "color": "black"
+        "color": "negro",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Whitedem Large",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1050",
         "rating": "9.2",
-        "color": "white"
+        "color": "blanco",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let Toullow",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "traction": "mecánica",
         "wheelSize": "26",
         "price": "1320",
         "rating": "9.6",
-        "color": "yellow"
+        "color": "amarillo",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Foldred",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "20",
         "price": "650",
         "rating": "9.8",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let GreyMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "1300",
         "rating": "8.5",
-        "color": "grey"
+        "color": "gris",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let XBlack",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "500",
         "rating": "5.8",
-        "color": "black"
+        "color": "negro",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let electric WhiteCity",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "800",
         "rating": "7.3",
-        "color": "white"
+        "color": "blanco",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Blackdem",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "900",
         "rating": "9.2",
-        "color": "black"
+        "color": "negro",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let TouRed",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "mecánica",
         "wheelSize": "24",
         "price": "1200",
         "rating": "9.6",
-        "color": "red"
+        "color": "rojo",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Foldrey small",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "mechanic",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "mecánica",
         "wheelSize": "16",
         "price": "650",
         "rating": "9.8",
-        "color": "grey"
+        "color": "gris",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
-        "name": "Let GreenMountain",
+        "name": "Let RedMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1900",
         "rating": "8.5",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let electric Xred",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "20",
         "price": "750",
         "rating": "5.8",
-        "color": "red"
+        "color": "rojo",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let electric WhiteCity Large",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1230",
         "rating": "7.3",
-        "color": "white"
+        "color": "blanco",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let Tanllow",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1300",
         "rating": "9.2",
-        "color": "yellow"
+        "color": "amarillo",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let Bluering",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1600",
         "rating": "9.6",
-        "color": "red"
+        "color": "azul",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let electric Follow",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "1050",
         "price": "18",
         "rating": "9.8",
-        "color": "red"
+        "color": "rojo",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let electric BlackMountain",
         "type": "mtb",
-        "image": "https://banner2.cleanpng.com/20171218/901/bicycle-png-image-5a37f923e9a214.182334471513617699957.jpg",
-        "traction": "electric",
+        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1700",
         "rating": "8.5",
-        "color": "yellow"
+        "color": "amarillo",
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
     },
     {
         "name": "Let electric Xgrey",
         "type": "bmx",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp1yEJjL2KIkoCaVQ5eTIv2zY223fzN3MNjQ&usqp=CAU",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "850",
         "rating": "5.8",
-        "color": "grey"
+        "color": "gris",
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
     },
     {
         "name": "Let electric RedCity Small",
         "type": "city",
-        "image": "https://w7.pngwing.com/pngs/75/86/png-transparent-hd-black-mountain-bike-hd-bike-mountain-bike-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "20",
         "price": "1100",
         "rating": "7.3",
-        "color": "red"
+        "color": "rojo",
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
     },
     {
         "name": "Let electric Tanllow Large",
         "type": "tandem",
-        "image": "https://w7.pngwing.com/pngs/175/390/png-transparent-white-and-black-giant-road-bike-bicycle-frame-fuji-bikes-giant-bicycles-road-bicycle-a-white-bicycle-white-black-white-bicycle-thumbnail.png",
-        "traction": "electric",
+        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1430",
         "rating": "9.2",
-        "color": "yellow"
+        "color": "amarillo",
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
     },
     {
         "name": "Let electric Blackring",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color": "black"
+        "color": "negro",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Folgreen",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color": "green"
+        "color": "verde",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     },
     {
         "name": "Let electric WhiteRing",
         "type": "touring",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
         "rating": "9.6",
-        "color": "white"
+        "color": "blanco",
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
     },
     {
         "name": "Let Folblue",
         "type": "folding",
-        "image": "https://w7.pngwing.com/pngs/146/525/png-transparent-29er-mountain-bike-bicycle-specialized-stumpjumper-cycling-bicycle-bicycle-frame-bicycle-mountain-biking.png",
-        "traction": "electric",
+        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",
         "rating": "9.8",
-        "color": "blue"
+        "color": "azul",
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
     }
 ]

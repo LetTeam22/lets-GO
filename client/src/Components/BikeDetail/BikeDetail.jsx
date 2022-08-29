@@ -63,9 +63,7 @@ export const BikeDetail = () => {
                     <div className={s.row}>
                         <div className={s.txt}>
                             {/*párrafo provisorio hasta tener descripción*/}
-                            <p className={s.ph}>
-                                La {bike.name} es la bicicleta más versátil y ágil que vas a encontrar para esa escapada que anhelás. Olvidate de los baches o los pozos: la resistencia de sus cubiertas le permiten desplazarse incluso en los terrenos menos favorables. Con un andar cómodo y sus cambios Shimano, sumarás a tu aventura placer y seguridad. ¡Subite a tu Let y a rodar la vida!
-                            </p>
+                            <p className={s.ph}>{bike.description}</p>
                             <h4>· Tipo {bike.type} </h4>
                             <h4>· Tracción {bike.traction}</h4>
                             <h4>· Rodado {bike.wheelSize}</h4>
