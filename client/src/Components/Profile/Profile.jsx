@@ -25,25 +25,26 @@ export const Profile = () => {
       ? <Loading/>
       : (<>
           <div className={s.container}>
-            <div className={s.nameAndImg}>
-              <h2> { editedUser? `${editedUser.firstName} ${editedUser.lastName}` : loggedUser?.email } </h2>
-                <img
-                  src={editedUser?.profilePic || image}
-                  alt={editedUser?.firstName || null}
-                  className={s.img}
-                />
+            <div className={s.name}>
+              { editedUser? `${editedUser.firstName} ${editedUser.lastName}` : loggedUser?.email }
             </div>
-            <div>
-                <h4>Telefono : {editedUser?.cellphone || null}</h4>
-                <h4>Email: {loggedUser?.email}</h4>
+            <div className={s.infoAndImage}>
+              <div className={s.information}>
+                  <h4>Telefono : {editedUser?.cellphone || null}</h4>
+                  <h4>Email: {loggedUser?.email}</h4>
+              </div>
+            <img
+              src={/*editedUser?.profilePic || */image}
+              alt={editedUser?.firstName || null}
+              className={s.img}
+              />
             </div>
-          </div>
           <Button
             variant="contained"
             color="success"
             className={s.btnHome}
             onClick={() => history.push("/home")}
-          >
+            >
             Go Home
           </Button>
           <Button
@@ -51,9 +52,10 @@ export const Profile = () => {
             color="success"
             className={s.btnEdit}
             onClick={() => history.push("/editProfile")}
-          >
+            >
             Editar Perfil
           </Button>
+            </div>
         </>)
     )
   
