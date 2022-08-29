@@ -3,17 +3,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
+import { useState } from "react";
+import FiltersSelected from "../FiltersSelected/FiltersSelected";
 
 const Filters = ({handleChangeIdCard}) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
+    const [ select, setSelect ] = useState([]);
+    
+
+    const handleSelect = (e, type) => {
+        e.preventDefault();
+        setSelect([...select, type]);
+    }
+
+    const handleDelete = (e, type) => {
+        e.preventDefault();
+        let filterSelect = select.filter(s => s !== type);
+        setSelect(filterSelect);
+    }
 
     const handleTypeFilter = e => {
         e.preventDefault();
         dispatch(setParameters({...parameters, filters: {...parameters.filters, type: e.target.value}}));    
         dispatch(setCurrentPage(1));
-        handleChangeIdCard(); 
+        handleChangeIdCard();
+        handleSelect(e, e.target.value);
     };
 
     const handleTractionFilter = e => {
@@ -21,6 +37,7 @@ const Filters = ({handleChangeIdCard}) => {
         dispatch(setParameters({...parameters, filters: {...parameters.filters, traction: e.target.value}}));    
         dispatch(setCurrentPage(1));
         handleChangeIdCard();
+        handleSelect(e, e.target.value);
     };
 
     const handleWheelSizeFilter = e => {
@@ -28,6 +45,7 @@ const Filters = ({handleChangeIdCard}) => {
         dispatch(setParameters({...parameters, filters: {...parameters.filters, wheelSize: e.target.value}}));    
         dispatch(setCurrentPage(1));
         handleChangeIdCard();
+        handleSelect(e, e.target.value);
     };
 
     const handleColorFilter = e => {
@@ -35,6 +53,7 @@ const Filters = ({handleChangeIdCard}) => {
         dispatch(setParameters({...parameters, filters: {...parameters.filters, color: e.target.value}}));    
         dispatch(setCurrentPage(1));
         handleChangeIdCard();
+        handleSelect(e, e.target.value);
     };
 
     const handleMinPriceFilter = e => {
@@ -53,6 +72,8 @@ const Filters = ({handleChangeIdCard}) => {
 
     return (
         <>
+            <FiltersSelected select={select} handleDelete={handleDelete} />
+
             <h4 className={s.title}>Filtros</h4>
 
             <span className={s.spanFilters}>Tamaño rueda</span>
