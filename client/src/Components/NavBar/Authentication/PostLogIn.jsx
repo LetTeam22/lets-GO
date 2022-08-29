@@ -11,11 +11,13 @@ export default function PostLogIn () {
     const history = useHistory()
 
     const goBack = () => {
+        localStorage.setItem('user', JSON.stringify(user))
         dispatch(createUser({email:user.email}))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
     }
     const goProfile = () => {
+        localStorage.setItem('user', JSON.stringify(user))
         dispatch(createUser({email:user.email}))
         history.push('/bike/profile')
     }
