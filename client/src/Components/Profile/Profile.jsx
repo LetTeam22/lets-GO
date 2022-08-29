@@ -56,7 +56,7 @@ export const Profile = () => {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(updateUser({...input, email:user.email}))
+    dispatch(updateUser({...input, email:user.email, profilePic: `${photo}`}))
     setInput({
       firstName:'',
       lastName:'',
