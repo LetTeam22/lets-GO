@@ -1,16 +1,18 @@
 .background{
-    background-color: #333333;
+    background-image: url(../../../image//fondo_huellas.png);
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10rem;
 }
 
 .btnBack, .btnProfile{
-    position: absolute;
-    top: 50%;
     width: 10rem;
     height: 4rem;
     color: #333333;
@@ -31,4 +33,16 @@
 
 .btnProfile:hover, .btnBack:hover{
     background-color: #d39307;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.logo{
+    margin-left: 55rem;
+    width: 30rem;
 }
