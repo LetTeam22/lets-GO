@@ -1,7 +1,9 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
+import swal from 'sweetalert';
 import { getBikeDetail, addBooking } from '../../Redux/actions';
 import { Loading } from '../Loading/Loading';
 import s from './BikeDetail.module.css'
@@ -12,6 +14,7 @@ export const BikeDetail = () => {
     const bike = useSelector((state) => state.bikeDetail)
     const { bikeId } = useParams()
     const history = useHistory()
+    const { isAuthenticated } = useAuth0();
 
     const [input, setInput] = useState({
         bike: bikeId,
@@ -26,7 +29,6 @@ export const BikeDetail = () => {
     })
 
 
-
     useEffect(() => {
         dispatch(getBikeDetail(bikeId))
         //     dispatch(resetState()) /// ¿creo una action?
@@ -34,12 +36,19 @@ export const BikeDetail = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log(input)
-        dispatch(addBooking(input));
-        setInput({
-            canasto: false, silla: false, luces: false, casco: false, candado: false, lentes: false, botella: false, calzado: false
-        })
-        history.push('/cart')
+        if(!isAuthenticated) {
+            swal({
+                title: 'PRECAUCION',
+                text: 'Debes loguearte primero',
+                icon: 'warning'
+            })
+        } else {
+            dispatch(addBooking(input));
+            setInput({
+                canasto: false, silla: false, luces: false, casco: false, candado: false, lentes: false, botella: false, calzado: false
+            })
+            history.push('/cart')
+        }
     }
 
     const handleCheck = (e) => {

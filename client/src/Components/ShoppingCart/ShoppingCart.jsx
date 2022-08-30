@@ -70,7 +70,6 @@ export const ShoppingCart = () => {
         dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
     }, [dispatch])
 
-
     const handleBooking = (e) => {
         dispatch(postBookings(postedBooking));
         alert('Reserva confirmada');
@@ -79,7 +78,6 @@ export const ShoppingCart = () => {
 
     return (
         <div>
-            {console.log(cartBikes)}
 
             {/* NOTA: h1 queda tapado por el menu */}
             <br />
@@ -118,9 +116,11 @@ export const ShoppingCart = () => {
                 <div>
                     <h2>{`Total $ ${total}`}</h2>
 
-
                     <Dates />
-                    <button onClick={e => handleBooking(e)}>Reservar</button>
+                    <button 
+                        disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
+                        onClick={e => handleBooking(e)}
+                    >Reservar</button>
                     
                 </div>
             }
