@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getBikes, getUser, postBookings } from "../../Redux/actions";
+import { getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
 import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
 import swal from 'sweetalert';
@@ -90,14 +90,15 @@ export const ShoppingCart = () => {
       
 
     const handleBooking = (e) => {
+        dispatch(setParameters('resetAll'))
         dispatch(postBookings(postedBooking));
         swal({
             title: "Tu reserva fue confirmada!",
             text: "Disfruta tu aventura!",
             icon: "success",
-            button: "Aww yiss!",
+            button: "Ok!",
         });
-        history.push('/')
+        history.push('/home')
     }
 
     return (
