@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { getBikes, getUser, postBookings } from "../../Redux/actions";
 import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
+import swal from 'sweetalert';
 
 
 export const ShoppingCart = () => {
@@ -90,8 +91,13 @@ export const ShoppingCart = () => {
 
     const handleBooking = (e) => {
         dispatch(postBookings(postedBooking));
-        alert('Reserva confirmada');
-        history.push('/home')
+        swal({
+            title: "Tu reserva fue confirmada!",
+            text: "Disfruta tu aventura!",
+            icon: "success",
+            button: "Aww yiss!",
+        });
+        history.push('/')
     }
 
     return (
