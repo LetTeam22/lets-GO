@@ -8,26 +8,28 @@ const Orderings = ({handleChangeIdCard}) => {
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
 
-    const handlePriceSort = e => {
-        e.preventDefault();
-        dispatch(setParameters({...parameters, sorts: {...parameters.sorts, price: e.target.value}}));    
+    const handleSort = (property, value) => {
+        let newSorts = parameters.sorts.selected.filter(p => p !== property)
+        if (value !== '') newSorts = [...newSorts, property]
+        let newSortsValues = {...parameters}
+        newSortsValues.sorts.selected = newSorts
+        newSortsValues.sorts[property] = value
+        dispatch(setParameters(newSortsValues))
         dispatch(setCurrentPage(1));
         handleChangeIdCard();
-    };
+}
+
+    const handlePriceSort = e => {
+        handleSort('price', e.target.value)
+    }
 
     const handleRatingSort = e => {
-        e.preventDefault();
-        dispatch(setParameters({...parameters, sorts: {...parameters.sorts, rating: e.target.value}}));    
-        dispatch(setCurrentPage(1));
-        handleChangeIdCard();
-    };
+        handleSort('rating', e.target.value)
+    }
 
     const handleNameSort = e => {
-        e.preventDefault();
-        dispatch(setParameters({...parameters, sorts: {...parameters.sorts, name: e.target.value}}));    
-        dispatch(setCurrentPage(1));
-        handleChangeIdCard();
-    };
+        handleSort('name', e.target.value)
+    }
 
     return (
         <div className={s.container} >

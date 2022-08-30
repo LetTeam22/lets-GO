@@ -21,21 +21,25 @@ const getRenderedBikes = async (req, res, next) => {
 
     // query
     const { typeFilter, tractionFilter, wheelSizeFilter, colorFilter, minPriceFilter, maxPriceFilter, 
-            fromDateFilter, toDateFilter, priceSort, ratingSort, nameSort, search } = req.query
+            fromDateFilter, toDateFilter, sortsOrder, priceSort, ratingSort, nameSort, search } = req.query
 
     // ajusto algunos parametros de query
     const priceMin = !minPriceFilter ? 0 : minPriceFilter
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
-    const searchLow = search ? search.toUpperCase() : ''
+    const searchLow = search ? search.toLowerCase() : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
 
     // array de ordenamiento de sequelize
-    const arrSorts = []
-    if (priceSort) arrSorts.push(['price', priceSort.toUpperCase()])
-    if (ratingSort) arrSorts.push(['rating', ratingSort.toUpperCase()])
-    if (nameSort) arrSorts.push(['name', nameSort.toUpperCase()])
+    let arrSorts = []
+    if (sortsOrder) {
+        arrSorts = sortsOrder.split(',').map(sort => {
+            if (sort === 'price') return ['price', priceSort.toUpperCase()]
+            if (sort === 'rating') return ['rating', ratingSort.toUpperCase()]
+            if (sort === 'name') return ['name', nameSort.toUpperCase()]
+        })
+    } 
 
     try {
 
@@ -80,7 +84,7 @@ const getRenderedBikes = async (req, res, next) => {
             })
             return available
         })
-        
+
         // bikes a renderizar
         res.send(bikes)
 
