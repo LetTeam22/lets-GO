@@ -127,6 +127,12 @@ const Filters = ({ handleParameter }) => {
 
     const handleResetAll = e => {
         e.preventDefault();
+        parameters.filters.ids.forEach(id => {
+            document.getElementById(id).value = ''
+        });
+        parameters.sorts.ids.forEach(id => {
+            document.getElementById(id).value = ''
+        });
         dispatch(setParameters('resetAll'));
         dispatch(setCurrentPage(1));
     };
