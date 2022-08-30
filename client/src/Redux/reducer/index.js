@@ -9,24 +9,25 @@ const initialState = {
     },
     parameters: {
         filters: {
-          type: '',
-          traction: '',
-          wheelSize: '',
-          color: '',
-          price: {
-            min: '',
-            max: ''
-          }
+            type: '',
+            traction: '',
+            wheelSize: '',
+            color: '',
+            price: {
+                min: '',
+                max: ''
+            }
         },
         sorts: {
+            selected: [],
             price: '',
             rating: '',
             name: ''
         },
         search: '',
         date: {
-          from: '',
-          to: ''
+            from: '',
+            to: ''
         }
     },
     bikeDetail: [],
@@ -37,64 +38,70 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
+        
             case CURRENT_PAGE:
                 return {
                     ...state,
                     paginate: { ...state.paginate, currentPage: action.payload }
                 }
             case SET_PARAMETERS:
-                
                 if(action.payload === 'resetAll') {
                     action.payload = {
                     filters: { type: '',traction: '',wheelSize: '',color: '', price: {min: '',max: ''} },
-                    sorts: { price: '', rating: '', name: '' }, search: '', date: { from: '', to: '' }
+                    sorts: { selected: [], price: '', rating: '', name: '' }, search: '', date: { from: '', to: '' }
                     }
                 } 
                 return {
                     ...state,
                     parameters: action.payload
                 }
-            case GET_BIKES:
-                return {
-                    ...state,
-                    allBikes: action.payload
-                }
+             case GET_BIKES:
+                    return {
+                        ...state,
+                        allBikes: action.payload
+                    }
             case GET_RENDERED_BIKES:
-                return {
-                    ...state,
-                    renderedBikes: action.payload,
-                }
+                    return {
+                        ...state,
+                        renderedBikes: action.payload,
+                    }
             case GET_BIKES_DETAIL:
-                return {
-                    ...state,
-                    bikeDetail: action.payload
-                }
+                    return {
+                        ...state,
+                        bikeDetail: action.payload
+                    }
             case GET_USER:
-                return {
-                    ...state,
-                    user: action.payload
-                }
+                    return {
+                        ...state,
+                        user: action.payload
+                    }
             case CREATE_USER:
-                return {
-                    ...state,
-                    user: action.payload.user
-                }
+                    return {
+                        ...state,
+                        user: action.payload.user
+                    }
             case UPDATE_USER:
-                return {
-                    ...state,
-                }
+                    return {
+                        ...state,
+                    }
             case ADD_BOOKING:
-              return {
-                  ...state,
-                  bookings: [...state.bookings, action.payload]
-              }
+                    return {
+                        ...state,
+                        bookings: [...state.bookings, action.payload]
+                    }
             case POST_BOOKINGS:
-              return ({
-                  ...state,
-                  bookings: []
-              })
-          default: return state
-    }
+                    return {
+                        ...state,
+                        bookings: [],
+                        parameters: {
+                            filters: { type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
+                            sorts: { price: '', rating: '', name: '' },
+                            search: '',
+                            date: { from: '', to: '' }
+                        },
+                    }
+                default: return state
+      }
 }
 
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
 
 // POST_BOOKINGS
 
@@ -31,6 +31,7 @@ export const getRenderedBikes = parameters => {
     if (parameters.filters.color) arrQuery.push(`colorFilter=${parameters.filters.color}`)
     if (parameters.filters.price.min) arrQuery.push(`minPriceFilter=${parameters.filters.price.min}`)
     if (parameters.filters.price.max) arrQuery.push(`maxPriceFilter=${parameters.filters.price.max}`)
+    if (parameters.sorts.selected.length) arrQuery.push(`sortsOrder=${parameters.sorts.selected.join()}`)
     if (parameters.sorts.price) arrQuery.push(`priceSort=${parameters.sorts.price}`)
     if (parameters.sorts.rating) arrQuery.push(`ratingSort=${parameters.sorts.rating}`)
     if (parameters.sorts.name) arrQuery.push(`nameSort=${parameters.sorts.name}`)
@@ -52,20 +53,20 @@ export const getBikeDetail = bikeId => {
 
 export const getUser = email => {
     return dispatch => axios(`http://localhost:3001/user/detail?email=${email}`)
-    .then(res => dispatch({ type: GET_USER, payload: res.data}))
-    .catch(err => console.log(err));
+        .then(res => dispatch({ type: GET_USER, payload: res.data }))
+        .catch(err => console.log(err));
 };
 
 export const createUser = user => {
     return dispatch => axios.post('http://localhost:3001/user/create', user)
-    .then(res => dispatch({type: CREATE_USER, payload: res}))
-    .catch(err => console.log(err));
+        .then(res => dispatch({ type: CREATE_USER, payload: res }))
+        .catch(err => console.log(err));
 };
 
 export const updateUser = user => {
     return dispatch => axios.put('http://localhost:3001/user/update', user)
-    .then(res => dispatch({type: UPDATE_USER, payload: res}))
-    .catch(err => console.log(err));
+        .then(res => dispatch({ type: UPDATE_USER, payload: res }))
+        .catch(err => console.log(err));
 };
 
 export const addBooking = payload => {
@@ -75,12 +76,23 @@ export const addBooking = payload => {
     })
 };
 
-export const postBookings = payload => {
-    return async function (payload) {
-        let postedBookings = await axios.post('http://localhost:3001/bikes/', payload)
-        return postedBookings
+export const postBookings = (payload) => {
+    console.log(payload)
+    return (dispatch) => {
+        return axios.post('http://localhost:3001/bookings', payload)
+            .then(dispatch({ type: POST_BOOKINGS, }))
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+
     }
 };
 
 
 
+// export function postVideogame(values) {
+//     return (dispatch) => {
+//       return axios.post('http://localhost:3001/videogames', values)
+//       .then(res => console.log(res))
+//       .catch(error => console.log(error))
+//     }
+//   }

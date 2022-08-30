@@ -8,7 +8,6 @@ import s from './BikeDetail.module.css'
 
 
 export const BikeDetail = () => {
-
     const dispatch = useDispatch()
     const bike = useSelector((state) => state.bikeDetail)
     const { bikeId } = useParams()
@@ -84,7 +83,7 @@ export const BikeDetail = () => {
                                 <input type='checkbox' name='casco' onClick={e => { handleCheck(e) }} />
 
                             </div>
-                            <div className={s.div1  }>
+                            <div className={s.div1}>
                                 <label>candado</label>
                                 <input type='checkbox' name='candado' onClick={e => { handleCheck(e) }} />
 
