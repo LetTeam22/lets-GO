@@ -40,7 +40,6 @@ export const ShoppingCart = () => {
             }
     }
 
-
     let postbikeIds = cartBikes.map(bikes => bikes.idBike)
 
     let postedBooking = {
@@ -49,6 +48,20 @@ export const ShoppingCart = () => {
         userId: user?.idUser,
         bikeIds: postbikeIds
     }
+
+    let accesories = [];
+
+    const llenarAccs = () => {
+        cartBikes.map(bike => {
+            for (let accs in bike.accesories) {
+                if(bike.accesories[accs] === true) {
+                    accesories.push(accs);
+                }
+            }
+        })
+    }
+
+    llenarAccs();
 
     const totalDias = (from, to) => {
         const date1 = new Date(from);
@@ -95,9 +108,12 @@ export const ShoppingCart = () => {
                                     <h2 className={s.bikeName}>{bike.name}</h2>
                                     <img src={bike.image} alt="not found" className={s.img} />
                                     <p className={s.prices} >$ {bike.price} / día </p>
+                                    <div className={s.accesories}>
+                                    {
+                                        accesories.map(accs => <p className={s.accs}>{accs}</p>)
+                                    }
                                 </div>
-
-                                {/* Aqui deberia renderizar los accesorios que hayan sido seleccionados */}
+                                </div>
 
                                 <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
                             </div>
@@ -112,8 +128,6 @@ export const ShoppingCart = () => {
                         </div>
                 }
             </div>
-            
-            {/*Deberia incluir un subtotal por cada bicicleta  */}
             
             {
                 cartBikes.length ?
