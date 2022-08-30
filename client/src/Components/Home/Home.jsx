@@ -105,6 +105,7 @@ export const Home = () => {
             <h3 className={s.title}>ENCONTRÁ TU LET</h3>
             <Orderings handleParameter={handleParameter} />
             <Dates />
+
             <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
                 {!!parameters.search.selected.length && <FiltersSelected label='Búsqueda' select={parameters.search} handleDelete = {deleteSearch} />}
                 {!!parameters.filters.selected.length && <FiltersSelected label='Filtros' select={parameters.filters} handleDelete = {deleteFilter} />}
