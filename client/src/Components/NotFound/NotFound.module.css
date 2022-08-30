@@ -1,0 +1,9 @@
+.img_notFound {
+    position: relative;
+    bottom: 50rem;
+    width: 50%;
+    position: relative;
+    left: 30rem;
+    /* z-index: -200; */
+    /* margin-top: 5rem; */
+}

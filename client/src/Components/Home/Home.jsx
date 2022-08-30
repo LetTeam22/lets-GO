@@ -7,13 +7,14 @@ import { Card } from '../Card/Card';
 import { Pagination } from '../Pagination/Pagination';
 import Dates from '../Dates/Dates';
 import { getBikes, getRenderedBikes } from '../../Redux/actions/'
-// import { NotFound } from '../NotFound/NotFound'
+import { NotFound } from '../NotFound/NotFound'
 import s from './Home.module.css';
 import encabezado from '../../image/encabezado.png';
-import huellas from '../../image/Group.png';
 import Orderings from '../Orderings/Orderings';
-import ruedas from '../../image/Group.png';
-import FiltersSelected from '../FiltersSelected/FiltersSelected';
+// import huellas from '../../image/Group.png';
+// import ruedas from '../../image/Group.png';
+// import FiltersSelected from '../FiltersSelected/FiltersSelected';
+
 
 export const Home = () => {
 
@@ -22,7 +23,7 @@ export const Home = () => {
     const renderedBikes = useSelector(state => state.renderedBikes)
     const paginate = useSelector(state => state.paginate);
     const parameters = useSelector(state => state.parameters);
-    const allSelectedFilters = useSelector(state => state.selectedFilters);
+    // const allSelectedFilters = useSelector(state => state.selectedFilters);
     let [ cardId, setCardId ] = useState(1);
 
     useEffect(() => loadParameters(), [parameters])     // eslint-disable-line react-hooks/exhaustive-deps
@@ -42,6 +43,10 @@ export const Home = () => {
     let loading = false;
     if (!allBikes.length) loading = true;
 
+    // defino notFound
+    let notFound = false;
+    if (!renderedBikes.length) notFound = true;
+
     // paginado
     const indexLastBike = paginate.currentPage * paginate.bikesPerPage;
     const indexFirstBike = indexLastBike - paginate.bikesPerPage;
@@ -49,65 +54,44 @@ export const Home = () => {
 
     return (
         <div className={s.containerHome}>
-            {loading && <Loading />}
-
             <div className={s.encabezado}>
                 <img src={encabezado} alt="encabezado" className={s.encabezado} />
             </div>
-
-            <div className={s.home} >
-
-                <img src={huellas} alt="huellas" className={s.huellas} />
-
-                <h3 className={s.title}>ENCONTRÁ TU LET</h3>
-
-                <Orderings handleChangeIdCard={handleChangeIdCard} />
-
-                {/* <p>{`Resultados: ${renderedBikes.length}`}</p> */}
-
-                {/* <Dates /> */}
-
-                <div className={s.filterwrapp}>
-                    <Filters handleChangeIdCard={handleChangeIdCard} />
-                    {/* {
-                        allSelectedFilters?.length ? <div className={s.filtersSelected}><FiltersSelected /></div> : <div></div>
-                    } */}
-                </div>
-                
-
-                <div>
-                    {renderedBikes.length && <Pagination />}
-                </div>
-
-                {!loading && !!renderedBikes.length &&
-                    <div className={s.containerCards}>
-                        {currentBikes?.map(e => (
-                            <div key={e.idBike} >
-                                <Link to={'/bike/' + e.idBike}>
-                                    <Card
-                                        key={e.idBike}
-                                        name={e.name}
-                                        type={e.type}
-                                        image={e.image}
-                                        traction={e.traction}
-                                        wheelSize={e.wheelSize}
-                                        price={e.price}
-                                        rating={e.rating}
-                                        color={e.color}
-                                        id={cardId++}
-                                    />
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                }
-                
-                <img src={ruedas} alt="ruedas" className={s.ruedas} />
-                <h2 className={s.titleAccs}>ACCESORIOS</h2>
-                
+            <h3 className={s.title}>ENCONTRÁ TU LET</h3>
+            <Orderings handleChangeIdCard={handleChangeIdCard} />
+            <Dates />
+            <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+            <div className={s.filterwrapp}>              
+                <Filters handleChangeIdCard={handleChangeIdCard} />
             </div>
-         
+            { renderedBikes.length && <Pagination /> }
+            { notFound && <NotFound /> }
+            { loading && <Loading /> }
+            { !loading && !!renderedBikes.length &&
+                <div className={s.containerCards}>
+                    {currentBikes?.map(e => (
+                        <div key={e.idBike} >
+                            <Link to={'/bike/' + e.idBike}>
+                                <Card
+                                    key={e.idBike}
+                                    name={e.name}
+                                    type={e.type}
+                                    image={e.image}
+                                    traction={e.traction}
+                                    wheelSize={e.wheelSize}
+                                    price={e.price}
+                                    rating={e.rating}
+                                    color={e.color}
+                                    id={cardId++}
+                                />
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+            }              
         </div>
-
     )
 };
+
+{/* <img src={ruedas} alt="ruedas" className={s.ruedas} />
+<h2 className={s.titleAccs}>ACCESORIOS</h2> */}              
