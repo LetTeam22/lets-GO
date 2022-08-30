@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getBikes, getUser, postBookings } from "../../Redux/actions";
+import { getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
 import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
+import swal from 'sweetalert';
 
 
 export const ShoppingCart = () => {
@@ -91,11 +92,20 @@ export const ShoppingCart = () => {
       
 
     const handleBooking = (e) => {
+        dispatch(setParameters('resetAll'))
         dispatch(postBookings(postedBooking));
-        alert('Reserva confirmada');
+        swal({
+            title: "Tu reserva fue confirmada!",
+            text: "Disfruta tu aventura!",
+            icon: "success",
+            button: "Ok!",
+        });
         history.push('/home')
     }
 
+    const handleResetDate = () => {
+        dispatch(setParameters('resetAll')) 
+    }
     return (
         <div className={s.container} >
 
@@ -143,7 +153,7 @@ export const ShoppingCart = () => {
 
                     <div className={s.containerBtn}>
                         <Link to='/home'>
-                            <button className={s.reserveBtn}>Buscar mas Bicicletas</button>
+                            <button onClick={handleResetDate} className={s.reserveBtn}>Buscar mas Bicicletas</button>
                         </Link>
                         <button 
                             disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
