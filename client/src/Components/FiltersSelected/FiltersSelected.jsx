@@ -7,7 +7,7 @@ export const FiltersSelected = ({label, select, handleDelete}) => {
     return (
         <>
             <div className={s.selContainer}>
-                <span>{label}</span> 
+                {/* <span>{label}</span>  */}
                 {
                     select.selected.map((p, i) => (
                         <button
