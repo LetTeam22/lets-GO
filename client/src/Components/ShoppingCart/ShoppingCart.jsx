@@ -1,12 +1,8 @@
-
-
-
-
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getBikes, getUser, postBookings } from "../../Redux/actions";
-// import s from './ShoppingCart.module.css';
+import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
 
 
@@ -20,7 +16,6 @@ export const ShoppingCart = () => {
     const user = useSelector((state) => state.user);
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = [];
-
 
     for (let bike of allBikes) {
         for (let book of bookings)
@@ -45,23 +40,46 @@ export const ShoppingCart = () => {
             }
     }
 
-
     let postbikeIds = cartBikes.map(bikes => bikes.idBike)
 
     let postedBooking = {
         startDate: date.from,
         endDate: date.to,
-        userId: user.idUser,
+        userId: user?.idUser,
         bikeIds: postbikeIds
     }
 
-    //total tambien deberia tener en cuenta los precios de cada accesorio seleccionado
-    // y multiplicar por la cantidad de dias que se este por alquilar
-    const total = cartBikes.reduce((total, act) => {
-        return total + act.price;
-    }, 0);
+    let accesories = [];
 
+    const llenarAccs = () => {
+        cartBikes.map(bike => {
+            for (let accs in bike.accesories) {
+                if(bike.accesories[accs] === true) {
+                    accesories.push(accs);
+                }
+            }
+        })
+    }
 
+    llenarAccs();
+
+    const totalDias = (from, to) => {
+        const date1 = new Date(from);
+        const date2 = new Date(to);
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays;
+    }
+
+    const totalPerBike = (price) => {
+        const days = totalDias(date.from, date.to);
+        return (price * days);
+    }
+
+    const total = cartBikes.reduce((acc, cur) => {
+        return acc + (cur.price * totalDias(date.from, date.to))
+    }, 0)
+      
     useEffect(() => {
         dispatch(getBikes())
     }, [dispatch])
@@ -77,52 +95,58 @@ export const ShoppingCart = () => {
     }
 
     return (
-        <div>
+        <div className={s.container} >
 
-            {/* NOTA: h1 queda tapado por el menu */}
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <h1 className={s.title}>Carrito de compras</h1>
 
-            <h1>Carrito de compras</h1>
+            <div className={s.bikes} >
+                {
+                    cartBikes.length ? cartBikes.map(bike => {
+                        return (
+                            <div key={bike.idBike} >
+                                <div className={s.cardBike} >
+                                    <h2 className={s.bikeName}>{bike.name}</h2>
+                                    <img src={bike.image} alt="not found" className={s.img} />
+                                    <p className={s.prices} >$ {bike.price} / día </p>
+                                    <div className={s.accesories}>
+                                    {
+                                        accesories.map(accs => <p className={s.accs}>{accs}</p>)
+                                    }
+                                </div>
+                                </div>
 
-            {
-                cartBikes.length ? cartBikes.map(bike => {
-                    return (
-                        <div key={bike.idBike}>
-                            <p>{bike.name}</p>
-                            <img src={bike.image} alt="not found" />
+                                <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
+                            </div>
+                        )
+                    }) :
 
-                            <p>$ {bike.price} / día </p>
-                            
-                            {/* Aqui deberia renderizar los accesorios que hayan sido seleccionados */}
+                        <div className={s.empty}>
+                            <h2 className={s.titleEmpty}>Aún no cargaste nada en el carrito </h2>
+                            <Link to='/home'>
+                                <button className={s.btn}> Volver al Home</button>
+                            </Link>
                         </div>
-                    )
-                }) :
-
-                    <>
-                        <h2>aún no cargaste nada en el carrito </h2>
-                        <Link to='/home'>
-                            <button> Volver al Home</button>
-                        </Link>
-                    </>
-            }
-            {/*Deberia incluir un subtotal por cada bicicleta  */}
+                }
+            </div>
             
             {
-                cartBikes.length &&
-                <div>
-                    <h2>{`Total $ ${total}`}</h2>
+                cartBikes.length ?
+                <div className={s.totalPrice} >
 
                     <Dates />
+
+                    {
+                        !isNaN(total) ? <h2 className={s.total}>{`Total $ ${total}`}</h2> : <></>
+                    }
+
                     <button 
                         disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
                         onClick={e => handleBooking(e)}
-                    >Reservar</button>
+                        className={s.reserveBtn}
+                    >RESERVAR</button>
                     
                 </div>
+                : <></>
             }
         </div>
     )
