@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-.container {
+/* .container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,4 +38,21 @@
     border: none;
     z-index: 30;
     cursor: pointer;
+} */
+
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    font-size: .7rem;
+    display: flex;
+    width: 8rem;
+    height: 1.6rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    list-style: none;
+    color: #333333;
+    background: #ef8d247d;
+
+
 }

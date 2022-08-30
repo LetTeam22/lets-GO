@@ -4,7 +4,7 @@ import { withAuthenticationRequired } from '@auth0/auth0-react';
 const Private = () => {
     return (
         <div>
-            <h1>You are in a private route</h1>
+            <h1>Bicileta reservada</h1>
             <p>You can access to this component if you are loged in</p>
         </div>
     )

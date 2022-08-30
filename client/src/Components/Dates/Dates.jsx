@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import s from './Dates.module.css';
 
 const Dates = () => {
 
@@ -49,28 +50,33 @@ const Dates = () => {
     }
     
     return (
-      <>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Fecha desde"
-            value={fromDate}
-            onChange={(date) => {
-              handleFromDate(date);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Fecha hasta"
-            value={toDate}
-            onChange={(date) => {
-              handleToDate(date);
-            }}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-      </>
+        <div className={s.contain}>
+          
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              className={s.date}
+              label="Fecha desde"
+              value={fromDate}
+              onChange={(date) => {
+                handleFromDate(date);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+          <h5> ┊ </h5>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              className={s.date}
+              label="Fecha hasta"
+              value={toDate}
+              onChange={(date) => {
+                handleToDate(date);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </div>
+
     );
   };
 

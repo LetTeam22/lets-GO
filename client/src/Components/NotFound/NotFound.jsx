@@ -1,12 +1,11 @@
-import './NotFound.css';
+import React from 'react';
+import s from './NotFound.module.css';
+import notFound from '../../image/notFound.png';
 
 export const NotFound = () => {
 
     return (
-        <div className='notfound'>
-            <img className='imgnf' alt="not found" />
-            {/* <h3 className='h3notF'>Not Found</h3> */}
-        </div>
+        <img src={notFound} alt='aux_beneficios' className={s.img_notFound} />
     );
 
 };
