@@ -139,12 +139,16 @@ export const ShoppingCart = () => {
                         !isNaN(total) ? <h2 className={s.total}>{`Total $ ${total}`}</h2> : <></>
                     }
 
-                    <button 
-                        disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
-                        onClick={e => handleBooking(e)}
-                        className={s.reserveBtn}
-                    >RESERVAR</button>
-                    
+                    <div className={s.containerBtn}>
+                        <Link to='/home'>
+                            <button className={s.reserveBtn}>Buscar mas Bicicletas</button>
+                        </Link>
+                        <button 
+                            disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
+                            onClick={e => handleBooking(e)}
+                            className={s.reserveBtn}
+                        >RESERVAR</button>
+                    </div>
                 </div>
                 : <></>
             }

@@ -22,10 +22,10 @@ export const Landing = () => {
                     <p className={s.text}>para mantener el equilibrio, segui en movimiento</p>
                     <Link to='/home'><button className={s.searchBtn}>BUSCAR BICI</button></Link>
                 </div>
-                <div className={s.flechas}>
+                {/* <div className={s.flechas}>
                     <VscChevronRight color='white' size='50px' cursor='pointer' />
                     <VscChevronLeft color='white' size='50px' cursor='pointer' />
-                </div>
+                </div> */}
             </div>                     
             <div className={s.separador} id={s.first}><div className={s.triangle}></div></div>
             <Destacados />

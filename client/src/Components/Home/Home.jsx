@@ -28,6 +28,9 @@ export const Home = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         loadParameters()
     }, [parameters])     // eslint-disable-line react-hooks/exhaustive-deps
 

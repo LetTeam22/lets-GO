@@ -110,3 +110,8 @@
     font-weight: 700;
     font-size: 1rem;
 }
+
+.containerBtn {
+    display: flex;
+    column-gap: 5rem;
+}
