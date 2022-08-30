@@ -11,9 +11,10 @@ import { NotFound } from '../NotFound/NotFound'
 import s from './Home.module.css';
 import encabezado from '../../image/encabezado.png';
 import Orderings from '../Orderings/Orderings';
+import { setCurrentPage, setParameters } from "../../Redux/actions";
 // import huellas from '../../image/Group.png';
 // import ruedas from '../../image/Group.png';
-// import FiltersSelected from '../FiltersSelected/FiltersSelected';
+import { FiltersSelected } from '../FiltersSelected/FiltersSelected';
 
 
 export const Home = () => {
@@ -58,17 +59,57 @@ export const Home = () => {
     const indexFirstBike = indexLastBike - paginate.bikesPerPage;
     const currentBikes = renderedBikes.slice(indexFirstBike, indexLastBike);
 
+    // parametros
+    const handleParameter = (e, property, value, label, id, parameter) => {
+        e.preventDefault();
+        let newParameters = parameters[parameter].selected.filter(p => p !== property)
+        let newLabels = parameters[parameter].labels.filter(l => l !== label)
+        let newIds = parameters[parameter].ids.filter(i => i !== id)
+        if (value === '') {
+            document.getElementById(id).value = ''
+        } else {
+            newParameters = [...newParameters, property]
+            newLabels = [...newLabels, label]
+            newIds = [...newIds, id]
+        }
+        let newParametersValues = {...parameters}
+        newParametersValues[parameter].selected = newParameters
+        newParametersValues[parameter].labels = newLabels
+        newParametersValues[parameter].ids = newIds
+        property === 'max' || property === 'min' ? newParametersValues[parameter].price[property] = value : newParametersValues[parameter][property] = value
+        dispatch(setParameters(newParametersValues))
+        dispatch(setCurrentPage(1));
+        handleChangeIdCard();
+    }
+
+    const deleteFilter = (e, p, l, i) => {
+        handleParameter(e, p, '', l, i, 'filters')
+    }
+
+    const deleteSort = (e, p, l, i) => {
+        handleParameter(e, p, '', l, i, 'sorts')
+    }
+
+    const deleteSearch = (e) => {
+        e.preventDefault();
+        dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+        dispatch(setCurrentPage(1));
+    }
+
     return (
         <div className={s.containerHome}>
             <div className={s.encabezado}>
                 <img src={encabezado} alt="encabezado" className={s.encabezado} />
             </div>
             <h3 className={s.title}>ENCONTRÁ TU LET</h3>
-            <Orderings handleChangeIdCard={handleChangeIdCard} />
+            <Orderings handleParameter={handleParameter} />
             <Dates />
             <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+            {!!parameters.search.selected.length && <FiltersSelected label='Búsqueda' select={parameters.search} handleDelete = {deleteSearch} />}
+            {!!parameters.filters.selected.length && <FiltersSelected label='Filtros' select={parameters.filters} handleDelete = {deleteFilter} />}
+            {!!parameters.sorts.selected.length && <FiltersSelected label='Ordenamientos' select={parameters.sorts} handleDelete = {deleteSort} />}
             <div className={s.filterwrapp}>              
-                <Filters handleChangeIdCard={handleChangeIdCard} />
+                <Filters handleParameter={handleParameter} />
             </div>
             { renderedBikes.length && <Pagination /> }
             { notFound && <NotFound /> }

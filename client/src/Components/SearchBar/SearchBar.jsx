@@ -19,7 +19,7 @@ export const SearchBar = () => {
     
     const handleSubmit = e => {
         e.preventDefault()
-        dispatch(setParameters({...parameters, search: input}))
+        dispatch(setParameters({...parameters, search: {selected: ['search'], search: input}}))
         dispatch(setCurrentPage(1));
         setInput('')
         history.push('/home')
