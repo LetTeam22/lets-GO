@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createUser } from '../../../Redux/actions';
 import s from './PostLogIn.module.css';
+import logo from '../../../image/logo.png';
 
 export default function PostLogIn () {
     const dispatch = useDispatch()
@@ -24,8 +25,11 @@ export default function PostLogIn () {
 
     return (
         <div className={s.background}>
-            <button className={s.btnBack} onClick={goBack}>Volver</button>
-            <button className={s.btnProfile} onClick={goProfile}>Revisa tu perfil</button>
+            <img src={logo} className={s.logo} alt='logo' ></img>
+            <div className={s.buttons}>
+                <button className={s.btnBack} onClick={goBack}>Volver</button>
+                <button className={s.btnProfile} onClick={goProfile}>Revisa tu perfil</button>
+            </div>
         </div>
     )
 }
