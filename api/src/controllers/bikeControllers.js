@@ -7,7 +7,7 @@ const getAllBikes = async (req, res, next) => {
         const allBikes = await Bike.findAll({
             include: {
                 model: Booking,
-                arrtibutes: ['startDate', 'endDate'],
+                attributes: ['startDate', 'endDate'],
                 through: { attributes: [] }
             }
         })
