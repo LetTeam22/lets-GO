@@ -13,7 +13,7 @@ export const FiltersSelected = ({label, select, handleDelete}) => {
                         <button
                             key={i}
                             onClick={p === 'search' ? e => handleDelete(e) : e => handleDelete(e, p, select.labels[i], select.ids[i])} 
-                            className={s.deleteBtn}> &#10060; {p === 'search' ? select[p] : `${select.labels[i]}: ${p === 'min' || p === 'max' ? select.price[p] : select[p]}`} 
+                            className={s.deleteBtn}> &#10060; {p === 'search' ? `Búsqueda: ${select[p]}` : `${select.labels[i]}: ${p === 'min' || p === 'max' ? select.price[p] : select[p]}`} 
                         </button>
                     ))
                 }

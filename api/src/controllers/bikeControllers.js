@@ -26,7 +26,8 @@ const getRenderedBikes = async (req, res, next) => {
     // ajusto algunos parametros de query
     const priceMin = !minPriceFilter ? 0 : minPriceFilter
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
-    const searchLow = search ? search.toLowerCase() : ''
+    const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
+                                .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
@@ -60,7 +61,9 @@ const getRenderedBikes = async (req, res, next) => {
                     { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
                     { type: { [Op.substring]: searchLow } },
                     { traction: { [Op.substring]: searchLow } },
-                    { color: { [Op.substring]: searchLow } }
+                    // { wheelSize: { [Op.substring]: searchLow } },
+                    { color: { [Op.substring]: searchLow } },
+                    // { price: { [Op.substring]: searchLow } }
                 ]
             },
 
