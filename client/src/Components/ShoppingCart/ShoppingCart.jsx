@@ -58,19 +58,17 @@ export const ShoppingCart = () => {
         bikeIds: postbikeIds
     }
 
-    let accesories = [];
+    
 
-    const llenarAccs = () => {
-        cartBikes.map(bike => {
-            for (let accs in bike.accesories) {
-                if(bike.accesories[accs] === true) {
-                    accesories.push(accs);
-                }
+    const llenarAccs = (accs) => {
+        let accesories = [];
+        for(let acc in accs) {
+            if(accs[acc] === true) {
+                accesories.push(acc);
             }
-        })
+        }
+        return accesories;
     }
-
-    llenarAccs();
 
     const totalDias = (from, to) => {
         const date1 = new Date(from);
@@ -111,13 +109,13 @@ export const ShoppingCart = () => {
                                     <img src={bike.image} alt="not found" className={s.img} />
                                     <p className={s.prices} >$ {bike.price} / día </p>
                                     <div className={s.accesories}>
-                                    {
-                                        accesories.map(accs => <p className={s.accs}>{accs}</p>)
-                                    }
-                                </div>
+                                        {
+                                            llenarAccs(bike.accesories)?.map(el => <p className={s.accs}>{el}</p>)
+                                        }
+                                    </div>
+                                    <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
                                 </div>
 
-                                <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
                             </div>
                         )
                     }) :
