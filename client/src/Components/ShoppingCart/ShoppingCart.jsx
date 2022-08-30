@@ -101,6 +101,9 @@ export const ShoppingCart = () => {
         history.push('/home')
     }
 
+    const handleResetDate = () => {
+        dispatch(setParameters('resetAll')) 
+    }
     return (
         <div className={s.container} >
 
@@ -148,7 +151,7 @@ export const ShoppingCart = () => {
 
                     <div className={s.containerBtn}>
                         <Link to='/home'>
-                            <button className={s.reserveBtn}>Buscar mas Bicicletas</button>
+                            <button onClick={handleResetDate} className={s.reserveBtn}>Buscar mas Bicicletas</button>
                         </Link>
                         <button 
                             disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
