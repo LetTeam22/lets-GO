@@ -100,7 +100,7 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     width: 7rem;
     height: 2rem;
-    margin-top: 1rem;
+    margin-top: 4rem;
     background-color: transparent;
     border-radius: 0.5rem;
     border-color: rgba(255, 251, 251, 0.453);

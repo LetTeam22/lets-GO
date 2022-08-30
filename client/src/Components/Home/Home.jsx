@@ -101,41 +101,40 @@ export const Home = () => {
             <div className={s.encabezado}>
                 <img src={encabezado} alt="encabezado" className={s.encabezado} />
             </div>
+            { loading && <Loading /> }
             <h3 className={s.title}>ENCONTRÁ TU LET</h3>
             <Orderings handleParameter={handleParameter} />
             <Dates />
             <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
-            {!!parameters.search.selected.length && <FiltersSelected label='Búsqueda' select={parameters.search} handleDelete = {deleteSearch} />}
-            {!!parameters.filters.selected.length && <FiltersSelected label='Filtros' select={parameters.filters} handleDelete = {deleteFilter} />}
-            {!!parameters.sorts.selected.length && <FiltersSelected label='Ordenamientos' select={parameters.sorts} handleDelete = {deleteSort} />}
+                {!!parameters.search.selected.length && <FiltersSelected label='Búsqueda' select={parameters.search} handleDelete = {deleteSearch} />}
+                {!!parameters.filters.selected.length && <FiltersSelected label='Filtros' select={parameters.filters} handleDelete = {deleteFilter} />}
+                {!!parameters.sorts.selected.length && <FiltersSelected label='Ordenamientos' select={parameters.sorts} handleDelete = {deleteSort} />}
             <div className={s.filterwrapp}>              
-                <Filters handleParameter={handleParameter} />
-            </div>
-            { renderedBikes.length && <Pagination /> }
-            { notFound && <NotFound /> }
-            { loading && <Loading /> }
-            { !loading && !!renderedBikes.length &&
-                <div className={s.containerCards}>
-                    {currentBikes?.map(e => (
-                        <div key={e.idBike} >
-                            <Link to={'/bike/' + e.idBike}>
-                                <Card
-                                    key={e.idBike}
-                                    name={e.name}
-                                    type={e.type}
-                                    image={e.image}
-                                    traction={e.traction}
-                                    wheelSize={e.wheelSize}
-                                    price={e.price}
-                                    rating={e.rating}
-                                    color={e.color}
-                                    id={cardId++}
-                                />
-                            </Link>
-                        </div>
-                    ))}
-                </div>
-            }              
+                <Filters handleParameter={handleParameter} />{ renderedBikes.length && <Pagination /> }
+                { notFound && <NotFound /> }             
+                { !loading && !!renderedBikes.length &&
+                    <div className={s.containerCards}>
+                        {currentBikes?.map(e => (
+                            <div key={e.idBike} >
+                                <Link to={'/bike/' + e.idBike}>
+                                    <Card
+                                        key={e.idBike}
+                                        name={e.name}
+                                        type={e.type}
+                                        image={e.image}
+                                        traction={e.traction}
+                                        wheelSize={e.wheelSize}
+                                        price={e.price}
+                                        rating={e.rating}
+                                        color={e.color}
+                                        id={cardId++}
+                                    />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                }
+            </div>         
         </div>
     )
 };
