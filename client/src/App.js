@@ -14,6 +14,7 @@ import { Contact } from './Components/Contact/Contact'
 import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
 import Private from './Components/Private/Private';
 import { ProfileToEdit } from './Components/Profile/ProfileToEdit/ProfileToEdit';
+import {AdminProfile} from './Components/Profile/AdminProfile/AdminProfile.jsx'
 import './App.css';
 import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
 
@@ -35,6 +36,7 @@ function App() {
         <Route exact path= '/cart' component={ ShoppingCart } />
         <Route exact path= '/postLogin' component={ PostLogIn } />
         <Route exact path= '/editProfile' component={ ProfileToEdit } />
+        <Route exact path= '/AdminProfile' component={ AdminProfile } />
         <Route path='*' component={ Error } />
       </Switch>
       <Footer/>
