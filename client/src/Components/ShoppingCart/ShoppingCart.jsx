@@ -39,6 +39,7 @@ export const ShoppingCart = () => {
             }
     }
 
+
     let postbikeIds = cartBikes.map(bikes => bikes.idBike)
 
     let postedBooking = {
@@ -53,6 +54,7 @@ export const ShoppingCart = () => {
     const total = cartBikes.reduce((total, act) => {
         return total + act.price;
     }, 0);
+
 
     useEffect(() => {
         dispatch(getBikes())
@@ -71,6 +73,8 @@ export const ShoppingCart = () => {
 
     return (
         <div>
+            {console.log(cartBikes)}
+
             {/* NOTA: h1 queda tapado por el menu */}
             <br />
             <br />
@@ -86,11 +90,14 @@ export const ShoppingCart = () => {
                         <div key={bike.idBike}>
                             <p>{bike.name}</p>
                             <img src={bike.image} alt="not found" />
+
                             <p>$ {bike.price} / día </p>
+                            
                             {/* Aqui deberia renderizar los accesorios que hayan sido seleccionados */}
                         </div>
                     )
                 }) :
+
                     <>
                         <h2>aún no cargaste nada en el carrito </h2>
                         <Link to='/home'>
@@ -99,16 +106,17 @@ export const ShoppingCart = () => {
                     </>
             }
             {/*Deberia incluir un subtotal por cada bicicleta  */}
-
+            
             {
                 cartBikes.length &&
                 <div>
                     <h2>{`Total $ ${total}`}</h2>
+
                     <Dates />
                     <button onClick={e => handleBooking(e)}>Reservar</button>
                 </div>
             }
-
         </div>
     )
 };
+
