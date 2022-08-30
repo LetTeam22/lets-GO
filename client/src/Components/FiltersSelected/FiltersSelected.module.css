@@ -53,6 +53,8 @@
     list-style: none;
     color: #333333;
     background: #ef8d247d;
+}
 
-
+.selContainer {
+    display: flex;
 }

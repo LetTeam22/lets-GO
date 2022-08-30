@@ -35,7 +35,7 @@ export const getRenderedBikes = parameters => {
     if (parameters.sorts.price) arrQuery.push(`priceSort=${parameters.sorts.price}`)
     if (parameters.sorts.rating) arrQuery.push(`ratingSort=${parameters.sorts.rating}`)
     if (parameters.sorts.name) arrQuery.push(`nameSort=${parameters.sorts.name}`)
-    if (parameters.search) arrQuery.push(`search=${parameters.search}`)
+    if (parameters.search.search) arrQuery.push(`search=${parameters.search.search}`)
     if (parameters.date.from) arrQuery.push(`fromDateFilter=${parameters.date.from}`)
     if (parameters.date.to) arrQuery.push(`toDateFilter=${parameters.date.to}`)
     const query = !arrQuery.length ? '' : '?' + arrQuery.join('&')
