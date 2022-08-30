@@ -95,7 +95,7 @@ function rootReducer(state = initialState, action) {
                         bookings: [],
                         parameters: {
                             filters: { type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
-                            sorts: { price: '', rating: '', name: '' },
+                            sorts: { selected: [], price: '', rating: '', name: '' },
                             search: '',
                             date: { from: '', to: '' }
                         },
