@@ -38,5 +38,6 @@ input {
 }
 
 .text {
-    font-family: Roboto;
+    font-family: 'Roboto';
+    color:white;
 }
