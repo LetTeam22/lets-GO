@@ -1,14 +1,25 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getBikes } from "../../Redux/actions";
+// import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+// import { getBikes } from "../../Redux/actions";
+
+
 // import s from './ShoppingCart.module.css';
 
 export const ShoppingCart = () => {
     // deberia hacer un dispatch del estado allbikes??
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+    const history = useHistory()
     const bookings = useSelector((state) => state.bookings);
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = []
+
+
+
+    const handleBooking = () => {
+        history.push('/bike/privateRoute');
+    };
+
 
     for (let bike of allBikes) {
         for (let book of bookings)
@@ -69,7 +80,7 @@ export const ShoppingCart = () => {
                 cartBikes.length &&
                 <div>
                     <h2>{`Total $ ${total}`}</h2>
-                    <button>Reservar</button>
+                    <button onClick={handleBooking}>Reservar</button>
                 </div>
             }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../../Redux/actions';
-import s from './Pagination.module.css';
+import './Pagination.css';
 
 export const Pagination = () => {
 
@@ -20,10 +20,10 @@ export const Pagination = () => {
     }
 
     return (
-            <ul className={s.pagination}>
+            <ul className='pagination'>
                 {pageNumber?.map(num => 
-                    <li key={num} onClick={() =>handlePage(num)}>
-                        <span>{num}</span>
+                    <li className={'pagli' + (paginate.currentPage === num ? ' act' : '')} key={num} onClick={() =>handlePage(num)}>
+                        <span className='pagspan'>{num}</span>
                     </li>
                 )}
             </ul>

@@ -21,7 +21,7 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
-  },[])
+  },[dispatch])
 
     return (
       !loggedUser?.hasOwnProperty('email') 
