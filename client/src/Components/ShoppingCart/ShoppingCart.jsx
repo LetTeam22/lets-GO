@@ -7,7 +7,7 @@ import Dates from "../Dates/Dates";
 
 
 export const ShoppingCart = () => {
-
+    
     const dispatch = useDispatch();
     const history = useHistory();
     const loggedUser = JSON.parse(localStorage.getItem('user'))
@@ -16,7 +16,16 @@ export const ShoppingCart = () => {
     const user = useSelector((state) => state.user);
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = [];
+    
+    useEffect(() => {
+        dispatch(getBikes())
+            window.scrollTo(0, 0)
+    }, [dispatch])
 
+    useEffect(() => {
+        dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
+    }, [dispatch])
+    
     for (let bike of allBikes) {
         for (let book of bookings)
             if (bike.idBike === parseInt(book.bike, 10)) {
@@ -80,13 +89,6 @@ export const ShoppingCart = () => {
         return acc + (cur.price * totalDias(date.from, date.to))
     }, 0)
       
-    useEffect(() => {
-        dispatch(getBikes())
-    }, [dispatch])
-
-    useEffect(() => {
-        dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
-    }, [dispatch])
 
     const handleBooking = (e) => {
         dispatch(postBookings(postedBooking));

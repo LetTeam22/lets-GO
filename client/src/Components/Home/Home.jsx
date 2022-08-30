@@ -26,7 +26,10 @@ export const Home = () => {
     // const allSelectedFilters = useSelector(state => state.selectedFilters);
     let [ cardId, setCardId ] = useState(1);
 
-    useEffect(() => loadParameters(), [parameters])     // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        loadParameters()
+    }, [parameters])     // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleChangeIdCard = () => {
         setCardId(1);
