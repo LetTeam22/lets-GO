@@ -19,13 +19,7 @@ export const ShoppingCart = () => {
     const date = useSelector((state) => state.parameters.date);
     const user = useSelector((state) => state.user);
     const allBikes = useSelector((state) => state.allBikes);
-    let cartBikes = []
-
-
-
-    const handleBooking = () => {
-        history.push('/bike/privateRoute');
-    };
+    let cartBikes = [];
 
 
     for (let bike of allBikes) {
