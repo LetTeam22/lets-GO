@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './Landing.module.css';
 import { Link } from 'react-router-dom';
 import { VscChevronRight, VscChevronLeft } from 'react-icons/vsc';
@@ -8,6 +8,10 @@ import { Accesories } from '../Accesories/Accesories';
 import { Experiencies } from '../Experiencies/Experiencies';
 
 export const Landing = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         

@@ -32,6 +32,7 @@ export const BikeDetail = () => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getBikeDetail(bikeId))
         //     dispatch(resetState()) /// ¿creo una action?
     }, [dispatch, bikeId])
