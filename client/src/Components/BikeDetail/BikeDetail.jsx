@@ -30,9 +30,11 @@ export const BikeDetail = () => {
         calzado: false
     })
 
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
 
     useEffect(() => {
-        window.scrollTo(0, 0)
         dispatch(getBikeDetail(bikeId))
         //     dispatch(resetState()) /// ¿creo una action?
     }, [dispatch, bikeId])

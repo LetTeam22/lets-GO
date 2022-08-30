@@ -10,16 +10,18 @@ export const ShoppingCart = () => {
     
     const dispatch = useDispatch();
     const history = useHistory();
-    const loggedUser = JSON.parse(localStorage.getItem('user'))
+    // const loggedUser = JSON.parse(localStorage.getItem('user'))
     const bookings = useSelector((state) => state.bookings);
     const date = useSelector((state) => state.parameters.date);
     const user = useSelector((state) => state.user);
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = [];
     
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
     useEffect(() => {
         dispatch(getBikes())
-            window.scrollTo(0, 0)
     }, [dispatch])
 
     useEffect(() => {
@@ -110,7 +112,7 @@ export const ShoppingCart = () => {
                                     <p className={s.prices} >$ {bike.price} / día </p>
                                     <div className={s.accesories}>
                                         {
-                                            llenarAccs(bike.accesories)?.map(el => <p className={s.accs}>{el}</p>)
+                                            llenarAccs(bike.accesories)?.map(el => <p className={s.accs} key={el}>{el}</p>)
                                         }
                                     </div>
                                     <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
