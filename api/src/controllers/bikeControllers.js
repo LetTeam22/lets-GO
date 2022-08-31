@@ -1,6 +1,6 @@
 const { Bike, Booking } = require('../db')
 const { Op } = require("sequelize");
-// testing dev
+// testing dev 2
 //Get
 const getAllBikes = async (req, res, next) => {
     try {
