@@ -2,7 +2,6 @@
 
 .accesories {
     position: relative;
-    top: 47rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 1fr);
@@ -79,9 +78,15 @@
 }
 
 .title { 
-    grid-area: 1 / 6 / 2 / 8; 
-    margin-top: 3.2rem;
-    margin-left: 3.5rem;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    top: 5%;
+    z-index: 1;
+    color: #787877;
+    text-align: center;
     font-weight: 600;
+    font-size: 2rem;
 }
 

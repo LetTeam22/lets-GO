@@ -1,15 +1,11 @@
 .searchBar {
-    margin: 0;
-    position: relative;
     display: flex;
-    right: -3rem;
     align-items: center;
     border: 0.063rem solid rgb(80, 80, 80);
     border-radius: 2rem;
-    width: 12%;
-    height: 13%;
-    z-index: 1;
-    padding:0.938rem;
+    width: 15%;
+    height: 2.7rem;
+    padding: 0.6rem 0.8rem;
 }
 
 .searchBar:hover {

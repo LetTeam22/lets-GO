@@ -2,10 +2,9 @@
 
 .footer {
     position: relative;
-    top: 47rem;
     width: 100%;
     background-color: #333333;
-    height: 23.813rem;
+    height: 20rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -15,7 +14,6 @@
 .services, .guia, .company {
     display: flex;
     flex-direction: column;
-    width: 20rem;
     margin-top: 3rem;
 }
 
@@ -38,13 +36,12 @@ h5 {
 }
 
 .icons {
+    margin-top: 1.5rem;
     position: relative;
-    right: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 1.5rem;
-    margin-right: 7rem;
+    gap: 1rem;
 }
 
 span {

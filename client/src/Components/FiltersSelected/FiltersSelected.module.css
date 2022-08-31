@@ -42,8 +42,6 @@
 
 .deleteBtn {
     display: flex;
-    position: relative;
-    left: 3.9rem;
     margin-right: .5rem;
     margin-top: 1rem;
     align-items: center;
@@ -61,6 +59,8 @@
 }
 
 .selContainer {
-    display: flex;
-
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    top: 1rem;
 }
