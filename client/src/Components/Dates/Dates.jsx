@@ -27,6 +27,7 @@ const Dates = () => {
     }
     
     const convertDate = date => { 
+      if (!date) return date
       let arr = date.toString().split(' ')
       return `${arr[3]}-${convertMonth(arr[2])}-${arr[1]}`
     }

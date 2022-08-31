@@ -45,6 +45,11 @@
 
 }
 
+.select.act {
+    background-color: #ef8d24bd;
+    font-weight:500;
+}
+
 select > option {
     color: #706f6f;
     font-family: 'Roboto';
@@ -76,6 +81,11 @@ select > option {
     line-height: 21px;
     letter-spacing: 0.1em;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+}
+
+.input.act {
+    background-color: #ef8d24bd;
+    font-weight:500;
 }
 
 .priceInputs {
