@@ -1,11 +1,9 @@
 .container {
     display: flex;
     flex-direction: row;
-    column-gap: .5rem;
+    column-gap: 0.5rem;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 6rem;
-    margin-top: 7rem;
+    justify-content: end;
 }
 
 .spanOrderings {

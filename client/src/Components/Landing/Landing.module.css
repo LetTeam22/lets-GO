@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); */
 
 .container {
     display: flex;
@@ -6,7 +6,7 @@
 }
 
 .landing {
-    position: fixed;
+    position: relative;
     left: 0rem;
     top: 0rem;
     right: 0;
@@ -15,18 +15,25 @@
 }
 
 .fondo {
-    width: 100%;
-
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position-x: center;
+    background-image: url('../../image/img_fondo1.png');
 }
 
 .textDiv{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
+    height: calc(100vh - 6.25rem);
+    position: relative;
+    grid-gap: 2rem;
     gap: 2rem;
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -91,7 +98,6 @@
 
 .separador {
     position: relative;
-    top: 49.7rem;
     width: 100%;
     z-index: 4;
     background-color: #CECECE;
@@ -111,5 +117,4 @@
 
 #second {
     position: relative;
-    top: 47rem;
 }
