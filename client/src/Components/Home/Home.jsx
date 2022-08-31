@@ -111,7 +111,7 @@ export const Home = () => {
                 {!!parameters.filters.selected.length && <FiltersSelected label='Filtros' select={parameters.filters} handleDelete = {deleteFilter} />}
                 {!!parameters.sorts.selected.length && <FiltersSelected label='Ordenamientos' select={parameters.sorts} handleDelete = {deleteSort} />}
             <div className={s.filterwrapp}>              
-                <Filters handleParameter={handleParameter} />{ renderedBikes.length && <Pagination /> }
+                <Filters handleParameter={handleParameter} />{ !!renderedBikes.length && <Pagination /> }
                 { notFound && <NotFound /> }             
                 { !loading && !!renderedBikes.length &&
                     <div className={s.containerCards}>

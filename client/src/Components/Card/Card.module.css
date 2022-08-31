@@ -33,7 +33,7 @@
     font-size: 1.5rem;
     line-height: 0%;
     color: #000000;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .data {
@@ -52,4 +52,69 @@
     font-weight: 900;
     font-size: 2rem;
     line-height: 0%;
+    margin-top: 1.8rem;
+}
+
+.ratingCont {
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+}
+
+.stars {
+    width: 8rem;
+    height: 1.6rem;
+}
+
+.rating {
+    color: rgb(193, 193, 14);
+    font-size: 1.3rem;
+    font-weight: 900;
+    padding-top: .1rem;
+    margin-left: .3rem;
+}
+
+.rueda {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.rodado, .type {
+    color: #333333;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: .3rem;
+}
+
+.type {
+    padding-top: .5rem;
+}
+
+.electrica, .mecanica {
+    filter: brightness(1.3);
+    mix-blend-mode: multiply;
+    margin: auto 1.5rem;
+}
+
+.electrica {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.mecanica {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.dataCont {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+.rodadoCont {
+    display: flex;
+    justify-content: center;
+    height: 2rem;
+    padding-top: .5rem;
 }

@@ -1,6 +1,6 @@
 const { Bike, Booking } = require('../db')
 const { Op } = require("sequelize");
-// testing dev 2
+
 //Get
 const getAllBikes = async (req, res, next) => {
     try {
@@ -29,6 +29,7 @@ const getRenderedBikes = async (req, res, next) => {
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
+    const searchNum = isNaN(Number(search)) ? 0 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
 
@@ -61,9 +62,10 @@ const getRenderedBikes = async (req, res, next) => {
                     { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
                     { type: { [Op.substring]: searchLow } },
                     { traction: { [Op.substring]: searchLow } },
-                    // { wheelSize: { [Op.substring]: searchLow } },
+                    { wheelSize: { [Op.eq]: searchNum } },
                     { color: { [Op.substring]: searchLow } },
-                    // { price: { [Op.substring]: searchLow } }
+                    { price: { [Op.eq]: searchNum } },
+                    { rating: { [Op.eq]: searchNum } },
                 ]
             },
 
