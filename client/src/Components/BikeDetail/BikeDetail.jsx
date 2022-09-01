@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import swal from 'sweetalert';
-import { getBikeDetail, addBooking } from '../../Redux/actions';
-import Loading from '../Loading/Loading';
+import { getBikeDetail, addBooking, getAccesories } from '../../Redux/actions';
 import s from './BikeDetail.module.css';
 import icon from '../../image/bicisDestacadas/icon.png';
 import tech from '../../image/Technology.png';
@@ -14,6 +13,7 @@ import tech from '../../image/Technology.png';
 export const BikeDetail = () => {
     const dispatch = useDispatch()
     const bike = useSelector((state) => state.bikeDetail)
+    const allAccs = useSelector((state) => state.accesories)
     const { bikeId } = useParams()
     const history = useHistory()
     const { isAuthenticated } = useAuth0();
@@ -26,22 +26,25 @@ export const BikeDetail = () => {
         casco: false,
         candado: false,
         lentes: false,
-        botella: false,
+        botellita: false,
         calzado: false
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         window.scrollTo(0, 0)
-    },[])
+    }, [])
+
+    useEffect(() => {
+        dispatch(getAccesories())
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getBikeDetail(bikeId))
-        //     dispatch(resetState()) /// ¿creo una action?
     }, [dispatch, bikeId])
 
     const handleClick = (e) => {
         e.preventDefault();
-        if(!isAuthenticated) {
+        if (!isAuthenticated) {
             swal({
                 title: 'PRECAUCION',
                 text: 'Debes loguearte primero',
@@ -53,6 +56,7 @@ export const BikeDetail = () => {
                 canasto: false, silla: false, luces: false, casco: false, candado: false, lentes: false, botella: false, calzado: false
             })
             history.push('/cart')
+            //}
         }
     }
 
@@ -121,42 +125,51 @@ export const BikeDetail = () => {
                             <div className={s.containerAcc}>
                                 <div className={s.boxes}>
                                     <input id="box-1" type='checkbox' name='canasto' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-1">canasto</label>
+                                    <label for="box-1">Canasto</label>
+                                    <img src={allAccs[4]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input id="box-2" type='checkbox' name='silla' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-2">silla portabebés</label>
+                                    <label for="box-2">Silla portabebés</label>
+                                    <img src={allAccs[2]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input id="box-3" type='checkbox' name='luces' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-3">luces</label>
+                                    <label for="box-3">Luces</label>
+                                    <img src={allAccs[5]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input id="box-4" type='checkbox' name='casco' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-4">casco</label>
+                                    <label for="box-4">Casco</label>
+                                    <img src={allAccs[0]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input id="box-5" type='checkbox' name='candado' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-5">candado</label>
+                                    <label for="box-5">Candado</label>
+                                    <img src={allAccs[6]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input id="box-6" type='checkbox' name='lentes' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-6">lentes</label>
+                                    <label for="box-6">Lentes</label>
+                                    <img src={allAccs[7]?.image} alt='not found' />
                                 </div>
 
                                 <div className={s.boxes}>
-                                    <input id="box-7" type='checkbox' name='botella' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-7">botella</label>
+                                    <input id="box-7" type='checkbox' name='botellita' onClick={e => { handleCheck(e) }} />
+                                    <label for="box-7">Botella</label>
+                                    <img src={allAccs[1]?.image} alt='not found' />
+
                                 </div>
 
                                 <div className={s.boxes}>
                                     <input type='checkbox' id="box-8" name='calzado' onClick={e => { handleCheck(e) }} />
-                                    <label for="box-8">calzado</label>
+                                    <label for="box-8">Calzado</label>
+                                    <img src={allAccs[3]?.image} alt='not found' />
                                 </div>
                             </div>
                             <div style={{ marginTop: "6rem", marginRight: "1rem" }}>
