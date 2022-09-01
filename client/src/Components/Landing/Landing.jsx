@@ -1,16 +1,28 @@
 import React, { useEffect } from "react";
 import s from "./Landing.module.css";
 import { Link } from "react-router-dom";
-import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
-import fondo from "../../image/img_fondo1.png";
+// import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
+// import fondo from "../../image/img_fondo1.png";
 import { Destacados } from "../Destacados/Destacados";
 import { Accesories } from "../Accesories/Accesories";
 import { Experiencies } from "../Experiencies/Experiencies";
+import { useDispatch, useSelector } from "react-redux";
+import { getFamousBikes } from "../../Redux/actions";
 
 export const Landing = () => {
+
+  const dispatch = useDispatch();
+  const bikes = useSelector(state => state.famousBikes);
+
+  console.log(bikes);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    dispatch(getFamousBikes());
+  }, [dispatch])
 
   return (
     <div className={s.container}>

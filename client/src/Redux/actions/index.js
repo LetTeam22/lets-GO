@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES } from './actiontypes'
 
 // POST_BOOKINGS
 
@@ -83,16 +83,11 @@ export const postBookings = (payload) => {
             .then(dispatch({ type: POST_BOOKINGS, }))
             .then(res => console.log(res))
             .catch(err => console.log(err))
-
     }
 };
 
-
-
-// export function postVideogame(values) {
-//     return (dispatch) => {
-//       return axios.post('/videogames', values)
-//       .then(res => console.log(res))
-//       .catch(error => console.log(error))
-//     }
-//   }
+export const getFamousBikes = () => {
+    return dispatch => axios('/bikes')
+        .then(res => dispatch({ type: GET_FAMOUS_BIKES, payload: res.data }))
+        .catch(err => console.log(err));
+}
