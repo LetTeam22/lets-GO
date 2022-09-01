@@ -1,13 +1,11 @@
 .spinner{
-    position: absolute;
-    top: 40rem;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 .seMueve{
     width: 100%;

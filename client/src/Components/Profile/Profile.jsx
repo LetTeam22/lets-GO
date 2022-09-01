@@ -33,8 +33,8 @@ export const Profile = () => {
             </div>
             <div className={s.infoAndImage}>
               <div className={s.information}>
-                  <h4>Telefono : {editedUser?.cellphone || null}</h4>
-                  <h4>Email: {loggedUser?.email}</h4>
+                  <h4 className={s.h4}>Telefono : {editedUser?.cellphone || null}</h4>
+                  <h4 className={s.h4}>Email: {loggedUser?.email}</h4>
               </div>
             <img
               src={editedUser?.profilePic || image}
@@ -59,7 +59,7 @@ export const Profile = () => {
             Editar Perfil
           </Button>
             </div>
-            <img src={background} alt='fondo' className={s.background} />
+            <div className={s.background}></div>
         </>)
     )
   
