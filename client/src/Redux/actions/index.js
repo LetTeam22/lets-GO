@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_ACCESORIES } from './actiontypes'
 
 // POST_BOOKINGS
 
@@ -87,12 +87,12 @@ export const postBookings = (payload) => {
     }
 };
 
+export const getAccesories = () => {
+    return (dispatch) => {
+        axios('http://localhost:3001/accesories')
+            .then(res => dispatch({ type: GET_ACCESORIES, payload: res.data }))
+            .catch(err => console.log(err));
+    }
+};
 
 
-// export function postVideogame(values) {
-//     return (dispatch) => {
-//       return axios.post('/videogames', values)
-//       .then(res => console.log(res))
-//       .catch(error => console.log(error))
-//     }
-//   }
