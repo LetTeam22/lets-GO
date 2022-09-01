@@ -13,7 +13,8 @@ dotenv.config();
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const postLogin = '/postLogin';
+const postLoginLocal = 'http://localhost:3001/postLogin';
+const postLoginDeploy = 'https://pf-let.vercel.app/postLogin';
 
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -21,7 +22,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 ReactDOM.render(
   <Provider store = {store} >
     <BrowserRouter>
-      <Auth0Provider domain={domain} clientId={clientID} redirectUri={postLogin}>
+      <Auth0Provider domain={domain} clientId={clientID} redirectUri={ process.env.REACT_APP_AUTH0_REDIRECT ? postLoginDeploy : postLoginLocal } >
         <App />
       </Auth0Provider>
     </BrowserRouter>
