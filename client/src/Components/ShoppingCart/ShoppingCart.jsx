@@ -1,34 +1,40 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
 import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
 import swal from 'sweetalert';
 
 
 export const ShoppingCart = () => {
-    
+
     const dispatch = useDispatch();
     const history = useHistory();
     // const loggedUser = JSON.parse(localStorage.getItem('user'))
     const bookings = useSelector((state) => state.bookings);
     const date = useSelector((state) => state.parameters.date);
     const user = useSelector((state) => state.user);
+    const allAccs = useSelector((state) => state.accesories)
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = [];
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         window.scrollTo(0, 0)
-    },[])
+    }, [])
+
     useEffect(() => {
         dispatch(getBikes())
     }, [dispatch])
 
     useEffect(() => {
+        dispatch(getAccesories)
+    }, [dispatch])
+
+    useEffect(() => {
         dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
     }, [dispatch])
-    
+
     for (let bike of allBikes) {
         for (let book of bookings)
             if (bike.idBike === parseInt(book.bike, 10)) {
@@ -61,15 +67,20 @@ export const ShoppingCart = () => {
         bikeIds: postbikeIds
     }
 
-    
+
 
     const llenarAccs = (accs) => {
         let accesories = [];
-        for(let acc in accs) {
-            if(accs[acc] === true) {
-                accesories.push(acc);
+        for (let acc in accs) {
+            if (accs[acc] === true) {
+                for (let acces of allAccs) {
+                    if (acces.name.toLowerCase() === acc) {
+                        accesories.push(acces)
+                    }
+                }
             }
         }
+        console.log(accesories)
         return accesories;
     }
 
@@ -89,7 +100,7 @@ export const ShoppingCart = () => {
     const total = cartBikes.reduce((acc, cur) => {
         return acc + (cur.price * totalDias(date.from, date.to))
     }, 0)
-      
+
 
     const handleBooking = (e) => {
         dispatch(setParameters('resetAll'))
@@ -104,7 +115,7 @@ export const ShoppingCart = () => {
     }
 
     const handleResetDate = () => {
-        dispatch(setParameters('resetAll')) 
+        dispatch(setParameters('resetAll'))
     }
     return (
         <div className={s.container} >
@@ -122,7 +133,14 @@ export const ShoppingCart = () => {
                                     <p className={s.prices} >$ {bike.price} / día </p>
                                     <div className={s.accesories}>
                                         {
-                                            llenarAccs(bike.accesories)?.map(el => <p className={s.accs} key={el}>{el}</p>)
+                                            llenarAccs(bike.accesories)?.map(el =>
+                                                <div>
+                                                    <p className={s.accs} key={el.name}>{el.name}</p>
+                                                    <img src={el.image} alt='not' found />
+                                                    <p> $ {el.pric} / dia </p>
+                                                </div>
+
+                                            )
                                         }
                                     </div>
                                     <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price)) ? 0 : totalPerBike(bike.price)}`}</p>
@@ -140,29 +158,29 @@ export const ShoppingCart = () => {
                         </div>
                 }
             </div>
-            
+
             {
                 cartBikes.length ?
-                <div className={s.totalPrice} >
+                    <div className={s.totalPrice} >
 
-                    <Dates />
+                        <Dates />
 
-                    {
-                        !isNaN(total) ? <h2 className={s.total}>{`Total $ ${total}`}</h2> : <></>
-                    }
+                        {
+                            !isNaN(total) ? <h2 className={s.total}>{`Total $ ${total}`}</h2> : <></>
+                        }
 
-                    <div className={s.containerBtn}>
-                        <Link to='/home'>
-                            <button onClick={handleResetDate} className={s.reserveBtn}>Buscar mas Bicicletas</button>
-                        </Link>
-                        <button 
-                            disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}  
-                            onClick={e => handleBooking(e)}
-                            className={s.reserveBtn}
-                        >RESERVAR</button>
+                        <div className={s.containerBtn}>
+                            <Link to='/home'>
+                                <button onClick={handleResetDate} className={s.reserveBtn}>Buscar mas Bicicletas</button>
+                            </Link>
+                            <button
+                                disabled={postedBooking.startDate === '' || postedBooking.endDate === '' || postedBooking.userId === undefined || !postedBooking.bikeIds.length ? true : false}
+                                onClick={e => handleBooking(e)}
+                                className={s.reserveBtn}
+                            >RESERVAR</button>
+                        </div>
                     </div>
-                </div>
-                : <></>
+                    : <></>
             }
         </div>
     )
