@@ -1,11 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
+.menu {
+    width: 97%;
+    height: 72%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 7rem;
+    cursor: pointer;
+}
+
 .options {
     display: flex;
     font-size: .1rem;
     color: #FFFFFF;
     cursor: pointer;
-    margin-left: 4rem;
+    gap: 1rem;
 }
 
 .span {
@@ -17,10 +32,6 @@
     padding: .8rem;
 }
 
-div:hover > hr {
-    display: none;
-}
-
 .span:hover {
     color: #ffffff;
     background: #F9B621;
@@ -28,21 +39,13 @@ div:hover > hr {
     border-radius: .2rem;
 }
 
-.menu {
-    margin-left:10%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+div:hover > hr {
+    display: none;
 }
 
 a {
     color: #FFFFFF;
     text-decoration: none;
-}
-
-a:hover {
-    color: #000000;
 }
 
 hr {
@@ -70,42 +73,3 @@ hr {
     width: fit-content;
     border: none;
 }
-
-
-
-
-/* .options:hover {
-    background: #F9B621;
-} */
-
-/* .options:hover > hr {
-    display: none;
-} */
-
-
-/* .persona, .carrito {
-    width: 1.6rem;
-    cursor: pointer;
-} */
-
-/* .loginSpan {
-    color: #FFFFFF;
-} */
-
-/* .persona {
-    margin-left: 0.625rem;
-    margin-right: 1.563rem;
-} */
-
-/* .personaBtn, .carritoBtn {
-    background-color: transparent;
-    width: fit-content;
-    border: none;
-} */
-
-
-
-
-
-
-

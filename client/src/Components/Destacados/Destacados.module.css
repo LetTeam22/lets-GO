@@ -7,19 +7,19 @@
     margin-right: auto;
     margin-left: auto;
     width: 100%;
-    top: 47.9rem;
 }
 
 .title {
-    position: relative;
-    z-index: 4;
+    position: absolute;
     color: #787877;
-    top: 53rem;
+    top: 5%;
+    z-index: 1;
     font-weight: 600;
-    text-align:center;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
     margin-right: auto;
     margin-left: auto;
-
 }
 
 .destacadas {

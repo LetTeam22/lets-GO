@@ -19,6 +19,7 @@ export const SearchBar = () => {
     
     const handleSubmit = e => {
         e.preventDefault()
+        if (!input) return
         dispatch(setParameters({...parameters, search: {selected: ['search'], search: input}}))
         dispatch(setCurrentPage(1));
         setInput('')

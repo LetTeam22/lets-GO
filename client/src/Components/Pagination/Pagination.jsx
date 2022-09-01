@@ -19,13 +19,23 @@ export const Pagination = () => {
         if (paginate.currentPage !== num) dispatch(setCurrentPage(num))
     }
 
+    const handlePrevious = () => {
+        if (paginate.currentPage > 1) dispatch(setCurrentPage(paginate.currentPage - 1))
+    }
+      
+    const handleNext = () => {
+        if (paginate.currentPage < pageNumber[pageNumber.length - 1]) dispatch(setCurrentPage(paginate.currentPage + 1))
+    }
+
     return (
             <ul className='pagination'>
+                {pageNumber.length > 1 && <li className="pagli" onClick={() => handlePrevious()}>{'<'}</li>}
                 {pageNumber?.map(num => 
                     <li className={'pagli' + (paginate.currentPage === num ? ' act' : '')} key={num} onClick={() =>handlePage(num)}>
                         <span className='pagspan'>{num}</span>
                     </li>
                 )}
+                {pageNumber.length > 1 && <li className="pagli" onClick={() => handleNext()}>{'>'}</li>}
             </ul>
     )
 };

@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../NavBar/Authentication/LogIn";
 import LogOut from "../NavBar/Authentication/LogOut";
 import { Link } from "react-router-dom";
+import logo from "../../image/logo.png";
 
 
 export const Menu = () => {
@@ -14,6 +15,7 @@ export const Menu = () => {
 
   return (
     <div className={s.menu}>
+      <Link to="/"><img src={logo} alt="logo" className={s.icon} /></Link>
       <div className={s.options}>
         <div >
           <Link to='/home'><span className={s.span}>BICICLETAS</span></Link>

@@ -1,6 +1,5 @@
 .img_notFound {
-    position: absolute;
-    top: 50rem;
+    position: relative;
     width: 50%;
     left: 30rem;
 }

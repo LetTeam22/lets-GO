@@ -1,11 +1,9 @@
 .container {
     display: flex;
     flex-direction: row;
-    column-gap: .5rem;
+    column-gap: 0.5rem;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 6rem;
-    margin-top: 7rem;
+    justify-content: end;
 }
 
 .spanOrderings {
@@ -35,4 +33,9 @@
     border-radius: .2rem;
     border: none ;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+}
+
+.orderings.act {
+    background-color: #ef8d24bd;
+    font-weight:500;
 }

@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 .pagination {
-    position: relative;
     display: flex;
-    column-gap: 1rem;
-    bottom: 37.6rem;
-    /* padding-left: 37rem; */
-    margin-left: 44rem;
     align-items: center;
     justify-content: center;
     font-family: 'Roboto';
