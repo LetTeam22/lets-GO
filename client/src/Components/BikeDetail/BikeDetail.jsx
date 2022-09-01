@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import swal from 'sweetalert';
 import { getBikeDetail, addBooking } from '../../Redux/actions';
-import { Loading } from '../Loading/Loading';
+import Loading from '../Loading/Loading';
 import s from './BikeDetail.module.css';
 import icon from '../../image/bicisDestacadas/icon.png';
 import tech from '../../image/Technology.png';
