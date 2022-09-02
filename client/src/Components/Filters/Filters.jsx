@@ -11,6 +11,7 @@ const Filters = ({ handleParameter }) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
+    const renderedBikes = useSelector((state) => state.renderedBikes);
 
     const handleTypeFilter = e => {
         handleParameter(e, 'type', e.target.value, 'Tipo', '', 'filters')
@@ -51,13 +52,13 @@ const Filters = ({ handleParameter }) => {
         dispatch(setParameters('resetAll'));
         dispatch(setCurrentPage(1));
     };
-    
-    return (
-        <>                
-            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button>   
-            
-            <h4 className={s.title}>Filtros</h4>
-            
+
+    return (     
+        <div className={s.filtersSticky}>
+            <h3 className={s.title}>ENCONTRÁ TU LET</h3>
+            <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+            <button className={s.reset} onClick={handleResetAll}>Borrar filtros</button>
+            {/* <h4 className={s.titleFilters}>Filtros</h4> */}
             <div className='checkCont'>
 
                 <FormControl>
@@ -128,14 +129,14 @@ const Filters = ({ handleParameter }) => {
                     id='maxPriceFilter'
                 />
             </div>
-
+            
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
             <div className={s.tractionCont}>
                 <img className={parameters.filters.traction === 'mecánica' ? `${s.mecanica} ${s.act}` : s.mecanica} src={gear} alt='Mecánica ' onClick={handleTractionMecFilter}/>
                 <img className={parameters.filters.traction === 'eléctrica' ? `${s.electrica} ${s.act}` : s.electrica} src={ray} alt='Eléctrica ' onClick={handleTractionElecFilter}/>
             </div>
-
-         </>
+            
+        </div>
     )
 };
 

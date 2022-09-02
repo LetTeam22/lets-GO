@@ -25,7 +25,28 @@
     background-size: cover; 
     background-attachment: fixed;
     background-position-x: center;
-    background-image: url('../../image/img_fondo1.png');
+    animation: changeImage 25s infinite;
+}
+
+@keyframes changeImage {
+    0% {
+        background-image: url('../../image/fondos/slice1.png');
+    }
+    20% {
+        background-image: url('../../image/fondos/slice2.png');
+    }
+    40% {
+        background-image: url('../../image/fondos/slice3.png');
+    }
+    60% {
+        background-image: url('../../image/fondos/slice4.png');
+    }
+    80% {
+        background-image: url('../../image/fondos/slice5.png');
+    }
+    100% {
+        background-image: url('../../image/fondos/slice1.png');
+    }
 }
 
 .textDiv{
@@ -71,12 +92,12 @@
 .flechas {
     display: flex;
     flex-direction: row-reverse;
-    position: relative;
+    width: 98%;
     justify-content: space-between;
-    bottom: 55%;
-    margin-right: 0.625rem;
-    margin-left: 0.625rem;
     color: #BEB9B9;
+    z-index: 100;
+    position: relative;
+    bottom: 15rem;
 }
 
 .prueba {

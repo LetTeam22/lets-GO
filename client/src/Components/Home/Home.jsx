@@ -5,7 +5,7 @@ import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-import Dates from "../Dates/Dates";
+// import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
@@ -98,19 +98,21 @@ export const Home = () => {
   };
 
   return (
+      loading? <Loading />
+      :
     <div className={s.containerHome}>
+
       <div className={s.encabezado}>
         <img src={encabezado} alt="encabezado" className={s.encabezado} />
       </div>
-      {loading && <Loading />}
-      <div className={s.divFijo}>
-        <div className={s.resultados}>
-          <h3 className={s.title}>ENCONTRÁ TU LET</h3>
-          <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+
+      <div className={s.divSticky}>
+        <div className={s.containFiltersSelected}>
           {!!parameters.search.selected.length && (<FiltersSelected label="Búsqueda" select={parameters.search} handleDelete={deleteSearch} />)}
           {!!parameters.filters.selected.length && (<FiltersSelected label="Filtros" select={parameters.filters} handleDelete={deleteFilter} />)}
           {!!parameters.sorts.selected.length && (<FiltersSelected label="Ordenamientos" select={parameters.sorts} handleDelete={deleteSort} />)}
         </div>
+
         <div className={s.divDateAndOrder}>
           {/* comento el Dates hasta que se cambie, este componente no deja modificar estilos */}
           {/* <Dates /> */}

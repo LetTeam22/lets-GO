@@ -3,25 +3,24 @@
 .deleteBtn {
     display: flex;
     position: relative;
-    top: 2rem;
     margin-right: .5rem;
-    margin-top: .5rem;
     align-items: center;
     font-size: .7rem;
     display: flex;
     width: 8rem;
-    height: 1.6rem;
-    /* border: none; */
+    height: 1.3rem;
+    border: none;
+    /* background: #a3a3a35b; */
     border-radius: .4rem;
-    background-color: transparent;
     cursor: pointer;
     list-style: none;
-    color: #555555;
-    background: #fee4a95b;
+    color: #3f3e3e;
     z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 2px;
 }
 
 .selContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
 }

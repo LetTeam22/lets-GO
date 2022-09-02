@@ -5,22 +5,49 @@
     margin-left: auto;
     margin-right: auto;
     display:block;
-    background-color: #F5F5F5;
-    /* background-color: #bb1b1b95; */
+    background-color: #FFF9EC;
 }
 
-.divFijo{
+.encabezado {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #f1efef;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* .imgEncabezado {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.divSticky{
     height: 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     position: sticky;
-    top: 7rem;
+    top: 6rem;
     z-index: 1;
     padding: 0 2rem;
     background-color: #F5F5F5;
     box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 10px;
 }
+
+.containFiltersSelected{
+    display: flex;
+    flex-direction: row;
+}
+
+.divDateAndOrder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
 
 .filterwrapp {
     display: flex;
@@ -34,17 +61,21 @@
 .containerFilter{
     width: 20rem;
     height: 100rem;
-    /* height: 100%; */
-    /* si pongo esto queda fijo pero se achica */
-    padding-top: 6rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
-    position: sticky;
     align-items: flex-start;
     background-color: #efefef;
     top: 13.5rem;
     box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 10px;
+}
+
+.divPaginationAndBikes{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20rem);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .containerCards {
@@ -60,84 +91,6 @@
 
 }
 
-.encabezado {
-    position: relative;
-    width: 100%;
-    background-color: #f1efef;
-}
 
-.huellas {
-    position: relative;
-    width: 100%;
-    top: 5.6rem;
-}
 
-.title {
-    margin-left: 1rem;
-    margin-top:1.8rem;
-    font-weight: 500;
-    color: #d6802b;
-    font-size: 1.1rem;
-    line-height: 0rem;
-}
-
-.result {
-    font-size: .8rem;
-    margin-left: 1rem;
-    letter-spacing: 0.1em;
-    color: #706f6f;
-}
-
-.ruedas {
-    position: relative;
-    bottom: 40rem;
-    z-index: 5;
-    width: 100%;
-}
-
-.titleAccs {
-    position: relative;
-    bottom: 46rem;
-    left: 3rem;
-    color: #D6802B;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 3rem;
-    line-height: 0px;
-}
-
-.filtersSelected {
-    display: flex;
-    flex-direction: row;
-    column-gap: 1rem;
-    
-}
-
-.divTitleAndOrder{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-}
-
-.resultados{
-    display: flex;
-    flex-direction: column;
-}
-
-.divDateAndOrder{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.divPaginationAndBikes{
-    display: flex;
-    flex-direction: column;
-    /* height: 70rem; */
-    width: calc(100% - 20rem);
-    margin-left: auto;
-    margin-right: auto;
-}
 

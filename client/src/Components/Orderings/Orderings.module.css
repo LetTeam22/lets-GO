@@ -4,16 +4,13 @@
     column-gap: 0.5rem;
     align-items: center;
     justify-content: end;
-    margin-right: 5rem;
 }
 
 .spanOrderings {
     font-size: .8rem;
     font-weight: 500;
     letter-spacing: 0.1em;
-    color: #706f6f;
-    margin-bottom: 0.8rem;
-    
+    color: #706f6f;   
 }
 
 .orderings {
@@ -27,7 +24,6 @@
     align-items: center;
     width: 1.4rem;
     height: 1.5rem;
-    margin-bottom: 1rem;
     cursor: pointer;
     list-style: none;
     border-radius: .2rem;

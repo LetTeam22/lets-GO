@@ -1,11 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
+.filtersSticky{
+    position: sticky;
+    top: 12rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+    
+}
+
 .title {
+    margin-top:1.8rem;
+    font-weight: 500;
+    color: #d6802b;
+    font-size: 1.1rem;
+    line-height: 0rem;
+}
+
+.result {
+    font-size: .8rem;
+    letter-spacing: 0.1em;
+    color: #706f6f;
+    margin-bottom: 1rem;
+}
+
+.reset {
+    width: 8rem;
+    height: 2rem;
+    padding: .5rem;
+    /* margin-top: 1rem; */
+    margin-bottom: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .8rem;
+    list-style: none;
+    border-radius: 0.5rem;
+    color: rgb(255, 255, 255);
+    background: #ef8d24bf;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+}
+
+/* .titleFilters {
     color: #333333;
     font-weight: 500;
     letter-spacing: 0.1em;
     margin-bottom: .5rem;
-}
+} */
 
 .spanFilters {
     font-weight: 300;
@@ -13,13 +58,15 @@
     letter-spacing: 0.1em;
     padding: .4rem 0 .4rem 0;
     margin: 0;
+    color: #565656;
 }
+
 
 .select {
     width: 11rem;
     height: 1.8rem;
     padding: 0;
-    margin: 0;
+    margin-bottom: .2rem;
     cursor: pointer;
     list-style: none;
     color: rgb(86, 85, 85);
@@ -90,24 +137,6 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 } */
-
-.reset {
-    width: 8rem;
-    height: 2rem;
-    padding: .5rem;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: .8rem;
-    list-style: none;
-    border-radius: 0.5rem;
-    color: rgb(255, 255, 255);
-    background: #ef8d24;
-    border-color: rgba(255, 251, 251, 0.453);
-    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
-    cursor: pointer;
-}
 
 .fil{
     font-family: 'Roboto';

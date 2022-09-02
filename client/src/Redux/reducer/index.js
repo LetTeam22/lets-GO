@@ -1,4 +1,6 @@
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_ACCESORIES } from '../actions/actiontypes';
+
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES } from '../actions/actiontypes';
+
 
 const initialState = {
     allBikes: [],
@@ -44,7 +46,8 @@ const initialState = {
     bikeDetail: [],
     accesories: [],
     user: {},
-    bookings: []
+    bookings: [],
+    famousBikes: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -109,6 +112,17 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 accesories: action.payload
             }
+        case GET_FAMOUS_BIKES: 
+                const orderBikes = action.payload.sort((a, b) => {
+                    if(a.rating > b.rating) return -1;
+                    if(b.rating > a.rating) return 1;
+                    return 0;
+                });
+                const principalBikes = orderBikes.slice(0, 12);
+                return {
+                    ...state,
+                    famousBikes: principalBikes
+                }
         default: return state
     }
 }
