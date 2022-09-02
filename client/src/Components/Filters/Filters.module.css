@@ -138,13 +138,13 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 } */
 
-.fil{
+/* .fil{
     font-family: 'Roboto';
     font-style: normal;
     font-size: .9rem;
     letter-spacing: 0.1em;
     color: #2e2e2e;
-}
+} */
 
 .electrica, .mecanica {
     /* filter: brightness(1.3); */
