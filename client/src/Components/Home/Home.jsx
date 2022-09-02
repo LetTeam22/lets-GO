@@ -63,11 +63,11 @@ export const Home = () => {
     let newLabels = parameters[parameter].labels.filter((l) => l !== label);
     let newIds = parameters[parameter].ids.filter((i) => i !== id);
     if (value === "") {
-      document.getElementById(id).value = "";
+      if (id) document.getElementById(id).value = "";
     } else {
       newParameters = [...newParameters, property];
       newLabels = [...newLabels, label];
-      newIds = [...newIds, id];
+      if (id) newIds = [...newIds, id];
     }
     let newParametersValues = { ...parameters };
     newParametersValues[parameter].selected = newParameters;
@@ -81,12 +81,12 @@ export const Home = () => {
     handleChangeIdCard();
   };
 
-  const deleteFilter = (e, p, l, i) => {
-    handleParameter(e, p, "", l, i, "filters");
+  const deleteFilter = (e, property, label, id) => {
+    handleParameter(e, property, "", label, id, "filters");
   };
 
-  const deleteSort = (e, p, l, i) => {
-    handleParameter(e, p, "", l, i, "sorts");
+  const deleteSort = (e, property, label, id) => {
+    handleParameter(e, property, "", label, id, "sorts");
   };
 
   const deleteSearch = (e) => {

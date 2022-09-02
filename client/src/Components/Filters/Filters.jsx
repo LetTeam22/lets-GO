@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
+import gear from '../../image/gear.png'
+import ray from '../../image/ray.png'
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 const Filters = ({ handleParameter }) => {
 
@@ -10,19 +13,23 @@ const Filters = ({ handleParameter }) => {
     const parameters = useSelector(state => state.parameters);
 
     const handleTypeFilter = e => {
-        handleParameter(e, 'type', e.target.value, 'Tipo', 'typeFilter', 'filters')
+        handleParameter(e, 'type', e.target.value, 'Tipo', '', 'filters')
     }
 
-    const handleTractionFilter = e => {
-        handleParameter(e, 'traction', e.target.value, 'Tracción', 'tractionFilter', 'filters')
+    const handleTractionMecFilter = e => {
+        handleParameter(e, 'traction', 'mecánica', 'Tracción', '', 'filters')
+    }
+
+    const handleTractionElecFilter = e => {
+        handleParameter(e, 'traction', 'eléctrica', 'Tracción', '', 'filters')
     }
 
     const handleWheelSizeFilter = e => {
-        handleParameter(e, 'wheelSize', e.target.value, 'Rodado', 'wheelSizeFilter', 'filters')
+        handleParameter(e, 'wheelSize', e.target.value, 'Rodado', '', 'filters')
     }
 
     const handleColorFilter = e => {
-        handleParameter(e, 'color', e.target.value, 'Color', 'colorFilter', 'filters')
+        handleParameter(e, 'color', e.target.value, 'Color', '', 'filters')
     }
 
     const handleMinPriceFilter = e => {
@@ -44,31 +51,55 @@ const Filters = ({ handleParameter }) => {
         dispatch(setParameters('resetAll'));
         dispatch(setCurrentPage(1));
     };
-
+    
     return (
         <>                
+            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button>   
+            
             <h4 className={s.title}>Filtros</h4>
-            <span className={s.spanFilters}>Rodado</span>
-            <select name='wheelSize' onChange={handleWheelSizeFilter} className={parameters.filters.wheelSize ? `${s.select} ${s.act}` : s.select} id='wheelSizeFilter'>
-                <option value=''></option>
-                <option value='16'>16</option>
-                <option value='20'>20</option>
-                <option value='24'>24</option>
-                <option value='26'>26</option>
-                <option value='29'>29</option>
-            </select>
+            
+            <div className='checkCont'>
 
-            <span className={s.spanFilters}>Color</span>
-            <select name='color' onChange={handleColorFilter} className={parameters.filters.color ? `${s.select} ${s.act}` : s.select} id='colorFilter'>
-                <option value=''></option>
-                <option value='negro'>negro</option>
-                <option value='gris'>gris</option>
-                <option value='blanco'>blanco</option>
-                <option value='rojo'>rojo</option>
-                <option value='amarillo'>amarillo</option>
-                <option value='azul'>azul</option>
-                <option value='verde'>verde</option>
-            </select>
+                <FormControl>
+                    <FormLabel>Rodado</FormLabel>
+                    <RadioGroup value={parameters.filters.wheelSize} onChange={handleWheelSizeFilter}>
+                        <FormControlLabel value="" control={<Radio />} label="Todos"/>
+                        <FormControlLabel value="16" control={<Radio />} label="16"/>
+                        <FormControlLabel value="20" control={<Radio />} label="20"/>
+                        <FormControlLabel value="24" control={<Radio />} label="24"/>
+                        <FormControlLabel value="26" control={<Radio />} label="26"/>
+                        <FormControlLabel value="29" control={<Radio />} label="29"/>
+                    </RadioGroup>
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Color</FormLabel>
+                    <RadioGroup value={parameters.filters.color} onChange={handleColorFilter}>
+                        <FormControlLabel value="" control={<Radio />} />
+                        <FormControlLabel value="negro" control={<Radio sx={{color: 'black','&.Mui-checked': {color: 'black',},}}/>} />
+                        <FormControlLabel value="gris" control={<Radio sx={{color: 'gray','&.Mui-checked': {color: 'gray',},}}/>} />
+                        <FormControlLabel value="blanco" control={<Radio sx={{color: 'white','&.Mui-checked': {color: 'white',},}}/>} />
+                        <FormControlLabel value="rojo" control={<Radio sx={{color: 'red','&.Mui-checked': {color: 'red',},}}/>} />
+                        <FormControlLabel value="amarillo" control={<Radio sx={{color: 'yellow','&.Mui-checked': {color: 'yellow',},}}/>} />
+                        <FormControlLabel value="azul" control={<Radio sx={{color: 'blue','&.Mui-checked': {color: 'blue',},}}/>} />
+                        <FormControlLabel value="verde" control={<Radio sx={{color: 'green','&.Mui-checked': {color: 'green',},}}/>} />
+                    </RadioGroup>
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Tipo</FormLabel>
+                    <RadioGroup value={parameters.filters.type} onChange={handleTypeFilter}>
+                        <FormControlLabel value="" control={<Radio />} label="Todos"/>
+                        <FormControlLabel value="bmx" control={<Radio />} label="bmx"/>
+                        <FormControlLabel value="city" control={<Radio />} label="city"/>
+                        <FormControlLabel value="mtb" control={<Radio />} label="mtb"/>
+                        <FormControlLabel value="tandem" control={<Radio />} label="tandem"/>
+                        <FormControlLabel value="touring" control={<Radio />} label="touring"/>
+                        <FormControlLabel value="folding" control={<Radio />} label="folding"/>
+                    </RadioGroup>
+                </FormControl>
+
+            </div>
         
             <span className={s.spanFilters}>Precio Mínimo</span>
             <div className={parameters.filters.price.min ? `${s.input} ${s.act}` : s.input}>
@@ -98,24 +129,12 @@ const Filters = ({ handleParameter }) => {
                 />
             </div>
 
-            <span className={s.spanFilters}>Tracción</span>
-            <select name='traction' onChange={handleTractionFilter} className={parameters.filters.traction ? `${s.select} ${s.act}` : s.select} id='tractionFilter'>
-                <option value=''></option>
-                <option value='mecánica'>mecánica</option>
-                <option value='eléctrica'>eléctrica</option>
-            </select>
+            <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
+            <div className={s.tractionCont}>
+                <img className={parameters.filters.traction === 'mecánica' ? `${s.mecanica} ${s.act}` : s.mecanica} src={gear} alt='Mecánica ' onClick={handleTractionMecFilter}/>
+                <img className={parameters.filters.traction === 'eléctrica' ? `${s.electrica} ${s.act}` : s.electrica} src={ray} alt='Eléctrica ' onClick={handleTractionElecFilter}/>
+            </div>
 
-            <span className={s.spanFilters}>Tipos</span>
-            <select name='type' onChange={handleTypeFilter} className={parameters.filters.type ? `${s.select} ${s.act}` : s.select} id='typeFilter'>
-                <option value=''></option>
-                <option value='bmx'>bmx</option>
-                <option value='city'>city</option>
-                <option value='mtb'>mtb</option>
-                <option value='tandem'>tandem</option>
-                <option value='touring'>touring</option>
-                <option value='folding'>folding</option>
-            </select>
-            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button>   
          </>
     )
 };

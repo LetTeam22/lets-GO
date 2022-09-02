@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
+    "@cloudinary/react": "^1.4.2",
+    "@cloudinary/url-gen": "^1.8.6",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@material-ui/styles": "^4.11.5",

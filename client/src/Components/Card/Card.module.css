@@ -70,7 +70,6 @@
     color: rgb(193, 193, 14);
     font-size: 1.3rem;
     font-weight: 900;
-    padding-top: .1rem;
     margin-left: .3rem;
 }
 
@@ -115,6 +114,7 @@
 .rodadoCont {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 2rem;
     padding-top: .5rem;
 }

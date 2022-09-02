@@ -8,6 +8,7 @@ import { getBikeDetail, addBooking, getAccesories } from '../../Redux/actions';
 import s from './BikeDetail.module.css';
 import icon from '../../image/bicisDestacadas/icon.png';
 import tech from '../../image/Technology.png';
+import Loading from '../Loading/Loading';
 
 
 export const BikeDetail = () => {
