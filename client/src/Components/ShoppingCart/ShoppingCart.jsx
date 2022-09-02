@@ -32,7 +32,7 @@ export const ShoppingCart = () => {
 
   useEffect(() => {
     dispatch(getBikes());
-    dispatch(getAccesories);
+    dispatch(getAccesories());
     dispatch(getUser(user?.email));
   }, [dispatch]);
 
@@ -82,8 +82,6 @@ export const ShoppingCart = () => {
       }
     }
     console.log(accesories);
-    // const bookedBikes = JSON.parse(localStorage.getItem('booking') || '[]')
-    // localStorage.setItem('booking',JSON.stringify([...bookedBikes, input]))
     return accesories;
   };
 

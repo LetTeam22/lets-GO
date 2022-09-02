@@ -103,6 +103,16 @@ export const BikeDetail = () => {
     return accesories;
   };
 
+  const adicional = () => {
+    let adic = 0
+    if (llenarAccs(input).length > 0) {
+      llenarAccs(input).forEach(acc =>
+        adic += parseInt(acc.price, 10)
+      )
+    }
+    return adic
+  }
+
   return (
     <>
       {!!bike.length ? (
@@ -297,7 +307,7 @@ export const BikeDetail = () => {
             </div>
 
             <div>
-              Accesorios seleccionados
+              <div>Accesorios seleccionados</div>
               <ul>
                 {llenarAccs(input)?.map(acc => {
                   return (
@@ -305,6 +315,11 @@ export const BikeDetail = () => {
                   )
                 })}
               </ul>
+              <div>
+                <p>Total adicional</p>
+                <p>$ {adicional()} / dia</p>
+              </div>
+
             </div>
           </div>
 
