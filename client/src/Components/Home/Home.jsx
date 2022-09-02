@@ -98,11 +98,12 @@ export const Home = () => {
   };
 
   return (
+      loading? <Loading />
+      :
     <div className={s.containerHome}>
       <div className={s.encabezado}>
         <img src={encabezado} alt="encabezado" className={s.encabezado} />
       </div>
-      {loading && <Loading />}
       <div className={s.divFijo}>
         <div className={s.resultados}>
           <h3 className={s.title}>ENCONTRÁ TU LET</h3>
