@@ -115,3 +115,7 @@
     display: flex;
     column-gap: 5rem;
 }
+
+.btnSwal{
+    background-color: #F9B621!important;
+  }
