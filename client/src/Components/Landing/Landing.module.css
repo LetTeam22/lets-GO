@@ -42,15 +42,12 @@
 .text {
     width: 36.75rem;
     height: 8.813rem;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 3rem;
     line-height: 3.4rem;
     text-align: center;
     letter-spacing: 0.07em;
     color: #FFFFFF;
-    text-shadow: black .07rem .3rem 0.1em
 }
 
 .searchBtn {

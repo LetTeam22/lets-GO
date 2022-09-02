@@ -12,10 +12,10 @@
 .title {
     position: absolute;
     color: #787877;
-    top: 5%;
+    top: 7%;
     z-index: 1;
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
     width: 100%;
     text-align: center;
     margin-right: auto;

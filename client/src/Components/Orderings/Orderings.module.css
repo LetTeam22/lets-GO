@@ -4,12 +4,12 @@
     column-gap: 0.5rem;
     align-items: center;
     justify-content: end;
+    margin-right: 5rem;
 }
 
 .spanOrderings {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-size: .9rem;
+    font-size: .8rem;
+    font-weight: 500;
     letter-spacing: 0.1em;
     color: #706f6f;
     margin-bottom: 0.8rem;
