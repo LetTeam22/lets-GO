@@ -14,10 +14,10 @@
 .title {
     position: absolute;
     color: #787877;
-    top: 5%;
+    top: 7%;
     z-index: 1;
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
     width: 100%;
     text-align: center;
     margin-right: auto;
@@ -36,15 +36,14 @@
 }
 
 h1 {
-    color: #333333;
-    font-family: 'Roboto';
-    font-style: bold;
-    font-weight: 700;
+    width: 36.75rem;
+    height: 8.813rem;
+    font-weight: 400;
     font-size: 3rem;
-    line-height: 70px;
+    line-height: 3.4rem;
     text-align: center;
     letter-spacing: 0.07em;
-    width: 30rem;
+    color: #585757;
 }
 
 .imgExperiencies {

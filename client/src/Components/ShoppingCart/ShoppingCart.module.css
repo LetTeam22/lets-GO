@@ -3,14 +3,14 @@
 .container {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 10rem;
     text-align: center;
+    height: calc(100vh - 7rem);
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0;
 }
 
 .bikes {
@@ -115,3 +115,7 @@
     display: flex;
     column-gap: 5rem;
 }
+
+.btnSwal{
+    background-color: #F9B621!important;
+  }

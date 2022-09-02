@@ -9,3 +9,6 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const ADD_BOOKING = 'ADD_BOOKING';
 export const POST_BOOKINGS = 'POST_BOOKINGS';
 export const GET_FAMOUS_BIKES = 'GET_FAMOUS_BIKES';
+export const GET_ACCESORIES = "GET_ACCESORIES";
+
+
