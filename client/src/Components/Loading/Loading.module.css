@@ -12,7 +12,7 @@
     background-size: cover;
     background-attachment: fixed;
     background-position-x: center;
-    background-image: url(/static/media/fondo_huellas.2bcad5db.png);
+    background-image: url('../../image/fondo_huellas.png');
 }
 .seMueve{
     width: 100%;
