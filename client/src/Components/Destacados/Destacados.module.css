@@ -124,6 +124,7 @@
 .rodadoCont {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 2rem;
     padding-top: .5rem;
 }
