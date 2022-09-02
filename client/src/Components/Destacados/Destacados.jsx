@@ -3,8 +3,8 @@ import s from "./Destacados.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
 import rodado from '../../image/rueda_bici.png';
-import gear from '../../image/gear.png'
-import ray from '../../image/ray.png'
+import gear from '../../image/gear.png';
+import ray from '../../image/ray.png';
 import { Link } from "react-router-dom";
 // import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
 
