@@ -8,6 +8,7 @@ const Filters = ({ handleParameter }) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
+    const renderedBikes = useSelector((state) => state.renderedBikes);
 
     const handleTypeFilter = e => {
         handleParameter(e, 'type', e.target.value, 'Tipo', 'typeFilter', 'filters')
@@ -45,9 +46,12 @@ const Filters = ({ handleParameter }) => {
         dispatch(setCurrentPage(1));
     };
 
-    return (
-        <>                
-            <h4 className={s.title}>Filtros</h4>
+    return (     
+        <div className={s.filtersSticky}>
+            <h3 className={s.title}>ENCONTRÁ TU LET</h3>
+            <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+            <button className={s.reset} onClick={handleResetAll}>Borrar filtros</button>
+            {/* <h4 className={s.titleFilters}>Filtros</h4> */}
             <span className={s.spanFilters}>Rodado</span>
             <select name='wheelSize' onChange={handleWheelSizeFilter} className={parameters.filters.wheelSize ? `${s.select} ${s.act}` : s.select} id='wheelSizeFilter'>
                 <option value=''></option>
@@ -115,8 +119,7 @@ const Filters = ({ handleParameter }) => {
                 <option value='touring'>touring</option>
                 <option value='folding'>folding</option>
             </select>
-            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button>   
-         </>
+        </div>
     )
 };
 
