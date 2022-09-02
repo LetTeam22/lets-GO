@@ -112,7 +112,7 @@ function rootReducer(state = initialState, action) {
                     if(b.rating > a.rating) return 1;
                     return 0;
                 });
-                const principalBikes = orderBikes.slice(0, 4);
+                const principalBikes = orderBikes.slice(0, 12);
                 return {
                     ...state,
                     famousBikes: principalBikes

@@ -50,10 +50,6 @@ export const Landing = () => {
         <div className={s.triangle}></div>
       </div>
       <Experiencies />
-
-      {/* <div className={s.separador} id={s.second}>
-        <div className={s.triangle}></div> */}
-      {/* </div> */}
     </div>
   );
 };
