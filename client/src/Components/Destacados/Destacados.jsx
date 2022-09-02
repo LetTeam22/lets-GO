@@ -3,8 +3,8 @@ import s from "./Destacados.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
 import rodado from '../../image/rueda_bici.png';
-import mecanica from '../../image/mecanica.png';
-import electrica from '../../image/electrica.png';
+import gear from '../../image/gear.png';
+import ray from '../../image/ray.png';
 import { Link } from "react-router-dom";
 // import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
 
@@ -37,7 +37,7 @@ export const Destacados = () => {
                         <h4>{bike.name}</h4>
                         <div className={s.dataCont}>
                           <span className={s.type}>{bike.type} </span>
-                          <img className={bike.traction === 'eléctrica' ? s.electrica : s.mecanica} src={bike.traction === 'eléctrica' ? electrica : mecanica} alt='Tracción '/>
+                          <img className={bike.traction === 'eléctrica' ? s.electrica : s.mecanica} src={bike.traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
                           <div className={s.rodadoCont}>
                               <img className={s.rueda} src={rodado} alt='Rodado '/>
                               <span className={s.rodado}>{bike.wheelSize}</span>
