@@ -40,43 +40,43 @@ export const BikeDetail = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const bookedBikes = JSON.parse(localStorage.getItem('booking') || '[]')
-    localStorage.setItem('booking',JSON.stringify([...bookedBikes, input]))
-      dispatch(addBooking(input));
-      setInput({
-        canasto: false,
-        silla: false,
-        luces: false,
-        casco: false,
-        candado: false,
-        lentes: false,
-        botella: false,
-        calzado: false,
-      });
-      swal({
-        title: "Bicicleta añadida al carrito",
-        icon: "success",
-        buttons: {
-          cancel: {
-            text: "Seguir buscando",
-            value: null,
-            visible: true,
-            className: "",
-            closeModal: true,
-          },
-          confirm: {
-            text: "Ir al carrito",
-            value: true,
-            visible: true,
-            className: s.btnSwal,
-            closeModal: true
-          }
+    localStorage.setItem('booking', JSON.stringify([...bookedBikes, input]))
+    dispatch(addBooking(input));
+    setInput({
+      canasto: false,
+      silla: false,
+      luces: false,
+      casco: false,
+      candado: false,
+      lentes: false,
+      botella: false,
+      calzado: false,
+    });
+    swal({
+      title: "Bicicleta añadida al carrito",
+      icon: "success",
+      buttons: {
+        cancel: {
+          text: "Seguir buscando",
+          value: null,
+          visible: true,
+          className: "",
+          closeModal: true,
         },
-      })
+        confirm: {
+          text: "Ir al carrito",
+          value: true,
+          visible: true,
+          className: s.btnSwal,
+          closeModal: true
+        }
+      },
+    })
       .then(goCart => {
         if (goCart) {
           history.push('/cart')
         } else {
-            history.push('/home')
+          history.push('/home')
         }
       });
   };
@@ -86,6 +86,21 @@ export const BikeDetail = () => {
       ...input,
       [e.target.name]: e.target.checked,
     });
+  };
+
+  const llenarAccs = (accs) => {
+    let accesories = [];
+    for (let acc in accs) {
+      if (accs[acc] === true) {
+        for (let acces of allAccs) {
+          if (acces.name.toLowerCase() === acc) {
+            accesories.push(acces);
+          }
+        }
+      }
+    }
+    console.log(accesories);
+    return accesories;
   };
 
   return (
@@ -165,6 +180,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-1">Canasto</label>
                   <img src={allAccs[4]?.image} alt="not found" />
+                  <p>$ {allAccs[4]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -178,6 +194,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-2">Silla portabebés</label>
                   <img src={allAccs[2]?.image} alt="not found" />
+                  <p>$ {allAccs[2]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -191,6 +208,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-3">Luces</label>
                   <img src={allAccs[5]?.image} alt="not found" />
+                  <p>$ {allAccs[5]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -204,6 +222,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-4">Casco</label>
                   <img src={allAccs[0]?.image} alt="not found" />
+                  <p>$ {allAccs[0]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -217,6 +236,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-5">Candado</label>
                   <img src={allAccs[6]?.image} alt="not found" />
+                  <p>$ {allAccs[6]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -230,6 +250,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-6">Lentes</label>
                   <img src={allAccs[7]?.image} alt="not found" />
+                  <p>$ {allAccs[7]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -243,6 +264,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-7">Botella</label>
                   <img src={allAccs[1]?.image} alt="not found" />
+                  <p>$ {allAccs[1]?.price} / dia</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -256,6 +278,7 @@ export const BikeDetail = () => {
                   />
                   <label for="box-8">Calzado</label>
                   <img src={allAccs[3]?.image} alt="not found" />
+                  <p>$ {allAccs[3]?.price} / dia</p>
                 </div>
               </div>
               <div style={{ marginTop: "6rem", marginRight: "1rem" }}>
@@ -271,6 +294,17 @@ export const BikeDetail = () => {
                   </button>
                 </div>
               </div>
+            </div>
+
+            <div>
+              Accesorios seleccionados
+              <ul>
+                {llenarAccs(input)?.map(acc => {
+                  return (
+                    <li>{acc.name} + ${acc.price} / día</li>
+                  )
+                })}
+              </ul>
             </div>
           </div>
 

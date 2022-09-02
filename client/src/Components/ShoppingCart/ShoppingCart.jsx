@@ -82,6 +82,8 @@ export const ShoppingCart = () => {
       }
     }
     console.log(accesories);
+    // const bookedBikes = JSON.parse(localStorage.getItem('booking') || '[]')
+    // localStorage.setItem('booking',JSON.stringify([...bookedBikes, input]))
     return accesories;
   };
 
@@ -109,12 +111,12 @@ export const ShoppingCart = () => {
         text: "Debes loguearte primero",
         icon: "warning",
         button: {
-            text: "Ok",
-            value: true,
-            visible: true,
-            className: s.btnSwal,
-            closeModal: true
-          }
+          text: "Ok",
+          value: true,
+          visible: true,
+          className: s.btnSwal,
+          closeModal: true
+        }
       });
     } else {
       dispatch(setParameters("resetAll"));
@@ -125,13 +127,14 @@ export const ShoppingCart = () => {
         text: "Disfruta tu aventura!",
         icon: "success",
         button: {
-            confirm: {
+          confirm: {
             text: "Ok",
             value: true,
             visible: true,
             className: s.btnSwal,
             closeModal: true
-          }}
+          }
+        }
       });
       history.push("/home");
     }
@@ -160,15 +163,14 @@ export const ShoppingCart = () => {
                           {el.name}
                         </p>
                         <img src={el.image} alt="not" found />
-                        <p> $ {el.pric} / dia </p>
+                        <p> $ {el.price} / dia </p>
                       </div>
                     ))}
                   </div>
-                  <p className={s.prices}>{`Subtotal: $ ${
-                    isNaN(totalPerBike(bike.price))
-                      ? 0
-                      : totalPerBike(bike.price)
-                  }`}</p>
+                  <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price))
+                    ? 0
+                    : totalPerBike(bike.price)
+                    }`}</p>
                 </div>
               </div>
             );
@@ -204,8 +206,8 @@ export const ShoppingCart = () => {
             <button
               disabled={
                 postedBooking.startDate === "" ||
-                postedBooking.endDate === ""  ||
-                !postedBooking.bikeIds.length
+                  postedBooking.endDate === "" ||
+                  !postedBooking.bikeIds.length
                   ? true
                   : false
               }
