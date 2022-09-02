@@ -5,19 +5,21 @@ import { getAccesories, getBikes, getUser, postBookings, setParameters } from ".
 import s from './ShoppingCart.module.css';
 import Dates from "../Dates/Dates";
 import swal from 'sweetalert';
+import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../Loading/Loading";
 
 
 export const ShoppingCart = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    // const loggedUser = JSON.parse(localStorage.getItem('user'))
     const bookings = useSelector((state) => state.bookings);
     const date = useSelector((state) => state.parameters.date);
-    const user = useSelector((state) => state.user);
+    const userLogged = useSelector((state) => state.user);
     const allAccs = useSelector((state) => state.accesories)
     const allBikes = useSelector((state) => state.allBikes);
     let cartBikes = [];
+    const { user, isLoading } = useAuth0();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -25,15 +27,11 @@ export const ShoppingCart = () => {
 
     useEffect(() => {
         dispatch(getBikes())
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(getAccesories)
+        dispatch(getUser(user?.email))
     }, [dispatch])
 
-    useEffect(() => {
-        dispatch(getUser(JSON.parse(localStorage.getItem('user')).email))
-    }, [dispatch])
+    if (isLoading) return <Loading />;
 
     for (let bike of allBikes) {
         for (let book of bookings)
@@ -63,7 +61,7 @@ export const ShoppingCart = () => {
     let postedBooking = {
         startDate: date.from,
         endDate: date.to,
-        userId: user?.idUser,
+        userId: userLogged?.idUser,
         bikeIds: postbikeIds
     }
 
