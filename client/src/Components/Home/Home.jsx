@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Loading } from "../Loading/Loading";
+import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-import Dates from "../Dates/Dates";
+// import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
 import encabezado from "../../image/encabezado.png";
 import Orderings from "../Orderings/Orderings";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-// import huellas from '../../image/Group.png';
-// import ruedas from '../../image/Group.png';
 import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
 
 export const Home = () => {
@@ -22,7 +20,6 @@ export const Home = () => {
   const renderedBikes = useSelector((state) => state.renderedBikes);
   const paginate = useSelector((state) => state.paginate);
   const parameters = useSelector((state) => state.parameters);
-  // const allSelectedFilters = useSelector(state => state.selectedFilters);
   let [cardId, setCardId] = useState(1);
 
   useEffect(() => {
@@ -66,11 +63,11 @@ export const Home = () => {
     let newLabels = parameters[parameter].labels.filter((l) => l !== label);
     let newIds = parameters[parameter].ids.filter((i) => i !== id);
     if (value === "") {
-      document.getElementById(id).value = "";
+      if (id) document.getElementById(id).value = "";
     } else {
       newParameters = [...newParameters, property];
       newLabels = [...newLabels, label];
-      newIds = [...newIds, id];
+      if (id) newIds = [...newIds, id];
     }
     let newParametersValues = { ...parameters };
     newParametersValues[parameter].selected = newParameters;
@@ -84,12 +81,12 @@ export const Home = () => {
     handleChangeIdCard();
   };
 
-  const deleteFilter = (e, p, l, i) => {
-    handleParameter(e, p, "", l, i, "filters");
+  const deleteFilter = (e, property, label, id) => {
+    handleParameter(e, property, "", label, id, "filters");
   };
 
-  const deleteSort = (e, p, l, i) => {
-    handleParameter(e, p, "", l, i, "sorts");
+  const deleteSort = (e, property, label, id) => {
+    handleParameter(e, property, "", label, id, "sorts");
   };
 
   const deleteSearch = (e) => {
@@ -101,58 +98,38 @@ export const Home = () => {
   };
 
   return (
+      loading? <Loading />
+      :
     <div className={s.containerHome}>
+
       <div className={s.encabezado}>
         <img src={encabezado} alt="encabezado" className={s.encabezado} />
       </div>
-      {loading && <Loading />}
-      <h3 className={s.title}>ENCONTRÁ TU LET</h3>
-      <div className={s.divFijo}>
-        <div className={s.resultados}>
-          <span
-            className={s.result}
-          >{`Resultados encontrados: ${renderedBikes.length}`}</span>
-          {!!parameters.search.selected.length && (
-            <FiltersSelected
-              label="Búsqueda"
-              select={parameters.search}
-              handleDelete={deleteSearch}
-            />
-          )}
-          {!!parameters.filters.selected.length && (
-            <FiltersSelected
-              label="Filtros"
-              select={parameters.filters}
-              handleDelete={deleteFilter}
-            />
-          )}
-          {!!parameters.sorts.selected.length && (
-            <FiltersSelected
-              label="Ordenamientos"
-              select={parameters.sorts}
-              handleDelete={deleteSort}
-            />
-          )}
+
+      <div className={s.divSticky}>
+        <div className={s.containFiltersSelected}>
+          {!!parameters.search.selected.length && (<FiltersSelected label="Búsqueda" select={parameters.search} handleDelete={deleteSearch} />)}
+          {!!parameters.filters.selected.length && (<FiltersSelected label="Filtros" select={parameters.filters} handleDelete={deleteFilter} />)}
+          {!!parameters.sorts.selected.length && (<FiltersSelected label="Ordenamientos" select={parameters.sorts} handleDelete={deleteSort} />)}
         </div>
+
         <div className={s.divDateAndOrder}>
-          <Dates />
+          {/* comento el Dates hasta que se cambie, este componente no deja modificar estilos */}
+          {/* <Dates /> */}
           <Orderings handleParameter={handleParameter} />
         </div>
       </div>
       <div className={s.filterwrapp}>
-        <div className={s.containerFilter}>
-          <Filters handleParameter={handleParameter} />
-        </div>
+        <div className={s.containerFilter}><Filters handleParameter={handleParameter} /></div>
         <div className={s.divPaginationAndBikes}>
-          {renderedBikes.length && <Pagination />}
+          {!!renderedBikes.length && <Pagination />}
           {notFound && <NotFound />}
           {!loading && !!renderedBikes.length && (
             <div className={s.containerCards}>
               {currentBikes?.map((e) => (
                 <div key={e.idBike}>
                   <Link to={"/bike/" + e.idBike}>
-                    <Card
-                      key={e.idBike}
+                    <Card key={e.idBike}
                       name={e.name}
                       type={e.type}
                       image={e.image}
@@ -173,8 +150,3 @@ export const Home = () => {
     </div>
   );
 };
-
-{
-  /* <img src={ruedas} alt="ruedas" className={s.ruedas} />
-<h2 className={s.titleAccs}>ACCESORIOS</h2> */
-}

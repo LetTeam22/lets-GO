@@ -3,34 +3,45 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
+import gear from '../../image/gear.png'
+import ray from '../../image/ray.png'
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
 
 const Filters = ({ handleParameter }) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
+    const allBikes = useSelector((state) => state.allBikes);
+    const renderedBikes = useSelector((state) => state.renderedBikes);
+    const realMinPrice = allBikes.length ? Math.min(...allBikes.map(b => Number(b.price))) : 0
+    const realMaxPrice = allBikes.length ? Math.max(...allBikes.map(b => Number(b.price))) : 2000
 
-    const handleTypeFilter = e => {
-        handleParameter(e, 'type', e.target.value, 'Tipo', 'typeFilter', 'filters')
+    const handlePrice = (e, newRange) => {
+        e.preventDefault()
+        let minPrice = newRange[0] === realMinPrice ? '' : newRange[0]
+        let maxPrice = newRange[1] === realMaxPrice ? '' : newRange[1]
+        handleParameter(e, 'min', minPrice, 'Precio Min', '', 'filters')
+        handleParameter(e, 'max', maxPrice, 'Precio Max', '', 'filters')
+    };
+
+    const handleTractionMecFilter = e => {
+        handleParameter(e, 'traction', 'mecánica', 'Tracción', '', 'filters')
     }
-
-    const handleTractionFilter = e => {
-        handleParameter(e, 'traction', e.target.value, 'Tracción', 'tractionFilter', 'filters')
+    
+    const handleTractionElecFilter = e => {
+        handleParameter(e, 'traction', 'eléctrica', 'Tracción', '', 'filters')
     }
-
+    
     const handleWheelSizeFilter = e => {
-        handleParameter(e, 'wheelSize', e.target.value, 'Rodado', 'wheelSizeFilter', 'filters')
+        handleParameter(e, 'wheelSize', e.target.value, 'Rodado', '', 'filters')
     }
 
     const handleColorFilter = e => {
-        handleParameter(e, 'color', e.target.value, 'Color', 'colorFilter', 'filters')
+        handleParameter(e, 'color', e.target.value, 'Color', '', 'filters')
     }
 
-    const handleMinPriceFilter = e => {
-        handleParameter(e, 'min', e.target.value, 'Precio Min', 'minPriceFilter', 'filters')
-    }
-
-    const handleMaxPriceFilter = e => {
-        handleParameter(e, 'max', e.target.value, 'Precio Max', 'maxPriceFilter', 'filters')
+    const handleTypeFilter = e => {
+        handleParameter(e, 'type', e.target.value, 'Tipo', '', 'filters')
     }
 
     const handleResetAll = e => {
@@ -45,35 +56,75 @@ const Filters = ({ handleParameter }) => {
         dispatch(setCurrentPage(1));
     };
 
-    return (
-        <>       
-            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button> 
-            
-            <h4 className={s.title}>Filtros</h4>
+    return (     
+        <div className={s.filtersSticky}>
 
-            <span className={s.spanFilters}>Rodado</span>
-            <select name='wheelSize' onChange={handleWheelSizeFilter} className={parameters.filters.wheelSize ? `${s.select} ${s.act}` : s.select} id='wheelSizeFilter'>
-                <option value=''></option>
-                <option value='16'>16</option>
-                <option value='20'>20</option>
-                <option value='24'>24</option>
-                <option value='26'>26</option>
-                <option value='29'>29</option>
-            </select>
+            <h3 className={s.title}>ENCONTRÁ TU LET</h3>
 
-            <span className={s.spanFilters}>Color</span>
-            <select name='color' onChange={handleColorFilter} className={parameters.filters.color ? `${s.select} ${s.act}` : s.select} id='colorFilter'>
-                <option value=''></option>
-                <option value='negro'>negro</option>
-                <option value='gris'>gris</option>
-                <option value='blanco'>blanco</option>
-                <option value='rojo'>rojo</option>
-                <option value='amarillo'>amarillo</option>
-                <option value='azul'>azul</option>
-                <option value='verde'>verde</option>
-            </select>
+            <span className={s.result} >{`Resultados encontrados: ${renderedBikes.length}`}</span>
+
+            <button className={s.reset} onClick={handleResetAll}>Borrar filtros</button>
+
+            <span className={s.spanFilters}>Precio</span>
+            <Slider
+                value={[parameters.filters.price.min ? parameters.filters.price.min : realMinPrice, parameters.filters.price.max ? parameters.filters.price.max : realMaxPrice]}
+                min={realMinPrice}
+                max={realMaxPrice}
+                step={10}
+                onChange={handlePrice}
+                valueLabelDisplay="auto"
+            />
+
+            <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
+            <div className={s.tractionCont}>
+                <img className={parameters.filters.traction === 'mecánica' ? `${s.mecanica} ${s.act}` : s.mecanica} src={gear} alt='Mecánica ' onClick={handleTractionMecFilter}/>
+                <img className={parameters.filters.traction === 'eléctrica' ? `${s.electrica} ${s.act}` : s.electrica} src={ray} alt='Eléctrica ' onClick={handleTractionElecFilter}/>
+            </div>
+
+            <div className='checkCont'>
+
+                <FormControl>
+                    <FormLabel>Rodado</FormLabel>
+                    <RadioGroup value={parameters.filters.wheelSize} onChange={handleWheelSizeFilter}>
+                        <FormControlLabel value="" control={<Radio size="small"/>} label="Todos"/>
+                        <FormControlLabel value="16" control={<Radio size="small" />} label="16"/>  {/*<span>16</span>*/}
+                        <FormControlLabel value="20" control={<Radio size="small"/>} label="20"/>
+                        <FormControlLabel value="24" control={<Radio size="small"/>} label="24"/>
+                        <FormControlLabel value="26" control={<Radio size="small"/>} label="26"/>
+                        <FormControlLabel value="29" control={<Radio size="small"/>} label="29"/>
+                    </RadioGroup>
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Color</FormLabel>
+                    <RadioGroup value={parameters.filters.color} onChange={handleColorFilter}>
+                        <FormControlLabel value="" control={<Radio size="small"/>} />
+                        <FormControlLabel value="negro" control={<Radio size="small" sx={{color: 'black','&.Mui-checked': {color: 'black',},}}/>} />
+                        <FormControlLabel value="gris" control={<Radio size="small" sx={{color: 'gray','&.Mui-checked': {color: 'gray',},}}/>} />
+                        <FormControlLabel value="blanco" control={<Radio size="small" sx={{color: 'white','&.Mui-checked': {color: 'white',},}}/>} />
+                        <FormControlLabel value="rojo" control={<Radio size="small" sx={{color: 'red','&.Mui-checked': {color: 'red',},}}/>} />
+                        <FormControlLabel value="amarillo" control={<Radio size="small" sx={{color: 'yellow','&.Mui-checked': {color: 'yellow',},}}/>} />
+                        <FormControlLabel value="azul" control={<Radio size="small" sx={{color: 'blue','&.Mui-checked': {color: 'blue',},}}/>} />
+                        <FormControlLabel value="verde" control={<Radio size="small" sx={{color: 'green','&.Mui-checked': {color: 'green',},}}/>} />
+                    </RadioGroup>
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Tipo</FormLabel>
+                    <RadioGroup value={parameters.filters.type} onChange={handleTypeFilter}>
+                        <FormControlLabel value="" control={<Radio size="small"/>} label="Todos"/>
+                        <FormControlLabel value="bmx" control={<Radio size="small"/>} label="bmx"/>
+                        <FormControlLabel value="city" control={<Radio size="small"/>} label="city"/>
+                        <FormControlLabel value="mtb" control={<Radio size="small"/>} label="mtb"/>
+                        <FormControlLabel value="tandem" control={<Radio size="small"/>} label="tandem"/>
+                        <FormControlLabel value="touring" control={<Radio size="small"/>} label="touring"/>
+                        <FormControlLabel value="folding" control={<Radio size="small"/>} label="folding"/>
+                    </RadioGroup>
+                </FormControl>
+
+            </div>
         
-            <span className={s.spanFilters}>Precio Mínimo</span>
+            {/* <span className={s.spanFilters}>Precio Mínimo</span>
             <div className={parameters.filters.price.min ? `${s.input} ${s.act}` : s.input}>
                 <FaRegMoneyBillAlt color="#C3C4C5" size='2rem' className={s.priceIcon} />
                 <input 
@@ -99,26 +150,10 @@ const Filters = ({ handleParameter }) => {
                     className={s.priceInputs}
                     id='maxPriceFilter'
                 />
-            </div>
-
-            <span className={s.spanFilters}>Tracción</span>
-            <select name='traction' onChange={handleTractionFilter} className={parameters.filters.traction ? `${s.select} ${s.act}` : s.select} id='tractionFilter'>
-                <option value=''></option>
-                <option value='mecánica'>mecánica</option>
-                <option value='eléctrica'>eléctrica</option>
-            </select>
-
-            <span className={s.spanFilters}>Tipos</span>
-            <select name='type' onChange={handleTypeFilter} className={parameters.filters.type ? `${s.select} ${s.act}` : s.select} id='typeFilter'>
-                <option value=''></option>
-                <option value='bmx'>bmx</option>
-                <option value='city'>city</option>
-                <option value='mtb'>mtb</option>
-                <option value='tandem'>tandem</option>
-                <option value='touring'>touring</option>
-                <option value='folding'>folding</option>
-            </select>
-         </>
+            </div> */}
+            
+            
+        </div>
     )
 };
 

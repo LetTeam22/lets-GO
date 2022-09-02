@@ -7,6 +7,7 @@
     justify-content: center;
     text-align: center;
     /* padding: 1.5rem; */
+    height: 100%;
 }
 
 .card {
@@ -22,7 +23,7 @@
     filter: brightness(1.3);
     mix-blend-mode: multiply;
     /* height: 14rem; */
-    /* width: 20rem; */
+    width: 20rem;
     /* z-index: 50; */
 }
 
@@ -70,7 +71,6 @@
     color: rgb(193, 193, 14);
     font-size: 1.3rem;
     font-weight: 900;
-    padding-top: .1rem;
     margin-left: .3rem;
 }
 
@@ -115,6 +115,7 @@
 .rodadoCont {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 2rem;
     padding-top: .5rem;
 }

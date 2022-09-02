@@ -1,44 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./Destacados.module.css";
-import bici1 from "../../image/bicisDestacadas/img_bici1.png";
-import bici2 from "../../image/bicisDestacadas/img_bici2.png";
-import bici3 from "../../image/bicisDestacadas/img_bici3.png";
-import bici4 from "../../image/bicisDestacadas/img_bici4.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getFamousBikes } from "../../Redux/actions";
+import rodado from '../../image/rueda_bici.png';
+import gear from '../../image/gear.png';
+import ray from '../../image/ray.png';
+import { Link } from "react-router-dom";
+// import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
+
+
 
 export const Destacados = () => {
+
+  const bikes = useSelector(state => state.famousBikes);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getFamousBikes());
+  }, [dispatch]);
+
   return (
-    <>
-      <div className={s.container}>
-        <span className={s.title}>DESTACADAS</span>
-        <div className={s.destacadas} id={s.one}>
-          <img src={bici1} alt="bici1" />
-          <h4>Fenix 7 Solar Zafiro</h4>
-          <span>Blanco Titanio Azul</span>
-          <span>Nro. de parte: 010-02540-27</span>
-          <h4 className={s.price}>$342.999</h4>
+    bikes.length 
+    ? <>
+        <div className={s.container}>
+          <span className={s.title}>DESTACADAS</span>
+          <div className={s.slider}>
+            <div className={s.slider_track}>
+              {
+                bikes.map(bike => {
+                  return (
+                    <div className={`${s.destacadas} ${s.slide}`} id={s.one}>
+                        <Link to={`/bike/${bike.idBike}`}>
+                          <img src={bike.image} alt="bicis" className={s.images} />
+                        </Link>
+                        <h4>{bike.name}</h4>
+                        <div className={s.dataCont}>
+                          <span className={s.type}>{bike.type} </span>
+                          <img className={bike.traction === 'eléctrica' ? s.electrica : s.mecanica} src={bike.traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
+                          <div className={s.rodadoCont}>
+                              <img className={s.rueda} src={rodado} alt='Rodado '/>
+                              <span className={s.rodado}>{bike.wheelSize}</span>
+                          </div>
+                        </div>
+                        <h4 className={s.price}>${bike.price}/día</h4>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
         </div>
-        <div className={s.destacadas} id={s.two}>
-          <img src={bici2} alt="bici2" />
-          <h4>Fenix 7 Solar Zafiro</h4>
-          <span>Blanco Titanio Azul</span>
-          <span>Nro. de parte: 010-02540-27</span>
-          <h4 className={s.price}>$342.999</h4>
-        </div>
-        <div className={s.destacadas} id={s.three}>
-          <img src={bici3} alt="bici3" />
-          <h4>Fenix 7 Solar Zafiro</h4>
-          <span>Blanco Titanio Azul</span>
-          <span>Nro. de parte: 010-02540-27</span>
-          <h4 className={s.price}>$342.999</h4>
-        </div>
-        <div className={s.destacadas} id={s.four}>
-          <img src={bici4} alt="bici4" />
-          <h4>Fenix 7 Solar Zafiro</h4>
-          <span>Blanco Titanio Azul</span>
-          <span>Nro. de parte: 010-02540-27</span>
-          <h4 className={s.price}>$342.999</h4>
-        </div>
-      </div>
-    </>
+      </>
+    : <></>
+    
   );
 };

@@ -261,3 +261,7 @@
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .btnSwal{
+    background-color: #F9B621!important;
+  }

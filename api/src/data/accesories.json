@@ -2,7 +2,7 @@
     {
         "name": "Casco",
         "description": "Para viajar protegido",
-        "image": "../../../client/src/image/casco.png",
+        "image": "../..//image/casco.png",
         "price": "150"
     },
     {
@@ -26,7 +26,7 @@
     {
         "name": "Canasto",
         "description": "Sumá comodidad a tu Let",
-        "image": "../../../client/src/image/canasto.png",
+        "image": "../../image/canasto.png",
         "price": "230"
     },
     {

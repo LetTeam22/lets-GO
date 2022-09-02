@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   FormControl,
@@ -8,23 +8,24 @@ import {
   Input,
   Button,
   FormHelperText,
-  IconButton
+  IconButton,
 } from "@mui/material";
 import { IoSend } from "react-icons/io5";
-import { BsCameraFill } from 'react-icons/bs';
+import { BsCameraFill } from "react-icons/bs";
 import theme from "../MaterialUIColors";
 import { ThemeProvider } from "@emotion/react";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import s from "./ProfileToEdit.module.css";
-import { Loading } from '../../Loading/Loading';
-import image from '../../../image/persona_logeada.png';
-import validate from '../validateFunction';
+import Loading from "../../Loading/Loading";
+import image from "../../../image/persona_logeada.png";
+import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
-import background from '../../../image/fondo_huellas.png';
+import background from "../../../image/fondo_huellas.png";
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
   const { user, isLoading } = useAuth0();
+  const userLogged = useSelector((state) => state.user);
   const history = useHistory();
   const [input, setInput] = useState({
     firstName: "",
@@ -55,7 +56,6 @@ export const ProfileToEdit = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('userEdited', JSON.stringify({ ...input, email: user.email, profilePic: `${photo}` }));
     dispatch(
       updateUser({ ...input, email: user.email, profilePic: `${photo}` })
     );
@@ -70,16 +70,18 @@ export const ProfileToEdit = () => {
     );
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
-  const disabled =
-    Object.keys(errors).length > 0 ||
-    !input.firstName ||
-    !input.lastName ||
-    !input.cellphone;
+  const disabled = Object.keys(errors).length > 0;
+  const name =
+    (userLogged.firstName &&
+      userLogged.firstName +
+        " " +
+        (userLogged.lastName && userLogged.lastName)) ||
+    user?.name;
   return (
     <>
       <div className={s.container}>
         <div className={s.nameAndImg}>
-          <h2>{user.name}</h2>
+          <h2>{name}</h2>
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -110,9 +112,9 @@ export const ProfileToEdit = () => {
                 id="firstName"
                 aria-describedby="my-helper-text"
                 error={errors.firstName ? true : false}
+                placeholder={`${userLogged?.firstName}`}
                 value={input.firstName}
                 onChange={handleChange}
-                required
               />
             </FormControl>
             <FormControl>
@@ -121,9 +123,9 @@ export const ProfileToEdit = () => {
                 id="lastName"
                 aria-describedby="my-helper-text"
                 error={errors.lastName ? true : false}
+                placeholder={`${userLogged.lastName}`}
                 value={input.lastName}
                 onChange={handleChange}
-                required
               />
               <FormHelperText id="my-helper-text"></FormHelperText>
             </FormControl>
@@ -133,11 +135,10 @@ export const ProfileToEdit = () => {
                 id="cellphone"
                 aria-describedby="my-helper-text"
                 error={errors.cellphone ? true : false}
+                placeholder={`${userLogged?.cellphone}`}
                 type="tel"
-                placeholder="0111234567"
                 value={input.cellphone}
                 onChange={handleChange}
-                required
               />
             </FormControl>
             <Button
@@ -160,7 +161,7 @@ export const ProfileToEdit = () => {
       >
         Go Home
       </Button>
-      <img src={background} alt='fondo' className={s.background} />
+      <img src={background} alt="fondo" className={s.background} />
     </>
   );
 };
