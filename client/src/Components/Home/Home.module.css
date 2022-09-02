@@ -128,8 +128,9 @@
 
 .divDateAndOrder{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    width: 45%;
 }
 
 .divPaginationAndBikes{
