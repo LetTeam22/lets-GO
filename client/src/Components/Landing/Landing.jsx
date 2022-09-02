@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import s from "./Landing.module.css";
 import { Link } from "react-router-dom";
-// import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
-// import fondo from "../../image/img_fondo1.png";
 import { Destacados } from "../Destacados/Destacados";
 import { Accesories } from "../Accesories/Accesories";
 import { Experiencies } from "../Experiencies/Experiencies";
@@ -33,10 +31,7 @@ export const Landing = () => {
             <button className={s.searchBtn}>BUSCAR BICI</button>
           </Link>
         </div>
-        {/* <div className={s.flechas}>
-                    <VscChevronRight color='white' size='50px' cursor='pointer' />
-                    <VscChevronLeft color='white' size='50px' cursor='pointer' />
-                </div> */}
+        
       </div>
       <div className={s.separador} id={s.first}>
         <div className={s.triangle}></div>
@@ -54,6 +49,3 @@ export const Landing = () => {
   );
 };
 
-/* <Link to={'/privateRoute'} className={s.prueba}>
-                <button>Go to the private component</button>
-            </Link> */
