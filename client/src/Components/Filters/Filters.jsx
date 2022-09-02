@@ -46,11 +46,8 @@ const Filters = ({ handleParameter }) => {
     };
 
     return (
-        <>       
-            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button> 
-            
+        <>                
             <h4 className={s.title}>Filtros</h4>
-
             <span className={s.spanFilters}>Rodado</span>
             <select name='wheelSize' onChange={handleWheelSizeFilter} className={parameters.filters.wheelSize ? `${s.select} ${s.act}` : s.select} id='wheelSizeFilter'>
                 <option value=''></option>
@@ -118,6 +115,7 @@ const Filters = ({ handleParameter }) => {
                 <option value='touring'>touring</option>
                 <option value='folding'>folding</option>
             </select>
+            <button className={s.reset} onClick={handleResetAll}>Resetear Filtros</button>   
          </>
     )
 };
