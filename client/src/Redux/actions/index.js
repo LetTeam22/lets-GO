@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_ACCESORIES } from './actiontypes'
 
 // POST_BOOKINGS
 
@@ -17,7 +17,7 @@ export const setParameters = payload => {
 };
 
 export const getBikes = () => {
-    return dispatch => axios('http://localhost:3001/bikes')
+    return dispatch => axios('/bikes')
         .then(res => dispatch({ type: GET_BIKES, payload: res.data }))
         .catch(err => console.log(err));
 };
@@ -40,31 +40,31 @@ export const getRenderedBikes = parameters => {
     if (parameters.date.to) arrQuery.push(`toDateFilter=${parameters.date.to}`)
     const query = !arrQuery.length ? '' : '?' + arrQuery.join('&')
 
-    return dispatch => axios.get(`http://localhost:3001/bikes/rendered${query}`)
+    return dispatch => axios.get(`/bikes/rendered${query}`)
         .then(res => dispatch({ type: GET_RENDERED_BIKES, payload: res.data }))
         .catch(err => console.log(err));
 };
 
 export const getBikeDetail = bikeId => {
-    return dispatch => axios(`http://localhost:3001/bikes/${bikeId}`)
+    return dispatch => axios(`/bikes/${bikeId}`)
         .then(res => dispatch({ type: GET_BIKES_DETAIL, payload: res.data }))
         .catch(err => console.log(err));
 };
 
 export const getUser = email => {
-    return dispatch => axios(`http://localhost:3001/user/detail?email=${email}`)
+    return dispatch => axios(`/user/detail?email=${email}`)
         .then(res => dispatch({ type: GET_USER, payload: res.data }))
         .catch(err => console.log(err));
 };
 
 export const createUser = user => {
-    return dispatch => axios.post('http://localhost:3001/user/create', user)
+    return dispatch => axios.post('/user/create', user)
         .then(res => dispatch({ type: CREATE_USER, payload: res }))
         .catch(err => console.log(err));
 };
 
 export const updateUser = user => {
-    return dispatch => axios.put('http://localhost:3001/user/update', user)
+    return dispatch => axios.put('/user/update', user)
         .then(res => dispatch({ type: UPDATE_USER, payload: res }))
         .catch(err => console.log(err));
 };
@@ -79,7 +79,7 @@ export const addBooking = payload => {
 export const postBookings = (payload) => {
     console.log(payload)
     return (dispatch) => {
-        return axios.post('http://localhost:3001/bookings', payload)
+        return axios.post('/bookings', payload)
             .then(dispatch({ type: POST_BOOKINGS, }))
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -87,12 +87,12 @@ export const postBookings = (payload) => {
     }
 };
 
+export const getAccesories = () => {
+    return (dispatch) => {
+        axios('http://localhost:3001/accesories')
+            .then(res => dispatch({ type: GET_ACCESORIES, payload: res.data }))
+            .catch(err => console.log(err));
+    }
+};
 
 
-// export function postVideogame(values) {
-//     return (dispatch) => {
-//       return axios.post('http://localhost:3001/videogames', values)
-//       .then(res => console.log(res))
-//       .catch(error => console.log(error))
-//     }
-//   }

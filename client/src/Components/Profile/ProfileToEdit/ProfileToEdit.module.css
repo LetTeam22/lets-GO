@@ -78,3 +78,6 @@
     left: 0;
     z-index: -1;
 }
+input::placeholder{
+    padding-left:0.5rem;
+}

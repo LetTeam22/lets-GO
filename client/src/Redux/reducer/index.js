@@ -1,4 +1,4 @@
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_ACCESORIES } from '../actions/actiontypes';
 
 const initialState = {
     allBikes: [],
@@ -49,66 +49,69 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
-        
-            case CURRENT_PAGE:
-                return {
-                    ...state,
-                    paginate: { ...state.paginate, currentPage: action.payload }
-                }
-            case SET_PARAMETERS:
-                if(action.payload === 'resetAll') {
-                    action.payload = {
-                    filters: { selected: [], labels: [], ids: [], type: '',traction: '',wheelSize: '',color: '', price: {min: '',max: ''} },
-                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { selected: [], labels: [], ids: [], from: '', to: '' }
-                    }
-                } 
-                return {
-                    ...state,
-                    parameters: action.payload
-                }
-             case GET_BIKES:
-                    return {
-                        ...state,
-                        allBikes: action.payload
-                    }
-            case GET_RENDERED_BIKES:
-                    return {
-                        ...state,
-                        renderedBikes: action.payload,
-                    }
-            case GET_BIKES_DETAIL:
-                    return {
-                        ...state,
-                        bikeDetail: action.payload
-                    }
-            case GET_USER:
-                    return {
-                        ...state,
-                        user: action.payload
-                    }
-            case CREATE_USER:
-                    return {
-                        ...state,
-                        user: action.payload.user
-                    }
-            case UPDATE_USER:
-                    return {
-                        ...state,
-                    }
-            case ADD_BOOKING:
-                    return {
-                        ...state,
-                        bookings: [...state.bookings, action.payload]
-                    }
-            case POST_BOOKINGS:
-                    return {
-                        ...state,
-                        bookings: [],
-                    }
-                default: return state
-      }
-}
 
+        case CURRENT_PAGE:
+            return {
+                ...state,
+                paginate: { ...state.paginate, currentPage: action.payload }
+            }
+        case SET_PARAMETERS:
+            if (action.payload === 'resetAll') {
+                action.payload = {
+                    filters: { selected: [], labels: [], ids: [], type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
+                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { selected: [], labels: [], ids: [], from: '', to: '' }
+                }
+            }
+            return {
+                ...state,
+                parameters: action.payload
+            }
+        case GET_BIKES:
+            return {
+                ...state,
+                allBikes: action.payload
+            }
+        case GET_RENDERED_BIKES:
+            return {
+                ...state,
+                renderedBikes: action.payload,
+            }
+        case GET_BIKES_DETAIL:
+            return {
+                ...state,
+                bikeDetail: action.payload
+            }
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
+        case CREATE_USER:
+            return {
+                ...state,
+            }
+        case UPDATE_USER:
+            return {
+                ...state,
+            }
+        case ADD_BOOKING:
+            return {
+                ...state,
+                bookings: [...state.bookings, action.payload]
+            }
+        case POST_BOOKINGS:
+            return {
+                ...state,
+                bookings: [],
+            }
+        case GET_ACCESORIES:
+            return {
+                ...state,
+                accesories: action.payload
+            }
+        default: return state
+    }
+}
 
 export default rootReducer;
 

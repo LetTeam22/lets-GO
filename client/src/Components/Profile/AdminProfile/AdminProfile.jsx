@@ -16,7 +16,7 @@ import theme from "../MaterialUIColors";
 import { ThemeProvider } from "@emotion/react";
 import swal from 'sweetalert';
 import s from "./AdminProfile.module.css";
-import { Loading } from '../../Loading/Loading';
+import Loading from '../../Loading/Loading';
 import image from '../../../image/persona_logeada.png';
 import ValidateFunctionAdmin from './ValidateFunctionAdmin';
 import { getUser, updateUser } from "../../../Redux/actions";

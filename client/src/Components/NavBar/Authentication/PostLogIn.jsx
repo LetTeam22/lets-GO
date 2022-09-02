@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUser } from '../../../Redux/actions';
+import { createUser, getUser } from '../../../Redux/actions';
 import s from './PostLogIn.module.css';
 import logo from '../../../image/logo.png';
 
@@ -12,14 +12,14 @@ export default function PostLogIn () {
     const history = useHistory()
 
     const goBack = () => {
-        localStorage.setItem('user', JSON.stringify(user))
         dispatch(createUser({email:user.email}))
+        dispatch(getUser(user.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
     }
     const goProfile = () => {
-        localStorage.setItem('user', JSON.stringify(user))
         dispatch(createUser({email:user.email}))
+        dispatch(getUser(user.email))
         history.push('/bike/profile')
     }
 
