@@ -14,7 +14,7 @@ import RenderOneImage from "../Cloudinary/renderOneImage";
 export const Destacados = () => {
 
   const bikes = useSelector(state => state.famousBikes);
-  console.log(bikes);
+  // console.log(bikes);
 
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ export const Destacados = () => {
               {
                 bikes.map(bike => {
                   return (
-                    <div className={`${s.destacadas} ${s.slide}`} id={s.one}>
+                    <div key= {bike.idBike} className={`${s.destacadas} ${s.slide}`} id={s.one}>
                         <Link to={`/bike/${bike.idBike}`}>
                           <RenderOneImage publicId={bike.image} />
                         </Link>

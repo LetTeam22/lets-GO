@@ -13,6 +13,7 @@ import Dates from "../Dates/Dates";
 import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
+import sincarrito from '../../image/sincarrito.png'
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -143,7 +144,7 @@ export const ShoppingCart = () => {
   };
   return (
     <div className={s.container}>
-      <h1 className={s.title}>Carrito de compras</h1>
+      {/* <h1 className={s.title}>Carrito de compras</h1> */}
 
       <div className={s.bikes}>
         {cartBikes.length ? (
@@ -175,9 +176,10 @@ export const ShoppingCart = () => {
           })
         ) : (
           <div className={s.empty}>
-            <h2 className={s.titleEmpty}>
+            <img src={sincarrito} className={s.sincarrito} alt={sincarrito} />
+            {/* <h2 className={s.titleEmpty}>
               Aún no cargaste nada en el carrito{" "}
-            </h2>
+            </h2> */}
             <Link to="/home">
               <button className={s.btn}> Volver al Home</button>
             </Link>

@@ -2,6 +2,7 @@ import React from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import s from "./Menu.module.css";
 import carrito from "../../image/carrito.png";
+import bell from '../../image/bell.png'
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../NavBar/Authentication/LogIn";
 import LogOut from "../NavBar/Authentication/LogOut";
@@ -47,6 +48,7 @@ export const Menu = () => {
             <img className={s.carrito} src={carrito} alt="carrito" />
           </button>
         </Link>
+        <img src={bell} className={s.bell} alt='bell' ></img>
       </div>
     </div>
   );
