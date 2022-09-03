@@ -5,7 +5,8 @@
     margin-left: auto;
     margin-right: auto;
     display:block;
-    background-color: #FFF9EC;
+    /* background-color: #FFF9EC; */
+    background-color: #F5F5F5;
 }
 
 .encabezado {
@@ -59,13 +60,13 @@
 }
 
 .containerFilter{
-    width: 20rem;
-    height: 100rem;
+    width: 22rem;
+    height: 120rem;
     padding-left: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #efefef;
+    background-color: #d3d2ce;
     top: 13.5rem;
     box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 10px;
 }
