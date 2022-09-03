@@ -2,7 +2,7 @@
     {
         "name": "Let BlackMountain",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/mtb/mtb_negro_feg4qe",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1300",
@@ -13,7 +13,7 @@
     {
         "name": "Let Xgrey",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/bmx/bmx_gris_jrysha",
         "traction": "mecánica",
         "wheelSize": "20",
         "price": "400",
@@ -24,7 +24,7 @@
     {
         "name": "Let BlackCity",
         "type": "city",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/city/city_negra_pv9cis",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "630",
@@ -35,7 +35,7 @@
     {
         "name": "Let Whitedem",
         "type": "tandem",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/tandem/tandem_blanca_ztnjj2",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "900",
@@ -46,7 +46,7 @@
     {
         "name": "Let TouRed Large",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/touring/touring_roja_ydmmue",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1320",
@@ -57,7 +57,7 @@
     {
         "name": "Let Follow",
         "type": "folding",
-        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "image": "Let/Bikes/folding/fold_amarilla_sxlwgu",
         "traction": "mecánica",
         "wheelSize": "20",
         "price": "750",
@@ -68,7 +68,7 @@
     {
         "name": "Let GreenMountain XL",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/mtb/mtb_verde_sfvgfr",
         "traction": "mecánica",
         "wheelSize": "29",
         "price": "1450",
@@ -79,7 +79,7 @@
     {
         "name": "Let XBlack Large",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/bmx/bmz_negra_cieexe",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "500",
@@ -90,7 +90,7 @@
     {
         "name": "Let WhiteCity Small",
         "type": "city",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/city/city_blanca_hjzrqh",
         "traction": "mecánica",
         "wheelSize": "20",
         "price": "550",
@@ -101,7 +101,7 @@
     {
         "name": "Let Blackdem Large",
         "type": "tandem",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/tandem/tandem_negra_ogghkl",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1050",
@@ -112,7 +112,7 @@
     {
         "name": "Let Bluering XL",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "image": "Let/Bikes/touring/touring_azul_jivmoz",
         "traction": "mecánica",
         "wheelSize": "29",
         "price": "1320",
@@ -123,7 +123,7 @@
     {
         "name": "Let Foldreen XS",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_verde_z9js8y",
         "traction": "mecánica",
         "wheelSize": "16",
         "price": "650",
@@ -134,7 +134,7 @@
     {
         "name": "Let electric RedMountain",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/mtb/mtb_roja_ouen0q",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1700",
@@ -145,7 +145,7 @@
     {
         "name": "Let Xwhite",
         "type": "bmx",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/bmx/bmz_blanca_jwdrtb",
         "traction": "eléctrica",
         "wheelSize": "20",
         "price": "750",
@@ -156,7 +156,7 @@
     {
         "name": "Let RedCity Large",
         "type": "city",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/city/city_roja_m2stwz",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1230",
@@ -167,7 +167,7 @@
     {
         "name": "Let Greendem Small",
         "type": "tandem",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/tandem/tandem_verde_jiupbr",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1300",
@@ -178,7 +178,7 @@
     {
         "name": "Let Blacking",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/touring/touring_negra_zsailq",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1600",
@@ -189,7 +189,7 @@
     {
         "name": "Let electric Foldred",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_roja_vxl3lw",
         "traction": "eléctrica",
         "wheelSize": "20",
         "price": "1050",
@@ -200,7 +200,7 @@
     {
         "name": "Let WhiteMountain",
         "type": "mtb",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/mtb/mtb_blanca_d6z3p8",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1700",
@@ -211,7 +211,7 @@
     {
         "name": "Let Xgreen XL",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/bmx/bmx_verde_fkx3dz",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "850",
@@ -222,7 +222,7 @@
     {
         "name": "Let GreenCity Small",
         "type": "city",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/city/city_verde_bnzzld",
         "traction": "eléctrica",
         "wheelSize": "20",
         "price": "800",
@@ -233,7 +233,7 @@
     {
         "name": "Let electric Whitedem",
         "type": "tandem",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/tandem/tandem_blanca_ztnjj2",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1300",
@@ -244,7 +244,7 @@
     {
         "name": "Let Tourite",
         "type": "touring",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/touring/touring_blanca_cycewk",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
@@ -255,7 +255,7 @@
     {
         "name": "Let Foldack Small",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_negra_qerzvb",
         "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",
@@ -266,7 +266,7 @@
     {
         "name": "Let RedMountain",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/mtb/mtb_roja_ouen0q",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1450",
@@ -277,7 +277,7 @@
     {
         "name": "Let Xgrey XL",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/bmx/bmx_gris_jrysha",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "400",
@@ -288,7 +288,7 @@
     {
         "name": "Let BlackCity small",
         "type": "city",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/city/city_negra_pv9cis",
         "traction": "mecánica",
         "wheelSize": "20",
         "price": "630",
@@ -299,7 +299,7 @@
     {
         "name": "Let Whitedem Large",
         "type": "tandem",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/tandem/tandem_blanca_ztnjj2",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1050",
@@ -310,7 +310,7 @@
     {
         "name": "Let Toullow",
         "type": "touring",
-        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "image": "Let/Bikes/touring/touring_amarilla_bkijlz",
         "traction": "mecánica",
         "wheelSize": "26",
         "price": "1320",
@@ -321,7 +321,7 @@
     {
         "name": "Let Foldred",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_roja_vxl3lw",
         "traction": "mecánica",
         "wheelSize": "20",
         "price": "650",
@@ -332,7 +332,7 @@
     {
         "name": "Let GreyMountain",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/mtb/mtb_gris_njvv3b",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "1300",
@@ -343,7 +343,7 @@
     {
         "name": "Let XBlack",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/bmx/bmz_negra_cieexe",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "500",
@@ -354,7 +354,7 @@
     {
         "name": "Let electric WhiteCity",
         "type": "city",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/city/city_blanca_hjzrqh",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "800",
@@ -365,7 +365,7 @@
     {
         "name": "Let Blackdem",
         "type": "tandem",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/tandem/tandem_negra_ogghkl",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "900",
@@ -376,7 +376,7 @@
     {
         "name": "Let TouRed",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/touring/touring_roja_ydmmue",
         "traction": "mecánica",
         "wheelSize": "24",
         "price": "1200",
@@ -387,7 +387,7 @@
     {
         "name": "Let Foldrey small",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/folding/fold_gris_afbzl6",
         "traction": "mecánica",
         "wheelSize": "16",
         "price": "650",
@@ -398,7 +398,7 @@
     {
         "name": "Let RedMountain",
         "type": "mtb",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/mtb/mtb_roja_ouen0q",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1900",
@@ -409,7 +409,7 @@
     {
         "name": "Let electric Xred",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/bmx/bmx_roja_vn7z65",
         "traction": "eléctrica",
         "wheelSize": "20",
         "price": "750",
@@ -420,7 +420,7 @@
     {
         "name": "Let electric WhiteCity Large",
         "type": "city",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/city/city_blanca_hjzrqh",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1230",
@@ -431,7 +431,7 @@
     {
         "name": "Let Tanllow",
         "type": "tandem",
-        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "image": "Let/Bikes/tandem/tandem_amarilla_wh76fn",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1300",
@@ -442,7 +442,7 @@
     {
         "name": "Let Bluering",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "image": "Let/Bikes/touring/touring_azul_jivmoz",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1600",
@@ -453,7 +453,7 @@
     {
         "name": "Let electric Follow",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_roja_vxl3lw",
         "traction": "eléctrica",
         "wheelSize": "16",
         "price": "1050",
@@ -464,7 +464,7 @@
     {
         "name": "Let electric BlackMountain",
         "type": "mtb",
-        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "image": "Let/Bikes/mtb/mtb_amarilla_ds8ns6",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1700",
@@ -475,7 +475,7 @@
     {
         "name": "Let electric Xgrey",
         "type": "bmx",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l-mmc-rbkg-fcb-hdsv8-sp6-c17-rev-cl-pm-1_copy_3.jpg",
+        "image": "Let/Bikes/bmx/bmx_gris_jrysha",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "850",
@@ -486,7 +486,7 @@
     {
         "name": "Let electric RedCity Small",
         "type": "city",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mhrd_ehrd_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/city/city_roja_m2stwz",
         "traction": "eléctrica",
         "wheelSize": "20",
         "price": "1100",
@@ -497,7 +497,7 @@
     {
         "name": "Let electric Tanllow Large",
         "type": "tandem",
-        "image": "https://i.pinimg.com/originals/d9/2c/93/d92c933085f65206791d7358aa96dad5.jpg",
+        "image": "Let/Bikes/tandem/tandem_amarilla_wh76fn",
         "traction": "eléctrica",
         "wheelSize": "26",
         "price": "1430",
@@ -508,7 +508,7 @@
     {
         "name": "Let electric Blackring",
         "type": "touring",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/touring/touring_negra_zsailq",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
@@ -519,7 +519,7 @@
     {
         "name": "Let Folgreen",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mrg_erg_fcb_sp6_tym_std_-1.jpg",
+        "image": "Let/Bikes/folding/fold_verde_z9js8y",
         "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",
@@ -530,7 +530,7 @@
     {
         "name": "Let electric WhiteRing",
         "type": "touring",
-        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_763472-MLA51074436851_082022-F.webp",
+        "image": "Let/Bikes/touring/touring_blanca_cycewk",
         "traction": "eléctrica",
         "wheelSize": "24",
         "price": "1500",
@@ -541,7 +541,7 @@
     {
         "name": "Let Folblue",
         "type": "folding",
-        "image": "https://www-checkout.brompton.com/catalog/product/m/6/m6l_mbk_ebk_fcb_sp6_tym_std_-1-2.jpg",
+        "image": "Let/Bikes/folding/fold_azul_qul9cq",
         "traction": "eléctrica",
         "wheelSize": "16",
         "price": "900",

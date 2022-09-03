@@ -14,6 +14,7 @@ import imgRat5 from '../../image/stars/5stars.png'
 import rodado from '../../image/rueda_bici.png'
 import mecanica from '../../image/mecanica.png'
 import electrica from '../../image/electrica.png'
+import RenderOneImage from '../Cloudinary/renderOneImage';
 
 
 export const Card = ({ name, type, image, traction, wheelSize, price, rating, id }) => {
@@ -34,7 +35,11 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
 
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
-            <img src={image} alt='img not found' className={s.imgCard} /> 
+            {/^(https?)[^\s]*$/i.test(image)?
+            <img src={image} alt='img not found' className={s.imgCard} /> :
+            <RenderOneImage publicId={image}></RenderOneImage>
+            }
+            {/* <img src={image} alt='img not found' className={s.imgCard} />  */}
             <div>
                 <h3 className={s.name}>{name}</h3>
                 <div className={s.dataCont}>
