@@ -8,6 +8,8 @@ import s from "./BikeDetail.module.css";
 import icon from "../../image/bicisDestacadas/icon.png";
 import tech from "../../image/Technology.png";
 import swal from "sweetalert";
+import RenderAccesories from "../Cloudinary/renderAccesories";
+// import { image } from "@cloudinary/url-gen/qualifiers/source";
 
 export const BikeDetail = () => {
   const dispatch = useDispatch();
@@ -189,7 +191,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-1">Canasto</label>
-                  <img src={allAccs[4]?.image} alt="not found" />
+                  {/* <img src={allAccs[4]?.image} alt="not found" /> */}
+                  {allAccs[4]?
+                  <RenderAccesories className={s.imgCloud} publicId={allAccs[4].image}/> :
+                  null}
                   <p>$ {allAccs[4]?.price} / dia</p>
                 </div>
 
@@ -203,7 +208,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-2">Silla portabebés</label>
-                  <img src={allAccs[2]?.image} alt="not found" />
+                  {/* <img src={allAccs[2]?.image} alt="not found" /> */}
+                  {allAccs[2]?
+                  <RenderAccesories publicId={allAccs[2].image}/> :
+                  null}
                   <p>$ {allAccs[2]?.price} / dia</p>
                 </div>
 
@@ -217,7 +225,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-3">Luces</label>
-                  <img src={allAccs[5]?.image} alt="not found" />
+                  {/* <img src={allAccs[5]?.image} alt="not found" /> */}
+                  {allAccs[5]?
+                  <RenderAccesories publicId={allAccs[5].image}/> :
+                  null}
                   <p>$ {allAccs[5]?.price} / dia</p>
                 </div>
 
@@ -231,7 +242,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-4">Casco</label>
-                  <img src={allAccs[0]?.image} alt="not found" />
+                  {/* <img src={allAccs[0]?.image} alt="not found" /> */}
+                  {allAccs[0]?
+                  <RenderAccesories publicId={allAccs[0].image}/> :
+                  null}
                   <p>$ {allAccs[0]?.price} / dia</p>
                 </div>
 
@@ -245,7 +259,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-5">Candado</label>
-                  <img src={allAccs[6]?.image} alt="not found" />
+                  {/* <img src={allAccs[6]?.image} alt="not found" /> */}
+                  {allAccs[6]?
+                  <RenderAccesories publicId={allAccs[6].image}/> :
+                  null}
                   <p>$ {allAccs[6]?.price} / dia</p>
                 </div>
 
@@ -259,7 +276,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-6">Lentes</label>
-                  <img src={allAccs[7]?.image} alt="not found" />
+                  {/* <img src={allAccs[7]?.image} alt="not found" /> */}
+                  {allAccs[7]?
+                  <RenderAccesories publicId={allAccs[7].image}/> :
+                  null}
                   <p>$ {allAccs[7]?.price} / dia</p>
                 </div>
 
@@ -273,7 +293,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-7">Botella</label>
-                  <img src={allAccs[1]?.image} alt="not found" />
+                  {/* <img src={allAccs[1]?.image} alt="not found" /> */}
+                  {allAccs[1]?
+                  <RenderAccesories publicId={allAccs[1].image}/> :
+                  null}
                   <p>$ {allAccs[1]?.price} / dia</p>
                 </div>
 
@@ -287,7 +310,10 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label for="box-8">Calzado</label>
-                  <img src={allAccs[3]?.image} alt="not found" />
+                  {/* <img src={allAccs[3]?.image} alt="not found" /> */}
+                  {allAccs[3]?
+                  <RenderAccesories publicId={allAccs[3].image}/> :
+                  null}
                   <p>$ {allAccs[3]?.price} / dia</p>
                 </div>
               </div>
