@@ -21,7 +21,7 @@ export const Profile = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <>
+    <section className={s.allPage}>
       <div className={s.container}>
         <div className={s.name}>
           {(userLogged?.firstName &&
@@ -59,6 +59,6 @@ export const Profile = () => {
         </Button>
       </div>
       <div className={s.background}></div>
-    </>
+    </section>
   );
 };
