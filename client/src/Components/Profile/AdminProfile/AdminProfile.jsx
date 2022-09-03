@@ -22,6 +22,7 @@ import ValidateFunctionAdmin from './ValidateFunctionAdmin';
 import { getUser, updateUser } from "../../../Redux/actions";
 import background from '../../../image/fondo_huellas.png';
 import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
+import RenderOneImage from '../../Cloudinary/renderOneImage';
 
 export const AdminProfile = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export const AdminProfile = () => {
   const [photo, setPhoto] = useState(undefined);
   const userToModify = useSelector(state => state.user);
   if (isLoading) return <Loading />;
+  if (!user) history.goBack();
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -83,6 +85,12 @@ export const AdminProfile = () => {
     input.userName):true;
   return (
     <>
+      {/* {probando cloudinary} */}
+      <RenderOneImage publicId={'cld-sample-4'}></RenderOneImage>
+      <RenderOneImage publicId={'cld-sample-5'}></RenderOneImage>
+      <RenderOneImage publicId={'cld-sample-3'}></RenderOneImage>
+      <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
+      <RenderOneImage publicId={'cld-sample'}></RenderOneImage>
       <div className={s.container}>
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
         <AdminSearchBar />
