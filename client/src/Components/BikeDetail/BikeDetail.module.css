@@ -137,7 +137,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     background-color: black;
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     flex-direction: row;
     display: flex;
 }
@@ -147,20 +147,22 @@
     width: 80%;
     padding: 4rem;
     font-family: 'Roboto';
+    margin-left: 3rem;
 }
 
 .titleAcc{
     display: block;
     width: 100%;
     height: 3.5vh;
-    background-color: #F9B621;
+    background-color: #484848;
     text-align: center;
+    color: white;
     font-family: 'Roboto';
 }
 
 .containerGral{
     display: flex;
-    background-color: #484848;
+    background-color: white;
     width: 100%;
     flex-direction: row ;
 }
@@ -194,7 +196,7 @@
 .boxes {
     margin: auto;
     padding: 3rem;
-    background: #484848;
+    background: white;
     width: 17vh;
     padding-left: 1rem;
     padding-right: 0.2rem;
@@ -208,8 +210,8 @@ input[type="checkbox"] + label {
     position: relative;
     padding-left: 35px;
     margin-bottom: 20px;
-    font: 14px/20px 'Roboto';
-    color: #ddd;
+    font: 15px 'Roboto';
+    color: #484848;
     cursor: pointer;
 }
 
@@ -257,4 +259,9 @@ input[type="checkbox"]:checked + label:before {
     font-weight: 800;
     margin: 0;
     text-align: center;
+}
+
+.precio{
+    color: #484848;
+    font-family: 'Roboto';
 }
