@@ -12,7 +12,7 @@ async function allExperiences (req, res, next) {
 // Devuelve los detalles de una Experiencia dado el BookingID
 async function experienceDetails (req, res, next) {
     const {bookingIdBooking} = req.query
-    const experience = await Experience.findOne({
+    const userAndBooking = await Booking.findByPk({
         where: {bookingIdBooking: bookingIdBooking }
     });
     if(experience) res.send(experience)
@@ -44,7 +44,6 @@ async function createExperience(req, res, next) {
         res.send(error.message)
     }
 }
-
 
 // Actualiza Experiencia (recibe por body el ID de booking y los datos a cambiar)
 // Devuelve la experiencia actualizada

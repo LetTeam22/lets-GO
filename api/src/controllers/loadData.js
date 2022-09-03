@@ -12,15 +12,16 @@ function loadAllModelsInDB() {
   Bike.bulkCreate(jsonBike)
   console.log('Bikes loaded ok to DB');
 
-  Booking.bulkCreate(jsonBooking)
-  console.log('Bookings loaded ok to DB');
-  Experience.bulkCreate(jsonExperience);
-  console.log('Experiences loaded ok to DB');
+
+  //Funcionan bello pero, no toman en cuenta las relaciones
+  //Por lo tanto en alguna consulta pueden generar errrores.
+  // Booking.bulkCreate(jsonBooking)
+  // console.log('Bookings loaded ok to DB');
+  // Experience.bulkCreate(jsonExperience);
+  // console.log('Experiences loaded ok to DB');
 
   Accesories.bulkCreate(jsonAccs);
   console.log('Accesories loaded ok to DB')
-  // Booking.bulkCreate(jsonBooking)
-  // console.log('Bookings loaded ok to DB');
 
 }
 
