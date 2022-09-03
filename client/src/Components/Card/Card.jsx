@@ -15,6 +15,8 @@ import rodado from '../../image/rueda_bici.png'
 import mecanica from '../../image/mecanica.png'
 import electrica from '../../image/electrica.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
+import gear from '../../image/gear.png'
+import ray from '../../image/ray.png'
 
 
 export const Card = ({ name, type, image, traction, wheelSize, price, rating, id }) => {
@@ -44,15 +46,12 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                 <h3 className={s.name}>{name}</h3>
                 <div className={s.dataCont}>
                     <span className={s.type}>{type} </span>
-                    {/* <h4 className={s.data}>Tracción: {traction}</h4> */}
-                    <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? electrica : mecanica} alt='Tracción '/>
-                    {/* <h4 className={s.data}>Rodado: {wheelSize}</h4> */}
+                    <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
                     <div className={s.rodadoCont}>
                         <img className={s.rueda} src={rodado} alt='Rodado '/>
                         <span className={s.rodado}>{wheelSize}</span>
                     </div>
                 </div>              
-                {/* <h4 className={s.data}>Rating: {rating} ☆</h4> */}
                 <div className={s.ratingCont}>
                     <img className={s.stars} src={imgRating(rating)} alt='Rating '/>
                     <span className={s.rating}>{rating}</span>
