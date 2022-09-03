@@ -9,6 +9,7 @@ import icon from "../../image/bicisDestacadas/icon.png";
 import tech from "../../image/Technology.png";
 import swal from "sweetalert";
 import RenderAccesories from "../Cloudinary/renderAccesories";
+import RenderBikeDetail from "../Cloudinary/renderBikeDetail";
 // import { image } from "@cloudinary/url-gen/qualifiers/source";
 
 export const BikeDetail = () => {
@@ -170,7 +171,8 @@ export const BikeDetail = () => {
 
             <div className={s.image1}>
               <div className={s.image2}>
-                <img className={s.img} src={bike.image} alt="img not found" />
+                {/* <img className={s.img} src={bike.image} alt="img not found" /> */}
+                <RenderBikeDetail publicId={bike.image}/>
               </div>
             </div>
           </div>
@@ -197,7 +199,7 @@ export const BikeDetail = () => {
                       publicId={allAccs[4].image}
                     />
                   ) : null}
-                  <p>$ {allAccs[4]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[4]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -214,7 +216,7 @@ export const BikeDetail = () => {
                   {allAccs[2] ? (
                     <RenderAccesories publicId={allAccs[2].image} />
                   ) : null}
-                  <p>$ {allAccs[2]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[2]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -231,7 +233,7 @@ export const BikeDetail = () => {
                   {allAccs[5] ? (
                     <RenderAccesories publicId={allAccs[5].image} />
                   ) : null}
-                  <p>$ {allAccs[5]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[5]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -248,7 +250,7 @@ export const BikeDetail = () => {
                   {allAccs[0] ? (
                     <RenderAccesories publicId={allAccs[0].image} />
                   ) : null}
-                  <p>$ {allAccs[0]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[0]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -265,7 +267,7 @@ export const BikeDetail = () => {
                   {allAccs[6] ? (
                     <RenderAccesories publicId={allAccs[6].image} />
                   ) : null}
-                  <p>$ {allAccs[6]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[6]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -282,7 +284,7 @@ export const BikeDetail = () => {
                   {allAccs[7] ? (
                     <RenderAccesories publicId={allAccs[7].image} />
                   ) : null}
-                  <p>$ {allAccs[7]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[7]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -299,7 +301,7 @@ export const BikeDetail = () => {
                   {allAccs[1] ? (
                     <RenderAccesories publicId={allAccs[1].image} />
                   ) : null}
-                  <p>$ {allAccs[1]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[1]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -316,7 +318,7 @@ export const BikeDetail = () => {
                   {allAccs[3] ? (
                     <RenderAccesories publicId={allAccs[3].image} />
                   ) : null}
-                  <p>$ {allAccs[3]?.price} / dia</p>
+                  <p className={s.precio}>$ {allAccs[3]?.price} / día</p>
                 </div>
               </div>
               <div className={s.containerAccesories}>
@@ -341,11 +343,13 @@ export const BikeDetail = () => {
                         })}
                       </ul>
                     </div> */}
-                <div>
-                  <p>Total adicional</p>
-                  <p>$ {adicional()} / dia</p>
-                </div>
-                {/* </div> */}
+
+                    <div>
+                      <p className={s.precio}>Total adicional</p>
+                      <p className={s.precio}>$ {adicional()} / dia</p>
+                    </div>
+                  {/* </div> */}
+
               </div>
             </div>
           </div>
