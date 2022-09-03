@@ -2,12 +2,14 @@
     width: 100%;
     height: calc(100vh - 6rem);
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
-.container{
+.containerDer{
     width: 35%;
     height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 0.2rem;
     box-shadow: 0px -1px 8px 2px #333333;
     display: flex;
@@ -19,10 +21,48 @@
     padding-top: 2rem;
 }
 
+.containerIzq {
+    width: 30%;
+    height: 100vh;
+    background-color:#d3d2ce;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.fav {
+    margin-left: 1rem;
+    width: 100%;
+}
+.span {
+    font-size: .9rem;
+    color: #333333;
+    padding-left: .5rem;
+}
+
+.listFav {
+    display: flex;
+    align-items: center;
+}
+
+.btnRemove {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #F9B621;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
 .name{
     width: 70%;
-    font-size: 3rem;
+    font-size: .9rem;
     text-align: center;
+    font-weight: 500;
+    color: #484848;
 }
 .infoAndImage{
     display: flex;
@@ -35,7 +75,10 @@
     flex-direction: column;
 }
 .h4{
-    margin:0
+    margin:0;
+    font-size: .8rem;
+    font-weight: 500;
+    color: #484848;
 }
 .img {
     width: 5rem;
@@ -45,9 +88,10 @@
 .btnHome, .btnEdit{
     color:#F9B621!important;
     background-color:#333333!important;
-    font-weight: 1000!important;
+    font-weight: 500!important;
     position: absolute!important;
 }
+
 .btnHome{
     bottom: 1rem;
     left: 2rem;
