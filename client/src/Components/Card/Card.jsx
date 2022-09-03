@@ -33,11 +33,12 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
         return imgRat5
     } 
 
+    // const sty = {width: 20%}
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
             {/^(https?)[^\s]*$/i.test(image)?
             <img src={image} alt='img not found' className={s.imgCard} /> :
-            <RenderOneImage publicId={image}></RenderOneImage>
+            <RenderOneImage className={s.imgCard} publicId={image}></RenderOneImage>
             }
             {/* <img src={image} alt='img not found' className={s.imgCard} />  */}
             <div>
