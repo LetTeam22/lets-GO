@@ -12,8 +12,6 @@ import imgRat4 from '../../image/stars/4stars.png'
 import imgRat45 from '../../image/stars/4.5stars.png'
 import imgRat5 from '../../image/stars/5stars.png'
 import rodado from '../../image/rueda_bici.png'
-import mecanica from '../../image/mecanica.png'
-import electrica from '../../image/electrica.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import gear from '../../image/gear.png'
 import ray from '../../image/ray.png'
