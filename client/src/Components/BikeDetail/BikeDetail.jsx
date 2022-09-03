@@ -54,6 +54,7 @@ export const BikeDetail = () => {
       lentes: false,
       botella: false,
       calzado: false,
+      totalAcc: 0
     });
     swal({
       title: "Bicicleta añadida al carrito",
@@ -110,7 +111,8 @@ export const BikeDetail = () => {
     if (llenarAccs(input).length > 0) {
       llenarAccs(input).forEach((acc) => (adic += parseInt(acc.price, 10)));
     }
-    return adic;
+    input.totalAcc = adic
+    return input.totalAcc;
   };
 
   return (
@@ -320,16 +322,16 @@ export const BikeDetail = () => {
                 </div>
               </div>
               <div className={s.containerAccesories}>
-                  <button
-                    className={s.btn2}
-                    onClick={(e) => {
-                      handleClick(e);
-                    }}
-                  >
-                    {" "}
-                    Agregar al carrito{" "}
-                  </button>
-                    {/* <div>
+                <button
+                  className={s.btn2}
+                  onClick={(e) => {
+                    handleClick(e);
+                  }}
+                >
+                  {" "}
+                  Agregar al carrito{" "}
+                </button>
+                {/* <div>
                       <p>Accesorios seleccionados</p>
                       <ul>
                         {llenarAccs(input)?.map((acc) => {
@@ -341,11 +343,13 @@ export const BikeDetail = () => {
                         })}
                       </ul>
                     </div> */}
+
                     <div>
                       <p className={s.precio}>Total adicional</p>
                       <p className={s.precio}>$ {adicional()} / dia</p>
                     </div>
                   {/* </div> */}
+
               </div>
             </div>
           </div>

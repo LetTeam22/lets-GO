@@ -14,6 +14,8 @@ import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import sincarrito from '../../image/sincarrito.png'
+import RenderOneImage from '../Cloudinary/renderOneImage';
+
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -56,11 +58,14 @@ export const ShoppingCart = () => {
             lentes: book.lentes,
             botella: book.botella,
             calzado: book.calzado,
+            totalAcc: book.totalAcc
           },
         };
         cartBikes.push(pushedbike);
       }
   }
+
+  console.log(cartBikes)
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
 
@@ -100,7 +105,7 @@ export const ShoppingCart = () => {
   };
 
   const total = cartBikes.reduce((acc, cur) => {
-    return acc + cur.price * totalDias(date.from, date.to);
+    return acc + (cur.price + cur.accesories.totalAcc) * totalDias(date.from, date.to);
   }, 0);
 
   const handleBooking = (e) => {
@@ -153,7 +158,8 @@ export const ShoppingCart = () => {
               <div key={bike.idBike}>
                 <div className={s.cardBike}>
                   <h2 className={s.bikeName}>{bike.name}</h2>
-                  <img src={bike.image} alt="not found" className={s.img} />
+                  {/* <img src={bike.image} alt="not found" className={s.img} /> */}
+                  <RenderOneImage publicId={bike.image} className={s.img} />
                   <p className={s.prices}>$ {bike.price} / día </p>
                   <div className={s.accesories}>
                     {llenarAccs(bike.accesories)?.map((el) => (
@@ -168,7 +174,7 @@ export const ShoppingCart = () => {
                   </div>
                   <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price))
                     ? 0
-                    : totalPerBike(bike.price)
+                    : totalPerBike(bike.price + bike.accesories.totalAcc)
                     }`}</p>
                 </div>
               </div>
