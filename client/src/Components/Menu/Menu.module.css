@@ -73,3 +73,9 @@ hr {
     width: fit-content;
     border: none;
 }
+
+.bell {
+    width: 1.4rem;
+    cursor:pointer;
+    margin-left: 1rem;
+}

@@ -61,15 +61,31 @@
     color: #D6802B;
 }
 
-.reserveBtn, .btn {
+.reserveBtn {
     padding: 1rem 2rem 1rem 2rem;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: .9rem;
     border: 1px solid #D6802B;
     background-color: transparent;
+    border-radius: 0.3rem;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+}
+
+.btn {
+    position: absolute;
+    right: 43rem;
+    margin-top: 3rem;
+    width: 8rem;
+    height: 3rem;
+    color: #595858;
+    background-color:#ffffff ;
+    font-size: .9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.3rem;
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px; 
 }
 
 .reserveBtn:hover, .btn:hover {
@@ -78,8 +94,7 @@
 }
 
 .titleEmpty {
-    font-family: 'Roboto';
-    font-style: normal;
+    position: relative;
     font-weight: 700;
     font-size: 2rem;
 }
@@ -118,4 +133,10 @@
 
 .btnSwal{
     background-color: #F9B621!important;
+  }
+
+  .sincarrito {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
   }

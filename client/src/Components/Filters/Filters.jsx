@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-import { FaRegMoneyBillAlt } from 'react-icons/fa';
+// import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
 import gear from '../../image/gear.png'
 import ray from '../../image/ray.png'

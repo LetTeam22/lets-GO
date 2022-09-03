@@ -1,6 +1,4 @@
 .loginSpan {
-    font-family: 'Roboto';
-    font-style: normal;
     color: #FFFFFF;
     cursor:pointer;
     margin-right: 10px;
@@ -13,7 +11,7 @@
 }
 
 .persona {
-    width: 30px;
+    width: 1.5rem;
     cursor:pointer;
     margin-right: 15px;
 }
@@ -27,10 +25,10 @@
 
 .name{
     position: absolute;
-    top: 2.5rem;
+    top: 2.1rem;
     width: 10rem;
-    margin-right: 15px;
-    color:#FFFFFF;
+    margin-right: 1.7rem;
+    color:#ffffff94;
     text-align: center;
-    font-size: 1rem;
+    font-size: .7rem;
 }
