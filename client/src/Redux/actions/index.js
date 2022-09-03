@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES } from './actiontypes'
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE } from './actiontypes'
 
 
 
@@ -103,6 +103,16 @@ export const getAccesories = () => {
             .then(res => dispatch({ type: GET_ACCESORIES, payload: res.data }))
             .catch(err => console.log(err));
     }
+};
+
+export const addFavorite = bikeId => {
+    return dispatch => axios(`/bikes/${bikeId}`)
+        .then(res => dispatch({ type: ADD_FAVORITE, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
+export const removeFavorite = idBike => {
+    return ({ type: REMOVE_FAVORITE, idBike })
 };
 
 

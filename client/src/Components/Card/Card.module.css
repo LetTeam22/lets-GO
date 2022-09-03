@@ -120,3 +120,11 @@
     align-items: center;
     height: 2rem;
 }
+
+.fav {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -1.5rem;
+    display: flex;
+}
