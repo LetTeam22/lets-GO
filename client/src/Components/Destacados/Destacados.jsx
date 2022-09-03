@@ -6,13 +6,15 @@ import rodado from '../../image/rueda_bici.png';
 import gear from '../../image/gear.png';
 import ray from '../../image/ray.png';
 import { Link } from "react-router-dom";
-// import { VscChevronRight, VscChevronLeft } from "react-icons/vsc";
+import RenderOneImage from "../Cloudinary/renderOneImage";
+
 
 
 
 export const Destacados = () => {
 
   const bikes = useSelector(state => state.famousBikes);
+  console.log(bikes);
 
   const dispatch = useDispatch();
 
@@ -32,7 +34,7 @@ export const Destacados = () => {
                   return (
                     <div className={`${s.destacadas} ${s.slide}`} id={s.one}>
                         <Link to={`/bike/${bike.idBike}`}>
-                          <img src={bike.image} alt="bicis" className={s.images} />
+                          <RenderOneImage publicId={bike.image} />
                         </Link>
                         <h4>{bike.name}</h4>
                         <div className={s.dataCont}>
