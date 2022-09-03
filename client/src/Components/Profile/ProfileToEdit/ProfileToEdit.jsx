@@ -20,7 +20,6 @@ import Loading from "../../Loading/Loading";
 import image from "../../../image/persona_logeada.png";
 import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
-import background from "../../../image/fondo_huellas.png";
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
@@ -78,7 +77,7 @@ export const ProfileToEdit = () => {
         (userLogged.lastName && userLogged.lastName)) ||
     user?.name;
   return (
-    <>
+    <section className={s.allPage}>
       <div className={s.container}>
         <div className={s.nameAndImg}>
           <h2>{name}</h2>
@@ -142,6 +141,14 @@ export const ProfileToEdit = () => {
               />
             </FormControl>
             <Button
+        variant="contained"
+        color="success"
+        className={s.btnHome}
+        onClick={() => history.push("/")}
+      >
+        Go Home
+      </Button>
+            <Button
               variant="contained"
               endIcon={<IoSend />}
               className={s.btnSend}
@@ -153,15 +160,7 @@ export const ProfileToEdit = () => {
           </ThemeProvider>
         </form>
       </div>
-      <Button
-        variant="contained"
-        color="success"
-        className={s.btnHome}
-        onClick={() => history.push("/")}
-      >
-        Go Home
-      </Button>
-      <img src={background} alt="fondo" className={s.background} />
-    </>
+      <div className={s.background}></div>
+    </section>
   );
 };
