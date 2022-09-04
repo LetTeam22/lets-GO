@@ -1,4 +1,112 @@
-.img_aux {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    background-image: url(../../image/fondo_huellas.png);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    row-gap: 2.5em;
+    background-color: #333333;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+
+}
+
+.logo {
+    width: 15rem;
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+}
+
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+}
+
+.inputs {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    width: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.inputs input {
+    margin-left: 0.7rem;
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.inputs input[type=number]::-webkit-inner-spin-button, 
+.inputs input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.inputs input[type=number] { -moz-appearance:textfield; }
+
+.textArea {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    width: 25rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+textarea {
+    text-decoration: none;
+    border: none;
+    overflow: scroll;
+    resize: none;
+    height: 9rem;
     width: 100%;
-    margin-top: 5rem;
+    border-radius: .9rem;
+    outline: none;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.containerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9B621;
+    width: 5rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.containerBtn input {
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    color: #FFFFFF;
+    cursor: pointer;
 }
