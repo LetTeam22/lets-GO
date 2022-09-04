@@ -1,0 +1,70 @@
+.allPage{
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 35%;
+    height: 50vh;
+    border-radius: 0.2rem;
+    box-shadow: 0px -1px 8px 2px #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20%;
+    align-items: center;
+    position: relative;
+    padding-top: 2rem;
+}
+
+.name{
+    width: 70%;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.information{
+    gap: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.h4{
+    margin-left: .5rem;
+    color: #484848
+
+}
+.img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.btnHome, .btnEdit{
+    color:#F9B621!important;
+    color:#484848!important;
+    font-weight: 1000!important;
+    position: absolute!important;
+}
+.btnHome{
+    bottom: 1rem;
+    left: 2rem;
+}
+.btnEdit{
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position-x: center;
+    background-image: url('../../image/fondo_huellas.png');
+}

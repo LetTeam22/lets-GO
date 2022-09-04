@@ -173,6 +173,7 @@ export const BikeDetail = () => {
               <div className={s.image2}>
                 {/* <img className={s.img} src={bike.image} alt="img not found" /> */}
                 <RenderBikeDetail publicId={bike.image}/>
+                {console.log(bike.image)}
               </div>
             </div>
           </div>
