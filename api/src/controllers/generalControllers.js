@@ -11,7 +11,7 @@ async function getEverything(req, res, next) {
                 model: Bike,
                 through: { attributes: [] },
                 attributes:['idBike']
-            }], where: {idBooking}
+            }], where: {idBooking:idBooking}
         })
     
         //consulto los datos del usuario
@@ -22,8 +22,61 @@ async function getEverything(req, res, next) {
         
         res.send(everyThing)
     } catch (error) {
-        res.send(error.message)
+        res.send({e:error.message})
     }
 }
 
-module.exports = {getEverything}
+
+//Dado un usuario me devuelve todas sus reservas
+async function getUserBookings(req, res, next) {
+    const {email} = req.query
+    const user = await User.findOne({ where: { email: email } });
+    if (user) {
+        try {
+            //consulto los datos del booking
+            const bookingAndBikes = await Booking.findAll({
+                include: [{
+                    model: Bike,
+                    through: { attributes: [] },
+                    attributes:['idBike']
+                }], where: {userIdUser:user.idUser},
+                // include:[{
+                //     model:Experience,
+                //     where: {userIdUser:user.idUser}
+                // }]
+            })
+
+            res.send(bookingAndBikes)
+        } catch (error) {
+            res.send({e:error.message})
+        }
+    }else res.send({e:'usuario no existe'})
+}
+
+//Dado un usuario me devuelve solo reservas con experiencia publicada
+async function getUserOnlyExperience(req, res, next) {
+    const {email} = req.query
+    const user = await User.findOne({ where: { email: email } });
+    if (user) {
+        try {
+            //consulto los datos del booking
+            const bookingAndBikes = await Booking.findAll({
+                include: [{
+                    model: Bike,
+                    through: { attributes: [] },
+                    attributes:['idBike']
+                }], where: {userIdUser:user.idUser},
+                include:[{
+                    model:Experience,
+                    where: {userIdUser:user.idUser}
+                }]
+            })
+
+            res.send(bookingAndBikes)
+        } catch (error) {
+            res.send({e:error.message})
+        }
+    }else res.send({e:'usuario no existe'})
+}
+
+module.exports = {getEverything,getUserBookings,getUserOnlyExperience}
