@@ -129,7 +129,7 @@ export const ShoppingCart = () => {
       });
     } else {
       dispatch(setParameters("resetAll"));
-      dispatch(postBookings(postedBooking));
+      dispatch(postBookings({...postedBooking, totalPrice:total}));
       localStorage.removeItem("booking");
       swal({
         title: "Tu reserva fue confirmada!",
