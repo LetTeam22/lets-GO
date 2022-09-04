@@ -95,7 +95,7 @@ export const AdminProfile = () => {
       !(input.firstName || input.lastName || input.cellphone || input.userName)
     : true;
 
-  const rows = users.map((user) => {
+  const rowsUsers = users.map((user) => {
     return {
       id: user.idUser,
       col1: user.firstName,
@@ -104,12 +104,35 @@ export const AdminProfile = () => {
       col4: user.isAdmin ? "Administrador" : "Usuario",
     };
   });
-  const columns = [
+  const columnsUsers = [
     { field: "id", headerName: "ID", width: 50 },
     { field: "col1", headerName: "Nombre", width: 100 },
     { field: "col2", headerName: "Apellido", width: 100 },
     { field: "col3", headerName: "Email", width: 100 },
     { field: "col4", headerName: "Status", width: 100 },
+  ];
+  console.log(bookings)
+  const rowsBookings = bookings.map((book) => {
+    return {
+      id: book.idBooking,
+      idUser: book.userIdUser,
+      col1: book.startDate,
+      col2: book.startDate,
+      col3: book.endDate,
+      col4: (book.endDate - book.startDate),
+      col5: book.bikes.join(', '),
+      col6: book.status
+    };
+  });
+  const columnsBookings = [
+    { field: "id", headerName: "ID", width: 50 },
+    { field: "idUser", headerName: "User ID", width: 50 },
+    { field: "col1", headerName: "Desde", width: 100 },
+    { field: "col2", headerName: "Desde", width: 100 },
+    { field: "col3", headerName: "Hasta", width: 100 },
+    { field: "col4", headerName: "Días", width: 100 },
+    { field: "col5", headerName: "Bicicletas", width: 100 },
+    { field: "col6", headerName: "Status", width: 100 }
   ];
 
   return (
@@ -121,8 +144,16 @@ export const AdminProfile = () => {
       <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
       <RenderOneImage publicId={'cld-sample'}></RenderOneImage> */}
       <div className={s.bookings}>
-        <h2>Reservas</h2>
-        {bookings
+        <h1>Reservas</h1>
+        <DataGrid
+          rows={rowsBookings}
+          columns={columnsBookings}
+          pageSize={8}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          get
+        />
+        {/* {bookings
           ? bookings.map((book) => {
               return (
                 <div key={book.idBooking}>
@@ -138,7 +169,7 @@ export const AdminProfile = () => {
                 </div>
               );
             })
-          : null}
+          : null} */}
       </div>
       <div className={s.container}>
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
@@ -245,10 +276,11 @@ export const AdminProfile = () => {
         </form>
       </div>
       <div className={s.users}>
+        <h1>Usuarios</h1>
         <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={10}
+          rows={rowsUsers}
+          columns={columnsUsers}
+          pageSize={8}
           rowsPerPageOptions={[5]}
           checkboxSelection
           get
