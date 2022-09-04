@@ -13,8 +13,11 @@ import Dates from "../Dates/Dates";
 import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
-import sincarrito from "../../image/sincarrito.png";
-import RenderOneImage from "../Cloudinary/renderOneImage";
+import sincarrito from '../../image/sincarrito.png'
+import RenderOneImage from '../Cloudinary/renderOneImage';
+import RenderAccCart from "../Cloudinary/renderAccCart";
+
+
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -169,8 +172,12 @@ export const ShoppingCart = () => {
                         <p className={s.accs} key={el.name}>
                           {el.name}
                         </p>
-                        <img src={el.image} alt="not" found />
-                        <p> $ {el.price} / dia </p>
+                        {/* <img src={el.image} alt="not" found /> */}
+                        <RenderAccCart
+                      className={s.imgCloud}
+                      publicId={el.image}
+                    />
+                        <p> $ {el.price} / día </p>
                       </div>
                     ))}
                   </div>
