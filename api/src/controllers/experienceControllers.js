@@ -12,10 +12,12 @@ async function allExperiences (req, res, next) {
 // Devuelve los detalles de una Experiencia dado el BookingID
 async function experienceDetails (req, res, next) {
     const {bookingIdBooking} = req.query
-    const userAndBooking = await Booking.findByPk({
-        where: {bookingIdBooking: bookingIdBooking }
+    const expDetails = await Booking.findOne({
+        include:[{model:Experience,
+            where: {bookingIdBooking: bookingIdBooking }},
+        ],
     });
-    if(experience) res.send(experience)
+    if(expDetails) res.send(expDetails)
     else res.send('Experiencia de usuario no existe')
 }
 
@@ -31,7 +33,7 @@ async function createExperience(req, res, next) {
         })
         // console.log('usuario',user.toJSON())
         let userIdUser = bookingForUser.userIdUser
-
+        // console.log(userIdUser)
         //Ahora si, se procede a guardar en la base de datos.
         const post = await Experience.create({
             imgExperience,

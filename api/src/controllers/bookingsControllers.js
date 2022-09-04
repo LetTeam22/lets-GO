@@ -1,4 +1,4 @@
-const { User, Bike, Booking } = require('../db');
+const { User, Bike, Booking, Accesories,Experience} = require('../db');
 
 async function getAllBookings(req, res, next) {
   try {
@@ -51,7 +51,7 @@ async function getBookingsByUserId(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds } = req.body
+  const { startDate, endDate, userId, bikeIds, AccIds } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length) return res.sendStatus(400)
   try {
     let booking = {startDate, endDate, userIdUser: userId}
@@ -61,7 +61,14 @@ async function postBooking(req, res, next) {
         idBike: bikeIds
       } 
     })
-    bookingCreated.addBike(bikes)
+    let accesoriesForBooking = await Accesories.findAll({
+      where: {
+        idAcc: AccIds
+      } 
+    })
+    await bookingCreated.addBike(bikes)
+    await bookingCreated.addAccesories(accesoriesForBooking)
+    await bookingCreated.setExperience()
     res.send('The booking was created successfully')
   } catch (error) {
     next(error)

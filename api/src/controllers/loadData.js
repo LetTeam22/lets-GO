@@ -4,25 +4,39 @@ const jsonBike = require('../data/bikes.json')
 const jsonBooking = require('../data/bookings.json')
 const jsonExperience = require('../data/experiences.json')
 const jsonAccs = require('../data/accesories.json')
+const {postBooking} = require('./bookingsControllers')
+const {createExperience} = require('./experienceControllers')
+const {} = require('./accesoriesControllers')
 
+async function loadAllModelsInDB() {
 
-function loadAllModelsInDB() {
-  User.bulkCreate(jsonUser)
+  await Accesories.bulkCreate(jsonAccs);
+  console.log('Accesories loaded ok to DB')
+
+  await User.bulkCreate(jsonUser)
   console.log('Users loaded ok to DB');
-  Bike.bulkCreate(jsonBike)
+
+  await Bike.bulkCreate(jsonBike)
   console.log('Bikes loaded ok to DB');
+  
+  await Promise.all(
+    jsonBooking.map(booking => {
+      return postBooking({body:booking},{sendStatus:()=>{},send:()=>{}},()=>{})
+    })
+  ); console.log('Bookings loaded ok to DB')
+  
+  await Promise.all(
+    jsonExperience.map(experience => {
+      return createExperience({body:experience},{sendStatus:()=>{},send:()=>{}},()=>{})
+    })
+  ); console.log('Experiences loaded ok to DB');
 
-
-  //Funcionan bello pero, no toman en cuenta las relaciones
-  //Por lo tanto en alguna consulta pueden generar errrores.
+  //IMPORTANTE! bulkCreate() no va a funcionar correctamente 
+  // si no toma en cuenta las relaciones de las tablas!!!
   // Booking.bulkCreate(jsonBooking)
   // console.log('Bookings loaded ok to DB');
   // Experience.bulkCreate(jsonExperience);
   // console.log('Experiences loaded ok to DB');
-
-  Accesories.bulkCreate(jsonAccs);
-  console.log('Accesories loaded ok to DB')
-
 }
 
 
