@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import s from './Contact.module.css';
 import logo from '../../image/logo.png';
 import emailjs from '@emailjs/browser';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { BsPhone } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BiMessageEdit } from 'react-icons/bi';
 import { TbSend } from 'react-icons/tb';
 import { useState } from 'react';
+import swal from "sweetalert";
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -32,8 +33,16 @@ export const Contact = () => {
         e.preventDefault();
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
+                swal({
+                    title: 'Mensaje enviado con exito!', 
+                    text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con Let's GO", 
+                    icon: "success"})
                 console.log(result.text);
             }, (error) => {
+                swal({
+                    title: 'Algo no salio bien',
+                    text: 'Vuelve a intentarlo y si el problema persiste por favor utiliza otro de nuestros medios de comunicacion. Muchas gracias', 
+                    icon: 'error'})
                 console.log(error.text);
             });
         setInput({
@@ -59,7 +68,7 @@ export const Contact = () => {
             <img src={logo} alt='logo' className={s.logo} />
             <p>RELLENA EL SIGUIENTE FORMULARIO SI QUIERES CONTACTARTE CON NOSOTROS</p>
             <div className={s.container} >
-                <FaUserAlt color='#F9B621' size='2rem'/>
+                <FaRegUser color='#F9B621' size='2rem'/>
                 <div className={s.inputs} ><input type="text" name="user_name" placeholder='Name' value={input.user_name} onChange={e => handleChange(e)} /></div>
             </div>
             <div className={s.container} >
