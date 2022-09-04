@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
@@ -128,7 +127,6 @@ export const Home = () => {
             <div className={s.containerCards}>
               {currentBikes?.map((e) => (
                 <div key={e.idBike}>
-                  <Link to={"/bike/" + e.idBike}>
                     <Card key={e.idBike}
                       name={e.name}
                       type={e.type}
@@ -138,9 +136,9 @@ export const Home = () => {
                       price={e.price}
                       rating={e.rating}
                       color={e.color}
+                      idBike={e.idBike}
                       id={cardId++}
                     />
-                  </Link>
                 </div>
               ))}
             </div>

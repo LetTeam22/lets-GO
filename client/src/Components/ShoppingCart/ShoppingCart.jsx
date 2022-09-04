@@ -17,11 +17,13 @@ import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
 
+
+
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const bookings = JSON.parse(localStorage.getItem('booking')) || [];
-  console.log(bookings)
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+  console.log(bookings);
   const date = useSelector((state) => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
@@ -58,14 +60,14 @@ export const ShoppingCart = () => {
             lentes: book.lentes,
             botella: book.botella,
             calzado: book.calzado,
-            totalAcc: book.totalAcc
+            totalAcc: book.totalAcc,
           },
         };
         cartBikes.push(pushedbike);
       }
   }
 
-  console.log(cartBikes)
+  console.log(cartBikes);
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
 
@@ -105,7 +107,10 @@ export const ShoppingCart = () => {
   };
 
   const total = cartBikes.reduce((acc, cur) => {
-    return acc + (cur.price + cur.accesories.totalAcc) * totalDias(date.from, date.to);
+    return (
+      acc +
+      (cur.price + cur.accesories.totalAcc) * totalDias(date.from, date.to)
+    );
   }, 0);
 
   const handleBooking = (e) => {
@@ -119,13 +124,13 @@ export const ShoppingCart = () => {
           value: true,
           visible: true,
           className: s.btnSwal,
-          closeModal: true
-        }
+          closeModal: true,
+        },
       });
     } else {
       dispatch(setParameters("resetAll"));
       dispatch(postBookings(postedBooking));
-      localStorage.removeItem('booking')
+      localStorage.removeItem("booking");
       swal({
         title: "Tu reserva fue confirmada!",
         text: "Disfruta tu aventura!",
@@ -136,9 +141,9 @@ export const ShoppingCart = () => {
             value: true,
             visible: true,
             className: s.btnSwal,
-            closeModal: true
-          }
-        }
+            closeModal: true,
+          },
+        },
       });
       history.push("/home");
     }
@@ -176,10 +181,11 @@ export const ShoppingCart = () => {
                       </div>
                     ))}
                   </div>
-                  <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price))
-                    ? 0
-                    : totalPerBike(bike.price + bike.accesories.totalAcc)
-                    }`}</p>
+                  <p className={s.prices}>{`Subtotal: $ ${
+                    isNaN(totalPerBike(bike.price))
+                      ? 0
+                      : totalPerBike(bike.price + bike.accesories.totalAcc)
+                  }`}</p>
                 </div>
               </div>
             );
@@ -201,23 +207,22 @@ export const ShoppingCart = () => {
         <div className={s.totalPrice}>
           <Dates />
 
-          {!isNaN(total) ? (
-            <h2 className={s.total}>{`Total $ ${total}`}</h2>
-          ) : (
-            <></>
-          )}
-
           <div className={s.containerBtn}>
             <Link to="/home">
               <button onClick={handleResetDate} className={s.reserveBtn}>
                 Buscar mas Bicicletas
               </button>
             </Link>
+            {!isNaN(total) ? (
+              <h2 className={s.total}>{`Total $ ${total}`}</h2>
+            ) : (
+              <></>
+            )}
             <button
               disabled={
                 postedBooking.startDate === "" ||
-                  postedBooking.endDate === "" ||
-                  !postedBooking.bikeIds.length
+                postedBooking.endDate === "" ||
+                !postedBooking.bikeIds.length
                   ? true
                   : false
               }

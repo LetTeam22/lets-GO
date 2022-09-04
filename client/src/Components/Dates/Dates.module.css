@@ -1,8 +1,8 @@
 .contain{
     display: flex;
     position: relative;
-    width: 30%;
     height: 3.5rem;
+    justify-content: center;
 }
 .date{
     margin: 0;
