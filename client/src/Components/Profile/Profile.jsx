@@ -24,7 +24,6 @@ export const Profile = () => {
   const handleRemoveFav = idBike => {
     dispatch(removeFavorite(idBike));
   };
-
   return isLoading ? (
     <Loading />
   ) : (
@@ -35,7 +34,7 @@ export const Profile = () => {
           {!!favorites.length ?  favorites?.map(f => (
             <div className={s.listFav} key={f.idBike}>
               <button className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x</button>
-              <ul><Link to={`/bike/${f.bike}`}><span className={s.span}>{`${f.name} (ver detalle)`}</span></Link></ul>
+              <ul><Link to={`/bike/${f.idBike}`}><span className={s.span}>{`${f.name} (ver detalle)`}</span></Link></ul>
             </div>
             )) : (
             <span className={s.span}>Todavía no elegiste favoritas</span>
