@@ -114,7 +114,7 @@ export const Home = () => {
 
         <div className={s.divDateAndOrder}>
           {/* comento el Dates hasta que se cambie, este componente no deja modificar estilos */}
-          <Dates />
+          <Dates component='home'/>
           <Orderings handleParameter={handleParameter} />
         </div>
       </div>

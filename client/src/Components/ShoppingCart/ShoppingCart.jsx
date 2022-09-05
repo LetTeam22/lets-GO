@@ -7,6 +7,8 @@ import {
   getUser,
   postBookings,
   setParameters,
+  getDisabledDates,
+  setBookingDates
 } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
@@ -27,7 +29,7 @@ export const ShoppingCart = () => {
   const history = useHistory();
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   // console.log(bookings);
-  const date = useSelector((state) => state.parameters.date);
+  const date = useSelector(state => state.bookingDates);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
@@ -74,7 +76,13 @@ export const ShoppingCart = () => {
   // console.log(cartBikes);
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
-
+  
+  // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
+  const strBikeIds = postbikeIds.join()
+  if (strBikeIds !== date.bikeIds) {
+    dispatch(setBookingDates({...date, bikeIds: strBikeIds}))
+    dispatch(getDisabledDates(strBikeIds))
+  }
 
   let ids = []
   userBoking.map(e => {
@@ -232,7 +240,7 @@ export const ShoppingCart = () => {
 
       {cartBikes.length ? (
         <div className={s.totalPrice}>
-          <Dates />
+          <Dates component='cart'/>
 
           <div className={s.containerBtn}>
             <Link to="/home">
