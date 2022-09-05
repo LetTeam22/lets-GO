@@ -63,6 +63,7 @@ const Dates = ({disabledDates}) => {
         onEndDateChange={(date) => handleEndDateChange(date)}
         onConfirm={() => handleConfirm()}
         disabledDates={disabledDates ? disabledDates : []}
+        className={s.date}
       />      
     );
   };
