@@ -7,18 +7,18 @@ import s from './PostLogIn.module.css';
 import postlogin from '../../../image/postlogin.png';
 import emailjs from '@emailjs/browser';
 
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID3;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID3;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
 
-export default function PostLogIn () {
+export default function PostLogIn() {
     const dispatch = useDispatch()
     const { user } = useAuth0()
     const history = useHistory()
 
     const goBack = (e) => {
         e.preventDefault();
-        dispatch(createUser({email:user.email}))
+        dispatch(createUser({ email: user.email }))
         dispatch(getUser(user.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
@@ -26,7 +26,7 @@ export default function PostLogIn () {
     }
     const goProfile = (e) => {
         e.preventDefault();
-        dispatch(createUser({email:user.email}))
+        dispatch(createUser({ email: user.email }))
         dispatch(getUser(user.email))
         history.push('/bike/profile')
         sendEmail(e);
@@ -34,7 +34,7 @@ export default function PostLogIn () {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, {email: user.email}, PUBLIC_KEY)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
