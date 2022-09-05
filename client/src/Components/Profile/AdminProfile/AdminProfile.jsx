@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -22,12 +22,12 @@ import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
 import { getUser, updateUser } from "../../../Redux/actions";
 import background from "../../../image/fondo_huellas.png";
 import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
-import RenderOneImage from "../../Cloudinary/renderOneImage";
-import axios from "axios";
-import { DataGrid } from "@mui/x-data-grid";
+// import RenderOneImage from "../../Cloudinary/renderOneImage";
 
 export const AdminProfile = () => {
+
   const dispatch = useDispatch();
+  const userToModify = useSelector((state) => state.user);
   const { user, isLoading } = useAuth0();
   const history = useHistory();
   const [input, setInput] = useState({
@@ -39,14 +39,6 @@ export const AdminProfile = () => {
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
-  const [bookings, setBookings] = useState("");
-  const [users, setUsers] = useState("");
-  const userToModify = useSelector((state) => state.user);
-
-  useEffect(() => {
-    axios("/bookings").then((res) => setBookings(res.data));
-    axios("/user/getAll").then((res) => setUsers(res.data));
-  }, []);
 
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
@@ -84,9 +76,6 @@ export const AdminProfile = () => {
       profilePic: "",
       userName: "",
     });
-    // history.push(
-    //   localStorage.getItem("url") ? localStorage.getItem("url") : "/"
-    // );
     dispatch(getUser(userToModify.email));
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
@@ -95,22 +84,13 @@ export const AdminProfile = () => {
       !(input.firstName || input.lastName || input.cellphone || input.userName)
     : true;
 
-  const rows = users.map((user) => {
-    return {
-      id: user.idUser,
-      col1: user.firstName,
-      col2: user.lastName,
-      col3: user.email,
-      col4: user.isAdmin ? "Administrador" : "Usuario",
-    };
-  });
-  const columns = [
-    { field: "id", headerName: "ID", width: 50 },
-    { field: "col1", headerName: "Nombre", width: 100 },
-    { field: "col2", headerName: "Apellido", width: 100 },
-    { field: "col3", headerName: "Email", width: 100 },
-    { field: "col4", headerName: "Status", width: 100 },
-  ];
+  const seeBookings = () => {
+    history.push("/adminprofile/bookings");
+  };
+
+  const seeUsers = () => {
+    history.push("/adminprofile/users");
+  };
 
   return (
     <section className={s.allPage}>
@@ -121,24 +101,15 @@ export const AdminProfile = () => {
       <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
       <RenderOneImage publicId={'cld-sample'}></RenderOneImage> */}
       <div className={s.bookings}>
-        <h2>Reservas</h2>
-        {bookings
-          ? bookings.map((book) => {
-              return (
-                <div key={book.idBooking}>
-                  <p>
-                    Desde {book.startDate} hasta {book.endDate}
-                  </p>
-                  <p>Bicicletas reservadas</p>
-                  <ul>
-                    {book.bikes.map((bike) => {
-                      return <li key={bike.name}>{bike.name}</li>;
-                    })}
-                  </ul>
-                </div>
-              );
-            })
-          : null}
+        <h1>Reservas</h1>
+        <Button
+          variant="contained"
+          color="success"
+          className={s.btnBook}
+          onClick={seeBookings}
+        >
+          Ver reservas
+        </Button>
       </div>
       <div className={s.container}>
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
@@ -245,14 +216,16 @@ export const AdminProfile = () => {
         </form>
       </div>
       <div className={s.users}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          get
-        />
+        <h1>Usuarios</h1>
+        <Button
+          variant="contained"
+          color="success"
+          className={s.btnBook}
+          onClick={seeUsers}
+        >
+          Ver usuarios
+        </Button>
+
       </div>
 
       <img src={background} alt="fondo" className={s.background} />

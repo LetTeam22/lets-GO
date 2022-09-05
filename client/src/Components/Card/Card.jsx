@@ -90,7 +90,7 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
             { <button className={s.fav} onClick={handleFav}> { bikeIsFavorite(idBike)
-                ?  <AiFillHeart style= {iconStyle}/>
+                ? <AiFillHeart style= {iconStyle}/>
                 : <AiOutlineHeart style= {iconStyle}/> }
             </button> }
             { /^(https?)[^\s]*$/i.test(image)

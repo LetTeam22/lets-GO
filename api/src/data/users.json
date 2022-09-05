@@ -35,9 +35,20 @@
     {   
         "userName": "lu",
         "password": "1234",
-        "email": "lu@gmail.com",
+        "email": "lucia@gmail.com",
         "firstName": "Lucia",
         "lastName": "Meyer",
+        "cellphone": "1122334455",
+        "profilePic": "string foto",
+        "isAdmin": true,
+        "creditCard": "1111222233334444"
+    },
+    {   
+        "userName": "let",
+        "password": "1234",
+        "email": "henrylet22@gmail.com",
+        "firstName": "let's",
+        "lastName": "GO",
         "cellphone": "1122334455",
         "profilePic": "string foto",
         "isAdmin": true,

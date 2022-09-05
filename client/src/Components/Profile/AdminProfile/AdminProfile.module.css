@@ -9,16 +9,13 @@
 
 .bookings{
     text-align: center;
+    height: 93%;
 }
-.bookings div{
-    background-color: #b9b8b8;
-}
-.bookings ul{
-    list-style: none;
-}
-.bookings ul li{
-    display: inline;
-    margin: 0 0.5rem;
+.btnBook{
+    position: relative;
+    color:#F9B621!important;
+    background-color:#333333!important;
+    font-weight: 1000!important;
 }
 
 .container{
@@ -120,5 +117,5 @@
 
 .users{
     height: 93%;
-    width: 30%;
+    text-align: center;
 }

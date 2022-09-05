@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES } from './actiontypes'
+
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES, GET_ALL_USERS, GET_DISABLED_DATES } from './actiontypes'
+
 
 
 
@@ -90,12 +92,11 @@ export const postBookings = (payload) => {
     }
 };
 
-
 export const getFamousBikes = () => {
     return dispatch => axios('/bikes')
         .then(res => dispatch({ type: GET_FAMOUS_BIKES, payload: res.data }))
         .catch(err => console.log(err));
-}
+};
 
 export const getAccesories = () => {
     return (dispatch) => {
@@ -115,12 +116,12 @@ export const removeFavorite = idBike => {
     return ({ type: REMOVE_FAVORITE, idBike })
 };
 
-// export const getAllBookings = () => {
-//     return dispatch => {
-//         axios('/bookings')
-//         .then(res => dispatch({type: GET_ALL_BOOKINGS, payload: res.data}))
-//     }
-// }
+export const getAllBookings = () => {
+    return dispatch => axios('/bookings')
+        .then(res => dispatch({ type: GET_ALL_BOOKINGS, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
 
 export const postExperience = (payload) => {
     console.log(payload)
@@ -138,3 +139,16 @@ export const getAllExperiences = () =>{
         .then(res => dispatch({type: GET_ALL_EXPERIENCES, payload: res.data}))
     }
 }
+
+export const getAllUsers = () => {
+    return dispatch => axios('/user/getAll')
+        .then(res => dispatch({ type: GET_ALL_USERS, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
+export const getDisabledDates = bikeIds => {
+    return dispatch => axios(`/bookings/bike/${bikeIds}`)
+        .then(res => dispatch({ type: GET_DISABLED_DATES, payload: res.data }))
+        .catch(err => console.log(err));
+};
+

@@ -1,44 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
 
 .container {
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-image: url('../../image/huella-detail.png');
     background-size: 100%;
 }
 
 .name {
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 1rem;
     border-bottom: solid 0.1rem #F9B621;
     display: flex;
-    margin-top: 6rem;
+    margin-top: .5rem;
     margin-left: 2rem;
     margin-right: 2rem;
     width: 95%;
-    
-
 }
 
-.wrapper {
-    width: 40%;
-    display: block;
+.name > p {
+    color: #4d4c4c;
+    font-weight: 500;
 }
 
 .title {
-    text-align: left;
-    font-size: 3.75rem;
-    line-height: 1;
-    display: block;
-    position: relative;
-    font-family: 'Roboto';
-
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 2rem 0 0 0;
+    color: #4d4c4c;
 }
 
 .ph{
     font-family: 'Roboto';
-    font-weight:700;
-    line-height: 2rem  
+    font-weight:500;
+    line-height: 2rem;
+    color: #4d4c4c; 
 }
 
 .row {
@@ -66,12 +62,13 @@
     font-family: "Roboto";
     font-weight:400 ;
 }
-.prueba{
+.parameters{
     font-family: 'Roboto';
     font-weight: 400;
     margin:0.5%;
     margin-left: 0.1%;
     text-align: left;
+    color: #4d4c4c; 
 }
 .cont{
     display: flex; 
@@ -90,9 +87,10 @@
 
 .pr{
     font-family: 'Roboto';
-    font-size: xx-large;
+    font-size: 1.5rem;
     width: 100%;
-    letter-spacing: 0.03rem;  
+    letter-spacing: 0.03rem;
+    color: #4d4c4c; 
 }
 
 .desc{
@@ -100,9 +98,10 @@
 }
 
 .image1 {
-    width: 66.66%;
     order: 2;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image2 {
@@ -135,7 +134,7 @@
 
 .gallery{
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    background-color: black;
+    background-color: rgb(77, 77, 77);
     width: 100%;
     height: 40vh;
     flex-direction: row;
@@ -150,14 +149,17 @@
     margin-left: 3rem;
 }
 
-.titleAcc{
-    display: block;
-    width: 100%;
-    height: 3.5vh;
-    background-color: #484848;
-    text-align: center;
+.titleAccAndTech {
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    background-color: #828181;
     color: white;
-    font-family: 'Roboto';
+    justify-content: center;
+}
+
+.titleAccAndTech > h2 {
+    font-weight: 400;
 }
 
 .containerGral{

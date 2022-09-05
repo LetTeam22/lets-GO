@@ -1,63 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 .accesories {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    background-color: #F2F2F2;;
+    display: flex;
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+    padding-bottom:  3rem;
+}
+
+.title { 
+    display: flex;
+    justify-content:center;
+    color: #787877;
+    z-index: 1;
+    font-weight: 300;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .text { 
-    grid-area: 2 / 3 / 3 / 5; 
-    margin-left: 1rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #787877;
+    text-align: center;
 }
 
-.image { 
-    grid-area: 3 / 3 / 7 / 4; 
-    width: 9vw;
-}
-
-#one { 
-    grid-area: 3 / 4 / 4 / 5; 
-    margin-top: 2rem;
-}
-#two { 
-    grid-area: 4 / 4 / 5 / 5; 
-    margin-top: 2.5rem;
-}
-#three { 
-    grid-area: 5 / 4 / 6 / 5; 
-    margin-top: 3rem;
-}
-#four { 
-    grid-area: 6 / 4 / 7 / 5; 
-    margin-top: 3.3rem;
+.contain {
+    display: flex;
+    justify-content: center;
     
 }
 
-#one, #two, #three, #four, .title, .text {
-    color: #787877;
+.containImgAndBtn {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
 }
-
+.image { 
+    margin-top: 2rem;
+    width: 12vw;
+}
 
 .btn { 
     grid-area: 7 / 3 / 8 / 5;
-    position: relative;
-    top: 36rem;
-    left: 22rem;
-    width: 13rem;
-    height: fit-content;
+    display: flex;
+    width: 80%;
     padding: 0.5rem 0.5rem 0.5rem 0.5rem; 
     text-decoration: none;
-    border: 0.15rem solid #F9B621;
+    border: 0.1rem solid #F9B621;
     background-color: transparent;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.125rem;
+    justify-content: center;
     line-height: 1.75rem;
     color: #d3991c;
     margin-right: auto;
@@ -72,22 +74,7 @@
     color: #F2F2F2;
 }
 
-.familyImage { 
-    grid-area: 2 / 7 / 8 / 12;
-    margin-top: 6.5rem; 
-    width: 100%;
-}
 
-.title { 
-    position: absolute;
-    color: #787877;
-    top: 7%;
-    z-index: 1;
-    font-weight: 300;
-    font-size: 1.5rem;
-    width: 100%;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-}
+
+
 
