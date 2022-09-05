@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useEffect, useRef } from 'react';
+import { useState, } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import UploadImages from "./UploadImages";
 import axios from "axios";
+import { postExperience } from '../../Redux/actions';
 import RenderCreateExp from "../Cloudinary/renderCreateExperience";
 import s from "./CreateExperiences.module.css"
 import {
@@ -18,19 +19,25 @@ import {
 } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./MaterialUIColors"
-import { IoSend } from "react-icons/io5";
+import { IoSend, IoAttach } from "react-icons/io5";
 import swal from "sweetalert";
+import { BiMessageEdit } from 'react-icons/bi';
+import { TbSend } from 'react-icons/tb';
+import { FaUserAlt } from 'react-icons/fa';
+import logo from '../../image/logo.png';
 // import { Link, useHistory } from "react-router-dom"
 
 
 const CreateExperiences = () => {
-  // const dispatch= useDispatch();
-  // const allExperiences = useSelector(state => state.allExperiences)
+  const dispatch = useDispatch();
+  const form = useRef();
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState({
     textExperience: "",
-    imgExperience: ""
+    imgExperience: "",
+    //bookingIdBooking,
+    //userIdUser
   })
 
   const history = useHistory()
@@ -83,88 +90,50 @@ const CreateExperiences = () => {
       return swal("Por favor, revisá los datos ingresados")
     } else {
       setErrors(validate(input))
-      // dispatch(postExperience(input))
+      dispatch(postExperience(input))
       setInput({
         textExperience: "",
-        imgExperience: ""
+        imgExperience: "",
+        //bookingIdBooking,
+        //userIdUser
       })
-      // history.push('/home')
+      history.push('/allExperiencies')
     }
   }
 
   return (
 
-    <section className={s.allPage}>
-      <div className={s.container}>
-        <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
-          <ThemeProvider theme={theme}>
-            <h4 className={s.h4}>Nombre</h4>
+    <div >
+      <form ref={form} onSubmit={handleSubmit} className={s.form} >
+        <img src={logo} alt='logo' className={s.logo} />
 
-            <div>
-              <FormControl>
-                <TextField
-                  // className={s.name}
-                  name="textExperience"
-                  id="filled-full-width"
-                  label="Tu experiencia"
-                  style={{ width: "100%", fontSize: "7px" }}
-                  helperText="Sumate a los leters que cuentan historias..."
-                  margin="normal"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  multiline
-                  rows={4}
-                  maxRows={15}
-                  aria-describedby="my-helper-text"
-                  value={input.textExperience}
-                  onChange={handleChange}
-                />
-              </FormControl>
-            </div>
+        <div className={s.containerT} >
+          <FaUserAlt color='#F9B621' size='2rem' />
+          <div className={s.inputs} ><input type="text" name="user_name" placeholder='Name' value={input.user_name} onChange={e => handleChange(e)} /></div>
+        </div>
 
-            <div>
-              <FormControl>
-                <input type="file"
-                  name="file"
-                  onChange={upload}
-                  style={{ fontSize: "12px", color: "grey" }} />
-                {loading ? <p style={{ fontSize: "12px", color: "grey" }}>Tu imagen se está cargando...</p> :
-                  null
-                  // <RenderCreateExp className={s.information} publicId={input.imageExperience} />
-                }
-              </FormControl>
-            </div>
+        <div className={s.containerT} >
+          <BiMessageEdit color='#F9B621' size='2rem' />
+          <div className={s.textArea} ><textarea value={input.textExperience}
+            onChange={handleChange} name="textExperience" placeholder='Sumate a los leters que cuentan historias...' /></div>
+        </div>
+        
 
-            <Button
-              variant="contained"
-              endIcon={<IoSend />}
-              className={s.btnEdit}
-              type="submit"
-            //   disabled={disabled}
-            >
-              Compartir
-            </Button>
+        <div className={s.containerT}>
+        <IoAttach color='#F9B621' size='2rem' />
+          <input type="file" onChange={upload} name="file" style={{color:"white", fontFamily:"Roboto"}}/>
+        </div>
 
-          </ThemeProvider>
-          {/* </form>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input style={{ border: "solid 1px black" }} type="textarea" name="textExperience" value={input.textExperience} onChange={handleChange} />
-                <input type="file"
-                    placeholder="sube tu imagen"
-                    name="file"
-                    onChange={upload} />
-                {loading ? <h4>Tu imagen se está cargando...</h4> :
 
-                <RenderCreateExp publicId={input.imageExperience}/>
 
-                    // <div>
-                    //     <img src={image} style={{ width: "10%" }} alt="img not found" />
-                    // </div>
-                } */}
-        </form>
-      </div>
-    </section>
+        <div className={s.containerBtn} >
+          <TbSend color='white' size='2rem' />
+          <input type="submit" value="Send" />
+        </div>
+
+
+      </form>
+    </div>
   )
 
 

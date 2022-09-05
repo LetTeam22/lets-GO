@@ -17,8 +17,8 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
 export const Contact = () => {
 
     const form = useRef();
-    
-    const [input, setInput ] = useState({
+
+    const [input, setInput] = useState({
         user_name: '',
         user_number: '',
         user_email: '',
@@ -34,15 +34,17 @@ export const Contact = () => {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
                 swal({
-                    title: 'Mensaje enviado con exito!', 
-                    text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con Let's GO", 
-                    icon: "success"})
+                    title: 'Mensaje enviado con exito!',
+                    text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con Let's GO",
+                    icon: "success"
+                })
                 console.log(result.text);
             }, (error) => {
                 swal({
                     title: 'Algo no salio bien',
-                    text: 'Vuelve a intentarlo y si el problema persiste por favor utiliza otro de nuestros medios de comunicacion. Muchas gracias', 
-                    icon: 'error'})
+                    text: 'Vuelve a intentarlo y si el problema persiste por favor utiliza otro de nuestros medios de comunicacion. Muchas gracias',
+                    icon: 'error'
+                })
                 console.log(error.text);
             });
         setInput({

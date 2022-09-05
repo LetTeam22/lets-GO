@@ -1,35 +1,39 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { CDateRangePicker } from '@coreui/react-pro'
 import s from './Dates.module.css';
 
-const Dates = () => {
+const Dates = ({disabledDates}) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
-    const [fromDate, setFromDate] = useState(null);
-    const [toDate, setToDate] = useState(null);
+    const [fromDate, setFromDate] = useState('');
+    const [toDate, setToDate] = useState('');
 
-    const handleFromDate = date => {
-      setFromDate(date)
-      dispatch(setParameters({...parameters, date: {...parameters.date, from: convertDate(date)}}));    
-      dispatch(setCurrentPage(1));
+    const handleStartDateChange = (date) => {
+      const newDate = date ? date : ''
+      setFromDate(newDate)
+      if (!date) {
+        dispatch(setParameters({...parameters, date: {from: '', to: ''}}));    
+        dispatch(setCurrentPage(1));
+      }
     }
 
-    const handleToDate = date => {
-      setToDate(date)
-      dispatch(setParameters({...parameters, date: {...parameters.date, to: convertDate(date)}}));    
+    const handleEndDateChange = (date) => {
+      const newDate = date ? date : ''
+      setToDate(newDate)
+    }
+
+    const handleConfirm = () => {
+      dispatch(setParameters({...parameters, date: {from: convertDate(fromDate), to: convertDate(toDate)}}));    
       dispatch(setCurrentPage(1));
     }
     
     const convertDate = date => { 
       if (!date) return date
       let arr = date.toString().split(' ')
-      return `${arr[3]}-${convertMonth(arr[2])}-${arr[1]}`
+      return `${arr[3]}-${convertMonth(arr[1])}-${arr[2]}`
     }
 
     const convertMonth = monthStr => {
@@ -51,33 +55,15 @@ const Dates = () => {
     }
     
     return (
-        <div className={s.contain}>
-          
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              className={s.date}
-              label="Fecha desde"
-              value={fromDate}
-              onChange={(date) => {
-                handleFromDate(date);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
-          <h5> ┊ </h5>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              className={s.date}
-              label="Fecha hasta"
-              value={toDate}
-              onChange={(date) => {
-                handleToDate(date);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
-        </div>
-
+      <CDateRangePicker 
+        footer 
+        placeholder={['Fecha desde', 'Fecha hasta']}
+        format='d/M/yyyy'
+        onStartDateChange={(date) => handleStartDateChange(date)}
+        onEndDateChange={(date) => handleEndDateChange(date)}
+        onConfirm={() => handleConfirm()}
+        disabledDates={disabledDates ? disabledDates : []}
+      />      
     );
   };
 

@@ -24,16 +24,17 @@ const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-
 export const ShoppingCart = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  let bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const date = useSelector((state) => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
+  const userBoking = useSelector(state => state.bookings)
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
 
@@ -41,13 +42,10 @@ export const ShoppingCart = () => {
   
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
-  }, [dispatch]);
+  }, [dispatch, user?.email]);
 
 
   if (isLoading) return <Loading />;
@@ -77,12 +75,25 @@ export const ShoppingCart = () => {
   }
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
+  let ids = []
+  userBoking.map(e => {
+    !!e.canasto.length &&  ids.push([e.canasto])
+    !!e.silla.length && ids.push([e.silla])
+    !!e.luces.length && ids.push([e.luces])
+    !!e.casco.length && ids.push([e.casco])
+    !!e.candado.length && ids.push([e.candado])
+    !!e.lentes.length && ids.push([e.lentes])
+    !!e.botella.length && ids.push([e.botella])
+    !!e.calzado.length && ids.push([e.calzado])
+    ids = ids.map(e => parseInt(e))
+  })
 
-  let postedBooking = {
+ let postedBooking = {
     startDate: date.from,
     endDate: date.to,
     userId: userLogged?.idUser,
     bikeIds: postbikeIds,
+    AccIds: ids
   };
 
   const llenarAccs = (accs) => {
@@ -125,9 +136,7 @@ export const ShoppingCart = () => {
     e.preventDefault();
     emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
       .then((result) => {
-        console.log(result.text);
       }, (error) => {
-        console.log(error.text);
       });
   }
 

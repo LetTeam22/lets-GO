@@ -20,23 +20,18 @@ export const Menu = () => {
       <div className={s.options}>
         <div >
           <Link to='/home'><span className={s.span}>BICICLETAS</span></Link>
-          <hr color="#F9B621" />
         </div>
         <div >
           <Link to='/adventure'><span className={s.span}>AVENTURAS</span></Link>
-          <hr color="#F9B621" />
         </div>
         <div >
           <Link to='/promotions'><span className={s.span}>BENEFICIOS</span></Link>
-          <hr color="#F9B621" />
         </div>
         <div >
           <Link to='/allExperiencies'><span className={s.span}>EXPERIENCIAS</span></Link>
-          <hr color="#F9B621" />
         </div>
         <div >
           <Link to='/contact'><span className={s.span}>CONTACTO</span></Link>
-          <hr color="#F9B621" />
         </div>
       </div>
 
