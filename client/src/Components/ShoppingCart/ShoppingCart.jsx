@@ -219,7 +219,6 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-
         <Dates component='cart' className={s.dates} />
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
@@ -281,84 +280,66 @@ export const ShoppingCart = () => {
             {
               cartBikes.length 
               ? cartBikes.map(bike => {
-                console.log(bike);
-
-      
-  <div className={s.containerDiv}>
-      <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }}>
-        <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Item</TableCell>
-              <TableCell align="center">Cantidad</TableCell>
-              <TableCell align="center">Precio/dia</TableCell>
-              <TableCell align="center">Precio Total</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {cartBikes.length 
-              ? cartBikes.map((bike) => {
-
                 return (
                   <div key={bike.idBike}>
                     <div className={s.cardBike}>
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <RenderOneImage publicId={bike.image} className={s.img} />
                       <div className={s.accesories}>
-                        {llenarAccs(bike.accesories)?.map((el) => {
-                        return (
+                        {llenarAccs(bike.accesories)?.map((el) => (
                           <div>
-                              <RenderAccCart
-                                  className={s.imgCloud}
-                                  publicId={el.image}
-                              />
+                            <p className={s.accs} key={el.name}> {el.name} </p>
+                            <RenderAccCart
+                              className={s.imgCloud}
+                              publicId={el.image}
+                            />
                           </div>
-                        )})}
-                        
+                        ))}
                       </div>
                       <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
                   </div>
-                )})
+                )}) 
               : <></>
             }
           </div>
-        </div>
-        <div>
-          {cartBikes.length ? (
-                  <div className={s.totalPrice}>
-                    <div className={s.containerBtn}>
-                      <Link to="/home">
-                        <button onClick={handleResetDate} className={s.reserveBtn}>
-                          Buscar mas Bicicletas
-                        </button>
-                      </Link>
-                      {!isNaN(total) ? (
-                        <h2 className={s.total}>{`Total $ ${total}`}</h2>
-                      ) : (
-                        <></>
-                      )}
-                      <button
-                        disabled={
-                          postedBooking.startDate === "" ||
-                            postedBooking.endDate === "" ||
-                            !postedBooking.bikeIds.length
-                            ? true
-                            : false
-                        }
-                        onClick={(e) => handleBooking(e)}
-                        className={s.reserveBtn}
-                      >
-                        RESERVAR
-                      </button>
-                    </div>
-                    
-                  </div>
+  </div>
+    <div>
+    {cartBikes.length ? (
+            <div className={s.totalPrice}>
+              <div className={s.containerBtn}>
+                <Link to="/home">
+                  <button onClick={handleResetDate} className={s.reserveBtn}>
+                    Buscar mas Bicicletas
+                  </button>
+                </Link>
+                {!isNaN(total) ? (
+                  <h2 className={s.total}>{`Total $ ${total}`}</h2>
                 ) : (
                   <></>
                 )}
-        </div>
-      </div>
+                <button
+                  disabled={
+                    postedBooking.startDate === "" ||
+                      postedBooking.endDate === "" ||
+                      !postedBooking.bikeIds.length
+                      ? true
+                      : false
+                  }
+                  onClick={(e) => handleBooking(e)}
+                  className={s.reserveBtn}
+                >
+                  RESERVAR
+                </button>
+              </div>
+
+            </div>
+          ) : (
+            <></>
+          )}
+    </div>
+
+    </div>
   : <Loading />
   )
 };
