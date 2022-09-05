@@ -51,7 +51,7 @@ async function getBookingsByUserId(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds, totalPrice } = req.body
+  const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
   try {
     console.log(totalPrice)
@@ -69,7 +69,6 @@ async function postBooking(req, res, next) {
     })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
-    await bookingCreated.setExperience()
     res.send('The booking was created successfully')
   } catch (error) {
     next(error)
