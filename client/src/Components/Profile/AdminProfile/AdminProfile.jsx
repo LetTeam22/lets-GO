@@ -241,7 +241,7 @@ export const AdminProfile = () => {
       <div className={s.users}>
         <h1>Usuarios</h1>
         <DataGrid
-          rows={rowsUsers}
+          rows={rows}
           columns={columnsUsers}
           pageSize={8}
           rowsPerPageOptions={[5]}
