@@ -1,13 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import {
-  getAccesories,
-  getBikes,
-  getUser,
-  postBookings,
-  setParameters,
-} from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import swal from "sweetalert";
@@ -21,12 +15,11 @@ const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  // console.log(bookings);
+  console.log(bookings)
   const date = useSelector((state) => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
@@ -37,13 +30,10 @@ export const ShoppingCart = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
-  }, [dispatch]);
+  }, [dispatch, user?.email]);
 
   if (isLoading) return <Loading />;
 
@@ -71,20 +61,18 @@ export const ShoppingCart = () => {
       }
   }
 
-  // console.log(cartBikes);
-
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
-
-
   let ids = []
   userBoking.map(e => {
-    !!e.canasto.length &&  ids.push(e.canasto)
-    !!e.silla.length && ids.push(e.silla)
-    !!e.luces.length && ids.push(e.luces)
-    !!e.casco.length && ids.push(e.casco)
-    !!e.candado.length && ids.push(e.candado)
-    !!e.lentes.length && ids.push(e.lentes)
-    !!e.botella.length && ids.push(e.botella)
+    !!e.canasto.length &&  ids.push([e.canasto])
+    !!e.silla.length && ids.push([e.silla])
+    !!e.luces.length && ids.push([e.luces])
+    !!e.casco.length && ids.push([e.casco])
+    !!e.candado.length && ids.push([e.candado])
+    !!e.lentes.length && ids.push([e.lentes])
+    !!e.botella.length && ids.push([e.botella])
+    !!e.calzado.length && ids.push([e.calzado])
+    ids = ids.map(e => parseInt(e))
   })
 
  let postedBooking = {
@@ -92,7 +80,7 @@ export const ShoppingCart = () => {
     endDate: date.to,
     userId: userLogged?.idUser,
     bikeIds: postbikeIds,
-    AccIds: ids.map(e => parseInt(e))
+    AccIds: ids
   };
 
   const llenarAccs = (accs) => {
@@ -106,7 +94,6 @@ export const ShoppingCart = () => {
         }
       }
     }
-    // console.log(accesories);
     return accesories;
   };
 
@@ -134,9 +121,7 @@ export const ShoppingCart = () => {
     e.preventDefault();
     emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
       .then((result) => {
-        // console.log(result.text);
       }, (error) => {
-        // console.log(error.text);
       });
   }
 
