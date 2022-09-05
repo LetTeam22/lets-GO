@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import s from "./Bookings.module.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { TiArrowBackOutline } from 'react-icons/ti';
 
 
 export default function Bookings() {
@@ -44,10 +45,13 @@ export default function Bookings() {
     { field: "col6", headerName: "Recaudado", width: 100 },
   ];
 
-  console.log(bookings)
+  const handleClick = () => {
+    history.goBack()
+  }
 
   return (
     <div className={s.bookings}>
+      <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
       <DataGrid
         rows={rowsBookings}
         columns={columnsBookings}
