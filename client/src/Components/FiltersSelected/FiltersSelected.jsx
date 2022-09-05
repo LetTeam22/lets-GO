@@ -2,7 +2,7 @@ import React from 'react'
 import s from './FiltersSelected.module.css';
 
 
-export const FiltersSelected = ({label, select, handleDelete}) => {
+export const FiltersSelected = ({select, handleDelete}) => {
 
     return (
         <>

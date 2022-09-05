@@ -16,7 +16,10 @@ import Loading from "../Loading/Loading";
 import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
-
+import emailjs from '@emailjs/browser';
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 
 export const ShoppingCart = () => {
@@ -113,6 +116,16 @@ export const ShoppingCart = () => {
     );
   }, 0);
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+  }
+
   const handleBooking = (e) => {
     if (!isAuthenticated) {
       swal({
@@ -129,7 +142,7 @@ export const ShoppingCart = () => {
       });
     } else {
       dispatch(setParameters("resetAll"));
-      dispatch(postBookings(postedBooking));
+      dispatch(postBookings({ ...postedBooking, totalPrice: total }));
       localStorage.removeItem("booking");
       swal({
         title: "Tu reserva fue confirmada!",
@@ -145,6 +158,7 @@ export const ShoppingCart = () => {
           },
         },
       });
+      sendEmail(e)
       history.push("/home");
     }
   };
@@ -174,18 +188,17 @@ export const ShoppingCart = () => {
                         </p>
                         {/* <img src={el.image} alt="not" found /> */}
                         <RenderAccCart
-                      className={s.imgCloud}
-                      publicId={el.image}
-                    />
+                          className={s.imgCloud}
+                          publicId={el.image}
+                        />
                         <p> $ {el.price} / día </p>
                       </div>
                     ))}
                   </div>
-                  <p className={s.prices}>{`Subtotal: $ ${
-                    isNaN(totalPerBike(bike.price))
-                      ? 0
-                      : totalPerBike(bike.price + bike.accesories.totalAcc)
-                  }`}</p>
+                  <p className={s.prices}>{`Subtotal: $ ${isNaN(totalPerBike(bike.price))
+                    ? 0
+                    : totalPerBike(bike.price + bike.accesories.totalAcc)
+                    }`}</p>
                 </div>
               </div>
             );
@@ -221,8 +234,8 @@ export const ShoppingCart = () => {
             <button
               disabled={
                 postedBooking.startDate === "" ||
-                postedBooking.endDate === "" ||
-                !postedBooking.bikeIds.length
+                  postedBooking.endDate === "" ||
+                  !postedBooking.bikeIds.length
                   ? true
                   : false
               }

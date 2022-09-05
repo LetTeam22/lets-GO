@@ -18,6 +18,7 @@ import {AdminProfile} from './Components/Profile/AdminProfile/AdminProfile.jsx'
 import './App.css';
 import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
 import CreateExperiences from './Components/CreateExperiences/CreateExperiences';
+import Bookings from './Components/Profile/AdminProfile/Bookings';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route exact path= '/postLogin' component={ PostLogIn } />
         <Route exact path= '/editProfile' component={ ProfileToEdit } />
         <Route exact path= '/AdminProfile' component={ AdminProfile } />
+        <Route exact path= '/AdminProfile/bookings' component={ Bookings } />
         <Route exact path= '/experience/create' component={ CreateExperiences } />
         <Route path='*' component={ Error } />
       </Switch>

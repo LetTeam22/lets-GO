@@ -36,9 +36,6 @@ const initialState = {
             search: ''
         },
         date: {
-            selected: [],
-            labels: [],
-            ids: [],
             from: '',
             to: ''
         }
@@ -65,7 +62,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'resetAll') {
                 action.payload = {
                     filters: { selected: [], labels: [], ids: [], type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
-                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { selected: [], labels: [], ids: [], from: '', to: '' }
+                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { from: '', to: '' }
                 }
             }
             return {
