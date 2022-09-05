@@ -20,7 +20,7 @@ export const BikeDetail = () => {
   const history = useHistory();
 
   const [input, setInput] = useState({
-    bike: bikeId,
+    bike: parseInt(bikeId, 10),
     canasto: '',
     silla: '',
     luces: '',
@@ -35,9 +35,9 @@ export const BikeDetail = () => {
     window.scrollTo(0, 0);
     dispatch(getAccesories());
     dispatch(getBikeDetail(bikeId));
-    return () => { 
+    return () => {
       dispatch(setBikeDetail([]))
-    } 
+    }
   }, [dispatch, bikeId]);
 
 
@@ -86,25 +86,35 @@ export const BikeDetail = () => {
   };
 
   const handleCheck = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        [e.target.name]: e.target.value,
+      });
+    }
+    else {
+      setInput({
+        ...input,
+        [e.target.name]: ''
+      });
+    }
   };
 
   const llenarAccs = (accs) => {
     let accesories = [];
     for (let acc in accs) {
-      if (accs[acc] === true) {
+      if (accs[acc] !== '' && typeof accs[acc] === 'string') {
         for (let acces of allAccs) {
-          if (acces.name.toLowerCase() === acc) {
+          if (acces.idAcc === parseInt(accs[acc], 10)) {
             accesories.push(acces);
           }
         }
       }
     }
+    console.log(accesories)
     return accesories;
   };
+
 
   const adicional = () => {
     let adic = 0;
@@ -117,7 +127,7 @@ export const BikeDetail = () => {
 
   return (
     <>
-      { !!bike.length ? <Loading /> :
+      {!!bike.length ? <Loading /> :
         <div className={s.container}>
           <div className={s.name}>
             <h3 className={s.title}>{bike.name}</h3>
@@ -164,7 +174,7 @@ export const BikeDetail = () => {
 
             <div className={s.image1}>
               <div className={s.image2}>
-                <RenderBikeDetail publicId={bike.image}/>
+                <RenderBikeDetail publicId={bike.image} />
                 {/* {console.log(bike.image)} */}
               </div>
             </div>
@@ -345,11 +355,11 @@ export const BikeDetail = () => {
                       </ul>
                     </div> */}
 
-                    <div>
-                      <p className={s.precio}>Total adicional</p>
-                      <p className={s.precio}>$ {adicional()} / dia</p>
-                    </div>
-                  {/* </div> */}
+                <div>
+                  <p className={s.precio}>Total adicional</p>
+                  <p className={s.precio}>$ {adicional()} / dia</p>
+                </div>
+                {/* </div> */}
 
               </div>
             </div>
