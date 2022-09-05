@@ -4,7 +4,7 @@ import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-// import Dates from "../Dates/Dates";
+import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
@@ -107,14 +107,14 @@ export const Home = () => {
 
       <div className={s.divSticky}>
         <div className={s.containFiltersSelected}>
-          {!!parameters.search.selected.length && (<FiltersSelected label="Búsqueda" select={parameters.search} handleDelete={deleteSearch} />)}
-          {!!parameters.filters.selected.length && (<FiltersSelected label="Filtros" select={parameters.filters} handleDelete={deleteFilter} />)}
-          {!!parameters.sorts.selected.length && (<FiltersSelected label="Ordenamientos" select={parameters.sorts} handleDelete={deleteSort} />)}
+          {!!parameters.search.selected.length && (<FiltersSelected select={parameters.search} handleDelete={deleteSearch} />)}
+          {!!parameters.filters.selected.length && (<FiltersSelected select={parameters.filters} handleDelete={deleteFilter} />)}
+          {!!parameters.sorts.selected.length && (<FiltersSelected select={parameters.sorts} handleDelete={deleteSort} />)}
         </div>
 
         <div className={s.divDateAndOrder}>
           {/* comento el Dates hasta que se cambie, este componente no deja modificar estilos */}
-          {/* <Dates /> */}
+          <Dates />
           <Orderings handleParameter={handleParameter} />
         </div>
       </div>

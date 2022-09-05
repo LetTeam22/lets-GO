@@ -19,14 +19,17 @@ import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
 import image from "../../../image/persona_logeada.png";
 import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
-import { getUser, updateUser } from "../../../Redux/actions";
+import { getUser, updateUser, getAllBookings, getAllUsers } from "../../../Redux/actions";
 import background from "../../../image/fondo_huellas.png";
 import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
 // import RenderOneImage from "../../Cloudinary/renderOneImage";
 
-
 export const AdminProfile = () => {
+
   const dispatch = useDispatch();
+  const bookings = useSelector(state => state.allBookings);
+  const userToModify = useSelector((state) => state.user);
+  const users = useSelector(state => state.allUsers);
   const { user, isLoading } = useAuth0();
   const history = useHistory();
   const [input, setInput] = useState({
@@ -39,6 +42,11 @@ export const AdminProfile = () => {
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
   const userToModify = useSelector((state) => state.user);
+
+//  useEffect(() => {
+//    dispatch(getAllBookings());
+//    dispatch(getAllUsers())
+//  }, [dispatch]);
 
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
@@ -225,6 +233,7 @@ export const AdminProfile = () => {
         >
           Ver usuarios
         </Button>
+
       </div>
 
       <img src={background} alt="fondo" className={s.background} />

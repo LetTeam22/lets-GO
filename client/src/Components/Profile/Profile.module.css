@@ -5,42 +5,49 @@
     /* justify-content: center; */
     align-items: center;
 }
-.containerDer{
-    width: 35%;
-    height: 50vh;
-    border-radius: 0.2rem;
-    box-shadow: 0px -1px 8px 2px #333333;
+
+.containerLeft {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 20%;
-    align-items: center;
-    position: relative;
-    padding-top: 2rem;
-}
-
-.containerIzq {
+  
+    display: flex;
     width: 30%;
     height: calc(100vh - 6rem);
-    /* background-color:#d3d2ce; */
+    background-color:#d3d2ce;
     border-radius: 0.2rem;
     display: flex;
-    align-items: center;
+    box-shadow: 0px -1px 6px 0px #333333;
 }
 
-.fav {
+.box {
     margin-left: 1rem;
-    width: 100%;
-}
-.span {
-    font-size: .9rem;
-    color: #333333;
-    padding-left: .5rem;
-}
+    margin-right: 1rem;
+    margin-top: 1rem;
+    padding: .5rem;
+    height: 40%;
+    background-color: #f9b52192;
 
-.listFav {
+    overflow-y: scroll;
+}
+.title {
     display: flex;
     align-items: center;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #333333;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.containerList {
+    display: flex;
+    align-items: center;
+    /* margin-top: .5rem; */
+}
+
+.containerList > ul {
+    margin: 0;
+    padding: .5rem;
 }
 
 .btnRemove {
@@ -50,9 +57,45 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background-color: #F9B621;
-    border-radius: .5rem;
+    background-color: #b8b8b7;
+    border-radius: .2rem;
     cursor: pointer;
+    box-shadow: 0px 0px 5px 1px #646464;
+}
+
+.list {
+    font-size: .9rem;
+    color: #333333;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+}
+
+.span {
+    font-size: .9rem;
+    font-weight: 400;
+    color: #333333;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+}
+
+/* ///////////////////////////////////////////////////// */
+
+.containerRight{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    height: 50vh;
+    border-radius: 0.2rem;
+    box-shadow: 0px -1px 6px 0px #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20%;
+    align-items: center;
+    position: relative;
+    padding-top: 2rem;
+    background-color:#d3d2ce;
 }
 
 .name{
