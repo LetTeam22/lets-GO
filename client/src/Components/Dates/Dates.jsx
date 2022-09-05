@@ -60,26 +60,34 @@ const Dates = ({component}) => {
       }
     }
     
+    // calculo fecha de hoy para setear el minimo en el calendario
+    let today = new Date()
+    let yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+    let hours = today.getHours()
+    
     return (
       component === 'home' ?
       <CDateRangePicker 
         footer 
         placeholder={['Fecha desde', 'Fecha hasta']}
         format='d/M/yyyy'
+        minDate={hours >= 18 ? today : yesterday}
         startDate={parameters.date.from ? new Date(`${parameters.date.from}${timeZone}`) : null}
         endDate={parameters.date.to ? new Date(`${parameters.date.to}${timeZone}`) : null}
         onStartDateChange={(date) => handleFilterStartDateChange(date)}
         onEndDateChange={(date) => handleFilterEndDateChange(date)}
-      /> :  
-      <CDateRangePicker 
+        /> :  
+        <CDateRangePicker 
         footer 
         placeholder={['Fecha desde', 'Fecha hasta']}
         format='d/M/yyyy'
+        minDate={hours >= 18 ? today : yesterday}
         startDate={bookingDates.from ? new Date(`${bookingDates.from}${timeZone}`) : null}
         endDate={bookingDates.to ? new Date(`${bookingDates.to}${timeZone}`) : null}
         onStartDateChange={(date) => handleBookingStartDateChange(date)}
         onEndDateChange={(date) => handleBookingEndDateChange(date)}
-        disabledDates={bookingDates.disabledDates}
+        disabledDates={bookingDates.disabledDates.map(arrDate => arrDate.map(date => new Date(`${date}${timeZone}`)))}
       />
     );
   };
