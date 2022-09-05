@@ -117,15 +117,11 @@ export const BikeDetail = () => {
 
   return (
     <>
-      {!!bike.length ? (
-        <Loading />
-      ) : (
+      { !!bike.length ? <Loading /> :
         <div className={s.container}>
           <div className={s.name}>
-            <div className={s.wrapper}>
-              <h3 className={s.title}>{bike.name}</h3>
-              <p>Estás a punto de hacer tu mejor elección...</p>
-            </div>
+            <h3 className={s.title}>{bike.name}</h3>
+            <p>Estás a punto de hacer tu mejor elección...</p>
           </div>
           <div className={s.row}>
             <div className={s.txt}>
@@ -139,7 +135,7 @@ export const BikeDetail = () => {
                   <img className={s.icon} src={icon} alt="" />
                 </div>
                 <div className={s.contp}>
-                  <p className={s.prueba}>Tipo {bike.type} </p>
+                  <p className={s.parameters}>Tipo {bike.type} </p>
                 </div>
               </div>
 
@@ -147,38 +143,34 @@ export const BikeDetail = () => {
                 <div className={s.contimg}>
                   <img className={s.icon} src={icon} alt="" />
                 </div>
-                <p className={s.prueba}>Tracción {bike.traction}</p>
+                <p className={s.parameters}>Tracción {bike.traction}</p>
               </div>
 
               <div className={s.cont}>
                 <div className={s.contimg}>
                   <img className={s.icon} src={icon} alt="" />
                 </div>
-                <p className={s.prueba}> Rodado {bike.wheelSize}</p>
+                <p className={s.parameters}> Rodado {bike.wheelSize}</p>
               </div>
 
               <div className={s.cont}>
                 <div className={s.contimg}>
                   <img className={s.icon} src={icon} alt="" />
                 </div>
-                <p className={s.prueba}> Puntuación {bike.rating}/10</p>
+                <p className={s.parameters}> Puntuación {bike.rating}/10</p>
               </div>
-
-              <div className={s.pr}>
-                <h4>¡Llevala con vos por ${bike.price} por día!</h4>
-              </div>
+              <h4 className={s.pr}>¡Llevala con vos por ${bike.price} por día!</h4>
             </div>
 
             <div className={s.image1}>
               <div className={s.image2}>
-                {/* <img className={s.img} src={bike.image} alt="img not found" /> */}
                 <RenderBikeDetail publicId={bike.image}/>
                 {console.log(bike.image)}
               </div>
             </div>
           </div>
           <div>
-            <div className={s.titleAcc}>
+            <div className={s.titleAccAndTech}>
               <h2>Accesorios opcionales</h2>
             </div>
             <div className={s.containerGral}>
@@ -377,12 +369,12 @@ export const BikeDetail = () => {
               />
             </div>
           </div>
-          <div className={s.titleTech}>
+          <div className={s.titleAccAndTech}>
             <h2>Tecnología</h2>
           </div>
           <img className={s.tech} src={tech} alt="" />
         </div>
-      )}
+      }
     </>
   );
 };
