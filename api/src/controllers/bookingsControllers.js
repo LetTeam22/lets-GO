@@ -80,7 +80,7 @@ async function getBookingsByBikeIds(req, res, next) {
       }
     })
     const disabledDates = []
-    bikes.forEach(bike => bike.bookings.forEach(booking => disabledDates.push([new Date(booking.startDate), new Date(booking.endDate)])))
+    bikes.forEach(bike => bike.bookings.forEach(booking => disabledDates.push([booking.startDate, booking.endDate])))
     res.send(disabledDates)
   } catch (error) {
     next(error)
