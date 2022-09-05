@@ -148,6 +148,7 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 allExperiences: action.payload
+            }
 
         case GET_ALL_BOOKINGS:
             return {
