@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -20,28 +20,41 @@ import Loading from "../../Loading/Loading";
 import image from "../../../image/persona_logeada.png";
 import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
+import RenderProfilePic from "../../Cloudinary/renderProfilePic";
+import { getUser } from "../../../Redux/actions/index";
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useAuth0();
-  const userLogged = useSelector((state) => state.user);
+  const cloudName = 'pflet'
+  const {isLoading, user } = useAuth0();
   const history = useHistory();
+  useEffect(() => {
+    if(user) dispatch(getUser(user?.email));
+    if(!user) history.push("/")
+  }, []);
+  // const userLogged = useSelector((state) => state.user);
+  const userLogged = useSelector(state=>state.user)
   const [input, setInput] = useState({
     firstName: "",
     lastName: "",
-    cellphone: "",
-    profilePic: "",
+    cellphone: ""
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
-  if (isLoading) return <Loading />;
+  const [toUpload, setToUpload] = useState('');
+  const [uploadedImage, setUploadedImage] = useState(userLogged.profilePic)
+  const [uploading, setUploading] = useState(false)
+  // console.log(userLogged)
+  if (isLoading || uploading) return <Loading />;
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.id]: e.target.value,
     });
-    if (e.target.id === "profilePic")
+    if (e.target.id === "profilePic"){
       setPhoto(URL.createObjectURL(e.target.files[0]));
+      setToUpload(e.target.files[0])
+    }
     setErrors(
       validate(
         {
@@ -53,23 +66,42 @@ export const ProfileToEdit = () => {
       )
     );
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
-      updateUser({ ...input, email: user.email, profilePic: `${photo}` })
-    );
+    if(toUpload){
+    setUploading(true)  
+    const data = new FormData()
+    data.append('file',toUpload)
+    data.append('upload_preset','ProfilePictures')
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    {
+      method:'POST',
+      body:data
+    })
+    const file = await res.json() 
+    // console.log(file)
+    setUploadedImage(file.public_id)
+    await dispatch(
+      updateUser({ ...input, email: user.email, profilePic:file.public_id})
+    );}
+    else{
+      await dispatch(updateUser({ ...input, email: user.email}))
+    }
+    // console.log('usuario logueado',userLogged)
+    dispatch(getUser(userLogged.email));
     setInput({
       firstName: "",
       lastName: "",
       cellphone: "",
-      profilePic: "",
     });
-    history.push(
-      localStorage.getItem("url") ? localStorage.getItem("url") : "/"
-    );
+    setToUpload('')
+    setUploading(false)
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
-  const disabled = Object.keys(errors).length > 0;
+  // console.log('photo',photo)
+  const disabled = Object.keys(errors).length > 0 ||
+   !(input.firstName || input.lastName || input.cellphone || toUpload)
+  //  !!!(input.firstName && input.lastName && input.cellphone & photo)
   const name =
     (userLogged.firstName &&
       userLogged.firstName +
@@ -92,14 +124,20 @@ export const ProfileToEdit = () => {
               accept="image/*"
               type="file"
               onChange={handleChange}
-              value={input.profilePic}
+              // value={input.profilePic}
               id="profilePic"
             />
+            {uploadedImage && !photo?
+            <RenderProfilePic publicId={uploadedImage}
+            alt={user?.name}
+            />
+            :
             <img
               src={photo ? photo : image}
-              alt={user.name}
+              alt={user?.name}
               className={s.img}
             />
+            }
             <BsCameraFill className={s.iconCamera} />
           </IconButton>
         </div>
