@@ -291,7 +291,7 @@ export const BikeDetail = () => {
                     id="box-7"
                     value='2'
                     type="checkbox"
-                    name="botellita"
+                    name="botella"
                     onClick={(e) => {
                       handleCheck(e);
                     }}

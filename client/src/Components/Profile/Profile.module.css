@@ -19,7 +19,7 @@
     box-shadow: 0px -1px 6px 0px #333333;
 }
 
-.box {
+.box1 {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
@@ -28,6 +28,17 @@
     background-color: #f9b52192;
 
     overflow-y: scroll;
+}
+
+.box2 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    padding: .5rem;
+    height: 40%;
+    background-color: #f9b52192;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
 }
 .title {
     display: flex;
@@ -39,17 +50,22 @@
     margin-top: 1rem;
 }
 
-.containerList {
+.containerList1 {
     display: flex;
     align-items: center;
-    /* margin-top: .5rem; */
+
 }
 
-.containerList > ul {
+.containerList1 > ul {
     margin: 0;
     padding: .5rem;
 }
 
+.containerLis2 {
+    display: flex;
+    flex-direction: column;
+    background-color: #cecece71;
+}
 .btnRemove {
     width: 1.5rem;
     height: 1.5rem;
@@ -64,6 +80,13 @@
 }
 
 .list {
+    font-size: .9rem;
+    color: #333333;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+}
+
+.list2 {
     font-size: .9rem;
     color: #333333;
     padding-left: .5rem;
