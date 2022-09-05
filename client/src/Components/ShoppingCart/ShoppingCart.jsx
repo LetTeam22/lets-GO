@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAccesories, getBikes, getUser, postBookings, setParameters } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, setBookingDates } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import swal from "sweetalert";
@@ -30,7 +30,8 @@ export const ShoppingCart = () => {
   const history = useHistory();
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  const date = useSelector((state) => state.parameters.date);
+
+  const date = useSelector(state => state.bookingDates);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
@@ -75,6 +76,14 @@ export const ShoppingCart = () => {
   }
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
+  
+  // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
+  const strBikeIds = postbikeIds.join()
+  if (strBikeIds !== date.bikeIds) {
+    dispatch(setBookingDates({...date, bikeIds: strBikeIds}))
+    dispatch(getDisabledDates(strBikeIds))
+  }
+
   let ids = []
   userBoking.map(e => {
     !!e.canasto.length &&  ids.push([e.canasto])
@@ -195,7 +204,7 @@ export const ShoppingCart = () => {
       </div>
       <hr color="#595858" size='0.5px' />
 
-      <Dates className={s.dates} />
+      <Dates component='cart' className={s.dates} />
   <div className={s.containerDiv}>
       <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }}>
         <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
