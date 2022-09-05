@@ -1,4 +1,5 @@
 const { User, Bike, Booking, Accesories,Experience} = require('../db');
+const { Op } = require("sequelize");
 
 async function getAllBookings(req, res, next) {
   try {
@@ -50,29 +51,22 @@ async function getBookingsByUserId(req, res, next) {
   }
 }
 
-async function getBookingsByBikeId(req, res, next) {
-  const { bikeId } = req.params;
-  if (!bikeId) return res.sendStatus(400)
+async function getBookingsByBikeIds(req, res, next) {
+  const { bikeIds } = req.params;
+  if (!bikeIds) return []
+  const arrBikeIds = bikeIds.split(',')
   try {
-    // const bike = await Bike.findByPk(bikeId)
-    const bike = await Bike.findByPk(bikeId, {
+    const bikes = await Bike.findAll({
+      where: { idBike: { [Op.or]: arrBikeIds } },
       include: {
         model: Booking,
-        attributes: ['startDate', 'endDate'],
+        attributes: ['startDate', 'endDate', 'status'],
         through: { attributes: [] },
-        // where: { status: 'confirmed' }
+        where: { status: 'confirmed' }
       }
     })
-    // const bike = await Bike.findByPk(bikeId, {
-    //   include: {
-    //     model: Booking,
-    //     attributes: ['startDate', 'endDate'],
-    //     through: { attributes: [] },
-    //     where: { status: 'confirmed' }
-    //   }
-    // })
-    console.log(bike)
-    const disabledDates = bike.bookings.map(booking => [new Date(booking.startDate), new Date(booking.endDate)])
+    const disabledDates = []
+    bikes.forEach(bike => bike.bookings.forEach(booking => disabledDates.push([new Date(booking.startDate), new Date(booking.endDate)])))
     res.send(disabledDates)
   } catch (error) {
     next(error)
@@ -121,7 +115,7 @@ async function cancelBooking(req, res, next) {
 module.exports = {
   getAllBookings,
   getBookingsByUserId,
-  getBookingsByBikeId,
+  getBookingsByBikeIds,
   postBooking,
   cancelBooking
 }
