@@ -1,0 +1,13 @@
+.bookings{
+    width: 100%;
+    height: calc(100vh - 6rem);
+}
+
+.list{
+    width: 65rem;
+    height: 23rem!important;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #c1c1c1;
+    margin-top: 5rem;
+}

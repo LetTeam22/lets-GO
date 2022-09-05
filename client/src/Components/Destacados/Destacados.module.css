@@ -63,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    row-gap: 0.5rem;
 } 
 
 #one, #three {
@@ -99,21 +100,7 @@
     padding-top: .5rem;
 }
 
-.electrica, .mecanica {
-    filter: brightness(1.3);
-    mix-blend-mode: multiply;
-    margin: auto 1.5rem;
-}
 
-.electrica {
-    width: 2.8rem;
-    height: 2.8rem;
-}
-
-.mecanica {
-    width: 2.5rem;
-    height: 2.5rem;
-}
 
 .dataCont {
     display: flex;
@@ -131,10 +118,8 @@
 
 .price {
     color: #D6802B;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 2rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     line-height: 0%;
     margin-top: 1.8rem;
 }
@@ -144,5 +129,79 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 0%;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+
+.ratingCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 8rem;
+    height: 2rem;
+    border-radius: .3rem;
+    background-color: #6e6e6e;
+}
+
+.stars {
+    width: 3rem;
+    height: 0.8rem;
+    margin-left: .5rem;
+}
+
+.rating {
+    color: #F9B621;
+    font-size: .8rem;
+    font-weight: 800;
+    margin-left: .2rem;
+    margin-right: 0.5rem;
+}
+
+
+.rueda {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.rodado, .type {
+    color: #333333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-left: .3rem;
+}
+
+.type {
+    padding-top: .5rem;
+}
+
+.electrica, .mecanica {
+    filter: brightness(1.3);
+    mix-blend-mode: multiply;
+    margin: auto 1.5rem;
+    width: 1.1rem;
+    height: 1.1rem;  
+}
+
+.dataCont {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5rem;
+    align-items: center;
+}
+
+.rodadoCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
 }
 

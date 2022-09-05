@@ -5,7 +5,7 @@ import {Cloudinary} from "@cloudinary/url-gen";
 // Import any actions required for transformations.
 import { Resize, scale} from "@cloudinary/url-gen/actions/resize";
 
-const RenderAccesories = ({publicId,alt="imagen"}) => {
+const RenderAccCart = ({publicId,alt="imagen"}) => {
 
 
   // creamos una instancia con nuestro cloud name.
@@ -19,11 +19,11 @@ const RenderAccesories = ({publicId,alt="imagen"}) => {
 
   // Opcional, podemos cambiar las dimensiones CORTANDO LA IMAGEN con fill
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  myImage.resize(scale(120))
+  myImage.resize(scale(50))
 
   return (
         <AdvancedImage cldImg={myImage} alt={alt}/>
   )
 };
 
-export default RenderAccesories;
+export default RenderAccCart;

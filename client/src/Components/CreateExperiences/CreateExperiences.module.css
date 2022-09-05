@@ -2,10 +2,10 @@
     width: 100%;
     height: calc(100vh - 6rem);
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
 }
-.containerDer{
+.container{
     width: 35%;
     height: 50vh;
     border-radius: 0.2rem;
@@ -19,64 +19,21 @@
     padding-top: 2rem;
 }
 
-.containerIzq {
-    width: 30%;
-    height: calc(100vh - 6rem);
-    /* background-color:#d3d2ce; */
-    border-radius: 0.2rem;
-    display: flex;
-    align-items: center;
-}
-
-.fav {
-    margin-left: 1rem;
-    width: 100%;
-}
-.span {
-    font-size: .9rem;
-    color: #333333;
-    padding-left: .5rem;
-}
-
-.listFav {
-    display: flex;
-    align-items: center;
-}
-
-.btnRemove {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: #F9B621;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-
 .name{
     width: 70%;
-    font-size: .9rem;
+    font-size: 3rem;
     text-align: center;
-    font-weight: 500;
-    color: #484848;
 }
-.infoAndImage{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
+
 .information{
     gap: 50%;
     display: flex;
     flex-direction: column;
 }
 .h4{
-    margin:0;
-    font-size: .8rem;
-    font-weight: 500;
-    color: #484848;
+    margin-left: .5rem;
+    color: #484848
+
 }
 .img {
     width: 5rem;
@@ -85,11 +42,10 @@
 
 .btnHome, .btnEdit{
     color:#F9B621!important;
-    background-color:#333333!important;
-    font-weight: 500!important;
+    color:#484848!important;
+    font-weight: 1000!important;
     position: absolute!important;
 }
-
 .btnHome{
     bottom: 1rem;
     left: 2rem;

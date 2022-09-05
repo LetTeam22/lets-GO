@@ -15,13 +15,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
+import RenderAccCart from "../Cloudinary/renderAccCart";
+import emailjs from '@emailjs/browser';
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const bookings = JSON.parse(localStorage.getItem('booking')) || [];
-  console.log(bookings)
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+  console.log(bookings);
   const date = useSelector((state) => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
@@ -58,14 +63,14 @@ export const ShoppingCart = () => {
             lentes: book.lentes,
             botella: book.botella,
             calzado: book.calzado,
-            totalAcc: book.totalAcc
+            totalAcc: book.totalAcc,
           },
         };
         cartBikes.push(pushedbike);
       }
   }
 
-  console.log(cartBikes)
+  console.log(cartBikes);
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
 
@@ -105,8 +110,21 @@ export const ShoppingCart = () => {
   };
 
   const total = cartBikes.reduce((acc, cur) => {
-    return acc + (cur.price + cur.accesories.totalAcc) * totalDias(date.from, date.to);
+    return (
+      acc +
+      (cur.price + cur.accesories.totalAcc) * totalDias(date.from, date.to)
+    );
   }, 0);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+  }
 
   const handleBooking = (e) => {
     if (!isAuthenticated) {
@@ -119,13 +137,13 @@ export const ShoppingCart = () => {
           value: true,
           visible: true,
           className: s.btnSwal,
-          closeModal: true
-        }
+          closeModal: true,
+        },
       });
     } else {
       dispatch(setParameters("resetAll"));
-      dispatch(postBookings(postedBooking));
-      localStorage.removeItem('booking')
+      dispatch(postBookings({ ...postedBooking, totalPrice: total }));
+      localStorage.removeItem("booking");
       swal({
         title: "Tu reserva fue confirmada!",
         text: "Disfruta tu aventura!",
@@ -136,10 +154,11 @@ export const ShoppingCart = () => {
             value: true,
             visible: true,
             className: s.btnSwal,
-            closeModal: true
-          }
-        }
+            closeModal: true,
+          },
+        },
       });
+      sendEmail(e)
       history.push("/home");
     }
   };
@@ -167,8 +186,12 @@ export const ShoppingCart = () => {
                         <p className={s.accs} key={el.name}>
                           {el.name}
                         </p>
-                        <img src={el.image} alt="not" found />
-                        <p> $ {el.price} / dia </p>
+                        {/* <img src={el.image} alt="not" found /> */}
+                        <RenderAccCart
+                          className={s.imgCloud}
+                          publicId={el.image}
+                        />
+                        <p> $ {el.price} / día </p>
                       </div>
                     ))}
                   </div>
@@ -197,18 +220,17 @@ export const ShoppingCart = () => {
         <div className={s.totalPrice}>
           <Dates />
 
-          {!isNaN(total) ? (
-            <h2 className={s.total}>{`Total $ ${total}`}</h2>
-          ) : (
-            <></>
-          )}
-
           <div className={s.containerBtn}>
             <Link to="/home">
               <button onClick={handleResetDate} className={s.reserveBtn}>
                 Buscar mas Bicicletas
               </button>
             </Link>
+            {!isNaN(total) ? (
+              <h2 className={s.total}>{`Total $ ${total}`}</h2>
+            ) : (
+              <></>
+            )}
             <button
               disabled={
                 postedBooking.startDate === "" ||

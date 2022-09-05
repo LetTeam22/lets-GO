@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 
 
-const {getEverything
+const {getEverything, getUserBookings,getUserOnlyExperience
 } = require ('../controllers/generalControllers')
 
 const router = Router();
@@ -12,5 +12,11 @@ const router = Router();
 // Ejemplo: /general/getEveryThing?BookingID=1
 router.get('/getEveryThing',getEverything)
 
+// Obtiene Registro de TODAS las reservas de un usuario dado su email por query
+// Ejemplo: /general/getUserHistory?email=maxi@gmail.com
+router.get('/getUserHistory',getUserBookings)
+
+//Obtiene Registro solo resrevas que tengan experiencia publicada
+router.get('/getUserOnlyExperience',getUserOnlyExperience)
 
 module.exports = router;
