@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import s from "./Bookings.module.css";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBookings } from "../../../Redux/actions";
 
 
 export default function Bookings() {
-  const [bookings, setBookings] = useState([]);
+  const bookings = useSelector(state => state.bookings)
   const history = useHistory()
-
+  const dispatch = useDispatch()
   useEffect(() => {
-    axios("/bookings").then((res) => setBookings(res.data));
+    dispatch(getAllBookings())
   }, []);
 
   const totalDias = (from, to) => {
@@ -22,7 +23,7 @@ export default function Bookings() {
     return diffDays;
   };
 
-  const rowsBookings = bookings.map((book) => {
+  const rowsBookings = bookings?.map((book) => {
     return {
       id: book.idBooking,
       idUser: book.userIdUser,
