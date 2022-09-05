@@ -54,7 +54,7 @@ async function postBooking(req, res, next) {
   const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
   try {
-    console.log(totalPrice)
+    // console.log(totalPrice)
     let booking = {startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice)}
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
