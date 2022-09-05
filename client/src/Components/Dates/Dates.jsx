@@ -88,6 +88,7 @@ const Dates = ({component}) => {
         onStartDateChange={(date) => handleBookingStartDateChange(date)}
         onEndDateChange={(date) => handleBookingEndDateChange(date)}
         disabledDates={bookingDates.disabledDates.map(arrDate => arrDate.map(date => new Date(`${date}${timeZone}`)))}
+        className={s.date}
       />
     );
   };

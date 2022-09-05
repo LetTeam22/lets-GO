@@ -56,7 +56,7 @@ async function getBookingsByUserId(req, res, next) {
         } 
       ]
     })
-    if (!bookings.length) return res.send('This user has no bookings')
+    if (!bookings.length) return res.send({ msg:'This user has no bookings' })
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
     bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
     res.send(bookings)

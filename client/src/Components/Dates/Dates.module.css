@@ -10,7 +10,9 @@
 .date{
     margin: 0;
     padding: 0;
-    width: 10%;
-    margin: 0;
+    width: 22%;
+    margin-left: 5rem;
     background-color: #e1e0e0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
