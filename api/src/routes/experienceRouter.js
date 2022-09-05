@@ -13,7 +13,7 @@ const router = Router();
 // ejemplo: /experience/details?bookingIdBooking=1
 router.get('/details',experienceDetails)
 
-//Crea una experiencia, recibe por body ID de usuario e ID de experiencia
+//Crea una experiencia, recibe ID de Booking a la cual va esa experiencia
 // ruta: /experience/create
 router.post('/create',createExperience)
 
