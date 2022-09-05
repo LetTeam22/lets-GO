@@ -2,12 +2,15 @@
     display: flex;
     position: relative;
     height: 3.5rem;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 .date{
     margin: 0;
     padding: 0;
-    width: 40%;
+    width: 10%;
     margin: 0;
     background-color: #e1e0e0;
 }

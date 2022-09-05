@@ -103,7 +103,6 @@ export const BikeDetail = () => {
         }
       }
     }
-    // console.log(accesories);
     return accesories;
   };
 
@@ -166,7 +165,7 @@ export const BikeDetail = () => {
             <div className={s.image1}>
               <div className={s.image2}>
                 <RenderBikeDetail publicId={bike.image}/>
-                {console.log(bike.image)}
+                {/* {console.log(bike.image)} */}
               </div>
             </div>
           </div>

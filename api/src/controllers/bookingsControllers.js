@@ -15,6 +15,13 @@ async function getAllBookings(req, res, next) {
           through: {
             attributes: []
           }
+        },
+        {
+          model: Accesories,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
         } 
       ]
     })
@@ -35,6 +42,13 @@ async function getBookingsByUserId(req, res, next) {
       include: [
         {
           model: Bike,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        },
+        {
+          model: Accesories,
           attributes: ['name'],
           through: {
             attributes: []
