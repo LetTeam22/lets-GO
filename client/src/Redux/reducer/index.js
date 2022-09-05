@@ -1,5 +1,5 @@
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, SET_BOOKING_DATES } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, SET_BOOKING_DATES, GET_USER_BOOKINGS } from '../actions/actiontypes';
 
 
 const initialState = {
@@ -49,7 +49,7 @@ const initialState = {
     famousBikes: [],
     favorites: [],
     allExperiences: [],
-    timeZone: 'T00:00:00.000-03:00',
+    userBookings: [],
     bookingDates: {
         from: '',
         to: '',
@@ -179,6 +179,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 bookingDates: action.payload
             }
+        case GET_USER_BOOKINGS:
+            if(action.payload.msg) action.payload = []
+            return {
+                ...state,
+                userBookings: action.payload
+            }    
         default: return state
     }
 }
