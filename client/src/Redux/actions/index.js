@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL } from './actiontypes'
-
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES, GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -115,6 +113,24 @@ export const getAllBookings = () => {
         .catch(err => console.log(err));
 };
 
+
+export const postExperience = (payload) => {
+    console.log(payload)
+    return (dispatch) => {
+        return axios.post('/experience/create', payload)
+            .then(dispatch({ type: POST_EXPERIENCE, payload }))
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+};
+
+export const getAllExperiences = () =>{
+    return dispatch =>{
+        axios('/experience/getall')
+        .then(res => dispatch({type: GET_ALL_EXPERIENCES, payload: res.data}))
+    }
+}
+
 export const getAllUsers = () => {
     return dispatch => axios('/user/getAll')
         .then(res => dispatch({ type: GET_ALL_USERS, payload: res.data }))
@@ -124,3 +140,10 @@ export const getAllUsers = () => {
 export const setBikeDetail = payload => {
     return ({ type: SET_BIKES_DETAIL, payload })
 };
+
+export const getDisabledDates = bikeIds => {
+    return dispatch => axios(`/bookings/bike/${bikeIds}`)
+        .then(res => dispatch({ type: GET_DISABLED_DATES, payload: res.data }))
+        .catch(err => console.log(err));
+};
+

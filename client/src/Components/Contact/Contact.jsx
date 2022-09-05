@@ -10,15 +10,15 @@ import { TbSend } from 'react-icons/tb';
 import { useState } from 'react';
 import swal from "sweetalert";
 
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID2;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
 
 export const Contact = () => {
 
     const form = useRef();
-    
-    const [input, setInput ] = useState({
+
+    const [input, setInput] = useState({
         user_name: '',
         user_number: '',
         user_email: '',
@@ -34,15 +34,17 @@ export const Contact = () => {
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
                 swal({
-                    title: 'Mensaje enviado con exito!', 
-                    text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con Let's GO", 
-                    icon: "success"})
+                    title: 'Mensaje enviado con exito!',
+                    text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con Let's GO",
+                    icon: "success"
+                })
                 console.log(result.text);
             }, (error) => {
                 swal({
                     title: 'Algo no salio bien',
-                    text: 'Vuelve a intentarlo y si el problema persiste por favor utiliza otro de nuestros medios de comunicacion. Muchas gracias', 
-                    icon: 'error'})
+                    text: 'Vuelve a intentarlo y si el problema persiste por favor utiliza otro de nuestros medios de comunicacion. Muchas gracias',
+                    icon: 'error'
+                })
                 console.log(error.text);
             });
         setInput({
@@ -68,7 +70,7 @@ export const Contact = () => {
             <img src={logo} alt='logo' className={s.logo} />
             <p>RELLENA EL SIGUIENTE FORMULARIO SI QUIERES CONTACTARTE CON NOSOTROS</p>
             <div className={s.container} >
-                <FaRegUser color='#F9B621' size='2rem'/>
+                <FaRegUser color='#F9B621' size='2rem' />
                 <div className={s.inputs} ><input type="text" name="user_name" placeholder='Name' value={input.user_name} onChange={e => handleChange(e)} /></div>
             </div>
             <div className={s.container} >
@@ -84,7 +86,7 @@ export const Contact = () => {
                 <div className={s.textArea} ><textarea name="message" placeholder='Escribe aqui tu mensaje' value={input.message} onChange={e => handleChange(e)} /></div>
             </div>
             <div className={s.containerBtn}>
-                <TbSend color='white' size='2rem'/>
+                <TbSend color='white' size='2rem' />
                 <input type="submit" value="Send" />
             </div>
         </form>

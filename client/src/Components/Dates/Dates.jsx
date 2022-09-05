@@ -4,7 +4,7 @@ import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { CDateRangePicker } from '@coreui/react-pro'
 import s from './Dates.module.css';
 
-const Dates = () => {
+const Dates = ({disabledDates}) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
@@ -62,6 +62,7 @@ const Dates = () => {
         onStartDateChange={(date) => handleStartDateChange(date)}
         onEndDateChange={(date) => handleEndDateChange(date)}
         onConfirm={() => handleConfirm()}
+        disabledDates={disabledDates ? disabledDates : []}
       />      
     );
   };

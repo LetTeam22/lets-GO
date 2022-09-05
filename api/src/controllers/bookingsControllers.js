@@ -1,4 +1,5 @@
 const { User, Bike, Booking, Accesories,Experience} = require('../db');
+const { Op } = require("sequelize");
 
 async function getAllBookings(req, res, next) {
   try {
@@ -50,11 +51,33 @@ async function getBookingsByUserId(req, res, next) {
   }
 }
 
+async function getBookingsByBikeIds(req, res, next) {
+  const { bikeIds } = req.params;
+  if (!bikeIds) return []
+  const arrBikeIds = bikeIds.split(',')
+  try {
+    const bikes = await Bike.findAll({
+      where: { idBike: { [Op.or]: arrBikeIds } },
+      include: {
+        model: Booking,
+        attributes: ['startDate', 'endDate', 'status'],
+        through: { attributes: [] },
+        where: { status: 'confirmed' }
+      }
+    })
+    const disabledDates = []
+    bikes.forEach(bike => bike.bookings.forEach(booking => disabledDates.push([new Date(booking.startDate), new Date(booking.endDate)])))
+    res.send(disabledDates)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds, totalPrice } = req.body
+  const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
   try {
-    console.log(totalPrice)
+    // console.log(totalPrice)
     let booking = {startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice)}
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
@@ -69,7 +92,6 @@ async function postBooking(req, res, next) {
     })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
-    await bookingCreated.setExperience()
     res.send('The booking was created successfully')
   } catch (error) {
     next(error)
@@ -93,6 +115,7 @@ async function cancelBooking(req, res, next) {
 module.exports = {
   getAllBookings,
   getBookingsByUserId,
+  getBookingsByBikeIds,
   postBooking,
   cancelBooking
 }
