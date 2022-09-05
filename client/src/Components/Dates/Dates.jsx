@@ -80,6 +80,7 @@ const Dates = ({component}) => {
         onStartDateChange={(date) => handleBookingStartDateChange(date)}
         onEndDateChange={(date) => handleBookingEndDateChange(date)}
         disabledDates={bookingDates.disabledDates}
+        className={s.date}
       />
     );
   };
