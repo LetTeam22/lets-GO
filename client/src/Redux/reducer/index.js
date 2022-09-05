@@ -163,7 +163,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 bikeDetail: action.payload
-
+            }
         case GET_DISABLED_DATES:
             return {
                 ...state,
