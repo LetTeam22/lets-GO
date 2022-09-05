@@ -50,6 +50,7 @@ const initialState = {
     favorites: [],
     allExperiences: [],
     userBookings: [],
+    timeZone: 'T00:00:00.000-03:00',
     bookingDates: {
         from: '',
         to: '',
