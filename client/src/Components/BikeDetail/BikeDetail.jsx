@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getBikeDetail, addBooking, getAccesories } from "../../Redux/actions";
+import { getBikeDetail, addBooking, getAccesories, setBikeDetail } from "../../Redux/actions";
 import Loading from "../Loading/Loading";
 import s from "./BikeDetail.module.css";
 import icon from "../../image/bicisDestacadas/icon.png";
@@ -21,24 +21,25 @@ export const BikeDetail = () => {
 
   const [input, setInput] = useState({
     bike: bikeId,
-    canasto: false,
-    silla: false,
-    luces: false,
-    casco: false,
-    candado: false,
-    lentes: false,
-    botellita: false,
-    calzado: false,
+    canasto: '',
+    silla: '',
+    luces: '',
+    casco: '',
+    candado: '',
+    lentes: '',
+    botella: '',
+    calzado: '',
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     dispatch(getAccesories());
     dispatch(getBikeDetail(bikeId));
+    return () => { 
+      dispatch(setBikeDetail([]))
+    } 
   }, [dispatch, bikeId]);
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -46,14 +47,14 @@ export const BikeDetail = () => {
     localStorage.setItem("booking", JSON.stringify([...bookedBikes, input]));
     dispatch(addBooking(input));
     setInput({
-      canasto: false,
-      silla: false,
-      luces: false,
-      casco: false,
-      candado: false,
-      lentes: false,
-      botella: false,
-      calzado: false,
+      canasto: '',
+      silla: '',
+      luces: '',
+      casco: '',
+      candado: '',
+      lentes: '',
+      botella: '',
+      calzado: '',
       totalAcc: 0
     });
     swal({
@@ -87,7 +88,7 @@ export const BikeDetail = () => {
   const handleCheck = (e) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.checked,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -178,6 +179,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-1"
+                    value='5'
                     type="checkbox"
                     name="canasto"
                     onClick={(e) => {
@@ -198,6 +200,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-2"
+                    value='3'
                     type="checkbox"
                     name="silla"
                     onClick={(e) => {
@@ -215,6 +218,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-3"
+                    value='6'
                     type="checkbox"
                     name="luces"
                     onClick={(e) => {
@@ -232,6 +236,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-4"
+                    value='1'
                     type="checkbox"
                     name="casco"
                     onClick={(e) => {
@@ -249,6 +254,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-5"
+                    value='7'
                     type="checkbox"
                     name="candado"
                     onClick={(e) => {
@@ -266,6 +272,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-6"
+                    value='8'
                     type="checkbox"
                     name="lentes"
                     onClick={(e) => {
@@ -283,6 +290,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     id="box-7"
+                    value='2'
                     type="checkbox"
                     name="botellita"
                     onClick={(e) => {
@@ -300,6 +308,7 @@ export const BikeDetail = () => {
                 <div className={s.boxes}>
                   <input
                     type="checkbox"
+                    value='4'
                     id="box-8"
                     name="calzado"
                     onClick={(e) => {

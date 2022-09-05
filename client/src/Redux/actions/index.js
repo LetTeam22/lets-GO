@@ -1,14 +1,5 @@
 import axios from 'axios';
-
-
-
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES, GET_ALL_USERS, GET_DISABLED_DATES } from './actiontypes'
-
-
-
-
-
-// POST_BOOKINGS
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES, GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -86,7 +77,7 @@ export const postBookings = (payload) => {
     console.log(payload)
     return (dispatch) => {
         return axios.post('/bookings', payload)
-            .then(dispatch({ type: POST_BOOKINGS, }))
+            .then(dispatch({ type: POST_BOOKINGS, payload }))
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
@@ -144,6 +135,10 @@ export const getAllUsers = () => {
     return dispatch => axios('/user/getAll')
         .then(res => dispatch({ type: GET_ALL_USERS, payload: res.data }))
         .catch(err => console.log(err));
+};
+
+export const setBikeDetail = payload => {
+    return ({ type: SET_BIKES_DETAIL, payload })
 };
 
 export const getDisabledDates = bikeIds => {

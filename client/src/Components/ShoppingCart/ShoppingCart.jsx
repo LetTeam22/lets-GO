@@ -26,11 +26,12 @@ export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  console.log(bookings);
+  // console.log(bookings);
   const date = useSelector((state) => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
+  const userBoking = useSelector(state => state.bookings)
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
 
@@ -70,15 +71,28 @@ export const ShoppingCart = () => {
       }
   }
 
-  console.log(cartBikes);
+  // console.log(cartBikes);
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
 
-  let postedBooking = {
+
+  let ids = []
+  userBoking.map(e => {
+    !!e.canasto.length &&  ids.push(e.canasto)
+    !!e.silla.length && ids.push(e.silla)
+    !!e.luces.length && ids.push(e.luces)
+    !!e.casco.length && ids.push(e.casco)
+    !!e.candado.length && ids.push(e.candado)
+    !!e.lentes.length && ids.push(e.lentes)
+    !!e.botella.length && ids.push(e.botella)
+  })
+
+ let postedBooking = {
     startDate: date.from,
     endDate: date.to,
     userId: userLogged?.idUser,
     bikeIds: postbikeIds,
+    AccIds: ids.map(e => parseInt(e))
   };
 
   const llenarAccs = (accs) => {
@@ -92,7 +106,7 @@ export const ShoppingCart = () => {
         }
       }
     }
-    console.log(accesories);
+    // console.log(accesories);
     return accesories;
   };
 
@@ -120,9 +134,9 @@ export const ShoppingCart = () => {
     e.preventDefault();
     emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
       .then((result) => {
-        console.log(result.text);
+        // console.log(result.text);
       }, (error) => {
-        console.log(error.text);
+        // console.log(error.text);
       });
   }
 
