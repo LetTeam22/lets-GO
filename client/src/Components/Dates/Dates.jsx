@@ -1,33 +1,39 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage, setParameters } from "../../Redux/actions";
+import { setCurrentPage, setParameters, setBookingDates } from "../../Redux/actions";
 import { CDateRangePicker } from '@coreui/react-pro'
 import s from './Dates.module.css';
 
-const Dates = ({disabledDates}) => {
+const Dates = ({component}) => {
 
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
-    const [fromDate, setFromDate] = useState('');
-    const [toDate, setToDate] = useState('');
+    const timeZone = useSelector(state => state.timeZone);
+    const bookingDates = useSelector(state => state.bookingDates);
 
-    const handleStartDateChange = (date) => {
-      const newDate = date ? date : ''
-      setFromDate(newDate)
-      if (!date) {
+    const handleFilterStartDateChange = (date) => {
+      if (date) {
+        dispatch(setParameters({...parameters, date: {...parameters.date, from: convertDate(date)}}));    
+      } else {
         dispatch(setParameters({...parameters, date: {from: '', to: ''}}));    
-        dispatch(setCurrentPage(1));
+      }
+      dispatch(setCurrentPage(1));
+    }
+    
+    const handleFilterEndDateChange = (date) => {
+      date && dispatch(setParameters({...parameters, date: {...parameters.date, to: convertDate(date)}}));    
+    }
+
+    const handleBookingStartDateChange = (date) => {
+      if (date) {
+        dispatch(setBookingDates({...bookingDates, from: convertDate(date)}));    
+      } else {
+        dispatch(setBookingDates({...bookingDates, from: '', to: ''}));    
       }
     }
-
-    const handleEndDateChange = (date) => {
-      const newDate = date ? date : ''
-      setToDate(newDate)
-    }
-
-    const handleConfirm = () => {
-      dispatch(setParameters({...parameters, date: {from: convertDate(fromDate), to: convertDate(toDate)}}));    
-      dispatch(setCurrentPage(1));
+    
+    const handleBookingEndDateChange = (date) => {
+      date && dispatch(setBookingDates({...bookingDates, to: convertDate(date)}));    
     }
     
     const convertDate = date => { 
@@ -55,15 +61,27 @@ const Dates = ({disabledDates}) => {
     }
     
     return (
+      component === 'home' ?
       <CDateRangePicker 
         footer 
         placeholder={['Fecha desde', 'Fecha hasta']}
         format='d/M/yyyy'
-        onStartDateChange={(date) => handleStartDateChange(date)}
-        onEndDateChange={(date) => handleEndDateChange(date)}
-        onConfirm={() => handleConfirm()}
-        disabledDates={disabledDates ? disabledDates : []}
-      />      
+        startDate={parameters.date.from ? new Date(`${parameters.date.from}${timeZone}`) : null}
+        endDate={parameters.date.to ? new Date(`${parameters.date.to}${timeZone}`) : null}
+        onStartDateChange={(date) => handleFilterStartDateChange(date)}
+        onEndDateChange={(date) => handleFilterEndDateChange(date)}
+      /> :  
+      <CDateRangePicker 
+        footer 
+        placeholder={['Fecha desde', 'Fecha hasta']}
+        format='d/M/yyyy'
+        startDate={bookingDates.from ? new Date(`${bookingDates.from}${timeZone}`) : null}
+        endDate={bookingDates.to ? new Date(`${bookingDates.to}${timeZone}`) : null}
+        onStartDateChange={(date) => handleBookingStartDateChange(date)}
+        onEndDateChange={(date) => handleBookingEndDateChange(date)}
+        disabledDates={bookingDates.disabledDates}
+        className={s.date}
+      />
     );
   };
 
