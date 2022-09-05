@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import s from "./Users.module.css";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti'
-
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "../../../Redux/actions";
 
 export default function Users () {
-  const [users, setUsers] = useState([]);
+  const users = useSelector(state => state.allUsers)
   const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    axios("/user/getAll").then((res) => setUsers(res.data));
-  }, []);
+    dispatch(getAllUsers())  
+}, []);
 
   const rowsUsers = users.map((user) => {
     return {
