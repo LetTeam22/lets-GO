@@ -54,6 +54,11 @@ const Dates = () => {
       }
     }
     
+    const disabledDates = [
+      [new Date(2022, 10, 7), new Date(2022, 10, 9)], // range of dates that cannot be selected
+      [new Date(2022, 0, 16), new Date(2022, 0, 16)]// single date that cannot be selected
+    ]
+
     return (
       <CDateRangePicker 
         footer 
@@ -62,6 +67,7 @@ const Dates = () => {
         onStartDateChange={(date) => handleStartDateChange(date)}
         onEndDateChange={(date) => handleEndDateChange(date)}
         onConfirm={() => handleConfirm()}
+        disabledDates={disabledDates}
       />      
     );
   };

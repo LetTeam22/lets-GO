@@ -50,6 +50,35 @@ async function getBookingsByUserId(req, res, next) {
   }
 }
 
+async function getBookingsByBikeId(req, res, next) {
+  const { bikeId } = req.params;
+  if (!bikeId) return res.sendStatus(400)
+  try {
+    // const bike = await Bike.findByPk(bikeId)
+    const bike = await Bike.findByPk(bikeId, {
+      include: {
+        model: Booking,
+        attributes: ['startDate', 'endDate'],
+        through: { attributes: [] },
+        // where: { status: 'confirmed' }
+      }
+    })
+    // const bike = await Bike.findByPk(bikeId, {
+    //   include: {
+    //     model: Booking,
+    //     attributes: ['startDate', 'endDate'],
+    //     through: { attributes: [] },
+    //     where: { status: 'confirmed' }
+    //   }
+    // })
+    console.log(bike)
+    const disabledDates = bike.bookings.map(booking => [new Date(booking.startDate), new Date(booking.endDate)])
+    res.send(disabledDates)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function postBooking(req, res, next) {
   const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
@@ -92,6 +121,7 @@ async function cancelBooking(req, res, next) {
 module.exports = {
   getAllBookings,
   getBookingsByUserId,
+  getBookingsByBikeId,
   postBooking,
   cancelBooking
 }
