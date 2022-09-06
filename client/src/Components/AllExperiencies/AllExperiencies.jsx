@@ -22,8 +22,8 @@ export const AllExperiencies = () => {
     return (
         // <img src={aux_exp} alt='aux_exp' className={s.img_aux} />
         <div>
-            <div>
-            <h1>Las Let en primera persona</h1>
+            <div className={s.container}>
+            <h1 className={s.h1}>Las Let en primera persona</h1>
             </div>
             {
 
