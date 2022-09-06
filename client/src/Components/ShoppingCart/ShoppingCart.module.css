@@ -5,10 +5,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: calc(100vh - 20rem);
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* gap: 1rem; */
+    height: fit-content;
     background-color: #ffffff;
 }
 
@@ -43,8 +40,6 @@
     height: 1.5rem;
     margin-bottom: 1rem;
 }
-
-
 
 .bikes {
     display: flex;
@@ -90,20 +85,23 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1rem;
     color: #D6802B;
     margin: 0;
 }
 
 .reserveBtn {
     padding: 1rem 2rem 1rem 2rem;
-    font-weight: 600;
-    font-size: .9rem;
-    border: 1px solid #D6802B;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    border: 2px solid #D6802B;
     background-color: transparent;
     border-radius: 0.3rem;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
 }
 
 .btn {
@@ -146,12 +144,12 @@
     background-color: transparent;
 }
 
-.accesories {
+.accesoriesPreview {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 0.5rem;
     grid-column-gap: .5rem;
-    height: 6rem;
+    height: 5rem;
     margin-top: 1rem;
 }
 
@@ -165,7 +163,10 @@
 .containerBtn {
     display: flex;
     column-gap: 5rem;
+    width: 100%;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 15rem;
 }
 
 .btnSwal{
@@ -176,6 +177,8 @@
     margin-left: auto;
     margin-right: auto;
     width: 30%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .deleteBtn {
@@ -190,14 +193,17 @@
 }
 
 .previewItems {
-    display: flex;
-    flex-direction: row;
-    column-gap: 2rem;
-    margin-right: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 1rem;
+    margin-right: 10rem;
 }
 
 .cardBike {
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 1.5rem;
-    border: 2px solid #333333;
+    border: 1px solid #333333;
+    height: 25rem;
 }
+
