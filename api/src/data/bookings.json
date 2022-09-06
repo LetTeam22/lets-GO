@@ -61,7 +61,7 @@
         "bikeIds":[1],
         "AccIds":[1],
         "totalPrice":1000,
-        "status": "cancell"
+        "status": "cancelled"
     }
 
 ]
