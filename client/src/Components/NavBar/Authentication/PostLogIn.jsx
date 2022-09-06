@@ -19,7 +19,7 @@ export default function PostLogIn() {
     const goBack = (e) => {
         e.preventDefault();
         dispatch(createUser({ email: user.email }))
-        dispatch(getUser(user.email))
+        dispatch(getUser(user?.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
         sendEmail(e);
@@ -27,7 +27,7 @@ export default function PostLogIn() {
     const goProfile = (e) => {
         e.preventDefault();
         dispatch(createUser({ email: user.email }))
-        dispatch(getUser(user.email))
+        dispatch(getUser(user?.email))
         history.push('/bike/profile')
         sendEmail(e);
     }
