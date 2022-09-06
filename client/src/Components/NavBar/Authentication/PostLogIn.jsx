@@ -4,31 +4,50 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createUser, getUser } from '../../../Redux/actions';
 import s from './PostLogIn.module.css';
-import logo from '../../../image/logo.png';
+import postlogin from '../../../image/postlogin.png';
+import emailjs from '@emailjs/browser';
 
-export default function PostLogIn () {
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID3;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID3;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
+
+export default function PostLogIn() {
     const dispatch = useDispatch()
     const { user } = useAuth0()
     const history = useHistory()
 
-    const goBack = () => {
-        dispatch(createUser({email:user.email}))
-        dispatch(getUser(user.email))
+    const goBack = (e) => {
+        e.preventDefault();
+        dispatch(createUser({ email: user.email }))
+        dispatch(getUser(user?.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
+        sendEmail(e);
     }
-    const goProfile = () => {
-        dispatch(createUser({email:user.email}))
-        dispatch(getUser(user.email))
+    const goProfile = (e) => {
+        e.preventDefault();
+        dispatch(createUser({ email: user.email }))
+        dispatch(getUser(user?.email))
         history.push('/bike/profile')
+        sendEmail(e);
+    }
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
 
     return (
         <div className={s.background}>
-            <img src={logo} className={s.logo} alt='logo' ></img>
             <div className={s.buttons}>
-                <button className={s.btnBack} onClick={goBack}>Volver</button>
-                <button className={s.btnProfile} onClick={goProfile}>Revisa tu perfil</button>
+                <img src={postlogin} className={s.postlogin} alt='postlogin' ></img>
+                <button className={s.btnBack} onClick={e => goBack(e)}>Volver</button>
+                <button className={s.btnProfile} onClick={e => goProfile(e)}>Revisa tu perfil</button>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, SET_BOOKING_DATES, GET_USER_BOOKINGS } from '../actions/actiontypes';
 
 
 const initialState = {
@@ -36,9 +36,6 @@ const initialState = {
             search: ''
         },
         date: {
-            selected: [],
-            labels: [],
-            ids: [],
             from: '',
             to: ''
         }
@@ -46,8 +43,20 @@ const initialState = {
     bikeDetail: [],
     accesories: [],
     user: {},
+    allUsers: [],
     bookings: [],
-    famousBikes: []
+    allBookings: [],
+    famousBikes: [],
+    favorites: [],
+    allExperiences: [],
+    userBookings: [],
+    timeZone: 'T00:00:00.000-03:00',
+    bookingDates: {
+        from: '',
+        to: '',
+        bikeIds: '',
+        disabledDates: []
+    }
 }
 
 function rootReducer(state = initialState, action) {
@@ -62,7 +71,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'resetAll') {
                 action.payload = {
                     filters: { selected: [], labels: [], ids: [], type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
-                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { selected: [], labels: [], ids: [], from: '', to: '' }
+                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { from: '', to: '' }
                 }
             }
             return {
@@ -123,6 +132,60 @@ function rootReducer(state = initialState, action) {
                     ...state,
                     famousBikes: principalBikes
                 }
+        case ADD_FAVORITE:
+            return {
+                ...state,
+                favorites: [...state.favorites, action.payload]
+            }
+        case REMOVE_FAVORITE: 
+            return {
+                ...state,
+                favorites: state.favorites.filter(f => f.idBike !== action.idBike)
+            }
+
+        
+        case POST_EXPERIENCE:
+            return{
+                ...state
+            }
+        
+        case GET_ALL_EXPERIENCES:
+            return{
+                ...state,
+                allExperiences: action.payload
+            }
+
+        case GET_ALL_BOOKINGS:
+            return {
+                ...state,
+                allBookings: action.payload
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: action.payload
+            }
+        case SET_BIKES_DETAIL:
+            return {
+                ...state,
+                bikeDetail: action.payload
+            }
+        case GET_DISABLED_DATES:
+            return {
+                ...state,
+                bookingDates: {...state.bookingDates, disabledDates: action.payload}
+            }
+        case SET_BOOKING_DATES:
+            return {
+                ...state,
+                bookingDates: action.payload
+            }
+        case GET_USER_BOOKINGS:
+            if(action.payload.msg) action.payload = []
+            return {
+                ...state,
+                userBookings: action.payload
+            }    
         default: return state
     }
 }

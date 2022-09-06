@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -20,29 +20,42 @@ import Loading from "../../Loading/Loading";
 import image from "../../../image/persona_logeada.png";
 import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
-import background from "../../../image/fondo_huellas.png";
+import RenderProfilePic from "../../Cloudinary/renderProfilePic";
+import { getUser } from "../../../Redux/actions/index";
+import logo from '../../../image/logo.png';
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useAuth0();
-  const userLogged = useSelector((state) => state.user);
+  const cloudName = 'pflet'
+  const {isLoading, user } = useAuth0();
   const history = useHistory();
+  useEffect(() => {
+    if(user) dispatch(getUser(user?.email));
+    if(!user) history.push("/")
+  }, []);
+  // const userLogged = useSelector((state) => state.user);
+  const userLogged = useSelector(state=>state.user)
   const [input, setInput] = useState({
     firstName: "",
     lastName: "",
-    cellphone: "",
-    profilePic: "",
+    cellphone: ""
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
-  if (isLoading) return <Loading />;
+  const [toUpload, setToUpload] = useState('');
+  const [uploadedImage, setUploadedImage] = useState(userLogged.profilePic)
+  const [uploading, setUploading] = useState(false)
+  // console.log(userLogged)
+  if (isLoading || uploading) return <Loading />;
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.id]: e.target.value,
     });
-    if (e.target.id === "profilePic")
+    if (e.target.id === "profilePic"){
       setPhoto(URL.createObjectURL(e.target.files[0]));
+      setToUpload(e.target.files[0])
+    }
     setErrors(
       validate(
         {
@@ -54,32 +67,60 @@ export const ProfileToEdit = () => {
       )
     );
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
-      updateUser({ ...input, email: user.email, profilePic: `${photo}` })
-    );
+    if(toUpload){
+    setUploading(true)  
+    const data = new FormData()
+    data.append('file',toUpload)
+    data.append('upload_preset','ProfilePictures')
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    {
+      method:'POST',
+      body:data
+    })
+    const file = await res.json() 
+    // console.log(file)
+    setUploadedImage(file.public_id)
+    await dispatch(
+      updateUser({ ...input, email: user.email, profilePic:file.public_id})
+    );}
+    else{
+      await dispatch(updateUser({ ...input, email: user.email}))
+    }
+    // console.log('usuario logueado',userLogged)
+    dispatch(getUser(userLogged.email));
     setInput({
       firstName: "",
       lastName: "",
       cellphone: "",
-      profilePic: "",
     });
-    history.push(
-      localStorage.getItem("url") ? localStorage.getItem("url") : "/"
-    );
+    setToUpload('')
+    setUploading(false)
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
-  const disabled = Object.keys(errors).length > 0;
-  const name =
-    (userLogged.firstName &&
-      userLogged.firstName +
-        " " +
-        (userLogged.lastName && userLogged.lastName)) ||
-    user?.name;
+  // console.log('photo',photo)
+  const disabled = Object.keys(errors).length > 0 ||
+   !(input.firstName || input.lastName || input.cellphone || toUpload)
+  //  !!!(input.firstName && input.lastName && input.cellphone & photo)
+  const name = (userLogged.firstName && userLogged.lastName)?
+  `${userLogged.firstName} ${userLogged.lastName}`:
+  userLogged.firstName? userLogged.firstName:
+  user?.name
   return (
-    <>
+    <section className={s.allPage}>
       <div className={s.container}>
+        <Button
+          variant="contained"
+          color="success"
+          className={s.btnBack}
+          onClick={() => history.push("/bike/profile")}>
+          Volver
+        </Button>
+        <div>
+          <img src={logo} alt='logo' className={s.logo} />
+        </div>
+        <p className={s.etiquetap}>EDITA SOLO LOS CAMPOS QUE DESEAS ACTUALIZAR</p>
         <div className={s.nameAndImg}>
           <h2>{name}</h2>
           <IconButton
@@ -93,14 +134,20 @@ export const ProfileToEdit = () => {
               accept="image/*"
               type="file"
               onChange={handleChange}
-              value={input.profilePic}
+              // value={input.profilePic}
               id="profilePic"
             />
+            {uploadedImage && !photo?
+            <RenderProfilePic publicId={uploadedImage}
+            alt={user?.name}
+            />
+            :
             <img
               src={photo ? photo : image}
-              alt={user.name}
+              alt={user?.name}
               className={s.img}
             />
+            }
             <BsCameraFill className={s.iconCamera} />
           </IconButton>
         </div>
@@ -112,9 +159,10 @@ export const ProfileToEdit = () => {
                 id="firstName"
                 aria-describedby="my-helper-text"
                 error={errors.firstName ? true : false}
-                placeholder={`${userLogged?.firstName}`}
+                placeholder={userLogged?userLogged.firstName?userLogged.firstName:'Vacio':'Vacio'}
                 value={input.firstName}
                 onChange={handleChange}
+                className={s.input}
               />
             </FormControl>
             <FormControl>
@@ -123,9 +171,10 @@ export const ProfileToEdit = () => {
                 id="lastName"
                 aria-describedby="my-helper-text"
                 error={errors.lastName ? true : false}
-                placeholder={`${userLogged.lastName}`}
+                placeholder={userLogged?userLogged.lastName?userLogged.lastName:'Vacio':'Vacio'}
                 value={input.lastName}
                 onChange={handleChange}
+                className={s.input}
               />
               <FormHelperText id="my-helper-text"></FormHelperText>
             </FormControl>
@@ -135,33 +184,34 @@ export const ProfileToEdit = () => {
                 id="cellphone"
                 aria-describedby="my-helper-text"
                 error={errors.cellphone ? true : false}
-                placeholder={`${userLogged?.cellphone}`}
+                placeholder={userLogged?userLogged.cellphone?userLogged.cellphone:'Vacio':'Vacio'}
                 type="tel"
                 value={input.cellphone}
                 onChange={handleChange}
+                className={s.input}
               />
             </FormControl>
+          </ThemeProvider>
+        </form>
+            <Button
+              variant="contained"
+              color="success"
+              className={s.btnHome}
+              onClick={() => history.push("/")}>
+              Go Home
+            </Button>
             <Button
               variant="contained"
               endIcon={<IoSend />}
               className={s.btnSend}
               type="submit"
               disabled={disabled}
+              onClick={handleSubmit}
             >
               Send
             </Button>
-          </ThemeProvider>
-        </form>
       </div>
-      <Button
-        variant="contained"
-        color="success"
-        className={s.btnHome}
-        onClick={() => history.push("/")}
-      >
-        Go Home
-      </Button>
-      <img src={background} alt="fondo" className={s.background} />
-    </>
+      <div className={s.background}></div>
+    </section>
   );
 };

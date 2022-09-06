@@ -1,36 +1,67 @@
 [
     {
-        "startDate":"2022/08/01",
-        "endDate":"2022/08/05",
-        "userIdUser":2,
-        "bikeIds":[1,2,3]
+        "startDate":"2022-10-01",
+        "endDate":"2022-10-05",
+        "userId":2,
+        "bikeIds":[1,2,3],
+        "AccIds":[1,5,4],
+        "totalPrice":2500
     },
 
     {
-        "startDate":"2022/08/05",
-        "endDate":"2022/08/06",
-        "userIdUser":4,
-        "bikeIds":[4,5,7]
+        "startDate":"2022-10-05",
+        "endDate":"2022-10-06",
+        "userId":4,
+        "bikeIds":[4,5,7],
+        "AccIds":[1,5,3],
+        "totalPrice":1546
     },
 
     {
-        "startDate":"2022/08/07",
-        "endDate":"2022/08/09",
-        "userIdUser":1,
-        "bikeIds":[6,10,11]
+        "startDate":"2022-10-07",
+        "endDate":"2022-10-09",
+        "userId":1,
+        "bikeIds":[6,10,11],
+        "AccIds":[1,2,3],
+        "totalPrice":2560
     },
 
     {
-        "startDate":"2022/08/10",
-        "endDate":"2022/08/11",
-        "userIdUser":5,
-        "bikeIds":[15,9,8]
+        "startDate":"2022-10-10",
+        "endDate":"2022-10-11",
+        "userId":5,
+        "bikeIds":[15,9,8],
+        "AccIds":[1,3,4],
+        "totalPrice":1980
     },
 
     {
-        "startDate":"2022/08/13",
-        "endDate":"2022/08/15",
-        "userIdUser":3,
-        "bikeIds":[20,21,22]
+        "startDate":"2022-10-13",
+        "endDate":"2022-10-15",
+        "userId":3,
+        "bikeIds":[20,21,22],
+        "AccIds":[2,3,4],
+        "totalPrice":3500
+    },
+
+    {
+        "startDate":"2022-10-17",
+        "endDate":"2022-10-19",
+        "userId":10,
+        "bikeIds":[1],
+        "AccIds":[1],
+        "totalPrice":1000,
+        "status": "cancelled"
+    },
+
+    {
+        "startDate":"2022-10-27",
+        "endDate":"2022-10-29",
+        "userId":8,
+        "bikeIds":[1],
+        "AccIds":[1],
+        "totalPrice":1000,
+        "status": "cancell"
     }
+
 ]

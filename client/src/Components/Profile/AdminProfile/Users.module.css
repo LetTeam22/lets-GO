@@ -1,0 +1,29 @@
+.users{
+    width: 100%;
+    height: calc(100vh - 6rem);
+}
+
+.goBack{
+    position: absolute;
+    top: 11rem;
+    left: 17rem;
+}
+.goBack svg{
+    width: 3rem;
+    height: 3rem;
+    color: #333333!important;
+}
+
+.list{
+    width: 53rem;
+    height: 32.9rem!important;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #c1c1c1;
+    margin-top: 5rem
+}
+
+.list div div div{
+    display: flex;
+    justify-content: center;
+}

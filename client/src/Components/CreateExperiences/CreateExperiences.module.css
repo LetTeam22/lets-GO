@@ -1,0 +1,248 @@
+.allPage{
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 35%;
+    height: 50vh;
+    border-radius: 0.2rem;
+    box-shadow: 0px -1px 8px 2px #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20%;
+    align-items: center;
+    position: relative;
+    padding-top: 2rem;
+    /* background-color: #333333; */
+}
+
+.name{
+    width: 70%;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.information{
+    gap: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.h4{
+    margin-left: .5rem;
+    color: #484848
+
+}
+.img {
+    width: 5rem;
+    height: 5rem;
+}
+
+.btnEdit{
+    color:#F9B621!important;
+    color:#484848!important;
+    font-weight: 1000!important;
+    position: absolute!important;
+}
+.btnHome{
+    bottom: 1rem;
+    left: 2rem;
+}
+.btnEdit{
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position-x: center;
+    background-image: url('../../image/fondo_huellas.png');
+}
+
+/*---------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    background-image: url(../../image/fondo_huellas.png);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    /* row-gap: 2.5em; */
+    background-color: #333333;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+
+}
+
+.logo {
+    width: 15rem;
+    margin-top: 2rem;
+}
+
+.containerT {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+}
+
+.inputs {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.inputs input {
+    margin-left: 0.7rem;
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.9rem;
+    width: 18rem;
+}
+
+.inputs input[type=number]::-webkit-inner-spin-button, 
+.inputs input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.inputs input[type=number] { -moz-appearance:textfield; }
+
+.textArea {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    width: 19rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+textarea {
+    text-decoration: none;
+    border: none;
+    overflow: scroll;
+    resize: none;
+    height: 9rem;
+    /* width: 100%; */
+    border-radius: .9rem;
+    outline: none;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.containerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9B621;
+    width: 5rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.containerBtn input {
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/*-----------estilo input file----------*/
+/* .container-input {
+    text-align: center;
+    background: #282828;
+    border-top: 5px solid #c39f77;
+    padding: 50px 0;
+    border-radius: 6px;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    color: white;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.iborrainputfile {
+	font-size:16px; 
+	font-weight:normal;
+	font-family: 'Lato';
+}
+
+.inputfile3 + label {
+    color: #fff;
+}
+
+.inputfile3:focus + label,
+.inputfile3.has-focus + label,
+.inputfile3 + label:hover {
+    color: #c39f77;
+}
+ */

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-import { FaRegMoneyBillAlt } from 'react-icons/fa';
+// import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
 import gear from '../../image/gear.png'
 import ray from '../../image/ray.png'
@@ -73,6 +73,8 @@ const Filters = ({ handleParameter }) => {
                 step={10}
                 onChange={handlePrice}
                 valueLabelDisplay="auto"
+                sx={{color: 'orange'}}
+
             />
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
@@ -83,42 +85,42 @@ const Filters = ({ handleParameter }) => {
 
             <div className='checkCont'>
 
-                <FormControl>
-                    <FormLabel>Rodado</FormLabel>
+                <FormControl >
+                    <FormLabel >Rodado</FormLabel>
                     <RadioGroup value={parameters.filters.wheelSize} onChange={handleWheelSizeFilter}>
-                        <FormControlLabel value="" control={<Radio size="small"/>} label="Todos"/>
-                        <FormControlLabel value="16" control={<Radio size="small" />} label="16"/>  {/*<span>16</span>*/}
-                        <FormControlLabel value="20" control={<Radio size="small"/>} label="20"/>
-                        <FormControlLabel value="24" control={<Radio size="small"/>} label="24"/>
-                        <FormControlLabel value="26" control={<Radio size="small"/>} label="26"/>
-                        <FormControlLabel value="29" control={<Radio size="small"/>} label="29"/>
+                        <FormControlLabel  value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}}/>} label="Todos"/>
+                        <FormControlLabel value="16" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}} />}  label="16"/>
+                        <FormControlLabel value="20" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="20"/>
+                        <FormControlLabel value="24" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="24"/>
+                        <FormControlLabel value="26" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="26"/>
+                        <FormControlLabel value="29" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="29"/>
                     </RadioGroup>
                 </FormControl>
 
                 <FormControl>
                     <FormLabel>Color</FormLabel>
                     <RadioGroup value={parameters.filters.color} onChange={handleColorFilter}>
-                        <FormControlLabel value="" control={<Radio size="small"/>} />
-                        <FormControlLabel value="negro" control={<Radio size="small" sx={{color: 'black','&.Mui-checked': {color: 'black',},}}/>} />
-                        <FormControlLabel value="gris" control={<Radio size="small" sx={{color: 'gray','&.Mui-checked': {color: 'gray',},}}/>} />
-                        <FormControlLabel value="blanco" control={<Radio size="small" sx={{color: 'white','&.Mui-checked': {color: 'white',},}}/>} />
-                        <FormControlLabel value="rojo" control={<Radio size="small" sx={{color: 'red','&.Mui-checked': {color: 'red',},}}/>} />
-                        <FormControlLabel value="amarillo" control={<Radio size="small" sx={{color: 'yellow','&.Mui-checked': {color: 'yellow',},}}/>} />
-                        <FormControlLabel value="azul" control={<Radio size="small" sx={{color: 'blue','&.Mui-checked': {color: 'blue',},}}/>} />
-                        <FormControlLabel value="verde" control={<Radio size="small" sx={{color: 'green','&.Mui-checked': {color: 'green',},}}/>} />
+                        <FormControlLabel value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small" />}  label="Todos" />
+                        <FormControlLabel value="negro" control={<Radio size="small"  sx={{color: 'black','&.Mui-checked': {color: 'black',},'& .MuiSvgIcon-root': {fontSize: 15},}}/>} />
+                        <FormControlLabel value="gris" control={<Radio size="small" sx={{color: 'gray','&.Mui-checked': {color: 'gray',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
+                        <FormControlLabel value="blanco" control={<Radio size="small" sx={{color: 'white','&.Mui-checked': {color: 'white',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
+                        <FormControlLabel value="rojo" control={<Radio size="small" sx={{color: 'red','&.Mui-checked': {color: 'red',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
+                        <FormControlLabel value="amarillo" control={<Radio size="small" sx={{color: 'yellow','&.Mui-checked': {color: 'yellow',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
+                        <FormControlLabel value="azul" control={<Radio size="small" sx={{color: 'blue','&.Mui-checked': {color: 'blue',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
+                        <FormControlLabel value="verde" control={<Radio size="small" sx={{color: 'green','&.Mui-checked': {color: 'green',},'& .MuiSvgIcon-root': {fontSize: 15}}}/>} />
                     </RadioGroup>
                 </FormControl>
 
-                <FormControl>
+                <FormControl >
                     <FormLabel>Tipo</FormLabel>
                     <RadioGroup value={parameters.filters.type} onChange={handleTypeFilter}>
-                        <FormControlLabel value="" control={<Radio size="small"/>} label="Todos"/>
-                        <FormControlLabel value="bmx" control={<Radio size="small"/>} label="bmx"/>
-                        <FormControlLabel value="city" control={<Radio size="small"/>} label="city"/>
-                        <FormControlLabel value="mtb" control={<Radio size="small"/>} label="mtb"/>
-                        <FormControlLabel value="tandem" control={<Radio size="small"/>} label="tandem"/>
-                        <FormControlLabel value="touring" control={<Radio size="small"/>} label="touring"/>
-                        <FormControlLabel value="folding" control={<Radio size="small"/>} label="folding"/>
+                        <FormControlLabel value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="Todos"/>
+                        <FormControlLabel value="bmx" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="bmx"/>
+                        <FormControlLabel value="city" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="city"/>
+                        <FormControlLabel value="mtb" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="mtb"/>
+                        <FormControlLabel value="tandem" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="tandem"/>
+                        <FormControlLabel value="touring" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="touring"/>
+                        <FormControlLabel value="folding" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}} size="small"/>} label="folding"/>
                     </RadioGroup>
                 </FormControl>
 
@@ -150,9 +152,7 @@ const Filters = ({ handleParameter }) => {
                     className={s.priceInputs}
                     id='maxPriceFilter'
                 />
-            </div> */}
-            
-            
+            </div> */}  
         </div>
     )
 };

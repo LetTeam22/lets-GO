@@ -1,14 +1,18 @@
 .contain{
     display: flex;
     position: relative;
-    width: 30%;
     height: 3.5rem;
+    justify-content: flex-start;
+    margin-left: 8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 .date{
     margin: 0;
     padding: 0;
-    width: 40%;
-    margin: 0;
+    width: 22%;
+    margin-left: 5rem;
     background-color: #e1e0e0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
-

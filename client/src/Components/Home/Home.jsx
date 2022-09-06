@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-// import Dates from "../Dates/Dates";
+import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
@@ -108,14 +107,14 @@ export const Home = () => {
 
       <div className={s.divSticky}>
         <div className={s.containFiltersSelected}>
-          {!!parameters.search.selected.length && (<FiltersSelected label="Búsqueda" select={parameters.search} handleDelete={deleteSearch} />)}
-          {!!parameters.filters.selected.length && (<FiltersSelected label="Filtros" select={parameters.filters} handleDelete={deleteFilter} />)}
-          {!!parameters.sorts.selected.length && (<FiltersSelected label="Ordenamientos" select={parameters.sorts} handleDelete={deleteSort} />)}
+          {!!parameters.search.selected.length && (<FiltersSelected select={parameters.search} handleDelete={deleteSearch} />)}
+          {!!parameters.filters.selected.length && (<FiltersSelected select={parameters.filters} handleDelete={deleteFilter} />)}
+          {!!parameters.sorts.selected.length && (<FiltersSelected select={parameters.sorts} handleDelete={deleteSort} />)}
         </div>
 
         <div className={s.divDateAndOrder}>
           {/* comento el Dates hasta que se cambie, este componente no deja modificar estilos */}
-          {/* <Dates /> */}
+          <Dates component='home'/>
           <Orderings handleParameter={handleParameter} />
         </div>
       </div>
@@ -128,7 +127,6 @@ export const Home = () => {
             <div className={s.containerCards}>
               {currentBikes?.map((e) => (
                 <div key={e.idBike}>
-                  <Link to={"/bike/" + e.idBike}>
                     <Card key={e.idBike}
                       name={e.name}
                       type={e.type}
@@ -138,9 +136,9 @@ export const Home = () => {
                       price={e.price}
                       rating={e.rating}
                       color={e.color}
+                      idBike={e.idBike}
                       id={cardId++}
                     />
-                  </Link>
                 </div>
               ))}
             </div>

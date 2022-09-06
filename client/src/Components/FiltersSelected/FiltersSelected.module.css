@@ -16,7 +16,7 @@
     list-style: none;
     color: #3f3e3e;
     z-index: 100;
-    box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 2px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 3px;
 }
 
 .selContainer {

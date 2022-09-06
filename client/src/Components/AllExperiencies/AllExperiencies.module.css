@@ -2,3 +2,18 @@
     width: 100%;
     margin-top: 5rem;
 }
+
+.h1{
+    display: flex;
+    margin-left: 3rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    height: 10%;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}

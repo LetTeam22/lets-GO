@@ -1,9 +1,26 @@
+.allPage{
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bookings{
+    text-align: center;
+    height: 93%;
+}
+.btnBook{
+    position: relative;
+    color:#F9B621!important;
+    background-color:#333333!important;
+    font-weight: 1000!important;
+}
+
 .container{
     width: 35%;
-    height: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10rem;
+    height: 40rem;
     border-radius: 0.2rem;
     box-shadow: 0px -1px 8px 2px #333333;
 }
@@ -65,8 +82,8 @@
     background-color:#333333!important;
     font-weight: 1000!important;
     position: absolute!important;
-    top: 10rem;
-    left: 25%;
+    bottom: 0.7rem;
+    left: 0.7rem;
 }
 
 .background{
@@ -96,4 +113,9 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
+}
+
+.users{
+    height: 93%;
+    text-align: center;
 }

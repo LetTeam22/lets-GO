@@ -2,49 +2,49 @@
     {
         "name": "Casco",
         "description": "Para viajar protegido",
-        "image": "../..//image/casco.png",
+        "image": "Let/accesories/casco_r6dvcq",
         "price": "150"
     },
     {
-        "name": "Botellita",
+        "name": "Botella",
         "description": "Para disfrutar de tu Let tenés que estar en todos los detalles",
-        "image": "https://xtrbikes.com/wp-content/uploads/03592_1-3.jpg",
+        "image": "Let/accesories/botellita_aaisn0",
         "price": "50"
     },
     {
-        "name": "Silla portabebés",
+        "name": "Silla",
         "description": "Disfrutá de Let con buena compañía",
-        "image": "https://contents.mediadecathlon.com/p1534634/k$ee4c4df7db23f0216fb96c5571eca827/sq/PORTABEB+S+BICICLETA+SILLA+ELOPS+100+FIJACI+N+AL+PORTAEQUIPAJES+AZUL.jpg",
+        "image": "Let/accesories/silla-porta-bebes_ubiipe",
         "price": "250"
     },
     {
         "name": "Calzado",
         "description": "Tenemos todo lo que necesitás para pedalear preparado en tu Let",
-        "image": "../../../client/src/image/zapatillas_bici.png",
+        "image": "Let/accesories/zapatillas1_tlx2gf",
         "price": "300"
     },
     {
         "name": "Canasto",
         "description": "Sumá comodidad a tu Let",
-        "image": "../../image/canasto.png",
+        "image": "Let/accesories/canasto_jz9bk5",
         "price": "230"
     },
     {
         "name": "Luces",
         "description": "Que la noche no te agarre desprevenido",
-        "image": "../../../client/src/image/luces.png",
+        "image": "Let/accesories/luces_xmmwbz",
         "price": "80"
     },
     {
         "name": "Candado",
         "description": "Dejá tu Let donde quieras",
-        "image": "../../../client/src/image/candado.png",
+        "image": "Let/accesories/candado_hccjpv",
         "price": "60"
     },
     {
         "name": "Lentes",
         "description": "El accesorio que te faltaba para esa subida al cerro en pleno día de sol",
-        "image": "../../../client/src/image/lentes.png",
+        "image": "Let/accesories/lentes_whi6dg",
         "price": "320"
     }
 ]

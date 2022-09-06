@@ -12,11 +12,22 @@ import imgRat4 from '../../image/stars/4stars.png'
 import imgRat45 from '../../image/stars/4.5stars.png'
 import imgRat5 from '../../image/stars/5stars.png'
 import rodado from '../../image/rueda_bici.png'
+import RenderOneImage from '../Cloudinary/renderOneImage';
 import gear from '../../image/gear.png'
 import ray from '../../image/ray.png'
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from "../../Redux/actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import swal from "sweetalert";
+import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
 
 
-export const Card = ({ name, type, image, traction, wheelSize, price, rating, id }) => {
+export const Card = ({ name, type, image, traction, wheelSize, price, rating, id, idBike }) => {
+    
+    const dispatch = useDispatch();
+    const { isAuthenticated } = useAuth0();
+    const favorites = useSelector(state => state.favorites);
 
     const imgRating = rat => {
         if (rat < 0.5) return imgRat0
@@ -30,13 +41,64 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
         if (rat < 8.5) return imgRat4
         if (rat < 9.5) return imgRat45
         return imgRat5
-    } 
+    }
+    const handleFav = () => {
+        if (!isAuthenticated) {
+            swal({ title: "PRECAUCIÓN",text: "Debés loguearte primero",icon: "warning",
+              button: {
+                text: "Ok",
+                value: true,
+                visible: true,
+                className: s.btnSwal,
+                closeModal: true
+              }
+            });
+        } else {
+            const alreadyFavorite = favorites.find(f => f.idBike === idBike)
+            if(!alreadyFavorite) {
+                dispatch(addFavorite(idBike))
+                swal({ title: "let's GO agregada a favoritos", text: "revisá tu perfil!", icon: "success",
+                    button: {
+                      confirm: {
+                        text: "Ok",
+                        value: true,
+                        visible: true,
+                        className: s.btnSwal,
+                        closeModal: true
+                      }
+                    }
+                })
+            } else {
+                dispatch(removeFavorite(idBike))
+                console.log('desde card' + idBike)
+            }
+        }
+    };
+
+    const bikeIsFavorite = (idBike) => {
+        return favorites.find(b => b.idBike === idBike) ? true : false
+    };
+
+    const iconStyle = {
+        color: 'orange',
+        width: '1.7rem',
+        height: '1.7rem',
+        padding: '0',
+        margin: '0'
+    };
 
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
-            <img src={image} alt='img not found' className={s.imgCard} /> 
+            { <button className={s.fav} onClick={handleFav}> { bikeIsFavorite(idBike)
+                ? <AiFillHeart style= {iconStyle}/>
+                : <AiOutlineHeart style= {iconStyle}/> }
+            </button> }
+            { /^(https?)[^\s]*$/i.test(image)
+                ? <img src={image} alt='img not found' className={s.imgCard} />
+                : <Link to={"/bike/" + idBike}><RenderOneImage publicId={image}></RenderOneImage></Link> 
+            }
             <div>
-                <h3 className={s.name}>{name}</h3>
+                <Link to={"/bike/" + idBike}><h3 className={s.name}>{name}</h3></Link> 
                 <div className={s.dataCont}>
                     <span className={s.type}>{type} </span>
                     <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/>

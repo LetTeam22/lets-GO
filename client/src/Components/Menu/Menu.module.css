@@ -30,6 +30,7 @@
     font-size: 1rem;
     line-height: 1.75rem;
     padding: .8rem;
+    position: relative;
 }
 
 .span:hover {
@@ -38,6 +39,16 @@
     padding: .8rem;
     border-radius: .2rem;
 }
+.span::after{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0.8rem;
+    width: 80%;
+    height: 0.2rem;
+    background-color: #F9B621;
+}
+
 
 div:hover > hr {
     display: none;
@@ -72,4 +83,10 @@ hr {
     background-color: transparent;
     width: fit-content;
     border: none;
+}
+
+.bell {
+    width: 1.4rem;
+    cursor:pointer;
+    margin-left: 1rem;
 }
