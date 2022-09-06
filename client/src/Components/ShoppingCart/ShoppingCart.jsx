@@ -214,7 +214,7 @@ export const ShoppingCart = () => {
           </div>
           <hr color="#595858" size='0.5px' />
 
-          <Dates component='cart' className={s.dates} />
+          <Dates component='cart'/>
 
           <div className={s.containerDiv}>
             <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
