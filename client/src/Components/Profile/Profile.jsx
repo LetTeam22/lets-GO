@@ -66,15 +66,16 @@ export const Profile = () => {
         <div className={s.box2}>
             {!!userBookings.length ?  userBookings?.map(book => (
               <div className={s.containerLis2} key={book.idBooking} >
-                  <span className={s.list2}>Desde: {book.startDate} - Hasta: {book.endDate}</span>
-                  <span className={s.list2}>let's GO:
+                  <span className={s.list2}>● Desde: {book.startDate} - Hasta: {book.endDate}</span>
+                  <span className={s.list2}>» Bici let's GO:
                     { book.bikes.map(bike => (<span key={bike.name} className={s.list2}>{bike.name}</span>)) }
                   </span>
-                  <span className={s.list2}>Accesorios:
+                  <span className={s.list2}>» Accesorios:
                     { !!book.accesories.length && book.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name}</span>)) }
                   </span>
-                  <span className={s.list2}>Precio Total:{book.totalPrice}</span>
-                  <span>Estado:</span>
+                  <span className={s.list2}>» Precio Total: ${book.totalPrice}</span>
+                  <hr />
+                  {/* <span className={s.list2}>Estado:</span> */}
               </div>
               )) : (
               <span className={s.span}>Todavía no tenés reservas</span>

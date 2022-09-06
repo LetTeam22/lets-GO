@@ -1,5 +1,5 @@
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, SET_BOOKING_DATES, GET_USER_BOOKINGS } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS } from '../actions/actiontypes';
 
 
 const initialState = {
@@ -37,7 +37,10 @@ const initialState = {
         },
         date: {
             from: '',
-            to: ''
+            to: '',
+            bikeIds: '',
+            disabledDates: [],
+            timeZone: 'T00:00:00.000-03:00'
         }
     },
     bikeDetail: [],
@@ -50,13 +53,6 @@ const initialState = {
     favorites: [],
     allExperiences: [],
     userBookings: [],
-    timeZone: 'T00:00:00.000-03:00',
-    bookingDates: {
-        from: '',
-        to: '',
-        bikeIds: '',
-        disabledDates: []
-    }
 }
 
 function rootReducer(state = initialState, action) {
@@ -68,12 +64,12 @@ function rootReducer(state = initialState, action) {
                 paginate: { ...state.paginate, currentPage: action.payload }
             }
         case SET_PARAMETERS:
-            if (action.payload === 'resetAll') {
-                action.payload = {
-                    filters: { selected: [], labels: [], ids: [], type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
-                    sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }, date: { from: '', to: '' }
-                }
+            const emptyParameters = {
+                filters: { selected: [], labels: [], ids: [], type: '', traction: '', wheelSize: '', color: '', price: { min: '', max: '' } },
+                sorts: { selected: [], labels: [], ids: [], price: '', rating: '', name: '' }, search: { selected: [], search: '' }
             }
+            if (action.payload === 'resetAll') action.payload = {...emptyParameters, date: {...state.parameters.date }}
+            if (action.payload === 'resetAllPlusDates') action.payload = {...emptyParameters, date: {...state.parameters.date, from: '', to: '' }}
             return {
                 ...state,
                 parameters: action.payload
@@ -173,12 +169,7 @@ function rootReducer(state = initialState, action) {
         case GET_DISABLED_DATES:
             return {
                 ...state,
-                bookingDates: {...state.bookingDates, disabledDates: action.payload}
-            }
-        case SET_BOOKING_DATES:
-            return {
-                ...state,
-                bookingDates: action.payload
+                parameters: {...state.parameters, date: {...state.parameters.date, disabledDates: action.payload}}
             }
         case GET_USER_BOOKINGS:
             if(action.payload.msg) action.payload = []
