@@ -22,6 +22,7 @@ import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
 import RenderProfilePic from "../../Cloudinary/renderProfilePic";
 import { getUser } from "../../../Redux/actions/index";
+import logo from '../../../image/logo.png';
 
 export const ProfileToEdit = () => {
   const dispatch = useDispatch();
@@ -102,15 +103,24 @@ export const ProfileToEdit = () => {
   const disabled = Object.keys(errors).length > 0 ||
    !(input.firstName || input.lastName || input.cellphone || toUpload)
   //  !!!(input.firstName && input.lastName && input.cellphone & photo)
-  const name =
-    (userLogged.firstName &&
-      userLogged.firstName +
-        " " +
-        (userLogged.lastName && userLogged.lastName)) ||
-    user?.name;
+  const name = (userLogged.firstName && userLogged.lastName)?
+  `${userLogged.firstName} ${userLogged.lastName}`:
+  userLogged.firstName? userLogged.firstName:
+  user?.name
   return (
     <section className={s.allPage}>
       <div className={s.container}>
+        <Button
+          variant="contained"
+          color="success"
+          className={s.btnBack}
+          onClick={() => history.push("/bike/profile")}>
+          Volver
+        </Button>
+        <div>
+          <img src={logo} alt='logo' className={s.logo} />
+        </div>
+        <p className={s.etiquetap}>EDITA SOLO LOS CAMPOS QUE DESEAS ACTUALIZAR</p>
         <div className={s.nameAndImg}>
           <h2>{name}</h2>
           <IconButton
@@ -149,9 +159,10 @@ export const ProfileToEdit = () => {
                 id="firstName"
                 aria-describedby="my-helper-text"
                 error={errors.firstName ? true : false}
-                placeholder={`${userLogged?.firstName}`}
+                placeholder={userLogged?userLogged.firstName?userLogged.firstName:'Vacio':'Vacio'}
                 value={input.firstName}
                 onChange={handleChange}
+                className={s.input}
               />
             </FormControl>
             <FormControl>
@@ -160,9 +171,10 @@ export const ProfileToEdit = () => {
                 id="lastName"
                 aria-describedby="my-helper-text"
                 error={errors.lastName ? true : false}
-                placeholder={`${userLogged.lastName}`}
+                placeholder={userLogged?userLogged.lastName?userLogged.lastName:'Vacio':'Vacio'}
                 value={input.lastName}
                 onChange={handleChange}
+                className={s.input}
               />
               <FormHelperText id="my-helper-text"></FormHelperText>
             </FormControl>
@@ -172,31 +184,32 @@ export const ProfileToEdit = () => {
                 id="cellphone"
                 aria-describedby="my-helper-text"
                 error={errors.cellphone ? true : false}
-                placeholder={`${userLogged?.cellphone}`}
+                placeholder={userLogged?userLogged.cellphone?userLogged.cellphone:'Vacio':'Vacio'}
                 type="tel"
                 value={input.cellphone}
                 onChange={handleChange}
+                className={s.input}
               />
             </FormControl>
+          </ThemeProvider>
+        </form>
             <Button
-        variant="contained"
-        color="success"
-        className={s.btnHome}
-        onClick={() => history.push("/")}
-      >
-        Go Home
-      </Button>
+              variant="contained"
+              color="success"
+              className={s.btnHome}
+              onClick={() => history.push("/")}>
+              Go Home
+            </Button>
             <Button
               variant="contained"
               endIcon={<IoSend />}
               className={s.btnSend}
               type="submit"
               disabled={disabled}
+              onClick={handleSubmit}
             >
               Send
             </Button>
-          </ThemeProvider>
-        </form>
       </div>
       <div className={s.background}></div>
     </section>

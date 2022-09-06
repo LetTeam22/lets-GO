@@ -10,6 +10,7 @@ import { getUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import { removeFavorite, getBookingsByUserId } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
+import RenderProfilePic from "../Cloudinary/renderProfilePic";
 
 export const Profile = () => {
   const history = useHistory();
@@ -37,6 +38,11 @@ export const Profile = () => {
     padding: '0',
     margin: '0',
   };
+
+  const showedName = (userLogged.firstName && userLogged.lastName)?
+  `${userLogged.firstName} ${userLogged.lastName}`:
+  userLogged.firstName? userLogged.firstName:
+  userLogged?.email
 
   return isLoading ?  <Loading />  :
   (
@@ -78,15 +84,26 @@ export const Profile = () => {
 
       <div className={s.containerRight}>
         <div className={s.name}>
-          {(userLogged?.firstName && userLogged.firstName + " " + (userLogged?.lastName && userLogged.lastName)) || userLogged?.email}
+          {showedName}
         </div>
 
         <div className={s.infoAndImage}>
           <div className={s.information}>
             <h4 className={s.h4}>Telefono : {userLogged?.cellphone || null}</h4>
-            <h4 className={s.h4}>Email: {userLogged?.email}</h4>
+            <h4 className={s.h4}>Email: {userLogged?.email || user?.email}</h4>
           </div>
-          <img src={userLogged?.profilePic || image} alt={userLogged?.firstName || null} className={s.img} />
+          {userLogged?.profilePic?
+            <RenderProfilePic publicId={userLogged.profilePic}
+            alt={user?.name}
+            />
+            :
+            <img
+              src={image}
+              alt={userLogged?.firstName || null}
+              className={s.img}
+            />
+            }
+          {/* <img src={userLogged?.profilePic || image} alt={userLogged?.firstName || null} className={s.img} /> */}
         </div>
         <Button variant="contained" color="success" className={s.btnHome} onClick={() => history.push("/home")}>Go Home</Button>
         <Button variant="contained" color="success" className={s.btnEdit} onClick={() => history.push("/editProfile")} > Editar Perfil </Button>
