@@ -181,7 +181,7 @@ export const BikeDetail = () => {
           </div>
           <div>
             <div className={s.titleAccAndTech}>
-              <h2>Accesorios opcionales</h2>
+              <h2 className={s.titleTA}>Accesorios opcionales</h2>
             </div>
             <div className={s.containerGral}>
               <div className={s.containerAcc}>
@@ -196,6 +196,7 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-1">Canasto</label>
+                  <p className={s.precio}>$ {allAccs[4]?.price} / día</p>
                   {/* <img src={allAccs[4]?.image} alt="not found" /> */}
                   {allAccs[4] ? (
                     <RenderAccesories
@@ -203,7 +204,6 @@ export const BikeDetail = () => {
                       publicId={allAccs[4].image}
                     />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[4]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -217,11 +217,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-2">Silla portabebés</label>
+                  <p className={s.precio}>$ {allAccs[2]?.price} / día</p>
                   {/* <img src={allAccs[2]?.image} alt="not found" /> */}
                   {allAccs[2] ? (
                     <RenderAccesories publicId={allAccs[2].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[2]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -235,11 +235,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-3">Luces</label>
+                  <p className={s.precio}>$ {allAccs[5]?.price} / día</p>
                   {/* <img src={allAccs[5]?.image} alt="not found" /> */}
                   {allAccs[5] ? (
                     <RenderAccesories publicId={allAccs[5].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[5]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -253,11 +253,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-4">Casco</label>
+                  <p className={s.precio}>$ {allAccs[0]?.price} / día</p>
                   {/* <img src={allAccs[0]?.image} alt="not found" /> */}
                   {allAccs[0] ? (
                     <RenderAccesories publicId={allAccs[0].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[0]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -271,11 +271,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-5">Candado</label>
+                  <p className={s.precio}>$ {allAccs[6]?.price} / día</p>
                   {/* <img src={allAccs[6]?.image} alt="not found" /> */}
                   {allAccs[6] ? (
                     <RenderAccesories publicId={allAccs[6].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[6]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -289,11 +289,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-6">Lentes</label>
+                  <p className={s.precio}>$ {allAccs[7]?.price} / día</p>
                   {/* <img src={allAccs[7]?.image} alt="not found" /> */}
                   {allAccs[7] ? (
                     <RenderAccesories publicId={allAccs[7].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[7]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -307,11 +307,11 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-7">Botella</label>
+                  <p className={s.precio}>$ {allAccs[1]?.price} / día</p>
                   {/* <img src={allAccs[1]?.image} alt="not found" /> */}
                   {allAccs[1] ? (
                     <RenderAccesories publicId={allAccs[1].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[1]?.price} / día</p>
                 </div>
 
                 <div className={s.boxes}>
@@ -325,14 +325,18 @@ export const BikeDetail = () => {
                     }}
                   />
                   <label htmlFor="box-8">Calzado</label>
+                  <p className={s.precio}>$ {allAccs[3]?.price} / día</p>
                   {/* <img src={allAccs[3]?.image} alt="not found" /> */}
                   {allAccs[3] ? (
                     <RenderAccesories publicId={allAccs[3].image} />
                   ) : null}
-                  <p className={s.precio}>$ {allAccs[3]?.price} / día</p>
                 </div>
               </div>
-              <div className={s.containerAccesories}>
+              <div className={s.containerAccesories}>.
+                <div>
+                  <p className={s.precioTotal}>Total adicional</p>
+                  <p className={s.precioTotal}>$ {adicional()} / dia</p>
+                </div>
                 <button
                   className={s.btn2}
                   onClick={(e) => {
@@ -354,12 +358,6 @@ export const BikeDetail = () => {
                         })}
                       </ul>
                     </div> */}
-
-                <div>
-                  <p className={s.precio}>Total adicional</p>
-                  <p className={s.precio}>$ {adicional()} / dia</p>
-                </div>
-                {/* </div> */}
 
               </div>
             </div>
@@ -388,7 +386,7 @@ export const BikeDetail = () => {
             </div>
           </div>
           <div className={s.titleAccAndTech}>
-            <h2>Tecnología</h2>
+            <h2 className={s.titleTA}>Tecnología</h2>
           </div>
           <img className={s.tech} src={tech} alt="" />
         </div>

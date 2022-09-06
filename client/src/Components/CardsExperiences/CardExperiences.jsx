@@ -18,9 +18,9 @@ const CardExperience = ({ imgExperience, textExperience, idExperience, userIdUse
                 />
             
             <div className={s.description}>
-                <h1 className={s.h1}>Aquí recibiría el userId</h1>
+                {/* <h1 className={s.h1}>Aquí recibiría el userId</h1> */}
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
-                <p >{textExperience}</p>
+                <p className={s.p}>{textExperience}</p>
             </div>
 
 

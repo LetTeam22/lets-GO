@@ -153,7 +153,7 @@
     display: flex;
     align-items: center;
     height: 5vh;
-    background-color: #828181;
+    background-color: #adadad;
     color: white;
     justify-content: center;
 }
@@ -185,23 +185,21 @@
     width: 100%;
 }
 
-.titleTech{
-    display: block;
-    width: 100%;
-    height: 3.5vh;
-    background-color: #484848;
-    text-align: center;
-    color: white;
-    font-family: 'Roboto';
+.titleTA{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    padding: .5rem 0 0 .5rem;
+    font-weight: 400;
 }
 
 .boxes {
     margin: auto;
-    padding: 3rem;
+    padding-top: .7rem;
     background: white;
     width: 17vh;
-    padding-left: 1rem;
-    padding-right: 0.2rem;
+
 }
 
 /*Checkboxes styles*/
@@ -265,5 +263,13 @@ input[type="checkbox"]:checked + label:before {
 
 .precio{
     color: #484848;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.precioTotal{
+    color: #484848;
     font-family: 'Roboto';
+    margin-top: 1rem;
+    font-weight: 600;
 }
