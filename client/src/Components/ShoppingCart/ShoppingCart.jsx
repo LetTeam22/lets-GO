@@ -329,8 +329,11 @@ export const ShoppingCart = () => {
           }
         </div>
       : !cartBikes.length 
-        ? <div className={s.container}>
+        ? <div className={s.containerEmptyCart}>
             <img src={sincarrito} alt="sin carrito" className={s.sincarrito} />
+            <Link to='/home'>
+              <button className={s.returnBtn}>VOLVER AL HOME</button>
+            </Link>
           </div>
         : <Loading />
   )
