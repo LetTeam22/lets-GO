@@ -30,7 +30,8 @@ export const ShoppingCart = () => {
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
 
-  const date = useSelector(state => state.bookingDates);
+  const parameters = useSelector(state => state.parameters);
+  const date = useSelector(state => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
@@ -81,8 +82,9 @@ export const ShoppingCart = () => {
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
   if (strBikeIds !== date.bikeIds) {
-    dispatch(setBookingDates({...date, bikeIds: strBikeIds}))
-    dispatch(getDisabledDates(strBikeIds))
+    const newBikeIds = strBikeIds ? strBikeIds : 0
+    dispatch(setParameters({...parameters, date: {...parameters.date, bikeIds: strBikeIds}}))
+    dispatch(getDisabledDates(newBikeIds))
   }
 
   let ids = []
@@ -197,10 +199,6 @@ export const ShoppingCart = () => {
     }
   };
 
-  const handleResetDate = () => {
-    dispatch(setParameters("resetAll"));
-  };
-
   const deleteItem = (e, id) => {
     e.preventDefault();
     setLoading(true);
@@ -305,7 +303,7 @@ export const ShoppingCart = () => {
                 <div className={s.totalPrice}>
                   <div className={s.containerBtn}>
                     <Link to="/home">
-                      <button onClick={handleResetDate} className={s.reserveBtn}>
+                      <button className={s.reserveBtn}>
                         BUSCAR MAS BICICLETAS
                       </button>
                     </Link>
