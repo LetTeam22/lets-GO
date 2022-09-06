@@ -177,7 +177,7 @@ export const ShoppingCart = () => {
         },
       });
     } else {
-      dispatch(setParameters("resetAll"));
+      dispatch(setParameters("resetAllPlusDates"));
       dispatch(postBookings({ ...postedBooking, totalPrice: total }));
       localStorage.removeItem("booking");
       swal({
