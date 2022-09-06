@@ -49,10 +49,6 @@
     width: 50%;
     gap: 1rem;
 }
-.divDateAndOrder div{
-    width: 15rem;
-}
-
 
 .filterwrapp {
     display: flex;

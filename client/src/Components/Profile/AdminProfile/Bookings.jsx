@@ -8,7 +8,7 @@ import { getAllBookings } from "../../../Redux/actions";
 
 
 export default function Bookings() {
-  const bookings = useSelector(state => state.bookings)
+  const bookings = useSelector(state => state.allBookings)
   const history = useHistory()
   const dispatch = useDispatch()
   useEffect(() => {

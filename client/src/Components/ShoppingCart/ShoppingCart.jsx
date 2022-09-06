@@ -150,7 +150,7 @@ export const ShoppingCart = () => {
 
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems);
 
-  const total = subTotal * 1.02;
+  const total = Math.floor(subTotal * 1.02) ;
 
   const sendEmail = (e) => {
     e.preventDefault();
