@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, setBookingDates } from "../../Redux/actions";
@@ -12,14 +12,12 @@ import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
 import emailjs from '@emailjs/browser';
 import { BiTrash } from 'react-icons/bi';
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useState } from "react";
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -39,7 +37,7 @@ export const ShoppingCart = () => {
   const userBoking = useSelector(state => state.bookings)
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
-  const [loading, setLoading] = useState(false);
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,11 +54,11 @@ export const ShoppingCart = () => {
 
   for (let bike of allBikes) {
     for (let book of bookings)
-      if (bike.idBike === book.bike, 10) {
+      if (bike.idBike === book.bike) {
         let pushedbike = {
           idBike: bike.idBike,
           name: bike.name,
-          price: parseInt(bike.price, 10),
+          price: bike.price,
           image: bike.image,
           accesories: {
             canasto: book.canasto,
@@ -79,17 +77,17 @@ export const ShoppingCart = () => {
   }
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
-
+  
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
   if (strBikeIds !== date.bikeIds) {
-    dispatch(setBookingDates({ ...date, bikeIds: strBikeIds }))
+    dispatch(setBookingDates({...date, bikeIds: strBikeIds}))
     dispatch(getDisabledDates(strBikeIds))
   }
 
   let ids = []
   userBoking.map(e => {
-    !!e.canasto.length && ids.push([e.canasto])
+    !!e.canasto.length &&  ids.push([e.canasto])
     !!e.silla.length && ids.push([e.silla])
     !!e.luces.length && ids.push([e.luces])
     !!e.casco.length && ids.push([e.casco])
@@ -97,11 +95,11 @@ export const ShoppingCart = () => {
     !!e.lentes.length && ids.push([e.lentes])
     !!e.botella.length && ids.push([e.botella])
     !!e.calzado.length && ids.push([e.calzado])
-    ids = ids.map(e => parseInt(e))
+    ids = ids.map(e => e)
   })
 
 
-  let postedBooking = {
+ let postedBooking = {
     startDate: date.from,
     endDate: date.to,
     userId: userLogged?.idUser,
@@ -207,141 +205,133 @@ export const ShoppingCart = () => {
     e.preventDefault();
     setLoading(true);
     cartBikes = cartBikes.filter(b => b.idBike !== id)
-    localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id.toString())));
+    localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
-
-
+  
   return (
-    !loading
+      !loading && cartBikes.length
       ? <div className={s.container}>
-        <div className={s.titleDiv}>
-          <h1 className={s.title}>Carrito de compras</h1>
-        </div>
-        <hr color="#595858" size='0.5px' />
+          <div className={s.titleDiv}>
+            <h1 className={s.title}>Carrito de compras</h1>
+          </div>
+          <hr color="#595858" size='0.5px' />
 
-        <Dates component='cart' className={s.dates} />
-        <div className={s.containerDiv}>
-          <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
-            <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Item</TableCell>
-                  <TableCell align="center">Cantidad</TableCell>
-                  <TableCell align="center">Precio/dia</TableCell>
-                  <TableCell align="center">Precio Total</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {cartBikes.length
-                  ? cartBikes.map((bike) => {
-                    return (
-                      <TableRow key={bike.bikeId} >
-                        <TableCell>{bike.name}</TableCell>
-                        <TableCell align="center">1</TableCell>
-                        <TableCell align="center">{bike.price}</TableCell>
-                        <TableCell align="center">{!isNaN(totalPerBike(bike.price)) ? totalPerBike(bike.price) : 0}</TableCell>
-                      </TableRow>
-                    )
-                  })
-                  : <></>
-                }
-                {
-                  cartBikes.length
-                    ? cartBikes.map(bike => {
-                      return llenarAccs(bike.accesories)?.map(el => {
-                        return (
-                          <TableRow key={el.idAcc} >
-                            <TableCell>{el.name}</TableCell>
-                            <TableCell align="center">1</TableCell>
-                            <TableCell align="center">{el.price}</TableCell>
-                            <TableCell align="center">{!isNaN(totalPerBike(el.price)) ? totalPerBike(el.price) : 0}</TableCell>
-                          </TableRow>
-                        )
-                      })
-                    })
-                    : <></>
-                }
-                <TableRow>
-                  <TableCell rowSpan={3} />
-                  <TableCell align="left" colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell colSpan={2} align="left">Tax</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell align="left" colSpan={2}>Total</TableCell>
-                  <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <div className={s.previewItems}>
-            {
-              cartBikes.length
+          <Dates component='cart' className={s.dates} />
+
+          <div className={s.containerDiv}>
+            <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
+              <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Item</TableCell>
+                    <TableCell align="center">Cantidad</TableCell>
+                    <TableCell align="center">Precio/dia</TableCell>
+                    <TableCell align="center">Precio Total</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {
+                    cartBikes.length 
+                    ? cartBikes.map((bike) => {
+                      return (
+                        <TableRow key={bike.bikeId} >
+                          <TableCell>{bike.name}</TableCell>
+                          <TableCell align="center">1</TableCell>
+                          <TableCell align="center">{bike.price}</TableCell>
+                          <TableCell align="center">{!isNaN(totalPerBike(bike.price)) ? totalPerBike(bike.price) : 0}</TableCell>
+                        </TableRow> 
+                      )})
+                    : <></>  
+                  }
+                  {
+                    cartBikes.length 
+                      ? cartBikes.map(bike => {
+                        return llenarAccs(bike.accesories)?.map(el => {
+                          return (
+                              <TableRow key={el.idAcc} >
+                                <TableCell>{el.name}</TableCell>
+                                <TableCell align="center">1</TableCell>
+                                <TableCell align="center">{ el.price }</TableCell>
+                                <TableCell align="center">{!isNaN(totalPerBike(el.price)) ? totalPerBike(el.price) : 0}</TableCell>
+                              </TableRow> 
+                          )
+                        })})
+                      : <></>
+                  }
+                  <TableRow>
+                    <TableCell rowSpan={3} />
+                    <TableCell align="left" colSpan={2}>Subtotal</TableCell>
+                    <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell colSpan={2} align="left">Tax</TableCell>
+                    <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="left" colSpan={2}>Total</TableCell>
+                    <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <div className={s.previewItems}>
+              {
+                cartBikes.length 
                 ? cartBikes.map(bike => {
                   return (
-                    <div key={bike.idBike}>
-                      <div className={s.cardBike}>
-                        <h2 className={s.bikeName}>{bike.name}</h2>
-                        <RenderOneImage publicId={bike.image} className={s.img} />
-                        <div className={s.accesories}>
-                          {llenarAccs(bike.accesories)?.map((el) => (
-                            <div>
-                              <p className={s.accs} key={el.name}> {el.name} </p>
-                              <RenderAccCart
-                                className={s.imgCloud}
-                                publicId={el.image}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                        <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                    <div className={s.cardBike} key={bike.idBike} >
+                      <h2 className={s.bikeName}>{bike.name}</h2>
+                      <RenderOneImage publicId={bike.image} className={s.img} />
+                      <div className={s.accesoriesPreview}>
+                        {llenarAccs(bike.accesories)?.map((el) => (
+                          <div>
+                            <RenderAccCart
+                              className={s.imgCloud}
+                              publicId={el.image}
+                            />
+                          </div>
+                        ))}
                       </div>
+                      <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
-                  )
-                })
+                  )}) 
                 : <></>
-            }
-          </div>
-        </div>
-        <div>
-          {cartBikes.length ? (
-            <div className={s.totalPrice}>
-              <div className={s.containerBtn}>
-                <Link to="/home">
-                  <button onClick={handleResetDate} className={s.reserveBtn}>
-                    Buscar mas Bicicletas
-                  </button>
-                </Link>
-                {!isNaN(total) ? (
-                  <h2 className={s.total}>{`Total $ ${total}`}</h2>
-                ) : (
-                  <></>
-                )}
-                <button
-                  disabled={
-                    postedBooking.startDate === "" ||
-                      postedBooking.endDate === "" ||
-                      !postedBooking.bikeIds.length
-                      ? true
-                      : false
-                  }
-                  onClick={(e) => handleBooking(e)}
-                  className={s.reserveBtn}
-                >
-                  RESERVAR
-                </button>
-              </div>
-
+              }
             </div>
-          ) : (
-            <></>
-          )}
+          </div>
+          {
+            cartBikes.length 
+            ? (
+                <div className={s.totalPrice}>
+                  <div className={s.containerBtn}>
+                    <Link to="/home">
+                      <button onClick={handleResetDate} className={s.reserveBtn}>
+                        BUSCAR MAS BICICLETAS
+                      </button>
+                    </Link>
+                    <button
+                      disabled={
+                        postedBooking.startDate === "" ||
+                          postedBooking.endDate === "" ||
+                          !postedBooking.bikeIds.length
+                          ? true
+                          : false
+                      }
+                      onClick={(e) => handleBooking(e)}
+                      className={s.reserveBtn}
+                    >
+                      RESERVAR
+                    </button>
+                  </div>
+                </div>
+                ) 
+            : <></>
+          }
         </div>
-
-      </div>
-      : <Loading />
+      : !cartBikes.length 
+        ? <div className={s.container}>
+            <img src={sincarrito} alt="sin carrito" className={s.sincarrito} />
+          </div>
+        : <Loading />
   )
 };
