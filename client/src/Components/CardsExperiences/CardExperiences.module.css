@@ -29,8 +29,7 @@
     text-align: right;
     font-size: 1rem;
     width: 36rem;
-    height: 2rem;
-    
+    height: 2rem;    
 }
 
 .h2 {
@@ -39,8 +38,9 @@
     color: #F9B621;
 }
 
-p {
+.p {
     position: relative;
     margin: 1rem 0 0;
-    font-family: 'Robotoo';
+    font-size: .8rem;
+    font-weight: 300;
 }

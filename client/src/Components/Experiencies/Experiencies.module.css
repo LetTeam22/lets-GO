@@ -28,12 +28,12 @@
     font-weight: 300;
     font-size: 1.2rem;
     color: #787877;
-    width: 29.188rem;
+    /* width: 29.188rem; */
     height: 1.2rem;
     text-align: center;
 }
 
-h1 {
+.h1 {
     width: 36.75rem;
     height: 8.813rem;
     font-weight: 400;
@@ -42,6 +42,7 @@ h1 {
     text-align: center;
     letter-spacing: 0.07em;
     color: #585757;
+    margin-top: 1rem;
 }
 
 .imgExperiencies {
