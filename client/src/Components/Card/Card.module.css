@@ -111,6 +111,7 @@
 .dataCont {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: .5rem;
 }
 
@@ -127,4 +128,8 @@
     position: relative;
     top: -1.5rem;
     display: flex;
+}
+
+.icon {
+    margin: auto 1.5rem;
 }

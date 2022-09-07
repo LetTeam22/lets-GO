@@ -21,7 +21,8 @@ import { addFavorite, removeFavorite } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
-
+import { GiElectric } from 'react-icons/gi';
+import { GoGear } from 'react-icons/go';
 
 export const Card = ({ name, type, image, traction, wheelSize, price, rating, id, idBike }) => {
     
@@ -101,7 +102,10 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                 <Link to={"/bike/" + idBike}><h3 className={s.name}>{name}</h3></Link> 
                 <div className={s.dataCont}>
                     <span className={s.type}>{type} </span>
-                    <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
+                    {/* <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/> */}
+                    {
+                        traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
+                    } 
                     <div className={s.rodadoCont}>
                         <img className={s.rueda} src={rodado} alt='Rodado '/>
                         <span className={s.rodado}>{wheelSize}</span>
@@ -113,7 +117,6 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                 </div>
                 <h4 className={s.price}>${price}/día</h4>
             </div>
-                              
         </div>
     )
 };

@@ -54,28 +54,6 @@
     color: #666666;
 }
 
-.electrica, .mecanica {
-    mix-blend-mode: multiply;
-    margin: auto .5rem;
-    cursor: pointer;
-}
-
-.electrica.act, .mecanica.act {
-    padding: .1rem;
-    box-shadow: #565655 0px 0px 6px 0px;
-}
-
-.electrica {
-    width: 1.8rem;
-    height: 1.8rem;
-    /* margin-left: 2rem; */
-}
-
-.mecanica {
-    width: 1.8rem;
-    height: 1.8rem;
-    margin-right: 3rem;
-}
 
 .tractionCont {
     display: flex;
@@ -90,6 +68,16 @@
 .checkCont {
     display: flex;
     justify-content: center;
+}
+
+.iconBtn {
+    background-color: transparent;
+    border: none;
+}
+
+.icon {
+    margin: auto .8rem;
+    opacity: 0.7;
 }
 
 /* ....................................................... */
@@ -161,3 +149,5 @@ select > option {
     color: #333333;
     margin-left: 1rem;
 } */
+
+

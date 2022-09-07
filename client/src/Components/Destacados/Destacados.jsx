@@ -3,8 +3,6 @@ import s from "./Destacados.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
 import rodado from '../../image/rueda_bici.png';
-import gear from '../../image/gear.png';
-import ray from '../../image/ray.png';
 import { Link } from "react-router-dom";
 import RenderOneImage from "../Cloudinary/renderOneImage";
 import imgRat0 from '../../image/stars/0stars.png';
@@ -18,14 +16,14 @@ import imgRat35 from '../../image/stars/3.5stars.png';
 import imgRat4 from '../../image/stars/4stars.png';
 import imgRat45 from '../../image/stars/4.5stars.png';
 import imgRat5 from '../../image/stars/5stars.png';
-
+import { GiElectric } from 'react-icons/gi';
+import { GoGear } from 'react-icons/go';
 
 
 
 export const Destacados = () => {
 
   const bikes = useSelector(state => state.famousBikes);
-  // console.log(bikes);
 
   const dispatch = useDispatch();
 
@@ -65,7 +63,9 @@ export const Destacados = () => {
                         <Link to={`/bike/${bike.idBike}`}><h4 className={s.name}>{bike.name}</h4></Link>
                         <div className={s.dataCont}>
                           <span className={s.type}>{bike.type} </span>
-                          <img className={bike.traction === 'eléctrica' ? s.electrica : s.mecanica} src={bike.traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
+                          {
+                            bike.traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
+                          } 
                           <div className={s.rodadoCont}>
                               <img className={s.rueda} src={rodado} alt='Rodado '/>
                               <span className={s.rodado}>{bike.wheelSize}</span>
