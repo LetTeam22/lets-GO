@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 // import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
-import gear from '../../image/gear.png'
-import ray from '../../image/ray.png'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
+import { GiElectric } from 'react-icons/gi';
+import { GoGear } from 'react-icons/go';
+
 
 const Filters = ({ handleParameter }) => {
 
@@ -79,8 +80,8 @@ const Filters = ({ handleParameter }) => {
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
             <div className={s.tractionCont}>
-                <img className={parameters.filters.traction === 'mecánica' ? `${s.mecanica} ${s.act}` : s.mecanica} src={gear} alt='Mecánica ' onClick={handleTractionMecFilter}/>
-                <img className={parameters.filters.traction === 'eléctrica' ? `${s.electrica} ${s.act}` : s.electrica} src={ray} alt='Eléctrica ' onClick={handleTractionElecFilter}/>
+                <button onClick={handleTractionMecFilter} className={s.iconBtn}><GoGear size='2.5rem' className={s.icon} /></button>
+                <button onClick={handleTractionElecFilter} className={s.iconBtn}><GiElectric size='2.5rem' className={s.icon} /></button>
             </div>
 
             <div className='checkCont'>
