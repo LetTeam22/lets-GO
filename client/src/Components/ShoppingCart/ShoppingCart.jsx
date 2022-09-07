@@ -45,6 +45,12 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
+    dispatch(
+      setParameters({
+        ...parameters,
+        date: { ...parameters.date, from: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).to: "" },
+      })
+    );
   }, [dispatch, user?.email]);
 
   useEffect(() => {
@@ -180,6 +186,7 @@ export const ShoppingCart = () => {
       dispatch(setParameters("resetAllPlusDates"));
       dispatch(postBookings({ ...postedBooking, totalPrice: total }));
       localStorage.removeItem("booking");
+      localStorage.removeItem("date")
       swal({
         title: "Tu reserva fue confirmada!",
         text: "Disfruta tu aventura!",
