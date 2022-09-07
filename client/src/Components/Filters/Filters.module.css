@@ -80,6 +80,17 @@
     opacity: 0.7;
 }
 
+.iconBtn {
+    mix-blend-mode: multiply;
+    margin: auto .5rem;
+    cursor: pointer;
+}
+
+.iconBtn.act {
+    box-shadow: #565655 0px 0px 6px 0px;
+}
+
+
 /* ....................................................... */
 /* .select {
     width: 11rem;

@@ -6,7 +6,8 @@ import s from './Filters.module.css';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
-
+import gear from '../../image/gear.png';
+import ray from '../../image/ray.png';
 
 const Filters = ({ handleParameter }) => {
 
@@ -80,8 +81,14 @@ const Filters = ({ handleParameter }) => {
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
             <div className={s.tractionCont}>
-                <button onClick={handleTractionMecFilter} className={s.iconBtn}><GoGear size='2.5rem' className={s.icon} /></button>
-                <button onClick={handleTractionElecFilter} className={s.iconBtn}><GiElectric size='2.5rem' className={s.icon} /></button>
+                <button 
+                    onClick={handleTractionMecFilter} 
+                    className={parameters.filters.traction === 'mecánica' ? `${s.iconBtn} ${s.act}` : s.iconBtn}
+                ><GoGear size='2.2rem' className={s.icon} /></button>
+                <button 
+                    onClick={handleTractionElecFilter} 
+                    className={parameters.filters.traction === 'eléctrica' ? `${s.iconBtn} ${s.act}` : s.iconBtn}
+                ><GiElectric size='2.2rem' className={s.icon} /></button>
             </div>
 
             <div className='checkCont'>
