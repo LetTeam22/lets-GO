@@ -15,7 +15,7 @@ export default function Bookings() {
     dispatch(getAllBookings())
   }, []);
 
-  const totalDias = (from, to) => {
+  const totalDays = (from, to) => {
     const date1 = new Date(from);
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
@@ -29,7 +29,7 @@ export default function Bookings() {
       idUser: book.userIdUser,
       col1: book.startDate,
       col2: book.endDate,
-      col3: totalDias(book.startDate, book.endDate),
+      col3: totalDays(book.startDate, book.endDate),
       col4: book.bikes.map(bike => bike.name).join(', '),
       col5: book.status,
       col6: book.totalPrice
@@ -56,8 +56,8 @@ export default function Bookings() {
       <DataGrid
         rows={rowsBookings}
         columns={columnsBookings}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={8}
+        rowsPerPageOptions={[8]}
         checkboxSelection
         className={s.list}
       />

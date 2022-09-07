@@ -92,6 +92,18 @@ export const AdminProfile = () => {
     history.push("/adminprofile/users");
   };
 
+  const seeBikes = () => {
+    history.push('/adminprofile/bikes')
+  }
+
+  const seeExperiences = () => {
+    history.push('/adminprofile/experiences')
+  }
+
+  const seeAccesories = () => {
+    history.push('/adminprofile/accesories')
+  }
+
   return (
     <section className={s.allPage}>
       {/* {probando cloudinary} */}
@@ -100,16 +112,29 @@ export const AdminProfile = () => {
       <RenderOneImage publicId={'cld-sample-3'}></RenderOneImage>
       <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
       <RenderOneImage publicId={'cld-sample'}></RenderOneImage> */}
-      <div className={s.bookings}>
-        <h1>Reservas</h1>
-        <Button
+      <div className={s.column}>
+        <div>
+          <h1>Reservas</h1>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeBookings}
+            >
+            Ver reservas
+          </Button>
+        </div>
+        <div>
+          <h1>Usuarios</h1>
+          <Button
           variant="contained"
           color="success"
           className={s.btnBook}
-          onClick={seeBookings}
+          onClick={seeUsers}
         >
-          Ver reservas
+          Ver usuarios
         </Button>
+        </div>
       </div>
       <div className={s.container}>
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
@@ -140,10 +165,9 @@ export const AdminProfile = () => {
         </div>
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
-            <p className={s.dato}>Usuario</p>
             <FormControl>
               <InputLabel htmlFor="userName">
-                {userToModify.userName ? userToModify.userName : "Vacío"}
+                {userToModify.userName ? userToModify.userName : "Usuario"}
               </InputLabel>
               <Input
                 id="userName"
@@ -153,10 +177,9 @@ export const AdminProfile = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            <p className={s.dato}>Nombre</p>
             <FormControl>
               <InputLabel htmlFor="firstName">
-                {userToModify.firstName ? userToModify.firstName : "Vacío"}
+                {userToModify.firstName ? userToModify.firstName : "Nombre"}
               </InputLabel>
               <Input
                 id="firstName"
@@ -166,10 +189,9 @@ export const AdminProfile = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            <p className={s.dato}>Apellido</p>
             <FormControl>
               <InputLabel htmlFor="lastName">
-                {userToModify.lastName ? userToModify.lastName : "Vacío"}
+                {userToModify.lastName ? userToModify.lastName : "Apellido"}
               </InputLabel>
               <Input
                 id="lastName"
@@ -180,10 +202,9 @@ export const AdminProfile = () => {
               />
               <FormHelperText id="my-helper-text"></FormHelperText>
             </FormControl>
-            <p className={s.dato}>Teléfono</p>
             <FormControl>
               <InputLabel htmlFor="cellphone">
-                {userToModify.cellphone ? userToModify.cellphone : "Vacío"}
+                {userToModify.cellphone ? userToModify.cellphone : "Teléfono"}
               </InputLabel>
               <Input
                 id="cellphone"
@@ -215,16 +236,40 @@ export const AdminProfile = () => {
           </ThemeProvider>
         </form>
       </div>
-      <div className={s.users}>
-        <h1>Usuarios</h1>
-        <Button
-          variant="contained"
-          color="success"
-          className={s.btnBook}
-          onClick={seeUsers}
-        >
-          Ver usuarios
-        </Button>
+      <div className={s.column}>
+        <div>
+          <h2>Bicicletas</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeBikes}
+            >
+            Ver Bicicletas
+          </Button>
+        </div>
+        <div>
+        <h2>Experiencias</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeExperiences}
+            >
+            Ver Experiencias
+          </Button>
+        </div>
+        <div>
+        <h2>Accesorios</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeAccesories}
+            >
+            Ver Accesorios
+          </Button>
+        </div>
 
       </div>
 

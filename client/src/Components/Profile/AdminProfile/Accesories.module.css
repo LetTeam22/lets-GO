@@ -1,4 +1,4 @@
-.users{
+.accesories{
     width: 100%;
     height: calc(100vh - 8rem);
     position: relative;
@@ -7,7 +7,7 @@
 .goBack{
     position: absolute;
     top: 0;
-    left: 17rem;
+    left: 28rem;
 }
 .goBack svg{
     width: 3rem;
@@ -16,10 +16,10 @@
 }
 
 .list{
-    width: 53rem;
-    height: 32.9rem!important;
+    width: 27rem;
+    height: 32.5rem!important;
     margin-left: auto;
     margin-right: auto;
     background-color: #c1c1c1;
-    margin-top: 2rem
+    margin-top: 2rem;
 }
