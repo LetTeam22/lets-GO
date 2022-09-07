@@ -28,18 +28,18 @@ async function createExperience(req, res, next) {
 
     try {
         // Busco el ID de user correspondiente al Booking 
-        let bookingForUser = await Booking.findOne({
-            where: { idBooking: bookingIdBooking },
-        })
+        // let bookingForUser = await Booking.findOne({
+        //     where: { idBooking: bookingIdBooking },
+        // })
         // console.log('usuario',user.toJSON())
-        let userIdUser = bookingForUser.userIdUser
+        // let userIdUser = bookingForUser.userIdUser
         // console.log(userIdUser)
         //Ahora si, se procede a guardar en la base de datos.
         const post = await Experience.create({
             imgExperience,
             textExperience,
             bookingIdBooking,
-            userIdUser
+            // userIdUser
         });
         res.send(post)
     } catch (error) {
