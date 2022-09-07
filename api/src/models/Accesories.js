@@ -20,6 +20,11 @@ module.exports = (sequelize) => {
         },
         price: {
             type: DataTypes.DECIMAL,
+        },
+        status: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          defaultValue: 'active'
         }
     }, {
         timestamps: false
