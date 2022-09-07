@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, setBookingDates } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import swal from "sweetalert";
@@ -134,7 +134,7 @@ export const ShoppingCart = () => {
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
+    return diffDays + 1;
   };
 
   const totalPerBike = (price) => {
@@ -151,7 +151,7 @@ export const ShoppingCart = () => {
   const subTotalItems = cartBikes.map(bike => {
     let subTotal = 0;
     llenarAccs(bike.accesories)?.map(el => {
-      subTotal += el.price * totalDias(date.from, date.to)
+      return subTotal += el.price * totalDias(date.from, date.to)
     });
     return subTotal;
   });
