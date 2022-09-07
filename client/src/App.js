@@ -20,6 +20,9 @@ import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
 import CreateExperiences from './Components/CreateExperiences/CreateExperiences';
 import Bookings from './Components/Profile/AdminProfile/Bookings';
 import Users from './Components/Profile/AdminProfile/Users';
+import Bikes from './Components/Profile/AdminProfile/Bikes';
+import Experiences from './Components/Profile/AdminProfile/Experiences';
+import Accesories from './Components/Profile/AdminProfile/Accesories';
 
 function App() {
   return (
@@ -42,6 +45,9 @@ function App() {
         <Route exact path= '/AdminProfile' component={ AdminProfile } />
         <Route exact path= '/AdminProfile/bookings' component={ Bookings } />
         <Route exact path= '/AdminProfile/users' component={ Users } />
+        <Route exact path= '/AdminProfile/bikes' component={ Bikes } />
+        <Route exact path= '/AdminProfile/experiences' component={ Experiences } />
+        <Route exact path= '/AdminProfile/accesories' component={ Accesories } />
         <Route exact path= '/experience/create' component={ CreateExperiences } />
         <Route path='*' component={ Error } />
       </Switch>

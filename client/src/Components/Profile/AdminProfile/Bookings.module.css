@@ -1,11 +1,12 @@
 .bookings{
     width: 100%;
-    height: calc(100vh - 11rem);
+    height: calc(100vh - 8rem);
+    position: relative;
 }
 
 .goBack{
     position: absolute;
-    top: 11rem;
+    top: 0;
     left: 12rem;
 }
 .goBack svg{
@@ -15,15 +16,10 @@
 }
 
 .list{
-    width: 65rem;
-    height: 23rem!important;
+    width: 64.4rem;
+    height: 32.9rem!important;
     margin-left: auto;
     margin-right: auto;
     background-color: #c1c1c1;
-    margin-top: 5rem;
-}
-
-.list div div div{
-    display: flex;
-    justify-content: center;
+    margin-top: 2rem;
 }
