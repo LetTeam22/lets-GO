@@ -1,10 +1,12 @@
 import axios from 'axios';
-import {  CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
-          GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
-          POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
-          REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
-          GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS 
-       } from './actiontypes'
+import {  
+    CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
+    GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
+    POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
+    REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
+    GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS , GET_ALL_FAVORITES,
+    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE
+} from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -182,4 +184,27 @@ export const getBookingsByUserId = idUser => {
         .then(res => dispatch({ type: GET_USER_BOOKINGS, payload: res.data }))
         .catch(err => console.log(err));
 };
-   
+
+export const updateBooking = booking => {
+    return dispatch => axios.put('/bookings/update',booking)
+        .then(res => dispatch({ type: UPDATE_BOOKING, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
+export const updateExperience = experience => {
+    return dispatch => axios.put('/experience/update',experience)
+        .then(res => dispatch({ type: UPDATE_EXPERIENCE, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
+export const updateAccesorie = accesorie => {
+    return dispatch => axios.put('/accesories/update',accesorie)
+        .then(res => dispatch({ type: UPDATE_ACCESORIE, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
+export const updateBike = bike => {
+    return dispatch => axios.put('/bikes/update',bike)
+        .then(res => dispatch({ type: UPDATE_BIKE, payload: res.data }))
+        .catch(err => console.log(err));
+};

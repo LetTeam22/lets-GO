@@ -4,7 +4,8 @@ import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES,
       UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE,
        GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
         GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
-        GET_ALL_FAVORITES} from '../actions/actiontypes';
+        GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, 
+        UPDATE_BIKE} from '../actions/actiontypes';
 
 
 const initialState = {
@@ -143,19 +144,15 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 favorites: state.favorites.filter(f => f.idBike !== action.idBike)
             }
-
-        
         case POST_EXPERIENCE:
             return{
                 ...state
             }
-        
         case GET_ALL_EXPERIENCES:
             return{
                 ...state,
                 allExperiences: action.payload
             }
-
         case GET_ALL_BOOKINGS:
             return {
                 ...state,
@@ -186,7 +183,23 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 favorites:action.payload
-            }    
+            }
+        case UPDATE_BOOKING:
+            return {
+                ...state
+            }
+        case UPDATE_EXPERIENCE:
+            return {
+                ...state
+            }
+        case UPDATE_ACCESORIE:
+            return {
+                ...state
+            }
+        case UPDATE_BIKE:
+            return {
+                ...state
+            }
         default: return state
     }
 }

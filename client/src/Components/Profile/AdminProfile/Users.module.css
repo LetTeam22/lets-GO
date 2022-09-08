@@ -16,10 +16,14 @@
 }
 
 .list{
-    width: 53rem;
+    width: 65rem;
     height: 32.9rem!important;
     margin-left: auto;
     margin-right: auto;
-    background-color: #c1c1c1;
+    background-color: #333333;
     margin-top: 2rem
+}
+.list *{
+    color: white;
+    font-family: 'Roboto' 'sans-serif'
 }
