@@ -1,4 +1,4 @@
-const { User, Bike, Booking, Accesories,Experience} = require('../db');
+const { User, Bike, Booking, Accesories, Experience } = require('../db');
 const { Op } = require("sequelize");
 
 async function getAllBookings(req, res, next) {
@@ -8,7 +8,7 @@ async function getAllBookings(req, res, next) {
         {
           model: User,
           attributes: ['userName'],
-        }, 
+        },
         {
           model: Bike,
           attributes: ['name'],
@@ -22,7 +22,7 @@ async function getAllBookings(req, res, next) {
           through: {
             attributes: []
           }
-        } 
+        }
       ]
     })
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
@@ -53,10 +53,10 @@ async function getBookingsByUserId(req, res, next) {
           through: {
             attributes: []
           }
-        } 
+        }
       ]
     })
-    if (!bookings.length) return res.send({ msg:'This user has no bookings' })
+    if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
     bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
     res.send(bookings)
@@ -88,20 +88,20 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
+  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
   try {
-    let booking = {startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice)}
+    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
       where: {
         idBike: bikeIds
-      } 
+      }
     })
     let accesoriesForBooking = await Accesories.findAll({
       where: {
         idAcc: AccIds
-      } 
+      }
     })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
