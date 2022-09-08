@@ -32,7 +32,7 @@ export const ProfileToEdit = () => {
   useEffect(() => {
     if(user) dispatch(getUser(user?.email));
     if(!user) history.push("/")
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // const userLogged = useSelector((state) => state.user);
   const userLogged = useSelector(state=>state.user)
   const [input, setInput] = useState({

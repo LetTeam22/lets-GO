@@ -13,7 +13,7 @@ export default function Bookings() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllBookings())
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const totalDays = (from, to) => {
     const date1 = new Date(from);
