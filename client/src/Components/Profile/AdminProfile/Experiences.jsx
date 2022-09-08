@@ -1,36 +1,48 @@
-import React, { useEffect } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import s from "./Experiences.module.css";
-import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from 'react-icons/ti';
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { TiArrowBackOutline } from 'react-icons/ti';
+import { ThemeProvider } from "@emotion/react";
 import { getAllExperiences } from "../../../Redux/actions";
+import theme from "../MaterialUIColors";
+import Action from "./Action";
+import s from "./Experiences.module.css";
 
 
 export default function Experiences() {
   const experiences = useSelector(state => state.allExperiences)
   const history = useHistory()
   const dispatch = useDispatch()
+  const [pageSize, setPageSize] = useState(5);
+  const [rowId, setRowId] = useState(null)
+
   useEffect(() => {
     dispatch(getAllExperiences())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const rowsExperiences = experiences?.map(exp => {
-    return {
-      id: exp.idExperience,
-      idUser: exp.userIdUser,
-      booking: exp.bookingIdBooking,
-      description: exp.textExperience,
-      status: 'activa'
-    };
-  });
-  const columnsExperiences = [
+  const rowsExperiences = useMemo(() => {
+    return experiences?.map(exp => {
+      return {
+        id: exp.idExperience,
+        booking: exp.bookingIdBooking,
+        description: exp.textExperience,
+        status: exp.status
+      };
+    });
+  }, [experiences]) 
+
+  const columnsExperiences = useMemo(() => {
+    return [
     { field: "id", headerName: "ID", width: 50 },
-    { field: "idUser", headerName: "ID de usuario", width: 100 },
     { field: "booking", headerName: "ID de Reserva", width: 100 },
     { field: "description", headerName: "Descripción", width: 600 },
-    { field: "status", headerName: "Estado", width: 80 }
+    { field: "status", headerName: "Estado", width: 80, type: "singleSelect",
+    valueOptions: ["active", "deleted"],
+    editable: true },
+    { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'experiences'}} /> }
   ];
+  }, [rowId]) 
 
   const handleClick = () => {
     history.goBack()
@@ -39,14 +51,30 @@ export default function Experiences() {
   return (
     <div className={s.experiences}>
       <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
-      <DataGrid
-        rows={rowsExperiences}
-        columns={columnsExperiences}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-        className={s.list}
-      />
+      <ThemeProvider theme={theme}>
+        <DataGrid
+          rows={rowsExperiences}
+          columns={columnsExperiences}
+          pageSize={pageSize}
+          onPageSizeChange={(newNumber) => setPageSize(newNumber)}
+          rowsPerPageOptions={[5, 10, 15]}
+          className={s.list}
+          getRowId={(row) => row.id}
+          getRowSpacing={(params) => ({
+            top: params.isFirstVisible ? 0 : 5,
+            bottom: params.isLastVisible ? 0 : 5,
+          })}
+          sx={{
+            [`& .${gridClasses.row}`]: {
+              bgcolor: (theme) =>
+                theme.palette.mode === "light"
+                  ? '#494949'
+                  : '#191616',
+            },
+          }}
+          onCellEditCommit={(params) => setRowId(params.id)}
+        />
+      </ThemeProvider>
     </div>
   );
 }
