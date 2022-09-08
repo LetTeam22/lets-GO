@@ -11,26 +11,39 @@ import { Link } from "react-router-dom";
 import { removeFavoriteFromDb, getBookingsByUserId } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
+// import { convertDate, reverseDate } from '../../helpers/convertDate.js';
 
 export const Profile = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const userLogged = useSelector((state) => state.user);
+  const userLogged = useSelector(state => state.user);
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
   const { isLoading, user } = useAuth0();
-
-  userLogged.isAdmin && history.push('/AdminProfile')
+   
+  userLogged.isAdmin && history.push('/AdminProfile'); // botón
 
   useEffect(() => {
     dispatch(getUser(user?.email));
-    dispatch(getBookingsByUserId(userLogged.idUser))
+    dispatch(getBookingsByUserId(userLogged.idUser)); 
   }, [dispatch, user?.email, userLogged.idUser]);
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({bikeId:idBike,email:userLogged.email}));
   };
 
+
+  // const bookingStatus = () => {
+  //   let todayToModify = new Date();
+  //   const convertToday = convertDate(todayToModify);
+  //   const today = reverseDate(convertToday);
+  //   console.log(today)
+  //   userBookings?.forEach(b => {
+  //     const endDateBooking = reverseDate(b.endDate)
+  //     console.log(endDateBooking)
+  //   });
+  // };
+  
   const iconStyle = {
     color: 'orange',
     width: '1.5rem',
@@ -50,36 +63,34 @@ export const Profile = () => {
 
       <div className={s.containerLeft}>
 
-      <span className={s.title}><AiFillHeart style= {iconStyle}/>TUS let's GO FAVORITAS:</span>
+        <span className={s.title}><AiFillHeart style= {iconStyle}/>TUS let's GO FAVORITAS:</span>
         <div className={s.box1}>
-            {!!favorites.length ?  favorites?.map(f => (
+            {!!favorites.length ? favorites?.map(f => (
               <div className={s.containerList1} key={f.idBike}>
                 <button className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x</button>
                 <ul><Link to={`/bike/${f.idBike}`}><span className={s.list}>{`${f.name} (ver detalle)`}</span></Link></ul>
               </div>
-              )) : (
-              <span className={s.span}>Todavía no elegiste favoritas</span>
-            )}
+              )) : <span className={s.span}>Todavía no elegiste favoritas</span>
+            }
         </div>
 
         <span className={s.title}><AiFillShopping style= {iconStyle}></AiFillShopping>TUS RESERVAS:</span>
         <div className={s.box2}>
-            {!!userBookings.length ?  userBookings?.map(book => (
-              <div className={s.containerLis2} key={book.idBooking} >
-                  <span className={s.list2}>● Desde: {book.startDate} - Hasta: {book.endDate}</span>
+            {!!userBookings.length ?  userBookings?.map(b => (
+              <div className={s.containerLis2} key={b.idBooking} >
+                  <span className={s.list2}>● Desde: {b.startDate} - Hasta: {b.endDate}</span>
                   <span className={s.list2}>» Bici let's GO:
-                    { book.bikes.map(bike => (<span key={bike.name} className={s.list2}>{bike.name}</span>)) }
+                    { b.bikes.map(bike => (<span key={bike.name} className={s.list2}>{bike.name}</span>)) }
                   </span>
                   <span className={s.list2}>» Accesorios:
-                    { !!book.accesories.length && book.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name}</span>)) }
+                    { !!b.accesories.length && b.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name}</span>)) }
                   </span>
-                  <span className={s.list2}>» Precio Total: ${book.totalPrice}</span>
-                  <hr />
-                  {/* <span className={s.list2}>Estado:</span> */}
+                  <span className={s.list2}>» Precio Total: ${b.totalPrice}</span>
+                  
+                  
               </div>
-              )) : (
-              <span className={s.span}>Todavía no tenés reservas</span>
-            )}
+              )) : <span className={s.span}>Todavía no tenés reservas</span>
+            }
         </div>
       </div>
 
@@ -104,7 +115,6 @@ export const Profile = () => {
               className={s.img}
             />
             }
-          {/* <img src={userLogged?.profilePic || image} alt={userLogged?.firstName || null} className={s.img} /> */}
         </div>
         <Button variant="contained" color="success" className={s.btnHome} onClick={() => history.push("/home")}>Go Home</Button>
         <Button variant="contained" color="success" className={s.btnEdit} onClick={() => history.push("/editProfile")} > Editar Perfil </Button>

@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
-    GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
-    POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE,
-    GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCE, GET_ALL_EXPERIENCES, 
-    GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS,
-    GET_ALL_FAVORITES} from './actiontypes'
+import {  CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
+          GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
+          POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
+          REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
+          GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS 
+       } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -178,7 +178,7 @@ export const getDisabledDates = bikeIds => {
 };
 
 export const getBookingsByUserId = idUser => {
-    return dispatch => axios(`/bookings/${idUser}`)
+    return dispatch => axios(`/bookings/${idUser ? idUser : 0}`)
         .then(res => dispatch({ type: GET_USER_BOOKINGS, payload: res.data }))
         .catch(err => console.log(err));
 };

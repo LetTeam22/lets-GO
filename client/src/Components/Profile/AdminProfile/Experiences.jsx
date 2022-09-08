@@ -13,7 +13,7 @@ export default function Experiences() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllExperiences())
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rowsExperiences = experiences?.map(exp => {
     return {

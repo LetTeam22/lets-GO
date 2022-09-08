@@ -1,4 +1,4 @@
-const { User, Bike, Booking, Accesories,Experience} = require('../db');
+const { User, Bike, Booking, Accesories, Experience } = require('../db');
 const { Op } = require("sequelize");
 
 async function getAllBookings(req, res, next) {
@@ -8,7 +8,7 @@ async function getAllBookings(req, res, next) {
         {
           model: User,
           attributes: ['userName'],
-        }, 
+        },
         {
           model: Bike,
           attributes: ['name'],
@@ -22,7 +22,7 @@ async function getAllBookings(req, res, next) {
           through: {
             attributes: []
           }
-        } 
+        }
       ]
     })
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
@@ -53,10 +53,10 @@ async function getBookingsByUserId(req, res, next) {
           through: {
             attributes: []
           }
-        } 
+        }
       ]
     })
-    if (!bookings.length) return res.send({ msg:'This user has no bookings' })
+    if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
     bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
     bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
     res.send(bookings)
@@ -88,20 +88,20 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds=[], totalPrice } = req.body
+  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
   if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
   try {
-    let booking = {startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice)}
+    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
       where: {
         idBike: bikeIds
-      } 
+      }
     })
     let accesoriesForBooking = await Accesories.findAll({
       where: {
         idAcc: AccIds
-      } 
+      }
     })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
@@ -111,24 +111,24 @@ async function postBooking(req, res, next) {
   }
 }
 
-async function cancelBooking(req, res, next) {
-  const { bookingId } = req.params
-  if (!bookingId) return res.sendStatus(400)
-  try {
-    let booking = await Booking.findByPk(bookingId)
-    if (!booking) return res.send(`The booking with id ${bookingId} does not exist`)
-    booking.update({ status: 'cancelled' })
-    res.send(`The booking with id ${bookingId} was cancelled successfully`)
-  } catch (error) {
-    next(error)
-  }
+// Update
+async function updateBooking (req, res, next) {
+  const {idBooking, startDate, endDate, totalPrice, status} = req.body
+  const booking = await Booking.findByPk(idBooking);
+  if (booking) {
+      if(startDate) booking.startDate = startDate
+      if(endDate) booking.endDate = endDate
+      if(totalPrice) booking.totalPrice = totalPrice
+      if(status) booking.status = status
+      await booking.save()
+      res.send(booking)
+  }else res.send({e:'reserva no existe'})
 }
-
 
 module.exports = {
   getAllBookings,
   getBookingsByUserId,
   getBookingsByBikeIds,
   postBooking,
-  cancelBooking
+  updateBooking
 }

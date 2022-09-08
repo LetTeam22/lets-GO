@@ -17,6 +17,7 @@ const getAllBikes = async (req, res, next) => {
     }
 };
 
+// Get rendered bikes aplicando filtros, ordenamientos, search y fechas
 const getRenderedBikes = async (req, res, next) => {
 
     // query
@@ -174,9 +175,30 @@ const deleteBike = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+ }
+
+// Update
+const updateBike = async (req, res, next) => {
+    const {idBike, name, description, type, image, traction, wheelSize, price, rating, color, status} = req.body
+    
+    const bike = await Bike.findByPk(idBike);
+
+    if (bike) {
+        if(name) bike.name = name
+        if(description) bike.description = description
+        if(type) bike.type = type
+        if(image) bike.image = image
+        if(traction) bike.traction = traction
+        if(wheelSize) bike.wheelSize = wheelSize
+        if(price) bike.price = price
+        if(rating) bike.rating = rating
+        if(color) bike.color = color
+        if(status) bike.status = status
+        await bike.save()
+        res.send(bike)
+    } else res.send({e:'bicicleta no existe'})
 }
 
-//Post?? Put/Patch ??
 
 module.exports = {
     getAllBikes,
@@ -185,5 +207,6 @@ module.exports = {
     deleteBike,
     postFavorite,
     deleteFavorite,
-    getAllFavorites
+    getAllFavorites,
+    updateBike,
 }

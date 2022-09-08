@@ -56,7 +56,7 @@ async function getDetails (req, res, next) {
 // Devuelve datos del usuario actualizados
 async function updateUser (req, res, next) {
     const {userName,email,firstName,
-        lastName,cellphone,profilePic,creditCard,isAdmin
+        lastName,cellphone,profilePic,creditCard,isAdmin, status
     } = req.body
     
     const user = await User.findOne({ where: { email: email } });
@@ -68,6 +68,7 @@ async function updateUser (req, res, next) {
         if(profilePic) user.profilePic = profilePic
         if(creditCard) user.creditCard = creditCard
         if(req.body.hasOwnProperty("isAdmin")) user.isAdmin = isAdmin
+        if(status) user.status = status
         await user.save()
         res.send(user)
     }else res.send({e:'usuario no existe'})
