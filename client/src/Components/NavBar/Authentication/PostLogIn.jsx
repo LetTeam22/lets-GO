@@ -1,8 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUser, getUser } from '../../../Redux/actions';
+import { createUser, getAllFavorites, getUser } from '../../../Redux/actions';
 import s from './PostLogIn.module.css';
 import postlogin from '../../../image/postlogin.png';
 import emailjs from '@emailjs/browser';
@@ -16,10 +16,16 @@ export default function PostLogIn() {
     const { user } = useAuth0()
     const history = useHistory()
 
+    useEffect(() => {
+        if (user?.email)dispatch(getUser(user?.email))
+        if (user?.email) dispatch(getAllFavorites(user?.email))
+    }, [])
+
     const goBack = (e) => {
         e.preventDefault();
         dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
+        dispatch(getAllFavorites(user?.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
         sendEmail(e);
@@ -28,6 +34,7 @@ export default function PostLogIn() {
         e.preventDefault();
         dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
+        dispatch(getAllFavorites(user?.email))
         history.push('/bike/profile')
         sendEmail(e);
     }

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import s from './AllExperiencies.module.css';
-import aux_exp from '../../image/aux_/aux_exp.png';
 import CardExperience from '../CardsExperiences/CardExperiences';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';

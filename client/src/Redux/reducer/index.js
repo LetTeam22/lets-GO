@@ -1,5 +1,11 @@
 
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS, UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS } from '../actions/actiontypes';
+import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES,
+     GET_BIKES_DETAIL, GET_USER, CREATE_USER, ADD_BOOKING, POST_BOOKINGS,
+      UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE,
+       GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
+        GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
+        GET_ALL_FAVORITES,
+        SEND_PREFERENCE_MP} from '../actions/actiontypes';
 
 
 const initialState = {
@@ -176,6 +182,15 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 userBookings: action.payload
+            }
+        case GET_ALL_FAVORITES:
+            return {
+                ...state,
+                favorites:action.payload
+            }
+        case SEND_PREFERENCE_MP: 
+            return {
+                ...state,
             }    
         default: return state
     }

@@ -62,7 +62,6 @@
     color: rgb(154, 154, 14);
     margin-bottom: 1.5rem;
     margin-left: 3rem;
-
 }
 
 .checkCont {
@@ -76,7 +75,7 @@
 }
 
 .icon {
-    margin: auto .8rem;
+    /* margin: auto .8rem; */
     opacity: 0.7;
 }
 
@@ -88,6 +87,5 @@
 
 .iconBtn.act {
     box-shadow: #565655 0px 0px 6px 0px;
+    padding: 0;
 }
-
-
