@@ -5,7 +5,7 @@ import {
     POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS , GET_ALL_FAVORITES,
-    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE
+    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, SEND_PREFERENCE_MP
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -208,3 +208,9 @@ export const updateBike = bike => {
         .then(res => dispatch({ type: UPDATE_BIKE, payload: res.data }))
         .catch(err => console.log(err));
 };
+
+export const sendMpInfo = (preference) => {
+    return dispatch => axios(`/mercadopago?priceTotal=${preference.total_amount}&userId=${preference.client_id}`)
+        .then(res => dispatch({type: SEND_PREFERENCE_MP, payload: res.data}))
+        .catch(err => console.log(err));
+}

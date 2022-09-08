@@ -5,8 +5,8 @@ import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES,
        GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
         GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
         GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, 
-        UPDATE_BIKE} from '../actions/actiontypes';
-
+        UPDATE_BIKE, SEND_PREFERENCE_MP
+} from '../actions/actiontypes';
 
 const initialState = {
     allBikes: [],
@@ -200,6 +200,10 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state
             }
+        case SEND_PREFERENCE_MP: 
+            return {
+                ...state,
+            }    
         default: return state
     }
 }
