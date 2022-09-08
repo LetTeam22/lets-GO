@@ -74,6 +74,9 @@ Accesories.belongsToMany(Booking, { through: 'booking_accs' })
 // Experience.belongsTo(User)
 Booking.hasOne(Experience)
 Experience.belongsTo(Booking)
+//Agregando relacion para agregar bicis favoritas
+Bike.belongsToMany(User, { through: 'fav_bikes' })
+User.belongsToMany(Bike, { through: 'fav_bikes' })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

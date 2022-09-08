@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
-import { removeFavorite, getBookingsByUserId } from "../../Redux/actions";
+import { removeFavoriteFromDb, getBookingsByUserId } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
 
@@ -28,7 +28,7 @@ export const Profile = () => {
   }, [dispatch, user?.email, userLogged.idUser]);
 
   const handleRemoveFav = idBike => {
-    dispatch(removeFavorite(idBike));
+    dispatch(removeFavoriteFromDb({bikeId:idBike,email:userLogged.email}));
   };
 
   const iconStyle = {
