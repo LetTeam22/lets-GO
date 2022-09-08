@@ -23,8 +23,9 @@ import swal from "sweetalert";
 import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
+import { TbDiscount2 } from 'react-icons/tb';
 
-export const Card = ({ name, type, image, traction, wheelSize, price, rating, id, idBike }) => {
+export const Card = ({ name, type, image, traction, wheelSize, price, discount, rating, id, idBike }) => {
     
     const dispatch = useDispatch();
     const { isAuthenticated } = useAuth0();
@@ -88,8 +89,18 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
         margin: '0'
     };
 
+    // calculo precio con descuento si tiene
+    const newPrice = Math.round(Number(price) * (1 - Number(discount) / 100))
+
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
+            {
+                !!Number(discount) && 
+                <div className={s.discountCont}>
+                    <TbDiscount2 size='2rem' />
+                    <span className={s.discount}>{`-${discount}%`}</span>
+                </div>
+            }
             { <button className={s.fav} onClick={handleFav}> { bikeIsFavorite(idBike)
                 ? <AiFillHeart style= {iconStyle}/>
                 : <AiOutlineHeart style= {iconStyle}/> }
@@ -102,7 +113,6 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                 <Link to={"/bike/" + idBike}><h3 className={s.name}>{name}</h3></Link> 
                 <div className={s.dataCont}>
                     <span className={s.type}>{type} </span>
-                    {/* <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/> */}
                     {
                         traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
                     } 
@@ -115,8 +125,11 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                     <img className={s.stars} src={imgRating(rating)} alt='Rating '/>
                     <span className={s.rating}>{rating}</span>
                 </div>
-                <h4 className={s.price}>${price}/día</h4>
+                <div className={s.priceCont}>
+                    <h4 className={Number(discount) ? s.oldPrice : s.price}>${price}/día</h4>
+                    { !!Number(discount) && <h4 className={s.newPrice}>${newPrice}/día</h4> }
+                </div>
             </div>
-        </div>
+        </div>  
     )
 };

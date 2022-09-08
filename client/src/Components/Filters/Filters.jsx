@@ -93,7 +93,7 @@ const Filters = ({ handleParameter }) => {
                 <FormControl >
                     <FormLabel >Rodado</FormLabel>
                     <RadioGroup value={parameters.filters.wheelSize} onChange={handleWheelSizeFilter}>
-                        <FormControlLabel  value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}}/>} label="Todos"/>
+                        <FormControlLabel value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}}/>} label="Todos"/>
                         <FormControlLabel value="16" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}} />}  label="16"/>
                         <FormControlLabel value="20" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="20"/>
                         <FormControlLabel value="24" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="24"/>

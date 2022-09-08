@@ -50,7 +50,7 @@
     font-size: 1rem;
     letter-spacing: 0.1em;
     padding: 0.4rem 0 0.4rem 0;
-    margin: 1rem 0 1rem 0;
+    margin: .5rem 0 .5rem 0;
     color: #666666;
 }
 
@@ -60,7 +60,7 @@
     align-items: center;
     width: 11rem;
     color: rgb(154, 154, 14);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     margin-left: 3rem;
 
 }
@@ -89,76 +89,5 @@
 .iconBtn.act {
     box-shadow: #565655 0px 0px 6px 0px;
 }
-
-
-/* ....................................................... */
-/* .select {
-    width: 11rem;
-    height: 1.8rem;
-    padding: 0;
-    margin-bottom: .2rem;
-    cursor: pointer;
-    list-style: none;
-    color: rgb(86, 85, 85);
-    background: #e1e0e0;
-    border-radius: .5rem;
-    font-weight: 300;
-    font-size: .1rem;
-    line-height: 21px;
-    letter-spacing: 0.1em;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
-} */
-
-/* .select.act {
-    background-color: #ef8d24bd;
-    font-weight:500;
-}
-
-select > option {
-    color: #706f6f;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: .9rem;
-    line-height: 21px;
-    letter-spacing: 0.1em;
-} */
-
-/* .input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 11rem;
-    height: 1.8rem;
-    padding: 0;
-    margin: 0;
-    border-color: #81807f41;
-    cursor: pointer;
-    list-style: none;
-    color: rgb(86, 85, 85);
-    background: #e1e0e0;
-    border-radius: .2rem;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-size: .9rem;
-    line-height: 21px;
-    letter-spacing: 0.1em;
-    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
-}
-
-.input.act {
-    background-color: #ef8d24bd;
-    font-weight:500;
-} */
-
-/* .priceInputs {
-    width: 10rem;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    border: none;
-    color: #333333;
-    margin-left: 1rem;
-} */
 
 

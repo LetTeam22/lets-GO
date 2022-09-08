@@ -33,6 +33,10 @@ module.exports = (sequelize) => {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
+    discount: {
+      type: DataTypes.DECIMAL,
+      defaultValue: 0
+    },
     rating: {
       type: DataTypes.DECIMAL,
     },

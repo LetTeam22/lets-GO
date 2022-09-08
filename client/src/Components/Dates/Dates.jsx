@@ -16,7 +16,7 @@ const Dates = ({ component }) => {
       })
     );
   },[])
-  console.log(parameters.date.from)
+
   const handleStartDateChange = (date) => {
     if (date) {
       dispatch(
@@ -93,7 +93,7 @@ const Dates = ({ component }) => {
   let yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   let hours = today.getHours();
-
+  
   return (
     <CDateRangePicker
       footer

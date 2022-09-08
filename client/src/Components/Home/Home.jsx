@@ -133,6 +133,7 @@ export const Home = () => {
                       traction={e.traction}
                       wheelSize={e.wheelSize}
                       price={e.price}
+                      discount={e.discount}
                       rating={e.rating}
                       color={e.color}
                       idBike={e.idBike}
