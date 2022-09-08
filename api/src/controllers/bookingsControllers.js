@@ -111,24 +111,24 @@ async function postBooking(req, res, next) {
   }
 }
 
-async function cancelBooking(req, res, next) {
-  const { bookingId } = req.params
-  if (!bookingId) return res.sendStatus(400)
-  try {
-    let booking = await Booking.findByPk(bookingId)
-    if (!booking) return res.send(`The booking with id ${bookingId} does not exist`)
-    booking.update({ status: 'cancelled' })
-    res.send(`The booking with id ${bookingId} was cancelled successfully`)
-  } catch (error) {
-    next(error)
-  }
+// Update
+async function updateBooking (req, res, next) {
+  const {idBooking, startDate, endDate, totalPrice, status} = req.body
+  const booking = await Booking.findByPk(idBooking);
+  if (booking) {
+      if(startDate) booking.startDate = startDate
+      if(endDate) booking.endDate = endDate
+      if(totalPrice) booking.totalPrice = totalPrice
+      if(status) booking.status = status
+      await booking.save()
+      res.send(booking)
+  }else res.send({e:'reserva no existe'})
 }
-
 
 module.exports = {
   getAllBookings,
   getBookingsByUserId,
   getBookingsByBikeIds,
   postBooking,
-  cancelBooking
+  updateBooking
 }

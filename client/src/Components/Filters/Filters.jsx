@@ -1,13 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-// import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
-import gear from '../../image/gear.png';
-import ray from '../../image/ray.png';
 
 const Filters = ({ handleParameter }) => {
 
@@ -134,33 +131,6 @@ const Filters = ({ handleParameter }) => {
 
             </div>
         
-            {/* <span className={s.spanFilters}>Precio Mínimo</span>
-            <div className={parameters.filters.price.min ? `${s.input} ${s.act}` : s.input}>
-                <FaRegMoneyBillAlt color="#C3C4C5" size='2rem' className={s.priceIcon} />
-                <input 
-                    type='number' 
-                    name= 'minPrice'
-                    min='0'
-                    value={parameters.filters.price.min}
-                    onChange={handleMinPriceFilter} 
-                    className={s.priceInputs}
-                    id='minPriceFilter'
-                />
-            </div>           
-           
-            <span className={s.spanFilters}>Precio Máximo</span>
-            <div className={parameters.filters.price.max ? `${s.input} ${s.act}` : s.input}>
-                <FaRegMoneyBillAlt color="#C3C4C5" size='2rem' className={s.priceIcon} />
-                <input 
-                    type='number'
-                    name='maxPrice'
-                    min='0'
-                    value={parameters.filters.price.max} 
-                    onChange={handleMaxPriceFilter} 
-                    className={s.priceInputs}
-                    id='maxPriceFilter'
-                />
-            </div> */}  
         </div>
     )
 };
