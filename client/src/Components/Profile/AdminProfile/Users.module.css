@@ -1,13 +1,15 @@
 .users{
-    width: 100%;
+    width: 74rem;
     height: calc(100vh - 8rem);
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .goBack{
     position: absolute;
     top: 0;
-    left: 17rem;
+    left: 0;
 }
 .goBack svg{
     width: 3rem;
@@ -26,4 +28,11 @@
 .list *{
     color: white;
     font-family: 'Roboto' 'sans-serif'
+}
+
+.list img {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
 }

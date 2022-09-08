@@ -1,20 +1,21 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { Avatar } from "@mui/material";
-import s from "./Users.module.css";
-import { useHistory } from "react-router-dom";
+import { ThemeProvider } from "@emotion/react";
 import { TiArrowBackOutline } from "react-icons/ti";
-import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
-import { ThemeProvider } from "@emotion/react";
+import RenderProfilePic from "../../Cloudinary/renderProfilePic";
 import Action from "./Action";
+import s from "./Users.module.css";
 
 export default function Users() {
   const users = useSelector((state) => state.allUsers);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [pageSize, setPageSize] = useState(8);
+  const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null)
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function Users() {
       field: "profilePic",
       headerName: "Avatar",
       width: 50,
-      renderCell: (params) => <Avatar src={params.row.profilePic} />,
+      renderCell: (params) => params.row.profilePic? <RenderProfilePic publicId={params.row.profilePic} alt={params.row.email}/>:<Avatar src={params.row.profilePic} />,
       sortable: false,
       filterable: false,
     },
@@ -82,7 +83,7 @@ export default function Users() {
           columns={columnsUsers}
           pageSize={pageSize}
           onPageSizeChange={(newNumber) => setPageSize(newNumber)}
-          rowsPerPageOptions={[8, 16, 32]}
+          rowsPerPageOptions={[5, 10, 15]}
           className={s.list}
           getRowId={(row) => row.id}
           getRowSpacing={(params) => ({

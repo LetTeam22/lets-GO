@@ -1,35 +1,48 @@
-import React, { useEffect } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import s from "./Accesories.module.css";
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti';
-import { useDispatch, useSelector } from "react-redux";
+import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { ThemeProvider } from "@emotion/react";
 import { getAccesories } from "../../../Redux/actions";
+import theme from "../MaterialUIColors";
+import Action from "./Action";
+import s from "./Accesories.module.css";
 
 
 export default function Bikes() {
   const accesories = useSelector(state => state.accesories)
   const history = useHistory()
   const dispatch = useDispatch()
+  const [pageSize, setPageSize] = useState(5);
+  const [rowId, setRowId] = useState(null)
+
   useEffect(() => {
     dispatch(getAccesories())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const rowsAccs = accesories?.map(accesorie => {
-    return {
-      id: accesorie.idAcc,
-      name: accesorie.name,
-      image: accesorie.image,
-      price: accesorie.price,
-      stock: 20
-    };
-  });
-  const columnsAccs = [
-    { field: "id", headerName: "ID", width: 50 },
-    { field: "name", headerName: "Nombre", width: 150 },
-    { field: "price", headerName: "Precio", width: 80 },
-    { field: "stock", headerName: "Stock", width: 100 },
-  ];
+  const rowsAccs =useMemo(() => {
+    return accesories?.map(accesorie => {
+      return {
+        id: accesorie.idAcc,
+        name: accesorie.name,
+        price: `$ ${accesorie.price}`,
+        status: accesorie.status
+      };
+    });
+  }, [accesories]) 
+
+  const columnsAccs = useMemo(() => {
+    return [
+      { field: "id", headerName: "ID", width: 50 },
+      { field: "name", headerName: "Nombre", width: 120 },
+      { field: "price", headerName: "Precio", width: 80 },
+      { field: "status", headerName: "Estado", width: 100, type: "singleSelect",
+      valueOptions: ["active", "deleted"],
+      editable: true },
+      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
+    ];
+  }, [rowId]) 
 
   const handleClick = () => {
     history.goBack()
@@ -39,14 +52,30 @@ export default function Bikes() {
   return (
     <div className={s.accesories}>
       <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
-      <DataGrid
-        rows={rowsAccs}
-        columns={columnsAccs}
-        pageSize={8}
-        rowsPerPageOptions={[8]}
-        checkboxSelection
-        className={s.list}
-      />
+      <ThemeProvider theme={theme}>
+        <DataGrid
+          rows={rowsAccs}
+          columns={columnsAccs}
+          pageSize={pageSize}
+          onPageSizeChange={(newNumber) => setPageSize(newNumber)}
+          rowsPerPageOptions={[5, 10, 15]}
+          className={s.list}
+          getRowId={(row) => row.id}
+          getRowSpacing={(params) => ({
+            top: params.isFirstVisible ? 0 : 5,
+            bottom: params.isLastVisible ? 0 : 5,
+          })}
+          sx={{
+            [`& .${gridClasses.row}`]: {
+              bgcolor: (theme) =>
+                theme.palette.mode === "light"
+                  ? '#494949'
+                  : '#191616',
+            },
+          }}
+          onCellEditCommit={(params) => setRowId(params.id)}
+        />
+      </ThemeProvider>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, CircularProgress, Fab } from "@mui/material";
 import { Check, Save } from "@mui/icons-material";
-import { updateUser } from "../../../Redux/actions";
+import { updateBike, updateBooking, updateExperience, updateUser } from "../../../Redux/actions";
 
 export default function Action({ params, rowId, setRowId, origin }) {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
 
   const handleSubmit = async () => {
     setLoading(true);
-    if (origin === 'users'){
+    if(origin === 'users' ){
         const { role, status, email } = params.row;
         const result = await dispatch(
             updateUser({
@@ -23,11 +23,35 @@ export default function Action({ params, rowId, setRowId, origin }) {
                 status,
                 isAdmin: role === "Administrador" ? true : role === "Usuario" ? false: null,
             })
-            );
-            if (result) {
-                setSuccess(true);
-                setRowId(null);
-            }
+        );
+        if (result) {
+            setSuccess(true);
+            setRowId(null);
+        }
+    }
+    if(origin === 'bookings'){
+        const { id, status } = params.row
+        const result = await dispatch(updateBooking({idBooking:id, status}))
+        if (result) {
+            setSuccess(true);
+            setRowId(null);
+        }
+    }
+    if (origin === 'bikes'){
+        const { id, status } = params.row
+        const result = await dispatch(updateBike({idBike:id, status}))
+        if (result) {
+            setSuccess(true);
+            setRowId(null);
+        }
+    }
+    if (origin === 'experiences'){
+        const { id, status } = params.row
+        const result = await dispatch(updateExperience({idExperience:id, status}))
+        if (result) {
+            setSuccess(true);
+            setRowId(null);
+        }
     }
     setLoading(false);
   };
