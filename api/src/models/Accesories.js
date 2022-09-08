@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL,
         },
         status: {
-          type: DataTypes.STRING,
+          type: DataTypes.ENUM('active', 'deleted'),
           allowNull: false,
           defaultValue: 'active'
         }

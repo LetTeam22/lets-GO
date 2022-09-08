@@ -12,7 +12,7 @@ const getAllAccesories = async (req, res, next) => {
 const getAccId = async (req, res, next) => {
     const { id } = req.params;
     try {
-        const filterId = await Bike.findAll({
+        const filterId = await Accesories.findAll({
             where: { idAcc: id }
         })
         res.send(filterId);
@@ -21,7 +21,25 @@ const getAccId = async (req, res, next) => {
     }
 };
 
+// Update
+const updateAccesory = async (req, res, next) => {
+    const {idAcc, name, description, image, price, status} = req.body
+    
+    const acc = await Accesories.findByPk(idAcc);
+
+    if (acc) {
+        if(name) acc.name = name
+        if(description) acc.description = description
+        if(image) acc.image = image
+        if(price) acc.price = price
+        if(status) acc.status = status
+        await acc.save()
+        res.send(acc)
+    }else res.send({e:'accesorio no existe'})
+}
+
 module.exports = {
     getAllAccesories,
-    getAccId
+    getAccId,
+    updateAccesory
 };
