@@ -38,7 +38,7 @@ export const ShoppingCart = () => {
   const userBoking = useSelector(state => state.bookings)
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
-  const [ loading, setLoading ] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,7 +48,7 @@ export const ShoppingCart = () => {
     dispatch(
       setParameters({
         ...parameters,
-        date: { ...parameters.date, from: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).to: "" },
+        date: { ...parameters.date, from: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).to : "" },
       })
     );
   }, [dispatch, user?.email]);
@@ -84,18 +84,18 @@ export const ShoppingCart = () => {
   }
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
-  
+
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
   if (strBikeIds !== date.bikeIds) {
     const newBikeIds = strBikeIds ? strBikeIds : 0
-    dispatch(setParameters({...parameters, date: {...parameters.date, bikeIds: strBikeIds}}))
+    dispatch(setParameters({ ...parameters, date: { ...parameters.date, bikeIds: strBikeIds } }))
     dispatch(getDisabledDates(newBikeIds))
   }
 
   let ids = []
   userBoking.map(e => {
-    !!e.canasto.length &&  ids.push([e.canasto])
+    !!e.canasto.length && ids.push([e.canasto])
     !!e.silla.length && ids.push([e.silla])
     !!e.luces.length && ids.push([e.luces])
     !!e.casco.length && ids.push([e.casco])
@@ -107,7 +107,7 @@ export const ShoppingCart = () => {
   })
 
 
- let postedBooking = {
+  let postedBooking = {
     startDate: date.from,
     endDate: date.to,
     userId: userLogged?.idUser,
@@ -158,7 +158,24 @@ export const ShoppingCart = () => {
 
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems);
 
-  const total = Math.floor(subTotal * 1.02) ;
+  const total = Math.floor(subTotal * 1.02);
+
+  let mercadopagoData = {
+    items: cartBikes.map(b => ({
+      title: b.name,
+      id: b.idBike,
+      unit_price: b.price,
+      quantity: 1,
+      currency_id: 'ARS',
+    })),
+    client_id: userLogged.idUser,
+    payer: {
+      name: userLogged.firstName,
+      surname: userLogged.lastName,
+      email: userLogged.email
+    },
+    total_amount: total
+  }
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -212,31 +229,31 @@ export const ShoppingCart = () => {
     cartBikes = cartBikes.filter(b => b.idBike !== id)
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
-  
+
   return (
-      !loading && cartBikes.length
+    !loading && cartBikes.length
       ? <div className={s.container}>
-          <div className={s.titleDiv}>
-            <h1 className={s.title}>Carrito de compras</h1>
-          </div>
-          <hr color="#595858" size='0.5px' />
+        <div className={s.titleDiv}>
+          <h1 className={s.title}>Carrito de compras</h1>
+        </div>
+        <hr color="#595858" size='0.5px' />
 
-          <Dates component='cart'/>
+        <Dates component='cart' />
 
-          <div className={s.containerDiv}>
-            <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
-              <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Item</TableCell>
-                    <TableCell align="center">Cantidad</TableCell>
-                    <TableCell align="center">Precio/dia</TableCell>
-                    <TableCell align="center">Precio Total</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {
-                    cartBikes.length 
+        <div className={s.containerDiv}>
+          <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
+            <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Item</TableCell>
+                  <TableCell align="center">Cantidad</TableCell>
+                  <TableCell align="center">Precio/dia</TableCell>
+                  <TableCell align="center">Precio Total</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {
+                  cartBikes.length
                     ? cartBikes.map((bike) => {
                       return (
                         <TableRow key={bike.bikeId} >
@@ -244,44 +261,46 @@ export const ShoppingCart = () => {
                           <TableCell align="center">1</TableCell>
                           <TableCell align="center">{bike.price}</TableCell>
                           <TableCell align="center">{!isNaN(totalPerBike(bike.price)) ? totalPerBike(bike.price) : 0}</TableCell>
-                        </TableRow> 
-                      )})
-                    : <></>  
-                  }
-                  {
-                    cartBikes.length 
-                      ? cartBikes.map(bike => {
-                        return llenarAccs(bike.accesories)?.map(el => {
-                          return (
-                              <TableRow key={el.idAcc} >
-                                <TableCell>{el.name}</TableCell>
-                                <TableCell align="center">1</TableCell>
-                                <TableCell align="center">{ el.price }</TableCell>
-                                <TableCell align="center">{!isNaN(totalPerBike(el.price)) ? totalPerBike(el.price) : 0}</TableCell>
-                              </TableRow> 
-                          )
-                        })})
-                      : <></>
-                  }
-                  <TableRow>
-                    <TableCell rowSpan={3} />
-                    <TableCell align="left" colSpan={2}>Subtotal</TableCell>
-                    <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell colSpan={2} align="left">Tax</TableCell>
-                    <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell align="left" colSpan={2}>Total</TableCell>
-                    <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-            <div className={s.previewItems}>
-              {
-                cartBikes.length 
+                        </TableRow>
+                      )
+                    })
+                    : <></>
+                }
+                {
+                  cartBikes.length
+                    ? cartBikes.map(bike => {
+                      return llenarAccs(bike.accesories)?.map(el => {
+                        return (
+                          <TableRow key={el.idAcc} >
+                            <TableCell>{el.name}</TableCell>
+                            <TableCell align="center">1</TableCell>
+                            <TableCell align="center">{el.price}</TableCell>
+                            <TableCell align="center">{!isNaN(totalPerBike(el.price)) ? totalPerBike(el.price) : 0}</TableCell>
+                          </TableRow>
+                        )
+                      })
+                    })
+                    : <></>
+                }
+                <TableRow>
+                  <TableCell rowSpan={3} />
+                  <TableCell align="left" colSpan={2}>Subtotal</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell colSpan={2} align="left">Tax</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" colSpan={2}>Total</TableCell>
+                  <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className={s.previewItems}>
+            {
+              cartBikes.length
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
@@ -299,47 +318,48 @@ export const ShoppingCart = () => {
                       </div>
                       <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
-                  )}) 
+                  )
+                })
                 : <></>
-              }
-            </div>
+            }
           </div>
-          {
-            cartBikes.length 
-            ? (
-                <div className={s.totalPrice}>
-                  <div className={s.containerBtn}>
-                    <Link to="/home">
-                      <button className={s.reserveBtn}>
-                        BUSCAR MAS BICICLETAS
-                      </button>
-                    </Link>
-                    <button
-                      disabled={
-                        postedBooking.startDate === "" ||
-                          postedBooking.endDate === "" ||
-                          !postedBooking.bikeIds.length
-                          ? true
-                          : false
-                      }
-                      onClick={(e) => handleBooking(e)}
-                      className={s.reserveBtn}
-                    >
-                      RESERVAR
-                    </button>
-                  </div>
-                </div>
-                ) 
-            : <></>
-          }
         </div>
-      : !cartBikes.length 
+        {
+          cartBikes.length
+            ? (
+              <div className={s.totalPrice}>
+                <div className={s.containerBtn}>
+                  <Link to="/home">
+                    <button className={s.reserveBtn}>
+                      BUSCAR MAS BICICLETAS
+                    </button>
+                  </Link>
+                  <button
+                    disabled={
+                      postedBooking.startDate === "" ||
+                        postedBooking.endDate === "" ||
+                        !postedBooking.bikeIds.length
+                        ? true
+                        : false
+                    }
+                    onClick={(e) => handleBooking(e)}
+                    className={s.reserveBtn}
+                  >
+                    RESERVAR
+                  </button>
+                </div>
+              </div>
+            )
+            : <></>
+        }
+      </div>
+      : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-            <img src={sincarrito} alt="sin carrito" className={s.sincarrito} />
-            <Link to='/home'>
-              <button className={s.returnBtn}>VOLVER AL HOME</button>
-            </Link>
-          </div>
+          <img src={sincarrito} alt="sin carrito" className={s.sincarrito} />
+          <Link to='/home'>
+            <button className={s.returnBtn}>VOLVER AL HOME</button>
+          </Link>
+        </div>
         : <Loading />
   )
 };
