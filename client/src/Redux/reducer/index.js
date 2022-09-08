@@ -4,7 +4,8 @@ import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES,
       UPDATE_USER, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE,
        GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
         GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
-        GET_ALL_FAVORITES} from '../actions/actiontypes';
+        GET_ALL_FAVORITES,
+        SEND_PREFERENCE_MP} from '../actions/actiontypes';
 
 
 const initialState = {
@@ -186,6 +187,10 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 favorites:action.payload
+            }
+        case SEND_PREFERENCE_MP: 
+            return {
+                ...state,
             }    
         default: return state
     }

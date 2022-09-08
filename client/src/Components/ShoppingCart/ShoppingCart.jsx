@@ -18,6 +18,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Mp from '../MercadoPago/MercadoPago';
+import axios from 'axios'
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -38,7 +40,18 @@ export const ShoppingCart = () => {
   const userBoking = useSelector(state => state.bookings)
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
+  
   const [loading, setLoading] = useState(false);
+  const [ datos, setDatos ] = useState('');
+
+  useEffect(() => {
+      axios.get('http://localhost:3001/mercadopago')
+          .then(data => {
+              setDatos(data.data);
+              console.log('Contenido:', data);
+          })
+          .catch(err => console.log(err));
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -159,21 +172,21 @@ export const ShoppingCart = () => {
 
   const total = Math.floor(subTotal * 1.02);
 
-  let mercadopagoData = {
-    items: cartBikes.map(b => ({
-      title: b.name,
-      id: b.idBike,
-      unit_price: b.price,
+  let preference = {
+    items: [{
+      title: 'Reserva',
+      unit_price: total,
       quantity: 1,
       currency_id: 'ARS',
-    })),
+      id: 1
+    }],
     client_id: userLogged.idUser,
     payer: {
       name: userLogged.firstName,
       surname: userLogged.lastName,
       email: userLogged.email
     },
-    total_amount: total
+    total_amount: total * 1.05
   }
 
   const sendEmail = (e) => {
@@ -202,7 +215,7 @@ export const ShoppingCart = () => {
       dispatch(setParameters("resetAllPlusDates"));
       dispatch(postBookings({ ...postedBooking, totalPrice: total }));
       localStorage.removeItem("booking");
-      localStorage.removeItem("date")
+      localStorage.removeItem("date");
       swal({
         title: "Tu reserva fue confirmada!",
         text: "Disfruta tu aventura!",
@@ -231,7 +244,7 @@ export const ShoppingCart = () => {
 
   return (
     !loading && cartBikes.length
-      ? <div className={s.container}>
+      ? <div className={s.container} id={s.cart}>
         <div className={s.titleDiv}>
           <h1 className={s.title}>Carrito de compras</h1>
         </div>
@@ -346,6 +359,7 @@ export const ShoppingCart = () => {
                   >
                     RESERVAR
                   </button>
+                  <Mp preference={preference} datos={datos} />
                 </div>
               </div>
             )

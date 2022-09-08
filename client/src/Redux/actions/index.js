@@ -1,10 +1,12 @@
 import axios from 'axios';
-import {  CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
-          GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
-          POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
-          REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
-          GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS 
-       } from './actiontypes'
+import {  
+    CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
+    GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
+    POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
+    REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
+    GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
+    SEND_PREFERENCE_MP,
+} from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -182,4 +184,9 @@ export const getBookingsByUserId = idUser => {
         .then(res => dispatch({ type: GET_USER_BOOKINGS, payload: res.data }))
         .catch(err => console.log(err));
 };
-   
+
+export const sendMpInfo = (preference) => {
+    return dispatch => axios(`/mercadopago?priceTotal=${preference.total_amount}&userId=${preference.client_id}`)
+        .then(res => dispatch({type: SEND_PREFERENCE_MP, payload: res.data}))
+        .catch(err => console.log(err));
+}
