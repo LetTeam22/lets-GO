@@ -13,7 +13,7 @@ export default function Users () {
 
   useEffect(() => {
     dispatch(getAllUsers())  
-}, []);
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rowsUsers = users.map((user) => {
     return {

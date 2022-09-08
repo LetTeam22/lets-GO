@@ -13,7 +13,7 @@ export default function Bikes() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAccesories())
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rowsAccs = accesories?.map(accesorie => {
     return {

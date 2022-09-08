@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
-import { useDispatch, useSelector } from "react-redux";
-// import { setCurrentPage, setParameters } from "../../Redux/actions";
-import { useHistory } from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import s from './AdminSearchBar.module.css';
 import lupa from '../../../../image/lupita.png';
 import {getUser} from '../../../../Redux/actions/index'

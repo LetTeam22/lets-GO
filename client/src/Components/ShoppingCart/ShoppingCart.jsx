@@ -51,7 +51,7 @@ export const ShoppingCart = () => {
         date: { ...parameters.date, from: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date')?JSON.parse(localStorage.getItem('date')).to: "" },
       })
     );
-  }, [dispatch, user?.email]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setLoading(false);
@@ -93,8 +93,8 @@ export const ShoppingCart = () => {
     dispatch(getDisabledDates(newBikeIds))
   }
 
-  let ids = []
-  userBoking.map(e => {
+ let ids = []
+  userBoking.forEach(e => {
     !!e.canasto.length &&  ids.push([e.canasto])
     !!e.silla.length && ids.push([e.silla])
     !!e.luces.length && ids.push([e.luces])
@@ -104,8 +104,7 @@ export const ShoppingCart = () => {
     !!e.botella.length && ids.push([e.botella])
     !!e.calzado.length && ids.push([e.calzado])
     ids = ids.map(e => e)
-  })
-
+  });
 
  let postedBooking = {
     startDate: date.from,

@@ -6,8 +6,6 @@ import s from './Filters.module.css';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
-import gear from '../../image/gear.png';
-import ray from '../../image/ray.png';
 
 const Filters = ({ handleParameter }) => {
 

@@ -13,8 +13,6 @@ import imgRat45 from '../../image/stars/4.5stars.png'
 import imgRat5 from '../../image/stars/5stars.png'
 import rodado from '../../image/rueda_bici.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
-import gear from '../../image/gear.png'
-import ray from '../../image/ray.png'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from "../../Redux/actions";
