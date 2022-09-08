@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS } from './actiontypes'
+import {  CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES, 
+          GET_BIKES_DETAIL, GET_USER, CREATE_USER, UPDATE_USER, ADD_BOOKING, 
+          POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
+          REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
+          GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS 
+       } from './actiontypes'
 
 export const setCurrentPage = payload => {
     return dispatch => {
@@ -97,15 +102,40 @@ export const getAccesories = () => {
     }
 };
 
-export const addFavorite = bikeId => {
-    return dispatch => axios(`/bikes/${bikeId}`)
-        .then(res => dispatch({ type: ADD_FAVORITE, payload: res.data }))
-        .catch(err => console.log(err));
-};
+// export const addFavorite = bikeId => {
+//     return dispatch => axios(`/bikes/${bikeId}`)
+//         .then(res => dispatch({ type: ADD_FAVORITE, payload: res.data }))
+//         .catch(err => console.log(err));
+// };
 
-export const removeFavorite = idBike => {
-    return ({ type: REMOVE_FAVORITE, idBike })
-};
+export function addFavoriteToDb(objetoUserBike) {
+    return async function (dispatch) {
+        return axios.post('/bikes/fav',objetoUserBike)
+        .then(
+            respuesta => {
+                dispatch({type:ADD_FAVORITE, payload:respuesta.data})}
+        )
+    }
+}
+
+export function removeFavoriteFromDb(objetoUserBike) {
+    return async function (dispatch) {
+        return axios.put('/bikes/removefav',objetoUserBike)
+        .then(
+            respuesta => dispatch({type:REMOVE_FAVORITE, idBike:objetoUserBike.bikeId})
+        )
+    }
+}
+
+export const getAllFavorites = (email) => {
+    return dispatch => axios(`/bikes/getAllFavorites/${email}`)
+    .then(res => dispatch({type:GET_ALL_FAVORITES, payload: res.data}))
+}
+
+
+// export const removeFavorite = idBike => {
+//     return ({ type: REMOVE_FAVORITE, idBike })
+// };
 
 export const getAllBookings = () => {
     return dispatch => axios('/bookings')

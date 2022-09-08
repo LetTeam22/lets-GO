@@ -15,7 +15,7 @@ import rodado from '../../image/rueda_bici.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from "../../Redux/actions";
+import { addFavoriteToDb,removeFavoriteFromDb } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
@@ -25,7 +25,7 @@ import { GoGear } from 'react-icons/go';
 export const Card = ({ name, type, image, traction, wheelSize, price, rating, id, idBike }) => {
     
     const dispatch = useDispatch();
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user} = useAuth0();
     const favorites = useSelector(state => state.favorites);
 
     const imgRating = rat => {
@@ -54,8 +54,9 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
             });
         } else {
             const alreadyFavorite = favorites.find(f => f.idBike === idBike)
+            const email = user.email
             if(!alreadyFavorite) {
-                dispatch(addFavorite(idBike))
+                dispatch(addFavoriteToDb({bikeId:idBike,email:email}))
                 swal({ title: "let's GO agregada a favoritos", text: "revisá tu perfil!", icon: "success",
                     button: {
                       confirm: {
@@ -68,8 +69,8 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                     }
                 })
             } else {
-                dispatch(removeFavorite(idBike))
-                console.log('desde card' + idBike)
+                dispatch(removeFavoriteFromDb({bikeId:idBike,email:email}))
+                // console.log('desde card' + idBike)
             }
         }
     };

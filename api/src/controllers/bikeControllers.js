@@ -1,4 +1,4 @@
-const { Bike, Booking } = require('../db')
+const { Bike, Booking, User } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -113,6 +113,70 @@ const getBikeId = async (req, res, next) => {
     }
 }
 
+//obtener todas las bicis favoritas de un usuario
+const getAllFavorites = async (req, res, next) =>{
+    const {email} = req.params
+    try {
+        const allFav = await Bike.findAll({
+            include: [{
+                model: User,
+                through: { attributes: [] },
+                attributes:['email'],
+                where:{email:email}
+            }]
+        })
+        res.send(allFav)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//agregar bicis favoritas a un usuario
+const postFavorite = async (req, res, next) => {
+    const {bikeId, email} = req.body;
+    try {
+        const favBike = await Bike.findOne({
+            where: { idBike: bikeId }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.addBike(favBike)
+        res.send(favBike)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//borrar bicis de favoritas
+const deleteFavorite = async (req, res, next) => {
+    const {bikeId, email} = req.body;
+    try {
+        const favBike = await Bike.findOne({
+            where: { idBike: bikeId }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.removeBike(favBike);
+        res.send(favBike)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//Delete
+const deleteBike = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        let deletedBike = await Bike.findByPk(id)
+        await deletedBike.destroy()
+        res.status(200).send('Bike deleted succesfully')
+    } catch (error) {
+        next(error)
+    }
+ }
+
 // Update
 const updateBike = async (req, res, next) => {
     const {idBike, name, description, type, image, traction, wheelSize, price, rating, color, status} = req.body
@@ -132,12 +196,17 @@ const updateBike = async (req, res, next) => {
         if(status) bike.status = status
         await bike.save()
         res.send(bike)
-    }else res.send({e:'bicicleta no existe'})
+    } else res.send({e:'bicicleta no existe'})
 }
+
 
 module.exports = {
     getAllBikes,
     getRenderedBikes,
     getBikeId,
-    updateBike
+    deleteBike,
+    postFavorite,
+    deleteFavorite,
+    getAllFavorites,
+    updateBike,
 }
