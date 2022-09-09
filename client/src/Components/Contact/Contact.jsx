@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import s from './Contact.module.css';
-import logo from '../../image/logo.png';
+// import logo from '../../image/logo.png';
 import emailjs from '@emailjs/browser';
 import { FaRegUser } from 'react-icons/fa';
 import { BsPhone } from 'react-icons/bs';
@@ -15,7 +15,7 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
 
 export const Contact = () => {
-
+    const logo = "https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
     const form = useRef();
 
     const [input, setInput] = useState({

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { useHistory } from 'react-router-dom'
 import s from './SearchBar.module.css';
-import lupa from '../../image/lupita.png';
+// import lupa from '../../image/lupita.png';
 
 export const SearchBar = () => {
-    
+    const lupa = "https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/lupita_skorrj.png"
     const dispatch = useDispatch();
     const history = useHistory()
     const parameters = useSelector(state => state.parameters);

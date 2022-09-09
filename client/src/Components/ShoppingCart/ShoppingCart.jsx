@@ -7,7 +7,7 @@ import Dates from "../Dates/Dates";
 import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
-import sincarrito from '../../image/sincarrito.png'
+// import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
 import emailjs from '@emailjs/browser';
@@ -368,7 +368,7 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-          <img src={sincarrito} alt="sin carrito" className={s.sincarrito} />
+          <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
           <div className={s.div}>
             
             <Link to='/home' className={s.containerBtn}>
