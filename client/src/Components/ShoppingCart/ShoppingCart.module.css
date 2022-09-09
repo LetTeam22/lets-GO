@@ -175,14 +175,6 @@
     background-color: #F9B621!important;
 }
 
-.sincarrito {
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-}
-
 .deleteBtn {
     border: none;
     background-color: transparent;
@@ -213,28 +205,51 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: fit-content;
-    background-color: #ffffff;
+    height: calc(100vh - 6rem);
     align-items: center;
 }
 
+.sincarrito {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
 
-.returnBtn {
+.div{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.containerEmptyCart a{
     position: relative;
-    bottom: 20vh;
-    width: 8%;
-    padding: .8rem;
-    z-index: 50;
+    width: 30rem;
+    margin: 5rem 0;
+}
+
+.containerBtn{
+    position: absolute;
+    bottom:0;
+}
+.returnBtn {
+    position: absolute;
+    bottom: 5rem;
+    left: 11rem;
+    width: 8rem;
+    padding: 0.8rem;
     background-color: transparent;
     border: 1px solid #D6802B;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
     color: #ffffff;
-}
-
-.containerEmptyCart a {
-    width: 100%;
 }
