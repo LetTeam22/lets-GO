@@ -11,54 +11,59 @@ mercadopago.configure({
 let id_compra = 1;
 
 //Generamos la url de MP
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
 
-    const { totalPrice, userId } = req.query;
-    const user = User.findByPk(userId)
-        .then(() => {
-            const newOrder = Order.build({ external_reference: id_compra++ })
-            return newOrder;
-        })
-        .catch(err => console.log(err))
+    const { totalPrice, id } = req.query;
 
-    let preference = {
-        items: [{
-            title: 'Reserva',
-            unit_price: parseInt(totalPrice, 10),
-            quantity: 1
-        }],
-        external_reference: `${id_compra++}`,
-        payment_methods: {
-            excluded_payment_types: [{ id: 'atm' }],
-            installments: 1
-        },
-        back_urls: {
-            success: 'http://localhost:3001/mercadopago/pagos',
-            failure: 'http://localhost:3001/mercadopago/pagos',
-            pending: 'http://localhost:3001/mercadopago/pagos',
+    const numberId = !isNaN(Number(id)) 
+    console.log(numberId);
+
+    if(numberId && totalPrice) {
+        let preference = {
+            items: [{
+                title: 'Reserva',
+                unit_price: parseInt(totalPrice),
+                quantity: 1
+            }],
+            external_reference: `${id_compra++}`,
+            payment_methods: {
+                excluded_payment_types: [{ id: 'atm' }],
+                installments: 6
+            },
+            back_urls: {
+                success: `http://localhost:3001/mercadopago/pagos/${id}`,
+                failure: 'http://localhost:3001/mercadopago/pagos',
+                pending: 'http://localhost:3001/mercadopago/pagos',
+            }
         }
-    }
 
-    mercadopago.preferences.create(preference)
-        .then(function (response) {
-            console.log('respondió');
-            global.id = response.body.id;
-            console.log(response.body);
-            res.json({ id: global.id });
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
+        console.log(preference);
+
+        mercadopago.preferences.create(preference)
+            .then(function (response) {
+                console.log('respondió');
+                global.id = response.body.id;
+                console.log(response.body);
+                res.json({ id: global.id });
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
 })
 
 // Ruta que recibe la informacion del pago
-router.get('/pagos', async (req, res) => {
+router.get('/pagos/:id', async (req, res) => {
 
     const { payment_id, status, external_reference, merchant_order_id } = req.query;
+    const { id } = req.params;
 
     try {
+        const user = await User.findByPk(Number(id));
+        console.log(user.idUser);
+
         // Aqui edito el status de la orden
-        const newOrder = await Order.findByPk (external_reference)
+        const newOrder = await Order.create({ external_reference })
 
         if(payment_id) newOrder.payment_id = payment_id
         if(status) newOrder.payment_status = status;
@@ -67,6 +72,7 @@ router.get('/pagos', async (req, res) => {
         console.info('Salvando Order');
         
         try {
+            await user.addOrders(newOrder);
             await newOrder.save();
             return res.redirect('http://localhost:3000/home');
         } catch(err) {
