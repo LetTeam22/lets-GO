@@ -1,16 +1,16 @@
 import React from 'react';
 import s from './Card.module.css';
-import imgRat0 from '../../image/stars/0stars.png'
-import imgRat05 from '../../image/stars/0.5star.png'
-import imgRat1 from '../../image/stars/1star.png'
-import imgRat15 from '../../image/stars/1.5stars.png'
-import imgRat2 from '../../image/stars/2stars.png'
-import imgRat25 from '../../image/stars/2.5stars.png'
-import imgRat3 from '../../image/stars/3stars.png'
-import imgRat35 from '../../image/stars/3.5stars.png'
-import imgRat4 from '../../image/stars/4stars.png'
-import imgRat45 from '../../image/stars/4.5stars.png'
-import imgRat5 from '../../image/stars/5stars.png'
+// import imgRat0 from '../../image/stars/0stars.png'
+// import imgRat05 from '../../image/stars/0.5star.png'
+// import imgRat1 from '../../image/stars/1star.png'
+// import imgRat15 from '../../image/stars/1.5stars.png'
+// import imgRat2 from '../../image/stars/2stars.png'
+// import imgRat25 from '../../image/stars/2.5stars.png'
+// import imgRat3 from '../../image/stars/3stars.png'
+// import imgRat35 from '../../image/stars/3.5stars.png'
+// import imgRat4 from '../../image/stars/4stars.png'
+// import imgRat45 from '../../image/stars/4.5stars.png'
+// import imgRat5 from '../../image/stars/5stars.png'
 import rodado from '../../image/rueda_bici.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import { Link } from "react-router-dom";
@@ -28,6 +28,19 @@ export const Card = ({ name, type, image, traction, wheelSize, price, discount, 
     const dispatch = useDispatch();
     const { isAuthenticated, user} = useAuth0();
     const favorites = useSelector(state => state.favorites);
+
+
+    const imgRat0 = "https://res.cloudinary.com/pflet/image/upload/v1662686116/Let/image/stars/0stars_e0ehyc.png"
+    const imgRat05 = "https://res.cloudinary.com/pflet/image/upload/v1662686112/Let/image/stars/0.5star_kbkxqg.png"
+    const imgRat1 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/1star_cbqaj3.png"
+    const imgRat15 = "https://res.cloudinary.com/pflet/image/upload/v1662686119/Let/image/stars/1.5stars_gwm63h.png"
+    const imgRat2 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/2stars_nnodhd.png"
+    const imgRat25 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/2.5stars_tzskis.png"
+    const imgRat3 = "https://res.cloudinary.com/pflet/image/upload/v1662686134/Let/image/stars/3stars_mfspbx.png"
+    const imgRat35 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/3.5stars_wbsdlh.png"
+    const imgRat4 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/4stars_duh9ag.png"
+    const imgRat45 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/4.5stars_wjm9o0.png"
+    const imgRat5 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/5stars_dphk3f.png"
 
     const imgRating = rat => {
         if (rat < 0.5) return imgRat0
