@@ -44,34 +44,6 @@ export const ShoppingCart = () => {
   const [loading, setLoading] = useState(false);
   const [ datos, setDatos ] = useState('');
 
-  useEffect(() => {
-      axios.get('http://localhost:3001/mercadopago')
-          .then(data => {
-              setDatos(data.data);
-              console.log('Contenido:', data);
-          })
-          .catch(err => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(getBikes());
-    dispatch(getAccesories());
-    dispatch(getUser(user?.email));
-    dispatch(
-      setParameters({
-        ...parameters,
-        date: { ...parameters.date, from: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).to : "" },
-      })
-    );
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    setLoading(false);
-  }, [loading]);
-
-  if (isLoading) return <Loading />;
-
   for (let bike of allBikes) {
     for (let book of bookings)
       if (bike.idBike === book.bike) {
@@ -241,6 +213,43 @@ export const ShoppingCart = () => {
     cartBikes = cartBikes.filter(b => b.idBike !== id)
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(getBikes());
+    dispatch(getAccesories());
+    dispatch(getUser(user?.email));
+    dispatch(
+      setParameters({
+        ...parameters,
+        date: { ...parameters.date, from: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).to : "" },
+      })
+    );
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  console.log(user);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [loading]);
+
+  
+  useEffect(() => {
+    if (user?.email) dispatch(getUser(user?.email));
+    if(!isNaN(total) && !!userLogged.idUser) {
+      console.log('hola')
+      axios.get(`http://localhost:3001/mercadopago?totalPrice=${total}&id=${userLogged?.idUser}`)
+          .then(data => {
+              setDatos(data.data);
+              console.log('Contenido:', data);
+          })
+          .catch(err => console.log(err));
+    }
+  }, [total, userLogged?.idUser, user?.email, dispatch]);
+  
+  
+  if (isLoading) return <Loading />;
 
   return (
     !loading && cartBikes.length
