@@ -67,14 +67,14 @@
     background-size: cover; 
     background-attachment: fixed;
     background-position-x: center;
-    background-image: url('../../image/fondo_huellas.png');
+    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png');
 }
 
 /*---------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 body {
-    background-image: url(../../image/fondo_huellas.png);
+    background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
 }
 
 .form {
