@@ -57,6 +57,7 @@ const getRenderedBikes = async (req, res, next) => {
                 wheelSize: wheelSizeFilter ? wheelSizeFilter : { [Op.not]: null },
                 color: colorFilter ? colorFilter : { [Op.not]: null },
                 price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
+                status: 'active',
 
                 //search
                 [Op.or]: [
@@ -179,7 +180,7 @@ const deleteBike = async (req, res, next) => {
 
 // Update
 const updateBike = async (req, res, next) => {
-    const {idBike, name, description, type, image, traction, wheelSize, price, rating, color, status} = req.body
+    const {idBike, name, description, type, image, traction, wheelSize, price, discount, rating, color, status} = req.body
     
     const bike = await Bike.findByPk(idBike);
 
@@ -191,6 +192,7 @@ const updateBike = async (req, res, next) => {
         if(traction) bike.traction = traction
         if(wheelSize) bike.wheelSize = wheelSize
         if(price) bike.price = price
+        if(req.body.hasOwnProperty("discount")) bike.discount = discount
         if(rating) bike.rating = rating
         if(color) bike.color = color
         if(status) bike.status = status

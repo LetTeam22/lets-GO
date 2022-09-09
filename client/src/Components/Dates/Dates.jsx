@@ -57,7 +57,7 @@ const Dates = ({ component }) => {
   let yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   let hours = today.getHours();
-
+  
   return (
     <CDateRangePicker
       footer
