@@ -371,7 +371,7 @@ export const ShoppingCart = () => {
           <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
           <div className={s.div}>
             
-            <Link to='/home' className={s.containerBtn}>
+            <Link to='/home' className={s.containerBtnHome}>
               <button className={s.returnBtn}>VOLVER AL HOME</button>
             </Link>
           </div>
