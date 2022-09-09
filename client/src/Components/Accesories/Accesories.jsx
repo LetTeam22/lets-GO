@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Accesories.module.css';
 import accesorios from '../../image/accesorios.png';
-import family from '../../image/family.png';
+// import family from '../../image/family.png';
 import { Link } from 'react-router-dom';
 
 export const Accesories = () => {
@@ -15,7 +15,7 @@ export const Accesories = () => {
                     <Link to='/allAccessories' ><button className={s.btn}>VER TODOS</button></Link>
                     <img src={accesorios} alt="accesorios" className={s.image}/>
                 </div>
-                <img src={family} alt="family" className={s.familyImage}/>
+                <img src="https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/family_fxmtqx.jpg" alt="family" className={s.familyImage}/>
             </div>
 {/* 
             <span id={s.one}>Casco</span>

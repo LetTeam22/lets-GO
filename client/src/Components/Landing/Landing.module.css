@@ -30,22 +30,22 @@
 
 @keyframes changeImage {
     0% {
-        background-image: url('../../image/fondos/slice1.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
     }
     20% {
-        background-image: url('../../image/fondos/slice2.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686247/Let/image/fondos/slice2_pw2u18.png');
     }
     40% {
-        background-image: url('../../image/fondos/slice3.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/fondos/slice3_boy63a.png');
     }
     60% {
         background-image: url('../../image/fondos/slice4.png');
     }
     80% {
-        background-image: url('../../image/fondos/slice5.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686243/Let/image/fondos/slice5_pavr5j.png');
     }
     100% {
-        background-image: url('../../image/fondos/slice1.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
     }
 }
 
