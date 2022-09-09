@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import s from "./Destacados.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
-import rodado from '../../image/rueda_bici.png';
+// import rodado from '../../image/rueda_bici.png';
 import { Link } from "react-router-dom";
 import RenderOneImage from "../Cloudinary/renderOneImage";
 import imgRat0 from '../../image/stars/0stars.png';
@@ -67,7 +67,7 @@ export const Destacados = () => {
                             bike.traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
                           } 
                           <div className={s.rodadoCont}>
-                              <img className={s.rueda} src={rodado} alt='Rodado '/>
+                              <img className={s.rueda} src="https://res.cloudinary.com/pflet/image/upload/v1662686110/Let/image/rueda_bici_kouezn.png" alt='Rodado '/>
                               <span className={s.rodado}>{bike.wheelSize}</span>
                           </div>
                         </div>

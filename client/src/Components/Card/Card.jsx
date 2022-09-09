@@ -11,7 +11,7 @@ import imgRat35 from '../../image/stars/3.5stars.png'
 import imgRat4 from '../../image/stars/4stars.png'
 import imgRat45 from '../../image/stars/4.5stars.png'
 import imgRat5 from '../../image/stars/5stars.png'
-import rodado from '../../image/rueda_bici.png'
+// import rodado from '../../image/rueda_bici.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -116,7 +116,7 @@ export const Card = ({ name, type, image, traction, wheelSize, price, discount, 
                         traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
                     } 
                     <div className={s.rodadoCont}>
-                        <img className={s.rueda} src={rodado} alt='Rodado '/>
+                        <img className={s.rueda} src="https://res.cloudinary.com/pflet/image/upload/v1662686110/Let/image/rueda_bici_kouezn.png" alt='Rodado '/>
                         <span className={s.rodado}>{wheelSize}</span>
                     </div>
                 </div>              

@@ -6,7 +6,7 @@ import { getBikeDetail, addBooking, getAccesories, setBikeDetail } from "../../R
 import Loading from "../Loading/Loading";
 import s from "./BikeDetail.module.css";
 import icon from "../../image/bicisDestacadas/icon.png";
-import tech from "../../image/Technology.png";
+// import tech from "../../image/Technology.png";
 import swal from "sweetalert";
 import RenderAccesories from "../Cloudinary/renderAccesories";
 import RenderBikeDetail from "../Cloudinary/renderBikeDetail";
@@ -388,7 +388,7 @@ export const BikeDetail = () => {
           <div className={s.titleAccAndTech}>
             <h2 className={s.titleTA}>Tecnología</h2>
           </div>
-          <img className={s.tech} src={tech} alt="" />
+          <img className={s.tech} src="https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png" alt="" />
         </div>
       }
     </>

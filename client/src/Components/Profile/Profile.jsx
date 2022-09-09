@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import s from "./Profile.module.css";
 import { useHistory } from "react-router-dom";
 import { Button } from "@mui/material";
-import image from "../../image/persona_logeada.png";
+// import image from "../../image/persona_logeada.png";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -14,6 +14,7 @@ import RenderProfilePic from "../Cloudinary/renderProfilePic";
 // import { convertDate, reverseDate } from '../../helpers/convertDate.js';
 
 export const Profile = () => {
+  const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const history = useHistory();
   const dispatch = useDispatch();
   const userLogged = useSelector(state => state.user);

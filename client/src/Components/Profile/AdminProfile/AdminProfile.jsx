@@ -17,7 +17,7 @@ import { ThemeProvider } from "@emotion/react";
 import swal from "sweetalert";
 import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
-import image from "../../../image/persona_logeada.png";
+// import image from "../../../image/persona_logeada.png";
 import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
 import { getUser, updateUser } from "../../../Redux/actions";
 import background from "../../../image/fondo_huellas.png";
@@ -25,7 +25,7 @@ import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
 // import RenderOneImage from "../../Cloudinary/renderOneImage";
 
 export const AdminProfile = () => {
-
+  const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
   const userToModify = useSelector((state) => state.user);
   const { user, isLoading } = useAuth0();

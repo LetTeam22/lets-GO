@@ -24,11 +24,12 @@ import swal from "sweetalert";
 import { BiMessageEdit } from 'react-icons/bi';
 import { TbSend } from 'react-icons/tb';
 import { FaUserAlt } from 'react-icons/fa';
-import logo from '../../image/logo.png';
+// import logo from '../../image/logo.png';
 // import { Link, useHistory } from "react-router-dom"
 
 
 const CreateExperiences = () => {
+  const logo ="https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
   const dispatch = useDispatch();
   const form = useRef();
   const [errors, setErrors] = useState({})

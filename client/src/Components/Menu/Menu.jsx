@@ -7,11 +7,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../NavBar/Authentication/LogIn";
 import LogOut from "../NavBar/Authentication/LogOut";
 import { Link } from "react-router-dom";
-import logo from "../../image/logo.png";
+// import logo from "../../image/logo.png";
 
 
 export const Menu = () => {
-
+  const logo = "https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
   const { isAuthenticated } = useAuth0();
 
   return (

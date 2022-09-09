@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createUser, getAllFavorites, getUser } from '../../../Redux/actions';
 import s from './PostLogIn.module.css';
-import postlogin from '../../../image/postlogin.png';
+// import postlogin from '../../../image/postlogin.png';
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID3;
@@ -12,6 +12,7 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID3;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
 
 export default function PostLogIn() {
+    const postlogin = "https://res.cloudinary.com/pflet/image/upload/v1662686157/Let/image/postlogin_esasff.png"
     const dispatch = useDispatch()
     const { user } = useAuth0()
     const history = useHistory()
