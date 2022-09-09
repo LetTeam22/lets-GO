@@ -3,7 +3,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    background-image: url('../../image/huella-detail.png');
+    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/huella-detail_fde3qc.png');
     background-size: 100%;
 }
 

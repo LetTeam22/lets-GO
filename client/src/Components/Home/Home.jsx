@@ -8,7 +8,7 @@ import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes, getUser,getAllFavorites } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
-import encabezado from "../../image/encabezado.png";
+// import encabezado from "../../image/encabezado.png";
 import Orderings from "../Orderings/Orderings";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
@@ -109,7 +109,7 @@ export const Home = () => {
     <div className={s.containerHome}>
 
       <div className={s.encabezado}>
-        <img src={encabezado} alt="encabezado" className={s.encabezado} />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1662686147/Let/image/encabezado_fsuvbq.png" alt="encabezado" className={s.encabezado} />
       </div>
 
       <div className={s.divSticky}>

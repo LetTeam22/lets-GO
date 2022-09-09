@@ -20,7 +20,7 @@ import Loading from "../../Loading/Loading";
 // import image from "../../../image/persona_logeada.png";
 import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
 import { getUser, updateUser } from "../../../Redux/actions";
-import background from "../../../image/fondo_huellas.png";
+// import background from "../../../image/fondo_huellas.png";
 import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
 // import RenderOneImage from "../../Cloudinary/renderOneImage";
 
@@ -273,7 +273,7 @@ export const AdminProfile = () => {
 
       </div>
 
-      <img src={background} alt="fondo" className={s.background} />
+      <img src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png" alt="fondo" className={s.background} />
     </section>
   );
 };

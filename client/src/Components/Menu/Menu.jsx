@@ -1,8 +1,8 @@
 import React from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import s from "./Menu.module.css";
-import carrito from "../../image/carrito.png";
-import bell from '../../image/bell.png'
+// import carrito from "../../image/carrito.png";
+// import bell from '../../image/bell.png'
 import { useAuth0 } from "@auth0/auth0-react";
 import LogIn from "../NavBar/Authentication/LogIn";
 import LogOut from "../NavBar/Authentication/LogOut";
@@ -40,10 +40,10 @@ export const Menu = () => {
         {isAuthenticated ? <LogOut /> : <LogIn />}
         <Link to='/cart'>
           <button className={s.carritoBtn}>
-            <img className={s.carrito} src={carrito} alt="carrito" />
+            <img className={s.carrito} src="https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/carrito_wohy11.png" alt="carrito" />
           </button>
         </Link>
-        <img src={bell} className={s.bell} alt='bell' ></img>
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/bell_kcl5ww.png" className={s.bell} alt='bell' ></img>
       </div>
     </div>
   );
