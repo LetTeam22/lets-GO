@@ -44,6 +44,9 @@ export const ShoppingCart = () => {
   const [loading, setLoading] = useState(false);
   const [ datos, setDatos ] = useState('');
 
+  const email = localStorage.getItem('email');
+  console.log(email);
+
   for (let bike of allBikes) {
     for (let book of bookings)
       if (bike.idBike === book.bike) {
@@ -237,16 +240,15 @@ export const ShoppingCart = () => {
   
   useEffect(() => {
     if (user?.email) dispatch(getUser(user?.email));
-    if(!isNaN(total) && !!userLogged.idUser) {
-      console.log('hola')
-      axios.get(`http://localhost:3001/mercadopago?totalPrice=${total}&id=${userLogged?.idUser}`)
+    if(email && !isNaN(total)) {
+      axios.get(`http://localhost:3001/mercadopago?totalPrice=${total}&email=${email}`)
           .then(data => {
               setDatos(data.data);
               console.log('Contenido:', data);
           })
           .catch(err => console.log(err));
     }
-  }, [total, userLogged?.idUser, user?.email, dispatch]);
+  }, [total, userLogged?.idUser, user?.email, dispatch, email]);
   
   
   if (isLoading) return <Loading />;
