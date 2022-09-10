@@ -59,6 +59,7 @@
 
 .oldPrice {
     text-decoration: line-through;
+    color: gray;
 }
 
 .newPrice {

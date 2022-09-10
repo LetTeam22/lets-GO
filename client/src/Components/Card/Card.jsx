@@ -1,19 +1,5 @@
 import React from 'react';
 import s from './Card.module.css';
-
-// import rodado from '../../image/rueda_bici.png'
-// import imgRat0 from '../../image/stars/0stars.png'
-// import imgRat05 from '../../image/stars/0.5star.png'
-// import imgRat1 from '../../image/stars/1star.png'
-// import imgRat15 from '../../image/stars/1.5stars.png'
-// import imgRat2 from '../../image/stars/2stars.png'
-// import imgRat25 from '../../image/stars/2.5stars.png'
-// import imgRat3 from '../../image/stars/3stars.png'
-// import imgRat35 from '../../image/stars/3.5stars.png'
-// import imgRat4 from '../../image/stars/4stars.png'
-// import imgRat45 from '../../image/stars/4.5stars.png'
-// import imgRat5 from '../../image/stars/5stars.png'
-
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,6 +10,7 @@ import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
 import { TbDiscount2 } from 'react-icons/tb';
+import { finalPrice } from '../../helpers/applyDiscount';
 
 export const Card = ({ name, type, image, traction, wheelSize, price, discount, rating, id, idBike }) => {
     
@@ -103,9 +90,6 @@ export const Card = ({ name, type, image, traction, wheelSize, price, discount, 
         margin: '0'
     };
 
-    // calculo precio con descuento si tiene
-    const newPrice = Math.round(Number(price) * (1 - Number(discount) / 100))
-
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
             {
@@ -141,7 +125,7 @@ export const Card = ({ name, type, image, traction, wheelSize, price, discount, 
                 </div>
                 <div className={s.priceCont}>
                     <h4 className={Number(discount) ? s.oldPrice : s.price}>${price}/día</h4>
-                    { !!Number(discount) && <h4 className={s.newPrice}>${newPrice}/día</h4> }
+                    { !!Number(discount) && <h4 className={s.newPrice}>${finalPrice(price, discount)}/día</h4> }
                 </div>
             </div>
         </div>  

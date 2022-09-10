@@ -1,0 +1,1 @@
+export const finalPrice = (price, discount) => Math.round(Number(price) * (1 - Number(discount) / 100))
