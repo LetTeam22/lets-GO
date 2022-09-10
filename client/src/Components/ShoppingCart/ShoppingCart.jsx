@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import swal from "sweetalert";
@@ -37,15 +37,14 @@ export const ShoppingCart = () => {
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
-  const userBoking = useSelector(state => state.bookings)
+  const userBoking = useSelector(state => state.bookings);
+  const mpInfo = useSelector(state => state.mpInfo);
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
   
   const [loading, setLoading] = useState(false);
-  const [ datos, setDatos ] = useState('');
 
   const email = localStorage.getItem('email');
-  console.log(email);
 
   for (let bike of allBikes) {
     for (let book of bookings)
@@ -217,7 +216,6 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getBikes());
@@ -231,24 +229,15 @@ export const ShoppingCart = () => {
     );
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  console.log(user);
-
   useEffect(() => {
     setLoading(false);
   }, [loading]);
 
-  
   useEffect(() => {
-    if (user?.email) dispatch(getUser(user?.email));
     if(email && !isNaN(total)) {
-      axios.get(`http://localhost:3001/mercadopago?totalPrice=${total}&email=${email}`)
-          .then(data => {
-              setDatos(data.data);
-              console.log('Contenido:', data);
-          })
-          .catch(err => console.log(err));
+      dispatch(sendMpInfo(total, email));
     }
-  }, [total, userLogged?.idUser, user?.email, dispatch, email]);
+  }, [total, dispatch, email]);
   
   
   if (isLoading) return <Loading />;
@@ -370,7 +359,7 @@ export const ShoppingCart = () => {
                   >
                     RESERVAR
                   </button>
-                  <Mp preference={preference} datos={datos} />
+                  <Mp preference={preference} mpInfo={mpInfo} />
                 </div>
               </div>
             )
@@ -381,7 +370,6 @@ export const ShoppingCart = () => {
         ? <div className={s.containerEmptyCart}>
           <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
           <div className={s.div}>
-            
             <Link to='/home' className={s.containerBtnHome}>
               <button className={s.returnBtn}>VOLVER AL HOME</button>
             </Link>

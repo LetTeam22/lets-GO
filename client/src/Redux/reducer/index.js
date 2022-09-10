@@ -5,7 +5,7 @@ import { CURRENT_PAGE, SET_PARAMETERS, GET_BIKES, GET_RENDERED_BIKES,
        GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
         GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
         GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, 
-        UPDATE_BIKE, SEND_PREFERENCE_MP, BOOKING_TO_QUALIFY
+        UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -59,6 +59,7 @@ const initialState = {
     favorites: [],
     allExperiences: [],
     userBookings: [],
+    mpInfo: '',
 }
 
 function rootReducer(state = initialState, action) {
@@ -200,14 +201,15 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state
             }
-        case SEND_PREFERENCE_MP: 
-            return {
-                ...state,
-            }
         case BOOKING_TO_QUALIFY:
             return {
                 ...state,
                 userBookings: state.userBookings.find(b => b.idBooking === action.idBooking)
+            }
+        case SEND_MP_INFO: 
+            return {
+                ...state,
+                mpInfo: action.payload
             }
         default: return state
     }

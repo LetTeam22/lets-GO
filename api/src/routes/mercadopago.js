@@ -15,9 +15,6 @@ router.get('/', async (req, res, next) => {
 
     const { totalPrice, email } = req.query;
 
-    // const numberId = !isNaN(Number(id)) 
-    // console.log(numberId);
-
     const user = await User.findOne({
         where: {
             email
@@ -28,7 +25,7 @@ router.get('/', async (req, res, next) => {
         let preference = {
             items: [{
                 title: 'Reserva',
-                unit_price: parseInt(totalPrice),
+                unit_price: parseInt(totalPrice, 10),
                 quantity: 1
             }],
             external_reference: `${id_compra++}`,
