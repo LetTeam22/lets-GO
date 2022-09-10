@@ -85,12 +85,23 @@
     width: 100%;
 }
 
-.pr{
+.prCont {
+    display: flex;
+}
+
+.pr, .prOld {
     font-family: 'Roboto';
-    font-size: 1.5rem;
-    width: 100%;
+    font-size: 1.2rem;
+    /* width: 100%; */
     letter-spacing: 0.03rem;
     color: #4d4c4c; 
+    padding-right: .5rem;
+    font-weight: 800;
+}
+
+.prOld {
+    text-decoration: line-through;
+    color: gray;
 }
 
 .desc{

@@ -39,12 +39,21 @@ export default function Bikes() {
         wheelSize: bike.wheelSize,
         color: bike.color,
         price: bike.price,
+        discount: bike.discount,
         daysBooking: bike.bookings.reduce ((acc,prev) => acc + totalDays(prev.startDate, prev.endDate), 0),
         totalBookings: bike.bookings.length,
         status: bike.status
       };
     });
   }, [bikes]) 
+
+  const fillDiscounts = () => {
+    const arrDiscounts = []
+    for (let i = 0; i <= 10; i++) {
+      arrDiscounts.push(i * 5)
+    }
+    return arrDiscounts
+  }
 
   const columnsBookings = useMemo(() => {
     return [
@@ -55,6 +64,9 @@ export default function Bikes() {
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
       { field: "price", headerName: "Precio", width: 80 },
+      { field: "discount", headerName: "Descuento", width: 90 , type: "singleSelect",
+      valueOptions: fillDiscounts(),
+      editable: true },
       { field: "daysBooking", headerName: "Dias alquilada", width: 120 },
       { field: "totalBookings", headerName: "Cantidad alq", width: 100 },
       { field: "status", headerName: "Estado", width: 80, type: "singleSelect",

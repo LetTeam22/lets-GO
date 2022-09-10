@@ -18,6 +18,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
+import { finalPrice } from '../../helpers/applyDiscount';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -51,6 +52,7 @@ export const ShoppingCart = () => {
           idBike: bike.idBike,
           name: bike.name,
           price: bike.price,
+          discount: bike.discount,
           image: bike.image,
           accesories: {
             canasto: book.canasto,
@@ -128,7 +130,7 @@ export const ShoppingCart = () => {
 
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
-      acc + cur.price * totalDias(date.from, date.to)
+      acc + finalPrice(cur.price, cur.discount) * totalDias(date.from, date.to)
     );
   }, 0);
 
@@ -269,8 +271,8 @@ export const ShoppingCart = () => {
                         <TableRow key={bike.bikeId} >
                           <TableCell>{bike.name}</TableCell>
                           <TableCell align="center">1</TableCell>
-                          <TableCell align="center">{bike.price}</TableCell>
-                          <TableCell align="center">{!isNaN(totalPerBike(bike.price)) ? totalPerBike(bike.price) : 0}</TableCell>
+                          <TableCell align="center">{finalPrice(bike.price, bike.discount)}</TableCell>
+                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? totalPerBike(finalPrice(bike.price, bike.discount)) : 0}</TableCell>
                         </TableRow>
                       )
                     })
