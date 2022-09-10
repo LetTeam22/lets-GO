@@ -7,7 +7,6 @@ import Dates from "../Dates/Dates";
 import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
-// import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
 import emailjs from '@emailjs/browser';
@@ -19,7 +18,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
-import axios from 'axios'
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;

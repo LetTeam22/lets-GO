@@ -29,7 +29,7 @@ export const AllExperiencies = () => {
                     return (
                         <CardExperience
                         key = {e.idExperience}
-                        userName= {e.userName}
+                        firstName= {e.firstName}
                         imgExperience={e.imgExperience}
                         textExperience={e.textExperience}
                         />

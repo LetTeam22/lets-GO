@@ -134,7 +134,6 @@ export const getAllFavorites = (email) => {
     .then(res => dispatch({type:GET_ALL_FAVORITES, payload: res.data}))
 };
 
-
 // export const removeFavorite = idBike => {
 //     return ({ type: REMOVE_FAVORITE, idBike })
 // };
