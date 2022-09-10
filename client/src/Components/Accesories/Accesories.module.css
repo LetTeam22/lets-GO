@@ -2,7 +2,7 @@
 
 .accesories {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     padding-top: 3.5rem;
     flex-direction: column;
@@ -86,7 +86,7 @@
 @media (max-width:900px) {
     .accesories{
         gap:2rem;
-        height: 75vh;
+        /* height: 75vh; */
     }
     .image{
         width: 8rem;
@@ -100,9 +100,9 @@
     .contain{
         flex-direction: column-reverse;
     }
-    .accesories{
+    /* .accesories{
         height: 115vh;
-    }
+    } */
     .containImgAndBtn{
         flex-direction: row-reverse;
         align-items: center;
@@ -114,7 +114,7 @@
         margin-top: 1rem;
     }
     .accesories{
-        height: 95vh;
+        /* height: 95vh; */
         gap: 0;
     }
     .contain > img{
