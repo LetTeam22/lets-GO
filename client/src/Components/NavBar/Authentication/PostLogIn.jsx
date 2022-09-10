@@ -18,9 +18,11 @@ export default function PostLogIn() {
     const history = useHistory()
 
     useEffect(() => {
-        if (user?.email)dispatch(getUser(user?.email))
+        if (user?.email) dispatch(getUser(user?.email))
         if (user?.email) dispatch(getAllFavorites(user?.email))
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+    localStorage.setItem('email', user?.email);
 
     const goBack = (e) => {
         e.preventDefault();

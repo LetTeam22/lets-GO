@@ -39,11 +39,13 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-sdk-mercadopago": "^1.1.1",
+    "react-simple-chatbot": "^0.6.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.4.1",
     "socket.io": "^4.5.2",
+    "styled-components": "^4.0.0",
     "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },

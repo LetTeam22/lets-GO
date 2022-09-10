@@ -13,12 +13,18 @@ let id_compra = 1;
 //Generamos la url de MP
 router.get('/', async (req, res, next) => {
 
-    const { totalPrice, id } = req.query;
+    const { totalPrice, email } = req.query;
 
-    const numberId = !isNaN(Number(id)) 
-    console.log(numberId);
+    // const numberId = !isNaN(Number(id)) 
+    // console.log(numberId);
 
-    if(numberId && totalPrice) {
+    const user = await User.findOne({
+        where: {
+            email
+        }
+    })
+
+    if(user.idUser && totalPrice) {
         let preference = {
             items: [{
                 title: 'Reserva',
@@ -31,13 +37,11 @@ router.get('/', async (req, res, next) => {
                 installments: 6
             },
             back_urls: {
-                success: `http://localhost:3001/mercadopago/pagos/${id}`,
+                success: `http://localhost:3001/mercadopago/pagos/${user.idUser}`,
                 failure: 'http://localhost:3001/mercadopago/pagos',
                 pending: 'http://localhost:3001/mercadopago/pagos',
             }
         }
-
-        console.log(preference);
 
         mercadopago.preferences.create(preference)
             .then(function (response) {

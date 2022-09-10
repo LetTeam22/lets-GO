@@ -178,3 +178,19 @@
     background-position-x: center;
     background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png');
 }
+
+.btnGo {
+    position: relative;
+    margin-right: .5rem;
+    align-items: center;
+    font-size: .7rem;
+    width: 2rem;
+    height: 1.3rem;
+    border: none;
+    border-radius: .4rem;
+    cursor: pointer;
+    list-style: none;
+    color: #3f3e3e;
+    z-index: 100;
+    box-shadow: rgb(0, 0, 0) 0px 0px 3px;
+}

@@ -2,30 +2,35 @@
     {
         "imgExperience":"https://res.cloudinary.com/pflet/image/upload/v1661970867/Let/Experiences/bike.jpg",
         "textExperience":"Existen muchos tipos de bicicletas en el mundo, están las de marcas famosas, las de carga delantera o trasera, eléctricas que son muy lindas, muy cómodas pero muy caras también. Gracias a la iniciativa de let's GO por fin puedo disfrutar de unas tardes maravillosas, hacer ejercicio y despejar mi mente con esta bella bicicleta a la cual le he tomado mucho cariño. ",
-        "bookingIdBooking":1
+        "bookingIdBooking":1,
+        "userName": "Sole"
     },
 
     {
         "imgExperience":"https://res.cloudinary.com/pflet/image/upload/v1662428401/Let/Experiences/hannes-glockl-5-3-Rjd0d_U-unsplash_ave5ae.jpg",
         "textExperience":"Existen muchos tipos de bicicletas en el mundo, están las de marcas famosas, las de carga delantera o trasera, eléctricas que son muy lindas, muy cómodas pero muy caras también. Gracias a la iniciativa de let's GO por fin puedo disfrutar de unas tardes maravillosas, hacer ejercicio y despejar mi mente con esta bella bicicleta a la cual le he tomado mucho cariño. ",
-        "bookingIdBooking":2
+        "bookingIdBooking":2,
+        "userName": "Maxi"
     },
 
     {
         "imgExperience":"https://res.cloudinary.com/pflet/image/upload/v1662428395/Let/Experiences/marianna-lutkova-4PSLAKVQQ88-unsplash_lkd7mp.jpg",
         "textExperience":"Existen muchos tipos de bicicletas en el mundo, están las de marcas famosas, las de carga delantera o trasera, eléctricas que son muy lindas, muy cómodas pero muy caras también. Gracias a la iniciativa de let's GO por fin puedo disfrutar de unas tardes maravillosas, hacer ejercicio y despejar mi mente con esta bella bicicleta a la cual le he tomado mucho cariño. ",
-        "bookingIdBooking":4
+        "bookingIdBooking":4,
+        "userName": "Feli"
     },
 
     {
         "imgExperience":"https://res.cloudinary.com/pflet/image/upload/v1662428403/Let/Experiences/patrick-hendry-AJ11OhGy_7M-unsplash_hohsnk.jpg",
         "textExperience":"Existen muchos tipos de bicicletas en el mundo, están las de marcas famosas, las de carga delantera o trasera, eléctricas que son muy lindas, muy cómodas pero muy caras también. Gracias a la iniciativa de let's GO por fin puedo disfrutar de unas tardes maravillosas, hacer ejercicio y despejar mi mente con esta bella bicicleta a la cual le he tomado mucho cariño. ",
-        "bookingIdBooking":5
+        "bookingIdBooking":5,
+        "userName": "Tincho"
     },
 
     {
         "imgExperience":"https://res.cloudinary.com/pflet/image/upload/v1662428398/Let/Experiences/dawid-labno-kjRqPZfnijc-unsplash_dw5q7q.jpg",
         "textExperience":"Existen muchos tipos de bicicletas en el mundo, están las de marcas famosas, las de carga delantera o trasera, eléctricas que son muy lindas, muy cómodas pero muy caras también. Gracias a la iniciativa de let's GO por fin puedo disfrutar de unas tardes maravillosas, hacer ejercicio y despejar mi mente con esta bella bicicleta a la cual le he tomado mucho cariño. ",
-        "bookingIdBooking":3
+        "bookingIdBooking":3,
+        "userName": "Lea"
     }
 ]

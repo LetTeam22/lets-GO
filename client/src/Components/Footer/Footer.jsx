@@ -11,7 +11,7 @@ export const Footer = () => {
     return (
         <div className={s.footer}>
             <div className={s.services}>
-                <h5>SERVICIO AL CLIENTE</h5>
+                <h5 className={s.h5}>SERVICIO AL CLIENTE</h5>
                 <span className={s.footerSpan}>Preguntas Frecuentes</span>
                 <span className={s.footerSpan}>Como Comprar</span>
                 <span className={s.footerSpan}>Pagos y Retiros</span>
@@ -19,7 +19,7 @@ export const Footer = () => {
                 <span className={s.footerSpan}>Arrepentimiento de Compra</span>
             </div>
             <div className={s.guia}>
-                <h5>GUIA LET'S GO</h5>
+                <h5 className={s.h5}>GUIA LET'S GO</h5>
                 <span className={s.footerSpan}>Bicicleta: definición y significado</span>
                 <span className={s.footerSpan}>Historia bicicleta</span>
                 <span className={s.footerSpan}>Como funciona una bicicleta electrica</span>
@@ -27,7 +27,7 @@ export const Footer = () => {
                 <span className={s.footerSpan}>Normativa bicicletas</span>
             </div>
             <div className={s.company}>
-                <h5>COMPAÑIA</h5>
+                <h5 className={s.h5}>COMPAÑIA</h5>
                 <span className={s.footerSpan}>Sobre nosotros</span>
                 <span className={s.footerSpan}>Contacto</span>
                 <div className={s.icons} >

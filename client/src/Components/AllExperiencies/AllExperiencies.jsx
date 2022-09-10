@@ -26,6 +26,7 @@ export const AllExperiencies = () => {
                 allExperiences.length? allExperiences.map((e) =>{
                     return (
                         <CardExperience
+                        key = {e.idExperience}
                         imgExperience={e.imgExperience}
                         textExperience={e.textExperience}
                         />
