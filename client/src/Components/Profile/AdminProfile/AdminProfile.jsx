@@ -17,15 +17,15 @@ import { ThemeProvider } from "@emotion/react";
 import swal from "sweetalert";
 import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
-import image from "../../../image/persona_logeada.png";
+// import image from "../../../image/persona_logeada.png";
 import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
 import { getUser, updateUser } from "../../../Redux/actions";
-import background from "../../../image/fondo_huellas.png";
+// import background from "../../../image/fondo_huellas.png";
 import { AdminSearchBar } from "./SearchBar/AdminSearchBar";
 // import RenderOneImage from "../../Cloudinary/renderOneImage";
 
 export const AdminProfile = () => {
-
+  const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
   const userToModify = useSelector((state) => state.user);
   const { user, isLoading } = useAuth0();
@@ -34,8 +34,7 @@ export const AdminProfile = () => {
     firstName: "",
     lastName: "",
     cellphone: "",
-    profilePic: "",
-    userName: "",
+    profilePic: ""
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
@@ -73,15 +72,14 @@ export const AdminProfile = () => {
       firstName: "",
       lastName: "",
       cellphone: "",
-      profilePic: "",
-      userName: "",
+      profilePic: ""
     });
     dispatch(getUser(userToModify.email));
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
   const disabled = userToModify.email
     ? Object.keys(errors).length > 0 ||
-      !(input.firstName || input.lastName || input.cellphone || input.userName)
+      !(input.firstName || input.lastName || input.cellphone)
     : true;
 
   const seeBookings = () => {
@@ -92,30 +90,48 @@ export const AdminProfile = () => {
     history.push("/adminprofile/users");
   };
 
+  const seeBikes = () => {
+    history.push('/adminprofile/bikes')
+  }
+
+  const seeExperiences = () => {
+    history.push('/adminprofile/experiences')
+  }
+
+  const seeAccesories = () => {
+    history.push('/adminprofile/accesories')
+  }
+
   return (
     <section className={s.allPage}>
-      {/* {probando cloudinary} */}
-      {/* <RenderOneImage publicId={'cld-sample-4'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-5'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-3'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample'}></RenderOneImage> */}
-      <div className={s.bookings}>
-        <h1>Reservas</h1>
-        <Button
+      <div className={s.column}>
+        <div>
+          <h1>Reservas</h1>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeBookings}
+            >
+            Ver reservas
+          </Button>
+        </div>
+        <div>
+          <h1>Usuarios</h1>
+          <Button
           variant="contained"
           color="success"
           className={s.btnBook}
-          onClick={seeBookings}
+          onClick={seeUsers}
         >
-          Ver reservas
+          Ver usuarios
         </Button>
+        </div>
       </div>
       <div className={s.container}>
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
         <AdminSearchBar />
         <div className={s.nameAndImg}>
-          <h4>{userToModify.userName ? userToModify.userName : "Usuario"}</h4>
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -140,23 +156,9 @@ export const AdminProfile = () => {
         </div>
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
-            <p className={s.dato}>Usuario</p>
-            <FormControl>
-              <InputLabel htmlFor="userName">
-                {userToModify.userName ? userToModify.userName : "Vacío"}
-              </InputLabel>
-              <Input
-                id="userName"
-                aria-describedby="my-helper-text"
-                error={errors.userName ? true : false}
-                value={input.userName}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <p className={s.dato}>Nombre</p>
             <FormControl>
               <InputLabel htmlFor="firstName">
-                {userToModify.firstName ? userToModify.firstName : "Vacío"}
+                {userToModify.firstName ? userToModify.firstName : "Nombre"}
               </InputLabel>
               <Input
                 id="firstName"
@@ -166,10 +168,9 @@ export const AdminProfile = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            <p className={s.dato}>Apellido</p>
             <FormControl>
               <InputLabel htmlFor="lastName">
-                {userToModify.lastName ? userToModify.lastName : "Vacío"}
+                {userToModify.lastName ? userToModify.lastName : "Apellido"}
               </InputLabel>
               <Input
                 id="lastName"
@@ -180,10 +181,9 @@ export const AdminProfile = () => {
               />
               <FormHelperText id="my-helper-text"></FormHelperText>
             </FormControl>
-            <p className={s.dato}>Teléfono</p>
             <FormControl>
               <InputLabel htmlFor="cellphone">
-                {userToModify.cellphone ? userToModify.cellphone : "Vacío"}
+                {userToModify.cellphone ? userToModify.cellphone : "Teléfono"}
               </InputLabel>
               <Input
                 id="cellphone"
@@ -215,20 +215,44 @@ export const AdminProfile = () => {
           </ThemeProvider>
         </form>
       </div>
-      <div className={s.users}>
-        <h1>Usuarios</h1>
-        <Button
-          variant="contained"
-          color="success"
-          className={s.btnBook}
-          onClick={seeUsers}
-        >
-          Ver usuarios
-        </Button>
+      <div className={s.column}>
+        <div>
+          <h2>Bicicletas</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeBikes}
+            >
+            Ver Bicicletas
+          </Button>
+        </div>
+        <div>
+        <h2>Experiencias</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeExperiences}
+            >
+            Ver Experiencias
+          </Button>
+        </div>
+        <div>
+        <h2>Accesorios</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeAccesories}
+            >
+            Ver Accesorios
+          </Button>
+        </div>
 
       </div>
 
-      <img src={background} alt="fondo" className={s.background} />
+      <img src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png" alt="fondo" className={s.background} />
     </section>
   );
 };

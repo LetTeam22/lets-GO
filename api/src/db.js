@@ -60,21 +60,27 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Bike, Booking, Accesories,Experience } = sequelize.models;
+const { User, Bike, Booking, Accesories,Experience, Order } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 User.hasMany(Booking)
 Booking.belongsTo(User)
-Bike.belongsToMany(Booking, { through: 'bikes_bookings' })
 Booking.belongsToMany(Bike, { through: 'bikes_bookings' })
+Bike.belongsToMany(Booking, { through: 'bikes_bookings' })
 Booking.belongsToMany(Accesories, { through: 'booking_accs' })
 Accesories.belongsToMany(Booking, { through: 'booking_accs' })
 //Agregando relacion de experiencias de usuarios
-User.hasMany(Experience)
-Experience.belongsTo(User)
+// User.hasMany(Experience)
+// Experience.belongsTo(User)
 Booking.hasOne(Experience)
 Experience.belongsTo(Booking)
+//Agregando relacion para agregar bicis favoritas
+Bike.belongsToMany(User, { through: 'fav_bikes' })
+User.belongsToMany(Bike, { through: 'fav_bikes' })
+
+// Relacion user-order-MP
+User.hasMany(Order);
+Order.belongsTo(User);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -1,4 +1,4 @@
-const { Bike, Booking } = require('../db')
+const { Bike, Booking, User } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -17,6 +17,7 @@ const getAllBikes = async (req, res, next) => {
     }
 };
 
+// Get rendered bikes aplicando filtros, ordenamientos, search y fechas
 const getRenderedBikes = async (req, res, next) => {
 
     // query
@@ -56,6 +57,7 @@ const getRenderedBikes = async (req, res, next) => {
                 wheelSize: wheelSizeFilter ? wheelSizeFilter : { [Op.not]: null },
                 color: colorFilter ? colorFilter : { [Op.not]: null },
                 price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
+                status: 'active',
 
                 //search
                 [Op.or]: [
@@ -112,6 +114,58 @@ const getBikeId = async (req, res, next) => {
     }
 }
 
+//obtener todas las bicis favoritas de un usuario
+const getAllFavorites = async (req, res, next) =>{
+    const {email} = req.params
+    try {
+        const allFav = await Bike.findAll({
+            include: [{
+                model: User,
+                through: { attributes: [] },
+                attributes:['email'],
+                where:{email:email}
+            }]
+        })
+        res.send(allFav)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//agregar bicis favoritas a un usuario
+const postFavorite = async (req, res, next) => {
+    const {bikeId, email} = req.body;
+    try {
+        const favBike = await Bike.findOne({
+            where: { idBike: bikeId }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.addBike(favBike)
+        res.send(favBike)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//borrar bicis de favoritas
+const deleteFavorite = async (req, res, next) => {
+    const {bikeId, email} = req.body;
+    try {
+        const favBike = await Bike.findOne({
+            where: { idBike: bikeId }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.removeBike(favBike);
+        res.send(favBike)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
 //Delete
 const deleteBike = async (req, res, next) => {
     const { id } = req.params;
@@ -122,13 +176,64 @@ const deleteBike = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+ }
+
+// Update
+const updateBike = async (req, res, next) => {
+    const {idBike, name, description, type, image, traction, wheelSize, price, discount, rating, color, status} = req.body
+    
+    const bike = await Bike.findByPk(idBike);
+
+    if (bike) {
+        if(name) bike.name = name
+        if(description) bike.description = description
+        if(type) bike.type = type
+        if(image) bike.image = image
+        if(traction) bike.traction = traction
+        if(wheelSize) bike.wheelSize = wheelSize
+        if(price) bike.price = price
+        if(req.body.hasOwnProperty("discount")) bike.discount = discount
+        if(rating) bike.rating = rating
+        if(color) bike.color = color
+        if(status) bike.status = status
+        await bike.save()
+        res.send(bike)
+    } else res.send({e:'bicicleta no existe'})
 }
 
-//Post?? Put/Patch ??
+// Puntuar Bike
+const updateRating = async (req, res, next) => {
+    const {idBike, rating} = req.body
+    try {
+        const bike = await Bike.findOne({
+            where: {idBike:idBike}
+        })
+        let updateRating = 0;
+        if (!bike.nunOfReviews) updateRating = rating
+        else {
+            updateRating = bike.rating?
+            (bike.nunOfReviews * bike.rating + rating) / (bike.nunOfReviews + 1):
+            rating;
+        }
+        await bike.update({
+            rating: updateRating,
+            nunOfReviews: bike.nunOfReviews + 1
+        });
+        res.send(bike)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = {
     getAllBikes,
     getRenderedBikes,
     getBikeId,
-    deleteBike
+    deleteBike,
+    postFavorite,
+    deleteFavorite,
+    getAllFavorites,
+    updateBike,
+    updateRating,
 }

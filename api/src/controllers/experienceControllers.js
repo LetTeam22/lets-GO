@@ -23,50 +23,39 @@ async function experienceDetails (req, res, next) {
 
 // crea una experiencia, necesita recibir ID de booking
 async function createExperience(req, res, next) {
-    let {imgExperience,textExperience,bookingIdBooking
-    } = req.body
-
+    let { imgExperience, textExperience, bookingIdBooking, firstName } = req.body
+    if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
     try {
-        // Busco el ID de user correspondiente al Booking 
-        let bookingForUser = await Booking.findOne({
-            where: { idBooking: bookingIdBooking },
-        })
-        // console.log('usuario',user.toJSON())
-        let userIdUser = bookingForUser.userIdUser
-        // console.log(userIdUser)
-        //Ahora si, se procede a guardar en la base de datos.
         const post = await Experience.create({
             imgExperience,
             textExperience,
             bookingIdBooking,
-            userIdUser
+            firstName
         });
         res.send(post)
     } catch (error) {
-        res.send(error.message)
+        next(error)
     }
-}
+};
 
-// Actualiza Experiencia (recibe por body el ID de booking y los datos a cambiar)
+// Actualiza Experiencia (recibe por body el ID de experiencia y los datos a cambiar)
 // Devuelve la experiencia actualizada
 async function updateExperience (req, res, next) {
-    const {imgExperience,textExperience,
-        bookingIdBooking
-    } = req.body
+    const {idExperience, imgExperience, textExperience, status} = req.body
 
     try {
-        const experience = await Experience.findOne({ where: {bookingIdBooking: bookingIdBooking} });
+        const experience = await Experience.findByPk(idExperience);
         if (experience) {
             if(imgExperience) experience.imgExperience = imgExperience
             if(textExperience) experience.textExperience = textExperience
+            if(status) experience.status = status
             await experience.save()
             res.send(experience)
-        }else res.send({e:'Experiencia no existe'})
+        }else res.send({ e:'Experiencia no existe' })
 
     } catch (error) {
         res.send(error.message)
     }
-}
-
+};
 
 module.exports = {experienceDetails, createExperience, updateExperience, allExperiences}

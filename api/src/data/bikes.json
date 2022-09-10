@@ -8,7 +8,8 @@
         "price": "1300",
         "rating": "8.5",
         "color": "negro",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Xgrey",
@@ -19,7 +20,8 @@
         "price": "400",
         "rating": "5.8",
         "color": "gris",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let BlackCity",
@@ -30,7 +32,8 @@
         "price": "630",
         "rating": "7.3",
         "color": "negro",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Whitedem",
@@ -41,7 +44,8 @@
         "price": "900",
         "rating": "9.2",
         "color": "blanco",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let TouRed Large",
@@ -52,7 +56,8 @@
         "price": "1320",
         "rating": "9.6",
         "color": "rojo",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Follow",
@@ -63,7 +68,8 @@
         "price": "750",
         "rating": "9.8",
         "color": "amarillo",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let GreenMountain XL",
@@ -74,7 +80,8 @@
         "price": "1450",
         "rating": "8.5",
         "color": "verde",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let XBlack Large",
@@ -85,7 +92,8 @@
         "price": "500",
         "rating": "5.8",
         "color": "negro",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let WhiteCity Small",
@@ -96,7 +104,8 @@
         "price": "550",
         "rating": "7.3",
         "color": "blanco",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Blackdem Large",
@@ -107,7 +116,8 @@
         "price": "1050",
         "rating": "9.2",
         "color": "negro",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Bluering XL",
@@ -118,7 +128,8 @@
         "price": "1320",
         "rating": "9.6",
         "color": "azul",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Foldreen XS",
@@ -129,7 +140,8 @@
         "price": "650",
         "rating": "9.8",
         "color": "verde",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric RedMountain",
@@ -140,7 +152,8 @@
         "price": "1700",
         "rating": "8.5",
         "color": "rojo",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Xwhite",
@@ -151,7 +164,8 @@
         "price": "750",
         "rating": "5.8",
         "color": "blanco",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let RedCity Large",
@@ -162,7 +176,8 @@
         "price": "1230",
         "rating": "7.3",
         "color": "rojo",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Greendem Small",
@@ -173,7 +188,8 @@
         "price": "1300",
         "rating": "9.2",
         "color": "verde",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Blacking",
@@ -184,7 +200,8 @@
         "price": "1600",
         "rating": "9.6",
         "color": "negro",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Foldred",
@@ -195,7 +212,8 @@
         "price": "1050",
         "rating": "9.8",
         "color": "rojo",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let WhiteMountain",
@@ -206,7 +224,8 @@
         "price": "1700",
         "rating": "8.5",
         "color": "blanco",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Xgreen XL",
@@ -217,7 +236,8 @@
         "price": "850",
         "rating": "5.8",
         "color": "verde",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let GreenCity Small",
@@ -228,7 +248,8 @@
         "price": "800",
         "rating": "7.3",
         "color": "verde",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Whitedem",
@@ -239,7 +260,8 @@
         "price": "1300",
         "rating": "9.2",
         "color": "blanco",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Tourite",
@@ -250,7 +272,8 @@
         "price": "1500",
         "rating": "9.6",
         "color": "blanco",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Foldack Small",
@@ -261,10 +284,11 @@
         "price": "900",
         "rating": "9.8",
         "color": "negro",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
-        "name": "Let RedMountain",
+        "name": "Let RedMountain Large",
         "type": "mtb",
         "image": "Let/Bikes/mtb/mtb_roja_ouen0q",
         "traction": "mecánica",
@@ -272,7 +296,8 @@
         "price": "1450",
         "rating": "8.5",
         "color": "rojo",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Xgrey XL",
@@ -283,7 +308,8 @@
         "price": "400",
         "rating": "5.8",
         "color": "gris",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let BlackCity small",
@@ -294,7 +320,8 @@
         "price": "630",
         "rating": "7.3",
         "color": "negro",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Whitedem Large",
@@ -305,7 +332,8 @@
         "price": "1050",
         "rating": "9.2",
         "color": "blanco",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Toullow",
@@ -316,7 +344,8 @@
         "price": "1320",
         "rating": "9.6",
         "color": "amarillo",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Foldred",
@@ -327,7 +356,8 @@
         "price": "650",
         "rating": "9.8",
         "color": "rojo",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let GreyMountain",
@@ -338,7 +368,8 @@
         "price": "1300",
         "rating": "8.5",
         "color": "gris",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let XBlack",
@@ -349,7 +380,8 @@
         "price": "500",
         "rating": "5.8",
         "color": "negro",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric WhiteCity",
@@ -360,7 +392,8 @@
         "price": "800",
         "rating": "7.3",
         "color": "blanco",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Blackdem",
@@ -371,7 +404,8 @@
         "price": "900",
         "rating": "9.2",
         "color": "negro",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let TouRed",
@@ -382,7 +416,8 @@
         "price": "1200",
         "rating": "9.6",
         "color": "rojo",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Foldrey small",
@@ -393,7 +428,8 @@
         "price": "650",
         "rating": "9.8",
         "color": "gris",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let RedMountain",
@@ -404,7 +440,8 @@
         "price": "1900",
         "rating": "8.5",
         "color": "rojo",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Xred",
@@ -415,7 +452,8 @@
         "price": "750",
         "rating": "5.8",
         "color": "rojo",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric WhiteCity Large",
@@ -426,7 +464,8 @@
         "price": "1230",
         "rating": "7.3",
         "color": "blanco",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Tanllow",
@@ -437,7 +476,8 @@
         "price": "1300",
         "rating": "9.2",
         "color": "amarillo",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Bluering",
@@ -448,7 +488,8 @@
         "price": "1600",
         "rating": "9.6",
         "color": "azul",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Follow",
@@ -459,7 +500,8 @@
         "price": "1050",
         "rating": "9.8",
         "color": "rojo",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric BlackMountain",
@@ -470,7 +512,8 @@
         "price": "1700",
         "rating": "8.5",
         "color": "amarillo",
-        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico."
+        "description": "Este avión de xc combina la nueva suspensión trasera flexpoint pro con un cuadro de carbono superligero y una geometría específica de competición. Es el arma definitiva para el terreno cross country más técnico.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Xgrey",
@@ -481,7 +524,8 @@
         "price": "850",
         "rating": "5.8",
         "color": "gris",
-        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones."
+        "description": "Ideal para los amantes de esta particular modalidad de ciclismo. Sea que practiques bicicross, freestyle en cualquiera de sus variantes y seas un amante de los saltos y piruetas, sin duda encontrarás en esta bicicleta una compañera de emociones.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric RedCity Small",
@@ -492,7 +536,8 @@
         "price": "1100",
         "rating": "7.3",
         "color": "rojo",
-        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir."
+        "description": "Viaja al trabajo, viaja por tu salud, alejate de todo con una aventura de fin de semana. Aquí hay una bicicleta que hace todo lo anterior. Con su cómodo posicionamiento y calidad de marcha suave, es el camino a seguir.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Tanllow Large",
@@ -503,7 +548,8 @@
         "price": "1430",
         "rating": "9.2",
         "color": "amarillo",
-        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes."
+        "description": "Estas bicicletas son ideales para quien quiere compartir un paseo, una carrera o un viaje alrededor del mundo con su pareja, familiar o algún amigo. También pueden ser una excelente alternativa para compartir la experiencia con quienes no pueden pedalear por su cuenta debido a sus capacidades diferentes.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric Blackring",
@@ -514,7 +560,8 @@
         "price": "1500",
         "rating": "9.6",
         "color": "negro",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Folgreen",
@@ -525,7 +572,8 @@
         "price": "900",
         "rating": "9.8",
         "color": "verde",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     },
     {
         "name": "Let electric WhiteRing",
@@ -536,7 +584,8 @@
         "price": "1500",
         "rating": "9.6",
         "color": "blanco",
-        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más."
+        "description": "En busca de la victoria en la carrera o esforzándote por lograr un récord personal, esta bicicleta de carreras de carretera compuesta te brinda la velocidad, la eficiencia y el control para llevarla al límite, y luego un poco más.",
+        "nunOfReviews":1
     },
     {
         "name": "Let Folblue",
@@ -547,6 +596,7 @@
         "price": "900",
         "rating": "9.8",
         "color": "azul",
-        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos."
+        "description": "Este es el caballo de batalla de nuestra familia de bicicletas. Con ruedas grandes, neumáticos resistentes y manubrio inclinado hacia atrás, es tan cómoda y sólida como una bicicleta urbana holandesa, pero se pliega en 10 segundos.",
+        "nunOfReviews":1
     }
 ]

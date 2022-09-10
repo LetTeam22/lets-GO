@@ -1,11 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
-// import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import s from './Filters.module.css';
-import gear from '../../image/gear.png'
-import ray from '../../image/ray.png'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
+import { GiElectric } from 'react-icons/gi';
+import { GoGear } from 'react-icons/go';
 
 const Filters = ({ handleParameter }) => {
 
@@ -79,8 +78,14 @@ const Filters = ({ handleParameter }) => {
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>
             <div className={s.tractionCont}>
-                <img className={parameters.filters.traction === 'mecánica' ? `${s.mecanica} ${s.act}` : s.mecanica} src={gear} alt='Mecánica ' onClick={handleTractionMecFilter}/>
-                <img className={parameters.filters.traction === 'eléctrica' ? `${s.electrica} ${s.act}` : s.electrica} src={ray} alt='Eléctrica ' onClick={handleTractionElecFilter}/>
+                <button 
+                    onClick={handleTractionMecFilter} 
+                    className={parameters.filters.traction === 'mecánica' ? `${s.iconBtn} ${s.act}` : s.iconBtn}
+                ><GoGear size='2.2rem' className={s.icon} /></button>
+                <button 
+                    onClick={handleTractionElecFilter} 
+                    className={parameters.filters.traction === 'eléctrica' ? `${s.iconBtn} ${s.act}` : s.iconBtn}
+                ><GiElectric size='2.2rem' className={s.icon} /></button>
             </div>
 
             <div className='checkCont'>
@@ -88,7 +93,7 @@ const Filters = ({ handleParameter }) => {
                 <FormControl >
                     <FormLabel >Rodado</FormLabel>
                     <RadioGroup value={parameters.filters.wheelSize} onChange={handleWheelSizeFilter}>
-                        <FormControlLabel  value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}}/>} label="Todos"/>
+                        <FormControlLabel value="" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15}, '&.Mui-checked': {color: 'black'}}}/>} label="Todos"/>
                         <FormControlLabel value="16" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}} />}  label="16"/>
                         <FormControlLabel value="20" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="20"/>
                         <FormControlLabel value="24" control={<Radio sx={{'& .MuiSvgIcon-root': {fontSize: 15},'&.Mui-checked': {color: 'black'}}}/>} label="24"/>
@@ -126,33 +131,6 @@ const Filters = ({ handleParameter }) => {
 
             </div>
         
-            {/* <span className={s.spanFilters}>Precio Mínimo</span>
-            <div className={parameters.filters.price.min ? `${s.input} ${s.act}` : s.input}>
-                <FaRegMoneyBillAlt color="#C3C4C5" size='2rem' className={s.priceIcon} />
-                <input 
-                    type='number' 
-                    name= 'minPrice'
-                    min='0'
-                    value={parameters.filters.price.min}
-                    onChange={handleMinPriceFilter} 
-                    className={s.priceInputs}
-                    id='minPriceFilter'
-                />
-            </div>           
-           
-            <span className={s.spanFilters}>Precio Máximo</span>
-            <div className={parameters.filters.price.max ? `${s.input} ${s.act}` : s.input}>
-                <FaRegMoneyBillAlt color="#C3C4C5" size='2rem' className={s.priceIcon} />
-                <input 
-                    type='number'
-                    name='maxPrice'
-                    min='0'
-                    value={parameters.filters.price.max} 
-                    onChange={handleMaxPriceFilter} 
-                    className={s.priceInputs}
-                    id='maxPriceFilter'
-                />
-            </div> */}  
         </div>
     )
 };

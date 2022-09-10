@@ -23,13 +23,15 @@ async function loadAllModelsInDB() {
     jsonBooking.map(booking => {
       return postBooking({body:booking},{sendStatus:()=>{},send:()=>{}},()=>{})
     })
-  ); console.log('Bookings loaded ok to DB')
-  
-  await Promise.all(
-    jsonExperience.map(experience => {
-      return createExperience({body:experience},{sendStatus:()=>{},send:()=>{}},()=>{})
-    })
-  ); console.log('Experiences loaded ok to DB');
+    ); console.log('Bookings loaded ok to DB')
+    
+  await Experience.bulkCreate(jsonExperience)
+  // await Promise.all(
+  //   jsonExperience.map(experience => {
+  //     return createExperience({body:experience},{sendStatus:()=>{},send:()=>{}},()=>{})
+  //   })
+  // ); 
+  console.log('Experiences loaded ok to DB');
 
   //IMPORTANTE! bulkCreate() no va a funcionar correctamente 
   // si no toma en cuenta las relaciones de las tablas!!!

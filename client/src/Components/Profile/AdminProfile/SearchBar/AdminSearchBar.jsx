@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
-import { useDispatch, useSelector } from "react-redux";
-// import { setCurrentPage, setParameters } from "../../Redux/actions";
-import { useHistory } from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import s from './AdminSearchBar.module.css';
-import lupa from '../../../../image/lupita.png';
+// import lupa from '../../../../image/lupita.png';
 import {getUser} from '../../../../Redux/actions/index'
 
 export const AdminSearchBar = () => {
-    
+    const lupa = "https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/lupita_skorrj.png"
     const dispatch = useDispatch();
     const [input, setInput] = useState('')
     

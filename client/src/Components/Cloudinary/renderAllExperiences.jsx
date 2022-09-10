@@ -3,7 +3,7 @@ import {AdvancedImage} from '@cloudinary/react';
 import {Cloudinary} from "@cloudinary/url-gen";
 
 // Import any actions required for transformations.
-import { Resize, scale} from "@cloudinary/url-gen/actions/resize";
+import { scale} from "@cloudinary/url-gen/actions/resize";
 
 const RenderAllExperiences = ({publicId,alt="imagen"}) => {
 

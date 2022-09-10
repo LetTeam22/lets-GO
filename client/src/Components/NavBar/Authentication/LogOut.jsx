@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import s from './LogOut.module.css';
 import { useHistory } from "react-router-dom";
-import logedPerson from '../../../image/persona_logeada.png';
+// import logedPerson from '../../../image/persona_logeada.png';
 import Loading from '../../Loading/Loading';
 import { useSelector } from "react-redux";
 
@@ -11,7 +11,7 @@ export default function LogOut() {
   const history = useHistory();
   const userLogged = useSelector(state => state.user)
   const name = userLogged?.firstName || user?.email
-
+  const logedPerson = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   return (
     isLoading? <Loading/>
   :

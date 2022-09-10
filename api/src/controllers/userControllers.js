@@ -13,14 +13,13 @@ async function getAllUsers(req, res, next) {
 
 // crea un usuario, como minimo hace falta su correo.
 async function createUser(req, res, next) {
-    const {userName,email,firstName,lastName,cellphone
+    const {email,firstName,lastName,cellphone
         ,profilePic,creditCard,isAdmin
     } = req.body
 
     const [user, created] = await User.findOrCreate({
         where: { email: email },
         defaults: {
-          userName,
           firstName,
           lastName,
           cellphone,
@@ -55,19 +54,19 @@ async function getDetails (req, res, next) {
 // Actualiza usuario (recibe por body email y datos a cambiar)
 // Devuelve datos del usuario actualizados
 async function updateUser (req, res, next) {
-    const {userName,email,firstName,
-        lastName,cellphone,profilePic,creditCard,isAdmin
+    const {email,firstName,
+        lastName,cellphone,profilePic,creditCard,isAdmin, status
     } = req.body
     
     const user = await User.findOne({ where: { email: email } });
     if (user) {
-        if(userName) user.userName = userName
         if(firstName) user.firstName = firstName
         if(lastName) user.lastName = lastName
         if(cellphone) user.cellphone = cellphone
         if(profilePic) user.profilePic = profilePic
         if(creditCard) user.creditCard = creditCard
         if(req.body.hasOwnProperty("isAdmin")) user.isAdmin = isAdmin
+        if(status) user.status = status
         await user.save()
         res.send(user)
     }else res.send({e:'usuario no existe'})

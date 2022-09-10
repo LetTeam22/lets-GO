@@ -30,29 +30,28 @@
 
 @keyframes changeImage {
     0% {
-        background-image: url('../../image/fondos/slice1.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
     }
     20% {
-        background-image: url('../../image/fondos/slice2.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686247/Let/image/fondos/slice2_pw2u18.png');
     }
     40% {
-        background-image: url('../../image/fondos/slice3.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/fondos/slice3_boy63a.png');
     }
     60% {
-        background-image: url('../../image/fondos/slice4.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662730834/Let/image/fondos/slice4_ln7tvb.png');
     }
     80% {
-        background-image: url('../../image/fondos/slice5.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686243/Let/image/fondos/slice5_pavr5j.png');
     }
     100% {
-        background-image: url('../../image/fondos/slice1.png');
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
     }
 }
 
 .textDiv{
-    height: calc(100vh - 6.25rem);
+    height: calc(100vh - 6rem);
     position: relative;
-    grid-gap: 2rem;
     gap: 2rem;
     display: flex;
     align-items: center;
@@ -135,4 +134,18 @@
 
 #second {
     position: relative;
+}
+
+@media (max-width:500px) {
+    .text{
+        width: 20rem;
+        height: 8rem;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .searchBtn{
+        height: 3rem;
+        width: 10rem;
+        font-size: 1rem;
+    }
 }

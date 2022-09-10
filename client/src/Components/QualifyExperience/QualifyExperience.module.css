@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.h1 {
+    display: flex;
+    margin-left: 3rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    height: 10%;
+    justify-content: center;
+}
+
+.p {
+    display: flex;
+    color: rgb(87, 87, 87);
+    margin-left: 3rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    height: 10%;
+    justify-content: center;
+}

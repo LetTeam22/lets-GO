@@ -20,6 +20,11 @@ module.exports = (sequelize) => {
         },
         price: {
             type: DataTypes.DECIMAL,
+        },
+        status: {
+          type: DataTypes.ENUM('active', 'deleted'),
+          allowNull: false,
+          defaultValue: 'active'
         }
     }, {
         timestamps: false

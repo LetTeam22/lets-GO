@@ -1,13 +1,13 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import s from './LogIn.module.css';
-import persona from '../../../image/persona.png';
+// import persona from '../../../image/persona.png';
 import { useHistory } from "react-router-dom";
 
 export default function LogIn () {
     const { loginWithRedirect} = useAuth0();
     const history = useHistory()
-
+    const persona = "https://res.cloudinary.com/pflet/image/upload/v1662686108/Let/image/persona_vxyavy.png"
     const login = () => {
         localStorage.setItem('url',history.location.pathname)
         loginWithRedirect()

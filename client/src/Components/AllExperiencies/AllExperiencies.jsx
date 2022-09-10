@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import s from './AllExperiencies.module.css';
-import aux_exp from '../../image/aux_/aux_exp.png';
 import CardExperience from '../CardsExperiences/CardExperiences';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';
@@ -9,12 +8,11 @@ import Loading from '../Loading/Loading';
 export const AllExperiencies = () => {
 
     const dispatch= useDispatch();
-    const allExperiences= useSelector((state) => state.allExperiences)
+    const allExperiences = useSelector((state) => state.allExperiences)
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
     useEffect(() =>{
         dispatch(getAllExperiences())
     }, [dispatch])
@@ -30,11 +28,12 @@ export const AllExperiencies = () => {
                 allExperiences.length? allExperiences.map((e) =>{
                     return (
                         <CardExperience
+                        key = {e.idExperience}
+                        firstName= {e.firstName}
                         imgExperience={e.imgExperience}
                         textExperience={e.textExperience}
                         />
                     )
-
                 })
                 :
                 <Loading/>  

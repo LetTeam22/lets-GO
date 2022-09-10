@@ -6,7 +6,7 @@ import {Cloudinary} from "@cloudinary/url-gen";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 // import {fill, resize, pad } from "@cloudinary/url-gen/actions/resize";
 
-const RenderCreateExp = ({publicId, alt="imagen"}) => {
+export const RenderBikeRating = ({publicId, alt="imagen"}) => {
 
 
   // creamos una instancia con nuestro cloud name.
@@ -22,7 +22,7 @@ const RenderCreateExp = ({publicId, alt="imagen"}) => {
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
   // myImage.resize(fill().width(250).height(250));
   // myImage.resize(pad().width(400).height(200))
-  myImage.resize(scale(100));
+  myImage.resize(scale(200));
 
 
   return (
@@ -31,5 +31,3 @@ const RenderCreateExp = ({publicId, alt="imagen"}) => {
         
   )
 };
-
-export default RenderCreateExp;

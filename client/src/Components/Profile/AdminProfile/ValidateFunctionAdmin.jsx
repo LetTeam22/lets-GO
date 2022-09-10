@@ -23,14 +23,6 @@ const validateFunctionAdmin = (input, id, errors) => {
           delete errors.cellphone
           if(!input.cellphone) delete errors.cellphone;
         }
-        if(id === 'userName'){
-          // acepta hasta 2 palabras, cada una con un maximo de 10 caracteres
-          !/^(\w{1,10})(\s\w{1,10})?$/i.test(input.userName)? 
-          errors = {...errors, userName: 'Válido hasta 10 caracteres por palabra'}
-          :
-          delete errors.userName
-          if(!input.userName) delete errors.userName;
-        }
     return errors
 }
 

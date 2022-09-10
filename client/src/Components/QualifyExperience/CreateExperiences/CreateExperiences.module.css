@@ -1,0 +1,98 @@
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
+} */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    padding-left: 1rem;
+    background-color: #333333;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    border-radius: 2rem;
+}
+
+.containerT {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    margin-top: 2rem;
+}
+
+.inputs {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.textArea {
+    background-color: #FFFFFF;
+    border-radius: .7rem;
+    width: 19rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.containerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9B621;
+    width: 6rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.inputs input {
+    margin-left: 0.7rem;
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.9rem;
+    width: 18rem;
+}
+
+.inputs input[type=number]::-webkit-inner-spin-button, 
+.inputs input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.inputs input[type=number] { -moz-appearance:textfield; }
+
+.containerBtn input {
+    border: none;
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.redspan {
+    color: red;
+    font-size: 1rem;
+    padding-top: .5rem;
+}
+
+.span {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    padding-top: .5rem;
+}

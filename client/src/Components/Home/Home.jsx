@@ -5,15 +5,18 @@ import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 import Dates from "../Dates/Dates";
-import { getBikes, getRenderedBikes } from "../../Redux/actions/";
+import { getBikes, getRenderedBikes, getUser,getAllFavorites } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
-import encabezado from "../../image/encabezado.png";
+// import encabezado from "../../image/encabezado.png";
 import Orderings from "../Orderings/Orderings";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
+import { useAuth0 } from "@auth0/auth0-react";
+import ChatBot from "../ChatBot/ChatBot";
 
 export const Home = () => {
+  const {user } = useAuth0();
   const dispatch = useDispatch();
   const allBikes = useSelector((state) => state.allBikes);
   const renderedBikes = useSelector((state) => state.renderedBikes);
@@ -24,6 +27,11 @@ export const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (user?.email) dispatch(getUser(user?.email))
+    if (user?.email) dispatch(getAllFavorites(user?.email))
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     loadParameters();
@@ -100,9 +108,9 @@ export const Home = () => {
       loading? <Loading />
       :
     <div className={s.containerHome}>
-
+      <ChatBot/>
       <div className={s.encabezado}>
-        <img src={encabezado} alt="encabezado" className={s.encabezado} />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1662686147/Let/image/encabezado_fsuvbq.png" alt="encabezado" className={s.encabezado} />
       </div>
 
       <div className={s.divSticky}>
@@ -133,6 +141,7 @@ export const Home = () => {
                       traction={e.traction}
                       wheelSize={e.wheelSize}
                       price={e.price}
+                      discount={e.discount}
                       rating={e.rating}
                       color={e.color}
                       idBike={e.idBike}

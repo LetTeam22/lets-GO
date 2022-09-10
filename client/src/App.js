@@ -14,38 +14,46 @@ import { Contact } from './Components/Contact/Contact'
 import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
 import Private from './Components/Private/Private';
 import { ProfileToEdit } from './Components/Profile/ProfileToEdit/ProfileToEdit';
-import {AdminProfile} from './Components/Profile/AdminProfile/AdminProfile.jsx'
+import { AdminProfile } from './Components/Profile/AdminProfile/AdminProfile.jsx'
 import './App.css';
 import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
-import CreateExperiences from './Components/CreateExperiences/CreateExperiences';
+import { QualifyExperience } from './Components/QualifyExperience/QualifyExperience';
 import Bookings from './Components/Profile/AdminProfile/Bookings';
 import Users from './Components/Profile/AdminProfile/Users';
+import Bikes from './Components/Profile/AdminProfile/Bikes';
+import Experiences from './Components/Profile/AdminProfile/Experiences';
+import Accesories from './Components/Profile/AdminProfile/Accesories';
+import Checkout from './Components/Checkout/Checkout'
 
 function App() {
   return (
     <>
       <NavBar />
       <Switch>
-        <Route exact path= '/' component= { Landing } />
-        <Route exact path= '/home' component= { Home } />
-        <Route exact path= '/bike/profile' component= { Profile } />
-        <Route exact path= '/bike/privateRoute' component= { Private } />
-        <Route exact path= '/bike/:bikeId' component= { BikeDetail } />
-        <Route exact path= '/allAccessories' component={ AllAccesories } />
-        <Route exact path= '/adventure' component={ Adventure } />
-        <Route exact path= '/promotions' component={ Promotions } />
-        <Route exact path= '/allExperiencies' component={ AllExperiencies } />
-        <Route exact path= '/contact' component={ Contact } />
-        <Route exact path= '/cart' component={ ShoppingCart } />
-        <Route exact path= '/postLogin' component={ PostLogIn } />
-        <Route exact path= '/editProfile' component={ ProfileToEdit } />
-        <Route exact path= '/AdminProfile' component={ AdminProfile } />
-        <Route exact path= '/AdminProfile/bookings' component={ Bookings } />
-        <Route exact path= '/AdminProfile/users' component={ Users } />
-        <Route exact path= '/experience/create' component={ CreateExperiences } />
-        <Route path='*' component={ Error } />
+        <Route exact path='/' component={Landing} />
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/bike/profile' component={Profile} />
+        <Route exact path='/bike/privateRoute' component={Private} />
+        <Route exact path='/bike/:bikeId' component={BikeDetail} />
+        <Route exact path='/allAccessories' component={AllAccesories} />
+        <Route exact path='/adventure' component={Adventure} />
+        <Route exact path='/promotions' component={Promotions} />
+        <Route exact path='/allExperiencies' component={AllExperiencies} />
+        <Route exact path='/contact' component={Contact} />
+        <Route exact path='/cart' component={ShoppingCart} />
+        <Route exact path='/postLogin' component={PostLogIn} />
+        <Route exact path='/editProfile' component={ProfileToEdit} />
+        <Route exact path='/AdminProfile' component={AdminProfile} />
+        <Route exact path='/AdminProfile/bookings' component={Bookings} />
+        <Route exact path='/AdminProfile/users' component={Users} />
+        <Route exact path='/AdminProfile/bikes' component={Bikes} />
+        <Route exact path='/AdminProfile/experiences' component={Experiences} />
+        <Route exact path='/AdminProfile/accesories' component={Accesories} />
+        <Route exact path='/qualifyExperience' component={QualifyExperience} />
+        <Route exact path='/checkout' component={Checkout} />
+        <Route path='*' component={Error} />
       </Switch>
-      <Footer/>
+      <Footer />
     </>
   )
 };

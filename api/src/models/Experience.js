@@ -10,12 +10,21 @@ module.exports = (sequelize) => {
     },
     imgExperience: {
       type: DataTypes.STRING,
-      defaultValue: 'sample'
+      defaultValue: 'https://res.cloudinary.com/pflet/image/upload/v1661970867/Let/Experiences/bike.jpg'
     },
     textExperience: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.ENUM('active', 'deleted'),
+      allowNull: false,
+      defaultValue: 'active'
+    }
   }, {
     timestamps: false
   });

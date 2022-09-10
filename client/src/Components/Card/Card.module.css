@@ -44,12 +44,41 @@
     line-height: 0%;
 }
 
-.price {
+.priceCont {
+    display: flex;
+    justify-content: center;
+}
+
+.price, .oldPrice, .newPrice {
     color: #D6802B;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 0%;
     margin-top: 1.8rem;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.newPrice {
+    color: #2b4dd6;
+    margin-left: 1rem;
+}
+
+.discountCont {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+    color: #2b4dd6;
+}
+
+.discount {
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 .ratingCont {
@@ -74,6 +103,7 @@
     font-size: 1rem;
     font-weight: 800;
     margin-left: .3rem;
+    padding-top: .1rem;
 }
 
 .rueda {
@@ -86,10 +116,6 @@
     font-size: 1.1rem;
     font-weight: 500;
     margin-left: .3rem;
-}
-
-.type {
-    padding-top: .5rem;
 }
 
 .electrica, .mecanica {
@@ -111,6 +137,7 @@
 .dataCont {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: .5rem;
 }
 
@@ -127,4 +154,8 @@
     position: relative;
     top: -1.5rem;
     display: flex;
+}
+
+.icon {
+    margin: auto 1.5rem;
 }

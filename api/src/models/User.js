@@ -8,9 +8,6 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             primaryKey: true,
         },
-        userName: {
-            type: DataTypes.STRING,
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,11 +26,17 @@ module.exports = (sequelize) => {
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
+            allowNull: false,
             defaultValue: false
         },
         creditCard: {
             type: DataTypes.BIGINT,
         },
+        status: {
+            type: DataTypes.ENUM('active', 'banned', 'deleted'),
+            allowNull: false,
+            defaultValue: 'active'
+        }
     }, {
         timestamps: false
     });

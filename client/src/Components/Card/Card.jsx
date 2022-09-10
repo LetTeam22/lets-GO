@@ -1,33 +1,35 @@
 import React from 'react';
 import s from './Card.module.css';
-import imgRat0 from '../../image/stars/0stars.png'
-import imgRat05 from '../../image/stars/0.5star.png'
-import imgRat1 from '../../image/stars/1star.png'
-import imgRat15 from '../../image/stars/1.5stars.png'
-import imgRat2 from '../../image/stars/2stars.png'
-import imgRat25 from '../../image/stars/2.5stars.png'
-import imgRat3 from '../../image/stars/3stars.png'
-import imgRat35 from '../../image/stars/3.5stars.png'
-import imgRat4 from '../../image/stars/4stars.png'
-import imgRat45 from '../../image/stars/4.5stars.png'
-import imgRat5 from '../../image/stars/5stars.png'
-import rodado from '../../image/rueda_bici.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
-import gear from '../../image/gear.png'
-import ray from '../../image/ray.png'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from "../../Redux/actions";
+import { addFavoriteToDb,removeFavoriteFromDb } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import { AiFillHeart, AiOutlineHeart }  from 'react-icons/ai';
+import { GiElectric } from 'react-icons/gi';
+import { GoGear } from 'react-icons/go';
+import { TbDiscount2 } from 'react-icons/tb';
+import { finalPrice } from '../../helpers/applyDiscount';
 
-
-export const Card = ({ name, type, image, traction, wheelSize, price, rating, id, idBike }) => {
+export const Card = ({ name, type, image, traction, wheelSize, price, discount, rating, id, idBike }) => {
     
     const dispatch = useDispatch();
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user} = useAuth0();
     const favorites = useSelector(state => state.favorites);
+
+
+    const imgRat0 = "https://res.cloudinary.com/pflet/image/upload/v1662686116/Let/image/stars/0stars_e0ehyc.png"
+    const imgRat05 = "https://res.cloudinary.com/pflet/image/upload/v1662686112/Let/image/stars/0.5star_kbkxqg.png"
+    const imgRat1 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/1star_cbqaj3.png"
+    const imgRat15 = "https://res.cloudinary.com/pflet/image/upload/v1662686119/Let/image/stars/1.5stars_gwm63h.png"
+    const imgRat2 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/2stars_nnodhd.png"
+    const imgRat25 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/2.5stars_tzskis.png"
+    const imgRat3 = "https://res.cloudinary.com/pflet/image/upload/v1662686134/Let/image/stars/3stars_mfspbx.png"
+    const imgRat35 = "https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/stars/3.5stars_wbsdlh.png"
+    const imgRat4 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/4stars_duh9ag.png"
+    const imgRat45 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/4.5stars_wjm9o0.png"
+    const imgRat5 = "https://res.cloudinary.com/pflet/image/upload/v1662686135/Let/image/stars/5stars_dphk3f.png"
 
     const imgRating = rat => {
         if (rat < 0.5) return imgRat0
@@ -55,8 +57,9 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
             });
         } else {
             const alreadyFavorite = favorites.find(f => f.idBike === idBike)
+            const email = user.email
             if(!alreadyFavorite) {
-                dispatch(addFavorite(idBike))
+                dispatch(addFavoriteToDb({bikeId:idBike,email:email}))
                 swal({ title: "let's GO agregada a favoritos", text: "revisá tu perfil!", icon: "success",
                     button: {
                       confirm: {
@@ -69,8 +72,8 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                     }
                 })
             } else {
-                dispatch(removeFavorite(idBike))
-                console.log('desde card' + idBike)
+                dispatch(removeFavoriteFromDb({bikeId:idBike,email:email}))
+                // console.log('desde card' + idBike)
             }
         }
     };
@@ -89,6 +92,13 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
 
     return (
         <div className={id % 2 === 0 ? `${s.card}` : `${s.cardTwo}`}>
+            {
+                !!Number(discount) && 
+                <div className={s.discountCont}>
+                    <TbDiscount2 size='2rem' />
+                    <span className={s.discount}>{`-${discount}%`}</span>
+                </div>
+            }
             { <button className={s.fav} onClick={handleFav}> { bikeIsFavorite(idBike)
                 ? <AiFillHeart style= {iconStyle}/>
                 : <AiOutlineHeart style= {iconStyle}/> }
@@ -101,9 +111,11 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                 <Link to={"/bike/" + idBike}><h3 className={s.name}>{name}</h3></Link> 
                 <div className={s.dataCont}>
                     <span className={s.type}>{type} </span>
-                    <img className={traction === 'eléctrica' ? s.electrica : s.mecanica} src={traction === 'eléctrica' ? ray : gear} alt='Tracción '/>
+                    {
+                        traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
+                    } 
                     <div className={s.rodadoCont}>
-                        <img className={s.rueda} src={rodado} alt='Rodado '/>
+                        <img className={s.rueda} src="https://res.cloudinary.com/pflet/image/upload/v1662686110/Let/image/rueda_bici_kouezn.png" alt='Rodado '/>
                         <span className={s.rodado}>{wheelSize}</span>
                     </div>
                 </div>              
@@ -111,9 +123,11 @@ export const Card = ({ name, type, image, traction, wheelSize, price, rating, id
                     <img className={s.stars} src={imgRating(rating)} alt='Rating '/>
                     <span className={s.rating}>{rating}</span>
                 </div>
-                <h4 className={s.price}>${price}/día</h4>
+                <div className={s.priceCont}>
+                    <h4 className={Number(discount) ? s.oldPrice : s.price}>${price}/día</h4>
+                    { !!Number(discount) && <h4 className={s.newPrice}>${finalPrice(price, discount)}/día</h4> }
+                </div>
             </div>
-                              
-        </div>
+        </div>  
     )
 };

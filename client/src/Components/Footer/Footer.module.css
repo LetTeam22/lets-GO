@@ -17,7 +17,7 @@
     margin-top: 3rem;
 }
 
-h5 {
+.h5 {
     color: #FFFFFF;
     font-family: 'Roboto';
     font-style: normal;
@@ -46,4 +46,26 @@ h5 {
 
 span {
     cursor: pointer;
+}
+
+@media (max-width:750px) {
+    .footer{
+        padding: 0 0.4rem;
+        gap: 0.5rem;
+    }
+    .services, .guia, .company{
+        margin-top: 2rem;
+    }
+    .icons{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .h5{
+        font-size: 0.8rem;
+        line-height: normal;
+        height: 1.5rem;
+    }
+    .footerSpan{
+        font-size: 0.7rem;
+    }
 }

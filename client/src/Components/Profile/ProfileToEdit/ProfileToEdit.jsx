@@ -17,14 +17,16 @@ import { ThemeProvider } from "@emotion/react";
 import swal from "sweetalert";
 import s from "./ProfileToEdit.module.css";
 import Loading from "../../Loading/Loading";
-import image from "../../../image/persona_logeada.png";
+// import image from "../../../image/persona_logeada.png";
 import validate from "../validateFunction";
 import { updateUser } from "../../../Redux/actions";
 import RenderProfilePic from "../../Cloudinary/renderProfilePic";
 import { getUser } from "../../../Redux/actions/index";
-import logo from '../../../image/logo.png';
+// import logo from '../../../image/logo.png';
 
 export const ProfileToEdit = () => {
+  const logo = "https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
+  const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
   const cloudName = 'pflet'
   const {isLoading, user } = useAuth0();
@@ -32,7 +34,7 @@ export const ProfileToEdit = () => {
   useEffect(() => {
     if(user) dispatch(getUser(user?.email));
     if(!user) history.push("/")
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // const userLogged = useSelector((state) => state.user);
   const userLogged = useSelector(state=>state.user)
   const [input, setInput] = useState({
@@ -82,11 +84,11 @@ export const ProfileToEdit = () => {
     const file = await res.json() 
     // console.log(file)
     setUploadedImage(file.public_id)
-    await dispatch(
+    dispatch(
       updateUser({ ...input, email: user.email, profilePic:file.public_id})
     );}
     else{
-      await dispatch(updateUser({ ...input, email: user.email}))
+      dispatch(updateUser({ ...input, email: user.email}))
     }
     // console.log('usuario logueado',userLogged)
     dispatch(getUser(userLogged.email));
