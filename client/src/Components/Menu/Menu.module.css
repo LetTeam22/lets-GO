@@ -22,6 +22,21 @@
     cursor: pointer;
     gap: 1rem;
 }
+.options div a{
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+.options div a div{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #333333;
+    display:none
+}
+/* .responsiveIcons{
+    !important;
+} */
 
 .span {
     font-family: 'Roboto';
@@ -47,11 +62,6 @@
     width: 80%;
     height: 0.2rem;
     background-color: #F9B621;
-}
-
-
-div:hover > hr {
-    display: none;
 }
 
 a {
@@ -89,4 +99,115 @@ hr {
     width: 1.4rem;
     cursor:pointer;
     margin-left: 1rem;
+}
+
+@media (max-width:1140px) {
+    .options{
+        position: fixed;
+        top: calc(100vh - 4rem);
+        left: 0;
+        right: 0;
+        height: 4rem;
+        justify-content: space-evenly;
+        background-color: #333333;
+        gap: 0;
+    }
+    
+}
+
+@media (max-width:900px) {
+    .options div a div{
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        position: absolute;
+        z-index: 10;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+    .span{
+        display: none;
+        position: absolute;
+    }
+    .span::after{
+        background-color: transparent;
+    }
+    .options div a div:hover{
+        animation: up 0.5s forwards;
+    }
+    .active{
+        animation: up 0.5s forwards;
+    }
+    .responsiveIcons{
+        color: #f4b220;
+        background-color: #333333;
+        font-size: 3rem!important;
+    }
+    .img img{
+        width:3rem;
+        height: 3rem;
+        color: #f4b220;
+        background-color: #333333;
+        font-size: 3rem!important;
+    }
+    .options div a div:hover + .span{
+        display: flex;
+        top: 1rem;
+        color: white!important;
+        z-index: 9;
+    }
+    .active + .span{
+        display: flex;
+        top: 1rem;
+        color: white!important;
+        z-index: 9;
+    }
+}
+@media (max-width:750px) {
+    .options{
+        justify-content: space-around;
+    }
+}
+
+@media (max-width:650px) {
+    .menu{
+        justify-content: space-around;
+    }
+    .searchbarContainer{
+        position: absolute;
+        top: 5.9rem;
+        left: 0;
+        right: 0;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: center;
+        background-color: #333333;
+    }
+}
+
+@media (max-width:500px) {
+    .options{
+        height: 3rem;
+        top: calc(100vh - 3rem);
+    }
+    .options div a div{
+        width: 3rem;
+        height: 3rem;
+    }
+    .responsiveIcons{
+        font-size: 2rem!important;
+    }.img img{
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+@keyframes up {
+    0%{
+        transform:translateY(0)
+    }
+    100%{
+        transform:translateY(-2rem);
+    }
 }
