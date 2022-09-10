@@ -22,6 +22,11 @@ server.use((req, res, next) => {
   next();
 });
 
+const cors = require('cors');
+
+//Habilito todas las solicitudes CORS
+server.use(cors());
+
 server.use('/', routes);
 
 // Error catching endware.
