@@ -111,7 +111,7 @@ export const BikeDetail = () => {
         }
       }
     }
-    console.log(accesories)
+    // console.log(accesories)
     return accesories;
   };
 

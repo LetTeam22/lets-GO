@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Experiencies.module.css';
-import experiencies from '../../image/experiencias1.png';
+// import experiencies from '../../image/experiencias1.png';
 
 export const Experiencies = () => {
-
+    const experiencies = 'https://res.cloudinary.com/pflet/image/upload/v1662730961/Let/image/experiencias1_nraf3v.png'
     return (
         <div className={s.experiencies}>
             <span className={s.title}>EXPERIENCIAS</span>

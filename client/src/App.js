@@ -17,7 +17,7 @@ import { ProfileToEdit } from './Components/Profile/ProfileToEdit/ProfileToEdit'
 import {AdminProfile} from './Components/Profile/AdminProfile/AdminProfile.jsx'
 import './App.css';
 import PostLogIn from './Components/NavBar/Authentication/PostLogIn';
-import CreateExperiences from './Components/CreateExperiences/CreateExperiences';
+import { QualifyExperience } from './Components/QualifyExperience/QualifyExperience';
 import Bookings from './Components/Profile/AdminProfile/Bookings';
 import Users from './Components/Profile/AdminProfile/Users';
 import Bikes from './Components/Profile/AdminProfile/Bikes';
@@ -48,7 +48,7 @@ function App() {
         <Route exact path= '/AdminProfile/bikes' component={ Bikes } />
         <Route exact path= '/AdminProfile/experiences' component={ Experiences } />
         <Route exact path= '/AdminProfile/accesories' component={ Accesories } />
-        <Route exact path= '/experience/create' component={ CreateExperiences } />
+        <Route exact path= '/qualifyExperience' component={ QualifyExperience } />
         <Route path='*' component={ Error } />
       </Switch>
       <Footer/>
