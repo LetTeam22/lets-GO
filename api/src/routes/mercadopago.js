@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
         }
     })
 
-    if(user.idUser && totalPrice) {
+    if (user.idUser && totalPrice) {
         let preference = {
             items: [{
                 title: 'Reserva',
@@ -66,22 +66,22 @@ router.get('/pagos/:id', async (req, res) => {
         // Aqui edito el status de la orden
         const newOrder = await Order.create({ external_reference })
 
-        if(payment_id) newOrder.payment_id = payment_id
-        if(status) newOrder.payment_status = status;
-        if(merchant_order_id) newOrder.merchant_order_id = merchant_order_id;
+        if (payment_id) newOrder.payment_id = payment_id
+        if (status) newOrder.payment_status = status;
+        if (merchant_order_id) newOrder.merchant_order_id = merchant_order_id;
         newOrder.status = 'completed';
         console.info('Salvando Order');
-        
+
         try {
             await user.addOrders(newOrder);
             await newOrder.save();
-            return res.redirect('http://localhost:3000/home');
-        } catch(err) {
+            return res.redirect(`http://localhost:3000/checkout`);
+        } catch (err) {
             console.log(err);
             return res.redirect('http://localhost:3000/error');
         }
 
-    } catch(err) {
+    } catch (err) {
         console.error('error al buscar', err);
         return res.redirect('http://localhost:3000/error');
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, sendMpInfo, checkoutBookings } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import swal from "sweetalert";
@@ -19,7 +19,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
-import axios from 'axios'
 import { finalPrice } from '../../helpers/applyDiscount';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -42,7 +41,7 @@ export const ShoppingCart = () => {
   const mpInfo = useSelector(state => state.mpInfo);
   let cartBikes = [];
   const { user, isLoading, isAuthenticated } = useAuth0();
-  
+
   const [loading, setLoading] = useState(false);
 
   const email = localStorage.getItem('email');
@@ -84,7 +83,7 @@ export const ShoppingCart = () => {
 
   let ids = []
   userBoking.forEach(e => {
-    !!e.canasto.length &&  ids.push([e.canasto])
+    !!e.canasto.length && ids.push([e.canasto])
     !!e.silla.length && ids.push([e.silla])
     !!e.luces.length && ids.push([e.luces])
     !!e.casco.length && ids.push([e.casco])
@@ -223,6 +222,7 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
+    checkoutBookings({ ...postedBooking, totalPrice: total })
     dispatch(
       setParameters({
         ...parameters,
@@ -236,12 +236,12 @@ export const ShoppingCart = () => {
   }, [loading]);
 
   useEffect(() => {
-    if(email && !isNaN(total)) {
+    if (email && !isNaN(total)) {
       dispatch(sendMpInfo(total, email));
     }
   }, [total, dispatch, email]);
-  
-  
+
+
   if (isLoading) return <Loading />;
 
   return (
