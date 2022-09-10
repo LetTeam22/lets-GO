@@ -201,6 +201,30 @@ const updateBike = async (req, res, next) => {
     } else res.send({e:'bicicleta no existe'})
 }
 
+// Puntuar Bike
+const updateRating = async (req, res, next) => {
+    const {idBike, rating} = req.body
+    try {
+        const bike = await Bike.findOne({
+            where: {idBike:idBike}
+        })
+        let updateRating = 0;
+        if (!bike.nunOfReviews) updateRating = rating
+        else {
+            updateRating = bike.rating?
+            (bike.nunOfReviews * bike.rating + rating) / (bike.nunOfReviews + 1):
+            rating;
+        }
+        await bike.update({
+            rating: updateRating,
+            nunOfReviews: bike.nunOfReviews + 1
+        });
+        res.send(bike)
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = {
     getAllBikes,
@@ -211,4 +235,5 @@ module.exports = {
     deleteFavorite,
     getAllFavorites,
     updateBike,
+    updateRating,
 }

@@ -38,7 +38,8 @@ module.exports = (sequelize) => {
       defaultValue: 0
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
+      defaultValue:0
     },
     color: {
       type: DataTypes.STRING,
@@ -47,6 +48,10 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM('active', 'service', 'deleted'),
       allowNull: false,
       defaultValue: 'active'
+    },
+    nunOfReviews: {
+      type: DataTypes.INTEGER,
+      defaultValue:0
     }
   }, {
     timestamps: false

@@ -24,6 +24,7 @@ import swal from "sweetalert";
 import { BiMessageEdit } from 'react-icons/bi';
 import { TbSend } from 'react-icons/tb';
 import { FaUserAlt } from 'react-icons/fa';
+import Loading from '../Loading/Loading';
 // import logo from '../../image/logo.png';
 // import { Link, useHistory } from "react-router-dom"
 
@@ -34,12 +35,14 @@ const CreateExperiences = () => {
   const form = useRef();
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false);
+  const [toUpload, setToUpload] = useState('');
   const [input, setInput] = useState({
     textExperience: "",
-    imgExperience: "",
-    //bookingIdBooking,
+    // imgExperience: "",
+    // bookingIdBooking:
     //userIdUser
   })
+  const cloudName = 'pflet'
 
   const history = useHistory()
 
@@ -51,26 +54,29 @@ const CreateExperiences = () => {
     else if (input.textExperience.lenght > 280) errors.textExperience = "Su reseña no puede superar los 280 carcateres"
     return errors
   }
+  if (loading) return <Loading/>;
+  // const upload = async (e) => {
+  //   const files = e.target.files;
+  //   const data = new FormData();
+  //   data.append("file", files[0]);
+  //   data.append("upload_preset", "Experiences");
+  //   setLoading(true)
 
-  const upload = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "Experiences");
-    setLoading(true)
-
-    const res = await axios.post("https://api.cloudinary.com/v1_1/pflet/image/upload", data)
-    const file = await res.data;
-    console.log(file)
-    setInput({
-      ...input,
-      imgExperience: file.public_id
-    })
-    console.log(file.public_id)
-    setLoading(false)
-  }
+  //   const res = await axios.post("https://api.cloudinary.com/v1_1/pflet/image/upload", data)
+  //   const file = await res.data;
+  //   console.log(file)
+  //   setInput({
+  //     ...input,
+  //     imgExperience: file.public_id
+  //   })
+  //   console.log(file.public_id)
+  //   setLoading(false)
+  // }
 
   const handleChange = (e) => {
+    if (e.target.id === "fileToUpload"){
+      setToUpload(e.target.files[0])
+    }
     setInput({
       ...input,
       [e.target.name]: e.target.value
@@ -79,27 +85,38 @@ const CreateExperiences = () => {
       ...input,
       [e.target.name]: e.target.value
     }))
-    console.log(input)
+    // console.log(input)
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!input.textExperience || !input.imgExperience) {
-      return swal("Por favor, completá los campos requeridos")
-    } else if (errors.textExperience || errors.imgExperience) {
-      return swal("Por favor, revisá los datos ingresados")
-    } else {
-      setErrors(validate(input))
-      dispatch(postExperience(input))
+      setLoading(true)
+      const data = new FormData()
+      data.append('file',toUpload)
+      data.append('upload_preset','Experiences')
+      const res = await axios
+        .post("https://api.cloudinary.com/v1_1/pflet/image/upload", data);
+      const file = await res.data;
+      // console.log(file)
+    // if (!input.textExperience || !input.imgExperience) {
+    //   return swal("Por favor, completá los campos requeridos")
+    // } else if (errors.textExperience || errors.imgExperience) {
+    //   return swal("Por favor, revisá los datos ingresados")
+    // } else{}
+      dispatch(postExperience({...input,
+        imgExperience:file.url,
+        bookingIdBooking:1 // IMPORTANTE! uso el ID 1 unicamente para hacer pruebas
+      }))
       setInput({
         textExperience: "",
-        imgExperience: "",
+        // imgExperience: "",
         //bookingIdBooking,
         //userIdUser
       })
+      setLoading(false)
       history.push('/allExperiencies')
-    }
+      return swal("Felicidades!", "Se ha publicado tu experiencia", "success");
   }
 
   return (
@@ -122,7 +139,7 @@ const CreateExperiences = () => {
 
         <div className={s.containerT}>
         <IoAttach color='#F9B621' size='2rem' />
-          <input type="file" onChange={upload} name="file" style={{color:"white", fontFamily:"Roboto"}}/>
+          <input type="file" onChange={handleChange} name="file" style={{color:"white", fontFamily:"Roboto"}} id="fileToUpload"/>
         </div>
 
 

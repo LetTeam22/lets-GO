@@ -6,18 +6,15 @@ import { getAllExperiences } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
 
 export const AllExperiencies = () => {
-
     const dispatch= useDispatch();
-    const allExperiences= useSelector((state) => state.allExperiences)
-
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
     useEffect(() =>{
         dispatch(getAllExperiences())
     }, [dispatch])
-    
+    const allExperiences= useSelector((state) => state.allExperiences)
+
     return (
         // <img src={aux_exp} alt='aux_exp' className={s.img_aux} />
         <div>

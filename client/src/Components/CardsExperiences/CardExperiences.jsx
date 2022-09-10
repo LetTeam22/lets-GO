@@ -10,12 +10,12 @@ const CardExperience = ({ imgExperience, textExperience, idExperience, userIdUse
 
     return (
         <div className={s.blogCard} >
-            {/* <img className={s.imgcard} src={img} alt='img not found' />  */}
+            <img className={s.imgcard} src={imgExperience} alt='img not found' /> 
 
             
-                <RenderAllExperiences
+                {/* <RenderAllExperiences
                     publicId={imgExperience}
-                />
+                /> */}
             
             <div className={s.description}>
                 {/* <h1 className={s.h1}>Aquí recibiría el userId</h1> */}
