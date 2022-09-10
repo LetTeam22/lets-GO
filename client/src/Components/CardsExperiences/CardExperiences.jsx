@@ -6,20 +6,14 @@ import s from './CardExperiences.module.css'
 
 
 
-const CardExperience = ({ imgExperience, textExperience, idExperience, userIdUser, bookingIdBooking }) => {
+const CardExperience = ({ imgExperience, textExperience, userName}) => {
 
     return (
         <div className={s.blogCard} >
             <img className={s.imgcard} src={imgExperience} alt='img not found' /> 
-
-            
-                {/* <RenderAllExperiences
-                    publicId={imgExperience}
-                /> */}
-            
             <div className={s.description}>
-                {/* <h1 className={s.h1}>Aquí recibiría el userId</h1> */}
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
+                <h1 className={s.h1}>{userName}</h1>
                 <p className={s.p}>{textExperience}</p>
             </div>
 

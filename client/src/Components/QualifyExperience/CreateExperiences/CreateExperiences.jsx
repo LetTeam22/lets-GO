@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useRef } from 'react';
 import { useState, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +10,8 @@ import swal from 'sweetalert';
 import { BiMessageEdit } from 'react-icons/bi';
 import { TbSend } from 'react-icons/tb';
 import { FaUserAlt } from 'react-icons/fa';
+import Loading from '../../Loading/Loading';
+
 
 
 export const CreateExperiences = () => {
@@ -20,7 +21,9 @@ export const CreateExperiences = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const userBookings = useSelector(state => state.userBookings);
-  const form = useRef();
+  const form = useRef(); // consultar con sole
+  const [loading, setLoading] = useState(false);
+  const [toUpload, setToUpload] = useState('');
   const [errors, setErrors] = useState({})
   const [input, setInput] = useState({
     textExperience: '',
@@ -36,21 +39,10 @@ export const CreateExperiences = () => {
     return errors
   };
 
-  // función que sube la foto cargada por el usuario a Cloudinary
-  const upload = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'Experiences'); // preset de Cloudinary y directorio donde se alojará la imagen
-    const res = await axios.post(url, data)
-    const file = await res.data;
-    setInput({
-      ...input,
-      imgExperience: file.public_id 
-    })
-  };
-
   const handleChange = e => {
+    if (e.target.id === "fileToUpload"){
+      setToUpload(e.target.files[0])
+    }
     setInput({
       ...input,
       [e.target.name]: e.target.value
@@ -61,23 +53,31 @@ export const CreateExperiences = () => {
     }))
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!input.textExperience || !input.userName) {
       swal('Por favor, completá los campos requeridos')
     } else {
-      dispatch(postExperience(input))
+      setLoading(true);
+      const data = new FormData()
+      data.append('file',toUpload)
+      data.append('upload_preset','Experiences')
+      const res = await axios.post(url, data);
+      const file = await res.data;
+      dispatch(postExperience({...input, imgExperience: file.url,}))
       setInput({
         textExperience: '',
         imgExperience: '',
         bookingIdBooking: userBookings.idBooking,
         userName: ''
       })
+      setLoading(false)
       swal('Gracias por contarnos tu experiencia')
       history.push('/allExperiencies')
     }
   };
 
+  if (loading) return <Loading/>;
   return (
       <form ref={form} onSubmit={handleSubmit} className={s.form} >
         {/* <img src={logo} alt='logo' className={s.logo} /> */}
@@ -92,7 +92,7 @@ export const CreateExperiences = () => {
         </div>
         <div className={s.containerT}>
           <IoAttach color='#F9B621' size='2rem' />
-          <input type='file' onChange={upload} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
+          <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
         </div>
         <div className={s.containerBtn} >
           <TbSend color='white' size='2rem' />
