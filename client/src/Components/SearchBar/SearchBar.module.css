@@ -3,7 +3,7 @@
     align-items: center;
     border: 0.063rem solid rgb(80, 80, 80);
     border-radius: 2rem;
-    width: 15%;
+    width: 15rem;
     height: 2.7rem;
     padding: 0.6rem 0.8rem;
 }
@@ -37,3 +37,30 @@ input {
     font-family: 'Roboto';
     color:white;
 }
+
+@media (max-width:1300px) {
+    .searchBar{
+        width: 12rem;
+    }
+    .text{
+        width: 8rem;
+    }
+}
+
+@media (max-width:1140px) {
+    .searchBar{
+        width: 15rem;
+    }
+    .text{
+        width: 10rem;
+    }
+}
+
+/* @media (max-width:650px) {
+    .searchBar{
+        width: 10rem;
+    }
+    .text{
+        width: 6rem;
+    }
+} */
