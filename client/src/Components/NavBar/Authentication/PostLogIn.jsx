@@ -22,6 +22,8 @@ export default function PostLogIn() {
         if (user?.email) dispatch(getAllFavorites(user?.email))
     }, [])
 
+    localStorage.setItem('email', user?.email);
+
     const goBack = (e) => {
         e.preventDefault();
         dispatch(createUser({ email: user.email }))
