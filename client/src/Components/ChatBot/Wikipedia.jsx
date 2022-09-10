@@ -29,7 +29,7 @@ const Wikipedia = ({ steps }) => {
             });
             console.log(input.seleccionMecanica.value)
         }
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
    
         return (
             <div>
