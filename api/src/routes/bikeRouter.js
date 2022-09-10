@@ -1,5 +1,7 @@
 const { Router } = require('express');
-const { getAllBikes, getRenderedBikes, getBikeId, updateBike, deleteFavorite, postFavorite, getAllFavorites  } = require('../controllers/bikeControllers')
+const { getAllBikes, getRenderedBikes, getBikeId, updateBike, 
+    deleteFavorite, postFavorite, getAllFavorites, updateRating  
+} = require('../controllers/bikeControllers')
 
 
 // Importar todos los routers;
@@ -22,10 +24,12 @@ router.post('/fav',postFavorite)
 // elimina la bike a fav y devuleve bike eliminada
 router.put('/removeFav',deleteFavorite)
 
-
 //Obtiene todas las bicicletas favoritas de un usuario
 // Recibe por params un email de usuario
 router.get('/getAllFavorites/:email',getAllFavorites)
+
+//Actualiza el Rating de una Bicicleta
+router.post('/updateRating',updateRating)
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
     },
     imgExperience: {
       type: DataTypes.STRING,
-      defaultValue: 'sample'
+      defaultValue: 'https://res.cloudinary.com/pflet/image/upload/v1661970867/Let/Experiences/bike.jpg'
     },
     textExperience: {
       type: DataTypes.TEXT,

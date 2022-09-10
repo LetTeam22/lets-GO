@@ -84,11 +84,11 @@ export const ProfileToEdit = () => {
     const file = await res.json() 
     // console.log(file)
     setUploadedImage(file.public_id)
-    await dispatch(
+    dispatch(
       updateUser({ ...input, email: user.email, profilePic:file.public_id})
     );}
     else{
-      await dispatch(updateUser({ ...input, email: user.email}))
+      dispatch(updateUser({ ...input, email: user.email}))
     }
     // console.log('usuario logueado',userLogged)
     dispatch(getUser(userLogged.email));
