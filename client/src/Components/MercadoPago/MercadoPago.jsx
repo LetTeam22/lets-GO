@@ -21,7 +21,7 @@ const Mp = ( {preference, datos} ) => {
                 }
             })
         }
-    }, [mercadopago])
+    }, [mercadopago]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>
