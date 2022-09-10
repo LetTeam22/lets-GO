@@ -11,6 +11,7 @@ import swal from "sweetalert";
 import RenderAccesories from "../Cloudinary/renderAccesories";
 import RenderBikeDetail from "../Cloudinary/renderBikeDetail";
 // import { image } from "@cloudinary/url-gen/qualifiers/source";
+import { finalPrice } from '../../helpers/applyDiscount';
 
 export const BikeDetail = () => {
   const dispatch = useDispatch();
@@ -169,7 +170,12 @@ export const BikeDetail = () => {
                 </div>
                 <p className={s.parameters}> Puntuación {bike.rating}/10</p>
               </div>
-              <h4 className={s.pr}>¡Llevala con vos por ${bike.price} por día!</h4>
+              <div className={s.prCont}>
+                <h4 className={s.pr}>¡Llevala con vos por</h4>
+                <h4 className={Number(bike.discount) ? s.prOld : s.pr}>${bike.price}</h4>
+                { !!Number(bike.discount) && <h4 className={s.pr}>${finalPrice(bike.price, bike.discount)}</h4> }
+                <h4 className={s.pr}>por día!</h4>
+              </div>
             </div>
 
             <div className={s.image1}>
