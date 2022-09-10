@@ -90,3 +90,9 @@ hr {
     cursor:pointer;
     margin-left: 1rem;
 }
+
+.adm {
+    width: 2.3rem;
+    cursor:pointer;
+    margin-right: .8rem;
+}

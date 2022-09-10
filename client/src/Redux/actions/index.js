@@ -5,7 +5,7 @@ import {
     POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE, 
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES, 
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS , GET_ALL_FAVORITES,
-    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, SEND_PREFERENCE_MP
+    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, SEND_PREFERENCE_MP, BOOKING_TO_QUALIFY
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -81,7 +81,7 @@ export const addBooking = payload => {
 };
 
 export const postBookings = (payload) => {
-    console.log(payload)
+    // console.log(payload)
     return (dispatch) => {
         return axios.post('/bookings', payload)
             .then(dispatch({ type: POST_BOOKINGS, payload }))
@@ -118,7 +118,7 @@ export function addFavoriteToDb(objetoUserBike) {
                 dispatch({type:ADD_FAVORITE, payload:respuesta.data})}
         )
     }
-}
+};
 
 export function removeFavoriteFromDb(objetoUserBike) {
     return async function (dispatch) {
@@ -127,12 +127,12 @@ export function removeFavoriteFromDb(objetoUserBike) {
             respuesta => dispatch({type:REMOVE_FAVORITE, idBike:objetoUserBike.bikeId})
         )
     }
-}
+};
 
 export const getAllFavorites = (email) => {
     return dispatch => axios(`/bikes/getAllFavorites/${email}`)
     .then(res => dispatch({type:GET_ALL_FAVORITES, payload: res.data}))
-}
+};
 
 
 // export const removeFavorite = idBike => {
@@ -145,15 +145,10 @@ export const getAllBookings = () => {
         .catch(err => console.log(err));
 };
 
-
 export const postExperience = (payload) => {
-    console.log(payload)
-    return (dispatch) => {
-        return axios.post('/experience/create', payload)
-            .then(dispatch({ type: POST_EXPERIENCE, payload }))
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
+    return dispatch => axios.post('/experience/create', payload)
+        .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
+        .catch(err => console.log(err))   
 };
 
 export const getAllExperiences = () =>{
@@ -161,7 +156,7 @@ export const getAllExperiences = () =>{
         axios('/experience/getall')
         .then(res => dispatch({type: GET_ALL_EXPERIENCES, payload: res.data}))
     }
-}
+};
 
 export const getAllUsers = () => {
     return dispatch => axios('/user/getAll')
@@ -213,4 +208,10 @@ export const sendMpInfo = (preference) => {
     return dispatch => axios(`/mercadopago?priceTotal=${preference.total_amount}&userId=${preference.client_id}`)
         .then(res => dispatch({type: SEND_PREFERENCE_MP, payload: res.data}))
         .catch(err => console.log(err));
-}
+};
+
+export const bookingToQualify = idBooking => {
+    return dispatch => {
+        dispatch({ type: BOOKING_TO_QUALIFY, idBooking })
+    } 
+};

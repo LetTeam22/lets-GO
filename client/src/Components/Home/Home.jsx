@@ -28,9 +28,9 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (user?.email)dispatch(getUser(user?.email))
+    if (user?.email) dispatch(getUser(user?.email))
     if (user?.email) dispatch(getAllFavorites(user?.email))
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     loadParameters();
