@@ -34,8 +34,7 @@ export const AdminProfile = () => {
     firstName: "",
     lastName: "",
     cellphone: "",
-    profilePic: "",
-    userName: "",
+    profilePic: ""
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
@@ -73,15 +72,14 @@ export const AdminProfile = () => {
       firstName: "",
       lastName: "",
       cellphone: "",
-      profilePic: "",
-      userName: "",
+      profilePic: ""
     });
     dispatch(getUser(userToModify.email));
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
   const disabled = userToModify.email
     ? Object.keys(errors).length > 0 ||
-      !(input.firstName || input.lastName || input.cellphone || input.userName)
+      !(input.firstName || input.lastName || input.cellphone)
     : true;
 
   const seeBookings = () => {
@@ -106,12 +104,6 @@ export const AdminProfile = () => {
 
   return (
     <section className={s.allPage}>
-      {/* {probando cloudinary} */}
-      {/* <RenderOneImage publicId={'cld-sample-4'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-5'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-3'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample-2'}></RenderOneImage>
-      <RenderOneImage publicId={'cld-sample'}></RenderOneImage> */}
       <div className={s.column}>
         <div>
           <h1>Reservas</h1>
@@ -140,7 +132,6 @@ export const AdminProfile = () => {
         <h3 className={s.titulo}>Modificar datos de usuarios</h3>
         <AdminSearchBar />
         <div className={s.nameAndImg}>
-          <h4>{userToModify.userName ? userToModify.userName : "Usuario"}</h4>
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -165,18 +156,6 @@ export const AdminProfile = () => {
         </div>
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
-            <FormControl>
-              <InputLabel htmlFor="userName">
-                {userToModify.userName ? userToModify.userName : "Usuario"}
-              </InputLabel>
-              <Input
-                id="userName"
-                aria-describedby="my-helper-text"
-                error={errors.userName ? true : false}
-                value={input.userName}
-                onChange={handleChange}
-              />
-            </FormControl>
             <FormControl>
               <InputLabel htmlFor="firstName">
                 {userToModify.firstName ? userToModify.firstName : "Nombre"}

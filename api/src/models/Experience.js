@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    userName: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },

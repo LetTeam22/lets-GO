@@ -7,7 +7,6 @@ import Dates from "../Dates/Dates";
 import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
-// import sincarrito from '../../image/sincarrito.png'
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
 import emailjs from '@emailjs/browser';
