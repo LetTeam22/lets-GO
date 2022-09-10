@@ -49,3 +49,27 @@
     width: 100%;
 }
 
+@media (max-width:650px) {
+    .text{
+        width: 30rem;
+    }
+    .h1{
+        width: 20rem;
+        font-size: 2.3rem;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width:500px) {
+    .text{
+        width: 20rem;
+        font-size: 1rem;
+    }
+    .h1{
+        width: 14rem;
+        height: 7rem;
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        line-height: 3rem;
+    }
+}

@@ -13,6 +13,7 @@ import Orderings from "../Orderings/Orderings";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
 import { useAuth0 } from "@auth0/auth0-react";
+import ChatBot from "../ChatBot/ChatBot";
 
 export const Home = () => {
   const {user } = useAuth0();
@@ -107,7 +108,7 @@ export const Home = () => {
       loading? <Loading />
       :
     <div className={s.containerHome}>
-
+      <ChatBot/>
       <div className={s.encabezado}>
         <img src="https://res.cloudinary.com/pflet/image/upload/v1662686147/Let/image/encabezado_fsuvbq.png" alt="encabezado" className={s.encabezado} />
       </div>

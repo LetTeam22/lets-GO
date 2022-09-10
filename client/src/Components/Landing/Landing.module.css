@@ -52,7 +52,6 @@
 .textDiv{
     height: calc(100vh - 6rem);
     position: relative;
-    grid-gap: 2rem;
     gap: 2rem;
     display: flex;
     align-items: center;
@@ -135,4 +134,18 @@
 
 #second {
     position: relative;
+}
+
+@media (max-width:500px) {
+    .text{
+        width: 20rem;
+        height: 8rem;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .searchBtn{
+        height: 3rem;
+        width: 10rem;
+        font-size: 1rem;
+    }
 }

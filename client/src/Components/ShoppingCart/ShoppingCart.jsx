@@ -44,33 +44,8 @@ export const ShoppingCart = () => {
   const [loading, setLoading] = useState(false);
   const [ datos, setDatos ] = useState('');
 
-  useEffect(() => {
-      axios.get('http://localhost:3001/mercadopago')
-          .then(data => {
-              setDatos(data.data);
-              console.log('Contenido:', data);
-          })
-          .catch(err => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(getBikes());
-    dispatch(getAccesories());
-    dispatch(getUser(user?.email));
-    dispatch(
-      setParameters({
-        ...parameters,
-        date: { ...parameters.date, from: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).to : "" },
-      })
-    );
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    setLoading(false);
-  }, [loading]);
-
-  if (isLoading) return <Loading />;
+  const email = localStorage.getItem('email');
+  console.log(email);
 
   for (let bike of allBikes) {
     for (let book of bookings)
@@ -242,6 +217,42 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(getBikes());
+    dispatch(getAccesories());
+    dispatch(getUser(user?.email));
+    dispatch(
+      setParameters({
+        ...parameters,
+        date: { ...parameters.date, from: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).from : '', to: localStorage.getItem('date') ? JSON.parse(localStorage.getItem('date')).to : "" },
+      })
+    );
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  console.log(user);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [loading]);
+
+  
+  useEffect(() => {
+    if (user?.email) dispatch(getUser(user?.email));
+    if(email && !isNaN(total)) {
+      axios.get(`http://localhost:3001/mercadopago?totalPrice=${total}&email=${email}`)
+          .then(data => {
+              setDatos(data.data);
+              console.log('Contenido:', data);
+          })
+          .catch(err => console.log(err));
+    }
+  }, [total, userLogged?.idUser, user?.email, dispatch, email]);
+  
+  
+  if (isLoading) return <Loading />;
+
   return (
     !loading && cartBikes.length
       ? <div className={s.container} id={s.cart}>
@@ -371,7 +382,7 @@ export const ShoppingCart = () => {
           <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
           <div className={s.div}>
             
-            <Link to='/home' className={s.containerBtn}>
+            <Link to='/home' className={s.containerBtnHome}>
               <button className={s.returnBtn}>VOLVER AL HOME</button>
             </Link>
           </div>
