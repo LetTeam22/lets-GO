@@ -1,5 +1,5 @@
 .bikes{
-    width: 70rem;
+    width: 75rem;
     height: calc(100vh - 8rem);
     position: relative;
     margin-right: auto;
@@ -18,7 +18,7 @@
 }
 
 .list{
-    width: 62.5rem;
+    width: 68rem;
     height: 32.9rem!important;
     margin-left: auto;
     margin-right: auto;
