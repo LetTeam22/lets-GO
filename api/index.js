@@ -23,7 +23,7 @@ const { conn, Bike } = require('./src/db.js');
 
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   server.listen(process.env.PORT || 3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     const bikes = await Bike.findAll()
