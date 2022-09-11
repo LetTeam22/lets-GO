@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setParameters, postBookings } from "../../Redux/actions";
 import emailjs from '@emailjs/browser';
@@ -13,7 +13,6 @@ export default function Checkout() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { user } = useAuth0();
-    const bookings = useSelector(state => state.checkoutBookings)
 
     const sendEmail = (e) => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
@@ -22,7 +21,7 @@ export default function Checkout() {
             });
     }
 
-    console.log(bookings)
+    const booking = JSON.parse(localStorage.getItem('postedBooking'));
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -30,7 +29,7 @@ export default function Checkout() {
 
     const handleClick = (e) => {
         dispatch(setParameters("resetAllPlusDates"));
-        dispatch(postBookings(bookings))
+        dispatch(postBookings(booking))
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
         sendEmail(e)

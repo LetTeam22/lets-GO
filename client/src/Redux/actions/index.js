@@ -6,7 +6,7 @@ import {
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES,
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
-    CHECKOUT_BOOKINGS, BIKE_RATING
+    BIKE_RATING
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -216,12 +216,6 @@ export const sendMpInfo = (totalPrice, email) => {
         axios.get(`http://localhost:3001/mercadopago?totalPrice=${totalPrice}&email=${email}`)
             .then(res => dispatch({ type: SEND_MP_INFO, payload: res.data }))
             .catch(err => console.log(err))
-    }
-};
-
-export const checkoutBookings = (payload) => {
-    return dispatch => {
-        dispatch({ type: CHECKOUT_BOOKINGS, payload })
     }
 };
 
