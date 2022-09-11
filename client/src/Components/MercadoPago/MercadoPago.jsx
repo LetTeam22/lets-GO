@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useMercadopago } from 'react-sdk-mercadopago';
+import './MercadoPago.css';
 
 const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY_MP;
 
@@ -11,7 +12,6 @@ const Mp = ( {preference, mpInfo} ) => {
 
 
     useEffect(() => {
-
         const container = document.querySelector('.cho-container');
         const btn = document.querySelector('.mercadopago-button');
 
@@ -25,14 +25,14 @@ const Mp = ( {preference, mpInfo} ) => {
                 },
                 render: {
                     container: '.cho-container',
-                    label: 'Pagar',
+                    label: 'RESERVAR',
                 }
             })
         }
     }, [mercadopago, mpInfo]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="cho-container" />
+        <div className='cho-container' />
     )
 }
 
