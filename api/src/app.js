@@ -34,7 +34,7 @@ server.use((req, res, next) => {
 
 const cors = require('cors');
 // Habilito todas las solicitudes CORS
-server.use(cors({ origin: 'https://pf-let.vercel.app' }));
+server.use(cors({ origin: '*' }));
 
 // Habilito CORS para una ruta en particular
 server.get('https://pf-let.vercel.app', cors(),  (req, res, next) => {
