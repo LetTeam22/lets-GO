@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios';
-import { postExperience } from '../../../Redux/actions';
+import { postExperience, getAllExperiences } from '../../../Redux/actions';
 import s from './CreateExperiences.module.css'
 import { IoAttach } from 'react-icons/io5';
 import swal from 'sweetalert';
@@ -20,6 +20,7 @@ export const CreateExperiences = () => {
   const userBookings = useSelector(state => state.userBookings);
   const user = useSelector(state => state.user);
   const form = useRef(); // consultar con sole
+  const allExperiences = useSelector(state => state.allExperiences);
   const [loading, setLoading] = useState(false);
   const [toUpload, setToUpload] = useState('');
   const [errors, setErrors] = useState({})
@@ -29,6 +30,10 @@ export const CreateExperiences = () => {
     bookingIdBooking: userBookings.idBooking,
     firstName: '' 
   });
+
+  useEffect(() => {
+    dispatch(getAllExperiences());
+  },[dispatch]);
 
   const validate = input => {
     let errors = {}
@@ -75,34 +80,44 @@ export const CreateExperiences = () => {
   };
 
   const disabled = Object.keys(errors).length || !input.firstName
+  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking)
   if (loading) return <Loading/>;
-  return (
-    <form ref={form} onSubmit={handleSubmit} className={s.form} >
-      {/* <img src={logo} alt='logo' className={s.logo} /> */}
-      <div className={s.containerT} >
-        <FaUserAlt color='#F9B621' size='2rem' />
-        { user.firstName !== null
-          ? <span className={s.span}>{user.firstName}</span>
-          : <div className={s.inputs}>
-              <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={e => handleChange(e)} />
-            </div>   
-        }
-      </div>
-        { errors.firstName && <span className={s.redspan}>{errors.firstName}</span> }
-      <div className={s.containerT} >
-        <BiMessageEdit color='#F9B621' size='2rem' />
-        <div className={s.textArea} ><textarea value={input.textExperience}
-          onChange={handleChange} name='textExperience' placeholder='Sumate a los leters que cuentan historias...' /></div>
-      </div>
-      { errors.textExperience && <span className={s.redspan}>{errors.textExperience}</span> }
-      <div className={s.containerT}>
-        <IoAttach color='#F9B621' size='2rem' />
-        <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
-      </div>
-      <div className={s.containerBtn} >
-        <TbSend color='white' size='2rem' />
-        <input disabled={disabled} type='submit' value='Enviar' />
-      </div>
-    </form>
+  
+
+  return ( 
+    <>
+      { alreadyQualified ?
+        <div className={s.form}>
+          <span className={s.span}>Ya cargaste una reseña para esta experiencia</span> 
+        </div>
+        : 
+        <form ref={form} onSubmit={handleSubmit} className={s.form} >
+          <div className={s.containerT} >
+            <FaUserAlt color='#F9B621' size='2rem' />
+            { user.firstName !== null
+              ? <span className={s.span}>{user.firstName}</span>
+              : <div className={s.inputs}>
+                  <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={e => handleChange(e)} />
+                </div>   
+            }
+          </div>
+            { errors.firstName && <span className={s.redspan}>{errors.firstName}</span> }
+          <div className={s.containerT} >
+            <BiMessageEdit color='#F9B621' size='2rem' />
+            <div className={s.textArea} ><textarea value={input.textExperience}
+              onChange={handleChange} name='textExperience' placeholder='Sumate a los leters que cuentan historias...' /></div>
+          </div>
+          { errors.textExperience && <span className={s.redspan}>{errors.textExperience}</span> }
+          <div className={s.containerT}>
+            <IoAttach color='#F9B621' size='2rem' />
+            <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
+          </div>
+          <div className={s.containerBtn} >
+            <TbSend color='white' size='2rem' />
+            <input disabled={disabled} type='submit' value='Enviar' />
+          </div>
+        </form>
+      }
+    </>
   )
 };
