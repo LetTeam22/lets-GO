@@ -65,9 +65,11 @@ export const CreateExperiences = () => {
     const data = new FormData()
     data.append('file',toUpload)
     data.append('upload_preset','Experiences')
-    const res = await axios.post(url, data);
-    const file = await res.data;
-    dispatch(postExperience({...input, imgExperience: file.url, }))
+    const res = toUpload? await axios.post(url, data):"";
+    const file = toUpload? await res.data:"";
+    console.log("el Input",input)
+    if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, }))
+    else await dispatch(postExperience({...input, imgExperience: undefined, }))
     setInput({
       textExperience: '',
       imgExperience: '',

@@ -26,7 +26,7 @@ export default function PostLogIn() {
 
     const goBack = (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user.email }))
+        dispatch(createUser({ email: user?.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push(localStorage.getItem('url'))
@@ -35,7 +35,7 @@ export default function PostLogIn() {
     }
     const goProfile = (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user.email }))
+        dispatch(createUser({ email: user?.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push('/bike/profile')
@@ -44,7 +44,7 @@ export default function PostLogIn() {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {

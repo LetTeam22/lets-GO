@@ -60,5 +60,23 @@
         "bikeIds":[20,21,22],
         "AccIds":[2,3,4],
         "totalPrice":3500
+    },
+
+    {
+        "startDate":"2022-06-13",
+        "endDate":"2022-06-15",
+        "userId":7,
+        "bikeIds":[20,21,22],
+        "AccIds":[2,3,4],
+        "totalPrice":3500
+    },
+
+    {
+        "startDate":"2022-06-01",
+        "endDate":"2022-06-02",
+        "userId":7,
+        "bikeIds":[20,21,22],
+        "AccIds":[2,3,4],
+        "totalPrice":3500
     }
 ]
