@@ -23,10 +23,19 @@ server.use((req, res, next) => {
   next();
 });
 
-const cors = require('cors');
+server.use(
+  require("cors")({
+  origin: function (origin, callback) {
+  callback(null, origin);
+  },
+  credentials: true
+  })
+);
+
+// const cors = require('cors');
 
 //Habilito todas las solicitudes CORS
-server.use(cors());
+// server.use(cors());
 
 server.use('/', routes);
 
