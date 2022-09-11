@@ -5,7 +5,8 @@ import {
     POST_BOOKINGS, GET_FAMOUS_BIKES, GET_ACCESORIES, ADD_FAVORITE,
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES,
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
-    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, CHECKOUT_BOOKINGS,
+    UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
+    CHECKOUT_BOOKINGS, BIKE_RATING
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -222,4 +223,10 @@ export const checkoutBookings = (payload) => {
     return dispatch => {
         dispatch({ type: CHECKOUT_BOOKINGS, payload })
     }
+};
+
+export const postBikeRating = payload => {
+    return dispatch => axios.post('/bikes/updateRating', payload)
+        .then(res => dispatch({ type: BIKE_RATING, payload: res.data }))
+        .catch(err => console.log(err))
 };
