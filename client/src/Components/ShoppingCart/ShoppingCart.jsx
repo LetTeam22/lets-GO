@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { getAccesories, getBikes, getUser, postBookings, setParameters, getDisabledDates, sendMpInfo, checkoutBookings } from "../../Redux/actions";
+import { Link } from "react-router-dom";
+import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
-import swal from "sweetalert";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
-import emailjs from '@emailjs/browser';
 import { BiTrash } from 'react-icons/bi';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,14 +18,9 @@ import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
 
-const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
 export const ShoppingCart = () => {
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
 
@@ -39,7 +32,7 @@ export const ShoppingCart = () => {
   const userBoking = useSelector(state => state.bookings);
   const mpInfo = useSelector(state => state.mpInfo);
   let cartBikes = [];
-  const { user, isLoading, isAuthenticated } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
   const [loading, setLoading] = useState(false);
 
@@ -80,7 +73,11 @@ export const ShoppingCart = () => {
     dispatch(getDisabledDates(newBikeIds))
   }
 
-  let ids = []
+  let ids = useMemo(() => {
+    return [];
+  }, []);
+
+  
   userBoking.forEach(e => {
     !!e.canasto.length && ids.push([e.canasto])
     !!e.silla.length && ids.push([e.silla])
@@ -93,13 +90,15 @@ export const ShoppingCart = () => {
     ids = ids.map(e => e)
   });
 
-  let postedBooking = {
-    startDate: date.from,
-    endDate: date.to,
-    userId: userLogged?.idUser,
-    bikeIds: postbikeIds,
-    AccIds: ids
-  };
+  let postedBooking = useMemo(() => {
+    return {
+      startDate: date.from,
+      endDate: date.to,
+      userId: userLogged?.idUser,
+      bikeIds: postbikeIds,
+      AccIds: ids, 
+    }
+  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
 
   const llenarAccs = (accs) => {
     let accesories = [];
@@ -163,52 +162,6 @@ export const ShoppingCart = () => {
     total_amount: total * 1.05
   }
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
-      .then((result) => {
-      }, (error) => {
-      });
-  }
-
-  const handleBooking = (e) => {
-    if (!isAuthenticated) {
-      swal({
-        title: "PRECAUCION",
-        text: "Debes loguearte primero",
-        icon: "warning",
-        button: {
-          text: "Ok",
-          value: true,
-          visible: true,
-          className: s.btnSwal,
-          closeModal: true,
-        },
-      });
-    } else {
-      dispatch(setParameters("resetAllPlusDates"));
-      dispatch(postBookings({ ...postedBooking, totalPrice: total }));
-      localStorage.removeItem("booking");
-      localStorage.removeItem("date");
-      swal({
-        title: "Tu reserva fue confirmada!",
-        text: "Disfruta tu aventura!",
-        icon: "success",
-        button: {
-          confirm: {
-            text: "Ok",
-            value: true,
-            visible: true,
-            className: s.btnSwal,
-            closeModal: true,
-          },
-        },
-      });
-      sendEmail(e)
-      history.push("/home");
-    }
-  };
-
   const deleteItem = (e, id) => {
     e.preventDefault();
     setLoading(true);
@@ -221,7 +174,6 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
-    checkoutBookings({ ...postedBooking, totalPrice: total })
     dispatch(
       setParameters({
         ...parameters,
@@ -235,11 +187,14 @@ export const ShoppingCart = () => {
   }, [loading]);
 
   useEffect(() => {
+    localStorage.setItem('postedBooking', JSON.stringify({...postedBooking, totalPrice: total}))
+  }, [total, postedBooking])
+
+  useEffect(() => {
     if (email && !isNaN(total)) {
       dispatch(sendMpInfo(total, email));
     }
   }, [total, dispatch, email]);
-
 
   if (isLoading) return <Loading />;
 
@@ -347,7 +302,7 @@ export const ShoppingCart = () => {
                       BUSCAR MAS BICICLETAS
                     </button>
                   </Link>
-                  <button
+                  {/* <button
                     disabled={
                       postedBooking.startDate === "" ||
                         postedBooking.endDate === "" ||
@@ -359,8 +314,13 @@ export const ShoppingCart = () => {
                     className={s.reserveBtn}
                   >
                     RESERVAR
-                  </button>
-                  <Mp preference={preference} mpInfo={mpInfo} />
+                  </button> */}
+                  {
+                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length 
+                    ? <></>
+                    : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total}/>
+                  }
+
                 </div>
               </div>
             )
