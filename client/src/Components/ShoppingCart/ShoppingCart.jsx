@@ -17,7 +17,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-// import Mp from '../MercadoPago/MercadoPago';
+import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -234,11 +234,11 @@ export const ShoppingCart = () => {
     setLoading(false);
   }, [loading]);
 
-  // useEffect(() => {
-  //   if (email && !isNaN(total)) {
-  //     dispatch(sendMpInfo(total, email));
-  //   }
-  // }, [total, dispatch, email]);
+  useEffect(() => {
+    if (email && !isNaN(total)) {
+      dispatch(sendMpInfo(total, email));
+    }
+  }, [total, dispatch, email]);
 
 
   if (isLoading) return <Loading />;
@@ -360,7 +360,7 @@ export const ShoppingCart = () => {
                   >
                     RESERVAR
                   </button>
-                  {/* <Mp preference={preference} mpInfo={mpInfo} /> */}
+                  <Mp preference={preference} mpInfo={mpInfo} />
                 </div>
               </div>
             )

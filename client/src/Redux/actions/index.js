@@ -210,16 +210,16 @@ export const bookingToQualify = idBooking => {
     }
 };
 
-// export const sendMpInfo = (totalPrice, email) => {
-//     return dispatch => {
-//         axios.get(`http://localhost:3001/mercadopago?totalPrice=${totalPrice}&email=${email}`)
-//             .then(res => dispatch({ type: SEND_MP_INFO, payload: res.data }))
-//             .catch(err => console.log(err))
-//     }
-// }
+export const sendMpInfo = (totalPrice, email) => {
+    return dispatch => {
+        axios.get(`http://localhost:3001/mercadopago?totalPrice=${totalPrice}&email=${email}`)
+            .then(res => dispatch({ type: SEND_MP_INFO, payload: res.data }))
+            .catch(err => console.log(err))
+    }
+};
 
 export const checkoutBookings = (payload) => {
     return dispatch => {
         dispatch({ type: CHECKOUT_BOOKINGS, payload })
     }
-}
+};
