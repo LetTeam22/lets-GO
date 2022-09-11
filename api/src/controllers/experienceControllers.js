@@ -3,7 +3,7 @@ const {User, Experience, Booking} = require ('../db.js')
 
 // Devuelve todas las experiencias
 async function allExperiences (req, res, next) {
-    const experience = await Experience.findAll();
+    const experience = await Experience.findAll({order:[['idExperience', 'DESC']]});
     if(experience.length) res.send(experience)
     else res.send('Aún no existen experiencias')
 }
