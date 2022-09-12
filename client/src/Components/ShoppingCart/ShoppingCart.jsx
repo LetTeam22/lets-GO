@@ -29,7 +29,6 @@ export const ShoppingCart = () => {
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
-  const userBoking = useSelector(state => state.bookings);
   const mpInfo = useSelector(state => state.mpInfo);
   let cartBikes = [];
   const { user, isLoading } = useAuth0();
@@ -38,30 +37,18 @@ export const ShoppingCart = () => {
 
   const email = localStorage.getItem('email');
 
-  for (let bike of allBikes) {
-    for (let book of bookings)
-      if (bike.idBike === book.bike) {
-        let pushedbike = {
-          idBike: bike.idBike,
-          name: bike.name,
-          price: bike.price,
-          discount: bike.discount,
-          image: bike.image,
-          accesories: {
-            canasto: book.canasto,
-            silla: book.silla,
-            luces: book.luces,
-            casco: book.casco,
-            candado: book.candado,
-            lentes: book.lentes,
-            botella: book.botella,
-            calzado: book.calzado,
-            totalAcc: book.totalAcc,
-          },
-        };
-        cartBikes.push(pushedbike);
-      }
-  }
+  allBikes.length && bookings.forEach(book => {
+    const bike = allBikes.find(b => b.idBike === book.bike)
+    const pushedbike = {
+      idBike: bike.idBike,
+      name: bike.name,
+      price: bike.price,
+      discount: bike.discount,
+      image: bike.image,
+      accesories: book.accs
+    }
+    cartBikes.push(pushedbike);
+  })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
 
@@ -77,18 +64,11 @@ export const ShoppingCart = () => {
     return [];
   }, []);
 
-  
-  userBoking.forEach(e => {
-    !!e.canasto.length && ids.push([e.canasto])
-    !!e.silla.length && ids.push([e.silla])
-    !!e.luces.length && ids.push([e.luces])
-    !!e.casco.length && ids.push([e.casco])
-    !!e.candado.length && ids.push([e.candado])
-    !!e.lentes.length && ids.push([e.lentes])
-    !!e.botella.length && ids.push([e.botella])
-    !!e.calzado.length && ids.push([e.calzado])
-    ids = ids.map(e => e)
-  });
+  bookings.forEach(book => {
+    book.accs.forEach(acc => {
+      !ids.includes(acc) && ids.push(acc)
+    })
+  })
 
   let postedBooking = useMemo(() => {
     return {
@@ -99,20 +79,6 @@ export const ShoppingCart = () => {
       AccIds: ids, 
     }
   }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
-
-  const llenarAccs = (accs) => {
-    let accesories = [];
-    for (let acc in accs) {
-      if (accs[acc] !== '') {
-        for (let acces of allAccs) {
-          if (acces.name.toLowerCase() === acc) {
-            accesories.push(acces);
-          }
-        }
-      }
-    }
-    return accesories;
-  };
 
   const totalDias = (from, to) => {
     const date1 = new Date(from);
@@ -133,12 +99,13 @@ export const ShoppingCart = () => {
     );
   }, 0);
 
-  const subTotalItems = cartBikes.map(bike => {
-    let subTotal = 0;
-    llenarAccs(bike.accesories)?.map(el => {
-      return subTotal += el.price * totalDias(date.from, date.to)
+  let subTotalItems = 0
+  cartBikes.forEach(bike => {
+    allAccs.length && bike.accesories.forEach(el => {
+      const objAcc = allAccs.find(a => a.idAcc === el)
+      const price = Number(objAcc.price)
+      subTotalItems += price * totalDias(date.from, date.to)
     });
-    return subTotal;
   });
 
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems);
@@ -237,13 +204,14 @@ export const ShoppingCart = () => {
                 {
                   cartBikes.length
                     ? cartBikes.map(bike => {
-                      return llenarAccs(bike.accesories)?.map(el => {
+                      return bike.accesories?.map(el => {
+                        const objAcc = allAccs.find(a => a.idAcc === el)
                         return (
-                          <TableRow key={el.idAcc} >
-                            <TableCell>{el.name}</TableCell>
+                          <TableRow key={objAcc.idAcc} >
+                            <TableCell>{objAcc.name}</TableCell>
                             <TableCell align="center">1</TableCell>
-                            <TableCell align="center">{el.price}</TableCell>
-                            <TableCell align="center">{!isNaN(totalPerBike(el.price)) ? totalPerBike(el.price) : 0}</TableCell>
+                            <TableCell align="center">{Number(objAcc.price)}</TableCell>
+                            <TableCell align="center">{!isNaN(totalPerBike(Number(objAcc.price))) ? totalPerBike(Number(objAcc.price)) : 0}</TableCell>
                           </TableRow>
                         )
                       })
@@ -275,14 +243,17 @@ export const ShoppingCart = () => {
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <RenderOneImage publicId={bike.image} className={s.img} />
                       <div className={s.accesoriesPreview}>
-                        {llenarAccs(bike.accesories)?.map((el) => (
-                          <div>
-                            <RenderAccCart
-                              className={s.imgCloud}
-                              publicId={el.image}
-                            />
-                          </div>
-                        ))}
+                        {bike.accesories?.map((el) => {
+                          const objAcc = allAccs.find(a => a.idAcc === el)
+                          return (
+                            <div key={objAcc.idAcc}>
+                              <RenderAccCart
+                                className={s.imgCloud}
+                                publicId={objAcc.image}
+                                />
+                            </div>
+                          )
+                        })}
                       </div>
                       <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
@@ -302,19 +273,6 @@ export const ShoppingCart = () => {
                       BUSCAR MAS BICICLETAS
                     </button>
                   </Link>
-                  {/* <button
-                    disabled={
-                      postedBooking.startDate === "" ||
-                        postedBooking.endDate === "" ||
-                        !postedBooking.bikeIds.length
-                        ? true
-                        : false
-                    }
-                    onClick={(e) => handleBooking(e)}
-                    className={s.reserveBtn}
-                  >
-                    RESERVAR
-                  </button> */}
                   {
                     postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length 
                     ? <></>
