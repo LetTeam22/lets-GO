@@ -4,7 +4,6 @@ import s from './CardAdventures.module.css'
 
 
 
-
 const CardAdventures = ({ name, description, date, conditions, image, price, difficulty }) => {
     console.log(name, date)
 
