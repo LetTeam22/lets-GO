@@ -302,19 +302,6 @@ export const ShoppingCart = () => {
                       BUSCAR MAS BICICLETAS
                     </button>
                   </Link>
-                  {/* <button
-                    disabled={
-                      postedBooking.startDate === "" ||
-                        postedBooking.endDate === "" ||
-                        !postedBooking.bikeIds.length
-                        ? true
-                        : false
-                    }
-                    onClick={(e) => handleBooking(e)}
-                    className={s.reserveBtn}
-                  >
-                    RESERVAR
-                  </button> */}
                   {
                     postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length 
                     ? <></>
