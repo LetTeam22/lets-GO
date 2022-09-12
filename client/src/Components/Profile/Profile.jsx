@@ -20,6 +20,10 @@ export const Profile = () => {
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
   const { isLoading, user } = useAuth0();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
    
   useEffect(() => {
     dispatch(getUser(user?.email));
@@ -98,9 +102,9 @@ export const Profile = () => {
                     <span className={s.list2}>» Estado: {bookingStatus(b.endDate)}</span>
                     {bookingStatus(b.endDate) === 'Finalizada' && 
                     <div>
-                      <span className={s.list2}>Nos gustaría conocer tu opinión con bicis let's GO, entra al siguiente enlace para puntuar la bici que usaste y compartir tu experiencia! </span>
+                      <span className={s.list2}>Nos gustaría conocer tu experiencia con let's GO, Calificá la bici que usaste y compartÍ tu experiencia! </span>
                         <Link to={'/qualifyExperience'}>
-                          <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>GO!</button>
+                          <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
                         </Link>
                       </div>
                     }
