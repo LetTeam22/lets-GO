@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -7,7 +7,8 @@ import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
 import { Link, useLocation } from "react-router-dom";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import { TbDiscount2, TbMessageDots } from 'react-icons/tb'
+import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
+// import { io } from 'socket.io-client';
 
 export const Menu = () => {
 
@@ -19,9 +20,12 @@ export const Menu = () => {
   const experience = 'https://res.cloudinary.com/pflet/image/upload/v1662742235/Let/image/exp_clwf94.png'
   const user = useSelector(state => state.user);
   const { isAuthenticated } = useAuth0();
-  const location = useLocation()
-  const url = location.pathname
-  
+  const location = useLocation();
+  const url = location.pathname;
+
+  // useEffect(() => {
+  //   const socket = io("http://localhost:5000");
+  // }, [])
 
   return (
     <div className={s.menu}>
@@ -79,7 +83,10 @@ export const Menu = () => {
             <img className={s.carrito} src={carrito} alt='carrito' />
           </button>
         </Link>
-        <img src={bell} className={s.bell} alt='bell' ></img>
+        <div className={s.containerBell}>
+          <img src={bell} className={s.bell} alt='bell' ></img>
+          <div className={s.counter}>2</div>
+        </div>
       </div>
     </div>
   );
