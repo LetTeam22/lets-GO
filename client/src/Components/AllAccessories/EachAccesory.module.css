@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+.blogCard {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem auto;
+    margin-bottom: 1.6%;
+    background: #333333;
+    line-height: 1.4;
+    font-family: 'Roboto';
+    border-radius: .2rem;
+    width: 55%;
+    height: 28.5vh;
+    border-radius: 2rem;
+
+}
+
+.description {
+    padding: 1rem;
+    /* background: #333333; */
+    position: relative;
+    /* z-index: 1; */
+}
+
+.h1 {
+    text-align: left;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #F9B621;
+}
+
+.p {
+    position: relative;
+    margin: 1rem 0 0;
+    font-size: .8rem;
+    font-weight: 300;
+}
