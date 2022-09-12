@@ -11,6 +11,7 @@ import { BiMessageEdit } from 'react-icons/bi';
 import { TbSend } from 'react-icons/tb';
 import { FaUserAlt } from 'react-icons/fa';
 import Loading from '../../Loading/Loading';
+import { Link } from 'react-router-dom';
 
 export const CreateExperiences = () => {
 
@@ -38,7 +39,7 @@ export const CreateExperiences = () => {
   const validate = input => {
     let errors = {}
     if (!input.textExperience) errors.textExperience = 'Debe ingresar una reseña';
-    if (!input.firstName) errors.firstName = 'Debes ingresar tu nombre';
+    if (!input.firstName && !user.firstName) errors.firstName = 'Debes ingresar tu nombre';
     return errors
   };
 
@@ -49,14 +50,12 @@ export const CreateExperiences = () => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-      firstName: user.firstName !== null ? user.firstName : e.target.value
-
     })
     setErrors(validate({
       ...input,
       [e.target.name]: e.target.value,
-      firstName: user.firstName !== null ? user.firstName : e.target.value
     }))
+
   };
 
   const handleSubmit = async e => {
@@ -67,9 +66,8 @@ export const CreateExperiences = () => {
     data.append('upload_preset','Experiences')
     const res = toUpload? await axios.post(url, data):"";
     const file = toUpload? await res.data:"";
-    console.log("el Input",input)
-    if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, }))
-    else await dispatch(postExperience({...input, imgExperience: undefined, }))
+    if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, firstName: input.firstName === '' ? user.firstName : input.firstName }))
+    else await dispatch(postExperience({...input, imgExperience: undefined, firstName: input.firstName === '' ? user.firstName : input.firstName }))
     setInput({
       textExperience: '',
       imgExperience: '',
@@ -81,36 +79,42 @@ export const CreateExperiences = () => {
     history.push('/allExperiencies')
   };
 
-  const disabled = Object.keys(errors).length || !input.firstName
+  const disabled = Object.keys(errors).length || !input.textExperience;
   const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking)
   if (loading) return <Loading/>;
   
-
   return ( 
     <>
       { alreadyQualified ?
-        <div className={s.form}>
-          <span className={s.span}>Ya cargaste una reseña para esta experiencia</span> 
+        <div className={s.formAlr}>
+          <span className={s.spanAlr}>Ya cargaste una reseña para esta experiencia, podes ir a verla junto a la de otros leters!</span>
+          <Link to='/allExperiencies'><button className={s.btn}>EXPERIENCIAS</button></Link>
         </div>
         : 
         <form ref={form} onSubmit={handleSubmit} className={s.form} >
-          <div className={s.containerT} >
+          <div className={s.container} >
             <FaUserAlt color='#F9B621' size='2rem' />
             { user.firstName !== null
               ? <span className={s.span}>{user.firstName}</span>
               : <div className={s.inputs}>
-                  <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={e => handleChange(e)} />
+                  <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={handleChange} />
                 </div>   
             }
           </div>
             { errors.firstName && <span className={s.redspan}>{errors.firstName}</span> }
-          <div className={s.containerT} >
+          <div className={s.container} >
             <BiMessageEdit color='#F9B621' size='2rem' />
-            <div className={s.textArea} ><textarea value={input.textExperience}
-              onChange={handleChange} name='textExperience' placeholder='Sumate a los leters que cuentan historias...' /></div>
+            <div className={s.textArea} >
+              <textarea
+                value={input.textExperience}
+                onChange={handleChange}
+                name='textExperience'
+                placeholder='Sumate a los leters que cuentan historias...'
+                />
+            </div>
           </div>
           { errors.textExperience && <span className={s.redspan}>{errors.textExperience}</span> }
-          <div className={s.containerT}>
+          <div className={s.container}>
             <IoAttach color='#F9B621' size='2rem' />
             <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
           </div>
