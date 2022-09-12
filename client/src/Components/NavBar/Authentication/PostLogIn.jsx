@@ -1,8 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUser, getAllFavorites, getUser } from '../../../Redux/actions';
+import { getAllUsers, createUser, getUser, getAllFavorites } from '../../../Redux/actions';
+import Loading from '../../Loading/Loading';
+import Rejected from './Rejected';
 import s from './PostLogIn.module.css';
 // import postlogin from '../../../image/postlogin.png';
 import emailjs from '@emailjs/browser';
@@ -14,19 +16,23 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
 export default function PostLogIn() {
     const postlogin = "https://res.cloudinary.com/pflet/image/upload/v1662686157/Let/image/postlogin_esasff.png"
     const dispatch = useDispatch()
-    const { user } = useAuth0()
+    const { user, isLoading } = useAuth0()
     const history = useHistory()
+    const allUsers = useSelector(state => state.allUsers)
 
     useEffect(() => {
-        if (user?.email) dispatch(getUser(user?.email))
-        if (user?.email) dispatch(getAllFavorites(user?.email))
+        dispatch(getAllUsers())
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    if(isLoading) return <Loading/>
     localStorage.setItem('email', user?.email);
+
+    const userLogged = allUsers.find(us => us.email === user?.email)
+    if(userLogged && userLogged.status !== 'active') return <Rejected/>
 
     const goBack = (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user?.email }))
+        dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push(localStorage.getItem('url'))
@@ -35,7 +41,7 @@ export default function PostLogIn() {
     }
     const goProfile = (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user?.email }))
+        dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push('/bike/profile')
@@ -44,7 +50,7 @@ export default function PostLogIn() {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user.email }, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
