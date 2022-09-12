@@ -53,13 +53,12 @@ body {
     margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
-    height: 27rem;
+    height: 30rem;
 }
 
 
 
 .container {
-    /* margin-left: 10rem; */
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -131,10 +130,10 @@ body {
     
 }
 
-.redspan {
-    color: red;
+.errSpan {
+    color: #F9B621;
     font-size: 1rem;
-    padding-top: .5rem;
+    padding-top: .1rem;
 }
 
 .span {
