@@ -22,7 +22,7 @@ export const RenderBikeRating = ({publicId, alt="imagen"}) => {
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
   // myImage.resize(fill().width(250).height(250));
   // myImage.resize(pad().width(400).height(200))
-  myImage.resize(scale(200));
+  myImage.resize(scale(300));
 
 
   return (

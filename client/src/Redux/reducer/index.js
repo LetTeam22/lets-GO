@@ -61,6 +61,7 @@ const initialState = {
     allExperiences: [],
     userBookings: [],
     mpInfo: '',
+    bikeRating: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -214,7 +215,8 @@ function rootReducer(state = initialState, action) {
             }
         case BIKE_RATING: 
             return {
-                ...state
+                ...state,
+                bikeRating: [...state.bikeRating, action.payload]
             }
         default: return state
     }
