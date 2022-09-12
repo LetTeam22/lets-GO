@@ -42,3 +42,10 @@
     font-size: .8rem;
     font-weight: 300;
 }
+
+.iconBtn {
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    margin-top: 1rem;
+}
