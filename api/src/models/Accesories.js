@@ -17,13 +17,14 @@ module.exports = (sequelize) => {
         },
         image: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         price: {
             type: DataTypes.DECIMAL,
+            allowNull: false,
         },
         status: {
           type: DataTypes.ENUM('active', 'deleted'),
-          allowNull: false,
           defaultValue: 'active'
         }
     }, {

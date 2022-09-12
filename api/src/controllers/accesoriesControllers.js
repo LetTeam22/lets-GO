@@ -21,6 +21,19 @@ const getAccId = async (req, res, next) => {
     }
 };
 
+// Post
+const postAccesory = async (req, res, next) => {
+    
+    const { name, description, image, price, status } = req.body
+    
+    if (!name || !image || !price) return res.sendStatus(400)
+
+    let acc = { name, description, image, price, status }
+    let accCreated = await Accesories.create(acc)
+    
+    res.send(accCreated)
+}
+
 // Update
 const updateAccesory = async (req, res, next) => {
     const {idAcc, name, description, image, price, status} = req.body
@@ -41,5 +54,6 @@ const updateAccesory = async (req, res, next) => {
 module.exports = {
     getAllAccesories,
     getAccId,
+    postAccesory,
     updateAccesory
 };

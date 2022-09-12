@@ -25,9 +25,11 @@ module.exports = (sequelize) => {
     },
     traction: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     wheelSize: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -39,14 +41,19 @@ module.exports = (sequelize) => {
     },
     rating: {
       type: DataTypes.FLOAT,
-      defaultValue:0
+      allowNull: false,
+      defaultValue:0,
+      get() {
+        const rawValue = this.getDataValue('rating');
+        return rawValue ? Math.round((rawValue + Number.EPSILON) * 100) / 100 : 0;
+      }
     },
     color: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM('active', 'service', 'deleted'),
-      allowNull: false,
       defaultValue: 'active'
     },
     nunOfReviews: {

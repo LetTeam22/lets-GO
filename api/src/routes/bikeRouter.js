@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllBikes, getRenderedBikes, getBikeId, updateBike, 
+const { getAllBikes, getRenderedBikes, getBikeId, postBike, updateBike, 
     deleteFavorite, postFavorite, getAllFavorites, updateRating  
 } = require('../controllers/bikeControllers')
 
@@ -14,6 +14,7 @@ const router = Router();
 router.get('/', getAllBikes);
 router.get('/rendered', getRenderedBikes);
 router.get('/:bikeId', getBikeId)
+router.post('/create', postBike)
 router.put('/update', updateBike)
 
 //Dado id de bike y email por body
