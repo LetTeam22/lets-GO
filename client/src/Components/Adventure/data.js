@@ -20,7 +20,7 @@ const adventures = [
         date: "Todos los viernes"
     },
     {
-        name:"Circuito de las yungas (principiante-medio)",
+        name:"Circuito de las yungas",
         description:"Vení a disfrutar de un escenario increíble arriba de tu Let. Conocé esta selva de montaña y enamorate de la exhuberancia que te ofrece el paisaje. Recorrerás la villa turística y el Parque Sierras de San Javier, para después descender por Villa Nougués, un poblado de montaña construido por familias inmigrantes emulando arquitectónicamente la localidad de Boutx en los  pirineos franceses.",
         conditions:"Incluye bicicleta Let Mountain, casco, caramañola y luces; guía turístico durante todo el circuito y snack en Loma Bola, centro de vuelo donde se realiza el Mundial de Parapente.",
         image:"https://res.cloudinary.com/pflet/image/upload/v1662927402/Let/Adventures/parapente_cu7xgs.jpg",
