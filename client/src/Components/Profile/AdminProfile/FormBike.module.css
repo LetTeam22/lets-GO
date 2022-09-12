@@ -119,11 +119,3 @@
     font-weight: bold;
     margin: 0;
 }
-
-.show{
-    display: flex;
-}
-
-.hidde{
-    display: none;
-}
