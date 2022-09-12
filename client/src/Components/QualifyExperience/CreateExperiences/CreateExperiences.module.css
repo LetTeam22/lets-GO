@@ -5,20 +5,63 @@ body {
     background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
 } */
 
+.formAlr {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    background-color: #33333398;
+    margin-top: 1rem;
+    text-align: center;
+    border-radius: 2rem;
+    height: 15rem;
+}
+
+.spanAlr {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    padding-top: .5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.btn {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 3rem;
+    width: 12rem;
+    border: none;
+    background: #F9B621;
+    cursor: pointer;
+    border-radius: .2rem;
+    margin-bottom: 2rem;
+
+}
+
+.btn:hover {
+    color: #d89c1c;
+    background: #FFFFFF;
+}
+
 .form {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     margin: auto;
-    padding-left: 1rem;
     background-color: #333333;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+    margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
+    height: 27rem;
 }
 
-.containerT {
+
+
+.container {
+    /* margin-left: 10rem; */
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
     column-gap: 2rem;
@@ -26,7 +69,7 @@ body {
 }
 
 .inputs {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: .7rem;
     display: flex;
     align-items: center;
@@ -54,6 +97,8 @@ body {
     padding: 0.5rem;
     border-radius: 1rem;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .inputs input {
@@ -83,6 +128,7 @@ body {
     font-weight: 300;
     color: #FFFFFF;
     cursor: pointer;
+    
 }
 
 .redspan {
