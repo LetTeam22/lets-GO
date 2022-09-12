@@ -72,8 +72,7 @@ const Filters = ({ handleParameter }) => {
                 step={10}
                 onChange={handlePrice}
                 valueLabelDisplay="auto"
-                sx={{color: 'orange'}}
-
+                sx={{color: 'orange', width: '90%', marginLeft: 'auto', marginRight: 'auto'}}
             />
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>

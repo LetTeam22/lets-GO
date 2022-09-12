@@ -25,9 +25,11 @@ module.exports = (sequelize) => {
     },
     traction: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     wheelSize: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     price: {
       type: DataTypes.DECIMAL,
@@ -43,10 +45,10 @@ module.exports = (sequelize) => {
     },
     color: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM('active', 'service', 'deleted'),
-      allowNull: false,
       defaultValue: 'active'
     },
     nunOfReviews: {
