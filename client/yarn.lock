@@ -6108,6 +6108,7 @@
     "to-regex" "^3.0.1"
 
 "expect@^26.6.0", "expect@^26.6.2":
+
   "integrity" "sha512-9/hlOBkQl2l/PLHJx6JjoDF6xPKcJEsUlWKb23rKE7KzeDqUZKXKNMW27KIue5JMdBV9HgmoJPcc8HtO85t9IA=="
   "resolved" "https://registry.npmjs.org/expect/-/expect-26.6.2.tgz"
   "version" "26.6.2"
@@ -8192,6 +8193,7 @@
     "semver" "^7.3.2"
 
 "jest-util@^26.6.0", "jest-util@^26.6.2":
+
   "integrity" "sha512-MDW0fKfsn0OI7MS7Euz6h8HNDXVQ0gaM9uW6RjfDmd1DAFcaxX9OqIakHIqhbnmF08Cf2DLDG+ulq8YQQ0Lp0Q=="
   "resolved" "https://registry.npmjs.org/jest-util/-/jest-util-26.6.2.tgz"
   "version" "26.6.2"

@@ -12,19 +12,35 @@
 .name {
     color: rgb(85, 84, 84);
     font-weight: 600;
+    font-size: 1.5rem;
 }
 
 .spanActual {
     letter-spacing: 0.07em;
     color: rgb(77, 76, 76);
     background-color: #a7e9af93;
-    padding: .2rem;
+    padding: .2rem 1rem .2rem 1rem;
+    font-weight: 600;
+}
+
+.spanActual1 {
+    letter-spacing: 0.07em;
+    color: rgb(77, 76, 76);
+    background-color: #f9b5219f;
+    padding: .2rem 1rem .2rem 1rem;
+    font-weight: 600;
 }
 
 .spanUs {
     margin-top: 1rem;
     letter-spacing: 0.07em;
-    color: rgb(179, 179, 179);
+    color: rgb(110, 110, 110);
+}
+
+.spanUs1 {
+    margin-top: 1rem;
+    letter-spacing: 0.07em;
+    color: #f0efef;
 }
 
 .card {

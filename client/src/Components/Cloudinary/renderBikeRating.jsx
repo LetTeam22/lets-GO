@@ -3,7 +3,7 @@ import {AdvancedImage} from '@cloudinary/react';
 import {Cloudinary} from "@cloudinary/url-gen";
 
 // Import any actions required for transformations.
-import { scale } from "@cloudinary/url-gen/actions/resize";
+import { pad } from "@cloudinary/url-gen/actions/resize";
 // import {fill, resize, pad } from "@cloudinary/url-gen/actions/resize";
 
 export const RenderBikeRating = ({publicId, alt="imagen"}) => {
@@ -20,9 +20,9 @@ export const RenderBikeRating = ({publicId, alt="imagen"}) => {
 
   // Opcional, podemos cambiar las dimensiones CORTANDO LA IMAGEN con fill
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
-  // myImage.resize(fill().width(250).height(250));
-  // myImage.resize(pad().width(400).height(200))
-  myImage.resize(scale(300));
+  // myImage.resize(fill().width(250).height(200));
+  myImage.resize(pad().width(300).height(200))
+  // myImage.resize(scale(400));
 
 
   return (
