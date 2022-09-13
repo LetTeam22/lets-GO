@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
@@ -8,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
-import { BiTrash } from 'react-icons/bi';
+import { BiTrash, BiEdit } from 'react-icons/bi';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -21,6 +22,7 @@ import { finalPrice } from '../../helpers/applyDiscount';
 export const ShoppingCart = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
 
@@ -127,6 +129,12 @@ export const ShoppingCart = () => {
       email: userLogged.email
     },
     total_amount: total * 1.05
+  }
+
+  const editItem = (e, id) => {
+    e.preventDefault();
+    setLoading(true);
+    history.push(`/bike/${id}`)
   }
 
   const deleteItem = (e, id) => {
@@ -255,7 +263,10 @@ export const ShoppingCart = () => {
                           )
                         })}
                       </div>
-                      <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      <div className={s.buttonCont}>
+                        <button onClick={(e) => editItem(e, bike.idBike)} className={s.deleteBtn}><BiEdit color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                        <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      </div>
                     </div>
                   )
                 })
