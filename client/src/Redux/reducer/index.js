@@ -6,7 +6,7 @@ import {
     GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
     GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
-    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING
+    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -213,6 +213,10 @@ function rootReducer(state = initialState, action) {
                 mpInfo: action.payload
             }
         case BIKE_RATING: 
+            return {
+                ...state
+            }
+        case CREATE_BIKE:
             return {
                 ...state
             }
