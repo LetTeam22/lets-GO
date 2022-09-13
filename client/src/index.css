@@ -13,6 +13,6 @@ html {
   box-sizing: inherit; 
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */

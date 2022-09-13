@@ -20,9 +20,17 @@ export const SearchBar = () => {
     const handleSubmit = e => {
         e.preventDefault()
         if (!input) return
-        dispatch(setParameters({...parameters, search: {selected: ['search'], search: input}}))
-        dispatch(setCurrentPage(1));
+        const search = input
         setInput('')
+        if (search.includes('bici')) return history.push('/home')
+        if (search.includes('accesorio')) return history.push('/allAccessories')
+        if (search.includes('aventura')) return history.push('/adventure')
+        if (search.includes('beneficio') || search.includes('promocion') || search.includes('descuento')) return history.push('/promotions')
+        if (search.includes('experiencia')) return history.push('/allExperiencies')
+        if (search.includes('contact')) return history.push('/contact')
+        if (search.includes('perfil') || search.includes('reserva') || search.includes('favorit')) return history.push('/bike/profile')
+        dispatch(setParameters({...parameters, search: {selected: ['search'], search: search}}))
+        dispatch(setCurrentPage(1));
         history.push('/home')
     }
 
