@@ -169,11 +169,12 @@ const deleteFavorite = async (req, res, next) => {
 // Post
 const postBike = async (req, res, next) => {
     
-    const { name, description, type, image, traction, wheelSize, 
+    let { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews } = req.body
     
     if (!name || !type || !image || !traction || !wheelSize || !price || !color) return res.sendStatus(400)
-
+    if (traction === 'mecanica') traction = 'mecánica'
+    if (traction === 'electrica') traction = 'eléctrica'
     let bike = { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews }
     let bikeCreated = await Bike.create(bike)
