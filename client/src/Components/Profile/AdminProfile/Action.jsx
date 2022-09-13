@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, CircularProgress, Fab } from "@mui/material";
 import { Check, Save } from "@mui/icons-material";
-import { updateBike, updateBooking, updateExperience, updateUser } from "../../../Redux/actions";
+import { updateBike, updateBooking, updateExperience, updateUser, updateAccesorie } from "../../../Redux/actions";
 
 export default function Action({ params, rowId, setRowId, origin }) {
   const dispatch = useDispatch();
@@ -38,8 +38,16 @@ export default function Action({ params, rowId, setRowId, origin }) {
         }
     }
     if (origin === 'bikes'){
-        const { id, status, discount } = params.row
-        const result = await dispatch(updateBike({idBike:id, status, discount}))
+        const { id, status, discount, price, name, rating } = params.row
+        const result = await dispatch(updateBike({idBike:id, status, discount, price, name, rating}))
+        if (result) {
+            setSuccess(true);
+            setRowId(null);
+        }
+    }
+    if (origin === 'accesories'){
+        const { id, status, price, name } = params.row
+        const result = await dispatch(updateAccesorie({idAcc:id, status, price, name}))
         if (result) {
             setSuccess(true);
             setRowId(null);

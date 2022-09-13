@@ -28,3 +28,4 @@ export const BOOKING_TO_QUALIFY = 'BOOKING_TO_QUALIFY';
 export const SEND_MP_INFO = 'SEND_MP_INFO';
 export const BIKE_RATING = 'BIKE_RATING';
 export const CREATE_BIKE = 'CREATE_BIKE';
+export const ADD_ADVENTURE = 'ADD_ADVENTURE'

@@ -1,24 +1,82 @@
 .container {
     display: flex;
     flex-direction: row;
-    width: 40%;
-    margin: auto;
-    align-items: center;
-    background-color: #333333;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-    text-align: center;
+    width: 40vw;
+    height: 30vh;
+    background-color: #f0efef;
+    margin: 2rem auto 0 auto;
+    padding: 2rem;
     border-radius: 2rem;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
 }
 .name {
-    color: white;
+    color: rgb(85, 84, 84);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.spanActual {
+    letter-spacing: 0.07em;
+    color: rgb(77, 76, 76);
+    background-color: #a7e9af93;
+    padding: .2rem 1rem .2rem 1rem;
+    font-weight: 600;
+}
+
+.spanActual1 {
+    letter-spacing: 0.07em;
+    color: rgb(77, 76, 76);
+    background-color: #f9b5219f;
+    padding: .2rem 1rem .2rem 1rem;
+    font-weight: 600;
+}
+
+.spanUs {
+    margin-top: 1rem;
+    letter-spacing: 0.07em;
+    color: rgb(110, 110, 110);
+}
+
+.spanUs1 {
+    margin-top: 1rem;
+    letter-spacing: 0.07em;
+    color: #f0efef;
 }
 
 .card {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3rem;
 }
 
 .span {
     color: white; 
+}
+
+
+.btn {
+    padding: 0;
+    background-color: #F9B621;
+    color: rgb(100, 100, 100);
+    font-size: .9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 4vh;
+    cursor: pointer;
+    list-style: none;
+    border-radius: .2rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    margin-right: .5rem;
+}
+
+.ratingUs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
 }

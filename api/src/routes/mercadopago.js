@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const mercadopago = require('mercadopago');
-const { ACCESS_TOKEN } = process.env;
+const { ACCESS_TOKEN, BACK_URL, FRONT_URL } = process.env;
 const { Order, User } = require('../db');
 
 mercadopago.configure({
@@ -34,9 +34,9 @@ router.get('/', async (req, res, next) => {
                 installments: 6
             },
             back_urls: {
-                success: `http://localhost:3001/mercadopago/pagos/${user.idUser}`,
-                failure: 'http://localhost:3001/mercadopago/pagos',
-                pending: 'http://localhost:3001/mercadopago/pagos',
+                success: `${BACK_URL}/mercadopago/pagos/${user.idUser}`,
+                failure: `${BACK_URL}/mercadopago/pagos`,
+                pending: `${BACK_URL}/mercadopago/pagos`,
             }
         }
 
@@ -75,15 +75,15 @@ router.get('/pagos/:id', async (req, res) => {
         try {
             await user.addOrders(newOrder);
             await newOrder.save();
-            return res.redirect(`http://localhost:3000/checkout`);
+            return res.redirect(`${FRONT_URL}/checkout`);
         } catch (err) {
             console.log(err);
-            return res.redirect('http://localhost:3000/error');
+            return res.redirect(`${FRONT_URL}/error`);
         }
 
     } catch (err) {
         console.error('error al buscar', err);
-        return res.redirect('http://localhost:3000/error');
+        return res.redirect(`${FRONT_URL}/error`);
     }
 });
 

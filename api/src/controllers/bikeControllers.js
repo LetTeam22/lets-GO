@@ -1,4 +1,4 @@
-const { Bike, Booking, User } = require('../db')
+const { Bike, Booking, User, Accesories } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -166,17 +166,20 @@ const deleteFavorite = async (req, res, next) => {
     }
 }
 
-//Delete
-const deleteBike = async (req, res, next) => {
-    const { id } = req.params;
-    try {
-        let deletedBike = await Bike.findByPk(id)
-        await deletedBike.destroy()
-        res.status(200).send('Bike deleted succesfully')
-    } catch (error) {
-        next(error)
-    }
- }
+// Post
+const postBike = async (req, res, next) => {
+    
+    const { name, description, type, image, traction, wheelSize, 
+        price, discount, rating, color, status, nunOfReviews } = req.body
+    
+    if (!name || !type || !image || !traction || !wheelSize || !price || !color) return res.sendStatus(400)
+
+    let bike = { name, description, type, image, traction, wheelSize, 
+        price, discount, rating, color, status, nunOfReviews }
+    let bikeCreated = await Bike.create(bike)
+    
+    res.send(bikeCreated)
+}
 
 // Update
 const updateBike = async (req, res, next) => {
@@ -219,21 +222,41 @@ const updateRating = async (req, res, next) => {
             rating: updateRating,
             nunOfReviews: bike.nunOfReviews + 1
         });
-        res.send(bike)
+        res.send({ idBike: bike.idBike, rating: bike.rating })
     } catch (error) {
         next(error)
     }
 }
 
+// Update
+const updatePrices = async (req, res, next) => {
+    const { percentage } = req.body
+    try {
+        const bikes = await Bike.findAll();
+        percentage && bikes.forEach(b => {
+            b.price = Math.round(Number(b.price) * (1 + Number(percentage)))
+            b.save()
+        })
+        const accesories = await Accesories.findAll();
+        percentage && accesories.forEach(a => {
+            a.price = Math.round(Number(a.price) * (1 + Number(percentage)))
+            a.save()
+        })
+        res.send('Precios actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = {
     getAllBikes,
     getRenderedBikes,
     getBikeId,
-    deleteBike,
+    postBike,
     postFavorite,
     deleteFavorite,
     getAllFavorites,
     updateBike,
     updateRating,
+    updatePrices
 }

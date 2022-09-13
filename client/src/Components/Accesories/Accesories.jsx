@@ -19,13 +19,6 @@ export const Accesories = () => {
                 </div>
                 <img src="https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/family_fxmtqx.jpg" alt="family" className={s.familyImage}/>
             </div>
-{/* 
-            <span id={s.one}>Casco</span>
-            <span id={s.two}>Lentes</span>
-            <span id={s.three}>Botellita</span>
-            <span id={s.four}>Calzado</span> */}
-
-
         </div>
     )
 };

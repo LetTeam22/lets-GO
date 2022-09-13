@@ -11,9 +11,13 @@ const Filters = ({ handleParameter }) => {
     const dispatch = useDispatch();
     const parameters = useSelector(state => state.parameters);
     const allBikes = useSelector((state) => state.allBikes);
-    const renderedBikes = useSelector((state) => state.renderedBikes);
+    let renderedBikes = useSelector((state) => state.renderedBikes);
     const realMinPrice = allBikes.length ? Math.min(...allBikes.map(b => Number(b.price))) : 0
     const realMaxPrice = allBikes.length ? Math.max(...allBikes.map(b => Number(b.price))) : 2000
+    const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+    // filtro bicis ya agregadas al carrito
+    renderedBikes = renderedBikes.filter(rb => !bookings.find(bk => bk.bike === rb.idBike))
 
     const handlePrice = (e, newRange) => {
         e.preventDefault()
@@ -72,8 +76,7 @@ const Filters = ({ handleParameter }) => {
                 step={10}
                 onChange={handlePrice}
                 valueLabelDisplay="auto"
-                sx={{color: 'orange'}}
-
+                sx={{color: 'orange', width: '90%', marginLeft: 'auto', marginRight: 'auto'}}
             />
 
             <span className={s.spanFilters}>Tracción (mecánica/eléctrica)</span>

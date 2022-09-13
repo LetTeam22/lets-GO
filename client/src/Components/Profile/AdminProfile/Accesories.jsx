@@ -26,7 +26,7 @@ export default function Bikes() {
       return {
         id: accesorie.idAcc,
         name: accesorie.name,
-        price: `$ ${accesorie.price}`,
+        price: accesorie.price,
         status: accesorie.status
       };
     });
@@ -35,8 +35,8 @@ export default function Bikes() {
   const columnsAccs = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 120 },
-      { field: "price", headerName: "Precio", width: 80 },
+      { field: "name", headerName: "Nombre", width: 120, editable: true },
+      { field: "price", headerName: "Precio", width: 80, type: "number", editable: true },
       { field: "status", headerName: "Estado", width: 100, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },

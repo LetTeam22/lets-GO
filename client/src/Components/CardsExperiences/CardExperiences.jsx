@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './CardExperiences.module.css'
+import { BiLike } from 'react-icons/bi';
+import { AiFillLike } from 'react-icons/ai';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
+const CardExperience = ({ imgExperience, textExperience, firstName, socket}) => {
 
-
-
-const CardExperience = ({ imgExperience, textExperience, firstName}) => {
+    const { user, isAuthenticated } = useAuth0();
+    const [ like, setLike ] = useState(false);
+    
+    const handleLike = (e) => {
+        e.preventDefault();
+        setLike(!like);
+        // socket.emit('sendNotification', {
+        //     senderName: user.name,
+        //     receiverName: firstName
+        // })
+    }
 
     return (
         <div className={s.blogCard} >
@@ -14,6 +26,13 @@ const CardExperience = ({ imgExperience, textExperience, firstName}) => {
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
                 <h1 className={s.h1}>{firstName}</h1>
                 <p className={s.p}>{textExperience}</p>
+                {
+                    isAuthenticated
+                    ? like 
+                        ? <button onClick={e =>  handleLike(e)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
+                        : <button onClick={e =>  handleLike(e)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621'/></button>
+                    : <></>
+                }
             </div>
         </div >
     )

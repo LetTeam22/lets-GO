@@ -42,7 +42,7 @@ async function getBookingsByUserId(req, res, next) {
       include: [
         {
           model: Bike,
-          attributes: ['name', 'image', 'idBike'],
+          attributes: ['name', 'image', 'idBike', 'rating'],
           through: {
             attributes: []
           }

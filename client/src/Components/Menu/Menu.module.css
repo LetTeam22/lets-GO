@@ -106,7 +106,27 @@ hr {
     width: 2.3rem;
     cursor:pointer;
     margin-right: .8rem;
-}    
+}
+
+.containerBell {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.counter {
+    position: absolute;
+    color: white;
+    border: 1px solid red;
+    border-radius: 50%;
+    width: 1.3rem;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    bottom: 0.65rem;
+    left: 1.7rem;
+    font-size: 0.8rem;
+}
 
 @media (max-width:1140px) {
     .options{

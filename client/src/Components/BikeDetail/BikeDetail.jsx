@@ -6,12 +6,10 @@ import { getBikeDetail, addBooking, getAccesories, setBikeDetail } from "../../R
 import Loading from "../Loading/Loading";
 import s from "./BikeDetail.module.css";
 import icon from "../../image/bicisDestacadas/icon.png";
-// import tech from "../../image/Technology.png";
 import swal from "sweetalert";
-import RenderAccesories from "../Cloudinary/renderAccesories";
 import RenderBikeDetail from "../Cloudinary/renderBikeDetail";
-// import { image } from "@cloudinary/url-gen/qualifiers/source";
 import { finalPrice } from '../../helpers/applyDiscount';
+import { Accesory } from "./Accesory";
 
 export const BikeDetail = () => {
   const dispatch = useDispatch();
@@ -19,43 +17,41 @@ export const BikeDetail = () => {
   const allAccs = useSelector((state) => state.accesories);
   const { bikeId } = useParams();
   const history = useHistory();
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+  // me fijo si la bici ya esta en el carrito para ver si hay accesorios ya seleccionados que tienen que aparecer checked
+  const biciEnCarrito = bookings.find(b => b.bike === Number(bikeId))
 
   const [input, setInput] = useState({
     bike: parseInt(bikeId, 10),
-    canasto: '',
-    silla: '',
-    luces: '',
-    casco: '',
-    candado: '',
-    lentes: '',
-    botella: '',
-    calzado: '',
-  });
+    accs: [],
+    totalAcc: 0
+  })     
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAccesories());
     dispatch(getBikeDetail(bikeId));
+    fillInput();
     return () => {
       dispatch(setBikeDetail([]))
     }
-  }, [dispatch, bikeId]);
+  }, [dispatch, bikeId]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // lleno el input si la bici está en el carrito y tiene accesorios
+  const fillInput = () => {
+    if (biciEnCarrito && biciEnCarrito.accs.length) {
+      setInput({...input, accs: [...biciEnCarrito.accs]})
+    }
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
-    const bookedBikes = JSON.parse(localStorage.getItem("booking") || "[]");
-    localStorage.setItem("booking", JSON.stringify([...bookedBikes, input]));
+    const filteredBikes = bookings.filter(b => b.bike !== Number(bikeId))
+    localStorage.setItem("booking", JSON.stringify([...filteredBikes, input]));
     dispatch(addBooking(input));
     setInput({
-      canasto: '',
-      silla: '',
-      luces: '',
-      casco: '',
-      candado: '',
-      lentes: '',
-      botella: '',
-      calzado: '',
+      accs: [],
       totalAcc: 0
     });
     swal({
@@ -87,41 +83,19 @@ export const BikeDetail = () => {
   };
 
   const handleCheck = (e) => {
-    if (e.target.checked) {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
-    }
-    else {
-      setInput({
-        ...input,
-        [e.target.name]: ''
-      });
-    }
+    setInput({
+      ...input,
+      accs: e.target.checked ? [...input.accs, Number(e.target.id)] : [...input.accs].filter(a => a !== Number(e.target.id))
+    });
   };
-
-  const llenarAccs = (accs) => {
-    let accesories = [];
-    for (let acc in accs) {
-      if (accs[acc] !== '' && typeof accs[acc] === 'string') {
-        for (let acces of allAccs) {
-          if (acces.idAcc === parseInt(accs[acc], 10)) {
-            accesories.push(acces);
-          }
-        }
-      }
-    }
-    // console.log(accesories)
-    return accesories;
-  };
-
 
   const adicional = () => {
-    let adic = 0;
-    if (llenarAccs(input).length > 0) {
-      llenarAccs(input).forEach((acc) => (adic += parseInt(acc.price, 10)));
-    }
+    let adic = 0
+    allAccs.length && input.accs.forEach(acc => {
+      const objAcc = allAccs.find(a => a.idAcc === acc)
+      const price = Number(objAcc.price)
+      adic += price
+    })
     input.totalAcc = adic
     return input.totalAcc;
   };
@@ -181,7 +155,6 @@ export const BikeDetail = () => {
             <div className={s.image1}>
               <div className={s.image2}>
                 <RenderBikeDetail publicId={bike.image} />
-                {/* {console.log(bike.image)} */}
               </div>
             </div>
           </div>
@@ -191,152 +164,21 @@ export const BikeDetail = () => {
             </div>
             <div className={s.containerGral}>
               <div className={s.containerAcc}>
-                <div className={s.boxes}>
-                  <input
-                    id="box-1"
-                    value='5'
-                    type="checkbox"
-                    name="canasto"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-1">Canasto</label>
-                  <p className={s.precio}>$ {allAccs[4]?.price} / día</p>
-                  {/* <img src={allAccs[4]?.image} alt="not found" /> */}
-                  {allAccs[4] ? (
-                    <RenderAccesories
-                      className={s.imgCloud}
-                      publicId={allAccs[4].image}
-                    />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-2"
-                    value='3'
-                    type="checkbox"
-                    name="silla"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-2">Silla portabebés</label>
-                  <p className={s.precio}>$ {allAccs[2]?.price} / día</p>
-                  {/* <img src={allAccs[2]?.image} alt="not found" /> */}
-                  {allAccs[2] ? (
-                    <RenderAccesories publicId={allAccs[2].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-3"
-                    value='6'
-                    type="checkbox"
-                    name="luces"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-3">Luces</label>
-                  <p className={s.precio}>$ {allAccs[5]?.price} / día</p>
-                  {/* <img src={allAccs[5]?.image} alt="not found" /> */}
-                  {allAccs[5] ? (
-                    <RenderAccesories publicId={allAccs[5].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-4"
-                    value='1'
-                    type="checkbox"
-                    name="casco"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-4">Casco</label>
-                  <p className={s.precio}>$ {allAccs[0]?.price} / día</p>
-                  {/* <img src={allAccs[0]?.image} alt="not found" /> */}
-                  {allAccs[0] ? (
-                    <RenderAccesories publicId={allAccs[0].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-5"
-                    value='7'
-                    type="checkbox"
-                    name="candado"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-5">Candado</label>
-                  <p className={s.precio}>$ {allAccs[6]?.price} / día</p>
-                  {/* <img src={allAccs[6]?.image} alt="not found" /> */}
-                  {allAccs[6] ? (
-                    <RenderAccesories publicId={allAccs[6].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-6"
-                    value='8'
-                    type="checkbox"
-                    name="lentes"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-6">Lentes</label>
-                  <p className={s.precio}>$ {allAccs[7]?.price} / día</p>
-                  {/* <img src={allAccs[7]?.image} alt="not found" /> */}
-                  {allAccs[7] ? (
-                    <RenderAccesories publicId={allAccs[7].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    id="box-7"
-                    value='2'
-                    type="checkbox"
-                    name="botella"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-7">Botella</label>
-                  <p className={s.precio}>$ {allAccs[1]?.price} / día</p>
-                  {/* <img src={allAccs[1]?.image} alt="not found" /> */}
-                  {allAccs[1] ? (
-                    <RenderAccesories publicId={allAccs[1].image} />
-                  ) : null}
-                </div>
-
-                <div className={s.boxes}>
-                  <input
-                    type="checkbox"
-                    value='4'
-                    id="box-8"
-                    name="calzado"
-                    onClick={(e) => {
-                      handleCheck(e);
-                    }}
-                  />
-                  <label htmlFor="box-8">Calzado</label>
-                  <p className={s.precio}>$ {allAccs[3]?.price} / día</p>
-                  {/* <img src={allAccs[3]?.image} alt="not found" /> */}
-                  {allAccs[3] ? (
-                    <RenderAccesories publicId={allAccs[3].image} />
-                  ) : null}
-                </div>
+                {
+                  allAccs?.filter(acc => acc.status === 'active').map(acc => {
+                    return (
+                      <Accesory 
+                        key={acc.idAcc}
+                        id={acc.idAcc} 
+                        name={acc.name} 
+                        handleCheck={handleCheck} 
+                        price={acc.price} 
+                        image={acc.image}
+                        defaultChecked={biciEnCarrito && biciEnCarrito.accs.includes(acc.idAcc)}
+                      />
+                    )
+                  })
+                }
               </div>
               <div className={s.containerAccesories}>.
                 <div>
@@ -352,19 +194,6 @@ export const BikeDetail = () => {
                   {" "}
                   Agregar al carrito{" "}
                 </button>
-                {/* <div>
-                      <p>Accesorios seleccionados</p>
-                      <ul>
-                        {llenarAccs(input)?.map((acc) => {
-                          return (
-                            <li key={acc.name}>
-                              {acc.name} + ${acc.price} / día
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div> */}
-
               </div>
             </div>
           </div>
