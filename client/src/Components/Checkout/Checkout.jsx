@@ -14,7 +14,7 @@ export default function Checkout() {
     const history = useHistory();
     const { user } = useAuth0();
 
-    const sendEmail = (e) => {
+    const sendEmail = () => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
             .then((result) => {
             }, (error) => {
@@ -24,16 +24,25 @@ export default function Checkout() {
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
 
     useEffect(() => {
+        async function Maxi() {
+            await dispatch(setParameters("resetAllPlusDates"));
+            await dispatch(postBookings(booking))
+        };
+        Maxi();
         window.scrollTo(0, 0);
-    },)
-
-    const handleClick = (e) => {
-        dispatch(setParameters("resetAllPlusDates"));
-        dispatch(postBookings(booking))
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
-        sendEmail(e)
+        sendEmail()
         history.push('/home')
+    },)
+
+    const handleClick = () => {
+        // dispatch(setParameters("resetAllPlusDates"));
+        // dispatch(postBookings(booking))
+        // localStorage.removeItem("booking");
+        // localStorage.removeItem("date");
+        // sendEmail(e)
+        // history.push('/home')
     }
 
     return (
@@ -41,7 +50,7 @@ export default function Checkout() {
             <h1>
                 Felicidades por tu compra
             </h1>
-            <button onClick={e => handleClick(e)}>HOME</button>
+            {/* <button onClick={e => handleClick(e)}>HOME</button> */}
         </>
     )
 }
