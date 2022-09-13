@@ -13,6 +13,7 @@ export const AdminProfile = () => {
   const history = useHistory();
   const [addBike, setAddBike] = useState(false);
   const [addAcc, setAddAcc] = useState(false);
+  const inflationIcon = 'https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png'
 
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
@@ -87,6 +88,7 @@ export const AdminProfile = () => {
               color="primary"
               onClick={addBikes}
             />
+            <img src={inflationIcon} alt="aumentar precio" />
           </div>
         </div>
         <div>
