@@ -61,7 +61,7 @@ const initialState = {
     allExperiences: [],
     userBookings: [],
     mpInfo: '',
-    adventure: []
+    adventure: [],
     bikeRating: []
 }
 
