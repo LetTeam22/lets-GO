@@ -14,8 +14,8 @@ const CardAdventures = ({ id, handleCheck, name, description, date, conditions, 
                 <h2 className={s.h1}>{name}</h2>
                 <p className={s.p}>{description}</p>
                 <p className={s.p2}>{conditions}</p>
-                <p className={s.p}>Precio: ${price}</p>
                 <div className={s.boxes} >
+                    <p className={s.price}>Precio: ${price}</p>
                     <input
                         id={id}
                         type="checkbox"

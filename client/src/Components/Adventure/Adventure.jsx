@@ -35,11 +35,9 @@ export const Adventure = () => {
     });
   };
 
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
 
 
   const adicional = () => {
@@ -51,17 +49,13 @@ export const Adventure = () => {
     return input.totalAdv;
   };
 
-
   return (
-    // <img src="https://res.cloudinary.com/pflet/image/upload/v1662686120/Let/image/aux_/aux_aventuras_ir3wap.png" alt='aux_aventuras' className={s.img_aux} />
-    <div>
-
-      <div className={s.container}>
-        <h1 className={s.h1}>Exclusivo para leters aventureros</h1>
-      </div>
-
-      {
-        adventures.map(a => <CardAdventures
+   
+    <>
+      <div className={s.left}></div>
+      <div className={s.right}></div>
+      <h1 className={s.h1}>Exclusivo para leters aventureros</h1>
+      { adventures.map(a => <CardAdventures
           key={a.id}
           id={a.id}
           name={a.name}
@@ -72,10 +66,10 @@ export const Adventure = () => {
           price={a.price}
           difficulty={a.difficulty}
           handleCheck={handleCheck}
-        />)
-      }
+        />
+      )}
       <div>
-        <div className={s.containerAdic}>
+        <div className={s.container}>
           <p className={s.precioTotal}>Total adicional ${adicional()}</p>
         </div>
         <div className={s.containerBtn}>
@@ -90,6 +84,6 @@ export const Adventure = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   )
 };

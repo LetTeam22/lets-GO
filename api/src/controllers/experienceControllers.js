@@ -1,13 +1,26 @@
-const {User, Experience, Booking} = require ('../db.js')
+const {User, Experience, Booking, Bike} = require ('../db.js')
 
 
 // Devuelve todas las experiencias
 async function allExperiences (req, res, next) {
-    const experience = await Experience.findAll({order:[['idExperience', 'DESC']]});
-    if(experience.length) res.send(experience)
-    else res.send('Aún no existen experiencias')
-}
-
+    try {
+        const experience = await Experience.findAll({
+            include: { 
+                model: Booking,
+                attributes: ['startDate', 'endDate'],
+                include: [{
+                    model: Bike,
+                    attributes: ['name']
+                }] 
+            }, 
+            order: [['idExperience', 'DESC']],
+        });
+        if(experience.length) res.send(experience)
+        else res.send('Aún no existen experiencias')      
+    } catch (error) {
+        next(error)
+    }
+};
 
 // Devuelve los detalles de una Experiencia dado el BookingID
 async function experienceDetails (req, res, next) {
@@ -19,7 +32,7 @@ async function experienceDetails (req, res, next) {
     });
     if(expDetails) res.send(expDetails)
     else res.send('Experiencia de usuario no existe')
-}
+};
 
 // crea una experiencia, necesita recibir ID de booking
 async function createExperience(req, res, next) {
@@ -55,7 +68,7 @@ async function updateExperience (req, res, next) {
         }else res.send({ e:'Experiencia no existe' })
 
     } catch (error) {
-        res.send(error.message)
+        next(error)
     }
 };
 

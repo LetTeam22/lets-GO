@@ -40,7 +40,7 @@ export const BikeRating = ({ name, image, idBike, rating }) => {
                             { ratingBike.rating === 0 ? <span className={s.spanUs} /> :
                             <>
                                 <button className={s.btn} onClick={handleClick}>OK</button>
-                                <span className={s.spanUs}>Calificar con: {ratingBike.rating} puntos</span>
+                                <span className={s.point}> {ratingBike.rating} puntos</span>
                             </>
                             }
                             {/* { disabled && <span className={s.name}>¡Gracias por tu calificación!</span> } */}
@@ -56,7 +56,7 @@ export const BikeRating = ({ name, image, idBike, rating }) => {
                         <span className={s.spanUs1}>.</span>
                         <Rating  disabled={true} name="customized-10" defaultValue={0} max={10} />
                         <div className={s.ratingUs}>              
-                            <span className={s.name}>¡Gracias por tu calificación!</span>
+                            <span className={s.thanks}>¡Gracias por tu calificación!</span>
                         </div>
                     </div>
                 </div>

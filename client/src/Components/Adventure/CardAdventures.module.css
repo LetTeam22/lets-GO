@@ -7,18 +7,23 @@
     margin-bottom: 1.6%;
     background: #333333;
     line-height: 1.4;
-    font-family: 'Roboto';
-    border-radius: .2rem;
-    width: 70%;
-    height: 34vh;
-    border-radius: 2rem;
+    border-radius: .5rem;
+    width: 55%;
+    box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+    overflow-y: scroll; 
+}
+
+.imgcard{
+    display: flex;
+    flex-direction: row;
+    height: 33vh;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .description {
     padding: 1rem;
-    /* background: #333333; */
     position: relative;
-    /* z-index: 1; */
 }
 
 .h1 {
@@ -45,6 +50,12 @@
     font-size: .9rem;
     font-weight: 300;
 }
+.price {
+    font-size: .9rem;
+    font-weight: 300;
+    padding-right: 2rem;
+}
+
 .p2 {
     position: relative;
     margin: 1rem 0 0;
@@ -74,9 +85,9 @@
 /*Checkboxes styles*/
 
 .boxes {
-    /* margin: auto; */
-    padding-top: 1rem;
-    /* width: 17vh; */
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
 }
 
 input[type="checkbox"] { display: none; }

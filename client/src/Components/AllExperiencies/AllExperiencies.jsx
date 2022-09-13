@@ -18,29 +18,30 @@ export const AllExperiencies = ({socket}) => {
     }, [dispatch])
     
     return (
-        // <img src={aux_exp} alt='aux_exp' className={s.img_aux} />
-        <div>
-            <div className={s.container}>
-            <h1 className={s.h1}>Las Let en primera persona</h1>
+        <>
+            <div className={s.left}></div>
+            <div className={s.right}></div>
+            <div>
+                <div className={s.container}>
+                <h1 className={s.h1}>Los Let en primera persona</h1>
+                </div>
+                { allExperiences.length ? allExperiences.map((e) =>{
+                        return (
+                            <CardExperience
+                                key = {e.idExperience}
+                                firstName= {e.firstName}
+                                imgExperience={e.imgExperience}
+                                textExperience={e.textExperience}
+                                startDate={e.booking.startDate}
+                                endDate={e.booking.endDate}
+                                bikes={e.booking.bikes}
+                                socket={socket}
+                                email={e.email}
+                            />
+                        )
+                    }) : <Loading/>  
+                }
             </div>
-            {
-
-                allExperiences.length? allExperiences.map((e) =>{
-                    return (
-                        <CardExperience
-                            key = {e.idExperience}
-                            firstName= {e.firstName}
-                            imgExperience={e.imgExperience}
-                            textExperience={e.textExperience}
-                            socket={socket}
-                            email={e.email}
-                        />
-                    )
-                })
-                :
-                <Loading/>  
-            }
-
-        </div>
+        </>
     )
 };

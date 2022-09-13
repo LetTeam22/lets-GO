@@ -5,7 +5,8 @@ import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-const CardExperience = ({ imgExperience, textExperience, firstName, socket, email}) => {
+
+const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
 
     const { user, isAuthenticated } = useAuth0();
     const [ like, setLike ] = useState(false);
@@ -25,7 +26,11 @@ const CardExperience = ({ imgExperience, textExperience, firstName, socket, emai
             <div className={s.description}>
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
                 <h1 className={s.h1}>{firstName}</h1>
-                <p className={s.p}>{textExperience}</p>
+                <h1 className={s.h1}>Fecha de experiencia → {startDate} / {endDate}</h1>
+                <div className={s.containH1}>Bici →
+                    { bikes.map( b =>  <h1 className={s.h1}> {b.name} ・ </h1> )}
+                </div> 
+                    <p className={s.p}>{textExperience}</p>
                 {
                     isAuthenticated
                     ? like 
