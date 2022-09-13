@@ -1,4 +1,4 @@
-const validateFunctionAdmin = (input, id, errors) => {
+const validateFunctionBike = (input, id, errors) => {
         if(id === 'name'){
           // acepta letras, numeros y espacios
           !/^([a-zA-Z0-9_-]+)(\s[a-zA-Z0-9_-]+)*$/.test(input.name)?
@@ -63,4 +63,4 @@ const validateFunctionAdmin = (input, id, errors) => {
     return errors
 }
 
-export default validateFunctionAdmin
+export default validateFunctionBike
