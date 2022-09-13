@@ -185,6 +185,7 @@ export default function FormBike({ setAddBike }) {
               <InputLabel htmlFor="color">{"Color"}</InputLabel>
               <Input
                 id="color"
+                placeholder="negro-blanco-gris-azul-amarillo-rojo-verde"
                 aria-describedby="my-helper-text"
                 error={errors.color ? true : false}
                 value={input.color}

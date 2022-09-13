@@ -33,9 +33,12 @@ const validateFunctionBike = (input, id, errors) => {
           if(!input.price) delete errors.price;
         }
         if(id === 'color'){
-          // acepta letras y espacios
-          !/^([A-Z]+)(\s[A-Z]+)*$/i.test(input.color)? 
-          errors = {...errors, color: 'Solo se aceptan letras'}
+          // acepta solo los colores establecidos
+          input.color.toLowerCase() !== 'negro' && input.color.toLowerCase() !== 'verde' && 
+          input.color.toLowerCase() !== 'blanco' && input.color.toLowerCase() !== 'rojo'&& 
+          input.color.toLowerCase() !== 'azul' && input.color.toLowerCase() !== 'gris' &&
+          input.color.toLowerCase() !== 'amarillo'?
+          errors = {...errors, color: 'Solo se aceptan los colores establecidos'}
           :
           delete errors.color
           if(!input.color) delete errors.color;
