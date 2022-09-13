@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -8,7 +8,6 @@ import LogOut from '../NavBar/Authentication/LogOut';
 import { Link, useLocation } from "react-router-dom";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
-// import { io } from 'socket.io-client';
 
 export const Menu = () => {
 
@@ -22,11 +21,7 @@ export const Menu = () => {
   const { isAuthenticated } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
-
-  // useEffect(() => {
-  //   const socket = io("http://localhost:5000");
-  // }, [])
-
+  
   return (
     <div className={s.menu}>
       <Link to='/'><img src={logo} alt='logo' className={s.icon} /></Link>

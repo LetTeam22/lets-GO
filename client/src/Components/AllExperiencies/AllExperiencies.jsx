@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
 
-export const AllExperiencies = () => {
+export const AllExperiencies = ({socket}) => {
 
     const dispatch= useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences)
@@ -28,10 +28,11 @@ export const AllExperiencies = () => {
                 allExperiences.length? allExperiences.map((e) =>{
                     return (
                         <CardExperience
-                        key = {e.idExperience}
-                        firstName= {e.firstName}
-                        imgExperience={e.imgExperience}
-                        textExperience={e.textExperience}
+                            key = {e.idExperience}
+                            firstName= {e.firstName}
+                            imgExperience={e.imgExperience}
+                            textExperience={e.textExperience}
+                            socket={socket}
                         />
                     )
                 })

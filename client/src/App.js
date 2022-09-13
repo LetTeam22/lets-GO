@@ -1,3 +1,4 @@
+import React, { useEffect, useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Home } from './Components/Home/Home';
 import { Landing } from './Components/Landing/Landing'
@@ -23,35 +24,96 @@ import Users from './Components/Profile/AdminProfile/Users';
 import Bikes from './Components/Profile/AdminProfile/Bikes';
 import Experiences from './Components/Profile/AdminProfile/Experiences';
 import Accesories from './Components/Profile/AdminProfile/Accesories';
-import Checkout from './Components/Checkout/Checkout'
+import Checkout from './Components/Checkout/Checkout';
+import { io } from 'socket.io-client';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
+
+  const { user, isAuthenticated } = useAuth0();
+  // const [ username, setUsername ] = useState('');
+  const [ socket, setSocket ] = useState(null);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:5000"))
+  }, []);
+
+  useEffect(() => {
+    isAuthenticated && socket?.emit('newUser', user)
+  }, [socket, user, isAuthenticated])
+
   return (
     <>
-      <NavBar />
+      <NavBar socket={socket} />
       <Switch>
-        <Route exact path='/' component={Landing} />
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/bike/profile' component={Profile} />
-        <Route exact path='/bike/privateRoute' component={Private} />
-        <Route exact path='/bike/:bikeId' component={BikeDetail} />
-        <Route exact path='/allAccessories' component={AllAccesories} />
-        <Route exact path='/adventure' component={Adventure} />
-        <Route exact path='/promotions' component={Promotions} />
-        <Route exact path='/allExperiencies' component={AllExperiencies} />
-        <Route exact path='/contact' component={Contact} />
-        <Route exact path='/cart' component={ShoppingCart} />
-        <Route exact path='/postLogin' component={PostLogIn} />
-        <Route exact path='/editProfile' component={ProfileToEdit} />
-        <Route exact path='/AdminProfile' component={AdminProfile} />
-        <Route exact path='/AdminProfile/bookings' component={Bookings} />
-        <Route exact path='/AdminProfile/users' component={Users} />
-        <Route exact path='/AdminProfile/bikes' component={Bikes} />
-        <Route exact path='/AdminProfile/experiences' component={Experiences} />
-        <Route exact path='/AdminProfile/accesories' component={Accesories} />
-        <Route exact path='/qualifyExperience' component={QualifyExperience} />
-        <Route exact path='/checkout' component={Checkout} />
-        <Route path='*' component={Error} />
+        {/* <Route exact path='/' component={Landing} /> */}
+        <Route exact path='/'><Landing /></Route>
+
+        {/* <Route exact path='/home' component={Home} /> */}
+        <Route exact path='/home'><Home socket={socket} /></Route>
+
+        {/* <Route exact path='/bike/profile' component={Profile} /> */}
+        <Route exact path='/bike/profile'><Profile /></Route>
+
+        {/* <Route exact path='/bike/privateRoute' component={Private} /> */}
+        <Route exact path='/bike/privateRoute'><Private /></Route>
+
+        {/* <Route exact path='/bike/:bikeId' component={BikeDetail} /> */}
+        <Route exact path='/bike/:bikeId'><BikeDetail /></Route>
+
+        {/* <Route exact path='/allAccessories' component={AllAccesories} /> */}
+        <Route exact path='/allAccessories'><AllAccesories /></Route>
+
+        {/* <Route exact path='/adventure' component={Adventure} /> */}
+        <Route exact path='/adventure'><Adventure /></Route>
+
+
+        {/* <Route exact path='/promotions' component={Promotions} /> */}
+        <Route exact path='/promotions'><Promotions /></Route>
+
+        {/* <Route exact path='/allExperiencies' component={AllExperiencies} /> */}
+        <Route exact path='/allExperiencies'><AllExperiencies socket={socket} /></Route>
+
+        {/* <Route exact path='/contact' component={Contact} /> */}
+        <Route exact path='/contact'><Contact /></Route>
+
+        {/* <Route exact path='/cart' component={ShoppingCart} /> */}
+        <Route exact path='/cart'><ShoppingCart /></Route>
+
+        {/* <Route exact path='/postLogin' component={PostLogIn} /> */}
+        <Route exact path='/postLogin'><PostLogIn /></Route>
+
+        {/* <Route exact path='/editProfile' component={ProfileToEdit} /> */}
+        <Route exact path='/editProfile'><ProfileToEdit /></Route>
+
+        {/* <Route exact path='/AdminProfile' component={AdminProfile} /> */}
+        <Route exact path='/AdminProfile'><AdminProfile /></Route>
+
+
+        {/* <Route exact path='/AdminProfile/bookings' component={Bookings} /> */}
+        <Route exact path='/AdminProfile/bookings'><Bookings /></Route>
+
+        {/* <Route exact path='/AdminProfile/users' component={Users} /> */}
+        <Route exact path='/AdminProfile/users'><Users /></Route>
+
+
+        {/* <Route exact path='/AdminProfile/bikes' component={Bikes} /> */}
+        <Route exact path='/AdminProfile/bikes'><Bikes /></Route>
+
+        {/* <Route exact path='/AdminProfile/experiences' component={Experiences} /> */}
+        <Route exact path='/AdminProfile/experiences'><Experiences /></Route>
+
+        {/* <Route exact path='/AdminProfile/accesories' component={Accesories} /> */}
+        <Route exact path='/AdminProfile/accesories'><Accesories /></Route>
+
+        {/* <Route exact path='/qualifyExperience' component={QualifyExperience} /> */}
+        <Route exact path='/qualifyExperience'><QualifyExperience /></Route>
+
+        {/* <Route exact path='/checkout' component={Checkout} /> */}
+        <Route exact path='/checkout'><Checkout /></Route>
+
+        {/* <Route path='*' component={Error} /> */}
+        <Route exact path='*'><Error /></Route>
       </Switch>
       <Footer />
     </>
