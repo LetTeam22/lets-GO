@@ -62,6 +62,7 @@ export const Adventure = () => {
 
       {
         adventures.map(a => <CardAdventures
+          key={a.id}
           id={a.id}
           name={a.name}
           date={a.date}
