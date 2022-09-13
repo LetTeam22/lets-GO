@@ -58,13 +58,13 @@ export default function Bikes() {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 150 },
+      { field: "name", headerName: "Nombre", width: 150, editable: true },
       { field: "type", headerName: "Tipo", width: 80 },
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
-      { field: "price", headerName: "Precio", width: 80 },
-      { field: "discount", headerName: "Descuento", width: 90 , type: "singleSelect",
+      { field: "price", headerName: "Precio", width: 80, type: "number", editable: true },
+      { field: "discount", headerName: "Descuento", width: 90, type: "singleSelect",
       valueOptions: fillDiscounts(),
       editable: true },
       { field: "daysBooking", headerName: "Dias alquilada", width: 120 },

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { getAllBikes, getRenderedBikes, getBikeId, postBike, updateBike, 
-    deleteFavorite, postFavorite, getAllFavorites, updateRating  
+    deleteFavorite, postFavorite, getAllFavorites, updateRating, updatePrices  
 } = require('../controllers/bikeControllers')
 
 
@@ -16,6 +16,7 @@ router.get('/rendered', getRenderedBikes);
 router.get('/:bikeId', getBikeId)
 router.post('/create', postBike)
 router.put('/update', updateBike)
+router.put('/prices', updatePrices)
 
 //Dado id de bike y email por body
 // agrega la bike a fav y devuleve bike agregada

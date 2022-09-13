@@ -22,7 +22,7 @@ export const AllAccesories = () => {
                 <h1 className={s.h1}>Todo lo que necesites para tu aventura, LetAccesories lo tiene</h1>
                 <div>
                     {
-                        allAccs.length ? allAccs.map((a) => {
+                        allAccs.length ? allAccs.filter(acc => acc.status === 'active').map((a) => {
                             return (
                                 <EachAccesory
                                     key={a.idAcc}
