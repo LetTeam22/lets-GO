@@ -61,7 +61,7 @@ const initialState = {
     allExperiences: [],
     userBookings: [],
     mpInfo: '',
-    adventure: [],
+    adventure: {},
     bikeRating: []
 }
 
@@ -222,7 +222,7 @@ function rootReducer(state = initialState, action) {
         case ADD_ADVENTURE:
             return {
                 ...state,
-                adventure: [...state.adventure, action.payload]
+                adventure: action.payload
             }
         default: return state
     }
