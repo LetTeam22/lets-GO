@@ -27,6 +27,7 @@ import Accesories from './Components/Profile/AdminProfile/Accesories';
 import Checkout from './Components/Checkout/Checkout';
 import { io } from 'socket.io-client';
 import { useAuth0 } from '@auth0/auth0-react';
+import { TermsAndConditions } from './Components/TermsAndConditions/TermsAndConditions';
 
 function App() {
 
@@ -111,6 +112,8 @@ function App() {
 
         {/* <Route exact path='/checkout' component={Checkout} /> */}
         <Route exact path='/checkout'><Checkout /></Route>
+
+        <Route exact path='/terms'><TermsAndConditions/></Route>
 
         {/* <Route path='*' component={Error} /> */}
         <Route exact path='*'><Error /></Route>
