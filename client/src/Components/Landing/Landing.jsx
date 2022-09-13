@@ -21,17 +21,17 @@ export const Landing = () => {
 
   return (
     <div className={s.container}>
-        <div className={s.fondo}></div> 
+      <div className={s.fondo}></div>
       <div className={s.landing}>
         <div className={s.textDiv}>
           <p className={s.text}>
-            para mantener el equilibrio, seguí en movimiento
+            Para mantener el equilibrio, seguí en movimiento.
           </p>
           <Link to="/home">
             <button className={s.searchBtn}>BUSCAR BICI</button>
           </Link>
         </div>
-        
+
       </div>
       <div className={s.separador} id={s.first}>
         <div className={s.triangle}></div>

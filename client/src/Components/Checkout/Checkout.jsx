@@ -32,25 +32,17 @@ export default function Checkout() {
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
+        localStorage.removeItem("adventure")
         sendEmail()
         history.push('/home')
     },)
 
-    // const handleClick = () => {
-    //     dispatch(setParameters("resetAllPlusDates"));
-    //     dispatch(postBookings(booking))
-    //     localStorage.removeItem("booking");
-    //     localStorage.removeItem("date");
-    //     sendEmail(e)
-    //     history.push('/home')
-    // }
 
     return (
         <>
             <h1>
                 Felicidades por tu compra
             </h1>
-            {/* <button onClick={e => handleClick(e)}>HOME</button> */}
         </>
     )
 }
