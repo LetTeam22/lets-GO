@@ -137,7 +137,7 @@ export default function FormBike({ setAddAcc }) {
                 aria-describedby="my-helper-text"
                 error={errors.price ? true : false}
                 type="tel"
-                placeholder="$100 - $9999"
+                placeholder="$10 - $999"
                 value={input.price}
                 onChange={handleChange}
               />
