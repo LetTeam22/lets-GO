@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import s from './Adventure.module.css';
 import { addAdventure } from '../../Redux/actions';
-import adventures from './data';
+import { adventures } from './data';
 import CardAdventures from './CardAdventures';
 // import aux_aventuras from '../../image/aux_/aux_aventuras.png';
 
@@ -40,12 +40,12 @@ export const Adventure = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  console.log(input.adv)
+
 
   const adicional = () => {
     let adic = 0
     input.adv.forEach(ad => {
-      adic += (ad.price)
+      adic += Number(adventures[(ad - 1)].price)
     })
     input.totalAdv = adic
     return input.totalAdv;

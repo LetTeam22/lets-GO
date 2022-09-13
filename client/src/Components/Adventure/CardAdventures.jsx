@@ -5,7 +5,6 @@ import s from './CardAdventures.module.css'
 
 
 const CardAdventures = ({ id, handleCheck, name, description, date, conditions, image, price, difficulty }) => {
-    console.log(name, date)
 
     return (
         <div className={s.blogCard} >

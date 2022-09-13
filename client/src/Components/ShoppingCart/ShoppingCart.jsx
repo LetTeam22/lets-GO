@@ -17,20 +17,23 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
+import { adventures as allAdventures } from '../Adventure/data';
 
 export const ShoppingCart = () => {
-
   const dispatch = useDispatch();
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
-  const mpInfo = useSelector(state => state.mpInfo);
+  const adventures = useSelector((state) => state.adventure)
+  const mpInfo = useSelector((state) => state.mpInfo);
   let cartBikes = [];
+  let cartAdventures = [];
   const { user, isLoading } = useAuth0();
 
   const [loading, setLoading] = useState(false);
@@ -48,6 +51,18 @@ export const ShoppingCart = () => {
       accesories: book.accs
     }
     cartBikes.push(pushedbike);
+  })
+
+  Object.keys(adventures).length && adventures.adv.forEach(adv => {
+    const advFound = allAdventures.find(a => a.id === adv)
+    const pushedAdv = {
+      id: advFound.id,
+      name: advFound.name,
+      price: advFound.price,
+      image: advFound.image,
+    }
+    cartAdventures.push(pushedAdv)
+    console.log(cartAdventures)
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
@@ -76,7 +91,7 @@ export const ShoppingCart = () => {
       endDate: date.to,
       userId: userLogged?.idUser,
       bikeIds: postbikeIds,
-      AccIds: ids, 
+      AccIds: ids,
     }
   }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
 
@@ -154,7 +169,7 @@ export const ShoppingCart = () => {
   }, [loading]);
 
   useEffect(() => {
-    localStorage.setItem('postedBooking', JSON.stringify({...postedBooking, totalPrice: total}))
+    localStorage.setItem('postedBooking', JSON.stringify({ ...postedBooking, totalPrice: total }))
   }, [total, postedBooking])
 
   useEffect(() => {
@@ -250,7 +265,7 @@ export const ShoppingCart = () => {
                               <RenderAccCart
                                 className={s.imgCloud}
                                 publicId={objAcc.image}
-                                />
+                              />
                             </div>
                           )
                         })}
@@ -274,9 +289,9 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length 
-                    ? <></>
-                    : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total}/>
+                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length
+                      ? <></>
+                      : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
 
                 </div>
