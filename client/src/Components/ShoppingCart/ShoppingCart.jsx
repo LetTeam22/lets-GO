@@ -210,7 +210,7 @@ export const ShoppingCart = () => {
                     : <></>
                 }
                 {
-                  cartBikes.length
+                  cartBikes.length && allAccs.length
                     ? cartBikes.map(bike => {
                       return bike.accesories?.map(el => {
                         const objAcc = allAccs.find(a => a.idAcc === el)
@@ -244,7 +244,7 @@ export const ShoppingCart = () => {
           </TableContainer>
           <div className={s.previewItems}>
             {
-              cartBikes.length
+              cartBikes.length && allAccs.length
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
