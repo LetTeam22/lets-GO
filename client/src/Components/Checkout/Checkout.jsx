@@ -36,14 +36,14 @@ export default function Checkout() {
         history.push('/home')
     },)
 
-    const handleClick = () => {
-        // dispatch(setParameters("resetAllPlusDates"));
-        // dispatch(postBookings(booking))
-        // localStorage.removeItem("booking");
-        // localStorage.removeItem("date");
-        // sendEmail(e)
-        // history.push('/home')
-    }
+    // const handleClick = () => {
+    //     dispatch(setParameters("resetAllPlusDates"));
+    //     dispatch(postBookings(booking))
+    //     localStorage.removeItem("booking");
+    //     localStorage.removeItem("date");
+    //     sendEmail(e)
+    //     history.push('/home')
+    // }
 
     return (
         <>
