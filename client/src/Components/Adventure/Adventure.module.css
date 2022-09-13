@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
 .img_aux {
     width: 100%;
     margin-top: 5rem;
@@ -33,3 +35,21 @@
     background: #F9B621;
     border-radius: 6px 6px 6px 6px;
 }
+.precioTotal{
+    color: #484848;
+    font-family: 'Roboto';
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.containerAdic {
+    display: flex;
+    justify-content: center;
+}
+
+.containerBtn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
