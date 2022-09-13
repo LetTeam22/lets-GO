@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-
 .blogCard {
     display: flex;
     flex-direction: row;
@@ -7,31 +6,41 @@
     margin-bottom: 1.6%;
     background: #333333;
     line-height: 1.4;
-    font-family: 'Roboto';
-    border-radius: .2rem;
+    border-radius: .5rem;
     width: 55%;
-    height: 28.5vh;
-    border-radius: 2rem;
-   
+    box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+    overflow-y: scroll; 
+}
+
+.imgcard{
+    display: flex;
+    flex-direction: row;
+    height: 33vh;
 }
 
 .description {
     padding: 1rem;
-    /* background: #333333; */
     position: relative;
-    /* z-index: 1; */
 }
 
 .h1 {
     text-align: left;
+    font-size: .9rem;
+    color: white;
+    margin: 0;
+
+}
+.containH1 {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
     font-size: 1rem;
     color: white;
-    display: flex;
-    flex-direction: column;
+    align-items: center;
 }
 
 .h2 {
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 300;
     color: #F9B621;
 }

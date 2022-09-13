@@ -8,13 +8,14 @@ body {
 .formAlr {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    /* width: 40%; */
     margin: auto;
     background-color: #33333398;
     margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
     height: 15rem;
+    padding: 1rem;
 }
 
 .spanAlr {
@@ -47,13 +48,14 @@ body {
 .form {
     display: flex;
     flex-direction: column;
-    width: 40%;
     margin: auto;
     background-color: #333333;
     margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
     height: 30rem;
+    padding-left: 9rem;
+    padding-right: 9rem;
 }
 
 
