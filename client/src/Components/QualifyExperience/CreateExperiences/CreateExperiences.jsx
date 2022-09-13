@@ -80,7 +80,7 @@ export const CreateExperiences = () => {
   };
 
   const disabled = Object.keys(errors).length || !input.textExperience;
-  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking)
+  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking);
   if (loading) return <Loading/>;
   
   return ( 
@@ -101,7 +101,7 @@ export const CreateExperiences = () => {
                 </div>   
             }
           </div>
-            { errors.firstName && <span className={s.redspan}>{errors.firstName}</span> }
+            { errors.firstName && <span className={s.errSpan}>{errors.firstName}</span> }
           <div className={s.container} >
             <BiMessageEdit color='#F9B621' size='2rem' />
             <div className={s.textArea} >
@@ -113,7 +113,7 @@ export const CreateExperiences = () => {
                 />
             </div>
           </div>
-          { errors.textExperience && <span className={s.redspan}>{errors.textExperience}</span> }
+          { errors.textExperience && <span className={s.errSpan}>{errors.textExperience}</span> }
           <div className={s.container}>
             <IoAttach color='#F9B621' size='2rem' />
             <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />

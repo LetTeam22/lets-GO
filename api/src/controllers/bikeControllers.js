@@ -222,7 +222,7 @@ const updateRating = async (req, res, next) => {
             rating: updateRating,
             nunOfReviews: bike.nunOfReviews + 1
         });
-        res.send(bike)
+        res.send({ idBike: bike.idBike, rating: bike.rating })
     } catch (error) {
         next(error)
     }
