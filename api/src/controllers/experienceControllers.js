@@ -23,14 +23,15 @@ async function experienceDetails (req, res, next) {
 
 // crea una experiencia, necesita recibir ID de booking
 async function createExperience(req, res, next) {
-    let { imgExperience, textExperience, bookingIdBooking, firstName } = req.body
+    let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
     try {
         const post = await Experience.create({
             imgExperience,
             textExperience,
             bookingIdBooking,
-            firstName
+            firstName, 
+            email
         });
         res.send(post)
     } catch (error) {
