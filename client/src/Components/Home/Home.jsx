@@ -15,7 +15,7 @@ import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
 import { useAuth0 } from "@auth0/auth0-react";
 import ChatBot from "../ChatBot/ChatBot";
 
-export const Home = () => {
+export const Home = ({socket}) => {
   const {user } = useAuth0();
   const dispatch = useDispatch();
   const allBikes = useSelector((state) => state.allBikes);
@@ -146,6 +146,7 @@ export const Home = () => {
                       color={e.color}
                       idBike={e.idBike}
                       id={cardId++}
+                      socket={socket}
                     />
                 </div>
               ))}

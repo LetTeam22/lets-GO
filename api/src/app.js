@@ -16,10 +16,32 @@ const io = new Server(httpServer, {
   }
 });
 
+let onlineUsers = [];
+
+const addNewUser = (user, socketId) => {
+  !onlineUsers.some((u) => u.name === user.name) && onlineUsers.push({
+    name: user.name,
+    email: user.email,
+    socketId,
+  });
+};
+
+const removeUser = (socketId) => {
+  onlineUsers = onlineUsers.filter(user => user.socketId !== socketId);
+};
+
+const getUser = (email) => {
+  return onlineUsers.find(user => user.email === email)
+}
+
 io.on("connection", (socket) => {
 
+  socket.on('newUser', (user) => {
+    addNewUser(user, socket.id)
+  })
+
   socket.on('disconnect', () => {
-    console.log('Alguien se ha desconectado!')
+    removeUser(socket.id);
   })
 });
 
