@@ -33,6 +33,7 @@ export const AllExperiencies = ({socket}) => {
                             imgExperience={e.imgExperience}
                             textExperience={e.textExperience}
                             socket={socket}
+                            email={e.email}
                         />
                     )
                 })
