@@ -1,4 +1,4 @@
-const { Bike, Booking, User } = require('../db')
+const { Bike, Booking, User, Accesories } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -228,6 +228,25 @@ const updateRating = async (req, res, next) => {
     }
 }
 
+// Update
+const updatePrices = async (req, res, next) => {
+    const { percentage } = req.body
+    try {
+        const bikes = await Bike.findAll();
+        percentage && bikes.forEach(b => {
+            b.price = Math.round(Number(b.price) * (1 + Number(percentage)))
+            b.save()
+        })
+        const accesories = await Accesories.findAll();
+        percentage && accesories.forEach(a => {
+            a.price = Math.round(Number(a.price) * (1 + Number(percentage)))
+            a.save()
+        })
+        res.send('Precios actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = {
     getAllBikes,
@@ -239,4 +258,5 @@ module.exports = {
     getAllFavorites,
     updateBike,
     updateRating,
+    updatePrices
 }

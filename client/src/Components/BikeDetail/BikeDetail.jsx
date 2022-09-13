@@ -154,7 +154,7 @@ export const BikeDetail = () => {
             <div className={s.containerGral}>
               <div className={s.containerAcc}>
                 {
-                  allAccs?.map(acc => {
+                  allAccs?.filter(acc => acc.status === 'active').map(acc => {
                     return (
                       <Accesory 
                         key={acc.idAcc}
