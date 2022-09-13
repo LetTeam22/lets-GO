@@ -5,7 +5,6 @@ import s from './Adventure.module.css';
 import { addAdventure } from '../../Redux/actions';
 import { adventures } from './data';
 import CardAdventures from './CardAdventures';
-// import aux_aventuras from '../../image/aux_/aux_aventuras.png';
 
 export const Adventure = () => {
   const dispatch = useDispatch()
@@ -15,6 +14,9 @@ export const Adventure = () => {
   })
   const history = useHistory()
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -52,9 +54,9 @@ export const Adventure = () => {
   return (
    
     <>
-      <div className={s.left}></div>
-      <div className={s.right}></div>
-      <h1 className={s.h1}>Exclusivo para leters aventureros</h1>
+      <div className={s.left} />
+      <div className={s.right} />
+      <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>
       { adventures.map(a => <CardAdventures
           key={a.id}
           id={a.id}
@@ -68,9 +70,8 @@ export const Adventure = () => {
           handleCheck={handleCheck}
         />
       )}
-      <div>
         <div className={s.container}>
-          <p className={s.precioTotal}>Total adicional ${adicional()}</p>
+          <p className={s.precioTotal}>Total ${adicional()}</p>
         </div>
         <div className={s.containerBtn}>
           <button
@@ -82,7 +83,6 @@ export const Adventure = () => {
             {" "}
             Agregar al carrito{" "}
           </button>
-        </div>
       </div>
     </>
   )

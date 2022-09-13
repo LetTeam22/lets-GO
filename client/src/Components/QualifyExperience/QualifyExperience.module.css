@@ -15,10 +15,11 @@
     margin-left: 3rem;
     font-size: 1.5rem;
     padding-top: 3rem;
-    font-weight: 600;
+    padding-bottom: 1rem;
+    font-weight: 300;
     height: 10%;
     justify-content: center;
-    color: rgb(87, 87, 87)
+    color: #787877
 }
 
 .p {

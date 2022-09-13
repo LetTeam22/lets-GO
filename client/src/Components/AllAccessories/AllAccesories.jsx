@@ -17,26 +17,26 @@ console.log(allAccs)
     }, [dispatch])
 
     return (
-        <div>
+        <>
+            <div className={s.left} />
+            <div className={s.right} />
             <div className={s.container}>
-                <h1 className={s.h1}>Todo lo que necesites para tu aventura, LetAccesories lo tiene</h1>
-                <div>
-                    {
-                        allAccs.length ? allAccs.filter(acc => acc.status === 'active').map((a) => {
-                            return (
-                                <EachAccesory
-                                    key={a.idAcc}
-                                    Name={a.name}
-                                    imgAcc={a.image}
-                                    Description={a.description}
-                                    Price={a.price}
-                                />
-                            )
-                        }) :
-                            <Loading />
-                    }
-                </div>
-            </div>
+                <h1 className={s.h1}>TODO LO QUE NECESITAS PARA TU AVENTURA</h1>  
+            </div>     
+            { allAccs.length ? allAccs.filter(acc => acc.status === 'active').map((a) => {
+                    return (
+                        <EachAccesory
+                            key={a.idAcc}
+                            Name={a.name}
+                            imgAcc={a.image}
+                            Description={a.description}
+                            Price={a.price}
+                        />
+                    )
+            }) : <Loading /> }
+        <div className={s.containerBtn}>
+            <button className={s.btn}>BUSCAR BICI</button>
         </div>
+        </>
     )
 };
