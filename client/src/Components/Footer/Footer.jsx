@@ -1,13 +1,16 @@
 import React from 'react';
 import s from './Footer.module.css';
 import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
+import { Link } from "react-router-dom";
+
 
 
 const github = 'https://github.com/LetTeam22/PF-Let';
+const terms = '/terms'
 
 export const Footer = () => {
 
-   
+
     return (
         <div className={s.footer}>
             <div className={s.services}>
@@ -15,7 +18,9 @@ export const Footer = () => {
                 <span className={s.footerSpan}>Preguntas Frecuentes</span>
                 <span className={s.footerSpan}>Como Comprar</span>
                 <span className={s.footerSpan}>Pagos y Retiros</span>
-                <span className={s.footerSpan}>Legales-Promociones</span>
+                <a className={s.footerSpan} href={terms} cursor='pointer'>
+                    <span className={s.footerSpan}>Términos y condiciones</span>
+                </a>
                 <span className={s.footerSpan}>Arrepentimiento de Compra</span>
             </div>
             <div className={s.guia}>
@@ -31,41 +36,41 @@ export const Footer = () => {
                 <span className={s.footerSpan}>Sobre nosotros</span>
                 <span className={s.footerSpan}>Contacto</span>
                 <div className={s.icons} >
-                    
+
                     <BsFacebook
-                        color='white'  
-                        size='20px' 
-                        onMouseOver={({target})=>target.style.color="#F9B621"}
-                        onMouseOut={({target})=>target.style.color="white"} 
-                        cursor='pointer' 
-                    />
-
-                    <BsInstagram 
-                        color='white'  
+                        color='white'
                         size='20px'
-                        onMouseOver={({target})=>target.style.color="#F9B621"}
-                        onMouseOut={({target})=>target.style.color="white"} 
+                        onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                        onMouseOut={({ target }) => target.style.color = "white"}
                         cursor='pointer'
                     />
 
-                    <BsWhatsapp 
-                        color='white'  
+                    <BsInstagram
+                        color='white'
                         size='20px'
-                        onMouseOver={({target})=>target.style.color="#F9B621"}
-                        onMouseOut={({target})=>target.style.color="white"} 
+                        onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                        onMouseOut={({ target }) => target.style.color = "white"}
                         cursor='pointer'
                     />
-                    
+
+                    <BsWhatsapp
+                        color='white'
+                        size='20px'
+                        onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                        onMouseOut={({ target }) => target.style.color = "white"}
+                        cursor='pointer'
+                    />
+
                     <a href={github} target="_blank" rel="noopener noreferrer">
-                        <BsGithub 
-                            color='white'  
+                        <BsGithub
+                            color='white'
                             size='20px'
-                            onMouseOver={({target})=>target.style.color="#F9B621"}
-                            onMouseOut={({target})=>target.style.color="white"} 
+                            onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                            onMouseOut={({ target }) => target.style.color = "white"}
                             cursor='pointer'
-                        />  
-                    </a>              
-                      
+                        />
+                    </a>
+
                 </div>
             </div>
         </div>
