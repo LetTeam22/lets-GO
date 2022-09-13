@@ -41,17 +41,16 @@ const validateFunctionBike = (input, id, errors) => {
           if(!input.color) delete errors.color;
         } 
         if(id === 'traction'){
-          // acepta solo numeros, 2 caracteres 
-          // !/^[0-9]\d{2}$/.test(input.wheelSize) 
-          input.traction.toLowerCase() !== 'mecanica' && input.traction.toLowerCase() !== 'electrica' ? 
+          // acepta solo mecanica o electrica
+          input.traction.toLowerCase() !== 'mecanica' && input.traction.toLowerCase() !== 'electrica' && 
+          input.traction.toLowerCase() !== 'mecánica' && input.traction.toLowerCase() !== 'eléctrica' ?
           errors = {...errors, traction: 'Solo se aceptan rodados validos'}
           :
           delete errors.traction
           if(!input.traction) delete errors.traction;
         }
         if(id === 'type'){
-          // acepta solo numeros, 2 caracteres 
-          // !/^[0-9]\d{2}$/.test(input.wheelSize) 
+          // acepta solo las variantes ya establecidas
           input.type.toLowerCase() !== 'bmx' && input.type.toLowerCase() !== 'mtb' && 
           input.type.toLowerCase() !== 'city' && input.type.toLowerCase() !== 'tandem' && 
           input.type.toLowerCase() !== 'touring' && input.type.toLowerCase() !== 'folding' ? 
