@@ -1,35 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createBike } from "../../../Redux/actions";
-import validateFunctionBike from "./ValidateFunctionBike";
-import s from "./FormBike.module.css";
+import { createAccesorie } from "../../../Redux/actions";
+import validateFunctionAccs from "./ValidateFunctionAccs";
+import s from "./FormAccesories.module.css";
 import {
   FormControl,
   InputLabel,
   Input,
   Button,
-  FormHelperText,
   IconButton,
   TextField,
 } from "@mui/material";
 import { IoSend } from "react-icons/io5";
-import { GiDutchBike } from "react-icons/gi";
+import { MdHandyman } from 'react-icons/md';
 import { BsCameraFill } from "react-icons/bs";
 import theme from "../MaterialUIColors";
 import { ThemeProvider } from "@emotion/react";
 import swal from "sweetalert";
 
-export default function FormBike({ setAddBike }) {
+export default function FormBike({ setAddAcc }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     name: "",
-    description: "",
-    type: "",
     image: "",
-    traction: "",
-    wheelSize: "",
     price: "",
-    color: "",
+    description: "",
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
@@ -46,7 +41,7 @@ export default function FormBike({ setAddBike }) {
         setToUpload(e.target.files[0])
     }
     setErrors(
-      validateFunctionBike(
+      validateFunctionAccs(
         {
           ...input,
           [e.target.id]: e.target.value,
@@ -68,45 +63,35 @@ export default function FormBike({ setAddBike }) {
       body:data
     })
     const file = await res.json() 
-    dispatch(
-      createBike({...input, image:file.public_id})
-    );
+    dispatch(createAccesorie({...input, image:file.public_id}));
     setInput({
       name: "",
-      description: "",
-      type: "",
       image: "",
-      traction: "",
-      wheelSize: "",
       price: "",
-      color: "",
+      description: "",
     });
     swal({
       title: "Felicidades!",
-      text: "Agregaste una nueva bicicleta!",
+      text: "Agregaste un nuevo accesorio!",
       icon: "success",
       button: false,
     });
-    setAddBike(false);
+    setAddAcc(false);
     setPhoto(undefined)
   };
   const disabled =
     Object.keys(errors).length > 0 ||
     !input.name ||
       !input.description ||
-      !input.type ||
       !input.image ||
-      !input.traction ||
-      !input.wheelSize ||
-      !input.price ||
-      !input.color
+      !input.price 
       ? true
       : false;
 
   return (
     <section className={s.allPage}>
       <div className={s.container}>
-        <h3 className={s.titulo}>Agrega una nueva Bicicleta</h3>
+        <h3 className={s.titulo}>Agrega un nuevo Accesorio</h3>
         <div className={s.nameAndImg}>
           <IconButton
             color="primary"
@@ -124,11 +109,11 @@ export default function FormBike({ setAddBike }) {
             />
             {photo? <img
               src={photo}
-              alt="photoBike"
+              alt="photoAcc"
               className={s.img}
             />
             :
-            <GiDutchBike className={s.img}/>
+            <MdHandyman className={s.img}/>
             }
             <BsCameraFill className={s.iconCamera} />
           </IconButton>
@@ -146,60 +131,13 @@ export default function FormBike({ setAddBike }) {
               />
             </FormControl>
             <FormControl>
-              <InputLabel htmlFor="type">{"Tipo"}</InputLabel>
-              <Input
-                id="type"
-                aria-describedby="my-helper-text"
-                error={errors.type ? true : false}
-                placeholder="bmx-city-mtb-tandem-touring-folding"
-                value={input.type}
-                onChange={handleChange}
-              />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="traction">{"Tracción"}</InputLabel>
-              <Input
-                id="traction"
-                aria-describedby="my-helper-text"
-                error={errors.traction ? true : false}
-                type="tel"
-                placeholder="Mecanica - Electrica"
-                value={input.traction}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="wheelSize">{"Rodado"}</InputLabel>
-              <Input
-                id="wheelSize"
-                aria-describedby="my-helper-text"
-                error={errors.wheelSize ? true : false}
-                type="tel"
-                placeholder="16-20-24-26-29"
-                value={input.wheelSize}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="color">{"Color"}</InputLabel>
-              <Input
-                id="color"
-                placeholder="negro-blanco-gris-azul-amarillo-rojo-verde"
-                aria-describedby="my-helper-text"
-                error={errors.color ? true : false}
-                value={input.color}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
               <InputLabel htmlFor="price">{"Precio"}</InputLabel>
               <Input
                 id="price"
                 aria-describedby="my-helper-text"
                 error={errors.price ? true : false}
                 type="tel"
-                placeholder="$100 - $9999"
+                placeholder="$10 - $999"
                 value={input.price}
                 onChange={handleChange}
               />
@@ -218,7 +156,7 @@ export default function FormBike({ setAddBike }) {
               variant="contained"
               color="success"
               className={s.btnHome}
-              onClick={() => {setAddBike(false); setPhoto(undefined)}}
+              onClick={() => {setAddAcc(false); setPhoto(undefined)}}
             >
               Volver
             </Button>
