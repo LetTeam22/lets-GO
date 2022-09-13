@@ -6,11 +6,14 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
 import FormBike from "./FormBike";
+import FormAccesories from './FormAccesories';
 
 export const AdminProfile = () => {
   const { isLoading, user } = useAuth0();
   const history = useHistory();
   const [addBike, setAddBike] = useState(false);
+  const [addAcc, setAddAcc] = useState(false);
+  const inflationIcon = 'https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png'
 
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
@@ -38,6 +41,9 @@ export const AdminProfile = () => {
   const addBikes = () => {
     addBike ? setAddBike(false) : setAddBike(true);
   };
+  const addAccs = () => {
+    addAcc ? setAddAcc(false) : setAddAcc(true)
+  }
   return (
     <section className={s.allPage}>
       <div className={s.column}>
@@ -82,6 +88,7 @@ export const AdminProfile = () => {
               color="primary"
               onClick={addBikes}
             />
+            <img src={inflationIcon} alt="aumentar precio" />
           </div>
         </div>
         <div>
@@ -97,18 +104,33 @@ export const AdminProfile = () => {
         </div>
         <div>
           <h2>Accesorios</h2>
-          <Button
-            variant="contained"
-            color="success"
-            className={s.btnBook}
-            onClick={seeAccesories}
-          >
-            Ver Accesorios
-          </Button>
+            <div className={s.couple}>
+              <Button
+                variant="contained"
+                color="success"
+                className={s.btnBook}
+                onClick={seeAccesories}
+              >
+                Ver Accesorios
+              </Button>
+              <AddCircleIcon
+                  className={s.addBtn}
+                  color="primary"
+                  onClick={addAccs}
+                />
+              </div>
         </div>
       </div>
       <div className={addBike ? s.show : s.hidde}>
         <FormBike setAddBike={setAddBike} />
+      </div>
+      <img
+        src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
+        alt="fondo"
+        className={s.background}
+      />
+      <div className={addAcc ? s.show : s.hidde}>
+        <FormAccesories setAddAcc={setAddAcc} />
       </div>
       <img
         src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"

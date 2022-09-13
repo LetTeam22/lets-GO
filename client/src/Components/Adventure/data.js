@@ -7,7 +7,7 @@ export const adventures = [
         image: "https://res.cloudinary.com/pflet/image/upload/v1662928014/Let/Adventures/trasmontan%CC%83a_sgt8a6.jpg",
         price: "30000",
         difficulty: "alta",
-        date: "13 de agosto de 2023",
+        date: "Lunes a Miércoles",
         id: 1
     },
     {
