@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -8,8 +8,9 @@ import LogOut from '../NavBar/Authentication/LogOut';
 import { Link, useLocation } from "react-router-dom";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
+import { ImHeart } from 'react-icons/im';
 
-export const Menu = () => {
+export const Menu = ({socket}) => {
 
   const logo = 'https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png'
   const carrito = 'https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/carrito_wohy11.png'
@@ -21,6 +22,20 @@ export const Menu = () => {
   const { isAuthenticated } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
+
+  const [ notifications, setNotifications ] = useState([]);
+  const [ open, setOpen ] = useState(false);
+
+  const handleOpen = (e) => {
+    e.preventDefault();
+    setOpen(!open);
+  }
+
+  useEffect(() => {
+    socket?.on('getLike', data => {
+      setNotifications(prevNotifications => [...prevNotifications, data])
+    })
+  }, [socket]);
   
   return (
     <div className={s.menu}>
@@ -79,8 +94,28 @@ export const Menu = () => {
           </button>
         </Link>
         <div className={s.containerBell}>
-          <img src={bell} className={s.bell} alt='bell' ></img>
-          <div className={s.counter}>2</div>
+          <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
+          <div className={s.counter}>{notifications.length}</div>
+          {
+            open && (
+                <div className={s.notifications}>
+                  {
+                    notifications?.map(n => {
+                      return (
+                          <>
+                            <div className={s.notification}>
+                              <ImHeart size='1rem' color='#F9B621' />
+                              <span className={s.spanNotification}>{`A ${n.senderName} le ha gustado tu experiencia`}</span>
+                            </div>
+                            <hr />
+                          </>
+                          
+                        )
+                    })
+                  }
+                </div>
+              )
+          }
         </div>
       </div>
     </div>

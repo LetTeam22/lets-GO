@@ -9,43 +9,6 @@ const { Server } = require("socket.io");
 require('./db.js');
 
 const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: {
-    origin: 'http://localhost:3000'
-  }
-});
-
-let onlineUsers = [];
-
-const addNewUser = (user, socketId) => {
-  !onlineUsers.some((u) => u.name === user.name) && onlineUsers.push({
-    name: user.name,
-    email: user.email,
-    socketId,
-  });
-};
-
-const removeUser = (socketId) => {
-  onlineUsers = onlineUsers.filter(user => user.socketId !== socketId);
-};
-
-const getUser = (email) => {
-  return onlineUsers.find(user => user.email === email)
-}
-
-io.on("connection", (socket) => {
-
-  socket.on('newUser', (user) => {
-    addNewUser(user, socket.id)
-  })
-
-  socket.on('disconnect', () => {
-    removeUser(socket.id);
-  })
-});
-
-httpServer.listen(5000);
 
 app.name = 'API';
 
@@ -90,4 +53,49 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
-module.exports = app;
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000'
+  }
+});
+
+let onlineUsers = [];
+
+const addNewUser = (user, socketId) => {
+  !onlineUsers.some((u) => u.name === user.name) && onlineUsers.push({
+    name: user.name,
+    email: user.email,
+    socketId,
+  });
+
+  console.log(onlineUsers);
+};
+
+const removeUser = (socketId) => {
+  onlineUsers = onlineUsers.filter(user => user.socketId !== socketId);
+};
+
+const getUser = (email) => {
+  const user = onlineUsers.find(user => user.email === email);
+  return user;
+}
+
+io.on("connection", (socket) => {
+
+  socket.on('likeExperience', ({senderName, receiverName}) => {
+    const receiver = getUser(receiverName);
+    io.to(receiver.socketId).emit('getLike', {senderName})
+  })
+
+  socket.on('newUser', (user) => {
+    addNewUser(user, socket.id)
+  })
+
+  socket.on('disconnect', () => {
+    removeUser(socket.id);
+  })
+});
+
+
+module.exports = httpServer;

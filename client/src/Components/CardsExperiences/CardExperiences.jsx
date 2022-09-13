@@ -5,18 +5,19 @@ import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket}) => {
+
+const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
 
     const { user, isAuthenticated } = useAuth0();
     const [ like, setLike ] = useState(false);
     
-    const handleLike = (e) => {
+    const handleLike = (e, mail) => {
         e.preventDefault();
-        setLike(!like);
-        // socket.emit('sendNotification', {
-        //     senderName: user.name,
-        //     receiverName: firstName
-        // })
+        setLike(true);
+        socket.emit('likeExperience', {
+            senderName: user.name,
+            receiverName: mail
+        })
     }
 
     return (
@@ -33,8 +34,8 @@ const CardExperience = ({ imgExperience, textExperience, firstName, startDate, e
                 {
                     isAuthenticated
                     ? like 
-                        ? <button onClick={e =>  handleLike(e)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
-                        : <button onClick={e =>  handleLike(e)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621'/></button>
+                        ? <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
+                        : <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621'/></button>
                     : <></>
                 }
             </div>

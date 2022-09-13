@@ -36,6 +36,7 @@ export const AllExperiencies = ({socket}) => {
                                 endDate={e.booking.endDate}
                                 bikes={e.booking.bikes}
                                 socket={socket}
+                                email={e.email}
                             />
                         )
                     }) : <Loading/>  

@@ -38,8 +38,8 @@ export default function Action({ params, rowId, setRowId, origin }) {
         }
     }
     if (origin === 'bikes'){
-        const { id, status, discount, price, name } = params.row
-        const result = await dispatch(updateBike({idBike:id, status, discount, price, name}))
+        const { id, status, discount, price, name, rating } = params.row
+        const result = await dispatch(updateBike({idBike:id, status, discount, price, name, rating}))
         if (result) {
             setSuccess(true);
             setRowId(null);

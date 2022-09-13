@@ -2,7 +2,7 @@ import React from "react";
 import s from "./BikeDetail.module.css";
 import RenderAccesories from "../Cloudinary/renderAccesories";
 
-export const Accesory = ({id, name, handleCheck, price, image}) => {
+export const Accesory = ({id, name, handleCheck, price, image, defaultChecked}) => {
 
   return (
     <div className={s.boxes} >
@@ -11,6 +11,7 @@ export const Accesory = ({id, name, handleCheck, price, image}) => {
         type="checkbox"
         name={name}
         onClick={handleCheck}
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={id}>{name}</label>
       <p className={s.precio}>$ {price} / día</p>
