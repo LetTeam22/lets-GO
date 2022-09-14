@@ -6,6 +6,7 @@ import { Accesories } from "../Accesories/Accesories";
 import { Experiencies } from "../Experiencies/Experiencies";
 import { useDispatch } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
+import { QuienesSomos } from "./QuienesSomos/QuienesSomos";
 
 export const Landing = () => {
 
@@ -31,8 +32,11 @@ export const Landing = () => {
             <button className={s.searchBtn}>BUSCAR BICI</button>
           </Link>
         </div>
-
       </div>
+      <div className={s.separador} id={s.first}>
+        <div className={s.triangle}></div>
+      </div>
+      <QuienesSomos />
       <div className={s.separador} id={s.first}>
         <div className={s.triangle}></div>
       </div>
@@ -40,7 +44,7 @@ export const Landing = () => {
       <div className={s.separador} id={s.second}>
         <div className={s.triangle}></div>
       </div>
-      <Accesories />
+      <Accesories /> 
       <div className={s.separador} id={s.second}>
         <div className={s.triangle}></div>
       </div>
