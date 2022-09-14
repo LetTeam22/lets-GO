@@ -24,21 +24,14 @@ export const Profile = () => {
   const { isLoading, user } = useAuth0();
   const [booking, setBooking] = useState({});
 
-  useEffect(() => {
+   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-   
-  useEffect(() => {
     dispatch(getUser(user?.email))
     dispatch(getBookingsByUserId(userLogged.idUser))
-    return () => {
-      setBooking({})
-      dispatch(getBookingsByUserId(userLogged.idUser))
-    }
-  }, [dispatch, user?.email, userLogged.idUser]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleRemoveFav = idBike => {
-    dispatch(removeFavoriteFromDb({bikeId:idBike,email:userLogged.email}))
+    dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
   };
 
   const handleBookingToQualify = idBooking => {
