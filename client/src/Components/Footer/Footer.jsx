@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Footer.module.css';
 import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
-import { Link } from "react-router-dom";
+
 
 
 
