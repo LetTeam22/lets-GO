@@ -77,9 +77,8 @@ const getRenderedBikes = async (req, res, next) => {
             // incluye las reservas asociadas
             include: {
                 model: Booking,
-                attributes: ['startDate', 'endDate', 'status'],
-                through: { attributes: [] },
-                where: { status: 'confirmed' }
+                attributes: ['startDate', 'endDate'],
+                through: { attributes: [] }
         }
 
         })
@@ -88,7 +87,7 @@ const getRenderedBikes = async (req, res, next) => {
         bikes = bikes.filter(bike => {
             let available = true
             bike.bookings.forEach(booking => {
-                if (!(booking.startDate > toDate || booking.endDate < fromDate)) available = false
+                if (booking.status === 'confirmed' && !(booking.startDate > toDate || booking.endDate < fromDate)) available = false
             })
             return available
         })
@@ -183,7 +182,7 @@ const postBike = async (req, res, next) => {
     res.send(bikeCreated)
 }
 
-// Update
+// Update bike
 const updateBike = async (req, res, next) => {
     const {idBike, name, description, type, image, traction, wheelSize, price, discount, rating, color, status} = req.body
     
@@ -230,7 +229,7 @@ const updateRating = async (req, res, next) => {
     }
 }
 
-// Update
+// Update prices
 const updatePrices = async (req, res, next) => {
     const { percentage } = req.body
     try {
@@ -240,6 +239,29 @@ const updatePrices = async (req, res, next) => {
             b.save()
         })
         res.send('Precios de bicicletas actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
+
+// Aplicar descuentos grupales
+const applyGroupDiscounts = async (req, res, next) => {
+    const { traction, wheelSize, color, type, discount } = req.body
+    try {
+        const bikes = await Bike.findAll({
+            where: {
+                traction: traction ? traction : { [Op.not]: null },
+                wheelSize: wheelSize ? wheelSize : { [Op.not]: null },
+                color: color ? color : { [Op.not]: null },
+                type: type ? type : { [Op.not]: null },
+                status: 'active'
+            }
+        })
+        discount && bikes.forEach(b => {
+            b.discount = discount
+            b.save()
+        })
+        res.send('Descuentos aplicados')
     } catch (error) {
         next(error)
     }
@@ -255,5 +277,6 @@ module.exports = {
     getAllFavorites,
     updateBike,
     updateRating,
-    updatePrices
+    updatePrices,
+    applyGroupDiscounts
 }
