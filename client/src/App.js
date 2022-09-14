@@ -35,7 +35,6 @@ import { Invention } from './Components/Invention/Invention'
 import { FAQs } from './Components/FAQs/FAQs';
 import { HowToRent } from './Components/HowToRent/HowToRent';
 const REACT_APP_BACK_URL  = process.env.REACT_APP_BACK_URL;
-const REACT_APP_PORT = process.env.REACT_APP_PORT;
 
 function App() {
 
@@ -43,7 +42,7 @@ function App() {
   const [ socket, setSocket ] = useState(null);
 
   useEffect(() => {
-    setSocket(io(`${REACT_APP_BACK_URL}:${REACT_APP_PORT}`))
+    setSocket(io(REACT_APP_BACK_URL))
   }, []);
 
   useEffect(() => {
