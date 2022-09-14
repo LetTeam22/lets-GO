@@ -8,13 +8,15 @@ import Loading from "../../Loading/Loading";
 import FormBike from "./FormBike";
 import FormAccesories from './FormAccesories';
 import FormPriceBike from "./FormPriceBike";
+import FormPriceAcc from "./FormPriceAcc";
 
 export const AdminProfile = () => {
   const { isLoading, user } = useAuth0();
   const history = useHistory();
   const [addBike, setAddBike] = useState(false);
   const [addAcc, setAddAcc] = useState(false);
-  const [addPrice, setAddPrice] = useState(false);
+  const [addPriceBike, setAddPriceBike] = useState(false);
+  const [addPriceAcc, setAddPriceAcc] = useState(false);
   const inflationIcon = 'https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png'
   const background = "https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
   if (isLoading) return <Loading />;
@@ -91,7 +93,7 @@ export const AdminProfile = () => {
               color="primary"
               onClick={addBikes}
               />
-            <img src={inflationIcon} alt="aumentar precio" onClick={() => addPrice? setAddPrice(false): setAddPrice(true)} />
+            <img src={inflationIcon} alt="aumentar precio" onClick={() => addPriceBike? setAddPriceBike(false): setAddPriceBike(true)} />
               </div>
           </div>
         </div>
@@ -117,11 +119,14 @@ export const AdminProfile = () => {
               >
                 Ver Accesorios
               </Button>
+              <div className={s.buttons}>
               <AddCircleIcon
                   className={s.addBtn}
                   color="primary"
                   onClick={addAccs}
                 />
+                <img src={inflationIcon} alt="aumentar precio" onClick={() => addPriceAcc? setAddPriceAcc(false): setAddPriceAcc(true)} />
+                </div>
               </div>
         </div>
       </div>
@@ -131,8 +136,11 @@ export const AdminProfile = () => {
       <div className={addAcc ? s.show : s.hidde}>
         <FormAccesories setAddAcc={setAddAcc} />
       </div>
-      <div className={addPrice ? s.show : s.hidde}>
-        <FormPriceBike setAddPrice={setAddPrice}/>
+      <div className={addPriceBike ? s.show : s.hidde}>
+        <FormPriceBike setAddPriceBike={setAddPriceBike}/>
+      </div>
+      <div className={addPriceAcc ? s.show : s.hidde}>
+        <FormPriceAcc setAddPriceAcc={setAddPriceAcc}/>
       </div>
       <img
         src={background}

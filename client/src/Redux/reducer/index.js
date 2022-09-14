@@ -7,7 +7,7 @@ import {
     GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
-    CREATE_ACCESORIE, INCREASE_PRICE
+    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS
     
 } from '../actions/actiontypes';
 
@@ -241,6 +241,10 @@ function rootReducer(state = initialState, action) {
                 ...state
             }
         case INCREASE_PRICE:
+            return {
+                ...state
+            }
+        case INCREASE_PRICE_ACCS:
             return {
                 ...state
             }

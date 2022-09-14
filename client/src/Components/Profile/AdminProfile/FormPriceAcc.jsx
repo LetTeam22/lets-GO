@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { increasePrice } from "../../../Redux/actions";
+import { increasePriceAccs } from "../../../Redux/actions";
 import s from "./FormPriceBike.module.css";
 import {
   FormControl,
@@ -19,7 +19,7 @@ const validatePercentage = (value) => {
   return {};
 };
 
-export default function FormPriceBike({ setAddPriceBike }) {
+export default function FormPriceAcc({ setAddPriceAcc }) {
   const dispatch = useDispatch();
   const [percentage, setPercentage] = useState(0);
   const [errors, setErrors] = useState({});
@@ -31,15 +31,15 @@ export default function FormPriceBike({ setAddPriceBike }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(increasePrice({ percentage: percentage/100 }));
+    dispatch(increasePriceAccs({ percentage: percentage/100 }));
     setPercentage("");
     swal({
       title: "Felicidades!",
-      text: "Aumentaste los precios de todas las bicicletas!",
+      text: "Aumentaste los precios de todos los Accesorios!",
       icon: "success",
       button: false,
     });
-    setAddPriceBike(false);
+    setAddPriceAcc(false);
   };
   const disabled = Object.keys(errors).length > 0 || !percentage ? true : false;
 
@@ -47,7 +47,7 @@ export default function FormPriceBike({ setAddPriceBike }) {
     <section className={s.allPage}>
       <div className={s.container}>
         <h3 className={s.titulo}>
-          Aumenta los precios de todas las Bicicletas
+          Aumenta los precios de todos los Accesorios
         </h3>
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
@@ -80,8 +80,8 @@ export default function FormPriceBike({ setAddPriceBike }) {
               color="success"
               className={s.btnHome}
               onClick={() => {
-                setAddPriceBike(false);
-                setAddPriceBike(undefined);
+                setAddPriceAcc(false);
+                setAddPriceAcc(undefined);
               }}
             >
               Volver
