@@ -26,8 +26,6 @@ export const ShoppingCart = () => {
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
-  console.log(Adventures)
-
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
@@ -67,7 +65,6 @@ export const ShoppingCart = () => {
       }
       cartAdventures.push(pushedAdv)
     }
-    console.log(cartAdventures)
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
@@ -173,7 +170,7 @@ export const ShoppingCart = () => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify(Adventures.fiter(ad => ad.adv !== id)))
+    localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
 
   }
 
