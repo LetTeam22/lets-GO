@@ -11,7 +11,7 @@ import s from "./Experiences.module.css";
 
 
 export default function Experiences() {
-  const experiences = useSelector(state => state.allExperiences)
+  let experiences = useSelector(state => state.allExperiences)
   const history = useHistory()
   const dispatch = useDispatch()
   const [pageSize, setPageSize] = useState(5);
@@ -20,7 +20,7 @@ export default function Experiences() {
   useEffect(() => {
     dispatch(getAllExperiences())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+if(experiences === 'Aún no existen experiencias') experiences = []
   const rowsExperiences = useMemo(() => {
     return experiences?.map(exp => {
       return {
