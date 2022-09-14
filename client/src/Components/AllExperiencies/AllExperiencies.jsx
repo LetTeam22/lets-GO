@@ -4,6 +4,7 @@ import { CardExperience } from './CardExperiences';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
+import { reverseDate } from '../../helpers/convertDate.js';
 
 export const AllExperiencies = ({socket}) => {
 
@@ -24,15 +25,15 @@ export const AllExperiencies = ({socket}) => {
             <div className={s.container}>
                 <h1 className={s.h1}>LOS LET EN PRIMERA PERSONA</h1>
             </div>
-            { allExperiences.length ? allExperiences.map((e) =>{
+            { allExperiences.length ? allExperiences.filter(e => e.status === 'active').map((e) =>{
                     return (
                         <CardExperience
                             key = {e.idExperience}
                             firstName= {e.firstName}
                             imgExperience={e.imgExperience}
                             textExperience={e.textExperience}
-                            startDate={e.booking.startDate}
-                            endDate={e.booking.endDate}
+                            startDate={reverseDate(e.booking.startDate)}
+                            endDate={reverseDate(e.booking.endDate)}
                             bikes={e.booking.bikes}
                             socket={socket}
                             email={e.email}
