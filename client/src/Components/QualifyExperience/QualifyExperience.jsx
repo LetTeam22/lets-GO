@@ -1,7 +1,7 @@
 import { CreateExperiences } from '../QualifyExperience/CreateExperiences/CreateExperiences'
 import { BikeRating } from '../QualifyExperience/BikeRating/BikeRating'
 import s from '../QualifyExperience/QualifyExperience.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from "react";
 
 export const QualifyExperience = () => {
