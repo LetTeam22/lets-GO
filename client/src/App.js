@@ -32,6 +32,7 @@ import { BikeDefinition } from './Components/BikeDefinition/BikeDefinition';
 import { History } from './Components/History/History'
 import { EBike } from './Components/EBike/EBike'
 import { Invention } from './Components/Invention/Invention'
+import { FAQs } from './Components/FAQs/FAQs';
 
 
 function App() {
@@ -126,6 +127,8 @@ function App() {
         <Route exact path='/ebike'><EBike /></Route>
 
         <Route exact path='/invention'><Invention /></Route>
+
+        <Route exact path='/faqs'><FAQs/></Route>
 
         {/* <Route path='*' component={Error} /> */}
         <Route exact path='*'><Error /></Route>
