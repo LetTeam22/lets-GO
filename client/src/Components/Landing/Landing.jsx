@@ -25,7 +25,7 @@ export const Landing = () => {
       <div className={s.landing}>
         <div className={s.textDiv}>
           <p className={s.text}>
-            Para mantener el equilibrio, seguí en movimiento.
+            para mantener el equilibrio, seguí en movimiento
           </p>
           <Link to="/home">
             <button className={s.searchBtn}>BUSCAR BICI</button>
