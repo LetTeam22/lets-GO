@@ -12,6 +12,8 @@ const history = '/history'
 const ebike = '/ebike'
 const invention = '/invention'
 const howToRent = '/how'
+const contact = '/contact'
+const faqs = '/faqs'
 
 export const Footer = () => {
 
@@ -20,9 +22,11 @@ export const Footer = () => {
         <div className={s.footer}>
             <div className={s.services}>
                 <h5 className={s.h5}>SERVICIO AL CLIENTE</h5>
-                <span className={s.footerSpan}>Preguntas Frecuentes</span>
+                <a className={s.footerSpan} href={faqs} cursor='pointer'>
+                    <span className={s.footerSpan}>Preguntas Frecuentes</span>
+                </a>
                 <a href={howToRent} className={s.footerSpan} cursor='pointer'>
-                <span className={s.footerSpan}>Cómo alquilar</span>
+                    <span className={s.footerSpan}>Cómo alquilar</span>
                 </a>
                 <span className={s.footerSpan}>Pagos y Retiros</span>
                 <a className={s.footerSpan} href={terms} cursor='pointer'>
@@ -49,7 +53,9 @@ export const Footer = () => {
             <div className={s.company}>
                 <h5 className={s.h5}>COMPAÑIA</h5>
                 <span className={s.footerSpan}>Sobre nosotros</span>
-                <span className={s.footerSpan}>Contacto</span>
+                <a className={s.footerSpan} href={contact} cursor='pointer'>
+                    <span className={s.footerSpan}>Contacto</span>
+                </a>
                 <div className={s.icons} >
 
                     <BsFacebook
