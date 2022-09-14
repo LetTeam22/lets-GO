@@ -81,7 +81,7 @@ export const ShoppingCart = () => {
     return [];
   }, []);
 
-  bookings.forEach(book => {
+  bookings.length && bookings.forEach(book => {
     book.accs.forEach(acc => {
       !ids.includes(acc) && ids.push(acc)
     })
@@ -321,7 +321,7 @@ export const ShoppingCart = () => {
           </div>
         </div>
         {
-          cartBikes.length
+          cartBikes.length || cartAdventures.length
             ? (
               <div className={s.totalPrice}>
                 <div className={s.containerBtn}>
@@ -331,7 +331,7 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length
+                    postedBooking.startDate === '' || postedBooking.endDate === ''
                       ? <></>
                       : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
