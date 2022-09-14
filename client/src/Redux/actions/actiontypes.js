@@ -29,4 +29,5 @@ export const SEND_MP_INFO = 'SEND_MP_INFO';
 export const BIKE_RATING = 'BIKE_RATING';
 export const CREATE_BIKE = 'CREATE_BIKE';
 export const CREATE_ACCESORIE = 'CREATE_ACCESORIE';
-export const ADD_ADVENTURE = 'ADD_ADVENTURE'
+export const ADD_ADVENTURE = 'ADD_ADVENTURE';
+export const INCREASE_PRICE = 'INCREASE_PRICE';

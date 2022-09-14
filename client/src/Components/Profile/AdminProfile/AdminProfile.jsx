@@ -7,14 +7,16 @@ import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
 import FormBike from "./FormBike";
 import FormAccesories from './FormAccesories';
+import FormPriceBike from "./FormPriceBike";
 
 export const AdminProfile = () => {
   const { isLoading, user } = useAuth0();
   const history = useHistory();
   const [addBike, setAddBike] = useState(false);
   const [addAcc, setAddAcc] = useState(false);
+  const [addPrice, setAddPrice] = useState(false);
   const inflationIcon = 'https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png'
-
+  const background = "https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
 
@@ -83,12 +85,14 @@ export const AdminProfile = () => {
             >
               Ver Bicicletas
             </Button>
+            <div className={s.buttons}>
             <AddCircleIcon
               className={s.addBtn}
               color="primary"
               onClick={addBikes}
-            />
-            <img src={inflationIcon} alt="aumentar precio" />
+              />
+            <img src={inflationIcon} alt="aumentar precio" onClick={() => addPrice? setAddPrice(false): setAddPrice(true)} />
+              </div>
           </div>
         </div>
         <div>
@@ -124,16 +128,14 @@ export const AdminProfile = () => {
       <div className={addBike ? s.show : s.hidde}>
         <FormBike setAddBike={setAddBike} />
       </div>
-      <img
-        src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
-        alt="fondo"
-        className={s.background}
-      />
       <div className={addAcc ? s.show : s.hidde}>
         <FormAccesories setAddAcc={setAddAcc} />
       </div>
+      <div className={addPrice ? s.show : s.hidde}>
+        <FormPriceBike setAddPrice={setAddPrice}/>
+      </div>
       <img
-        src="https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
+        src={background}
         alt="fondo"
         className={s.background}
       />
