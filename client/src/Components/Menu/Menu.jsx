@@ -13,7 +13,7 @@ import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
 
-  const logo = 'https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png'
+  const logo = 'https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png'
   const carrito = 'https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/carrito_wohy11.png'
   const bell = 'https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/bell_kcl5ww.png'
   const adm = 'https://res.cloudinary.com/pflet/image/upload/v1662735766/Let/image/adm_xyp2tl.png'

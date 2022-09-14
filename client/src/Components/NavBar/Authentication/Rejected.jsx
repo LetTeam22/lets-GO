@@ -1,14 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import s from "./Rejected.module.css";
-import { useHistory } from "react-router-dom";
-// import logedPerson from '../../../image/persona_logeada.png';
 import Loading from "../../Loading/Loading";
 import swal from "sweetalert";
 
 export default function Rejected() {
   const { logout, isLoading } = useAuth0();
-  const history = useHistory();
 
   const onMove = () => {
     swal({

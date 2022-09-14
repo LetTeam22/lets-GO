@@ -74,7 +74,6 @@ export const Profile = () => {
     <section className={s.allPage}>
 
       <div className={s.containerLeft}>
-
         <span className={s.title}><AiFillHeart style= {iconStyle}/>TUS let's GO FAVORITAS:</span>
         <div className={s.box1}>
             {!!favorites.length ? favorites?.map(f => (
@@ -114,12 +113,11 @@ export const Profile = () => {
             }
         </div>
       </div>
-
       <div className={s.containerRight}>
+      <h1>ME FALTAN ESTILOS ACÁ!</h1>
         <div className={s.name}>
           {showedName}
         </div>
-
         <div className={s.infoAndImage}>
           <div className={s.information}>
             <h4 className={s.h4}>Telefono : {userLogged?.cellphone || null}</h4>

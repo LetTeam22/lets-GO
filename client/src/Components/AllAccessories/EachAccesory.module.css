@@ -7,33 +7,39 @@
     margin-bottom: 1.6%;
     background: #333333;
     line-height: 1.4;
-    font-family: 'Roboto';
-    border-radius: .2rem;
+    border-radius: .5rem;
     width: 55%;
-    height: 28.5vh;
-    border-radius: 2rem;
-
+    box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+    /* overflow-y: scroll;  */
 }
+
+/* .imgcard {
+    display: flex;
+    flex-direction: row;
+    height: 33vh;
+    margin-top: auto;
+    margin-bottom: auto;
+} */
 
 .description {
     padding: 1rem;
-    /* background: #333333; */
     position: relative;
-    /* z-index: 1; */
 }
 
 .h1 {
     text-align: left;
-    font-size: 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #F9B621;
+    margin: 0;
+    padding-top: .5rem;
+    padding-bottom: .2rem;
 }
 
 .h2 {
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 300;
-    color: #F9B621;
+    color: white
 }
 
 .p {

@@ -34,7 +34,7 @@
 }
 
 .h1 {
-    width: 36.75rem;
+    width: 25rem;
     height: 8.813rem;
     font-weight: 400;
     font-size: 3rem;
@@ -50,10 +50,11 @@
 }
 
 @media (max-width:650px) {
-    .text{
+    .text {
         width: 30rem;
     }
-    .h1{
+
+    .h1 {
         width: 20rem;
         font-size: 2.3rem;
         margin-top: 2rem;
@@ -61,11 +62,12 @@
 }
 
 @media (max-width:500px) {
-    .text{
+    .text {
         width: 20rem;
         font-size: 1rem;
     }
-    .h1{
+
+    .h1 {
         width: 14rem;
         height: 7rem;
         font-size: 1.8rem;

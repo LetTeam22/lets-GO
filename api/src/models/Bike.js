@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
     rating: {
       type: DataTypes.FLOAT,
       allowNull: false,
-      defaultValue:0,
+      defaultValue: 7,
       get() {
         const rawValue = this.getDataValue('rating');
         return rawValue ? Math.round((rawValue + Number.EPSILON) * 100) / 100 : 0;

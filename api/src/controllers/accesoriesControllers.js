@@ -51,9 +51,25 @@ const updateAccesory = async (req, res, next) => {
     }else res.send({e:'accesorio no existe'})
 }
 
+// Update
+const updatePricesAcc = async (req, res, next) => {
+    const { percentage } = req.body
+    try {
+        const accesories = await Accesories.findAll();
+        percentage && accesories.forEach(a => {
+            a.price = Math.round(Number(a.price) * (1 + Number(percentage)))
+            a.save()
+        })
+        res.send('Precios de accesorios actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
     getAllAccesories,
     getAccId,
     postAccesory,
-    updateAccesory
+    updateAccesory,
+    updatePricesAcc
 };

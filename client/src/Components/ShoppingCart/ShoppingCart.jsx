@@ -25,6 +25,8 @@ export const ShoppingCart = () => {
   const history = useHistory()
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+  const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+  console.log(Adventures)
 
 
   const parameters = useSelector(state => state.parameters);
@@ -32,7 +34,6 @@ export const ShoppingCart = () => {
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
-  const adventures = useSelector((state) => state.adventure)
   const mpInfo = useSelector((state) => state.mpInfo);
   let cartBikes = [];
   let cartAdventures = [];
@@ -55,15 +56,17 @@ export const ShoppingCart = () => {
     cartBikes.push(pushedbike);
   })
 
-  Object.keys(adventures).length && adventures.adv.forEach(adv => {
-    const advFound = allAdventures.find(a => a.id === adv)
-    const pushedAdv = {
-      id: advFound.id,
-      name: advFound.name,
-      price: advFound.price,
-      image: advFound.image,
+  Adventures.length && Adventures.forEach(adv => {
+    const advFound = allAdventures.find(a => a.id === adv.adv[0])
+    if (advFound) {
+      const pushedAdv = {
+        id: advFound.id,
+        name: advFound.name,
+        price: advFound.price,
+        image: advFound.image,
+      }
+      cartAdventures.push(pushedAdv)
     }
-    cartAdventures.push(pushedAdv)
     console.log(cartAdventures)
   })
 
@@ -110,6 +113,13 @@ export const ShoppingCart = () => {
     return price * days;
   };
 
+  let subTotalAdv = 0
+  cartAdventures.reduce((acc, cur) => {
+    return (
+      subTotalAdv = acc + Number(cur.price)
+    )
+  }, 0)
+
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
       acc + finalPrice(cur.price, cur.discount) * totalDias(date.from, date.to)
@@ -125,7 +135,7 @@ export const ShoppingCart = () => {
     });
   });
 
-  const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems);
+  const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems) + subTotalAdv;
 
   const total = Math.floor(subTotal * 1.02);
 
@@ -159,6 +169,14 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
+  const deleteAdventure = (e, id) => {
+    e.preventDefault();
+    setLoading(true);
+    cartAdventures = cartAdventures.filter(a => a.id !== id);
+    localStorage.setItem("adventure", JSON.stringify(Adventures.fiter(ad => ad.adv !== id)))
+
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getBikes());
@@ -189,7 +207,7 @@ export const ShoppingCart = () => {
   if (isLoading) return <Loading />;
 
   return (
-    !loading && cartBikes.length
+    !loading && (cartBikes.length || cartAdventures.length)
       ? <div className={s.container} id={s.cart}>
         <div className={s.titleDiv}>
           <h1 className={s.title}>Carrito de compras</h1>
@@ -285,6 +303,22 @@ export const ShoppingCart = () => {
                     </div>
                   )
                 })
+                : <></>
+            }
+          </div>
+          <div>
+            {
+              cartAdventures.length ? cartAdventures.map(adv => {
+                return (
+                  <div className={s.cardBike} key={adv.id} >
+                    <h2 className={s.bikeName}>{adv.name}</h2>
+                    <RenderOneImage publicId={adv.image} className={s.img} />
+                    <div className={s.buttonCont}>
+                      <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                    </div>
+                  </div>
+                )
+              })
                 : <></>
             }
           </div>

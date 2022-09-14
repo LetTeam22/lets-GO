@@ -1,4 +1,4 @@
-const validateFunctionAdmin = (input, id, errors) => {
+const validateFunctionBike = (input, id, errors) => {
         if(id === 'name'){
           // acepta letras, numeros y espacios
           !/^([a-zA-Z0-9_-]+)(\s[a-zA-Z0-9_-]+)*$/.test(input.name)?
@@ -33,25 +33,27 @@ const validateFunctionAdmin = (input, id, errors) => {
           if(!input.price) delete errors.price;
         }
         if(id === 'color'){
-          // acepta letras y espacios
-          !/^([A-Z]+)(\s[A-Z]+)*$/i.test(input.color)? 
-          errors = {...errors, color: 'Solo se aceptan letras'}
+          // acepta solo los colores establecidos
+          input.color.toLowerCase() !== 'negro' && input.color.toLowerCase() !== 'verde' && 
+          input.color.toLowerCase() !== 'blanco' && input.color.toLowerCase() !== 'rojo'&& 
+          input.color.toLowerCase() !== 'azul' && input.color.toLowerCase() !== 'gris' &&
+          input.color.toLowerCase() !== 'amarillo'?
+          errors = {...errors, color: 'Solo se aceptan los colores establecidos'}
           :
           delete errors.color
           if(!input.color) delete errors.color;
         } 
         if(id === 'traction'){
-          // acepta solo numeros, 2 caracteres 
-          // !/^[0-9]\d{2}$/.test(input.wheelSize) 
-          input.traction.toLowerCase() !== 'mecanica' && input.traction.toLowerCase() !== 'electrica' ? 
+          // acepta solo mecanica o electrica
+          input.traction.toLowerCase() !== 'mecanica' && input.traction.toLowerCase() !== 'electrica' && 
+          input.traction.toLowerCase() !== 'mecánica' && input.traction.toLowerCase() !== 'eléctrica' ?
           errors = {...errors, traction: 'Solo se aceptan rodados validos'}
           :
           delete errors.traction
           if(!input.traction) delete errors.traction;
         }
         if(id === 'type'){
-          // acepta solo numeros, 2 caracteres 
-          // !/^[0-9]\d{2}$/.test(input.wheelSize) 
+          // acepta solo las variantes ya establecidas
           input.type.toLowerCase() !== 'bmx' && input.type.toLowerCase() !== 'mtb' && 
           input.type.toLowerCase() !== 'city' && input.type.toLowerCase() !== 'tandem' && 
           input.type.toLowerCase() !== 'touring' && input.type.toLowerCase() !== 'folding' ? 
@@ -63,4 +65,4 @@ const validateFunctionAdmin = (input, id, errors) => {
     return errors
 }
 
-export default validateFunctionAdmin
+export default validateFunctionBike
