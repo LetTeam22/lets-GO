@@ -20,7 +20,7 @@ const getOnlineUsers = async () => {
     });
 
     allUsersOnline.map(user => {
-        onlineUsers.push({
+        !onlineUsers.some(u => u.email === user.email) &&  onlineUsers.push({
             username: user.name,
             email: user.email,
             socketId: user.socketId
@@ -88,6 +88,7 @@ io.on("connection", (socket) => {
     socket.on("newUserOnline", async (user) => {
         await addNewUserOnline(user, socket.id);
         await getOnlineUsers();
+        io.to(socket.id).emit('login');
     });
 
     socket.on("disconnect", async () => {
