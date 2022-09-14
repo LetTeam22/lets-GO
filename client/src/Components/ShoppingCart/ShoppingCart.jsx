@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
@@ -8,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import RenderOneImage from '../Cloudinary/renderOneImage';
 import RenderAccCart from "../Cloudinary/renderAccCart";
-import { BiTrash } from 'react-icons/bi';
+import { BiTrash, BiEdit } from 'react-icons/bi';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,20 +18,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
+import { adventures as allAdventures } from '../Adventure/data';
 
 export const ShoppingCart = () => {
-
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+  const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+  console.log(Adventures)
+
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
   const userLogged = useSelector((state) => state.user);
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
-  const mpInfo = useSelector(state => state.mpInfo);
+  const mpInfo = useSelector((state) => state.mpInfo);
   let cartBikes = [];
+  let cartAdventures = [];
   const { user, isLoading } = useAuth0();
 
   const [loading, setLoading] = useState(false);
@@ -48,6 +54,20 @@ export const ShoppingCart = () => {
       accesories: book.accs
     }
     cartBikes.push(pushedbike);
+  })
+
+  Adventures.length && Adventures.forEach(adv => {
+    const advFound = allAdventures.find(a => a.id === adv.adv[0])
+    if (advFound) {
+      const pushedAdv = {
+        id: advFound.id,
+        name: advFound.name,
+        price: advFound.price,
+        image: advFound.image,
+      }
+      cartAdventures.push(pushedAdv)
+    }
+    console.log(cartAdventures)
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
@@ -76,7 +96,7 @@ export const ShoppingCart = () => {
       endDate: date.to,
       userId: userLogged?.idUser,
       bikeIds: postbikeIds,
-      AccIds: ids, 
+      AccIds: ids,
     }
   }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
 
@@ -93,6 +113,13 @@ export const ShoppingCart = () => {
     return price * days;
   };
 
+  let subTotalAdv = 0
+  cartAdventures.reduce((acc, cur) => {
+    return (
+      subTotalAdv = acc + Number(cur.price)
+    )
+  }, 0)
+
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
       acc + finalPrice(cur.price, cur.discount) * totalDias(date.from, date.to)
@@ -108,7 +135,7 @@ export const ShoppingCart = () => {
     });
   });
 
-  const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems);
+  const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems) + subTotalAdv;
 
   const total = Math.floor(subTotal * 1.02);
 
@@ -129,11 +156,25 @@ export const ShoppingCart = () => {
     total_amount: total * 1.05
   }
 
+  const editItem = (e, id) => {
+    e.preventDefault();
+    setLoading(true);
+    history.push(`/bike/${id}`)
+  }
+
   const deleteItem = (e, id) => {
     e.preventDefault();
     setLoading(true);
     cartBikes = cartBikes.filter(b => b.idBike !== id)
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
+  }
+
+  const deleteAdventure = (e, id) => {
+    e.preventDefault();
+    setLoading(true);
+    cartAdventures = cartAdventures.filter(a => a.id !== id);
+    localStorage.setItem("adventure", JSON.stringify(Adventures.fiter(ad => ad.adv !== id)))
+
   }
 
   useEffect(() => {
@@ -154,7 +195,7 @@ export const ShoppingCart = () => {
   }, [loading]);
 
   useEffect(() => {
-    localStorage.setItem('postedBooking', JSON.stringify({...postedBooking, totalPrice: total}))
+    localStorage.setItem('postedBooking', JSON.stringify({ ...postedBooking, totalPrice: total }))
   }, [total, postedBooking])
 
   useEffect(() => {
@@ -166,7 +207,7 @@ export const ShoppingCart = () => {
   if (isLoading) return <Loading />;
 
   return (
-    !loading && cartBikes.length
+    !loading && (cartBikes.length || cartAdventures.length)
       ? <div className={s.container} id={s.cart}>
         <div className={s.titleDiv}>
           <h1 className={s.title}>Carrito de compras</h1>
@@ -202,7 +243,7 @@ export const ShoppingCart = () => {
                     : <></>
                 }
                 {
-                  cartBikes.length
+                  cartBikes.length && allAccs.length
                     ? cartBikes.map(bike => {
                       return bike.accesories?.map(el => {
                         const objAcc = allAccs.find(a => a.idAcc === el)
@@ -236,7 +277,7 @@ export const ShoppingCart = () => {
           </TableContainer>
           <div className={s.previewItems}>
             {
-              cartBikes.length
+              cartBikes.length && allAccs.length
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
@@ -250,15 +291,34 @@ export const ShoppingCart = () => {
                               <RenderAccCart
                                 className={s.imgCloud}
                                 publicId={objAcc.image}
-                                />
+                              />
                             </div>
                           )
                         })}
                       </div>
-                      <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      <div className={s.buttonCont}>
+                        <button onClick={(e) => editItem(e, bike.idBike)} className={s.deleteBtn}><BiEdit color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                        <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      </div>
                     </div>
                   )
                 })
+                : <></>
+            }
+          </div>
+          <div>
+            {
+              cartAdventures.length ? cartAdventures.map(adv => {
+                return (
+                  <div className={s.cardBike} key={adv.id} >
+                    <h2 className={s.bikeName}>{adv.name}</h2>
+                    <RenderOneImage publicId={adv.image} className={s.img} />
+                    <div className={s.buttonCont}>
+                      <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                    </div>
+                  </div>
+                )
+              })
                 : <></>
             }
           </div>
@@ -274,9 +334,9 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length 
-                    ? <></>
-                    : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total}/>
+                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length
+                      ? <></>
+                      : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
 
                 </div>

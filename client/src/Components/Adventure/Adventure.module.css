@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
 .img_aux {
     width: 100%;
     margin-top: 5rem;
@@ -12,9 +14,12 @@
     margin-left: 3rem;
     font-size: 1.5rem;
     margin-top: 2rem;
-    font-weight: 600;
+    font-weight: 300;
     height: 10%;
     justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #787877
 }
 
 .btn2 {
@@ -22,7 +27,8 @@
     line-height: 1;
     padding: 0;
     font-size: .9rem;
-    width: 7rem;
+    width: 9vw;
+    height: 7vh;
     background-color: transparent;
     border-radius: 0.5rem;
     border-color: rgba(255, 251, 251, 0.453);
@@ -33,3 +39,38 @@
     background: #F9B621;
     border-radius: 6px 6px 6px 6px;
 }
+.precioTotal{
+    color: #484848;
+    font-family: 'Roboto';
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.containerAdic {
+    display: flex;
+    justify-content: center;
+}
+
+.containerBtn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.left {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
+}
+
+.right {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    right: 0;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
+}
+

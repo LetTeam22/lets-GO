@@ -17,14 +17,15 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
+const httpServer = require('./src/socketIO');
 const { loadAllModelsInDB } = require('./src/controllers/loadData.js');
 const { conn, Bike } = require('./src/db.js');
 
 
 // Syncing all the models at once.
+
 conn.sync({ force: true }).then(async () => {
-  server.listen(process.env.PORT || 3001, async () => {
+  httpServer.listen(process.env.PORT || 3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     const bikes = await Bike.findAll()
     bikes.length? null : loadAllModelsInDB();

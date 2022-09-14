@@ -6,7 +6,7 @@ import {
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES,
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
-    BIKE_RATING
+    BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS, CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, GET_HISTORY_RATING
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -224,3 +224,46 @@ export const postBikeRating = payload => {
         .then(res => dispatch({ type: BIKE_RATING, payload: res.data }))
         .catch(err => console.log(err))
 };
+
+export const createBike = bike => {
+    return dispatch => axios.post('/bikes/create', bike)
+        .then(res => dispatch({ type: CREATE_BIKE, payload: res }))
+        .catch(err => console.log(err));
+};
+
+export const createAccesorie = accesorie => {
+    return dispatch => axios.post('/accesories/create', accesorie)
+        .then(res => dispatch({ type: CREATE_ACCESORIE, payload: res }))
+        .catch(err => console.log(err));
+};
+
+export const addAdventure = payload => {
+    return ({
+        type: ADD_ADVENTURE,
+        payload
+    })
+};
+
+export const getHistoryRatings = (idBooking) => {
+    return dispatch => axios(`/bikes/getRatingHistory/${idBooking}`)
+        .then(res => dispatch({ type: GET_HISTORY_RATING, payload: res.data }))
+};
+
+export const getUserNotifications = (email) => {
+    return dispatch => axios.get(`/notifications?email=${email}`)
+        .then(res => dispatch({type: GET_USER_NOTIFICATIONS, payload: res.data}))
+        .catch(err => console.log(err))
+};
+
+export const increasePrice = percentage => {
+    return dispatch => axios.put('/bikes/prices', percentage)
+        .then(res => dispatch({ type: INCREASE_PRICE, payload: res }))
+        .catch(err => console.log(err));
+};
+
+export const increasePriceAccs = percentage => {
+    return dispatch => axios.put('/accesories/prices', percentage)
+        .then(res => dispatch({ type: INCREASE_PRICE_ACCS, payload: res }))
+        .catch(err => console.log(err));
+};
+

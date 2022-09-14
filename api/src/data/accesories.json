@@ -1,49 +1,49 @@
 [
     {
         "name": "Casco",
-        "description": "Para viajar protegido",
+        "description": "En let's GO nos importa mucho tu seguridad, por eso te ofrecemos este accesorio imprescindible para que estés protegido desde el primer momento. No importa si vas con tu Let hasta la esquina o si estás por emprender una travesía de cientos de kilómetros: usar casco hace la diferencia. Sé responsable y no pierdas la cabeza.",
         "image": "Let/accesories/casco_r6dvcq",
         "price": "150"
     },
     {
         "name": "Botella",
-        "description": "Para disfrutar de tu Let tenés que estar en todos los detalles",
+        "description": "Si vas a subirte a una Let para salir a la ruta; si vas a correr una carrera de mountain bike, o harás un largo paseo por la ciudad, este accesorio no puede faltarte, más aún en los meses de primavera y verano. Vos disfrutá de tu Let. Nosotros estaremos en todos los los detalles",
         "image": "Let/accesories/botellita_aaisn0",
         "price": "50"
     },
     {
         "name": "Silla portabebés",
-        "description": "Disfrutá de Let con buena compañía",
+        "description": "En let's GO queremos que te sumes con tu familia al cuidado del ambiente. ¿Tenés que llevar a tu hija al jardín? ¿Tu hijo quiere salir con vos de paseo? ¡Subilo a tu let! Con esta silla te ofrecemos la posibilidad de disfrutar de buena compañía al tiempo que reducís tus emisiones de carbono. Si querés darles un mundo mejor, empezá por las Let.",
         "image": "Let/accesories/silla-porta-bebes_ubiipe",
         "price": "250"
     },
     {
         "name": "Calzado",
-        "description": "Tenemos todo lo que necesitás para pedalear preparado en tu Let",
+        "description": "Las zapatillas de ciclismo son fundamentales si querés tener una experiencia más 'pro'. Evitan movimientos anormales al momento de pedalear y golpes innecesarios, y mejoran la velocidad de proyección. Dale un plus a tu experiencia con let's GO.",
         "image": "Let/accesories/zapatillas1_tlx2gf",
         "price": "300"
     },
     {
         "name": "Canasto",
-        "description": "Sumá comodidad a tu Let",
+        "description": "Tu Let es tu medio de transporte. La usás para salir de paseo, pero también quisieras poder pasar por el super antes de volver a casa a buscar lo que falta para la cena y no tener que pedalear haciendo equilibrio con las compras o recargar tu espalda. Agregá este canasto opcional y sumá comodidad a tu Let.",
         "image": "Let/accesories/canasto_jz9bk5",
         "price": "230"
     },
     {
         "name": "Luces",
-        "description": "Que la noche no te agarre desprevenido",
+        "description": "Ya sea que subas a tu Let por la noche, a primera hora de la mañana, o en días nublados y con apenas visibilidad, las luces de bici son un accesorio imprescindible para tu seguridad. En let's GO nos preocupamos por vos, por eso te ofrecemos este complemento ideal para ver y ser visto.",
         "image": "Let/accesories/luces_xmmwbz",
         "price": "80"
     },
     {
         "name": "Candado",
-        "description": "Dejá tu Let donde quieras",
+        "description": "Usar la bicicleta para moverte por la ciudad es algo cada vez más frecuente. Sacar el auto para hacer un trámite en el banco en hora pico, puede er la peor decisión de la semana. En let'sGo queremos que los cortes de calles y embotallemientos sean asuntos de otros y no tuyos. Por eso te ofrecemos este candado para que puedas estacionar la bicicleta en cualquier lugar sin preocupaciones. Vayas donde vayas, andá con tu Let.",
         "image": "Let/accesories/candado_hccjpv",
         "price": "60"
     },
     {
         "name": "Lentes",
-        "description": "El accesorio que te faltaba para esa subida al cerro en pleno día de sol",
+        "description": "Los lentes en el ciclismo no son solamente un elemento estético sino que son una herramienta fundamental para garantizar tu seguridad y confort encima de la bicicleta. Además de protegerte del sol, te permiten tener siempre una visión óptima. Olvidate del polvo y de los mosquitso y completá tu experiencia Let",
         "image": "Let/accesories/lentes_whi6dg",
         "price": "320"
     }

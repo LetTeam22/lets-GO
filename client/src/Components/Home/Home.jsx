@@ -8,20 +8,20 @@ import Dates from "../Dates/Dates";
 import { getBikes, getRenderedBikes, getUser,getAllFavorites } from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
-// import encabezado from "../../image/encabezado.png";
 import Orderings from "../Orderings/Orderings";
 import { setCurrentPage, setParameters } from "../../Redux/actions";
 import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
 import { useAuth0 } from "@auth0/auth0-react";
 import ChatBot from "../ChatBot/ChatBot";
 
-export const Home = () => {
+export const Home = ({socket}) => {
   const {user } = useAuth0();
   const dispatch = useDispatch();
   const allBikes = useSelector((state) => state.allBikes);
-  const renderedBikes = useSelector((state) => state.renderedBikes);
+  let renderedBikes = useSelector((state) => state.renderedBikes);
   const paginate = useSelector((state) => state.paginate);
   const parameters = useSelector((state) => state.parameters);
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   let [cardId, setCardId] = useState(1);
 
   useEffect(() => {
@@ -51,6 +51,9 @@ export const Home = () => {
   // defino loading
   let loading = false;
   if (!allBikes.length) loading = true;
+
+  // filtro bicis ya agregadas al carrito
+  renderedBikes = renderedBikes.filter(rb => !bookings.find(bk => bk.bike === rb.idBike))
 
   // defino notFound
   let notFound = false;
@@ -146,6 +149,7 @@ export const Home = () => {
                       color={e.color}
                       idBike={e.idBike}
                       id={cardId++}
+                      socket={socket}
                     />
                 </div>
               ))}

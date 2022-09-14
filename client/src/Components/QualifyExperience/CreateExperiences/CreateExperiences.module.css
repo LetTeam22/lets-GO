@@ -8,13 +8,14 @@ body {
 .formAlr {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    /* width: 40%; */
     margin: auto;
     background-color: #33333398;
     margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
     height: 15rem;
+    padding: 1rem;
 }
 
 .spanAlr {
@@ -47,19 +48,17 @@ body {
 .form {
     display: flex;
     flex-direction: column;
-    width: 40%;
     margin: auto;
     background-color: #333333;
     margin-top: 1rem;
     text-align: center;
     border-radius: 2rem;
-    height: 27rem;
+    height: 30rem;
+    padding-left: 9rem;
+    padding-right: 9rem;
 }
 
-
-
 .container {
-    /* margin-left: 10rem; */
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -74,6 +73,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    color: #333333;
 }
 
 .textArea {
@@ -110,6 +110,7 @@ body {
     font-weight: 300;
     font-size: 0.9rem;
     width: 18rem;
+    color: #333333;
 }
 
 .inputs input[type=number]::-webkit-inner-spin-button, 
@@ -131,10 +132,10 @@ body {
     
 }
 
-.redspan {
-    color: red;
+.errSpan {
+    color: #F9B621;
     font-size: 1rem;
-    padding-top: .5rem;
+    padding-top: .1rem;
 }
 
 .span {

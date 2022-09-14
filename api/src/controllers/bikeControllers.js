@@ -1,4 +1,4 @@
-const { Bike, Booking, User } = require('../db')
+const { Bike, Booking, User, Accesories, Historyrating } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -30,7 +30,7 @@ const getRenderedBikes = async (req, res, next) => {
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
-    const searchNum = isNaN(Number(search)) ? 0 : Number(search)
+    const searchNum = isNaN(Number(search)) ? -1 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
 
@@ -79,7 +79,7 @@ const getRenderedBikes = async (req, res, next) => {
                 model: Booking,
                 attributes: ['startDate', 'endDate'],
                 through: { attributes: [] }
-            }
+        }
 
         })
 
@@ -87,7 +87,7 @@ const getRenderedBikes = async (req, res, next) => {
         bikes = bikes.filter(bike => {
             let available = true
             bike.bookings.forEach(booking => {
-                if (!(booking.startDate > toDate || booking.endDate < fromDate)) available = false
+                if (booking.status === 'confirmed' && !(booking.startDate > toDate || booking.endDate < fromDate)) available = false
             })
             return available
         })
@@ -169,11 +169,12 @@ const deleteFavorite = async (req, res, next) => {
 // Post
 const postBike = async (req, res, next) => {
     
-    const { name, description, type, image, traction, wheelSize, 
+    let { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews } = req.body
     
     if (!name || !type || !image || !traction || !wheelSize || !price || !color) return res.sendStatus(400)
-
+    if (traction === 'mecanica') traction = 'mecánica'
+    if (traction === 'electrica') traction = 'eléctrica'
     let bike = { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews }
     let bikeCreated = await Bike.create(bike)
@@ -181,7 +182,7 @@ const postBike = async (req, res, next) => {
     res.send(bikeCreated)
 }
 
-// Update
+// Update bike
 const updateBike = async (req, res, next) => {
     const {idBike, name, description, type, image, traction, wheelSize, price, discount, rating, color, status} = req.body
     
@@ -206,8 +207,20 @@ const updateBike = async (req, res, next) => {
 
 // Puntuar Bike
 const updateRating = async (req, res, next) => {
-    const {idBike, rating} = req.body
+    const {idBike, rating, idBooking} = req.body
     try {
+        // Guardamos la puntuacion en HistoryRating
+        const score = await Historyrating.create({ idBikeRated: idBike, 
+            scoreReceived: rating 
+        });
+        console.log(score.toJSON())
+        // Buscamos la Booking correspondiente
+        const booking = await Booking.findByPk(idBooking);
+
+        //Relacionamos la puntuacion con el bookingID
+        await booking.addHistoryrating(score)
+
+        // Por ultimo actualizamos y devolvemos el rating
         const bike = await Bike.findOne({
             where: {idBike:idBike}
         })
@@ -222,12 +235,67 @@ const updateRating = async (req, res, next) => {
             rating: updateRating,
             nunOfReviews: bike.nunOfReviews + 1
         });
-        res.send(bike)
+        res.send({ idBike: bike.idBike, rating: bike.rating })
     } catch (error) {
         next(error)
     }
 }
 
+// get Bike-History-Rating
+const ratingHistoryBooking = async (req, res, next) => {
+    const {idBooking} = req.params;
+    // console.log('id' ,idBooking)
+    try {
+        const history = await Historyrating.findAll({
+            attributes: [['idBikeRated','idBike'], ['scoreReceived','rating']],
+            include: {
+                model: Booking,
+                attributes: ['idBooking'],
+                through: { attributes: [] },
+                where: { idBooking: idBooking }
+            },
+        })
+        res.send(history)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+const updatePrices = async (req, res, next) => {
+    const { percentage } = req.body
+    try {
+        const bikes = await Bike.findAll();
+        percentage && bikes.forEach(b => {
+            b.price = Math.round(Number(b.price) * (1 + Number(percentage)))
+            b.save()
+        })
+        res.send('Precios de bicicletas actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
+
+// Aplicar descuentos grupales
+const applyGroupDiscounts = async (req, res, next) => {
+    const { traction, wheelSize, color, type, discount } = req.body
+    try {
+        const bikes = await Bike.findAll({
+            where: {
+                traction: traction ? traction : { [Op.not]: null },
+                wheelSize: wheelSize ? wheelSize : { [Op.not]: null },
+                color: color ? color : { [Op.not]: null },
+                type: type ? type : { [Op.not]: null },
+                status: 'active'
+            }
+        })
+        discount && bikes.forEach(b => {
+            b.discount = discount
+            b.save()
+        })
+        res.send('Descuentos aplicados')
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports = {
     getAllBikes,
@@ -239,4 +307,7 @@ module.exports = {
     getAllFavorites,
     updateBike,
     updateRating,
+    updatePrices,
+    ratingHistoryBooking,
+    applyGroupDiscounts
 }

@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.page {
+display: block
+}
+
+.pageBlock {
+    padding-top: 3rem !important;
+    width: 100%;
+    padding: 2.5rem 0 !important;
+    display: block;
+    background: white;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 24rem;
+    padding-right: 24rem;
+    box-sizing: border-box;
+}
+.pageHeading {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    display: flex;
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+    font-weight: 300;
+    height: 10%;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #787877
+}
+
+.row {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.row::before {
+    content: " ";
+    display: table;  
+}
+
+.column {
+    position: relative;
+    min-height: 0.06rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.heading {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    word-spacing: 0.09em;
+    line-height: 1.5;
+    color: #000;
+    font-weight: normal;
+    margin-top: 1rem;
+}
+
+h3.heading>span, .h3.heading>span {
+    display: block;
+    margin-top: 0.6rem;
+    width: 3.2rem;
+    height: 0.12rem;
+    background: #F9B621;
+}
+
+ul {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.57;
+    margin-bottom: 1.5rem;
+    padding-left: 1.1rem;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul.featuredList {
+    list-style: none;
+    padding: 0;
+}
+
+ul.featuredList li:before {
+    color: #333333;
+    font-family: 'FontAwesome';
+    content: "\f00c";
+    margin-right: 0.5rem;
+}
+
+ul li{
+    margin-bottom: 0.5rem;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+p {
+    font-size: 1em;
+    font-weight: 300;
+    font-family: 'Roboto';
+    line-height: 1.75;
+    display: block;
+    margin: 0 0 0.5em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.left {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
+}
+
+.right {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    right: 0;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
+}
+
+.a {
+    color: #F9B621;
+    text-decoration: none;
+    cursor: pointer;
+}
+.a:hover {
+    color:#F9B621
+}
+
+.a:visited {
+    color:#F9B621 
+}

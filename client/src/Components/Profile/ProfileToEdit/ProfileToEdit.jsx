@@ -25,7 +25,7 @@ import { getUser } from "../../../Redux/actions/index";
 // import logo from '../../../image/logo.png';
 
 export const ProfileToEdit = () => {
-  const logo = "https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
+  const logo = 'https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png'
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
   const cloudName = 'pflet'

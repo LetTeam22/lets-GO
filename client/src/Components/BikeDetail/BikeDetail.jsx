@@ -17,27 +17,38 @@ export const BikeDetail = () => {
   const allAccs = useSelector((state) => state.accesories);
   const { bikeId } = useParams();
   const history = useHistory();
+  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+  // me fijo si la bici ya esta en el carrito para ver si hay accesorios ya seleccionados que tienen que aparecer checked
+  const biciEnCarrito = bookings.find(b => b.bike === Number(bikeId))
 
   const [input, setInput] = useState({
     bike: parseInt(bikeId, 10),
     accs: [],
     totalAcc: 0
-  });
+  })     
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAccesories());
     dispatch(getBikeDetail(bikeId));
+    fillInput();
     return () => {
       dispatch(setBikeDetail([]))
     }
-  }, [dispatch, bikeId]);
+  }, [dispatch, bikeId]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // lleno el input si la bici está en el carrito y tiene accesorios
+  const fillInput = () => {
+    if (biciEnCarrito && biciEnCarrito.accs.length) {
+      setInput({...input, accs: [...biciEnCarrito.accs]})
+    }
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
-    const bookedBikes = JSON.parse(localStorage.getItem("booking") || "[]");
-    localStorage.setItem("booking", JSON.stringify([...bookedBikes, input]));
+    const filteredBikes = bookings.filter(b => b.bike !== Number(bikeId))
+    localStorage.setItem("booking", JSON.stringify([...filteredBikes, input]));
     dispatch(addBooking(input));
     setInput({
       accs: [],
@@ -80,7 +91,7 @@ export const BikeDetail = () => {
 
   const adicional = () => {
     let adic = 0
-    input.accs.forEach(acc => {
+    allAccs.length && input.accs.forEach(acc => {
       const objAcc = allAccs.find(a => a.idAcc === acc)
       const price = Number(objAcc.price)
       adic += price
@@ -154,7 +165,7 @@ export const BikeDetail = () => {
             <div className={s.containerGral}>
               <div className={s.containerAcc}>
                 {
-                  allAccs?.map(acc => {
+                  allAccs?.filter(acc => acc.status === 'active').map(acc => {
                     return (
                       <Accesory 
                         key={acc.idAcc}
@@ -162,7 +173,8 @@ export const BikeDetail = () => {
                         name={acc.name} 
                         handleCheck={handleCheck} 
                         price={acc.price} 
-                        image={acc.image} 
+                        image={acc.image}
+                        defaultChecked={biciEnCarrito && biciEnCarrito.accs.includes(acc.idAcc)}
                       />
                     )
                   })

@@ -1,22 +1,31 @@
-.container {
+.containerComp {
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
+    margin-top: 0;
+    padding-bottom: 2rem;
+}
+.containerTit {
+    background-color: #ffffff;
+    margin-bottom: 0;
 }
 
 .h1 {
     display: flex;
     margin-left: 3rem;
     font-size: 1.5rem;
-    margin-top: 3rem;
-    font-weight: 600;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    font-weight: 300;
     height: 10%;
     justify-content: center;
+    color: #787877
 }
 
 .p {
     width: 40rem;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     letter-spacing: 0.07em;
     color: rgb(87, 87, 87);
@@ -24,19 +33,19 @@
     margin-right: auto;
 }
 
-.izq {
-    position: absolute;
-    background-color: rgb(239, 238, 238);
-    height: 110rem;
+.left {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
     width: 18%;
-    box-shadow: #bbbbba 3px 0px 30px 0px;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
 }
 
-.der {
-    position: absolute;
-    background-color: rgb(239, 238, 238);
-    height: 110rem;
+.right {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
     width: 18%;
     right: 0;
-    box-shadow: #bbbbba 3px 0px 30px 0px;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }

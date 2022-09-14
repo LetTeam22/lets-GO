@@ -20,12 +20,12 @@ async function createUser(req, res, next) {
     const [user, created] = await User.findOrCreate({
         where: { email: email },
         defaults: {
-          firstName,
-          lastName,
-          cellphone,
-          profilePic,
-          creditCard,
-          isAdmin
+            firstName,
+            lastName,
+            cellphone,
+            profilePic,
+            creditCard,
+            isAdmin
         }
     });
     res.send({user,created})

@@ -25,6 +25,14 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM('active', 'deleted'),
       allowNull: false,
       defaultValue: 'active'
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    numberOfLikes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     }
   }, {
     timestamps: false
