@@ -34,7 +34,7 @@ import { EBike } from './Components/EBike/EBike'
 import { Invention } from './Components/Invention/Invention'
 import { FAQs } from './Components/FAQs/FAQs';
 import { HowToRent } from './Components/HowToRent/HowToRent';
-
+const REACT_APP_BACK_URL  = process.env.REACT_APP_BACK_URL;
 
 function App() {
 
@@ -42,7 +42,7 @@ function App() {
   const [ socket, setSocket ] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:3001"))
+    setSocket(io(REACT_APP_BACK_URL))
   }, []);
 
   useEffect(() => {
