@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getAllBikes, getRenderedBikes, getBikeId, postBike, updateBike, 
-    deleteFavorite, postFavorite, getAllFavorites, updateRating, updatePrices  
+    deleteFavorite, postFavorite, getAllFavorites, updateRating, updatePrices,
+    ratingHistoryBooking,
 } = require('../controllers/bikeControllers')
 
 
@@ -32,6 +33,10 @@ router.get('/getAllFavorites/:email',getAllFavorites)
 
 //Actualiza el Rating de una Bicicleta
 router.post('/updateRating',updateRating)
+
+//Get del historial, solo para un booking en particular
+// ejemplo: http://localhost:3001/bikes/getRatingHistory?idBooking=14
+router.get('/getRatingHistory/:idBooking',ratingHistoryBooking)
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

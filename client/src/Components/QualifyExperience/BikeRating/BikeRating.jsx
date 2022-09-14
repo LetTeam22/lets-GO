@@ -1,17 +1,20 @@
 import s from '../BikeRating/BikeRating.module.css'
 import { RenderBikeRating } from '../../Cloudinary/renderBikeRating'
 import Rating from '@mui/material/Rating'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postBikeRating, getBikes } from '../../../Redux/actions';
+import { postBikeRating, getBikes, getHistoryRatings } from '../../../Redux/actions';
 
 
-export const BikeRating = ({ name, image, idBike, rating }) => {
-
+export const BikeRating = ({ name, image, idBike, rating, idBooking }) => {
     const dispatch = useDispatch();
-    const bikeRating = useSelector(state => state.bikeRating);
-    const [ratingBike, setRatingBike] = useState({ idBike, rating: 0 });
 
+    useEffect(() => {
+        dispatch(getHistoryRatings(idBooking))
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const bikeRating = useSelector(state => state.bikeRating);
+    const [ratingBike, setRatingBike] = useState({ idBike, rating: 0, idBooking });
     const handleRatingClick = e => {
         setRatingBike({...ratingBike, rating: parseInt(e.target.defaultValue)});
     };
@@ -20,11 +23,11 @@ export const BikeRating = ({ name, image, idBike, rating }) => {
         e.preventDefault();
         dispatch(postBikeRating(ratingBike));
         dispatch(getBikes());
-        setRatingBike({ idBike, rating: 0 });
+        setRatingBike({ idBike, rating: 0, idBooking });
     };
 
     const alreadyQualified = bikeRating.find(e => e.idBike === idBike);
-    console.log(alreadyQualified);
+    // console.log(alreadyQualified);
 
     return (
         <>
