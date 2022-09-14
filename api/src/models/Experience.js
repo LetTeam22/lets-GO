@@ -29,6 +29,10 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    numberOfLikes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     }
   }, {
     timestamps: false

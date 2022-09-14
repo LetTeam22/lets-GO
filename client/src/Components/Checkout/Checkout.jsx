@@ -32,11 +32,10 @@ export default function Checkout() {
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
-        localStorage.removeItem("adventure")
-        sendEmail()
+        localStorage.removeItem("adventure");
+        sendEmail();
         history.push('/home')
     },)
-
 
     return (
         <>

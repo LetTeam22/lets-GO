@@ -53,87 +53,34 @@ function App() {
     <>
       <NavBar socket={socket} />
       <Switch>
-        {/* <Route exact path='/' component={Landing} /> */}
         <Route exact path='/'><Landing /></Route>
-
-        {/* <Route exact path='/home' component={Home} /> */}
         <Route exact path='/home'><Home socket={socket} /></Route>
-
-        {/* <Route exact path='/bike/profile' component={Profile} /> */}
         <Route exact path='/bike/profile'><Profile /></Route>
-
-        {/* <Route exact path='/bike/privateRoute' component={Private} /> */}
         <Route exact path='/bike/privateRoute'><Private /></Route>
-
-        {/* <Route exact path='/bike/:bikeId' component={BikeDetail} /> */}
         <Route exact path='/bike/:bikeId'><BikeDetail /></Route>
-
-        {/* <Route exact path='/allAccessories' component={AllAccesories} /> */}
         <Route exact path='/allAccessories'><AllAccesories /></Route>
-
-        {/* <Route exact path='/adventure' component={Adventure} /> */}
         <Route exact path='/adventure'><Adventure /></Route>
-
-
-        {/* <Route exact path='/promotions' component={Promotions} /> */}
         <Route exact path='/promotions'><Promotions /></Route>
-
-        {/* <Route exact path='/allExperiencies' component={AllExperiencies} /> */}
         <Route exact path='/allExperiencies'><AllExperiencies socket={socket} /></Route>
-
-        {/* <Route exact path='/contact' component={Contact} /> */}
         <Route exact path='/contact'><Contact /></Route>
-
-        {/* <Route exact path='/cart' component={ShoppingCart} /> */}
         <Route exact path='/cart'><ShoppingCart /></Route>
-
-        {/* <Route exact path='/postLogin' component={PostLogIn} /> */}
         <Route exact path='/postLogin'><PostLogIn /></Route>
-
-        {/* <Route exact path='/editProfile' component={ProfileToEdit} /> */}
         <Route exact path='/editProfile'><ProfileToEdit /></Route>
-
-        {/* <Route exact path='/AdminProfile' component={AdminProfile} /> */}
         <Route exact path='/AdminProfile'><AdminProfile /></Route>
-
-
-        {/* <Route exact path='/AdminProfile/bookings' component={Bookings} /> */}
         <Route exact path='/AdminProfile/bookings'><Bookings /></Route>
-
-        {/* <Route exact path='/AdminProfile/users' component={Users} /> */}
         <Route exact path='/AdminProfile/users'><Users /></Route>
-
-
-        {/* <Route exact path='/AdminProfile/bikes' component={Bikes} /> */}
         <Route exact path='/AdminProfile/bikes'><Bikes /></Route>
-
-        {/* <Route exact path='/AdminProfile/experiences' component={Experiences} /> */}
         <Route exact path='/AdminProfile/experiences'><Experiences /></Route>
-
-        {/* <Route exact path='/AdminProfile/accesories' component={Accesories} /> */}
         <Route exact path='/AdminProfile/accesories'><Accesories /></Route>
-
-        {/* <Route exact path='/qualifyExperience' component={QualifyExperience} /> */}
         <Route exact path='/qualifyExperience'><QualifyExperience /></Route>
-
-        {/* <Route exact path='/checkout' component={Checkout} /> */}
         <Route exact path='/checkout'><Checkout /></Route>
-
         <Route exact path='/terms'><TermsAndConditions /></Route>
-
         <Route exact path='/definition'><BikeDefinition /></Route>
-
         <Route exact path='/history'><History /></Route>
-
         <Route exact path='/ebike'><EBike /></Route>
-
         <Route exact path='/invention'><Invention /></Route>
-
         <Route exact path='/faqs'><FAQs/></Route>
-
         <Route exact path='/how'><HowToRent/></Route>
-
-        {/* <Route path='*' component={Error} /> */}
         <Route exact path='*'><Error /></Route>
       </Switch>
       <Footer />

@@ -6,7 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 
-export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
+export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email, numberOfLikes}) => {
 
     const { user, isAuthenticated } = useAuth0();
     const [ like, setLike ] = useState(false);
@@ -17,7 +17,7 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
         socket.emit('likeExperience', {
             senderName: user.name,
             receiverName: mail
-        })
+        });
     }
 
     return (
@@ -34,8 +34,18 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 {
                     isAuthenticated
                     ? like 
-                        ? <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
-                        : <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621'/></button>
+                        ?   (
+                                <div className={s.containerLikes}>
+                                    <span className={s.likes}>{numberOfLikes}</span>
+                                    <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
+                                </div>
+                            )
+                        :   (
+                                <div className={s.containerLikes}>
+                                    <span className={s.likes}>{numberOfLikes}</span>
+                                    <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
+                                </div>
+                            ) 
                     : <></>
                 }
             </div>
