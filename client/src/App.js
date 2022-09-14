@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Home } from './Components/Home/Home';
 import { Landing } from './Components/Landing/Landing'
@@ -28,12 +28,17 @@ import Checkout from './Components/Checkout/Checkout';
 import { io } from 'socket.io-client';
 import { useAuth0 } from '@auth0/auth0-react';
 import { TermsAndConditions } from './Components/TermsAndConditions/TermsAndConditions';
+import { BikeDefinition } from './Components/BikeDefinition/BikeDefinition';
+import { History } from './Components/History/History'
+import { EBike } from './Components/EBike/EBike'
+import { Invention } from './Components/Invention/Invention'
+
 
 function App() {
 
   const { user, isAuthenticated } = useAuth0();
   // const [ username, setUsername ] = useState('');
-  const [ socket, setSocket ] = useState(null);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
     setSocket(io("http://localhost:3001"))
@@ -113,7 +118,15 @@ function App() {
         {/* <Route exact path='/checkout' component={Checkout} /> */}
         <Route exact path='/checkout'><Checkout /></Route>
 
-        <Route exact path='/terms'><TermsAndConditions/></Route>
+        <Route exact path='/terms'><TermsAndConditions /></Route>
+
+        <Route exact path='/definition'><BikeDefinition /></Route>
+
+        <Route exact path='/history'><History /></Route>
+
+        <Route exact path='/ebike'><EBike /></Route>
+
+        <Route exact path='/invention'><Invention /></Route>
 
         {/* <Route path='*' component={Error} /> */}
         <Route exact path='*'><Error /></Route>

@@ -7,6 +7,10 @@ import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
 
 const github = 'https://github.com/LetTeam22/PF-Let';
 const terms = '/terms'
+const definition = '/definition'
+const history = '/history'
+const ebike = '/ebike'
+const invention = '/invention'
 
 export const Footer = () => {
 
@@ -25,10 +29,18 @@ export const Footer = () => {
             </div>
             <div className={s.guia}>
                 <h5 className={s.h5}>GUIA LET'S GO</h5>
-                <span className={s.footerSpan}>Bicicleta: definición y significado</span>
-                <span className={s.footerSpan}>Historia bicicleta</span>
-                <span className={s.footerSpan}>Como funciona una bicicleta electrica</span>
-                <span className={s.footerSpan}>Invencion de la bici</span>
+                <a className={s.footerSpan} href={definition} cursor='pointer'>
+                    <span className={s.footerSpan}>Bicicleta: definición y significado</span>
+                </a>
+                <a className={s.footerSpan} href={history} cursor='pointer'>
+                    <span className={s.footerSpan}>Historia de la bicicleta</span>
+                </a>
+                <a className={s.footerSpan} href={ebike} cursor='pointer'>
+                    <span className={s.footerSpan}>Como funciona una bicicleta electrica</span>
+                </a>
+                <a className={s.footerSpan} href={invention} cursor='pointer'>
+                    <span className={s.footerSpan}>Invencion de la bici</span>
+                </a>
                 <span className={s.footerSpan}>Normativa bicicletas</span>
             </div>
             <div className={s.company}>
