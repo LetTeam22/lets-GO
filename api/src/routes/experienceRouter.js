@@ -4,7 +4,7 @@ const { Router } = require('express');
 
 
 const {experienceDetails,updateExperience,
-    createExperience,allExperiences
+    createExperience,allExperiences, getRenderedExperiences
 } = require ('../controllers/experienceControllers')
 
 const router = Router();
@@ -24,5 +24,9 @@ router.put('/update', updateExperience)
 
 // devuelve un array de todas las experiencias existentes
 router.get('/getall',allExperiences)
+
+// devuelve un array de experiencias aplicando filtros
+// EJEMPLO: http://localhost:3001/experience/getFiltered?sort=nameASC&fromDate=2022-01-01&toDate=2022-04-01
+router.get('/getFiltered',getRenderedExperiences)
 
 module.exports = router;

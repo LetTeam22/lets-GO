@@ -28,7 +28,9 @@ export const QualifyExperience = () => {
                         name= {b.name}
                         image= {b.image}
                         idBike={b.idBike}
-                        rating={b.rating}/>
+                        rating={b.rating}
+                        idBooking={userBookings.idBooking}
+                    />
                 ))}
             </div>
         </>

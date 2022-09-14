@@ -1,4 +1,4 @@
-const { Bike, Booking, User, Accesories } = require('../db')
+const { Bike, Booking, User, Accesories, Historyrating } = require('../db')
 const { Op } = require("sequelize");
 
 //Get
@@ -207,8 +207,20 @@ const updateBike = async (req, res, next) => {
 
 // Puntuar Bike
 const updateRating = async (req, res, next) => {
-    const {idBike, rating} = req.body
+    const {idBike, rating, idBooking} = req.body
     try {
+        // Guardamos la puntuacion en HistoryRating
+        const score = await Historyrating.create({ idBikeRated: idBike, 
+            scoreReceived: rating 
+        });
+        console.log(score.toJSON())
+        // Buscamos la Booking correspondiente
+        const booking = await Booking.findByPk(idBooking);
+
+        //Relacionamos la puntuacion con el bookingID
+        await booking.addHistoryrating(score)
+
+        // Por ultimo actualizamos y devolvemos el rating
         const bike = await Bike.findOne({
             where: {idBike:idBike}
         })
@@ -229,7 +241,25 @@ const updateRating = async (req, res, next) => {
     }
 }
 
-// Update prices
+// get Bike-History-Rating
+const ratingHistoryBooking = async (req, res, next) => {
+    const {idBooking} = req.params;
+    // console.log('id' ,idBooking)
+    try {
+        const history = await Historyrating.findAll({
+            attributes: [['idBikeRated','idBike'], ['scoreReceived','rating']],
+            include: {
+                model: Booking,
+                attributes: ['idBooking'],
+                through: { attributes: [] },
+                where: { idBooking: idBooking }
+            },
+        })
+        res.send(history)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
 const updatePrices = async (req, res, next) => {
     const { percentage } = req.body
     try {
@@ -278,5 +308,6 @@ module.exports = {
     updateBike,
     updateRating,
     updatePrices,
+    ratingHistoryBooking,
     applyGroupDiscounts
 }
