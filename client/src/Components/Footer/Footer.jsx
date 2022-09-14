@@ -12,6 +12,8 @@ const history = '/history'
 const ebike = '/ebike'
 const invention = '/invention'
 const howToRent = '/how'
+const contact = '/contact'
+const normative = '/normative'
 
 export const Footer = () => {
 
@@ -28,7 +30,7 @@ export const Footer = () => {
                 <a className={s.footerSpan} href={terms} cursor='pointer'>
                     <span className={s.footerSpan}>Términos y condiciones</span>
                 </a>
-                <span className={s.footerSpan}>Arrepentimiento de Compra</span>
+                <span className={s.footerSpan}>Arrepentimiento de alquiler</span>
             </div>
             <div className={s.guia}>
                 <h5 className={s.h5}>GUIA LET'S GO</h5>
@@ -44,12 +46,16 @@ export const Footer = () => {
                 <a className={s.footerSpan} href={invention} cursor='pointer'>
                     <span className={s.footerSpan}>Invencion de la bici</span>
                 </a>
+                <a href={normative} className={s.footerSpan} cursor='pointer'>
                 <span className={s.footerSpan}>Normativa bicicletas</span>
+                </a>
             </div>
             <div className={s.company}>
                 <h5 className={s.h5}>COMPAÑIA</h5>
                 <span className={s.footerSpan}>Sobre nosotros</span>
+                <a href={contact} className={s.footerSpan}>
                 <span className={s.footerSpan}>Contacto</span>
+                </a>
                 <div className={s.icons} >
 
                     <BsFacebook
