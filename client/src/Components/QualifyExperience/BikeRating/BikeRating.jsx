@@ -3,7 +3,7 @@ import { RenderBikeRating } from '../../Cloudinary/renderBikeRating'
 import Rating from '@mui/material/Rating'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postBikeRating, getBikes } from '../../../Redux/actions';
+import { postBikeRating } from '../../../Redux/actions';
 
 
 export const BikeRating = ({ name, image, idBike, rating }) => {
@@ -19,7 +19,6 @@ export const BikeRating = ({ name, image, idBike, rating }) => {
     const handleClick = e => {
         e.preventDefault();
         dispatch(postBikeRating(ratingBike));
-        dispatch(getBikes());
         setRatingBike({ idBike, rating: 0 });
     };
 
@@ -43,7 +42,6 @@ export const BikeRating = ({ name, image, idBike, rating }) => {
                                 <span className={s.point}> {ratingBike.rating} puntos</span>
                             </>
                             }
-                            {/* { disabled && <span className={s.name}>¡Gracias por tu calificación!</span> } */}
                         </div>
                     </div>
                 </div>
