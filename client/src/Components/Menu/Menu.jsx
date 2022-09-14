@@ -5,10 +5,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from "react-redux";
 import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
-import { Link, useLocation } from "react-router-dom";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import { Link, useLocation } from "react-router-dom";
 import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
+import { MdCheck } from 'react-icons/md';
+import { BsBook } from 'react-icons/bs';
 import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
@@ -24,21 +26,30 @@ export const Menu = ({socket}) => {
   const location = useLocation();
   const url = location.pathname;
   const dispatch = useDispatch();
-  const userNotifications = useSelector(state => state.userNotifications);
+  // const userNotifications = useSelector(state => state.userNotifications);
 
-  // const [ notifications, setNotifications ] = useState([]);
+  const [ notifications, setNotifications ] = useState([]);
   const [ open, setOpen ] = useState(false);
 
   const handleOpen = (e) => {
     e.preventDefault();
+    if(open) {
+      setNotifications([]);
+    }
     setOpen(!open);
   }
 
-  // useEffect(() => {
-  //   socket?.on('getLike', data => {
-  //     setNotifications(prevNotifications => [...prevNotifications, data])
-  //   })
-  // }, [socket]);
+  useEffect(() => {
+    socket?.on('getLike', data => {
+      setNotifications(prevNotifications => [...prevNotifications, data])
+    })
+    socket?.on('login', () => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'Login',
+        content: 'Usuario logueado correctamente'
+      }])
+    });
+  }, [socket]);
 
   useEffect(() => {
     isAuthenticated && dispatch(getUserNotifications(user?.email));
@@ -102,22 +113,35 @@ export const Menu = ({socket}) => {
         </Link>
         <div className={s.containerBell}>
           <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
-          <div className={s.counter}>{userNotifications.length}</div>
+          <div className={s.counter}>{notifications.length}</div>
           {
             open && (
                 <div className={s.notifications}>
                   {
-                    userNotifications?.map(n => {
-                      return (
+                    notifications?.map(n => {
+                      if(n.hasOwnProperty('senderName')) {
+                        return (
+                            <>
+                              <Link to='/allExperiencies'>
+                                <div className={s.notification}>
+                                  <ImHeart size='1rem' color='#F9B621' />
+                                  <span className={s.spanNotification}>{`A ${n.senderName} le ha gustado tu publicacion`}</span>
+                                </div>
+                                <hr />
+                              </Link>
+                            </>
+                          )
+                      } else if(n.hasOwnProperty('type') && n.type === 'Login') {
+                        return (
                           <>
                             <div className={s.notification}>
-                              <ImHeart size='1rem' color='#F9B621' />
+                              <MdCheck size='1.5rem' color='#F9B621' />
                               <span className={s.spanNotification}>{n.content}</span>
                             </div>
                             <hr />
                           </>
-                          
                         )
+                      }
                     })
                   }
                 </div>
