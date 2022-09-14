@@ -26,8 +26,6 @@ export const ShoppingCart = () => {
 
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
-  console.log(Adventures)
-
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
@@ -67,7 +65,6 @@ export const ShoppingCart = () => {
       }
       cartAdventures.push(pushedAdv)
     }
-    console.log(cartAdventures)
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
@@ -84,7 +81,7 @@ export const ShoppingCart = () => {
     return [];
   }, []);
 
-  bookings.forEach(book => {
+  bookings.length && bookings.forEach(book => {
     book.accs.forEach(acc => {
       !ids.includes(acc) && ids.push(acc)
     })
@@ -173,7 +170,7 @@ export const ShoppingCart = () => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify(Adventures.fiter(ad => ad.adv !== id)))
+    localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
 
   }
 
@@ -324,7 +321,7 @@ export const ShoppingCart = () => {
           </div>
         </div>
         {
-          cartBikes.length
+          cartBikes.length || cartAdventures.length
             ? (
               <div className={s.totalPrice}>
                 <div className={s.containerBtn}>
@@ -334,7 +331,7 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === '' || !postedBooking.bikeIds.length
+                    postedBooking.startDate === '' || postedBooking.endDate === ''
                       ? <></>
                       : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }

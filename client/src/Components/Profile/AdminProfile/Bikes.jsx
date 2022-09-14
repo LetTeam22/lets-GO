@@ -7,6 +7,7 @@ import { ThemeProvider } from "@emotion/react";
 import { getBikes } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
+import GroupDiscount from './GroupDiscount';
 import s from "./Bikes.module.css";
 
 
@@ -16,10 +17,15 @@ export default function Bikes() {
   const dispatch = useDispatch()
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null)
+  const [seeDiscount, setSeeDiscount] = useState(false)
 
   useEffect(() => {
     dispatch(getBikes())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const toogleDiscount = () => {
+    seeDiscount? setSeeDiscount(false) : setSeeDiscount(true)
+  }
 
   const totalDays = (from, to) => {
     const date1 = new Date(from);
@@ -109,6 +115,10 @@ export default function Bikes() {
           }}
           onCellEditCommit={(params) => setRowId(params.id)}
         />
+        <div className={s.discountBtn} onClick={toogleDiscount}>Descuentos grupales</div>
+        <div className={seeDiscount? s.show : s.hidde}>
+          <GroupDiscount setSeeDiscount={setSeeDiscount}/>
+        </div>
       </ThemeProvider>
     </div>
   );
