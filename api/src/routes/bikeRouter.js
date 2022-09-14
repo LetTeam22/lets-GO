@@ -1,9 +1,8 @@
 const { Router } = require('express');
 const { getAllBikes, getRenderedBikes, getBikeId, postBike, updateBike, 
     deleteFavorite, postFavorite, getAllFavorites, updateRating, updatePrices,
-    ratingHistoryBooking,
+    applyGroupDiscounts, ratingHistoryBooking,
 } = require('../controllers/bikeControllers')
-
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -11,13 +10,13 @@ const { getAllBikes, getRenderedBikes, getBikeId, postBike, updateBike,
 const router = Router();
 // router.use('/', nombre )
 
-
 router.get('/', getAllBikes);
 router.get('/rendered', getRenderedBikes);
 router.get('/:bikeId', getBikeId)
 router.post('/create', postBike)
 router.put('/update', updateBike)
 router.put('/prices', updatePrices)
+router.put('/discounts', applyGroupDiscounts)
 
 //Dado id de bike y email por body
 // agrega la bike a fav y devuleve bike agregada

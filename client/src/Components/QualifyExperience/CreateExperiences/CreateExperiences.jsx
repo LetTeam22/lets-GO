@@ -29,7 +29,8 @@ export const CreateExperiences = () => {
     textExperience: '',
     imgExperience: '',
     bookingIdBooking: userBookings.idBooking,
-    firstName: '' 
+    firstName: '',
+    email: user.email
   });
 
   useEffect(() => {

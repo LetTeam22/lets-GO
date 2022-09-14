@@ -30,7 +30,7 @@ const getRenderedBikes = async (req, res, next) => {
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
-    const searchNum = isNaN(Number(search)) ? 0 : Number(search)
+    const searchNum = isNaN(Number(search)) ? -1 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
 
@@ -79,7 +79,7 @@ const getRenderedBikes = async (req, res, next) => {
                 model: Booking,
                 attributes: ['startDate', 'endDate'],
                 through: { attributes: [] }
-            }
+        }
 
         })
 
@@ -87,7 +87,7 @@ const getRenderedBikes = async (req, res, next) => {
         bikes = bikes.filter(bike => {
             let available = true
             bike.bookings.forEach(booking => {
-                if (!(booking.startDate > toDate || booking.endDate < fromDate)) available = false
+                if (booking.status === 'confirmed' && !(booking.startDate > toDate || booking.endDate < fromDate)) available = false
             })
             return available
         })
@@ -169,11 +169,12 @@ const deleteFavorite = async (req, res, next) => {
 // Post
 const postBike = async (req, res, next) => {
     
-    const { name, description, type, image, traction, wheelSize, 
+    let { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews } = req.body
     
     if (!name || !type || !image || !traction || !wheelSize || !price || !color) return res.sendStatus(400)
-
+    if (traction === 'mecanica') traction = 'mecánica'
+    if (traction === 'electrica') traction = 'eléctrica'
     let bike = { name, description, type, image, traction, wheelSize, 
         price, discount, rating, color, status, nunOfReviews }
     let bikeCreated = await Bike.create(bike)
@@ -181,7 +182,7 @@ const postBike = async (req, res, next) => {
     res.send(bikeCreated)
 }
 
-// Update
+// Update bike
 const updateBike = async (req, res, next) => {
     const {idBike, name, description, type, image, traction, wheelSize, price, discount, rating, color, status} = req.body
     
@@ -259,8 +260,6 @@ const ratingHistoryBooking = async (req, res, next) => {
         res.send(error.message)
     }
 }
-
-// Update
 const updatePrices = async (req, res, next) => {
     const { percentage } = req.body
     try {
@@ -269,12 +268,30 @@ const updatePrices = async (req, res, next) => {
             b.price = Math.round(Number(b.price) * (1 + Number(percentage)))
             b.save()
         })
-        const accesories = await Accesories.findAll();
-        percentage && accesories.forEach(a => {
-            a.price = Math.round(Number(a.price) * (1 + Number(percentage)))
-            a.save()
+        res.send('Precios de bicicletas actualizados')
+    } catch (error) {
+        next(error)
+    }
+}
+
+// Aplicar descuentos grupales
+const applyGroupDiscounts = async (req, res, next) => {
+    const { traction, wheelSize, color, type, discount } = req.body
+    try {
+        const bikes = await Bike.findAll({
+            where: {
+                traction: traction ? traction : { [Op.not]: null },
+                wheelSize: wheelSize ? wheelSize : { [Op.not]: null },
+                color: color ? color : { [Op.not]: null },
+                type: type ? type : { [Op.not]: null },
+                status: 'active'
+            }
         })
-        res.send('Precios actualizados')
+        discount && bikes.forEach(b => {
+            b.discount = discount
+            b.save()
+        })
+        res.send('Descuentos aplicados')
     } catch (error) {
         next(error)
     }
@@ -292,4 +309,5 @@ module.exports = {
     updateRating,
     updatePrices,
     ratingHistoryBooking,
+    applyGroupDiscounts
 }

@@ -2,28 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
 import { Link, useLocation } from "react-router-dom";
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
+import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
 
-  const logo = 'https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png'
+  const logo = 'https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png'
   const carrito = 'https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/carrito_wohy11.png'
   const bell = 'https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/bell_kcl5ww.png'
   const adm = 'https://res.cloudinary.com/pflet/image/upload/v1662735766/Let/image/adm_xyp2tl.png'
   const adventure = 'https://res.cloudinary.com/pflet/image/upload/v1662748275/Let/image/adv_hyo69c.png'
   const experience = 'https://res.cloudinary.com/pflet/image/upload/v1662742235/Let/image/exp_clwf94.png'
-  const user = useSelector(state => state.user);
-  const { isAuthenticated } = useAuth0();
+  const userDB = useSelector(state => state.user);
+  const { isAuthenticated, user } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
+  const dispatch = useDispatch();
+  const userNotifications = useSelector(state => state.userNotifications);
 
-  const [ notifications, setNotifications ] = useState([]);
+  // const [ notifications, setNotifications ] = useState([]);
   const [ open, setOpen ] = useState(false);
 
   const handleOpen = (e) => {
@@ -31,11 +34,15 @@ export const Menu = ({socket}) => {
     setOpen(!open);
   }
 
+  // useEffect(() => {
+  //   socket?.on('getLike', data => {
+  //     setNotifications(prevNotifications => [...prevNotifications, data])
+  //   })
+  // }, [socket]);
+
   useEffect(() => {
-    socket?.on('getLike', data => {
-      setNotifications(prevNotifications => [...prevNotifications, data])
-    })
-  }, [socket]);
+    isAuthenticated && dispatch(getUserNotifications(user?.email));
+  }, [dispatch, user, isAuthenticated]);
   
   return (
     <div className={s.menu}>
@@ -87,7 +94,7 @@ export const Menu = ({socket}) => {
       </div>
       <div className={s.login}>
         {isAuthenticated ? <LogOut /> : <LogIn />}
-        { user.isAdmin && <Link to='/AdminProfile'><img src={adm} className={s.adm} alt='adm' ></img></Link> }     
+        { userDB.isAdmin && <Link to='/AdminProfile'><img src={adm} className={s.adm} alt='adm' ></img></Link> }     
         <Link to='/cart'>
           <button className={s.carritoBtn}>
             <img className={s.carrito} src={carrito} alt='carrito' />
@@ -95,17 +102,17 @@ export const Menu = ({socket}) => {
         </Link>
         <div className={s.containerBell}>
           <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
-          <div className={s.counter}>{notifications.length}</div>
+          <div className={s.counter}>{userNotifications.length}</div>
           {
             open && (
                 <div className={s.notifications}>
                   {
-                    notifications?.map(n => {
+                    userNotifications?.map(n => {
                       return (
                           <>
                             <div className={s.notification}>
                               <ImHeart size='1rem' color='#F9B621' />
-                              <span className={s.spanNotification}>{`A ${n.senderName} le ha gustado tu experiencia`}</span>
+                              <span className={s.spanNotification}>{n.content}</span>
                             </div>
                             <hr />
                           </>

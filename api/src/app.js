@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { createServer } = require("http");
-const { Server } = require("socket.io");
 
 require('./db.js');
 
@@ -54,48 +53,6 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 });
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: {
-    origin: 'http://localhost:3000'
-  }
-});
-
-let onlineUsers = [];
-
-const addNewUser = (user, socketId) => {
-  !onlineUsers.some((u) => u.name === user.name) && onlineUsers.push({
-    name: user.name,
-    email: user.email,
-    socketId,
-  });
-
-  console.log(onlineUsers);
-};
-
-const removeUser = (socketId) => {
-  onlineUsers = onlineUsers.filter(user => user.socketId !== socketId);
-};
-
-const getUser = (email) => {
-  const user = onlineUsers.find(user => user.email === email);
-  return user;
-}
-
-io.on("connection", (socket) => {
-
-  socket.on('likeExperience', ({senderName, receiverName}) => {
-    const receiver = getUser(receiverName);
-    io.to(receiver.socketId).emit('getLike', {senderName})
-  })
-
-  socket.on('newUser', (user) => {
-    addNewUser(user, socket.id)
-  })
-
-  socket.on('disconnect', () => {
-    removeUser(socket.id);
-  })
-});
 
 
-module.exports = httpServer;
+module.exports = httpServer

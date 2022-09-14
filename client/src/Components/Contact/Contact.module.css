@@ -5,6 +5,8 @@
 } */
 
 .container {
+    display: flex;
+    margin: 0;
     background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
     background-position: center;
     z-index: 0;
@@ -19,11 +21,12 @@
     justify-content: center;
     row-gap: 2.5em;
     background-color: #333333;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     text-align: center;
     border-radius: 2rem;
     z-index: 5;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.664)
 }
 
 .logo {
@@ -116,4 +119,10 @@ textarea {
     font-weight: 300;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.p {
+    width: 50%;
+    margin: 0;
+    color: #ffffff8c;
 }

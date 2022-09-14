@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, DATE } = require('sequelize');
 
 module.exports = (sequelize) => {
 
@@ -36,6 +36,14 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('active', 'banned', 'deleted'),
             allowNull: false,
             defaultValue: 'active'
+        }, 
+        isOnline: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        socketId: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     }, {
         timestamps: false

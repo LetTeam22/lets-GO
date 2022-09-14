@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBike } from "../../../Redux/actions";
-import ValidateFunctionAdmin from "./ValidateFunctionAdmin";
+import validateFunctionBike from "./ValidateFunctionBike";
 import s from "./FormBike.module.css";
 import {
   FormControl,
@@ -41,11 +41,12 @@ export default function FormBike({ setAddBike }) {
       ...input,
       [e.target.id]: e.target.value,
     });
-    if (e.target.id === "image")
-      setPhoto(URL.createObjectURL(e.target.files[0]));
-      setToUpload(e.target.files[0])
+    if (e.target.id === "image"){
+        setPhoto(URL.createObjectURL(e.target.files[0]));
+        setToUpload(e.target.files[0])
+    }
     setErrors(
-      ValidateFunctionAdmin(
+      validateFunctionBike(
         {
           ...input,
           [e.target.id]: e.target.value,
@@ -67,7 +68,7 @@ export default function FormBike({ setAddBike }) {
       body:data
     })
     const file = await res.json() 
-    await dispatch(
+    dispatch(
       createBike({...input, image:file.public_id})
     );
     setInput({
@@ -184,6 +185,7 @@ export default function FormBike({ setAddBike }) {
               <InputLabel htmlFor="color">{"Color"}</InputLabel>
               <Input
                 id="color"
+                placeholder="negro-blanco-gris-azul-amarillo-rojo-verde"
                 aria-describedby="my-helper-text"
                 error={errors.color ? true : false}
                 value={input.color}
@@ -227,7 +229,7 @@ export default function FormBike({ setAddBike }) {
               type="submit"
               disabled={disabled}
             >
-              Enviar
+              Crear
             </Button>
           </ThemeProvider>
         </form>

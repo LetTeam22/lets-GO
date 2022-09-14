@@ -107,15 +107,6 @@
     z-index: -1;
 }
 
-.dato {
-    display: block;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    color: #525252;
-}
-
 .titulo {
     display: block;
     font-size: 1.17em;

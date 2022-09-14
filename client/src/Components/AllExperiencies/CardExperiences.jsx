@@ -6,7 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 
-const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
+export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
 
     const { user, isAuthenticated } = useAuth0();
     const [ like, setLike ] = useState(false);
@@ -25,9 +25,9 @@ const CardExperience = ({ imgExperience, textExperience, firstName, startDate, e
             <img className={s.imgcard} src={imgExperience} alt='img not found' /> 
             <div className={s.description}>
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
-                <h1 className={s.h1}>{firstName}</h1>
-                <h1 className={s.h1}>Fecha de experiencia → {startDate} / {endDate}</h1>
-                <div className={s.containH1}>Bici →
+                <h1 className={s.name}>{firstName}</h1>
+                <h1 className={s.h1}>{startDate} / {endDate}</h1>
+                <div className={s.containH1}> 
                     { bikes.map( b =>  <h1 className={s.h1}> {b.name} ・ </h1> )}
                 </div> 
                     <p className={s.p}>{textExperience}</p>
@@ -42,5 +42,3 @@ const CardExperience = ({ imgExperience, textExperience, firstName, startDate, e
         </div >
     )
 };
-
-export default CardExperience

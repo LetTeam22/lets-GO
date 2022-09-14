@@ -15,7 +15,9 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
 
 export const Contact = () => {
-    const logo = "https://res.cloudinary.com/pflet/image/upload/v1662686136/Let/image/logo_vwis1a.png"
+    
+    const logo = 'https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png'
+
     const form = useRef();
 
     const [input, setInput] = useState({
@@ -68,7 +70,7 @@ export const Contact = () => {
         <div className={s.container} >
             <form ref={form} onSubmit={sendEmail} className={s.form} >
                 <img src={logo} alt='logo' className={s.logo} />
-                <p>RELLENA EL SIGUIENTE FORMULARIO SI QUIERES CONTACTARTE CON NOSOTROS</p>
+                <p className={s.p}>RELLENA EL SIGUIENTE FORMULARIO SI QUIERES CONTACTARTE CON NOSOTROS</p>
                 <div className={s.containerInputs} >
                     <FaRegUser color='#F9B621' size='2rem'/>
                     <div className={s.inputs} ><input type="text" name="user_name" placeholder='Name' value={input.user_name} onChange={e => handleChange(e)} /></div>

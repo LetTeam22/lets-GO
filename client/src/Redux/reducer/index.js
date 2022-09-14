@@ -6,8 +6,8 @@ import {
     GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
     GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
-    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE,
-    ADD_ADVENTURE, GET_HISTORY_RATING,
+    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
+    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, GET_HISTORY_RATING
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -63,7 +63,8 @@ const initialState = {
     userBookings: [],
     mpInfo: '',
     adventure: {},
-    bikeRating: []
+    bikeRating: [],
+    userNotifications: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -233,6 +234,23 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 bikeRating: [...action.payload]
+            }
+        case GET_USER_NOTIFICATIONS: 
+            return {
+                ...state,
+                userNotifications: action.payload
+             }
+        case CREATE_ACCESORIE:
+            return {
+                ...state
+            }
+        case INCREASE_PRICE:
+            return {
+                ...state
+            }
+        case INCREASE_PRICE_ACCS:
+            return {
+                ...state
             }
         default: return state
     }

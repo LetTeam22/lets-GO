@@ -17,7 +17,7 @@ export const QualifyExperience = () => {
             <div className={s.left}></div>
             <div className={s.right}></div>
             <div className={s.containerTit}>
-                <h1 className={s.h1}>¡Sumate a la comuinidad let's GO!</h1>
+                <h1 className={s.h1}>¡SUMATE A LA COMUNIDAD let's GO!</h1>
                 <p className={s.p}>Compartí con otros leters cómo fue tu viaje. Subí la foto de tu aventura, escribí una reseña y califica la bicis que elegiste.</p>
             </div>
             <div className= {s.containerComp}>
