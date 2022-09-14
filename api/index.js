@@ -17,7 +17,7 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const httpServer = require('./src/app.js');
+const httpServer = require('./src/socketIO');
 const { loadAllModelsInDB } = require('./src/controllers/loadData.js');
 const { conn, Bike } = require('./src/db.js');
 

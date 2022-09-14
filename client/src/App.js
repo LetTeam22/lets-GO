@@ -32,16 +32,16 @@ import { TermsAndConditions } from './Components/TermsAndConditions/TermsAndCond
 function App() {
 
   const { user, isAuthenticated } = useAuth0();
-  // const [ username, setUsername ] = useState('');
   const [ socket, setSocket ] = useState(null);
+
 
   useEffect(() => {
     setSocket(io("http://localhost:3001"))
   }, []);
 
   useEffect(() => {
-    isAuthenticated && socket?.emit('newUser', user)
-  }, [socket, user, isAuthenticated])
+    isAuthenticated && socket?.emit('newUserOnline', user)
+  }, [socket, user, isAuthenticated]);
 
   return (
     <>
