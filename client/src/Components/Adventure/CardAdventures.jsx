@@ -21,6 +21,7 @@ const CardAdventures = ({ id, handleCheck, name, description, date, conditions, 
                         type="checkbox"
                         name={name}
                         onClick={handleCheck}
+                        className={s.input}
                     />
                     <label htmlFor={id}>Me subo a esta aventura</label>
                 </div>

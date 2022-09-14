@@ -7,10 +7,12 @@ import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
-import { removeFavoriteFromDb, getBookingsByUserId, bookingToQualify } from "../../Redux/actions";
+import { removeFavoriteFromDb, getBookingsByUserId, bookingToQualify, updateBooking } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
 import { convertDate, reverseDate } from '../../helpers/convertDate.js';
+import { useState } from "react";
+import { CancelBooking } from './CancelBooking/CancelBooking'
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
@@ -20,29 +22,39 @@ export const Profile = () => {
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
   const { isLoading, user } = useAuth0();
+  const [booking, setBooking] = useState({});
 
-  useEffect(() => {
+   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(getUser(user?.email))
+    dispatch(getBookingsByUserId(userLogged.idUser))
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-   
-  useEffect(() => {
-    dispatch(getUser(user?.email));
-    dispatch(getBookingsByUserId(userLogged.idUser)); 
-  }, [dispatch, user?.email, userLogged.idUser]);
 
   const handleRemoveFav = idBike => {
-    dispatch(removeFavoriteFromDb({bikeId:idBike,email:userLogged.email}));
+    dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
   };
 
   const handleBookingToQualify = idBooking => {
-    dispatch(bookingToQualify(idBooking));
-  }
+    dispatch(bookingToQualify(idBooking))
+  };
 
-  const bookingStatus = endDate => {
+  const handleClick = b => {
+    setBooking({
+      idBooking: b.idBooking,
+      startDate: b.startDate,
+      endDate: b.endDate,
+      totalPrice: b.totalPrice,
+      status: 'cancelled'
+    })
+  };
+
+  const bookingStatus = (endDate, idBooking) => {
       let todayToModify = new Date();
       const today = convertDate(todayToModify);
       const arrToday = today.split('-')
       const arrEndDate = endDate.split('-')
+      const cancelled = userBookings.find(b => b.status === 'cancelled' && b.idBooking === idBooking )
+      if(cancelled) return 'cancelada'
       if(arrToday[0] < arrEndDate[0]) return 'En camino'
       if(arrToday[0] > arrEndDate[0]) return 'Finalizada'
       if(arrToday[0] === arrEndDate[0]) {
@@ -55,7 +67,7 @@ export const Profile = () => {
         }
       }
     };
-
+  
   const iconStyle = {
     color: 'orange',
     width: '1.5rem',
@@ -73,7 +85,7 @@ export const Profile = () => {
   (
     <section className={s.allPage}>
 
-      <div className={s.containerLeft}>
+      <div className={s.containerFav}>
         <span className={s.title}><AiFillHeart style= {iconStyle}/>TUS let's GO FAVORITAS:</span>
         <div className={s.box1}>
             {!!favorites.length ? favorites?.map(f => (
@@ -98,23 +110,35 @@ export const Profile = () => {
                   </span>
                   <span className={s.list2}>» Precio Total: ${b.totalPrice}</span>
                   <div>
-                    <span className={s.list2}>» Estado: {bookingStatus(b.endDate)}</span>
-                    {bookingStatus(b.endDate) === 'Finalizada' && 
-                    <div>
-                      <span className={s.list2}>Nos gustaría conocer tu experiencia con let's GO, Calificá la bici que usaste y compartÍ tu experiencia! </span>
+                    <span className={s.list2}>» Estado: {bookingStatus(b.endDate, b.idBooking)}</span>
+
+                   
+                    { bookingStatus(b.endDate, b.idBooking) === 'Finalizada' && 
+                      <>
+                        <span className={s.list2}>Nos gustaría conocer tu experiencia con let's GO, Calificá la bici que usaste y compartÍ tu experiencia! </span>
                         <Link to={'/qualifyExperience'}>
                           <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
                         </Link>
-                      </div>
+                      </>
+                    }
+                    {
+                      bookingStatus(b.endDate, b.idBooking) === 'En camino' && b.status === 'confirmed' &&
+                      <>
+                        <span className={s.list2}>Podes cancelar tu reserva haciendo click en el siguiente enlace</span>
+                        <button className={s.btnGo} onClick={ () => handleClick(b) }>CANCELAR</button>
+                      </>
                     }
                   </div>
               </div>
               )) : <span className={s.span}>Todavía no tenés reservas</span>
             }
+            { !!Object.keys(booking).length && <CancelBooking booking= {booking} /> }
         </div>
       </div>
+
+
       <div className={s.containerRight}>
-      <h1>ME FALTAN ESTILOS ACÁ!</h1>
+      <h1>ME FALTAN ESTILOS EN TODO EL COMPONENTE</h1>
         <div className={s.name}>
           {showedName}
         </div>

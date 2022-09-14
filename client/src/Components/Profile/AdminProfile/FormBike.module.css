@@ -11,6 +11,15 @@
     background-color: #5252527f;
 }
 
+.back{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
 .column{
     text-align: center;
     height: 93%;
@@ -28,6 +37,7 @@
 .container{
     border-radius: 0.2rem;
     box-shadow: 0px -1px 8px 2px #333333;
+    z-index: 100;
 }
 .container, .form{
     display: flex;
@@ -120,4 +130,11 @@
 
 .textArea{
     width: 45rem!important;
+}
+
+.swalBtn{
+    background-color: #F9B621!important;
+}
+.swalBtn:hover{
+    background-color: #d39307!important;
 }

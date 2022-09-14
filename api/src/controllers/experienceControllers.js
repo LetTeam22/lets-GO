@@ -22,6 +22,64 @@ async function allExperiences (req, res, next) {
     }
 };
 
+// Aplica ordenamiento a las experiencias
+const getRenderedExperiences = async (req, res, next) => {
+
+    // query
+    const { sort, fromDate, toDate
+    } = req.query
+
+    // array de ordenamiento de sequelize
+    let arrSorts = [];
+    function array (sort) {
+        if (sort) {
+            if (sort === 'nameDESC') return ['firstName', 'DESC']
+            if (sort === 'nameASC') return ['firstName', 'ASC']
+        } 
+        return ['idExperience', 'DESC']
+    }
+    arrSorts = array(sort)
+
+    try {
+
+        let experiences = await Experience.findAll({
+            include: { 
+                model: Booking,
+                attributes: ['startDate', 'endDate'],
+                include: [{
+                    model: Bike,
+                    attributes: ['name'],
+                }] 
+            },
+
+            order: [arrSorts],
+        });
+
+        if(experiences.length && fromDate && toDate) {
+            // filtro de fecha
+            experiences = experiences.filter(experience => {
+                let show = false
+                if ((experience.booking.startDate <= toDate && 
+                    experience.booking.startDate >= fromDate)) show = true
+                return show
+            })
+            
+            // experiences a renderizar
+            if(experiences.length) res.send(experiences)
+            else res.send('Ninguna experiencia se encuentra dentro de su búsqueda')
+        }
+        else {
+            if(experiences.length) res.send(experiences)
+            else res.send('Aún no existen experiencias')  
+        }
+        
+    } catch (error) {
+
+        next(error)
+
+    }
+};
+
 // Devuelve los detalles de una Experiencia dado el BookingID
 async function experienceDetails (req, res, next) {
     const {bookingIdBooking} = req.query
@@ -72,4 +130,4 @@ async function updateExperience (req, res, next) {
     }
 };
 
-module.exports = {experienceDetails, createExperience, updateExperience, allExperiences}
+module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences}

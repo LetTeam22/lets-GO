@@ -33,7 +33,7 @@ export default function FormBike({ setAddBike }) {
   });
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
-  const cloudName = 'pflet'
+  const cloudName = "pflet";
   const [toUpload, setToUpload] = useState(null);
 
   const handleChange = (e) => {
@@ -41,9 +41,9 @@ export default function FormBike({ setAddBike }) {
       ...input,
       [e.target.id]: e.target.value,
     });
-    if (e.target.id === "image"){
-        setPhoto(URL.createObjectURL(e.target.files[0]));
-        setToUpload(e.target.files[0])
+    if (e.target.id === "image") {
+      setPhoto(URL.createObjectURL(e.target.files[0]));
+      setToUpload(e.target.files[0]);
     }
     setErrors(
       validateFunctionBike(
@@ -59,52 +59,81 @@ export default function FormBike({ setAddBike }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData()
-    data.append('file',toUpload)
-    data.append('upload_preset','ProfilePictures')
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    {
-      method:'POST',
-      body:data
-    })
-    const file = await res.json() 
-    dispatch(
-      createBike({...input, image:file.public_id})
-    );
-    setInput({
-      name: "",
-      description: "",
-      type: "",
-      image: "",
-      traction: "",
-      wheelSize: "",
-      price: "",
-      color: "",
-    });
     swal({
-      title: "Felicidades!",
-      text: "Agregaste una nueva bicicleta!",
-      icon: "success",
-      button: false,
+      title: "Estas seguro?",
+      text: "Estas creando una nueva bicicleta!",
+      buttons: {
+        cancel: {
+          text: "cancelar",
+          value: null,
+          visible: true,
+          className: "",
+          closeModal: true,
+        },
+        confirm: {
+          text: "si",
+          value: true,
+          visible: true,
+          className: s.swalBtn,
+          closeModal: true,
+        },
+      },
+    }).then(async (value) => {
+      if (value) {
+        swal({
+          title: "Felicidades!",
+          text: "Agregaste una nueva bicicleta!",
+          icon: "success",
+          button: false,
+        });
+        setAddBike(false);
+        setPhoto(undefined);
+        const data = new FormData();
+        data.append("file", toUpload);
+        data.append("upload_preset", "ProfilePictures");
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          {
+            method: "POST",
+            body: data,
+          }
+        );
+        const file = await res.json();
+        dispatch(createBike({ ...input, image: file.public_id }));
+        setInput({
+          name: "",
+          description: "",
+          type: "",
+          image: "",
+          traction: "",
+          wheelSize: "",
+          price: "",
+          color: "",
+        });
+        
+      }
     });
-    setAddBike(false);
-    setPhoto(undefined)
   };
   const disabled =
     Object.keys(errors).length > 0 ||
     !input.name ||
-      !input.description ||
-      !input.type ||
-      !input.image ||
-      !input.traction ||
-      !input.wheelSize ||
-      !input.price ||
-      !input.color
+    !input.description ||
+    !input.type ||
+    !input.image ||
+    !input.traction ||
+    !input.wheelSize ||
+    !input.price ||
+    !input.color
       ? true
       : false;
 
+  const back = () => {
+    setAddBike(false);
+  };
+
   return (
     <section className={s.allPage}>
+      <div className={s.back} onClick={back}></div>
       <div className={s.container}>
         <h3 className={s.titulo}>Agrega una nueva Bicicleta</h3>
         <div className={s.nameAndImg}>
@@ -122,14 +151,11 @@ export default function FormBike({ setAddBike }) {
               value={input.image}
               id="image"
             />
-            {photo? <img
-              src={photo}
-              alt="photoBike"
-              className={s.img}
-            />
-            :
-            <GiDutchBike className={s.img}/>
-            }
+            {photo ? (
+              <img src={photo} alt="photoBike" className={s.img} />
+            ) : (
+              <GiDutchBike className={s.img} />
+            )}
             <BsCameraFill className={s.iconCamera} />
           </IconButton>
         </div>
@@ -218,7 +244,10 @@ export default function FormBike({ setAddBike }) {
               variant="contained"
               color="success"
               className={s.btnHome}
-              onClick={() => {setAddBike(false); setPhoto(undefined)}}
+              onClick={() => {
+                setAddBike(false);
+                setPhoto(undefined);
+              }}
             >
               Volver
             </Button>

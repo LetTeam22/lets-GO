@@ -58,8 +58,6 @@ body {
     padding-right: 9rem;
 }
 
-
-
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -75,6 +73,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    color: #333333;
 }
 
 .textArea {
@@ -111,6 +110,7 @@ body {
     font-weight: 300;
     font-size: 0.9rem;
     width: 18rem;
+    color: #333333;
 }
 
 .inputs input[type=number]::-webkit-inner-spin-button, 
