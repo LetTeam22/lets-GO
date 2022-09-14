@@ -34,6 +34,7 @@ import { EBike } from './Components/EBike/EBike'
 import { Invention } from './Components/Invention/Invention'
 import { FAQs } from './Components/FAQs/FAQs';
 import { HowToRent } from './Components/HowToRent/HowToRent';
+import { Normative } from './Components/Normative/Normative';
 
 
 function App() {
@@ -132,6 +133,8 @@ function App() {
         <Route exact path='/faqs'><FAQs/></Route>
 
         <Route exact path='/how'><HowToRent/></Route>
+
+        <Route exact path='/normative'><Normative/></Route>
 
         {/* <Route path='*' component={Error} /> */}
         <Route exact path='*'><Error /></Route>

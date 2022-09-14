@@ -74,10 +74,10 @@ export const TermsAndConditions = () => {
                     Cambio de fecha: No se cobran gastos ni extra de un servicio siempre que hubiera disponibilidad en la nueva fecha solicitada y el cambio se realizara dentro del tiempo límite informado en la tarifa.
                   </li>
                   <li>
-                    Modificación de reserva en cantidad de servicios: No se cobrarán gastos
+                    Modificación de reserva en cantidad de servicios: No se cobrarán gastos.
                   </li>
                   <li>
-                    Modificación de reserva en cantidad de pasajeros: No se cobrarán gastos
+                    Modificación de reserva en cantidad de pasajeros: No se cobrarán gastos.
                   </li>
                 </ul>
                 <p style={{ color: "black" }}>
@@ -85,13 +85,13 @@ export const TermsAndConditions = () => {
                 </p>
                 <ul className={s.featuredList}>
                   <li>
-                    Sin cargo hasta el tiempo límite informado en la tarifa
+                    Sin cargo hasta el tiempo límite informado en la tarifa.
                   </li>
                   <li>
-                    Con cargo de 50 % hasta las 17 PM del día anterior al servicio. **
+                    Con cargo de 50 % hasta las 17 PM del día anterior al servicio**.
                   </li>
                   <li>
-                    Sin devolución a partir de las 17 PM del día anterior o ya comenzado el servicio**
+                    Sin devolución a partir de las 17 PM del día anterior o ya comenzado el servicio**.
                   </li>
                 </ul>
                 <p style={{ color: "black", fontSize:'.9rem' }}>
