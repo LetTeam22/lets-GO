@@ -15,8 +15,8 @@ display: block
 .container {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 12rem;
-    padding-right: 12rem;
+    padding-left: 24rem;
+    padding-right: 24rem;
     box-sizing: border-box;
 }
 .pageHeading {
@@ -24,6 +24,18 @@ display: block
     width: 100%;
     margin-bottom: 3rem;
     text-transform: uppercase;
+}
+
+h2 {
+    display: flex;
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+    font-weight: 300;
+    height: 10%;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #787877
 }
 
 .row {
@@ -46,7 +58,7 @@ display: block
 .heading {
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.25em;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     word-spacing: 0.09em;
     line-height: 1.5;
@@ -110,4 +122,21 @@ p {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+}
+
+.left {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
+}
+
+.right {
+    position: fixed;
+    background-color: #f0efef;
+    height: 400vh;
+    width: 18%;
+    right: 0;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }

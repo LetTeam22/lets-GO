@@ -11,6 +11,9 @@ export const TermsAndConditions = () => {
   }, [])
 
   return (
+    <>
+      <div className={s.left} />
+      <div className={s.right} />
     <div className={s.page}>
       <section className={s.pageBlock}>
         <div className={s.container}>
@@ -142,5 +145,6 @@ export const TermsAndConditions = () => {
         </div>
       </section>
     </div>
+    </>
   )
 };
