@@ -2,11 +2,11 @@ const { Server } = require("socket.io");
 const httpServer = require("./app");
 const { User } = require('./db');
 const { createNotification } = require('./controllers/notificationsControllers');
-
+const { FRONT_URL } = process.env; 
 
 const io = new Server(httpServer, {
     cors: {
-        origin: 'http://localhost:3000'
+        origin: FRONT_URL
     }
 });
 
