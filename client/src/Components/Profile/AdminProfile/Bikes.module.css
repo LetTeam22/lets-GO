@@ -30,3 +30,27 @@
     color: white;
     font-family: 'Roboto' 'sans-serif'
 }
+
+.discountBtn{
+    position: absolute;
+    top: 30rem;
+    left: 30rem;
+    z-index: 100;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    font-size: small;
+    color: black;
+    background-color: #f9b621;
+    cursor: pointer;
+}
+.discountBtn:hover{
+    background-color: #d39307;
+}
+
+.show{
+    display: flex;
+}
+
+.hidde{
+    display: none;
+}
