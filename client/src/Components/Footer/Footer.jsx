@@ -11,6 +11,7 @@ const definition = '/definition'
 const history = '/history'
 const ebike = '/ebike'
 const invention = '/invention'
+const howToRent = '/how'
 
 export const Footer = () => {
 
@@ -20,7 +21,9 @@ export const Footer = () => {
             <div className={s.services}>
                 <h5 className={s.h5}>SERVICIO AL CLIENTE</h5>
                 <span className={s.footerSpan}>Preguntas Frecuentes</span>
-                <span className={s.footerSpan}>Como Comprar</span>
+                <a href={howToRent} className={s.footerSpan} cursor='pointer'>
+                <span className={s.footerSpan}>Cómo alquilar</span>
+                </a>
                 <span className={s.footerSpan}>Pagos y Retiros</span>
                 <a className={s.footerSpan} href={terms} cursor='pointer'>
                     <span className={s.footerSpan}>Términos y condiciones</span>
