@@ -18,7 +18,7 @@ export const Invention = () => {
                             <h2>La invención de la bici</h2>
                         </div>
                         <p style={{ color: "black" }}>
-                            La bicicleta está pasando a ser un vehículo cada vez más habitual en núcleos urbanos, entre otras cosas por su carácter no contaminante.
+                            La bicicleta está pasando a ser un vehículo cada vez más habitual en núcleos urbanos, entre otras cosas, por su carácter no contaminante.
                             Así, muchas ciudades están impulsando el uso de este vehículo para limitar la emisión de gases de efecto invernadero derivada de los combustibles fósiles.
                             Hoy te contamos un poco sobre la historia de este medio de transporte. ¿Sabías quién inventó la bicicleta?
                         </p>
@@ -39,7 +39,7 @@ export const Invention = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Entonces, ¿en qué años se inventó la bicicleta y quién fue el artífice de esta idea? No es hasta el siglo XIX cuando se puede hablar realmente de la bicicleta como invención.                    </p>
+                            Entonces, ¿en qué año se inventó la bicicleta y quién fue el artífice de esta idea? No es hasta el siglo XIX cuando se puede hablar realmente de la bicicleta como invención.                    </p>
 
                         <p style={{ color: "black" }}>
                             En concreto, desde el año 1817, cuando el alemán Karl Christian Ludwig Drais von Sauerbronn diseñó lo que hizo llamar como La Draisiana, un vehículo que se desplazaba por la fuerza del hombre al mover los pies contra el suelo y que ya tenía ruedas.
@@ -102,7 +102,7 @@ export const Invention = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Con todos estos datos, a la pregunta de cuándo se inventó la bicicleta, se podría decir que en el siglo XIX, pues todos los inventores que fueron introduciendo innovaciones a esta forma de movilidad desarrollaron su actividad en esa época.
+                            Con todos estos datos, a la pregunta de cuándo se inventó la bicicleta se podría decir que en el siglo XIX, ya que todos los inventores que fueron introduciendo innovaciones a esta forma de movilidad desarrollaron su actividad en esa época.
                             A la de dónde se inventó la bicicleta, la respuesta es en Alemania, donde nació y vivió Barón Karl von Drais.
                         </p>
                         <p style={{ color: "black" }}>
