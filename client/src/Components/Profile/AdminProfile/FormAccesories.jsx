@@ -121,63 +121,56 @@ export default function FormBike({ setAddAcc }) {
       <div className={s.back} onClick={back}></div>
       <div className={s.container}>
         <h3 className={s.titulo}>Agrega un nuevo Accesorio</h3>
-        <div className={s.nameAndImg}>
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="label"
-            className={s.imgContainer}
-          >
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              onChange={handleChange}
-              value={input.image}
-              id="image"
-            />
-            {photo ? (
-              <img src={photo} alt="photoAcc" className={s.img} />
-            ) : (
-              <MdHandyman className={s.img} />
-            )}
-            <BsCameraFill className={s.iconCamera} />
-          </IconButton>
-        </div>
-        <form className={s.form} onSubmit={handleSubmit}>
-          <ThemeProvider theme={theme}>
-            <FormControl>
-              <InputLabel htmlFor="name">{"Nombre"}</InputLabel>
-              <Input
-                id="name"
-                aria-describedby="my-helper-text"
-                error={errors.name ? true : false}
-                value={input.name}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="price">{"Precio"}</InputLabel>
-              <Input
-                id="price"
-                aria-describedby="my-helper-text"
-                error={errors.price ? true : false}
-                type="tel"
-                placeholder="$10 - $999"
-                value={input.price}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <TextField
-              id="description"
-              label="Descripción"
-              multiline
-              maxRows={5}
-              value={input.description}
-              onChange={handleChange}
-              variant="standard"
-              className={s.textArea}
-            />
+        <ThemeProvider theme={theme}>
+          <form className={s.form} onSubmit={handleSubmit}>
+            <div className={s.nameAndPrice}>
+              <FormControl>
+                <InputLabel htmlFor="name">{"Nombre"}</InputLabel>
+                <Input
+                  id="name"
+                  aria-describedby="my-helper-text"
+                  error={errors.name ? true : false}
+                  value={input.name}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <InputLabel htmlFor="price">{"Precio"}</InputLabel>
+                <Input
+                  id="price"
+                  aria-describedby="my-helper-text"
+                  error={errors.price ? true : false}
+                  type="tel"
+                  placeholder="$10 - $999"
+                  value={input.price}
+                  onChange={handleChange}
+                />
+              </FormControl>
+            </div>
+            <div className={s.nameAndImg}>
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                className={s.imgContainer}
+              >
+                <input
+                  hidden
+                  accept="image/*"
+                  type="file"
+                  onChange={handleChange}
+                  value={input.image}
+                  id="image"
+                />
+                {photo ? (
+                  <img src={photo} alt="photoAcc" className={s.img} />
+                ) : (
+                  <MdHandyman className={s.img} />
+                )}
+                <BsCameraFill className={s.iconCamera} />
+              </IconButton>
+            </div>
+
             <Button
               variant="contained"
               color="success"
@@ -198,8 +191,18 @@ export default function FormBike({ setAddAcc }) {
             >
               Crear
             </Button>
-          </ThemeProvider>
-        </form>
+          </form>
+          <TextField
+            id="description"
+            label="Descripción"
+            multiline
+            maxRows={5}
+            value={input.description}
+            onChange={handleChange}
+            variant="standard"
+            className={s.textArea}
+          />
+        </ThemeProvider>
       </div>
     </section>
   );
