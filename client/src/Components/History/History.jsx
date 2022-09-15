@@ -31,7 +31,7 @@ export const History = () => {
                     </p>
 
                     <p style={{ color: "black" }}>
-                        ¿Qué hizo? Le puso a la bicicleta ruedas y pedales, de tal forma que consiguió que no hiciera falta ningún impulso para que la bicicleta pudiera andar.
+                        ¿Qué hizo? Le puso a la bicicleta ruedas y pedales de tal manera que consiguió que no hiciera falta ningún impulso para que la bicicleta pudiera andar.
                         Eso sí, la forma en que los pedales movían la bicicleta no se hacía con cadenas, sino a través de unos hierros conectados a las ruedas con el fin de que estas se movieran al pedalear.
                     </p>
 
@@ -41,7 +41,7 @@ export const History = () => {
                     </p>
 
                     <p style={{ color: "black" }}>
-                        La siguiente fecha que supuso una revolución dentro de la invención de la bicicleta es 1861. Ese año, Pierre Michaux consiguió mejorar aún más el diseño de Kard Drais y Kirkpatrick Macmillan.
+                        Otra fecha importante en la historia de la bicicleta es 1861. Ese año, Pierre Michaux consiguió mejorar aún más el diseño de Kard Drais y Kirkpatrick Macmillan.
                         Sin embargo, no fue tan bueno como los anteriores. El francés colocó pedales justo en la rueda delantera, pero surgió el problema de que desestabilizaba la bicicleta.
                     </p>
 
@@ -53,11 +53,6 @@ export const History = () => {
                     <p style={{ color: "black" }}>
                         El inventor al que le debemos la bicicleta moderna es John Kemp Starley. Este inglés sacó al mercado la Safety Bicycle, o lo que es lo mismo, la "bicicleta de seguridad”,
                         cuyo diseño es mucho más cercano a lo que conocemos hoy en día, ya que tenía frenos y una estructura similar a la de ahora. Este modelo de bici fue puesto en el mercado en 1885 y, tres años después, se le añadieron unos neumáticos con cámara de aire, una invención de John Boyd Dunlop.
-                    </p>
-
-                    <p style={{ color: "black" }}>
-                        El inventor al que le debemos la bicicleta moderna es John Kemp Starley. Este inglés sacó al mercado la Safety Bicycle, o lo que es lo mismo, la "bicicleta de seguridad”, cuyo diseño es mucho más cercano a lo que conocemos hoy en día,
-                        ya que tenía frenos y una estructura similar a la de ahora. Este modelo de bici fue puesto en el mercado en 1885 y, tres años después, se le añadieron unos neumáticos con cámara de aire, una invención de John Boyd Dunlop.
                     </p>
                 </div>
             </div>

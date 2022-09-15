@@ -3,6 +3,7 @@ import s from './Payments.module.css'
 
 
 const contacto = '/contact'
+const accesories = '/allAccessories'
 
 export const Payments = () => {
 
@@ -65,7 +66,7 @@ export const Payments = () => {
                 Punto de encuentro: las salidas son siempre desde nuestra sucursal, salvo comunicación expresa en contrario.
               </li>
               <li>
-                Observaciones: llevá ropa adecuada para realizar la ascensión al cerro. Sería bueno contar con calzado especial. Si no tenés el tuyo propio, podés alquilar alguno de los que ofrecemos en let's GO.
+                Observaciones: llevá ropa adecuada para realizar la ascensión al cerro. Sería bueno contar con calzado especial. Si no tenés el tuyo propio, podés {<a className={s.a} href={accesories}>alquilar</a>} los que ofrecemos en let's GO.
               </li>
             </ul>
             <p style={{ color: "black" }}>

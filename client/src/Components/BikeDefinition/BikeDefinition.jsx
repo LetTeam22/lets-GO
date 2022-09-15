@@ -19,14 +19,14 @@ export const BikeDefinition = () => {
                         </div>
                         <p style={{ color: "black" }}>
                             Si ahora mismo te preguntáramos acerca de qué es una bicicleta,
-                            lo más seguro es que en tu mente se forme la imagen de una y digas que es un vehículo de dos ruedas y un manillar,
+                            lo más seguro es que en tu mente se forme la imagen de una y digás que es un vehículo de dos ruedas y un manillar,
                             que no necesita ningún tipo de combustible más que la fuerza física de una persona para funcionar y que es sostenible porque no contamina.
                             Pero, ¿y si te pidiéramos un significado de bicicleta más preciso?
                         </p>
                         <p style={{ color: "black" }}>
-                            Por ejemplo, ¿sabes de dónde viene la palabra bicicleta y su significado?
+                            Por ejemplo, ¿sabés de dónde viene la palabra bicicleta y su significado?
                             ¿Cuáles son los distintos usos de una bicicleta?
-                            No te preocupes, porque ahora mismo vamos a ayudarte a que conozcas todo sobre este medio de transporte que tan de moda está ahora.
+                            No te preocupés porque ahora mismo vamos a ayudarte a que conozcás todo sobre este medio de transporte que tan de moda está ahora.
 
                         </p>
 
@@ -37,7 +37,7 @@ export const BikeDefinition = () => {
 
                         <p style={{ color: "black" }}>
                             Antes de entrar de lleno en hablarte de qué es una bicicleta,
-                            conviene que conozcas de dónde viene, es decir, cuál es el origen de la palabra, ya que necesitas saber el motivo por el que se le llama "bicicleta" y no de otra forma.
+                            conviene que conozcás de dónde viene, es decir, cuál es el origen de la palabra, ya que necesitás saber el motivo por el que se le llama "bicicleta" y no de otra forma.
                         </p>
 
                         <p style={{ color: "black" }}>
@@ -58,14 +58,14 @@ export const BikeDefinition = () => {
 
                         <p style={{ color: "black" }}>
                             Así, el significado de bicicleta indica que es un medio de transporte compuesto por dos ruedas.
-                            Los pedales, junto con la cadena, el plato y el piñón, son los elementos que permiten que las ruedas se muevan.
+                            Los pedales, junto con la cadena, el plato y el piñón son los elementos que permiten que las ruedas se muevan.
                             Algo para lo que es necesario que la persona ejerza su propia propulsión, es decir, que pedalee.
                             Esta acción hace que gire la rueda trasera y la delantera, permitiendo así el desplazamiento.
                         </p>
 
                         <p style={{ color: "black" }}>
                             Todos los elementos que forman una bicicleta se integran en una estructura denominada "cuadro",
-                            donde además se ubica un asiento o sillín y un manubrio o manillar para poder controlar la dirección en la que se quiere ir.
+                            donde además se ubica un asiento o sillín, y un manubrio o manillar para poder controlar la dirección en la que se quiere ir.
                         </p>
 
                         <h3 className={s.heading}>
@@ -81,16 +81,16 @@ export const BikeDefinition = () => {
 
                         <p style={{ color: "black" }}>
                             Además, la bicicleta es uno de los vehículos más económicos, porque no hay que "recargarle ningún depósito" y porque además cuestan menos que otro tipo de vehículo.
-                            Si a eso se le une el hecho de que apenas tiene gastos de mantenimiento y permite olvidarte de atascos y viajar de manera más libre que con otro medio de transporte, tendríamos un plus en su uso.
+                            Si a eso se le une el hecho de que apenas tiene gastos de mantenimiento, y permite olvidarte de atascos y viajar de manera más libre que con otro medio de transporte, tendríamos un plus en su uso.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Cada vez son más los que se han dado cuenta de las ventajas que tiene el uso de una bicicleta sobre otros vehículos, y es la razón por la que, tanto en las grandes ciudades como en muchas más pequeñas, están fomentando su uso.
+                            Cada vez son más los que se han dado cuenta de las ventajas que tiene el uso de una bicicleta sobre otros vehículos, y es la razón por la que, tanto en las grandes ciudades como en muchas más pequeñas, están fomentándolas.
                         </p>
 
                         <p style={{ color: "black" }}>
                             La bicicleta se ha convertido en un medio de transporte saludable, ecológico y sostenible, y es fácil funcionar con él.
-                            Pero, si además cuentas con una empresa como la nuestra, que se ocupa del mantenimiento de tu bici y de su reparación para que tú solo tengas que centrarte en disfrutar, las ventajas son mucho mayores.
+                            Pero, si además contás con una empresa como la nuestra que se ocupa del mantenimiento de tu bici y de su reparación para que  solo tengás que centrarte en disfrutar, las ventajas son mucho mayores.
                         </p>
 
                     </div>

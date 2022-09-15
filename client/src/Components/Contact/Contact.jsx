@@ -72,7 +72,7 @@ export const Contact = () => {
             <Chatbot/>
             <form ref={form} onSubmit={sendEmail} className={s.form} >
                 <img src={logo} alt='logo' className={s.logo} />
-                <p className={s.p}>RELLENA EL SIGUIENTE FORMULARIO SI QUIERES CONTACTARTE CON NOSOTROS</p>
+                <p className={s.p}>RELLENÁ EL SIGUIENTE FORMULARIO SI QUERÉS CONTACTARTE CON NOSOTROS</p>
                 <div className={s.containerInputs} >
                     <FaRegUser color='#F9B621' size='2rem'/>
                     <div className={s.inputs} ><input type="text" name="user_name" placeholder='Name' value={input.user_name} onChange={e => handleChange(e)} /></div>

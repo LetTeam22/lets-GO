@@ -25,7 +25,7 @@ export const AllExperiencies = ({socket}) => {
             <div className={s.left}></div>
             <div className={s.right}></div>
             <div className={s.container}>
-                <h1 className={s.h1}>LOS LET EN PRIMERA PERSONA</h1>
+                <h1 className={s.h1}>LAS LET EN PRIMERA PERSONA</h1>
             </div>
             { allExperiences.length ? allExperiences.filter(e => e.status === 'active').map((e) =>{
                     return (
