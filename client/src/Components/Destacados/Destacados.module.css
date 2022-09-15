@@ -105,6 +105,10 @@
     padding-top: .5rem;
 }
 
+.dataCont svg{
+    width: 2rem;
+}
+
 .price {
     color: #D6802B;
     font-weight: 700;
