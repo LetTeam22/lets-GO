@@ -10,7 +10,6 @@ import { Link, useLocation } from "react-router-dom";
 import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
 import { MdCheck } from 'react-icons/md';
-import { BsBook } from 'react-icons/bs';
 import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
@@ -47,12 +46,6 @@ export const Menu = ({socket}) => {
       setNotifications(prevNotifications => [...prevNotifications, {
         type: 'Login',
         content: 'Usuario logueado correctamente'
-      }])
-    })
-    socket?.on('newBookingNot', () => {
-      setNotifications(prevNotifications => [...prevNotifications, {
-        type: 'newBooking',
-        content: 'Su reserva fue confirmada correctamente'
       }])
     })
   }, [socket]);
@@ -138,16 +131,6 @@ export const Menu = ({socket}) => {
                             </>
                           )
                       } else if(n.hasOwnProperty('type') && n.type === 'Login') {
-                        return (
-                          <>
-                            <div className={s.notification}>
-                              <MdCheck size='1.5rem' color='#F9B621' />
-                              <span className={s.spanNotification}>{n.content}</span>
-                            </div>
-                            <hr />
-                          </>
-                        )
-                      } else if(n.hasOwnProperty('type') && n.type === 'newBooking') {
                         return (
                           <>
                             <div className={s.notification}>
