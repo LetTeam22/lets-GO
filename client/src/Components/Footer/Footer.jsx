@@ -15,6 +15,8 @@ const howToRent = '/how'
 const contact = '/contact'
 const faqs = '/faqs'
 const normative = '/normative'
+const policies = '/policies'
+const payments = '/payments'
 
 export const Footer = () => {
 
@@ -29,11 +31,15 @@ export const Footer = () => {
                 <a href={howToRent} className={s.footerSpan} cursor='pointer'>
                     <span className={s.footerSpan}>Cómo alquilar</span>
                 </a>
-                <span className={s.footerSpan}>Pagos y Retiros</span>
+                <a href={payments} className={s.footerSpan} cursor='pointer'>
+                    <span className={s.footerSpan}>Pagos y Retiros</span>
+                </a>
                 <a className={s.footerSpan} href={terms} cursor='pointer'>
                     <span className={s.footerSpan}>Términos y condiciones</span>
                 </a>
-                <span className={s.footerSpan}>Arrepentimiento de alquiler</span>
+                <a href={policies} className={s.footerSpan} cursor='pointer'>
+                    <span className={s.footerSpan}>Política de privacidad</span>
+                </a>
             </div>
             <div className={s.guia}>
                 <h5 className={s.h5}>GUIA LET'S GO</h5>
@@ -50,7 +56,7 @@ export const Footer = () => {
                     <span className={s.footerSpan}>Invencion de la bici</span>
                 </a>
                 <a href={normative} className={s.footerSpan} cursor='pointer'>
-                <span className={s.footerSpan}>Normativa bicicletas</span>
+                    <span className={s.footerSpan}>Normativa bicicletas</span>
                 </a>
             </div>
             <div className={s.company}>

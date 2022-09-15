@@ -35,6 +35,8 @@ import { Invention } from './Components/Invention/Invention'
 import { FAQs } from './Components/FAQs/FAQs';
 import { HowToRent } from './Components/HowToRent/HowToRent';
 import { Normative } from './Components/Normative/Normative';
+import { PrivacyPolicies } from './Components/PrivacyPolicies/PrivacyPolicies';
+import { Payments } from './Components/PaymentsAndCheckout/Payments';
 
 const REACT_APP_BACK_URL  = process.env.REACT_APP_BACK_URL;
 
@@ -85,6 +87,8 @@ function App() {
         <Route exact path='/faqs'><FAQs/></Route>
         <Route exact path='/how'><HowToRent/></Route>
         <Route exact path='/normative'><Normative/></Route>
+        <Route exact path='/policies'><PrivacyPolicies/></Route>
+        <Route exact path='/payments'><Payments/></Route>
         <Route exact path='*'><Error /></Route>
       </Switch>
       <Footer />
