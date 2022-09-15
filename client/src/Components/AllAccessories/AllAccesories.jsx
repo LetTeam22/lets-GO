@@ -4,6 +4,7 @@ import { getAccesories } from '../../Redux/actions';
 import s from './AllAccessories.module.css';
 import EachAccesory from './EachAccesory';
 import Loading from '../Loading/Loading';
+import { Link } from "react-router-dom";
 
 // import aux_axesorios from '../../image/aux_/aux_axesorios.png';
 
@@ -35,7 +36,7 @@ console.log(allAccs)
                     )
             }) : <Loading /> }
         <div className={s.containerBtn}>
-            <button className={s.btn}>BUSCAR BICI</button>
+            <Link to= '/home'><button className={s.btn}>BUSCAR BICI</button></Link>
         </div>
         </>
     )
