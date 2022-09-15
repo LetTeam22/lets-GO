@@ -247,11 +247,15 @@ const ratingHistoryBooking = async (req, res, next) => {
     // console.log('id' ,idBooking)
     try {
         const history = await Historyrating.findAll({
-            attributes: [['idBikeRated','idBike'], ['scoreReceived','rating']],
+            attributes: [['idBikeRated','idBike']],
             include: {
                 model: Booking,
                 attributes: ['idBooking'],
                 through: { attributes: [] },
+                include:{model:Bike, 
+                            attributes:['idBike','rating'], 
+                            through: { attributes: [] },
+                        },
                 where: { idBooking: idBooking }
             },
         })

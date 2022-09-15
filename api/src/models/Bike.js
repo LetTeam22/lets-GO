@@ -45,7 +45,7 @@ module.exports = (sequelize) => {
       defaultValue: 7,
       get() {
         const rawValue = this.getDataValue('rating');
-        return rawValue ? Math.round((rawValue + Number.EPSILON) * 100) / 100 : 0;
+        return rawValue ? Math.round((rawValue + Number.EPSILON) * 10) / 10 : 0;
       }
     },
     color: {

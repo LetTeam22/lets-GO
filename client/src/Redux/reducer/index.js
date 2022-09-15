@@ -231,9 +231,17 @@ function rootReducer(state = initialState, action) {
                 ...state
             }
         case GET_HISTORY_RATING:
+            let newarray = action.payload?.map(element => {
+                let currentRating = element.bookings[0].bikes.find( a => {
+                    return a.idBike === element.idBike
+                })
+                return {idBike:element.idBike, rating:currentRating.rating}
+            })
+            console.log('nuevo arregloooo',newarray)
+            if (!action.payload.length) newarray = []
             return {
                 ...state,
-                bikeRating: [...action.payload]
+                bikeRating: newarray
             }
         case GET_USER_NOTIFICATIONS: 
             return {

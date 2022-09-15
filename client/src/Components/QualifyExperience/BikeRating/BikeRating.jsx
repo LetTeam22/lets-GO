@@ -3,7 +3,7 @@ import { RenderBikeRating } from '../../Cloudinary/renderBikeRating'
 import Rating from '@mui/material/Rating'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postBikeRating  } from '../../../Redux/actions'; // getHistoryRatings
+import { getHistoryRatings, postBikeRating  } from '../../../Redux/actions'; // getHistoryRatings
 
 
 export const BikeRating = ({ name, image, idBike, rating, idBooking }) => {
@@ -13,7 +13,7 @@ export const BikeRating = ({ name, image, idBike, rating, idBooking }) => {
     const [ratingBike, setRatingBike] = useState({ idBike, rating: 0, idBooking });
 
     useEffect(() => {    
-        // dispatch(getHistoryRatings(idBooking))
+        dispatch(getHistoryRatings(idBooking))
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleRatingClick = e => {
