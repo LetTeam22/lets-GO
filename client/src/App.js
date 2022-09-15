@@ -76,7 +76,7 @@ function App() {
         <Route exact path='/AdminProfile/experiences'><Experiences /></Route>
         <Route exact path='/AdminProfile/accesories'><Accesories /></Route>
         <Route exact path='/qualifyExperience'><QualifyExperience /></Route>
-        <Route exact path='/checkout'><Checkout socket={socket} /></Route>
+        <Route exact path='/checkout'><Checkout /></Route>
         <Route exact path='/terms'><TermsAndConditions /></Route>
         <Route exact path='/definition'><BikeDefinition /></Route>
         <Route exact path='/history'><History /></Route>

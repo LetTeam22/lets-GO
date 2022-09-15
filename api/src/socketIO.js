@@ -30,8 +30,6 @@ const getOnlineUsers = async () => {
                 socketId: user.socketId
             });
         });
-        
-        console.log(onlineUsers);
 
         return onlineUsers;
     } catch(err) {
@@ -80,10 +78,6 @@ const getUser = async (email) => {
 
 
 io.on("connection", (socket) => {
-
-    socket.on('newBooking', () => {
-        io.to(socket.id).emit('newBookingNot');
-    })
 
     socket.on("likeExperience",  async ({
         senderName,
