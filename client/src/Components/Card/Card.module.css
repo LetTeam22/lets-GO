@@ -1,3 +1,8 @@
+.container{
+    height: 100%;
+    position: relative;
+}
+
 .card, .cardTwo {
     position: relative;
     display: flex;
@@ -148,14 +153,10 @@
     height: 2rem;
 }
 
-.fav {
-    background-color: transparent;
-    border: none;
-    position: relative;
-    top: -1.5rem;
-    display: flex;
-}
-
 .icon {
     margin: auto 1.5rem;
+}
+
+.btnSwal{
+    background-color: #F9B621!important;
 }
