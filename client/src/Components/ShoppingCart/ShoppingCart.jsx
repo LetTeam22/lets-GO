@@ -309,7 +309,8 @@ export const ShoppingCart = () => {
                 return (
                   <div className={s.cardBike} key={adv.id} >
                     <h2 className={s.bikeName}>{adv.name}</h2>
-                    <RenderOneImage publicId={adv.image} className={s.img} />
+                    {/* <RenderOneImage publicId={adv.image} className={s.img} /> */}
+                    <img src={adv.image} alt="" style={{width:"25%", borderRadius:"2%"}}/>
                     <div className={s.buttonCont}>
                       <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
