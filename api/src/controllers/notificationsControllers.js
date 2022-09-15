@@ -1,6 +1,6 @@
 const { User, Notifications, Experience } = require('../db');
 
-const createNotification = async (type, username, receiverName) => {
+const createNotification = async (type, username, receiverName, senderEmail) => {
 
     if(type === 'like') {
         const user = await User.findOne({
@@ -16,6 +16,7 @@ const createNotification = async (type, username, receiverName) => {
         })
 
         experience.numberOfLikes++;
+        experience.likes = [...experience.likes, senderEmail];
         await experience.save();
 
         const newNotification = await Notifications.create({

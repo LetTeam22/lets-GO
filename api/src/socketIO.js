@@ -2,6 +2,7 @@ const { Server } = require("socket.io");
 const httpServer = require("./app");
 const { User } = require('./db');
 const { createNotification } = require('./controllers/notificationsControllers');
+const { postBooking } = require("./controllers/bookingsControllers");
 const { FRONT_URL } = process.env; 
 
 const io = new Server(httpServer, {
@@ -13,22 +14,29 @@ const io = new Server(httpServer, {
 let onlineUsers = [];
 
 const getOnlineUsers = async () => {
-    const allUsersOnline = await User.findAll({
-        where: {
-            isOnline: true,
-        }
-    });
 
-    allUsersOnline.map(user => {
-        !onlineUsers.some(u => u.email === user.email) &&  onlineUsers.push({
-            username: user.name,
-            email: user.email,
-            socketId: user.socketId
+    try {
+
+        const allUsersOnline = await User.findAll({
+            where: {
+                isOnline: true,
+            }
         });
-    });
+    
+        allUsersOnline.map(user => {
+            !onlineUsers.some(u => u.email === user.email) &&  onlineUsers.push({
+                username: user.name,
+                email: user.email,
+                socketId: user.socketId
+            });
+        });
+        
+        console.log(onlineUsers);
 
-    console.log(onlineUsers);
-    return onlineUsers;
+        return onlineUsers;
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 const addNewUserOnline = async (user, socketId) => {
@@ -60,7 +68,6 @@ const removeUser = async (socketId) => {
 
         onlineUsers = onlineUsers.filter(user => user.email !== removeUser.email);
 
-        console.log(onlineUsers);
     } catch (err) {
         console.log(err)
     }
@@ -74,21 +81,35 @@ const getUser = async (email) => {
 
 io.on("connection", (socket) => {
 
+    socket.on('newBooking', () => {
+        io.to(socket.id).emit('newBookingNot');
+    })
+
     socket.on("likeExperience",  async ({
         senderName,
-        receiverName
+        receiverName,
+        senderEmail
     }) => {
-        const receiver = await getUser(receiverName);
-        await createNotification('like', senderName, receiver);
-        io.to(receiver?.socketId).emit("getLike", {
-            senderName
-        });
+        try {
+            const receiver = await getUser(receiverName);
+            await createNotification('like', senderName, receiver, senderEmail);
+            io.to(receiver?.socketId).emit("getLike", {
+                senderName
+            });
+            
+        } catch(err) {
+            console.log(err);
+        }
     });
 
     socket.on("newUserOnline", async (user) => {
-        await addNewUserOnline(user, socket.id);
-        await getOnlineUsers();
-        io.to(socket.id).emit('login');
+        try {
+            await addNewUserOnline(user, socket.id);
+            await getOnlineUsers();
+            io.to(socket.id).emit('login');
+        } catch(err) {
+            console.log(err);
+        }
     });
 
     socket.on("disconnect", async () => {

@@ -48,7 +48,13 @@ export const Menu = ({socket}) => {
         type: 'Login',
         content: 'Usuario logueado correctamente'
       }])
-    });
+    })
+    socket?.on('newBookingNot', () => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'newBooking',
+        content: 'Su reserva fue confirmada correctamente'
+      }])
+    })
   }, [socket]);
 
   useEffect(() => {
@@ -132,6 +138,16 @@ export const Menu = ({socket}) => {
                             </>
                           )
                       } else if(n.hasOwnProperty('type') && n.type === 'Login') {
+                        return (
+                          <>
+                            <div className={s.notification}>
+                              <MdCheck size='1.5rem' color='#F9B621' />
+                              <span className={s.spanNotification}>{n.content}</span>
+                            </div>
+                            <hr />
+                          </>
+                        )
+                      } else if(n.hasOwnProperty('type') && n.type === 'newBooking') {
                         return (
                           <>
                             <div className={s.notification}>
