@@ -57,15 +57,15 @@ export const Profile = () => {
       const arrToday = today.split('-')
       const arrEndDate = endDate.split('-')
       const cancelled = userBookings.find(b => b.status === 'cancelled' && b.idBooking === idBooking)
-      if(cancelled) return 'cancelada'
-      if(arrToday[0] < arrEndDate[0]) return 'En camino'
-      if(arrToday[0] > arrEndDate[0]) return 'Finalizada'
+      if(cancelled) return 'CANCELADA'
+      if(arrToday[0] < arrEndDate[0]) return 'EN CAMINO'
+      if(arrToday[0] > arrEndDate[0]) return 'FINALIZADA'
       if(arrToday[0] === arrEndDate[0]) {
-        if(arrToday[1] < arrEndDate[1]) return 'En camino'
-        if(arrToday[1] > arrEndDate[1]) return 'Finalizada'
+        if(arrToday[1] < arrEndDate[1]) return 'EN CAMINO'
+        if(arrToday[1] > arrEndDate[1]) return 'FINALIZADA'
         if(arrToday[1] === arrEndDate[1]) {
-          if(arrToday[2] < arrEndDate[2]) return 'En camino'
-          if(arrToday[2] > arrEndDate[2]) return'Finalizada'
+          if(arrToday[2] < arrEndDate[2]) return 'EN CAMINO'
+          if(arrToday[2] > arrEndDate[2]) return'FINALIZADA'
           if(arrToday[2] === arrEndDate[2]) return 'Tu viaje es hoy'
         }
       }
@@ -73,93 +73,109 @@ export const Profile = () => {
   
   const iconStyle = {
     color: 'orange',
-    width: '1.5rem',
-    height: '1.5rem',
+    width: '1.7rem',
+    height: '1.7rem',
     padding: '0',
     margin: '0',
   };
 
-  const showedName = (userLogged.firstName && userLogged.lastName)?
-  `${userLogged.firstName} ${userLogged.lastName}`:
-  userLogged.firstName? userLogged.firstName:
-  userLogged?.email
+  const showedName = (userLogged.firstName && userLogged.lastName) ?`${userLogged.firstName} ${userLogged.lastName}`: userLogged.firstName ? userLogged.firstName: userLogged?.email
 
   return isLoading ?  <Loading />  :
   (
-    <section className={s.allPage}>
+    <>
 
-      <div className={s.containerFav}>
-        <span className={s.title}><AiFillHeart style= {iconStyle}/>TUS let's GO FAVORITAS:</span>
-        <div className={s.box1}>
-            {!!favorites.length ? favorites?.map(f => (
-              <div className={s.containerList1} key={f.idBike}>
-                <button className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x</button>
-                <ul><Link to={`/bike/${f.idBike}`}><span className={s.list}>{`${f.name} (ver detalle)`}</span></Link></ul>
-              </div>
-              )) : <span className={s.span}>Todavía no elegiste favoritas</span>
-            }
+
+      <div className={s.containerUs}>
+        <div className={s.infoUs}>
+          <h4 className={s.usLet}>usuario leter</h4>
+          <h4 className={s.data}>{showedName}</h4>
+          { userLogged.cellphone && <h4 className={s.data}>teléfono: {userLogged?.cellphone}</h4> }       
+          { showedName !== userLogged?.email && <h4 className={s.data}>e-mail: {userLogged?.email}</h4>}
+        </div>       
+        <div className={s.containerImg}>
+          { userLogged?.profilePic
+            ? <RenderProfilePic publicId={userLogged.profilePic} alt={user?.name} />
+            : <img className={s.img} src={image} alt={userLogged?.firstName || null}  />
+          }
+        </div>
+      </div>     
+      <Link to='/editProfile'><span className={s.edit} >editar</span></Link>
+    
+
+      <div className={s.mainContainer}>
+
+        <div className={s.containerFav}>
+          <AiFillHeart style= {iconStyle}/>
+          <span className={s.title}>TUS let's GO FAVORITAS:</span>
+          {!!favorites.length ? favorites?.map(f => (
+            <div className={s.box1} key={f.idBike}>
+              <button className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x</button>
+              <ul><Link to={`/bike/${f.idBike}`}><span className={s.list}>{`${f.name} (ver detalle)`}</span></Link></ul>
+            </div>
+            ))
+            :<>
+              <span className={s.span}>Todavía no elegiste favoritas</span>
+              <Link to='/home'><button className={s.btnChoose}>elegir</button></Link>
+            </>
+          }
         </div>
 
-        <span className={s.title}><AiFillShopping style= {iconStyle}></AiFillShopping>TUS RESERVAS:</span>
-        <div className={s.box2}>
-            {!!userBookings.length ?  userBookings?.map(b => (
-              <div className={s.containerLis2} key={b.idBooking} >              
-                  <span className={s.list2}>● Desde: {reverseDate(b.startDate)} - Hasta: {reverseDate(b.endDate)}</span>
-                  <span className={s.list2}>» Bici:
-                    { b.bikes.map(bike => <span key={bike.name} className={s.list2}>{bike.name} - </span>) }
-                  </span>
-                  <span className={s.list2}>» Accesorios:
-                    { !!b.accesories.length && b.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name} - </span>)) }
-                  </span>
-                  <span className={s.list2}>» Precio Total: ${b.totalPrice}</span>
-                  <span className={s.list2}>» Estado: {bookingStatus(b.endDate, b.idBooking)}</span>     
-                    { bookingStatus(b.endDate, b.idBooking) === 'Finalizada' && 
-                      <>
-                        <span className={s.list2}>Nos gustaría conocer tu opinión con let's GO. Calificá la bici que usaste y compartí tu experiencia! </span>
-                        <Link to={'/qualifyExperience'}>
-                          <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
-                        </Link>
-                      </>
-                    }
-                    { bookingStatus(b.endDate, b.idBooking) === 'En camino' && b.status === 'confirmed' &&
-                      <>
-                        <span className={s.list2}>Podes cancelar tu reserva haciendo click en el siguiente enlace</span>
-                        <button className={s.btnGo} onClick={ () => handleClick(b) }>CANCELAR</button>
-                      </>
-                    }
+        <div className={s.containerRes}>
+          <AiFillShopping style= {iconStyle} />
+          <span className={s.title}>TUS RESERVAS:</span>
+          {!!userBookings.length ?  userBookings?.map(b => (
+            <div className={s.box2} key={b.idBooking} > 
+
+              <div className={s.flex}>             
+                <span className={s.titleList2}>● Fecha: </span><div></div>
+                <span className={s.list2}> {reverseDate(b.startDate)} /   </span>
+                <span className={s.list2}> {reverseDate(b.endDate)}</span>
               </div>
-            )) : <span className={s.span}>Todavía no tenés reservas</span> }
-            { !!Object.keys(booking).length && <CancelBooking booking= {booking} /> }
+
+              <div className={s.flex}>
+                <span className={s.titleList2}>● Bici:</span>
+                { b.bikes.map(bike => <span key={bike.name} className={s.list2}>{bike.name} - </span>) }
+                
+              </div>
+
+              <div className={s.flex}>
+                <span className={s.titleList2}>● Accesorios:
+                  { !!b.accesories.length && b.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name} - </span>)) }
+                </span>
+              </div>
+
+              <div className={s.flex}>
+                <span className={s.titleList2}>● Precio Total:</span><span className={s.title2}> ${b.totalPrice}</span>
+              </div>
+
+              <span className={s.titleList2a}>● Estado: {bookingStatus(b.endDate, b.idBooking)}</span>     
+                { bookingStatus(b.endDate, b.idBooking) === 'FINALIZADA' && 
+                  <>
+                    <div className={s.flex1}>
+                      <span className={s.opinion}>Nos gustaría conocer tu opinión con let's GO. Calificá la bici que usaste y compartí tu experiencia! </span>
+                    </div>
+                    <Link to={'/qualifyExperience'}>
+                      <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
+                    </Link>
+                  </>
+                }
+                { bookingStatus(b.endDate, b.idBooking) === 'EN CAMINO' && b.status === 'confirmed' &&
+                  <div className={s.flex}>
+                    <span className={s.list2}>Podes cancelar tu reserva haciendo click en el siguiente enlace</span>
+                    <button className={s.btnGo} onClick={ () => handleClick(b) }>CANCELAR</button>
+                  </div>
+                }
+            </div>
+            ))
+            : <>
+                <span className={s.span}>Todavía no tenés reservas</span>
+                <Link to='/home'><button className={s.btnChoose}>reservar</button></Link>
+              </>
+          }{ !!Object.keys(booking).length && <CancelBooking booking= {booking} /> }
         </div>
       </div>
 
-
-      <div className={s.containerRight}>
-      <h1>ME FALTAN ESTILOS EN TODO EL COMPONENTE</h1>
-        <div className={s.name}>
-          {showedName}
-        </div>
-        <div className={s.infoAndImage}>
-          <div className={s.information}>
-            <h4 className={s.h4}>Telefono : {userLogged?.cellphone || null}</h4>
-            <h4 className={s.h4}>Email: {userLogged?.email || user?.email}</h4>
-          </div>
-          {userLogged?.profilePic?
-            <RenderProfilePic publicId={userLogged.profilePic}
-            alt={user?.name}
-            />
-            :
-            <img
-              src={image}
-              alt={userLogged?.firstName || null}
-              className={s.img}
-            />
-            }
-        </div>
-        <Button variant="contained" color="success" className={s.btnHome} onClick={() => history.push("/home")}>Go Home</Button>
-        <Button variant="contained" color="success" className={s.btnEdit} onClick={() => history.push("/editProfile")} > Editar Perfil </Button>
-      </div>
-      <div className={s.background}></div>
-    </section>
+    </>
   );
 };

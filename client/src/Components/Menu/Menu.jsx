@@ -75,11 +75,11 @@ export const Menu = ({socket}) => {
           </Link>
         </div>
         <div >
-          <Link to='/promotions'>
-            <div className={url === '/promotions'? s.active : null}>
+          <Link to='/allAccessories'>
+            <div className={url === '/allAccessories'? s.active : null}>
               <TbDiscount2 className={s.responsiveIcons}/>
             </div>
-            <span className={s.span}>BENEFICIOS</span>
+            <span className={s.span}>ACCESORIOS</span>
           </Link>
         </div>
         <div >
