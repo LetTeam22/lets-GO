@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
 import { reverseDate } from '../../helpers/convertDate.js';
+import Chatbot from "../ChatBot/ChatBot";
 
 export const AllExperiencies = ({socket}) => {
 
@@ -20,6 +21,7 @@ export const AllExperiencies = ({socket}) => {
     
     return (
         <>
+        <Chatbot/>
             <div className={s.left}></div>
             <div className={s.right}></div>
             <div className={s.container}>

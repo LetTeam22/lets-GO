@@ -7,6 +7,7 @@ import { Experiencies } from "../Experiencies/Experiencies";
 import { useDispatch } from "react-redux";
 import { getFamousBikes } from "../../Redux/actions";
 import { QuienesSomos } from "./QuienesSomos/QuienesSomos";
+import Chatbot from "../ChatBot/ChatBot";
 
 export const Landing = () => {
 
@@ -22,6 +23,7 @@ export const Landing = () => {
 
   return (
     <div className={s.container}>
+      <Chatbot/>
       <div className={s.fondo}></div>
       <div className={s.landing}>
         <div className={s.textDiv}>
