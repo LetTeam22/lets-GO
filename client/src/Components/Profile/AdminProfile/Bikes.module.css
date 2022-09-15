@@ -1,15 +1,31 @@
 .bikes{
-    width: 80rem;
+    width: 100%;
     height: calc(100vh - 8rem);
     position: relative;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 2rem;
+}
+
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.coverGrid{
+    height: 27rem;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 
 .goBack{
     position: absolute;
     top: 0;
-    left: 0;
+    left: -3rem;
 }
 .goBack svg{
     width: 3rem;
@@ -18,12 +34,9 @@
 }
 
 .list{
-    width: 73rem;
-    height: 32.9rem!important;
     margin-left: auto;
     margin-right: auto;
     background-color: #333333;
-    margin-top: 2rem;
 }
 
 .list *{
@@ -33,8 +46,9 @@
 
 .discountBtn{
     position: absolute;
-    top: 30rem;
-    left: 30rem;
+    bottom: 0.5rem;
+    left: 12rem;
+    transform: translateX(-50%);
     z-index: 100;
     padding: 0.5rem;
     border-radius: 0.2rem;
@@ -53,4 +67,26 @@
 
 .hidde{
     display: none;
+}
+
+@media (max-width:770px) {
+    .discountBtn{
+        bottom: -3rem;
+        left: 50%;
+    }
+}
+
+@media (max-width:650px) {
+    .bikes{
+        margin-top: 4rem;
+    }
+    .discountBtn{
+        bottom: -2.5rem;
+    }
+}
+
+@media (max-width:500px) {
+    .discountBtn{
+        bottom: -3rem;
+    }
 }
