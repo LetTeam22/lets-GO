@@ -5,19 +5,21 @@ import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-
-export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email, numberOfLikes}) => {
+export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
 
     const { user, isAuthenticated } = useAuth0();
     const [ like, setLike ] = useState(false);
-    
+
     const handleLike = (e, mail) => {
         e.preventDefault();
-        setLike(true);
-        socket.emit('likeExperience', {
-            senderName: user.name,
-            receiverName: mail
-        });
+        if(!like) {
+            socket.emit('likeExperience', {
+                senderName: user.name,
+                receiverName: mail,
+                senderEmail: user.email
+            }); 
+        };
+        setLike(!like);
     }
 
     return (
@@ -33,16 +35,16 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                     <p className={s.p}>{textExperience}</p>
                 {
                     isAuthenticated
-                    ? like 
+                    ? like
                         ?   (
                                 <div className={s.containerLikes}>
-                                    <span className={s.likes}>{numberOfLikes}</span>
+                                    {/* <span className={s.likes}>{numberOfLikes}</span> */}
                                     <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
                                 </div>
                             )
                         :   (
                                 <div className={s.containerLikes}>
-                                    <span className={s.likes}>{numberOfLikes}</span>
+                                    {/* <span className={s.likes}>{numberOfLikes}</span> */}
                                     <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
                                 </div>
                             ) 

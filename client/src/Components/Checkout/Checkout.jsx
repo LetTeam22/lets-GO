@@ -18,23 +18,20 @@ export default function Checkout() {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
             .then((result) => {
             }, (error) => {
-            });
+            })
     }
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
 
     useEffect(() => {
-        async function Maxi() {
-            await dispatch(setParameters("resetAllPlusDates"));
-            await dispatch(postBookings(booking))
-        };
-        Maxi();
         window.scrollTo(0, 0);
+        dispatch(setParameters("resetAllPlusDates"));
+        dispatch(postBookings(booking))
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
         localStorage.removeItem("adventure");
         sendEmail();
-        history.push('/home')
+        history.push('/home');
     },)
 
     return (
