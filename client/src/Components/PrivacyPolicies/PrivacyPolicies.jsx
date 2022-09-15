@@ -49,7 +49,7 @@ export const PrivacyPolicies = () => {
                                         Cuando completás nuestro formulario en línea para ponerte en contacto con nuestro equipo, recopilamos tu correo electrónico y cualquier otra información que elijás incluir en el cuerpo de tu correo electrónico, mensaje o respuestas.
                                     </li>
                                     <li>
-                                        Cuando utilicés los servicios ofrecidos por Kleta, como una suscripción para el uso de una bicicleta y realice pagos, recibiremos la información de su transacción. La información financiera que recopilamos incluirá información sobre el método de pago elegido (como tarjeta de crédito o débito), el monto de la compra y la fecha de compra.
+                                        Cuando utilicés los servicios ofrecidos por let's GO, como una suscripción para el uso de una bicicleta y realice pagos, recibiremos la información de su transacción. La información financiera que recopilamos incluirá información sobre el método de pago elegido (como tarjeta de crédito o débito), el monto de la compra y la fecha de compra.
                                     </li>
                                     <li>
                                         Si sos usuario de let's GO, proporcionarás tus datos de contacto, como nombre completo, número de teléfono y dirección de correo electrónico. Como parte de tu relación comercial con nosotros, también podemos recibir información personal sobre vos, como tu Documento Nacional de Identidad, fecha de nacimiento y datos de ubicación para el servicio de recogida.
