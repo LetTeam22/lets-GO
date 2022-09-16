@@ -16,7 +16,7 @@ async function allExperiences (req, res, next) {
             order: [['idExperience', 'DESC']],
         });
         if(experience.length) res.send(experience)
-        else res.send('Aún no existen experiencias')      
+        else res.send('nothing')      
     } catch (error) {
         next(error)
     }
@@ -55,7 +55,7 @@ const getRenderedExperiences = async (req, res, next) => {
             order: [arrSorts],
         });
 
-        if(experiences.length && fromDate && toDate) {
+        if(experiences.length && fromDate != 'null' && toDate != 'null') {
             // filtro de fecha
             experiences = experiences.filter(experience => {
                 let show = false
@@ -66,11 +66,11 @@ const getRenderedExperiences = async (req, res, next) => {
             
             // experiences a renderizar
             if(experiences.length) res.send(experiences)
-            else res.send('Ninguna experiencia se encuentra dentro de su búsqueda')
+            else res.send('nothing')
         }
         else {
             if(experiences.length) res.send(experiences)
-            else res.send('Aún no existen experiencias')  
+            else res.send('nothing')  
         }
         
     } catch (error) {

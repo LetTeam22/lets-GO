@@ -7,7 +7,8 @@ import {
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS, CREATE_ACCESORIE, INCREASE_PRICE, 
-    INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE
+    INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
+    FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -273,6 +274,17 @@ export const discountByGroups = percentage => {
         .then(res => dispatch({ type: DISCOUNT_BY_GROUPS, payload: res }))
         .catch(err => console.log(err));
 };
+
+export const setSortFilterExperience = (data) => {
+    return {type:SET_SORT_FILTER_EXPERIENCE,
+        payload:data
+    }
+}
+
+export const filterExperiencesByDate = ({startDate, endDate, sort}) => {
+    return dispatch => axios(`/experience/getFiltered?sort=${sort}&fromDate=${startDate}&toDate=${endDate}`)
+    .then(res => dispatch({type:FILTER_EXPERIENCE_BY_DATE, payload:res.data}))
+    .catch(err => console.log(err))
 
 export const getAllLikes = (email) => {
     return dispatch => axios(`/experience/allLikes/${email}`)
