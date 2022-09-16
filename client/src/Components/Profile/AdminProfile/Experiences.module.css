@@ -1,15 +1,31 @@
 .experiences{
-    width: 64rem;
+    width: 100%;
     height: calc(100vh - 8rem);
     position: relative;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 2rem;
+}
+
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.coverGrid{
+    height: 27rem;
+    max-width: 57.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 
 .goBack{
     position: absolute;
     top: 0;
-    left: 0;
+    left: -3rem;
 }
 .goBack svg{
     width: 3rem;
@@ -18,15 +34,18 @@
 }
 
 .list{
-    width: 57rem;
-    height: 32.5rem!important;
     margin-left: auto;
     margin-right: auto;
     background-color: #333333;
-    margin-top: 2rem;
 }
 
 .list *{
     color: white;
     font-family: 'Roboto' 'sans-serif'
+}
+
+@media (max-width:650px) {
+    .experiences{
+        margin-top: 4rem;
+    }
 }

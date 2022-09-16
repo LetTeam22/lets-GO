@@ -1,10 +1,10 @@
-const { Router } = require('express');
+const { Router } = require('express');;
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 
 const {experienceDetails,updateExperience,
-    createExperience,allExperiences, getRenderedExperiences
+    createExperience,allExperiences, getRenderedExperiences, postLike, deleteLike, getAllLikes
 } = require ('../controllers/experienceControllers')
 
 const router = Router();
@@ -28,5 +28,10 @@ router.get('/getall',allExperiences)
 // devuelve un array de experiencias aplicando filtros
 // EJEMPLO: http://localhost:3001/experience/getFiltered?sort=nameASC&fromDate=2022-01-01&toDate=2022-04-01
 router.get('/getFiltered',getRenderedExperiences)
+
+router.get('/allLikes/:email', getAllLikes);
+router.post('/like', postLike);
+router.put('/deleteLike', deleteLike);
+
 
 module.exports = router;

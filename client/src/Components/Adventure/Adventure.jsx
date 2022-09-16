@@ -5,6 +5,7 @@ import s from './Adventure.module.css';
 import { addAdventure } from '../../Redux/actions';
 import { adventures } from './data';
 import CardAdventures from './CardAdventures';
+import Chatbot from "../ChatBot/ChatBot";
 
 export const Adventure = () => {
   const dispatch = useDispatch()
@@ -52,8 +53,8 @@ export const Adventure = () => {
   };
 
   return (
-   
     <>
+    <Chatbot/>
       <div className={s.left} />
       <div className={s.right} />
       <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>

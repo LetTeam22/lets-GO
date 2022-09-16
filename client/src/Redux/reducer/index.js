@@ -8,7 +8,7 @@ import {
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
     CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, 
-    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE,
+    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -67,6 +67,8 @@ const initialState = {
     bikeRating: [],
     userNotifications: [],
     filterExperience:{startDate:null, endDate:null, sort:null},
+    userNotifications: [], 
+    likes: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -249,7 +251,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 userNotifications: action.payload
-             }
+            }
         case CREATE_ACCESORIE:
             return {
                 ...state
@@ -275,6 +277,21 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allExperiences: action.payload
+            }
+        case POST_NEW_LIKE: 
+            return {
+                ...state,
+                likes: [...state.likes, action.payload]
+            }
+        case DELETE_LIKE: 
+            return {
+                ...state, 
+                likes: state.likes.filter(f => f.idExperience !== action.idExperience)
+            }
+        case GET_ALL_LIKES: 
+            return {
+                ...state,
+                likes: action.payload
             }
         default: return state
     }
