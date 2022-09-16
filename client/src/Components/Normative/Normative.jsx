@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './Normative.module.css'
 
 
 export const Normative = () => {
+
+  const history = useHistory()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -144,6 +147,9 @@ export const Normative = () => {
                   </li>
                 </ul>
               </div>
+            </div>
+            <div className={s.containerBtn}>
+              <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
             </div>
           </div>
         </section>
