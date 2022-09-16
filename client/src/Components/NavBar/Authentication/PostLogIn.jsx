@@ -6,7 +6,6 @@ import { getAllUsers, createUser, getUser, getAllFavorites } from '../../../Redu
 import Loading from '../../Loading/Loading';
 import Rejected from './Rejected';
 import s from './PostLogIn.module.css';
-// import postlogin from '../../../image/postlogin.png';
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID3;
@@ -30,23 +29,24 @@ export default function PostLogIn() {
     const userLogged = allUsers.find(us => us.email === user?.email)
     if(userLogged && userLogged.status !== 'active') return <Rejected/>
 
-    const goBack = (e) => {
+    const goBack = async (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user.email }))
+        await dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
         sendEmail(e);
     }
-    const goProfile = (e) => {
-        e.preventDefault();
-        dispatch(createUser({ email: user.email }))
-        dispatch(getUser(user?.email))
-        dispatch(getAllFavorites(user?.email))
-        history.push('/bike/profile')
-        sendEmail(e);
-    }
+
+    // const goProfile = async (e) => {
+    //     e.preventDefault();
+    //     await dispatch(createUser({ email: user.email }))
+    //     dispatch(getUser(user?.email))
+    //     dispatch(getAllFavorites(user?.email))
+    //     history.push('/bike/profile')
+    //     sendEmail(e);
+    // }
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -56,14 +56,14 @@ export default function PostLogIn() {
             }, (error) => {
                 console.log(error.text);
             });
-    }
+    };
 
     return (
         <div className={s.background}>
             <div className={s.buttons}>
                 <img src={postlogin} className={s.postlogin} alt='postlogin' ></img>
                 <button className={s.btnBack} onClick={e => goBack(e)}>Volver</button>
-                <button className={s.btnProfile} onClick={e => goProfile(e)}>Revisa tu perfil</button>
+                {/* <button className={s.btnProfile} onClick={e => goProfile(e)}>Revisa tu perfil</button> */}
             </div>
         </div>
     )

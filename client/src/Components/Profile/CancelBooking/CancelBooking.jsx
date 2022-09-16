@@ -1,8 +1,9 @@
 import React from "react";
-import { updateBooking, getBookingsByUserId } from "../../../Redux/actions";
+import { updateBooking } from "../../../Redux/actions";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import s from './CancelBooking.module.css'
 
 
 export const CancelBooking = ({ booking }) => {
@@ -18,12 +19,12 @@ export const CancelBooking = ({ booking }) => {
     };
 
     return (
-        <div>
-            <h3>Estas a punto de cancelar la siguiente reserva </h3>
-            <span>Fecha: {booking.startDate} / {booking.endDate} </span>
-            <span>Precio: ${booking.totalPrice}</span>
-            <span>¿Confirmás la cancelación?</span>
-            <button onClick={handleCancelled}>OK</button>
+        <div className={s.box2}>
+            <h3 className={s.cancel}>Estas a punto de cancelar la siguiente reserva </h3>
+            <span className={s.cancelText}>Fecha: {booking.startDate} / {booking.endDate} </span>
+            <span className={s.cancelText}>Precio: ${booking.totalPrice}</span>
+            <span className={s.cancel}>¿CONFIRMÁS LA CANCELACIÓN?</span>
+            <button className={s.btn} onClick={handleCancelled}>OK</button>
         </div>
     )
 };

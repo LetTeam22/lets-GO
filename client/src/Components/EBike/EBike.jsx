@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './EBike.module.css'
 
 export const EBike = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -20,8 +23,8 @@ export const EBike = () => {
                         <p style={{ color: "black" }}>
                             Las e-bikes son las bicicletas más modernas que existen hasta el momento, y se caracterizan por disponer de una batería y un motor que permite un mejor funcionamiento de la rueda trasera.
                             En otras palabras, hace que el esfuerzo a la hora de pedalear sea más suave y sencillo.
-                            Pero, ¿qué sabes de la bicicleta e-bike?
-                            ¿Piensas que un motor eléctrico en la bicicleta ya te exime de tener que pedalear?
+                            Pero, ¿qué sabés de la bicicleta e-bike?
+                            ¿Pensás que un motor eléctrico en la bicicleta ya te exime de tener que pedalear?
                         </p>
 
                         <p style={{ color: "black" }}>
@@ -41,7 +44,7 @@ export const EBike = () => {
                         <p style={{ color: "black" }}>
                             La bicicleta eléctrica se diferencia de una bici tradicional o mecánica en que incluye un motor eléctrico.
                             Ahora bien, ese motor no hará que la bicicleta se mueva sola, sino que te servirá como ayuda a la hora de pedalear.
-                            ¿Qué quiere decir esto? Pues que una bicicleta e-bike no es una motocicleta; no va a moverse sola al accionar el motor que lleva, sino que, a través de un sensor del pedaleo,
+                            ¿Qué quiere decir esto? Que una bicicleta e-bike no es una motocicleta; no va a moverse sola al accionar el motor que lleva, sino que, a través de un sensor del pedaleo,
                             detectará cuándo es necesario que el motor te eche una mano para determinados momentos.
                         </p>
 
@@ -55,7 +58,7 @@ export const EBike = () => {
                             Normalmente se sitúa en el tubo transversal de la estructura de la bicicleta y puede tener distintas capacidades,
                             razón por la que una bici puede ser más o menos pesada (o puede tardar más o menos en cargarse la batería).
                             Esta batería tiene la ventaja de que se puede quitar de la bicicleta para recargarla en cualquier enchufe o para no utilizar el motor de la e-bike en caso de que no te haga falta.
-                            Por ejemplo, en el caso de nuestras Let electricas, tienes algo más de 25 kilómetros de alcance con la batería, y después puedes cargarla en casa o en la oficina para volver a contar con ella al 100%.
+                            Por ejemplo, en el caso de nuestras Let electricas, tenés algo más de 25 kilómetros de alcance con la batería, y después podés cargarla en casa o en la oficina para volver a contar con ella al 100%.
                         </p>
 
                         <h3 className={s.heading}>
@@ -64,8 +67,8 @@ export const EBike = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Hoy día, e-bikes hay muchas, no solo en cuanto a marcas y modelos, sino también basadas en el uso que les quieras dar.
-                            Es decir, puedes encontar e-bikes de montaña, bicicletas asistidas para pasear, otras enfocadas para poder moverte por la ciudad, etc.
+                            Hoy en día, e-bikes hay muchas, no solo en cuanto a marcas y modelos, sino también basadas en el uso que les quieras dar.
+                            Es decir, podés encontar e-bikes de montaña, bicicletas asistidas para pasear, otras enfocadas para poder moverte por la ciudad, etcétera.
                             Cada una de ellas tiene una serie de características que la hacen más específica para unas necesidades concretas. Por eso, la bicicleta e-bike puede usarse para múltiples funciones:
                         </p>
 
@@ -82,12 +85,15 @@ export const EBike = () => {
                         </ul>
 
                         <p style={{ color: "black" }}>
-                            Debes tener en cuenta que una e-bike es recomendable en zonas con grandes cuestas, ya sea en montañas o incluso en ciudades que, debido a su orografía, cuentan con calles con cuestas, algunas muy pronunciadas,
+                            Debés tener en cuenta que una e-bike es recomendable en zonas con grandes cuestas, ya sea en montañas o incluso en ciudades que, debido a su orografía, cuentan con calles con con pendientes, algunas muy pronunciadas,
                             que pueden necesitar de una ayuda a la hora de superarlas sin ser un ciclista profesional.
                         </p>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+                        </div>
                     </div>
                 </section>
             </div>
-            </>
-            )
+        </>
+    )
 }

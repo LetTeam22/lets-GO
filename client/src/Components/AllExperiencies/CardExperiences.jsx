@@ -4,16 +4,15 @@ import s from './CardExperiences.module.css'
 import { BiLike, BiTrash, BiEdit, BiSave } from 'react-icons/bi';
 import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
-import { updateExperience, updateExperiencesState } from '../../Redux/actions';
-import swal from "sweetalert";
+import { addLikeToDb, removeLikeFromDb, updateExperience, updateExperiencesState } from '../../Redux/actions';
+import swal from 'sweetalert';
 
-export const CardExperience = ({ id, imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
-    
-    const dispatch= useDispatch();
-    const allExperiences = useSelector((state) => state.allExperiences)
-    
+export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email, idExperience}) => {
+
     const { user, isAuthenticated } = useAuth0();
-    const [ like, setLike ] = useState(false);
+    const likes = useSelector(state => state.likes);
+    const dispatch = useDispatch();
+    const allExperiences = useSelector((state) => state.allExperiences)
     const [ input, setInput ] = useState({
         id: '',
         text: ''
@@ -21,14 +20,36 @@ export const CardExperience = ({ id, imgExperience, textExperience, firstName, s
 
     const handleLike = (e, mail) => {
         e.preventDefault();
-        if(!like) {
-            socket.emit('likeExperience', {
-                senderName: user.name,
-                receiverName: mail,
-                senderEmail: user.email
-            }); 
-        };
-        setLike(!like);
+        if(!isAuthenticated) {
+            swal({
+                title: "PRECAUCIÓN",
+                text: "Debés loguearte primero",
+                icon: "warning",
+                button: {
+                    text: "Ok",
+                    value: true,
+                    visible: true,
+                    className: s.btnSwal,
+                    closeModal: true,
+                },
+            });
+        } else {
+            const alreadyLike = likes.find(e => e.idExperience === idExperience);
+            if(!alreadyLike) {
+                if(user?.email) dispatch(addLikeToDb({idExperience: idExperience, email: user?.email}));
+                socket.emit('likeExperience', {
+                    senderName: user.name,
+                    receiverName: mail,
+                    senderEmail: user.email
+                }); 
+            } else {
+                if(user?.email) dispatch(removeLikeFromDb({idExperience, email: user.email}));
+            }
+        }
+    }
+
+    const experienceIsLike = (idExperience) => {
+        return likes.find(e => e.idExperience === idExperience) ? true : false;
     }
 
     const handleInputChange = e => {
@@ -39,7 +60,7 @@ export const CardExperience = ({ id, imgExperience, textExperience, firstName, s
     const handleEdit = e => {
         e.preventDefault();
         setInput({
-            id: id,
+            id: idExperience,
             text: textExperience
         })
     }
@@ -67,10 +88,10 @@ export const CardExperience = ({ id, imgExperience, textExperience, firstName, s
         }).then((value) => {
             if (value) {
               dispatch(updateExperience({
-                  idExperience: id,
+                  idExperience: idExperience,
                   status: 'deleted'
               }))
-              const newExperiences = allExperiences.map(e => e.idExperience === id ? {...e, status: 'deleted'} : e)
+              const newExperiences = allExperiences.map(e => e.idExperience === idExperience ? {...e, status: 'deleted'} : e)
               dispatch(updateExperiencesState(newExperiences))
             }
         });
@@ -79,10 +100,10 @@ export const CardExperience = ({ id, imgExperience, textExperience, firstName, s
     const handleSave = e => {
         e.preventDefault();
         dispatch(updateExperience({
-            idExperience: id,
+            idExperience: idExperience,
             textExperience: input.text
         }))
-        const newExperiences = allExperiences.map(e => e.idExperience === id ? {...e, textExperience: input.text} : e)
+        const newExperiences = allExperiences.map(e => e.idExperience === idExperience ? {...e, textExperience: input.text} : e)
         dispatch(updateExperiencesState(newExperiences))
         setInput({
             id: '',
@@ -102,34 +123,22 @@ export const CardExperience = ({ id, imgExperience, textExperience, firstName, s
                 </div>
                 <>
                 {
-                    id === input.id ? 
+                    idExperience === input.id ? 
                     <textarea className={s.edit} type='text' value={input.text} onChange={handleInputChange} /> :
                     <p className={s.p}>{textExperience}</p>
                 }
                 </>
                 <div className={s.iconCont}>
                     {
-                        isAuthenticated
-                        ? like
-                        ?   (
-                            <div className={s.containerLikes}>
-                                        {/* <span className={s.likes}>{numberOfLikes}</span> */}
-                                        <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
-                                    </div>
-                                )
-                            :   (
-                                <div className={s.containerLikes}>
-                                        {/* <span className={s.likes}>{numberOfLikes}</span> */}
-                                        <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
-                                    </div>
-                                ) 
-                                : <></>
-                            }
+                        experienceIsLike(idExperience)
+                            ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>    
+                            :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
+                    }
                     {
                         isAuthenticated && user.email === email &&
                         <>
                         {
-                            id === input.id ? 
+                            idExperience === input.id ? 
                             <button onClick={e =>  handleSave(e, email)} className={s.iconBtn}><BiSave size='1.5rem' color='#F9B621' /></button> :
                             <>
                                 <button onClick={e =>  handleEdit(e, email)} className={s.iconBtn}><BiEdit size='1.5rem' color='#F9B621' /></button>

@@ -71,18 +71,6 @@
     margin-right: 1rem;
 }
 
-.containerLikes {
-    display: flex;
-    flex-direction: row;
-    column-gap: .5rem;
-    align-items: flex-end;
-}
-
-.likes {
-    color: #F9B621;
-    font-size: 1rem;
-}
-
 .edit {
     background: #333333;
     color: white;
@@ -97,3 +85,4 @@
 .btnSwal{
     background-color: #F9B621!important;
 }
+

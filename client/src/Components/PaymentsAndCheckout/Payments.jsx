@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import s from './Payments.module.css'
 
 
 const contacto = '/contact'
+const accesories = '/allAccessories'
 
 export const Payments = () => {
 
+  const history = useHistory()
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -65,7 +68,7 @@ export const Payments = () => {
                 Punto de encuentro: las salidas son siempre desde nuestra sucursal, salvo comunicación expresa en contrario.
               </li>
               <li>
-                Observaciones: llevá ropa adecuada para realizar la ascensión al cerro. Sería bueno contar con calzado especial. Si no tenés el tuyo propio, podés alquilar alguno de los que ofrecemos en let's GO.
+                Observaciones: llevá ropa adecuada para realizar la ascensión al cerro. Sería bueno contar con calzado especial. Si no tenés el tuyo propio, podés {<a className={s.a} href={accesories}>alquilar</a>} los que ofrecemos en let's GO.
               </li>
             </ul>
             <p style={{ color: "black" }}>
@@ -113,6 +116,9 @@ export const Payments = () => {
             <p style={{ color: "black" }}>
               Si después de leer esta información te queda alguna duda, {<a className={s.a} href={contacto}>contactate</a>} con nosotros que te responderemos a la brevedad.
             </p>
+            <div className={s.containerBtn}>
+              <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+            </div>
           </div>
         </section >
       </div >

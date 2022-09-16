@@ -22,7 +22,7 @@ console.log(allAccs)
             <div className={s.left} />
             <div className={s.right} />
             <div className={s.container}>
-                <h1 className={s.h1}>TODO LO QUE NECESITAS PARA TU AVENTURA</h1>  
+                <h1 className={s.h1}>TODO LO QUE NECESITÁS PARA TU AVENTURA</h1>  
             </div>     
             { allAccs.length ? allAccs.filter(acc => acc.status === 'active').map((a) => {
                     return (

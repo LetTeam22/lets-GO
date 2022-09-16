@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+
+.spanOrderings {
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #706f6f;   
+}
+
+.orderings {
+    color: rgb(86, 85, 85);
+    background: #e1e0e0;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    padding: 0;
+    font-size: .9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.3vw;
+    height: 3.1vh;
+    cursor: pointer;
+    list-style: none;
+    border-radius: .2rem;
+    border: none ;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+}
+
+.orderings.act {
+    background-color: #ef8d24bd;
+    font-weight:500;
+}
