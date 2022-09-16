@@ -290,7 +290,7 @@ function rootReducer(state = initialState, action) {
         case DELETE_LIKE: 
             return {
                 ...state, 
-                likes: state.likes.filter(f => f.idExperience !== action.idExperience)
+                likes: state.likes.filter(f => f.idExperience !== action.payload.idExperience)
             }
         case GET_ALL_LIKES: 
             return {
