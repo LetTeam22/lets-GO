@@ -177,7 +177,7 @@ export const Menu = ({socket}) => {
                             </Link>
                           </>
                         )
-                      }
+                      }else return <div></div>
                     })
                   }
                 </div>

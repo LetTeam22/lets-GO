@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import s from "./Profile.module.css";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllFavorites, getUser } from "../../Redux/actions";
+import { getAllFavorites, getBookingsByUserEmail, getUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
-import { removeFavoriteFromDb, getBookingsByUserId, bookingToQualify } from "../../Redux/actions";
+import { removeFavoriteFromDb, bookingToQualify } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
 import { convertDate, reverseDate } from '../../helpers/convertDate.js';
@@ -30,9 +30,10 @@ export const Profile = () => {
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect( () => {
-    dispatch(getBookingsByUserId(userLogged.idUser))
+    // dispatch(getBookingsByUserId(userLogged.idUser))
+    if (user?.email) dispatch(getBookingsByUserEmail(user?.email))
     if (user?.email) dispatch(getAllFavorites(user?.email))
-  }, [userLogged.idUser, user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))

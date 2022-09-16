@@ -1,5 +1,5 @@
 import React from "react";
-import { updateBooking, getBookingsByUserId } from "../../../Redux/actions";
+import { updateBooking} from "../../../Redux/actions";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";

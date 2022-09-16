@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAllUsers, createUser, getUser, getAllFavorites } from '../../../Redux/actions';
+import { getAllUsers, createUser, getUser, getAllFavorites, getBookingsByUserEmail } from '../../../Redux/actions';
 import Loading from '../../Loading/Loading';
 import Rejected from './Rejected';
 import s from './PostLogIn.module.css';
@@ -24,6 +24,11 @@ export default function PostLogIn() {
         dispatch(getAllUsers())
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    useEffect( () => {
+        if (user?.email) dispatch(getBookingsByUserEmail(user?.email))
+        if (user?.email) dispatch(getAllFavorites(user?.email))
+    }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+    
     if(isLoading) return <Loading/>
     localStorage.setItem('email', user?.email);
 
