@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from './CardExperiences.module.css'
 import { BiLike } from 'react-icons/bi';
 import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLikeToDb, removeLikeFromDb } from '../../Redux/actions';
-
+import swal from 'sweetalert';
 
 export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email, idExperience}) => {
 
@@ -15,16 +15,31 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
 
     const handleLike = (e, mail) => {
         e.preventDefault();
-        const alreadyLike = likes.find(e => e.idExperience === idExperience);
-        if(!alreadyLike) {
-            if(user?.email) dispatch(addLikeToDb({idExperience: idExperience, email: user?.email}));
-            socket.emit('likeExperience', {
-                senderName: user.name,
-                receiverName: mail,
-                senderEmail: user.email
-            }); 
+        if(!isAuthenticated) {
+            swal({
+                title: "PRECAUCIÓN",
+                text: "Debés loguearte primero",
+                icon: "warning",
+                button: {
+                    text: "Ok",
+                    value: true,
+                    visible: true,
+                    className: s.btnSwal,
+                    closeModal: true,
+                },
+            });
         } else {
-            if(user?.email) dispatch(removeLikeFromDb({idExperience, email: user.email}));
+            const alreadyLike = likes.find(e => e.idExperience === idExperience);
+            if(!alreadyLike) {
+                if(user?.email) dispatch(addLikeToDb({idExperience: idExperience, email: user?.email}));
+                socket.emit('likeExperience', {
+                    senderName: user.name,
+                    receiverName: mail,
+                    senderEmail: user.email
+                }); 
+            } else {
+                if(user?.email) dispatch(removeLikeFromDb({idExperience, email: user.email}));
+            }
         }
     }
 
@@ -42,13 +57,11 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 <div className={s.containH1}> 
                     { bikes.map( b =>  <h1 className={s.h1}> {b.name} ・ </h1> )}
                 </div> 
-                    <p className={s.p}>{textExperience}</p>
+                <p className={s.p}>{textExperience}</p>
                 {
-                    isAuthenticated
-                    ? experienceIsLike(idExperience)
+                    experienceIsLike(idExperience)
                         ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>    
                         :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
-                    : <></>
                 }
             </div>
         </div >
