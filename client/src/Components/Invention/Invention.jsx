@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './Invention.module.css'
 
 export const Invention = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -111,10 +114,14 @@ export const Invention = () => {
                         </p>
                         <p style={{ color: "black" }}>
                             Karl Drais, McMillan, Michaux, Gavin Dalzell, James Starley, John Kemp Starley…
-                            las dudas sobre quién inventó la bicicleta siguen estando muy presentes, pero de lo que sí hay certezas es que este medio de transporte es una forma sostenible, divertida y económica de desplazarse.                    </p>
+                            las dudas sobre quién inventó la bicicleta siguen estando muy presentes, pero de lo que sí hay certezas es que este medio de transporte es una forma sostenible, divertida y económica de desplazarse.
+                        </p>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+                        </div>
                     </div>
                 </section>
             </div>
-            </>
-            )
+        </>
+    )
 }

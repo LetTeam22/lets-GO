@@ -65,6 +65,42 @@ async function getBookingsByUserId(req, res, next) {
   }
 }
 
+async function getBookingsByUserEmail(req, res, next) {
+  const { email } = req.params
+  if (!email) return res.sendStatus(400)
+  try {
+    let bookings = await Booking.findAll({
+      include: [
+        {
+          model: Bike,
+          attributes: ['name', 'image', 'idBike', 'rating'],
+          through: {
+            attributes: []
+          }
+        },
+        {
+          model: Accesories,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        },
+        {
+          model:User,
+          attributes:['email'],
+          where: {email:email}
+        },
+      ],
+    })
+    if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
+    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
+    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
+    res.send(bookings)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function getBookingsByBikeIds(req, res, next) {
   const { bikeIds } = req.params;
   if (!bikeIds) return []
@@ -130,5 +166,6 @@ module.exports = {
   getBookingsByUserId,
   getBookingsByBikeIds,
   postBooking,
-  updateBooking
+  updateBooking,
+  getBookingsByUserEmail,
 }

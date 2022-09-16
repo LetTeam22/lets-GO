@@ -211,6 +211,7 @@ hr {
         color: #f4b220;
         background-color: #333333;
         font-size: 3rem!important;
+        width: 3rem;
     }
     .img img{
         width:3rem;
