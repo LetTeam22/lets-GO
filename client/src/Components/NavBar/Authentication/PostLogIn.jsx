@@ -30,18 +30,18 @@ export default function PostLogIn() {
     const userLogged = allUsers.find(us => us.email === user?.email)
     if(userLogged && userLogged.status !== 'active') return <Rejected/>
 
-    const goBack = (e) => {
+    const goBack = async (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user.email }))
+        await dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push(localStorage.getItem('url'))
         localStorage.removeItem('url')
         sendEmail(e);
     }
-    const goProfile = (e) => {
+    const goProfile = async (e) => {
         e.preventDefault();
-        dispatch(createUser({ email: user.email }))
+        await dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
         history.push('/bike/profile')

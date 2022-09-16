@@ -279,12 +279,13 @@ export const setSortFilterExperience = (data) => {
     return {type:SET_SORT_FILTER_EXPERIENCE,
         payload:data
     }
-}
+};
 
 export const filterExperiencesByDate = ({startDate, endDate, sort}) => {
     return dispatch => axios(`/experience/getFiltered?sort=${sort}&fromDate=${startDate}&toDate=${endDate}`)
     .then(res => dispatch({type:FILTER_EXPERIENCE_BY_DATE, payload:res.data}))
     .catch(err => console.log(err))
+};
 
 export const getAllLikes = (email) => {
     return dispatch => axios(`/experience/allLikes/${email}`)
