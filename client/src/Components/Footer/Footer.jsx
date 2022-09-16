@@ -17,6 +17,7 @@ const faqs = '/faqs'
 const normative = '/normative'
 const policies = '/policies'
 const payments = '/payments'
+const about = '/about'
 
 export const Footer = () => {
 
@@ -61,7 +62,9 @@ export const Footer = () => {
             </div>
             <div className={s.company}>
                 <h5 className={s.h5}>COMPAÑIA</h5>
-                <span className={s.footerSpan}>Sobre nosotros</span>
+                <a className={s.footerSpan} href={about} cursor='pointer'>
+                    <span className={s.footerSpan}>Sobre nosotros</span>
+                </a>
                 <a className={s.footerSpan} href={contact} cursor='pointer'>
                     <span className={s.footerSpan}>Contacto</span>
                 </a>
