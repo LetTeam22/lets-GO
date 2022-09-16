@@ -56,28 +56,12 @@ const CalendarE = () => {
     dispatch(filterExperiencesByDate(filterExperience))
   }
 
-    //   // calculo fecha de hoy para setear el minimo en el calendario
-    //   let today = new Date();
-    //   let yesterday = new Date();
-    //   yesterday.setDate(yesterday.getDate() - 1);
-    //   let hours = today.getHours();
-  
   return (
     <CDateRangePicker
       footer
       placeholder={["Fecha desde", "Fecha hasta"]}
       format="d/M/yyyy"
-        //   minDate={hours >= 18 ? today : yesterday}
-        //   startDate={
-        //     parameters.date?.from
-        //       ? new Date(`${parameters.date.from}${parameters.date.timeZone}`)
-        //       : null
-        //   }
-        //   endDate={
-        //     parameters.date?.to
-        //       ? new Date(`${parameters.date.to}${parameters.date.timeZone}`)
-        //       : null
-        //   }
+
       onStartDateChange={(date) => handleStartDateChange(date)}
       onEndDateChange={(date) => handleEndDateChange(date)}
       onConfirm={handleConfirm}

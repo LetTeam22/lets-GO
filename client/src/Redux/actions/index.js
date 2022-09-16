@@ -286,7 +286,6 @@ export const filterExperiencesByDate = ({startDate, endDate, sort}) => {
     .then(res => dispatch({type:FILTER_EXPERIENCE_BY_DATE, payload:res.data}))
     .catch(err => console.log(err))
 };
-
 export const getAllLikes = (email) => {
     return dispatch => axios(`/experience/allLikes/${email}`)
         .then(res => dispatch({ type: GET_ALL_LIKES, payload: res.data }))
