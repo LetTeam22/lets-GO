@@ -61,6 +61,7 @@ const CalendarE = () => {
       footer
       placeholder={["Fecha desde", "Fecha hasta"]}
       format="d/M/yyyy"
+
       onStartDateChange={(date) => handleStartDateChange(date)}
       onEndDateChange={(date) => handleEndDateChange(date)}
       onConfirm={handleConfirm}

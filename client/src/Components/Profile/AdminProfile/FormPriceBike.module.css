@@ -35,6 +35,16 @@
     width: 30rem;
     background-color: #c1c1c1;
 }
+
+.titulo {
+    width: 90%;
+    margin: 0;
+    display: block;
+    text-align: center;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
 .form{
     width: 100%;
     height: 20rem;
@@ -48,31 +58,20 @@
     grid-gap: 2rem;
     gap: 2rem;
     height: 3rem;
-    width: 100%;
+    width: 90%;
     justify-content: center;
 }
 .container form > div > div{
-    width: 12rem;
+    width: 50%;
     height: 3rem;
 }
-
-.titulo {
-    display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 0;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    margin: 0;
-}
-
 
 .btnSend{
     color:#F9B621!important;
     background-color:#333333!important;
     font-weight: 1000!important;
     height: 3rem!important;
+    width: 8rem;
 }
 .btnSend:disabled{
     background-color: #525252!important;
@@ -92,4 +91,10 @@
 }
 .swalBtn:hover{
     background-color: #d39307!important;
+}
+
+@media (max-width:530px) {
+    .container{
+        width: 95%;
+    }
 }

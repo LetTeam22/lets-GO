@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.column{
+.up, .down{
     width: 100%;
     height: 100%;
     display: flex;
@@ -16,11 +16,15 @@
     align-items: center;
 }
 
-.column img{
+.down img{
     width: 2rem;
     background-color: #333333;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.h2{
+    padding-bottom: 0;
 }
 
 .btnBook{
@@ -74,5 +78,21 @@
 @media (max-width:1140px) {
     .allPage{
         height: calc(100vh - 10rem);
+    }
+}
+
+@media (max-width:650px) {
+    .up{
+        margin-top: 4rem;
+        height: 10rem;
+    }
+    .down{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width:460px) {
+    .up{
+        height: 10rem;
     }
 }

@@ -18,7 +18,7 @@ const validateDiscount = (value) => {
     return {};
   };
 
-export default function GroupDiscount ({ setSeeDiscount }) {
+export default function GroupDiscount ({ setSeeDiscount, socket }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const [errors, setErrors] = useState({});
@@ -72,6 +72,7 @@ export default function GroupDiscount ({ setSeeDiscount }) {
                     button: false,
                 });
                 dispatch(discountByGroups({...input, discount: Number(input.discount)}))
+                socket?.emit('newDiscount', input)
                 setInput({
                     wheelSize: "",
                     traction: "",

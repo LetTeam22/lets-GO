@@ -110,7 +110,6 @@ export default function FormBike({ setAddBike }) {
           price: "",
           color: "",
         });
-        
       }
     });
   };
@@ -130,139 +129,145 @@ export default function FormBike({ setAddBike }) {
   const back = () => {
     setAddBike(false);
   };
-
   return (
     <section className={s.allPage}>
-      <div className={s.back} onClick={back}></div>
-      <div className={s.container}>
-        <h3 className={s.titulo}>Agrega una nueva Bicicleta</h3>
-        <div className={s.nameAndImg}>
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="label"
-            className={s.imgContainer}
-          >
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              onChange={handleChange}
-              value={input.image}
-              id="image"
-            />
-            {photo ? (
-              <img src={photo} alt="photoBike" className={s.img} />
-            ) : (
-              <GiDutchBike className={s.img} />
-            )}
-            <BsCameraFill className={s.iconCamera} />
-          </IconButton>
+      <ThemeProvider theme={theme}>
+        <div className={s.back} onClick={back}></div>
+        <div className={s.container}>
+          <h3 className={s.titulo}>Agrega una nueva Bicicleta</h3>
+          <div className={s.formContainer}>
+            <form className={s.form} onSubmit={handleSubmit}>
+              <div className={s.inputs}>
+                <FormControl>
+                  <InputLabel htmlFor="name">{"Nombre"}</InputLabel>
+                  <Input
+                    id="name"
+                    aria-describedby="my-helper-text"
+                    error={errors.name ? true : false}
+                    value={input.name}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl>
+                  <InputLabel htmlFor="type">{"Tipo"}</InputLabel>
+                  <Input
+                    id="type"
+                    aria-describedby="my-helper-text"
+                    error={errors.type ? true : false}
+                    placeholder="bmx-city-mtb-tandem-touring-folding"
+                    value={input.type}
+                    onChange={handleChange}
+                  />
+                  <FormHelperText id="my-helper-text"></FormHelperText>
+                </FormControl>
+                <div className={s.tractionAndWheelSize}>
+                  <FormControl>
+                    <InputLabel htmlFor="traction">{"Tracción"}</InputLabel>
+                    <Input
+                      id="traction"
+                      aria-describedby="my-helper-text"
+                      error={errors.traction ? true : false}
+                      type="tel"
+                      placeholder="Mecanica - Electrica"
+                      value={input.traction}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <InputLabel htmlFor="wheelSize">{"Rodado"}</InputLabel>
+                    <Input
+                      id="wheelSize"
+                      aria-describedby="my-helper-text"
+                      error={errors.wheelSize ? true : false}
+                      type="tel"
+                      placeholder="16-20-24-26-29"
+                      value={input.wheelSize}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </div>
+                <FormControl>
+                  <InputLabel htmlFor="color">{"Color"}</InputLabel>
+                  <Input
+                    id="color"
+                    placeholder="negro-blanco-gris-azul-amarillo-rojo-verde"
+                    aria-describedby="my-helper-text"
+                    error={errors.color ? true : false}
+                    value={input.color}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl>
+                  <InputLabel htmlFor="price">{"Precio"}</InputLabel>
+                  <Input
+                    id="price"
+                    aria-describedby="my-helper-text"
+                    error={errors.price ? true : false}
+                    type="tel"
+                    placeholder="$100 - $9999"
+                    value={input.price}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <Button
+                  variant="contained"
+                  color="success"
+                  className={s.btnHome}
+                  onClick={() => {
+                    setAddBike(false);
+                    setPhoto(undefined);
+                  }}
+                >
+                  Volver
+                </Button>
+                <Button
+                  variant="contained"
+                  endIcon={<IoSend />}
+                  className={s.btnSend}
+                  type="submit"
+                  disabled={disabled}
+                >
+                  Crear
+                </Button>
+              </div>
+              <div className={s.nameAndImg}>
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="label"
+                  className={s.imgContainer}
+                >
+                  <input
+                    hidden
+                    accept="image/*"
+                    type="file"
+                    onChange={handleChange}
+                    value={input.image}
+                    id="image"
+                  />
+                  {photo ? (
+                    <img src={photo} alt="photoBike" className={s.img} />
+                  ) : (
+                    <GiDutchBike className={s.img} />
+                  )}
+                  <BsCameraFill className={s.iconCamera} />
+                </IconButton>
+              </div>
+            </form>
+          </div>
+          <TextField
+            id="description"
+            label="Descripción"
+            multiline
+            maxRows={5}
+            value={input.description}
+            onChange={handleChange}
+            variant="standard"
+            className={s.textArea}
+          />
         </div>
-        <form className={s.form} onSubmit={handleSubmit}>
-          <ThemeProvider theme={theme}>
-            <FormControl>
-              <InputLabel htmlFor="name">{"Nombre"}</InputLabel>
-              <Input
-                id="name"
-                aria-describedby="my-helper-text"
-                error={errors.name ? true : false}
-                value={input.name}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="type">{"Tipo"}</InputLabel>
-              <Input
-                id="type"
-                aria-describedby="my-helper-text"
-                error={errors.type ? true : false}
-                placeholder="bmx-city-mtb-tandem-touring-folding"
-                value={input.type}
-                onChange={handleChange}
-              />
-              <FormHelperText id="my-helper-text"></FormHelperText>
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="traction">{"Tracción"}</InputLabel>
-              <Input
-                id="traction"
-                aria-describedby="my-helper-text"
-                error={errors.traction ? true : false}
-                type="tel"
-                placeholder="Mecanica - Electrica"
-                value={input.traction}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="wheelSize">{"Rodado"}</InputLabel>
-              <Input
-                id="wheelSize"
-                aria-describedby="my-helper-text"
-                error={errors.wheelSize ? true : false}
-                type="tel"
-                placeholder="16-20-24-26-29"
-                value={input.wheelSize}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="color">{"Color"}</InputLabel>
-              <Input
-                id="color"
-                placeholder="negro-blanco-gris-azul-amarillo-rojo-verde"
-                aria-describedby="my-helper-text"
-                error={errors.color ? true : false}
-                value={input.color}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <InputLabel htmlFor="price">{"Precio"}</InputLabel>
-              <Input
-                id="price"
-                aria-describedby="my-helper-text"
-                error={errors.price ? true : false}
-                type="tel"
-                placeholder="$100 - $9999"
-                value={input.price}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <TextField
-              id="description"
-              label="Descripción"
-              multiline
-              maxRows={5}
-              value={input.description}
-              onChange={handleChange}
-              variant="standard"
-              className={s.textArea}
-            />
-            <Button
-              variant="contained"
-              color="success"
-              className={s.btnHome}
-              onClick={() => {
-                setAddBike(false);
-                setPhoto(undefined);
-              }}
-            >
-              Volver
-            </Button>
-            <Button
-              variant="contained"
-              endIcon={<IoSend />}
-              className={s.btnSend}
-              type="submit"
-              disabled={disabled}
-            >
-              Crear
-            </Button>
-          </ThemeProvider>
-        </form>
-      </div>
+      </ThemeProvider>
     </section>
   );
 }
