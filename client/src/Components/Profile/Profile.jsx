@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import s from "./Profile.module.css";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -32,7 +31,7 @@ export const Profile = () => {
   useEffect( () => {
     dispatch(getBookingsByUserId(userLogged.idUser))
     if (user?.email) dispatch(getAllFavorites(user?.email))
-  }, [userLogged.idUser, user]);
+  }, [userLogged.idUser, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
@@ -86,8 +85,6 @@ export const Profile = () => {
     margin: '0',
   };
 
-  // const cancel = Boolean(booking.status === 'cancelled')
-  // console.log(cancel)
   const showedName = (userLogged.firstName && userLogged.lastName) ?`${userLogged.firstName} ${userLogged.lastName}`: userLogged.firstName ? userLogged.firstName: userLogged?.email
 
   return isLoading ?  <Loading />  :

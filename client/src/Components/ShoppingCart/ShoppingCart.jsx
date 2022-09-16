@@ -23,7 +23,7 @@ import { adventures as allAdventures } from '../Adventure/data';
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory()
-
+  const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
 
@@ -378,13 +378,9 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-          <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
-          <div className={s.div}>
-            <Link to='/home' className={s.containerBtnHome}>
-              <button className={s.returnBtn}>VOLVER AL HOME</button>
-            </Link>
+            <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+            <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
           </div>
-        </div>
         : <Loading />
   )
 };
