@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import s from './Payments.module.css'
 
 
@@ -7,6 +8,7 @@ const accesories = '/allAccessories'
 
 export const Payments = () => {
 
+  const history = useHistory()
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -114,6 +116,9 @@ export const Payments = () => {
             <p style={{ color: "black" }}>
               Si después de leer esta información te queda alguna duda, {<a className={s.a} href={contacto}>contactate</a>} con nosotros que te responderemos a la brevedad.
             </p>
+            <div className={s.containerBtn}>
+              <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+            </div>
           </div>
         </section >
       </div >
