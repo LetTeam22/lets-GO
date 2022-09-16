@@ -16,7 +16,7 @@ input {
     border: none;
     text-decoration: none;
     background-color: transparent;
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
     font-size: 0.938rem;
     outline: none;
 }
