@@ -130,4 +130,57 @@ async function updateExperience (req, res, next) {
     }
 };
 
-module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences}
+//obtener todas las bicis favoritas de un usuario
+const getAllLikes = async (req, res, next) =>{
+    const {email} = req.params
+    try {
+        const allLikes = await Experience.findAll({
+            include: [{
+                model: User,
+                through: { attributes: [] },
+                attributes:['email'],
+                where:{email:email}
+            }]
+        })
+        res.send(allLikes)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//agregar bicis favoritas a un usuario
+const postLike = async (req, res, next) => {
+    const {idExperience, email} = req.body;
+    try {
+        const likeExperience = await Experience.findOne({
+            where: { idExperience: idExperience }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.addExperience(likeExperience)
+        res.send(likeExperience)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+//borrar bicis de favoritas
+const deleteLike = async (req, res, next) => {
+    const {idExperience, email} = req.body;
+    try {
+        const likeExperience = await Experience.findOne({
+            where: { idExperience: idExperience }
+        })
+        const user = await User.findOne({
+            where: { email: email }
+        })
+        await user.removeExperience(likeExperience);
+        res.send(likeExperience)
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+
+module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}

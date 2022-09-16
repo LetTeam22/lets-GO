@@ -2,22 +2,26 @@ import React, { useEffect } from 'react';
 import s from './AllExperiencies.module.css';
 import { CardExperience } from './CardExperiences';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllExperiences } from '../../Redux/actions';
+import { getAllExperiences, getAllLikes } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
 import { reverseDate } from '../../helpers/convertDate.js';
 import Chatbot from "../ChatBot/ChatBot";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const AllExperiencies = ({socket}) => {
 
     const dispatch= useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences)
+    const { user } = useAuth0();
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+    }, []);
+
     useEffect(() =>{
-        dispatch(getAllExperiences())
-    }, [dispatch])
+        dispatch(getAllExperiences());
+        if(user?.email) dispatch(getAllLikes(user?.email))
+    }, [dispatch, user]);
     
     return (
         <>
@@ -31,6 +35,7 @@ export const AllExperiencies = ({socket}) => {
                     return (
                         <CardExperience
                             key = {e.idExperience}
+                            idExperience={e.idExperience}
                             firstName= {e.firstName}
                             imgExperience={e.imgExperience}
                             textExperience={e.textExperience}
