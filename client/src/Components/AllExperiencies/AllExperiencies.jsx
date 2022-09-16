@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllExperiences } from '../../Redux/actions';
 import Loading from '../Loading/Loading';
 import { reverseDate } from '../../helpers/convertDate.js';
+import CalendarE from './CalendarExperiences/CalendarE';
+import { ExperiencesNotFound } from './ExperiencesNotFound/ExperiencesNotFound';
+import OrderingsE from './OrderingsE/OrderingsE';
 
 export const AllExperiencies = ({socket}) => {
 
@@ -25,7 +28,18 @@ export const AllExperiencies = ({socket}) => {
             <div className={s.container}>
                 <h1 className={s.h1}>LOS LET EN PRIMERA PERSONA</h1>
             </div>
-            { allExperiences.length ? allExperiences.filter(e => e.status === 'active').map((e) =>{
+            <div className={s.divSticky}>
+                <div className={s.containFiltersSelected}>
+                </div>
+
+                <div className={s.divDateAndOrder}>
+                    <CalendarE/>
+                    <OrderingsE/>
+                </div>
+            </div>
+            { 
+            allExperiences==='nothing'?<ExperiencesNotFound/>:
+            allExperiences?.length ? allExperiences?.filter(e => e.status === 'active').map((e) =>{
                     return (
                         <CardExperience
                             key = {e.idExperience}
@@ -40,7 +54,8 @@ export const AllExperiencies = ({socket}) => {
                             numberOfLikes={e.numberOfLikes}
                         />
                     )
-            }) : <Loading/> }
+            }) : <Loading/> 
+            }
         </>
     )
 };
