@@ -79,6 +79,10 @@ const getUser = async (email) => {
 
 io.on("connection", (socket) => {
 
+    socket.on('newDiscount', (input) => {
+        io.emit('newDiscountNot', input)
+    })
+
     socket.on('shoppingCart', () => {
         io.to(socket.id).emit('shoppingCartNot');
     })

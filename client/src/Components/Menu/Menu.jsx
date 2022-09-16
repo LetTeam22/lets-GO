@@ -11,6 +11,7 @@ import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
 import { MdCheck } from 'react-icons/md';
 import { BsBook } from 'react-icons/bs';
+import { AiOutlinePercentage } from 'react-icons/ai';
 import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
@@ -53,6 +54,12 @@ export const Menu = ({socket}) => {
         type: 'shoppingCart',
         content: 'Finaliza tu reserva'
       }]);
+    })
+    socket?.on('newDiscountNot', (data) => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'newDiscount',
+        content: `Aprovecha que tenemos un ${data.discount}% de descuento en algunas de nuestras bicis seleccionadas`
+      }])
     })
   }, [socket]);
 
@@ -152,6 +159,18 @@ export const Menu = ({socket}) => {
                             <Link to='/cart'>
                               <div className={s.notification}>
                                 <BsBook size='1.5rem' color='#F9B621' />
+                                <span className={s.spanNotification}>{n.content}</span>
+                              </div>
+                              <hr />
+                            </Link>
+                          </>
+                        )
+                      } else if(n.hasOwnProperty('type') && n.type === 'newDiscount') {
+                        return (
+                          <>
+                            <Link to='/home'>
+                              <div className={s.notification}>
+                                <AiOutlinePercentage size='1.5rem' color='#F9B621' />
                                 <span className={s.spanNotification}>{n.content}</span>
                               </div>
                               <hr />
