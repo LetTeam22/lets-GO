@@ -82,7 +82,7 @@ export const ShoppingCart = () => {
   }, []);
 
   bookings.length && bookings.forEach(book => {
-    book.accs.forEach(acc => {
+    book.hasOwnProperty('accs') && book.accs.length && book.accs.forEach(acc => {
       !ids.includes(acc) && ids.push(acc)
     })
   })

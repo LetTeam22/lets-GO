@@ -7,7 +7,7 @@ import {
     GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
-    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING
+    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, UPDATE_EXPERIENCES_STATE
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -263,6 +263,11 @@ function rootReducer(state = initialState, action) {
         case DISCOUNT_BY_GROUPS:
             return {
                 ...state
+            }
+        case UPDATE_EXPERIENCES_STATE:
+            return {
+                ...state,
+                allExperiences: action.payload
             }
         default: return state
     }

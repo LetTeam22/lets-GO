@@ -31,6 +31,7 @@ export const AllExperiencies = ({socket}) => {
                     return (
                         <CardExperience
                             key = {e.idExperience}
+                            id = {e.idExperience}
                             firstName= {e.firstName}
                             imgExperience={e.imgExperience}
                             textExperience={e.textExperience}

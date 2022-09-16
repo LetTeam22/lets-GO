@@ -67,19 +67,19 @@ export const Menu = ({socket}) => {
             </Link>
         </div>
         <div >
-          <Link to='/adventure'>
-          <div className={url === '/adventure'? `${s.active} ${s.img}` : s.img}>
-              <img src={adventure} className={s.responsiveIcons} alt='aventura'/>
-            </div>
-            <span className={s.span}>AVENTURAS</span>
-          </Link>
-        </div>
-        <div >
           <Link to='/allAccessories'>
             <div className={url === '/allAccessories'? s.active : null}>
               <TbDiscount2 className={s.responsiveIcons}/>
             </div>
             <span className={s.span}>ACCESORIOS</span>
+          </Link>
+        </div>
+        <div >
+          <Link to='/adventure'>
+          <div className={url === '/adventure'? `${s.active} ${s.img}` : s.img}>
+              <img src={adventure} className={s.responsiveIcons} alt='aventura'/>
+            </div>
+            <span className={s.span}>AVENTURAS</span>
           </Link>
         </div>
         <div >
