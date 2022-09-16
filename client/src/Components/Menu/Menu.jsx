@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
@@ -12,7 +12,6 @@ import { ImHeart } from 'react-icons/im';
 import { MdCheck } from 'react-icons/md';
 import { BsBook } from 'react-icons/bs';
 import { AiOutlinePercentage } from 'react-icons/ai';
-import { getUserNotifications } from '../../Redux/actions/index';
 
 export const Menu = ({socket}) => {
 
@@ -23,10 +22,9 @@ export const Menu = ({socket}) => {
   const adventure = 'https://res.cloudinary.com/pflet/image/upload/v1662748275/Let/image/adv_hyo69c.png'
   const experience = 'https://res.cloudinary.com/pflet/image/upload/v1662742235/Let/image/exp_clwf94.png'
   const userDB = useSelector(state => state.user);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
-  const dispatch = useDispatch();
 
   const [ notifications, setNotifications ] = useState([]);
   const [ open, setOpen ] = useState(false);
@@ -62,10 +60,6 @@ export const Menu = ({socket}) => {
       }])
     })
   }, [socket]);
-
-  useEffect(() => {
-    isAuthenticated && dispatch(getUserNotifications(user?.email));
-  }, [dispatch, user, isAuthenticated]);
   
   return (
     <div className={s.menu} >
