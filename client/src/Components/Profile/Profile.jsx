@@ -17,7 +17,6 @@ import swal from "sweetalert";
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
-  const history = useHistory();
   const dispatch = useDispatch();
   const userLogged = useSelector(state => state.user);
   const favorites = useSelector(state => state.favorites);
@@ -38,19 +37,9 @@ export const Profile = () => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
     swal({
       title: "let's GO eliminada de favoritos",
-      text: "revisá tu perfil!",
       icon: "success",
-      button: {
-        confirm: {
-          text: "Ok",
-          value: true,
-          visible: true,
-          className: s.btnSwal,
-          closeModal: true,
-        },
-      },
-    });
-   
+      button: {confirm: { text: "Ok", value: true, visible: true, closeModal: true }}
+    })
   };
 
   const handleBookingToQualify = idBooking => {
@@ -119,7 +108,6 @@ export const Profile = () => {
       </div>     
       <Link to='/editProfile'><span className={s.edit} >editar</span></Link>
     
-
       <div className={s.mainContainer}>
 
         <div className={s.containerFav}>
@@ -133,7 +121,7 @@ export const Profile = () => {
                   <span className={s.titleBike}>{f.name}</span>
                   <span className={s.detail}>Tipo: {f.type}</span>
                   <span className={s.detail}>Tracción: {f.traction}</span>
-                  <span className={s.detail}>Todado: {f.wheelSize}</span>
+                  <span className={s.detail}>Rodado: {f.wheelSize}</span>
                   <span className={s.detail}>Precio: ${f.price}</span>
                 </div>
                 <div className={s.containImg}><RenderFavorite publicId={f.image} /></div> 
@@ -156,32 +144,32 @@ export const Profile = () => {
             <div className={b.status === 'cancelled' ? s.boxCancel : s.box2} key={b.idBooking} > 
 
               <div className={s.flex}>             
-                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA: </span><div></div>
-                <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.startDate)} /   </span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA: </span>
+                <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.startDate)} / </span>
                 <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.endDate)}</span>
               </div>
 
               <div className={s.flex}>
-                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI:</span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI: </span>
                 { b.bikes.map(bike => (
-                <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} - </span>))}               
+                <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} - </span>
+                ))}               
               </div>
 
               <div className={s.flex}>
-                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS:</span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS: </span>
                 { !!b.accesories.length && b.accesories.map(acc => (
-                <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} - </span>))
-                }
-                
+                <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} - </span>
+                ))}
               </div>
 
               <div className={s.flex}>
-                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL</span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL: </span>
                 <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>${b.totalPrice}</span>
               </div>
 
               <div className={s.flex}>
-                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO </span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO: </span>
                 <span className={b.status === 'cancelled' ? s.statusCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
               </div>
 
@@ -200,7 +188,7 @@ export const Profile = () => {
                   <div className={s.flexCancel}>
                     <span className={s.opinion}>PODÉS CANCELAR TU RESERVA HACIENDO CLICK EN EL SIGUIENTE ENLACE</span>
                   </div>
-                  { !Object.keys(booking).length &&  <button className={s.btnCancel} onClick={ () => handleClick(b) }>CANCELAR</button> }
+                  { !Object.keys(booking).length && <button className={s.btnCancel} onClick={ () => handleClick(b) }>CANCELAR</button> }
                 </>
               } 
             </div>       
@@ -212,7 +200,7 @@ export const Profile = () => {
             </>
           }
         </div>
-
+        
       </div>
     </>
   );
