@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getUser } from "../../Redux/actions";
+import { getAllFavorites, getUser } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import { removeFavoriteFromDb, getBookingsByUserId, bookingToQualify } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
@@ -27,11 +27,12 @@ export const Profile = () => {
    useEffect( () => {
     window.scrollTo(0, 0);
     if(!userLogged) dispatch(getUser(user?.email))
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect( () => {
     dispatch(getBookingsByUserId(userLogged.idUser))
-  }, [userLogged.idUser]);
+    if (user?.email) dispatch(getAllFavorites(user?.email))
+  }, [userLogged.idUser, user]);
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
