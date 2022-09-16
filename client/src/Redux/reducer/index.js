@@ -67,7 +67,6 @@ const initialState = {
     bikeRating: [],
     userNotifications: [],
     filterExperience:{startDate:null, endDate:null, sort:null},
-    // userNotifications: [], 
     likes: []
 }
 

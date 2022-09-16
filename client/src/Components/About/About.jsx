@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom'
 import s from './About.module.css'
 // import RenderOneImage from '../Cloudinary/renderOneImage'
 
