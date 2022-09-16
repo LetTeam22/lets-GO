@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import s from './About.module.css'
-import RenderOneImage from '../Cloudinary/renderOneImage'
+// import RenderOneImage from '../Cloudinary/renderOneImage'
 
 export const About = () => {
     useEffect(() => {
@@ -16,11 +16,11 @@ export const About = () => {
                 <section className={s.pageBlock}>
                     <div className={s.container}>
                         <div className={s.pageHeading}>
-                            <h2> Quienes somos </h2>
+                            <h2> Quiénes somos </h2>
                         </div>
 
                         <h3 className={s.heading}>
-                            El grupo "Let"
+                            Los "Let"
                             <span></span>
                         </h3>
                         <p style={{ color: "black" }}>
@@ -33,7 +33,7 @@ export const About = () => {
                         </p>
 
                         <h3 className={s.heading}>
-                            let'sGO
+                            let's GO
                             <span></span>
                         </h3>
 
@@ -42,7 +42,7 @@ export const About = () => {
                         </p>
 
                         <h3 className={s.heading}>
-                            Tecnologias usadas
+                            Tecnologías usadas
                             <span></span>
                         </h3>
 
@@ -51,17 +51,6 @@ export const About = () => {
                                 <p style={{ color: "black" }}>Front End</p>
                                 <a href="https://es.reactjs.org/" style={{ color: "black" }}>React</a> <span>  ||  </span>
                                 <a href="https://es.redux.js.org/" style={{ color: "black" }}>Redux</a>
-                            </div>
-                            <div>
-                                <p style={{ color: "black" }}>Librerias</p>
-                                <a href="https://socket.io/" style={{ color: "black" }} >Socket.IO</a><span>  ||  </span>
-                                <a href="https://cloudinary.com/" style={{ color: "black" }}>Cloudinary</a><span>  ||  </span>
-                                <a href="https://www.npmjs.com/package/@coreui/coreui" style={{ color: "black" }}>coreui</a><span>  ||  </span>
-                                <a href="https://auth0.com/" style={{ color: "black" }}>Autoh0</a><span>  ||  </span>
-                                <a href="https://sweetalert.js.org/" style={{ color: "black" }}>Sweet Alert</a><span>  ||  </span>
-                                <a href="https://coreui.io/" style={{ color: "black" }}>CoreUI</a><span>  ||  </span>
-                                <a href="https://www.emailjs.com/" style={{ color: "black" }}>EmailJS </a><span>  ||  </span>
-                                <a href="https://mui.com/" style={{ color: "black" }}>MaterialUI</a>
                             </div>
                             <div>
                                 <p style={{ color: "black" }}>Back End</p>
@@ -75,6 +64,17 @@ export const About = () => {
                                 <a href="https://vercel.com/" style={{ color: "black" }}>Vercel</a><span>  ||  </span>
                                 <a href="https://www.heroku.com/" style={{ color: "black" }}>Heroku</a>
                             </div>
+                            <div>
+                                <p style={{ color: "black" }}>Librerías</p>
+                                <a href="https://socket.io/" style={{ color: "black" }} >Socket.IO</a><span>  ||  </span>
+                                <a href="https://cloudinary.com/" style={{ color: "black" }}>Cloudinary</a><span>  ||  </span>
+                                <a href="https://www.npmjs.com/package/@coreui/coreui" style={{ color: "black" }}>coreui</a><span>  ||  </span>
+                                <a href="https://auth0.com/" style={{ color: "black" }}>Autoh0</a><span>  ||  </span>
+                                <a href="https://sweetalert.js.org/" style={{ color: "black" }}>Sweet Alert</a><span>  ||  </span>
+                                <a href="https://coreui.io/" style={{ color: "black" }}>CoreUI</a><span>  ||  </span>
+                                <a href="https://www.emailjs.com/" style={{ color: "black" }}>EmailJS </a><span>  ||  </span>
+                                <a href="https://mui.com/" style={{ color: "black" }}>MaterialUI</a>
+                            </div>
 
                         </div>
 
@@ -84,47 +84,47 @@ export const About = () => {
                         </h3>
                         <div className={s.grid}>
                             <div>
-                                <p style={{ color: "black" }}>Nicolas Balbi</p>
+                                <p style={{ color: "black" }}>Nicolás Balbi</p>
                                 <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" >
-                                    <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} alt="Nicolás Balbi"/>
                                 </a>
                             </div>
                             <div>
                                 <a href="https://www.linkedin.com/in/sole-dato-ok/" >
                                     <p style={{ color: "black" }}>Soledad Dato</p>
-                                    <img src="https://avatars.githubusercontent.com/u/89033815?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/89033815?v=4" className={s.circleImg} alt="Soledad Dato"/>
                                 </a>
                             </div>
                             <div>
                                 <a href="https://www.linkedin.com/in/felipe-jure/">
                                     <p style={{ color: "black" }}>Felipe Jure</p>
-                                    <img src="https://avatars.githubusercontent.com/u/94187041?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/94187041?v=4" className={s.circleImg} alt="Felipe Jure"/>
 
                                 </a>
                             </div>
                             <div>
                                 <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" >
-                                    <p style={{ color: "black" }}>Lucia Meyer</p>
-                                    <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} />
+                                    <p style={{ color: "black" }}>Lucía Meyer</p>
+                                    <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} alt="Lucía Meyer"/>
                                 </a>
                             </div>
                             <div>
 
                                 <a href="https://www.linkedin.com/in/leandro-pappalardo/" >
                                     <p style={{ color: "black" }}>Leandro Pappalardo</p>
-                                    <img src="https://avatars.githubusercontent.com/u/94720565?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/94720565?v=4" className={s.circleImg} alt="Leandro Pappalardo"/>
                                 </a>
                             </div>
                             <div>
-                                <p style={{ color: "black" }}>Juan Martin Silva</p>
+                                <p style={{ color: "black" }}>Juan Martín Silva</p>
                                 <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" >
-                                    <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} alt="Juan Martín Silva" />
                                 </a>
                             </div>
                             <div>
-                                <p style={{ color: "black" }}>Maximo Tovar</p>
+                                <p style={{ color: "black" }}>Máximo Tovar</p>
                                 <a href="https://www.linkedin.com/in/mrtovar10/">
-                                    <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} />
+                                    <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} alt="Máximo Tovar" />
                                 </a>
                             </div>
                         </div>
