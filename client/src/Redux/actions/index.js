@@ -183,6 +183,12 @@ export const getBookingsByUserId = idUser => {
         .catch(err => console.log(err));
 };
 
+export const getBookingsByUserEmail = email => {
+    return dispatch => axios(`/bookings/bookingbyemail/${email}`)
+        .then(res => dispatch({ type: GET_USER_BOOKINGS, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
 export const updateBooking = booking => {
     return dispatch => axios.put('/bookings/update', booking)
         .then(res => dispatch({ type: UPDATE_BOOKING, payload: res.data }))

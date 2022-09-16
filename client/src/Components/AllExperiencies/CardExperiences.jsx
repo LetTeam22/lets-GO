@@ -48,14 +48,14 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
     }
 
     return (
-        <div className={s.blogCard} >
+        <div className={s.blogCard} key={idExperience}>
             <img className={s.imgcard} src={imgExperience} alt='img not found' /> 
             <div className={s.description}>
                 <h2 className={s.h2}>Los leters andan diciendo...</h2>
                 <h1 className={s.name}>{firstName}</h1>
                 <h1 className={s.h1}>{startDate} / {endDate}</h1>
                 <div className={s.containH1}> 
-                    { bikes.map( b =>  <h1 className={s.h1}> {b.name} ・ </h1> )}
+                    { bikes.map( b =>  <h1 className={s.h1} key={b.name}> {b.name} ・ </h1> )}
                 </div> 
                 <p className={s.p}>{textExperience}</p>
                 {
