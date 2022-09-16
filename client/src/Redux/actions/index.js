@@ -8,7 +8,7 @@ import {
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS, CREATE_ACCESORIE, INCREASE_PRICE, 
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
-    FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE
+    FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -279,6 +279,10 @@ export const discountByGroups = percentage => {
     return dispatch => axios.put('/bikes/discounts', percentage)
         .then(res => dispatch({ type: DISCOUNT_BY_GROUPS, payload: res }))
         .catch(err => console.log(err));
+};
+
+export const updateExperiencesState = payload => {
+    return ({ type: UPDATE_EXPERIENCES_STATE, payload })
 };
 
 export const setSortFilterExperience = (data) => {

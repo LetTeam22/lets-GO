@@ -8,7 +8,7 @@ import {
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
     CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, 
-    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES
+    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES, UPDATE_EXPERIENCES_STATE
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -266,6 +266,11 @@ function rootReducer(state = initialState, action) {
         case DISCOUNT_BY_GROUPS:
             return {
                 ...state
+            }
+        case UPDATE_EXPERIENCES_STATE:
+            return {
+                ...state,
+                allExperiences: action.payload
             }
         case SET_SORT_FILTER_EXPERIENCE:
             return {

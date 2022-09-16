@@ -7,11 +7,14 @@ async function allExperiences (req, res, next) {
         const experience = await Experience.findAll({
             include: { 
                 model: Booking,
-                attributes: ['startDate', 'endDate'],
+                attributes: ['startDate', 'endDate', 'userIdUser'],
                 include: [{
+                    model: User,
+                    attributes: ['email']
+                }, {
                     model: Bike,
                     attributes: ['name']
-                }] 
+                }], 
             }, 
             order: [['idExperience', 'DESC']],
         });
