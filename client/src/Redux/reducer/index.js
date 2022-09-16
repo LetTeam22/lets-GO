@@ -240,7 +240,7 @@ function rootReducer(state = initialState, action) {
                 })
                 return {idBike:element.idBike, rating:currentRating.rating}
             })
-            console.log('nuevo arregloooo',newarray)
+            // console.log('nuevo arregloooo',newarray)
             if (!action.payload.length) newarray = []
             return {
                 ...state,
