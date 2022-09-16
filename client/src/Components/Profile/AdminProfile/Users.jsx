@@ -16,7 +16,7 @@ export default function Users() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
-  const [rowId, setRowId] = useState(null)
+  const [rowId, setRowId] = useState(null);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -37,70 +37,91 @@ export default function Users() {
     });
   }, [users]);
 
-  const columnsUsers = useMemo(() => [
-    {
-      field: "profilePic",
-      headerName: "Avatar",
-      width: 50,
-      renderCell: (params) => params.row.profilePic? <RenderProfilePic publicId={params.row.profilePic} alt={params.row.email}/>:<Avatar src={params.row.profilePic} />,
-      sortable: false,
-      filterable: false,
-    },
-    { field: "id", headerName: "id", width: 50 },
-    { field: "firstName", headerName: "Nombre", width: 100 },
-    { field: "lastName", headerName: "Apellido", width: 100 },
-    { field: "email", headerName: "Email", width: 300 },
-    {
-      field: "status",
-      headerName: "Estado",
-      width: 150,
-      type: "singleSelect",
-      valueOptions: ["active", "banned", "deleted"],
-      editable: true,
-    },
-    {
-      field: "role",
-      headerName: "Rol",
-      width: 150,
-      type: "singleSelect",
-      valueOptions: ["Administrador", "Usuario"],
-      editable: true,
-    },
-    { field: "action", headerName: "Action", type:'actions', width: 150, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'users'}} /> },
-  ], [rowId])
+  const columnsUsers = useMemo(
+    () => [
+      {
+        field: "profilePic",
+        headerName: "Avatar",
+        width: 50,
+        renderCell: (params) =>
+          params.row.profilePic ? (
+            <RenderProfilePic
+              publicId={params.row.profilePic}
+              alt={params.row.email}
+            />
+          ) : (
+            <Avatar src={params.row.profilePic} />
+          ),
+        sortable: false,
+        filterable: false,
+      },
+      { field: "id", headerName: "id", width: 50 },
+      { field: "firstName", headerName: "Nombre", width: 100 },
+      { field: "lastName", headerName: "Apellido", width: 100 },
+      { field: "email", headerName: "Email", width: 300 },
+      {
+        field: "status",
+        headerName: "Estado",
+        width: 100,
+        type: "singleSelect",
+        valueOptions: ["active", "banned", "deleted"],
+        editable: true,
+      },
+      {
+        field: "role",
+        headerName: "Rol",
+        width: 115,
+        type: "singleSelect",
+        valueOptions: ["Administrador", "Usuario"],
+        editable: true,
+      },
+      {
+        field: "action",
+        headerName: "Action",
+        type: "actions",
+        width: 150,
+        renderCell: (params) => (
+          <Action {...{ params, rowId, setRowId, origin: "users" }} />
+        ),
+      },
+    ],
+    [rowId]
+  );
 
   const handleClick = () => {
     history.goBack();
   };
   return (
     <div className={s.users}>
-      <span className={s.goBack} onClick={handleClick}>
-        <TiArrowBackOutline />
-      </span>
-      <ThemeProvider theme={theme}>
-        <DataGrid
-          rows={rowsUsers}
-          columns={columnsUsers}
-          pageSize={pageSize}
-          onPageSizeChange={(newNumber) => setPageSize(newNumber)}
-          rowsPerPageOptions={[5, 10, 15]}
-          className={s.list}
-          getRowId={(row) => row.id}
-          getRowSpacing={(params) => ({
-            top: params.isFirstVisible ? 0 : 5,
-            bottom: params.isLastVisible ? 0 : 5,
-          })}
-          sx={{
-            [`& .${gridClasses.row}`]: {
-              bgcolor: (theme) =>
-                theme.palette.mode === "light"
-                  ? '#494949'
-                  : '#191616',
-            },
-          }}
-          onCellEditCommit={(params) => setRowId(params.id)}
-        />
-      </ThemeProvider>
+      <div className={s.container}>
+        <ThemeProvider theme={theme}>
+          <div className={s.coverGrid}>
+            <span className={s.goBack} onClick={handleClick}>
+              <TiArrowBackOutline />
+            </span>
+            <DataGrid
+              rows={rowsUsers}
+              columns={columnsUsers}
+              pageSize={pageSize}
+              onPageSizeChange={(newNumber) => setPageSize(newNumber)}
+              rowsPerPageOptions={[5, 10, 15]}
+              className={s.list}
+              getRowId={(row) => row.id}
+              getRowSpacing={(params) => ({
+                top: params.isFirstVisible ? 0 : 5,
+                bottom: params.isLastVisible ? 0 : 5,
+              })}
+              sx={{
+                [`& .${gridClasses.row}`]: {
+                  bgcolor: (theme) =>
+                    theme.palette.mode === "light" ? "#494949" : "#191616",
+                },
+              }}
+              onCellEditCommit={(params) => setRowId(params.id)}
+            />
+          </div>
+        </ThemeProvider>
+      </div>
     </div>
   );
 }

@@ -51,8 +51,10 @@ export default function Bikes() {
 
   return (
     <div className={s.accesories}>
-      <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
+      <div className={s.container}>
       <ThemeProvider theme={theme}>
+      <div className={s.coverGrid}>
+      <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
         <DataGrid
           rows={rowsAccs}
           columns={columnsAccs}
@@ -75,7 +77,9 @@ export default function Bikes() {
           }}
           onCellEditCommit={(params) => setRowId(params.id)}
         />
+        </div>
       </ThemeProvider>
+      </div>
     </div>
   );
 }

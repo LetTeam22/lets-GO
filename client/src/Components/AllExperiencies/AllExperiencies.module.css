@@ -32,3 +32,29 @@
     right: 0;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }
+
+.divSticky{
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 6rem;
+    z-index: 1;
+    padding: 0 2rem;
+    background-color: #F5F5F5;
+    box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 10px;
+}
+
+.containFiltersSelected{
+    display: flex;
+    flex-direction: row;
+}
+
+.divDateAndOrder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 1rem;
+}

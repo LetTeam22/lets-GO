@@ -5,7 +5,6 @@ export const FAQs = () => {
 
     const contacto = '/contact'
     const how = '/how'
-    const promotions = '/promotions'
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -89,7 +88,7 @@ export const FAQs = () => {
                             <span></span>
                         </h3>
                         <p style={{ color: "black" }}>
-                            Por el momento el stock de bicicletas está destinado solamente a alquiler. Pero como sabemos que apenas te subas a una Let no vas a querer bajarte más, en nuestra sección de {<a className={s.a} href={promotions}>beneficios</a>} podrás acceder a descuentos exclusivos por alquileres prolongados.
+                            Por el momento el stock de bicicletas está destinado solamente a alquiler. Pero como sabemos que apenas te subas a una Let no vas a querer bajarte más, escribinos y consultanos por descuentos exclusivos para alquileres prolongados.
                         </p>
                         
                     </div>

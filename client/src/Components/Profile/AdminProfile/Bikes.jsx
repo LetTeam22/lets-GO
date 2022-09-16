@@ -1,31 +1,30 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from 'react-icons/ti';
+import { TiArrowBackOutline } from "react-icons/ti";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getBikes } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
-import GroupDiscount from './GroupDiscount';
+import GroupDiscount from "./GroupDiscount";
 import s from "./Bikes.module.css";
 
-
-export default function Bikes() {
-  const bikes = useSelector(state => state.allBikes)
-  const history = useHistory()
-  const dispatch = useDispatch()
+export default function Bikes({socket}) {
+  const bikes = useSelector((state) => state.allBikes);
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
-  const [rowId, setRowId] = useState(null)
-  const [seeDiscount, setSeeDiscount] = useState(false)
+  const [rowId, setRowId] = useState(null);
+  const [seeDiscount, setSeeDiscount] = useState(false);
 
   useEffect(() => {
-    dispatch(getBikes())
+    dispatch(getBikes());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toogleDiscount = () => {
-    seeDiscount? setSeeDiscount(false) : setSeeDiscount(true)
-  }
+    seeDiscount ? setSeeDiscount(false) : setSeeDiscount(true);
+  };
 
   const totalDays = (from, to) => {
     const date1 = new Date(from);
@@ -36,7 +35,7 @@ export default function Bikes() {
   };
 
   const rowsBikes = useMemo(() => {
-    return bikes?.map(bike => {
+    return bikes?.map((bike) => {
       return {
         id: bike.idBike,
         name: bike.name,
@@ -47,20 +46,23 @@ export default function Bikes() {
         rating: bike.rating,
         price: bike.price,
         discount: bike.discount,
-        daysBooking: bike.bookings.reduce ((acc,prev) => acc + totalDays(prev.startDate, prev.endDate), 0),
+        daysBooking: bike.bookings.reduce(
+          (acc, prev) => acc + totalDays(prev.startDate, prev.endDate),
+          0
+        ),
         totalBookings: bike.bookings.length,
-        status: bike.status
+        status: bike.status,
       };
     });
-  }, [bikes]) 
+  }, [bikes]);
 
   const fillDiscounts = () => {
-    const arrDiscounts = []
+    const arrDiscounts = [];
     for (let i = 0; i <= 10; i++) {
-      arrDiscounts.push(i * 5)
+      arrDiscounts.push(i * 5);
     }
-    return arrDiscounts
-  }
+    return arrDiscounts;
+  };
 
   const columnsBookings = useMemo(() => {
     return [
@@ -71,55 +73,84 @@ export default function Bikes() {
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
       { field: "rating", headerName: "Rating", width: 70, editable: true },
-      { field: "price", headerName: "Precio", width: 70, type: "number", editable: true },
-      { field: "discount", headerName: "Descuento", width: 90, type: "singleSelect",
-      valueOptions: fillDiscounts(),
-      editable: true },
+      {
+        field: "price",
+        headerName: "Precio",
+        width: 70,
+        type: "number",
+        editable: true,
+      },
+      {
+        field: "discount",
+        headerName: "Descuento",
+        width: 90,
+        type: "singleSelect",
+        valueOptions: fillDiscounts(),
+        editable: true,
+      },
       { field: "daysBooking", headerName: "Dias alquilada", width: 120 },
       { field: "totalBookings", headerName: "Cantidad alq", width: 100 },
-      { field: "status", headerName: "Estado", width: 80, type: "singleSelect",
-      valueOptions: ["active", "service", "deleted"],
-      editable: true },
-      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'bikes'}} /> }
+      {
+        field: "status",
+        headerName: "Estado",
+        width: 80,
+        type: "singleSelect",
+        valueOptions: ["active", "service", "deleted"],
+        editable: true,
+      },
+      {
+        field: "action",
+        headerName: "Action",
+        type: "actions",
+        width: 80,
+        renderCell: (params) => (
+          <Action {...{ params, rowId, setRowId, origin: "bikes" }} />
+        ),
+      },
     ];
-  }, [rowId]) 
+  }, [rowId]);
 
   const handleClick = () => {
-    history.goBack()
-  }
-
+    history.goBack();
+  };
 
   return (
     <div className={s.bikes}>
-      <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
-      <ThemeProvider theme={theme}>
-        <DataGrid
-          rows={rowsBikes}
-          columns={columnsBookings}
-          pageSize={pageSize}
-          onPageSizeChange={(newNumber) => setPageSize(newNumber)}
-          rowsPerPageOptions={[5, 10, 15]}
-          className={s.list}
-          getRowId={(row) => row.id}
-          getRowSpacing={(params) => ({
-            top: params.isFirstVisible ? 0 : 5,
-            bottom: params.isLastVisible ? 0 : 5,
-          })}
-          sx={{
-            [`& .${gridClasses.row}`]: {
-              bgcolor: (theme) =>
-                theme.palette.mode === "light"
-                  ? '#494949'
-                  : '#191616',
-            },
-          }}
-          onCellEditCommit={(params) => setRowId(params.id)}
-        />
-        <div className={s.discountBtn} onClick={toogleDiscount}>Descuentos grupales</div>
-        <div className={seeDiscount? s.show : s.hidde}>
-          <GroupDiscount setSeeDiscount={setSeeDiscount}/>
-        </div>
-      </ThemeProvider>
+      <div className={s.container}>
+        <ThemeProvider theme={theme}>
+          <div className={s.coverGrid}>
+        <span className={s.goBack} onClick={handleClick}>
+          <TiArrowBackOutline />
+        </span>
+            <DataGrid
+              rows={rowsBikes}
+              columns={columnsBookings}
+              pageSize={pageSize}
+              onPageSizeChange={(newNumber) => setPageSize(newNumber)}
+              rowsPerPageOptions={[5, 10, 15]}
+              className={s.list}
+              getRowId={(row) => row.id}
+              getRowSpacing={(params) => ({
+                top: params.isFirstVisible ? 0 : 5,
+                bottom: params.isLastVisible ? 0 : 5,
+              })}
+              sx={{
+                [`& .${gridClasses.row}`]: {
+                  bgcolor: (theme) =>
+                    theme.palette.mode === "light" ? "#494949" : "#191616",
+                },
+              }}
+              onCellEditCommit={(params) => setRowId(params.id)}
+            />
+            <div className={s.discountBtn} onClick={toogleDiscount}>
+              Descuentos grupales
+            </div>
+            <div className={seeDiscount ? s.show : s.hidde}>
+              <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
+            </div>
+          </div>
+        </ThemeProvider>
+      </div>
     </div>
   );
 }

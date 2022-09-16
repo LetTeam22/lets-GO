@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import Filters from "../Filters/Filters";
@@ -21,7 +21,16 @@ export const Home = ({socket}) => {
   let renderedBikes = useSelector((state) => state.renderedBikes);
   const paginate = useSelector((state) => state.paginate);
   const parameters = useSelector((state) => state.parameters);
-  const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+  const bookings = useMemo(() => {
+    return JSON.parse(localStorage.getItem("booking")) || [];
+  }, []);
+
+  const Adventures = useMemo(() => {
+    return JSON.parse(localStorage.getItem("adventure")) || [];
+  }, [])
+  
+
   let [cardId, setCardId] = useState(1);
 
   useEffect(() => {
@@ -36,6 +45,12 @@ export const Home = ({socket}) => {
   useEffect(() => {
     loadParameters();
   }, [parameters]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if(Array.isArray(bookings) && Array.isArray(Adventures) && (bookings.length || Adventures.length)) {
+      socket?.emit('shoppingCart')
+    }
+  }, [socket, bookings, Adventures])
 
   const handleChangeIdCard = () => {
     setCardId(1);

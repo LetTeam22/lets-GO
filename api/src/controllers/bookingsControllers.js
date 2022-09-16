@@ -88,27 +88,27 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
-  if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
-  try {
-    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
-    let bookingCreated = await Booking.create(booking)
-    let bikes = await Bike.findAll({
-      where: {
-        idBike: bikeIds
+      const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
+      if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
+      try {
+        let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+        let bookingCreated = await Booking.create(booking)
+        let bikes = await Bike.findAll({
+          where: {
+            idBike: bikeIds
+          }
+        })
+        let accesoriesForBooking = await Accesories.findAll({
+          where: {
+            idAcc: AccIds
+          }
+        })
+        await bookingCreated.addBike(bikes)
+        await bookingCreated.addAccesories(accesoriesForBooking)
+        res.send('The booking was created successfully')
+      } catch (error) {
+        next(error)
       }
-    })
-    let accesoriesForBooking = await Accesories.findAll({
-      where: {
-        idAcc: AccIds
-      }
-    })
-    await bookingCreated.addBike(bikes)
-    await bookingCreated.addAccesories(accesoriesForBooking)
-    res.send('The booking was created successfully')
-  } catch (error) {
-    next(error)
-  }
 }
 
 // Update

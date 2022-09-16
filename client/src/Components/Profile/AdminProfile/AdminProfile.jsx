@@ -50,7 +50,7 @@ export const AdminProfile = () => {
   }
   return (
     <section className={s.allPage}>
-      <div className={s.column}>
+      <div className={s.up}>
         <div>
           <h1>Reservas</h1>
           <Button
@@ -75,9 +75,9 @@ export const AdminProfile = () => {
         </div>
       </div>
 
-      <div className={s.column}>
+      <div className={s.down}>
         <div>
-          <h2>Bicicletas</h2>
+          <h2 className={s.h2}>Bicicletas</h2>
           <div className={s.couple}>
             <Button
               variant="contained"
@@ -98,7 +98,7 @@ export const AdminProfile = () => {
           </div>
         </div>
         <div>
-          <h2>Experiencias</h2>
+          <h2 className={s.h2}>Experiencias</h2>
           <Button
             variant="contained"
             color="success"
@@ -109,7 +109,7 @@ export const AdminProfile = () => {
           </Button>
         </div>
         <div>
-          <h2>Accesorios</h2>
+          <h2 className={s.h2}>Accesorios</h2>
             <div className={s.couple}>
               <Button
                 variant="contained"

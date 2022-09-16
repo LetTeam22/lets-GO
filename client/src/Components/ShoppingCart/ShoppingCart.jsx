@@ -23,7 +23,7 @@ import { adventures as allAdventures } from '../Adventure/data';
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory()
-
+  const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
 
@@ -68,6 +68,25 @@ export const ShoppingCart = () => {
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
+
+  const accs = allAccs.map(acc => {
+    return {
+      name: acc.name,
+      price: acc.price,
+      id: acc.idAcc,
+      cantidad: 0,
+    }
+  });
+
+  accs.map(acc => {
+    return bookings.map(book => {
+      if(book.accs.includes(acc.id)) {
+        acc.cantidad++;
+      }
+      return null
+    });
+  });
+
 
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
@@ -123,6 +142,10 @@ export const ShoppingCart = () => {
     );
   }, 0);
 
+  const subTotalPerItems = (price, cantidad) => {
+    return price * cantidad * totalDias(date.from, date.to)
+  }
+
   let subTotalItems = 0
   cartBikes.forEach(bike => {
     allAccs.length && bike.accesories.forEach(el => {
@@ -171,7 +194,6 @@ export const ShoppingCart = () => {
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
     localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
-
   }
 
   useEffect(() => {
@@ -240,19 +262,33 @@ export const ShoppingCart = () => {
                     : <></>
                 }
                 {
-                  cartBikes.length && allAccs.length
-                    ? cartBikes.map(bike => {
-                      return bike.accesories?.map(el => {
-                        const objAcc = allAccs.find(a => a.idAcc === el)
-                        return (
-                          <TableRow key={objAcc.idAcc} >
-                            <TableCell>{objAcc.name}</TableCell>
-                            <TableCell align="center">1</TableCell>
-                            <TableCell align="center">{Number(objAcc.price)}</TableCell>
-                            <TableCell align="center">{!isNaN(totalPerBike(Number(objAcc.price))) ? totalPerBike(Number(objAcc.price)) : 0}</TableCell>
-                          </TableRow>
-                        )
-                      })
+                  cartBikes.length && accs.length
+                  ? accs.map(acc => {
+                    if(acc.cantidad > 0) {
+                      return (
+                        <TableRow key={acc.id} >
+                          <TableCell>{acc.name}</TableCell>
+                          <TableCell align="center">{acc.cantidad}</TableCell>
+                          <TableCell align="center">{Number(acc.price)}</TableCell>
+                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? subTotalPerItems(acc.price, acc.cantidad) : 0}</TableCell>
+                        </TableRow>
+                      )
+                    }
+                    return null
+                  })
+                  : <></> 
+                }
+                {
+                  cartAdventures.length
+                    ? cartAdventures.map((adventure) => {
+                      return (
+                        <TableRow key={adventure.id} >
+                          <TableCell>{adventure.name}</TableCell>
+                          <TableCell align="center">1</TableCell>
+                          <TableCell align="center">-</TableCell>
+                          <TableCell align="center">{adventure.price}</TableCell>
+                        </TableRow>
+                      )
                     })
                     : <></>
                 }
@@ -278,8 +314,8 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
-                      <h2 className={s.bikeName}>{bike.name}</h2>
                       <RenderOneImage publicId={bike.image} className={s.img} />
+                      <h2 className={s.bikeName}>{bike.name}</h2>
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
                           const objAcc = allAccs.find(a => a.idAcc === el)
@@ -302,15 +338,13 @@ export const ShoppingCart = () => {
                 })
                 : <></>
             }
-          </div>
-          <div>
             {
               cartAdventures.length ? cartAdventures.map(adv => {
                 return (
-                  <div className={s.cardBike} key={adv.id} >
-                    <h2 className={s.bikeName}>{adv.name}</h2>
-                    <RenderOneImage publicId={adv.image} className={s.img} />
-                    <div className={s.buttonCont}>
+                  <div className={s.cardAdventure} key={adv.id} >
+                    <img src={adv.image} alt="" />
+                    <h2 className={s.advName}>{adv.name}</h2>
+                    <div className={s.advBtn}>
                       <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
                   </div>
@@ -344,13 +378,9 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-          <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
-          <div className={s.div}>
-            <Link to='/home' className={s.containerBtnHome}>
-              <button className={s.returnBtn}>VOLVER AL HOME</button>
-            </Link>
+            <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+            <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
           </div>
-        </div>
         : <Loading />
   )
 };

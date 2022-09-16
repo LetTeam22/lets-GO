@@ -42,9 +42,7 @@ router.get('/', async (req, res, next) => {
 
         mercadopago.preferences.create(preference)
             .then(function (response) {
-                console.log('respondió');
                 global.id = response.body.id;
-                console.log(response.body);
                 res.json({ id: global.id });
             })
             .catch(function (error) {
@@ -61,7 +59,6 @@ router.get('/pagos/:id', async (req, res) => {
 
     try {
         const user = await User.findByPk(Number(id));
-        console.log(user.idUser);
 
         // Aqui edito el status de la orden
         const newOrder = await Order.create({ external_reference })
@@ -70,7 +67,6 @@ router.get('/pagos/:id', async (req, res) => {
         if (status) newOrder.payment_status = status;
         if (merchant_order_id) newOrder.merchant_order_id = merchant_order_id;
         newOrder.status = 'completed';
-        console.info('Salvando Order');
 
         try {
             await user.addOrders(newOrder);

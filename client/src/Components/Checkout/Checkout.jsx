@@ -18,7 +18,7 @@ export default function Checkout() {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
             .then((result) => {
             }, (error) => {
-            });
+            })
     }
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
@@ -34,7 +34,7 @@ export default function Checkout() {
         localStorage.removeItem("date");
         localStorage.removeItem("adventure");
         sendEmail();
-        history.push('/home')
+        history.push('/home');
     },)
 
     return (
