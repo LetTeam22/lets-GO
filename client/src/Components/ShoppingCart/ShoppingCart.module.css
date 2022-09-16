@@ -153,6 +153,7 @@
     grid-column-gap: .5rem;
     height: 5rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .accs {
@@ -198,7 +199,7 @@
     padding: 1.5rem;
     border-radius: 1.5rem;
     border: 1px solid #333333;
-    height: 25rem;
+    height: 26rem;
 }
 
 .containerEmptyCart {
@@ -256,4 +257,35 @@
 
 .buttonCont {
     display: flex;
+}
+
+.cardAdventure {
+    border-radius: 1.5rem;
+    border: 1px solid #333333;
+    height: 26rem;
+}
+
+.cardAdventure:hover {
+    opacity: 0.9;
+}
+
+.cardAdventure img {
+    height: 60%;
+    width: 100%;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+.advName {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #333333;
+}
+
+.advBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.8rem;
 }

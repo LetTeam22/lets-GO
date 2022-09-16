@@ -59,7 +59,7 @@ function App() {
     <>
       <NavBar socket={socket} />
       <Switch>
-        <Route exact path='/'><Landing /></Route>
+        <Route exact path='/'><Landing socket={socket} /></Route>
         <Route exact path='/home'><Home socket={socket} /></Route>
         <Route exact path='/bike/profile'><Profile /></Route>
         <Route exact path='/bike/privateRoute'><Private /></Route>
