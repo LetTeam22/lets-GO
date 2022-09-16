@@ -68,15 +68,3 @@
     appearance: none;
     margin-top: 1rem;
 }
-
-.containerLikes {
-    display: flex;
-    flex-direction: row;
-    column-gap: .5rem;
-    align-items: flex-end;
-}
-
-.likes {
-    color: #F9B621;
-    font-size: 1rem;
-}

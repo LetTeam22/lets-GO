@@ -3,23 +3,33 @@ import s from './CardExperiences.module.css'
 import { BiLike } from 'react-icons/bi';
 import { AiFillLike } from 'react-icons/ai';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLikeToDb, removeLikeFromDb } from '../../Redux/actions';
 
 
-export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email}) => {
+export const CardExperience = ({ imgExperience, textExperience, firstName, startDate, endDate, bikes, socket, email, idExperience}) => {
 
     const { user, isAuthenticated } = useAuth0();
-    const [ like, setLike ] = useState(false);
+    const likes = useSelector(state => state.likes);
+    const dispatch = useDispatch();
 
     const handleLike = (e, mail) => {
         e.preventDefault();
-        if(!like) {
+        const alreadyLike = likes.find(e => e.idExperience === idExperience);
+        if(!alreadyLike) {
+            if(user?.email) dispatch(addLikeToDb({idExperience: idExperience, email: user?.email}));
             socket.emit('likeExperience', {
                 senderName: user.name,
                 receiverName: mail,
                 senderEmail: user.email
             }); 
-        };
-        setLike(!like);
+        } else {
+            if(user?.email) dispatch(removeLikeFromDb({idExperience, email: user.email}));
+        }
+    }
+
+    const experienceIsLike = (idExperience) => {
+        return likes.find(e => e.idExperience === idExperience) ? true : false;
     }
 
     return (
@@ -35,19 +45,9 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                     <p className={s.p}>{textExperience}</p>
                 {
                     isAuthenticated
-                    ? like
-                        ?   (
-                                <div className={s.containerLikes}>
-                                    {/* <span className={s.likes}>{numberOfLikes}</span> */}
-                                    <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>
-                                </div>
-                            )
-                        :   (
-                                <div className={s.containerLikes}>
-                                    {/* <span className={s.likes}>{numberOfLikes}</span> */}
-                                    <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
-                                </div>
-                            ) 
+                    ? experienceIsLike(idExperience)
+                        ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>    
+                        :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
                     : <></>
                 }
             </div>

@@ -91,6 +91,10 @@ Historyrating.belongsToMany(Booking, { through: 'score_history' })
 User.hasMany(Notifications);
 Notifications.belongsTo(User);
 
+// Relacion para agregar likes a las experiencias
+Experience.belongsToMany(User, { through: 'fav_experiences' })
+User.belongsToMany(Experience, { through: 'fav_experiences' })
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
