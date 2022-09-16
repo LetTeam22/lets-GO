@@ -37,14 +37,15 @@ import { HowToRent } from './Components/HowToRent/HowToRent';
 import { Normative } from './Components/Normative/Normative';
 import { PrivacyPolicies } from './Components/PrivacyPolicies/PrivacyPolicies';
 import { Payments } from './Components/PaymentsAndCheckout/Payments';
+import { About } from './Components/About/About'
 
-const REACT_APP_BACK_URL  = process.env.REACT_APP_BACK_URL;
+const REACT_APP_BACK_URL = process.env.REACT_APP_BACK_URL;
 
 
 function App() {
 
   const { user, isAuthenticated } = useAuth0();
-  const [ socket, setSocket ] = useState(null);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
     setSocket(io(REACT_APP_BACK_URL))
@@ -58,7 +59,7 @@ function App() {
     <>
       <NavBar socket={socket} />
       <Switch>
-        <Route exact path='/'><Landing /></Route>
+        <Route exact path='/'><Landing socket={socket} /></Route>
         <Route exact path='/home'><Home socket={socket} /></Route>
         <Route exact path='/bike/profile'><Profile /></Route>
         <Route exact path='/bike/privateRoute'><Private /></Route>
@@ -74,7 +75,7 @@ function App() {
         <Route exact path='/AdminProfile'><AdminProfile /></Route>
         <Route exact path='/AdminProfile/bookings'><Bookings /></Route>
         <Route exact path='/AdminProfile/users'><Users /></Route>
-        <Route exact path='/AdminProfile/bikes'><Bikes /></Route>
+        <Route exact path='/AdminProfile/bikes'><Bikes socket={socket} /></Route>
         <Route exact path='/AdminProfile/experiences'><Experiences /></Route>
         <Route exact path='/AdminProfile/accesories'><Accesories /></Route>
         <Route exact path='/qualifyExperience'><QualifyExperience /></Route>
@@ -84,11 +85,12 @@ function App() {
         <Route exact path='/history'><History /></Route>
         <Route exact path='/ebike'><EBike /></Route>
         <Route exact path='/invention'><Invention /></Route>
-        <Route exact path='/faqs'><FAQs/></Route>
-        <Route exact path='/how'><HowToRent/></Route>
-        <Route exact path='/normative'><Normative/></Route>
-        <Route exact path='/policies'><PrivacyPolicies/></Route>
-        <Route exact path='/payments'><Payments/></Route>
+        <Route exact path='/faqs'><FAQs /></Route>
+        <Route exact path='/how'><HowToRent /></Route>
+        <Route exact path='/normative'><Normative /></Route>
+        <Route exact path='/policies'><PrivacyPolicies /></Route>
+        <Route exact path='/payments'><Payments /></Route>
+        <Route exact path='/about'><About /></Route>
         <Route exact path='*'><Error /></Route>
       </Switch>
       <Footer />

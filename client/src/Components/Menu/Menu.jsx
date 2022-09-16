@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
@@ -10,7 +10,8 @@ import { Link, useLocation } from "react-router-dom";
 import { TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
 import { MdCheck } from 'react-icons/md';
-import { getUserNotifications } from '../../Redux/actions/index';
+import { BsBook } from 'react-icons/bs';
+import { AiOutlinePercentage } from 'react-icons/ai';
 
 export const Menu = ({socket}) => {
 
@@ -22,11 +23,9 @@ export const Menu = ({socket}) => {
   const experience = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/experiencias1_mhaxqa.png'
   const accesorie = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/accesorios1_tt68un.png';
   const userDB = useSelector(state => state.user);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
-  const dispatch = useDispatch();
-  // const userNotifications = useSelector(state => state.userNotifications);
 
   const [ notifications, setNotifications ] = useState([]);
   const [ open, setOpen ] = useState(false);
@@ -42,21 +41,29 @@ export const Menu = ({socket}) => {
   useEffect(() => {
     socket?.on('getLike', data => {
       setNotifications(prevNotifications => [...prevNotifications, data])
-    })
+    });
     socket?.on('login', () => {
       setNotifications(prevNotifications => [...prevNotifications, {
         type: 'Login',
         content: 'Usuario logueado correctamente'
+      }]);
+    });
+    socket?.on('shoppingCartNot', () => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'shoppingCart',
+        content: 'Finaliza tu reserva'
+      }]);
+    })
+    socket?.on('newDiscountNot', (data) => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'newDiscount',
+        content: `Aprovecha que tenemos un ${data.discount}% de descuento en algunas de nuestras bicis seleccionadas`
       }])
     })
   }, [socket]);
-
-  useEffect(() => {
-    isAuthenticated && dispatch(getUserNotifications(user?.email));
-  }, [dispatch, user, isAuthenticated]);
   
   return (
-    <div className={s.menu}>
+    <div className={s.menu} >
       <Link to='/'><img src={logo} alt='logo' className={s.icon} /></Link>
       <div className={s.options}>
         <div>
@@ -76,7 +83,7 @@ export const Menu = ({socket}) => {
           </Link>
         </div>
         <div >
-          <Link to='/promotions'>
+          <Link to='/allAccessories'>
             <div className={url === '/promotions'? s.active : null}>
             <img src={accesorie} className={s.responsiveIcons} alt='accesorios'/>
             </div>
@@ -141,7 +148,31 @@ export const Menu = ({socket}) => {
                             <hr />
                           </>
                         )
-                      }
+                      } else if(n.hasOwnProperty('type') && n.type === 'shoppingCart') {
+                        return (
+                          <>
+                            <Link to='/cart'>
+                              <div className={s.notification}>
+                                <BsBook size='1.5rem' color='#F9B621' />
+                                <span className={s.spanNotification}>{n.content}</span>
+                              </div>
+                              <hr />
+                            </Link>
+                          </>
+                        )
+                      } else if(n.hasOwnProperty('type') && n.type === 'newDiscount') {
+                        return (
+                          <>
+                            <Link to='/home'>
+                              <div className={s.notification}>
+                                <AiOutlinePercentage size='1.5rem' color='#F9B621' />
+                                <span className={s.spanNotification}>{n.content}</span>
+                              </div>
+                              <hr />
+                            </Link>
+                          </>
+                        )
+                      }else return <div></div>
                     })
                   }
                 </div>

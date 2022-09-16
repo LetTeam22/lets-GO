@@ -10,7 +10,7 @@ import Action from "./Action";
 import GroupDiscount from "./GroupDiscount";
 import s from "./Bikes.module.css";
 
-export default function Bikes() {
+export default function Bikes({socket}) {
   const bikes = useSelector((state) => state.allBikes);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -146,7 +146,7 @@ export default function Bikes() {
               Descuentos grupales
             </div>
             <div className={seeDiscount ? s.show : s.hidde}>
-              <GroupDiscount setSeeDiscount={setSeeDiscount} />
+              <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
             </div>
           </div>
         </ThemeProvider>

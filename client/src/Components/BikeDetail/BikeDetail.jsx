@@ -10,6 +10,7 @@ import swal from "sweetalert";
 import RenderBikeDetail from "../Cloudinary/renderBikeDetail";
 import { finalPrice } from '../../helpers/applyDiscount';
 import { Accesory } from "./Accesory";
+import Chatbot from "../ChatBot/ChatBot";
 
 export const BikeDetail = () => {
   const dispatch = useDispatch();
@@ -102,6 +103,7 @@ export const BikeDetail = () => {
 
   return (
     <>
+    <Chatbot/>
       {!!bike.length ? <Loading /> :
         <div className={s.container}>
           <div className={s.name}>
