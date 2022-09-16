@@ -130,11 +130,9 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 </>
                 <div className={s.iconCont}>
                     {
-                        isAuthenticated ?
                         experienceIsLike(idExperience)
                             ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>    
                             :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
-                        : <></>
                     }
                     {
                         isAuthenticated && user.email === email &&
