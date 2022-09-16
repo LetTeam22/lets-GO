@@ -122,9 +122,9 @@ export const Card = ({
   return (
     <div className={s.container}>
           {bikeIsFavorite(idBike) ? (
-            <AiFillHeart style={iconStyle} onClick={handleFav} />
+            <AiFillHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
           ) : (
-            <AiOutlineHeart style={iconStyle} onClick={handleFav} />
+            <AiOutlineHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
           )}
       
       <Link to={"/bike/" + idBike}>
