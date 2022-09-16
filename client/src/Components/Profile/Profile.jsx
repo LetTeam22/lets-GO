@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import s from "./Profile.module.css";
 import { useHistory } from "react-router-dom";
-import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,7 +11,9 @@ import { AiFillHeart, AiFillShopping }  from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
 import { convertDate, reverseDate } from '../../helpers/convertDate.js';
 import { useState } from "react";
-import { CancelBooking } from './CancelBooking/CancelBooking'
+import { CancelBooking } from './CancelBooking/CancelBooking';
+import { RenderFavorite } from  '../Cloudinary/renderFavorite';
+import swal from "sweetalert";
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
@@ -35,6 +36,21 @@ export const Profile = () => {
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
+    swal({
+      title: "let's GO eliminada de favoritos",
+      text: "revisá tu perfil!",
+      icon: "success",
+      button: {
+        confirm: {
+          text: "Ok",
+          value: true,
+          visible: true,
+          className: s.btnSwal,
+          closeModal: true,
+        },
+      },
+    });
+   
   };
 
   const handleBookingToQualify = idBooking => {
@@ -42,6 +58,7 @@ export const Profile = () => {
   };
 
   const handleClick = b => {
+    window.scrollTo(0, 0);
     setBooking({
       idBooking: b.idBooking,
       startDate: b.startDate,
@@ -79,13 +96,13 @@ export const Profile = () => {
     margin: '0',
   };
 
+  // const cancel = Boolean(booking.status === 'cancelled')
+  // console.log(cancel)
   const showedName = (userLogged.firstName && userLogged.lastName) ?`${userLogged.firstName} ${userLogged.lastName}`: userLogged.firstName ? userLogged.firstName: userLogged?.email
 
   return isLoading ?  <Loading />  :
   (
     <>
-
-
       <div className={s.containerUs}>
         <div className={s.infoUs}>
           <h4 className={s.usLet}>usuario leter</h4>
@@ -108,11 +125,20 @@ export const Profile = () => {
         <div className={s.containerFav}>
           <AiFillHeart style= {iconStyle}/>
           <span className={s.title}>TUS let's GO FAVORITAS:</span>
-          {!!favorites.length ? favorites?.map(f => (
-            <div className={s.box1} key={f.idBike}>
-              <button className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x</button>
-              <ul><Link to={`/bike/${f.idBike}`}><span className={s.list}>{`${f.name} (ver detalle)`}</span></Link></ul>
-            </div>
+          { !!favorites.length ? favorites?.map(f => (
+            <>      
+              <span className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x ELIMINAR DE FAVORITOS x</span>
+              <Link className={s.box1} to={`/bike/${f.idBike}`}>
+                <div className={s.containBike}>
+                  <span className={s.titleBike}>{f.name}</span>
+                  <span className={s.detail}>Tipo: {f.type}</span>
+                  <span className={s.detail}>Tracción: {f.traction}</span>
+                  <span className={s.detail}>Todado: {f.wheelSize}</span>
+                  <span className={s.detail}>Precio: ${f.price}</span>
+                </div>
+                <div className={s.containImg}><RenderFavorite publicId={f.image} /></div> 
+              </Link>
+            </>
             ))
             :<>
               <span className={s.span}>Todavía no elegiste favoritas</span>
@@ -124,58 +150,70 @@ export const Profile = () => {
         <div className={s.containerRes}>
           <AiFillShopping style= {iconStyle} />
           <span className={s.title}>TUS RESERVAS:</span>
-          {!!userBookings.length ?  userBookings?.map(b => (
-            <div className={s.box2} key={b.idBooking} > 
+          { !!Object.keys(booking).length && <CancelBooking booking= {booking} /> } 
+          { !!userBookings.length ?  userBookings?.map(b => (
+
+            <div className={b.status === 'cancelled' ? s.boxCancel : s.box2} key={b.idBooking} > 
 
               <div className={s.flex}>             
-                <span className={s.titleList2}>● Fecha: </span><div></div>
-                <span className={s.list2}> {reverseDate(b.startDate)} /   </span>
-                <span className={s.list2}> {reverseDate(b.endDate)}</span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA: </span><div></div>
+                <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.startDate)} /   </span>
+                <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.endDate)}</span>
               </div>
 
               <div className={s.flex}>
-                <span className={s.titleList2}>● Bici:</span>
-                { b.bikes.map(bike => <span key={bike.name} className={s.list2}>{bike.name} - </span>) }
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI:</span>
+                { b.bikes.map(bike => (
+                <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} - </span>))}               
+              </div>
+
+              <div className={s.flex}>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS:</span>
+                { !!b.accesories.length && b.accesories.map(acc => (
+                <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} - </span>))
+                }
                 
               </div>
 
               <div className={s.flex}>
-                <span className={s.titleList2}>● Accesorios:
-                  { !!b.accesories.length && b.accesories.map(acc => (<span key={acc.name} className={s.list2}>{acc.name} - </span>)) }
-                </span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL</span>
+                <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>${b.totalPrice}</span>
               </div>
 
               <div className={s.flex}>
-                <span className={s.titleList2}>● Precio Total:</span><span className={s.title2}> ${b.totalPrice}</span>
+                <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO </span>
+                <span className={b.status === 'cancelled' ? s.statusCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
               </div>
 
-              <span className={s.titleList2a}>● Estado: {bookingStatus(b.endDate, b.idBooking)}</span>     
-                { bookingStatus(b.endDate, b.idBooking) === 'FINALIZADA' && 
-                  <>
-                    <div className={s.flex1}>
-                      <span className={s.opinion}>Nos gustaría conocer tu opinión con let's GO. Calificá la bici que usaste y compartí tu experiencia! </span>
-                    </div>
-                    <Link to={'/qualifyExperience'}>
-                      <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
-                    </Link>
-                  </>
-                }
-                { bookingStatus(b.endDate, b.idBooking) === 'EN CAMINO' && b.status === 'confirmed' &&
-                  <div className={s.flex}>
-                    <span className={s.list2}>Podes cancelar tu reserva haciendo click en el siguiente enlace</span>
-                    <button className={s.btnGo} onClick={ () => handleClick(b) }>CANCELAR</button>
+              { bookingStatus(b.endDate, b.idBooking) === 'FINALIZADA' && 
+                <>
+                  <div className={s.flex1}>
+                    <span className={s.opinion}>¡NOS GUSTARÍA CONOCER TU OPINIÓN! PODÉS DAR UNA CALIFICACIÓN A LA BICI let's GO QUE USASTE Y COMPARTIR TU EXPERIENCIAS CON OTROS LETERS </span>
                   </div>
-                }
-            </div>
+                  <Link to={'/qualifyExperience'}>
+                    <button className={s.btnGo} onClick={() => handleBookingToQualify(b.idBooking)}>IR</button>
+                  </Link>
+                </>
+              }
+              { bookingStatus(b.endDate, b.idBooking) === 'EN CAMINO' && b.status === 'confirmed' &&
+                <>
+                  <div className={s.flexCancel}>
+                    <span className={s.opinion}>PODÉS CANCELAR TU RESERVA HACIENDO CLICK EN EL SIGUIENTE ENLACE</span>
+                  </div>
+                  { !Object.keys(booking).length &&  <button className={s.btnCancel} onClick={ () => handleClick(b) }>CANCELAR</button> }
+                </>
+              } 
+            </div>       
             ))
-            : <>
-                <span className={s.span}>Todavía no tenés reservas</span>
-                <Link to='/home'><button className={s.btnChoose}>reservar</button></Link>
-              </>
-          }{ !!Object.keys(booking).length && <CancelBooking booking= {booking} /> }
+            : 
+            <>
+              <span className={s.span}>Todavía no tenés reservas</span>
+              <Link to='/home'><button className={s.btnChoose}>reservar</button></Link>
+            </>
+          }
         </div>
-      </div>
 
+      </div>
     </>
   );
 };

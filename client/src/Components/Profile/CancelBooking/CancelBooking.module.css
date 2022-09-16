@@ -1,0 +1,42 @@
+.box2 {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    background-color: #E81C24;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 5rem;
+    box-shadow: 0px 0px 10px 1px #bbbbbb;  
+}
+
+.cancel {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.cancelText {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.btn {
+    line-height: 1;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: .8rem;
+    width: 3vw;
+    height: 3vh;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+    list-style: none;
+    color: #e35a5a;
+    background: #ffffff;
+}
