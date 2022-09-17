@@ -14,32 +14,44 @@ const Wikipedia = ({ steps }) => {
         nombreCurado: ""
     })
 
-
-    useEffect(() => {
-
+    const traccion = () => {
         if (input?.seleccion.value === "e") {
             setInput({
                 busqueda: input.seleccionElectrica.value
             });
             console.log(input.seleccionElectrica.value)
-        } 
-        if(input?.seleccion.value === "m"){
+        }
+
+        if (input?.seleccion.value === "m") {
             setInput({
                 busqueda: input.seleccionMecanica.value,
             });
             console.log(input.seleccionMecanica.value)
         }
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-   
-        return (
-            <div>
-                <p style={{fontSize:"14px", fontFamily:"Roboto"}}>En este enlace de Wikipedia podrás encontrar más información sobre {input.busqueda}: </p>
-                <a href={"https://es.wikipedia.org/wiki/" + input.busqueda} target="_blank">{input.busqueda}</a>
-                {/* {console.log(input.busqueda)} */}
-                
-            </div>
-        )
+    }
+
+    useEffect(() => {
+        traccion()
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     
+    const style={
+        color: "white",
+        fontWeight: "bold"
+    }
+
+
+    return (
+        <div>
+            
+            <div>
+                <p style={{ fontSize: "14px", fontFamily: "Roboto" }}>En este enlace de Wikipedia podrás encontrar más información: </p>
+                <a style={style} href={"https://es.wikipedia.org/wiki/" + input.busqueda} target="_blank">{input.busqueda}</a>
+                {/* {console.log(input.busqueda)} */}
+            </div>
+        
+        </div>
+    )
+
 
 
 
