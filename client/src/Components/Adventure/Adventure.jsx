@@ -18,7 +18,7 @@ export const Adventure = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAllAdventures())
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClick = (e) => {
     e.preventDefault()

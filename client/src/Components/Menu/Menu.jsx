@@ -120,7 +120,7 @@ export const Menu = ({socket}) => {
         </Link>
         <div className={s.containerBell}>
           <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
-          <div className={s.counter}>{notifications.length}</div>
+          { !!notifications.length && <div className={s.counter}>{notifications.length}</div> }
           {
             open && (
                 <div className={s.notifications}>

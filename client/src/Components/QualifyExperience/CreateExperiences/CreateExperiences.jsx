@@ -80,7 +80,7 @@ export const CreateExperiences = () => {
   };
 
   const disabled = Object.keys(errors).length || !input.textExperience;
-  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking);
+  const alreadyQualified = allExperiences.filter(e => e.status === 'active').find(e => e.bookingIdBooking === userBookings.idBooking);
   if (loading) return <Loading/>;
   
   return ( 
