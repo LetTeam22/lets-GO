@@ -10,6 +10,7 @@
     font-weight: 500;
     letter-spacing: 0.1em;
     color: #706f6f;   
+    /* margin-left: 1rem; */
 }
 
 .orderings {
@@ -28,6 +29,7 @@
     border-radius: .2rem;
     border: none ;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    margin-right: 2.5rem;
 }
 
 .orderings.act {

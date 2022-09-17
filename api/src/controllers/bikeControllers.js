@@ -33,16 +33,17 @@ const getRenderedBikes = async (req, res, next) => {
     const searchNum = isNaN(Number(search)) ? -1 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
+    const applyDiscount = (price, discount) => Math.round(Number(price) * (1 - Number(discount) / 100))
 
     // array de ordenamiento de sequelize
-    let arrSorts = []
-    if (sortsOrder) {
-        arrSorts = sortsOrder.split(',').map(sort => {
-            if (sort === 'price') return ['price', priceSort.toUpperCase()]
-            if (sort === 'rating') return ['rating', ratingSort.toUpperCase()]
-            if (sort === 'name') return ['name', nameSort.toUpperCase()]
-        })
-    } 
+    // let arrSorts = []
+    // if (sortsOrder) {
+    //     arrSorts = sortsOrder.split(',').map(sort => {
+    //         if (sort === 'price') return ['price', priceSort.toUpperCase()]
+    //         if (sort === 'rating') return ['rating', ratingSort.toUpperCase()]
+    //         if (sort === 'name') return ['name', nameSort.toUpperCase()]
+    //     })
+    // } 
 
     try {
 
@@ -56,7 +57,7 @@ const getRenderedBikes = async (req, res, next) => {
                 traction: tractionFilter ? tractionFilter : { [Op.not]: null },
                 wheelSize: wheelSizeFilter ? wheelSizeFilter : { [Op.not]: null },
                 color: colorFilter ? colorFilter : { [Op.not]: null },
-                price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
+                // price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
                 status: 'active',
 
                 //search
@@ -72,7 +73,7 @@ const getRenderedBikes = async (req, res, next) => {
             },
 
             // ordenamiento
-            order: arrSorts,
+            // order: arrSorts,
 
             // incluye las reservas asociadas
             include: {
@@ -83,6 +84,12 @@ const getRenderedBikes = async (req, res, next) => {
 
         })
 
+        // filtro de precio con descuento
+        bikes = bikes.filter(bike => {
+            const finalPrice = applyDiscount(bike.price, bike.discount)
+            return finalPrice >= priceMin && finalPrice <= priceMax
+        })
+
         // filtro de fecha
         bikes = bikes.filter(bike => {
             let available = true
@@ -91,6 +98,19 @@ const getRenderedBikes = async (req, res, next) => {
             })
             return available
         })
+
+        // ordenamientos con precio con descuento
+        if (sortsOrder) {
+            const arrSorts = sortsOrder.split(',').reverse()
+            arrSorts.forEach(s => {
+                if (s === 'price' && priceSort === 'asc') bikes.sort((a, b) => applyDiscount(a.price, a.discount) < applyDiscount(b.price, b.discount) ? -1 : applyDiscount(a.price, a.discount) > applyDiscount(b.price, b.discount) ? 1 : 0)
+                if (s === 'price' && priceSort === 'desc') bikes.sort((a, b) => applyDiscount(a.price, a.discount) > applyDiscount(b.price, b.discount) ? -1 : applyDiscount(a.price, a.discount) < applyDiscount(b.price, b.discount) ? 1 : 0)
+                if (s === 'rating' && ratingSort === 'asc') bikes.sort((a, b) => a.rating < b.rating ? -1 : a.rating > b.rating ? 1 : 0)
+                if (s === 'rating' && ratingSort === 'desc') bikes.sort((a, b) => a.rating > b.rating ? -1 : a.rating < b.rating ? 1 : 0)
+                if (s === 'name' && nameSort === 'asc') bikes.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
+                if (s === 'name' && nameSort === 'desc') bikes.sort((a, b) => a.name > b.name ? -1 : a.name < b.name ? 1 : 0)
+            })
+        }
 
         // bikes a renderizar
         res.send(bikes)

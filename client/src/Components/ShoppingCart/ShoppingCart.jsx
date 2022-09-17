@@ -255,8 +255,8 @@ export const ShoppingCart = () => {
                         <TableRow key={bike.bikeId} >
                           <TableCell>{bike.name}</TableCell>
                           <TableCell align="center">1</TableCell>
-                          <TableCell align="center">{finalPrice(bike.price, bike.discount)}</TableCell>
-                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? totalPerBike(finalPrice(bike.price, bike.discount)) : 0}</TableCell>
+                          <TableCell align="center">{`$ ${finalPrice(bike.price, bike.discount).toLocaleString('es-AR')}`}</TableCell>
+                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? `$ ${totalPerBike(finalPrice(bike.price, bike.discount)).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                         </TableRow>
                       )
                     })
@@ -264,20 +264,21 @@ export const ShoppingCart = () => {
                 }
                 {
                   cartBikes.length && accs.length
-                    ? accs.map(acc => {
-                      if (acc.cantidad > 0) {
-                        return (
-                          <TableRow key={acc.id} >
-                            <TableCell>{acc.name}</TableCell>
-                            <TableCell align="center">{acc.cantidad}</TableCell>
-                            <TableCell align="center">{Number(acc.price)}</TableCell>
-                            <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? subTotalPerItems(acc.price, acc.cantidad) : 0}</TableCell>
-                          </TableRow>
-                        )
-                      }
-                      return null
-                    })
-                    : <></>
+
+                  ? accs.map(acc => {
+                    if(acc.cantidad > 0) {
+                      return (
+                        <TableRow key={acc.id} >
+                          <TableCell>{acc.name}</TableCell>
+                          <TableCell align="center">{acc.cantidad}</TableCell>
+                          <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
+                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
+                        </TableRow>
+                      )
+                    }
+                    return null
+                  })
+                  : <></> 
                 }
                 {
                   cartAdventures.length
@@ -296,15 +297,15 @@ export const ShoppingCart = () => {
                 <TableRow>
                   <TableCell rowSpan={3} />
                   <TableCell align="left" colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${subTotal.toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell colSpan={2} align="left">Tax</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${parseInt(subTotal * 0.02).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" colSpan={2}>Total</TableCell>
-                  <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(total) ? `$ ${parseInt(total).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -315,7 +316,7 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
-                      <RenderOneImage publicId={bike.image} className={s.img} />
+                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
