@@ -5,7 +5,6 @@ export const FAQs = () => {
 
     const contacto = '/contact'
     const how = '/how'
-    const promotions = '/promotions'
 
     useEffect(() => {
         window.scrollTo(0, 0)
