@@ -6,7 +6,7 @@ import {
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES,
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
-    BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS, CREATE_ACCESORIE, INCREASE_PRICE,
+    BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
     GET_ALL_ADVENTURES
@@ -256,12 +256,6 @@ export const addAdventure = payload => {
 export const getHistoryRatings = (idBooking) => {
     return dispatch => axios(`/bikes/getRatingHistory/${idBooking}`)
         .then(res => dispatch({ type: GET_HISTORY_RATING, payload: res.data }))
-};
-
-export const getUserNotifications = (email) => {
-    return dispatch => axios.get(`/notifications?email=${email}`)
-        .then(res => dispatch({ type: GET_USER_NOTIFICATIONS, payload: res.data }))
-        .catch(err => console.log(err))
 };
 
 export const increasePrice = percentage => {
