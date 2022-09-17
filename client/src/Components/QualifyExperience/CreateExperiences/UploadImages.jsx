@@ -30,7 +30,7 @@ const UploadImages = () => {
                 onChange={upload} />
             { loading
                 ? <h4>Tu imagen se está cargando</h4>
-                : <div><img src={image} style={{ width: "10%" }} alt="img not found" /></div>
+                : <div><img src={image} style={{ width: "10%" }} alt="imagen cargada" /></div>
             }
         </form>
     )

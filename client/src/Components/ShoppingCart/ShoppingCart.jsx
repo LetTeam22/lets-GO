@@ -314,7 +314,7 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
-                      <RenderOneImage publicId={bike.image} className={s.img} />
+                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
