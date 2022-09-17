@@ -39,8 +39,7 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 if(user?.email) dispatch(addLikeToDb({idExperience: idExperience, email: user?.email}));
                 socket.emit('likeExperience', {
                     senderName: user.name,
-                    receiverName: mail,
-                    senderEmail: user.email
+                    receiverName: mail
                 }); 
             } else {
                 if(user?.email) dispatch(removeLikeFromDb({idExperience, email: user.email}));
