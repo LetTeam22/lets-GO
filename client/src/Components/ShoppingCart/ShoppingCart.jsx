@@ -149,7 +149,7 @@ export const ShoppingCart = () => {
 
   let subTotalItems = 0
   cartBikes.forEach(bike => {
-    allAccs.length && bike.accesories.forEach(el => {
+    allAccs.length && bike.accesories?.forEach(el => {
       const objAcc = allAccs.find(a => a.idAcc === el)
       const price = Number(objAcc.price)
       subTotalItems += price * totalDias(date.from, date.to)
