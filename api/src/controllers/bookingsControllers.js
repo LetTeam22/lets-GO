@@ -86,15 +86,15 @@ async function getBookingsByUserEmail(req, res, next) {
           }
         },
         {
-          model:User,
-          attributes:['email'],
-          where: {email:email}
+          model: User,
+          attributes: ['email'],
+          where: { email: email }
         },
       ],
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
-    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
+    bookings.sort((a, b) => a.endDate < b.endDate ? 1 : a.endDate > b.endDate ? -1 : 0)
+    bookings.sort((a, b) => a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0)
     res.send(bookings)
   } catch (error) {
     next(error)
@@ -124,41 +124,41 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-      const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
-      if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
-      try {
-        let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
-        let bookingCreated = await Booking.create(booking)
-        let bikes = await Bike.findAll({
-          where: {
-            idBike: bikeIds
-          }
-        })
-        let accesoriesForBooking = await Accesories.findAll({
-          where: {
-            idAcc: AccIds
-          }
-        })
-        await bookingCreated.addBike(bikes)
-        await bookingCreated.addAccesories(accesoriesForBooking)
-        res.send('The booking was created successfully')
-      } catch (error) {
-        next(error)
+  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
+  if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
+  try {
+    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+    let bookingCreated = await Booking.create(booking)
+    let bikes = await Bike.findAll({
+      where: {
+        idBike: bikeIds
       }
+    })
+    let accesoriesForBooking = await Accesories.findAll({
+      where: {
+        idAcc: AccIds
+      }
+    })
+    await bookingCreated.addBike(bikes)
+    await bookingCreated.addAccesories(accesoriesForBooking)
+    res.send('The booking was created successfully')
+  } catch (error) {
+    next(error)
+  }
 }
 
 // Update
-async function updateBooking (req, res, next) {
-  const {idBooking, startDate, endDate, totalPrice, status} = req.body
+async function updateBooking(req, res, next) {
+  const { idBooking, startDate, endDate, totalPrice, status } = req.body
   const booking = await Booking.findByPk(idBooking);
   if (booking) {
-      if(startDate) booking.startDate = startDate
-      if(endDate) booking.endDate = endDate
-      if(totalPrice) booking.totalPrice = totalPrice
-      if(status) booking.status = status
-      await booking.save()
-      res.send(booking)
-  }else res.send({e:'reserva no existe'})
+    if (startDate) booking.startDate = startDate
+    if (endDate) booking.endDate = endDate
+    if (totalPrice) booking.totalPrice = totalPrice
+    if (status) booking.status = status
+    await booking.save()
+    res.send(booking)
+  } else res.send({ e: 'reserva no existe' })
 }
 
 module.exports = {

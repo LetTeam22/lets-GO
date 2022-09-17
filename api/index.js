@@ -28,6 +28,6 @@ conn.sync({ force: false }).then(async () => {
   httpServer.listen(process.env.PORT || 3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     const bikes = await Bike.findAll()
-    bikes.length? null : loadAllModelsInDB();
+    bikes.length ? null : loadAllModelsInDB();
   });
 });
