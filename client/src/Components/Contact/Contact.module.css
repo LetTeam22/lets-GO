@@ -37,7 +37,7 @@
 .containerInputs {
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
+    /* column-gap: 2rem; */
 }
 
 p {
@@ -51,21 +51,11 @@ p {
 .inputs {
     background-color: #FFFFFF;
     border-radius: .7rem;
-    width: 25rem;
+    width: 22vw;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.inputs input {
-    margin-left: 0.7rem;
-    border: none;
-    text-decoration: none;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 0.9rem;
-    width: 100%;
+    margin-left: 1rem;
 }
 
 .inputs input[type=number]::-webkit-inner-spin-button, 
@@ -79,17 +69,18 @@ p {
 .textArea {
     background-color: #FFFFFF;
     border-radius: .7rem;
-    width: 25rem;
+    width: 22vw;
     height: 10rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-left: 1rem;
 }
 
 textarea {
     text-decoration: none;
     border: none;
-    overflow: scroll;
+    overflow-y: scroll;
     resize: none;
     height: 9rem;
     width: 100%;
@@ -125,4 +116,20 @@ textarea {
     width: 50%;
     margin: 0;
     color: #ffffff8c;
+}
+
+.required {
+    padding: 0;
+    margin: 0;
+    color: red;
+    margin-left: .5rem;
+    font-size: 1.2rem;
+}
+
+.span {
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    margin-left: .5rem;
+    font-size: 1.2rem;  
 }

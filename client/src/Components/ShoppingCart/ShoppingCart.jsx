@@ -378,7 +378,7 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-            <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+            <Link to='/home'><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
             <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
           </div>
         : <Loading />
