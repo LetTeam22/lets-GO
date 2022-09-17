@@ -123,7 +123,7 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 <>
                 {
                     idExperience === input.id ? 
-                    <textarea className={s.edit} type='text' value={input.text} onChange={handleInputChange} /> :
+                    <textarea className={s.edit} type='text' value={input.text} onChange={handleInputChange} maxLength= '300'/> :
                     <p className={s.p}>{textExperience}</p>
                 }
                 </>
