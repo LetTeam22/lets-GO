@@ -28,8 +28,8 @@ export const Profile = () => {
     if (!userLogged) dispatch(getUser(user?.email))
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    // dispatch(getBookingsByUserId(userLogged.idUser))
+
+  useEffect( () => {
     if (user?.email) dispatch(getBookingsByUserEmail(user?.email))
     if (user?.email) dispatch(getAllFavorites(user?.email))
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -86,6 +86,7 @@ export const Profile = () => {
     margin: '0',
   };
 
+
   const showedName = (userLogged.firstName && userLogged.lastName) ? `${userLogged.firstName} ${userLogged.lastName}` : userLogged.firstName ? userLogged.firstName : userLogged?.email
 
   return isLoading ? <Loading /> :
@@ -93,15 +94,15 @@ export const Profile = () => {
       <>
         <div className={s.containerUs}>
           <div className={s.infoUs}>
-            <h4 className={s.usLet}>{user.name ? user.name : 'usuario letter'}</h4>
+            <h4 className={s.usLet}>USUARIO LETER:</h4>
             <h4 className={s.data}>{showedName}</h4>
             {userLogged.cellphone && <h4 className={s.data}>teléfono: {userLogged?.cellphone}</h4>}
             {showedName !== userLogged?.email && <h4 className={s.data}>e-mail: {userLogged?.email}</h4>}
           </div>
           <div className={s.containerImg}>
             {userLogged?.profilePic
-              ? <RenderProfilePic publicId={userLogged.profilePic} alt={user?.name} />
-              : <img className={s.img} src={image} alt={userLogged?.firstName || null} />
+              ? <Link to='/editProfile'><RenderProfilePic publicId={userLogged.profilePic} alt={user?.name} /></Link>
+              : <Link to='/editProfile'><img className={s.img} src={image} alt={userLogged?.firstName || null} /></Link>
             }
           </div>
         </div>
@@ -123,13 +124,13 @@ export const Profile = () => {
                     <span className={s.detail}>Rodado: {f.wheelSize}</span>
                     <span className={s.detail}>Precio: ${f.price}</span>
                   </div>
-                  <div className={s.containImg}><RenderFavorite publicId={f.image} /></div>
+                  <RenderFavorite publicId={f.image} />
                 </Link>
               </>
             ))
-              : <>
+              :<>
                 <span className={s.span}>Todavía no elegiste favoritas</span>
-                <Link to='/home'><button className={s.btnChoose}>elegir</button></Link>
+                <Link to='/home'><button className={s.btnChoose}>ELEGIR</button></Link>
               </>
             }
           </div>
@@ -169,7 +170,7 @@ export const Profile = () => {
 
                 <div className={s.flex}>
                   <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO: </span>
-                  <span className={b.status === 'cancelled' ? s.statusCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
+                  <span className={b.status === 'cancelled' ? s.titleCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
                 </div>
 
                 {bookingStatus(b.endDate, b.idBooking) === 'FINALIZADA' &&
@@ -195,11 +196,10 @@ export const Profile = () => {
               :
               <>
                 <span className={s.span}>Todavía no tenés reservas</span>
-                <Link to='/home'><button className={s.btnChoose}>reservar</button></Link>
+                <Link to='/home'><button className={s.btnChoose}>RESERVAR</button></Link>
               </>
             }
           </div>
-
         </div>
       </>
     );

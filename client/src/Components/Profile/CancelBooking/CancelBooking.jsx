@@ -14,7 +14,7 @@ export const CancelBooking = ({ booking }) => {
     const handleCancelled = e => {
         e.preventDefault()
         dispatch(updateBooking(booking))
-        swal('Reserva cancelada. El equipo de lets GO se contactará con vos')
+        swal("Reserva cancelada. El equipo de let's GO se contactará con vos")
         history.push('/home')
     };
 
