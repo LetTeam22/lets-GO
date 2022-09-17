@@ -204,28 +204,28 @@ export const BikeDetail = () => {
               <img
                 className={s.photo}
                 src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2020/07/tn-photo-verge-s8i-belt-drive-web.jpg.webp?itok=UGa8TR7B"
-                alt="img not found"
+                alt="Detalles de la bicicleta"
               />
             </div>
             <div>
               <img
                 className={s.photo}
                 src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2015/09/noded7i-highlight-3-0.jpg.webp?itok=NcKQBP4q"
-                alt="img not found"
+                alt="Detalles de la bicicleta"
               />
             </div>
             <div>
               <img
                 className={s.photo}
                 src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2020/07/tn-photo-verge-s8i-andros-valo-web.jpg.webp?itok=ZPRHKwen"
-                alt="img not found"
+                alt="Detalles de la bicicleta"
               />
             </div>
           </div>
           <div className={s.titleAccAndTech}>
             <h2 className={s.titleTA}>Tecnología</h2>
           </div>
-          <img className={s.tech} src="https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png" alt="" />
+          <img className={s.tech} src="https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png" alt="Detalles de la bicicleta" />
         </div>
       }
     </>

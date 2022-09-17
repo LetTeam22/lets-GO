@@ -6,7 +6,7 @@ const EachAccesory = ({ imgAcc, Description, Name, Price }) => {
 
     return (
         <div className={s.blogCard} >
-            <RenderOneImage publicId={imgAcc} lassName={s.imgcard} />
+            <RenderOneImage publicId={imgAcc} alt={Name} className={s.imgcard} />
             <div className={s.description}>
                 <h2 className={s.h2}>Customizá tu experiencia</h2>
                 <h1 className={s.h1}>{Name}</h1>

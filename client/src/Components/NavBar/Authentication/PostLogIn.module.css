@@ -31,6 +31,10 @@
     left: 55%;
 }
 
+.btnBack{
+    left: 38%;
+}
+
 .btnProfile:hover, .btnBack:hover{
     background-color: #d39307;
 }

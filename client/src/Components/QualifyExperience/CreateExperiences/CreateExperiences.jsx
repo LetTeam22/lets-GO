@@ -56,7 +56,6 @@ export const CreateExperiences = () => {
       ...input,
       [e.target.name]: e.target.value,
     }))
-
   };
 
   const handleSubmit = async e => {
@@ -81,7 +80,7 @@ export const CreateExperiences = () => {
   };
 
   const disabled = Object.keys(errors).length || !input.textExperience;
-  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking);
+  const alreadyQualified = allExperiences.filter(e => e.status === 'active').find(e => e.bookingIdBooking === userBookings.idBooking);
   if (loading) return <Loading/>;
   
   return ( 
@@ -98,7 +97,14 @@ export const CreateExperiences = () => {
             { user.firstName !== null
               ? <span className={s.span}>{user.firstName}</span>
               : <div className={s.inputs}>
-                  <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={handleChange} />
+                  <input 
+                    type='text'
+                    name='firstName'
+                    placeholder='Nombre'
+                    value={input.firstName}
+                    onChange={handleChange}
+                    maxLength= '30'
+                  />
                 </div>   
             }
           </div>
@@ -111,6 +117,7 @@ export const CreateExperiences = () => {
                 onChange={handleChange}
                 name='textExperience'
                 placeholder='Sumate a los leters que cuentan historias...'
+                maxLength= '500'
                 />
             </div>
           </div>

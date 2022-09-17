@@ -32,17 +32,14 @@ export const AllExperiencies = ({socket}) => {
         <Chatbot/>
             <div className={s.left}></div>
             <div className={s.right}></div>
-            <div className={s.container}>
-                <h1 className={s.h1}>LAS LET EN PRIMERA PERSONA</h1>
-            </div>
             <div className={s.divSticky}>
-                <div className={s.containFiltersSelected}>
-                </div>
-
                 <div className={s.divDateAndOrder}>
                     <CalendarE/>
                     <OrderingsE/>
                 </div>
+            </div>
+            <div className={s.container}>
+                <h1 className={s.h1}>LAS LET EN PRIMERA PERSONA</h1>
             </div>
             { 
             allExperiences==='nothing'?<ExperiencesNotFound/>:
