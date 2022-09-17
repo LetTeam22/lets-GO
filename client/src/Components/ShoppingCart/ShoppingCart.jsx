@@ -18,7 +18,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
-import { adventures as allAdventures } from '../Adventure/data';
+
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ export const ShoppingCart = () => {
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
   const mpInfo = useSelector((state) => state.mpInfo);
+  const allAdventures = useSelector(state => state.allAdventures)
   let cartBikes = [];
   let cartAdventures = [];
   const { user, isLoading } = useAuth0();
@@ -55,10 +56,10 @@ export const ShoppingCart = () => {
   })
 
   Adventures.length && Adventures.forEach(adv => {
-    const advFound = allAdventures.find(a => a.id === adv.adv[0])
+    const advFound = allAdventures.find(a => a.idAdv === adv.adv[0])
     if (advFound) {
       const pushedAdv = {
-        id: advFound.id,
+        id: advFound.idAdv,
         name: advFound.name,
         price: advFound.price,
         image: advFound.image,
@@ -80,7 +81,7 @@ export const ShoppingCart = () => {
 
   accs.map(acc => {
     return bookings.map(book => {
-      if(book.accs.includes(acc.id)) {
+      if (book.accs.includes(acc.id)) {
         acc.cantidad++;
       }
       return null
@@ -263,6 +264,7 @@ export const ShoppingCart = () => {
                 }
                 {
                   cartBikes.length && accs.length
+
                   ? accs.map(acc => {
                     if(acc.cantidad > 0) {
                       return (
@@ -341,7 +343,7 @@ export const ShoppingCart = () => {
             {
               cartAdventures.length ? cartAdventures.map(adv => {
                 return (
-                  <div className={s.cardAdventure} key={adv.id} >
+                  <div className={s.cardAdventure} key={adv.idAdv} >
                     <img src={adv.image} alt="" />
                     <h2 className={s.advName}>{adv.name}</h2>
                     <div className={s.advBtn}>
@@ -378,9 +380,9 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-            <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
-            <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
-          </div>
+          <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+          <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
+        </div>
         : <Loading />
   )
 };
