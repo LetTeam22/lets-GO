@@ -6,7 +6,6 @@ const accRouter = require('./accRouter');
 const experienceRouter = require('./experienceRouter');
 const generalRouter = require('./generalRouter')
 const mercadopago = require('./mercadopago')
-const notifications = require('./notificationsRouter');
 
 const router = Router();
 router.use('/accesories', accRouter);
@@ -16,6 +15,5 @@ router.use('/user', userRouter);
 router.use('/experience', experienceRouter);
 router.use('/general', generalRouter);
 router.use('/mercadopago', mercadopago);
-router.use('/notifications', notifications);
 
 module.exports = router;
