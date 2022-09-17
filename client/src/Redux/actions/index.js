@@ -6,9 +6,10 @@ import {
     REMOVE_FAVORITE, GET_ALL_BOOKINGS, POST_EXPERIENCE, GET_ALL_EXPERIENCES,
     GET_ALL_USERS, SET_BIKES_DETAIL, GET_DISABLED_DATES, GET_USER_BOOKINGS, GET_ALL_FAVORITES,
     UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE, UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO,
-    BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE, 
+    BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
-    FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE
+    FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
+    GET_ALL_ADVENTURES
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -183,6 +184,12 @@ export const getBookingsByUserId = idUser => {
         .catch(err => console.log(err));
 };
 
+export const getBookingsByUserEmail = email => {
+    return dispatch => axios(`/bookings/bookingbyemail/${email}`)
+        .then(res => dispatch({ type: GET_USER_BOOKINGS, payload: res.data }))
+        .catch(err => console.log(err));
+};
+
 export const updateBooking = booking => {
     return dispatch => axios.put('/bookings/update', booking)
         .then(res => dispatch({ type: UPDATE_BOOKING, payload: res.data }))
@@ -269,16 +276,21 @@ export const discountByGroups = percentage => {
         .catch(err => console.log(err));
 };
 
+export const updateExperiencesState = payload => {
+    return ({ type: UPDATE_EXPERIENCES_STATE, payload })
+};
+
 export const setSortFilterExperience = (data) => {
-    return {type:SET_SORT_FILTER_EXPERIENCE,
-        payload:data
+    return {
+        type: SET_SORT_FILTER_EXPERIENCE,
+        payload: data
     }
 };
 
-export const filterExperiencesByDate = ({startDate, endDate, sort}) => {
+export const filterExperiencesByDate = ({ startDate, endDate, sort }) => {
     return dispatch => axios(`/experience/getFiltered?sort=${sort}&fromDate=${startDate}&toDate=${endDate}`)
-    .then(res => dispatch({type:FILTER_EXPERIENCE_BY_DATE, payload:res.data}))
-    .catch(err => console.log(err))
+        .then(res => dispatch({ type: FILTER_EXPERIENCE_BY_DATE, payload: res.data }))
+        .catch(err => console.log(err))
 };
 export const getAllLikes = (email) => {
     return dispatch => axios(`/experience/allLikes/${email}`)
@@ -289,7 +301,7 @@ export const addLikeToDb = (objUserExperience) => {
     return async (dispatch) => {
         axios.post('/experience/like', objUserExperience)
             .then(res => {
-                dispatch({type: POST_NEW_LIKE, payload: res.data})
+                dispatch({ type: POST_NEW_LIKE, payload: res.data })
             });
     };
 };
@@ -298,7 +310,14 @@ export const removeLikeFromDb = (objUserExperience) => {
     return async (dispatch) => {
         axios.put('/experience/deleteLike', objUserExperience)
             .then(res => {
-                dispatch({type: DELETE_LIKE, payload: res.data})
+                dispatch({ type: DELETE_LIKE, payload: res.data })
             });
     };
+}
+
+export const getAllAdventures = () => {
+    return async (dispatch) => {
+        axios.get('/adventures')
+            .then(res => dispatch({ type: GET_ALL_ADVENTURES, payload: res.data }))
+    }
 }

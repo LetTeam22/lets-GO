@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './BikeDefinition.module.css'
 
 export const BikeDefinition = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -92,7 +95,9 @@ export const BikeDefinition = () => {
                             La bicicleta se ha convertido en un medio de transporte saludable, ecológico y sostenible, y es fácil funcionar con él.
                             Pero, si además contás con una empresa como la nuestra que se ocupa del mantenimiento de tu bici y de su reparación para que  solo tengás que centrarte en disfrutar, las ventajas son mucho mayores.
                         </p>
-
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+                        </div>
                     </div>
                 </section>
             </div>

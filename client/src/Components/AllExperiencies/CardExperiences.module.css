@@ -23,6 +23,7 @@
 .description {
     padding: 1rem;
     position: relative;
+    width: 100%;
 }
 
 .h1 {
@@ -55,7 +56,7 @@
     color: white
 }
 
-.p {
+.p, .edit {
     position: relative;
     margin: 1rem 0 0;
     font-size: .8rem;
@@ -67,4 +68,20 @@
     border: none;
     appearance: none;
     margin-top: 1rem;
+    margin-right: 1rem;
 }
+
+.edit {
+    background: #333333;
+    color: white;
+    line-height: 1.4rem;
+}
+
+.iconCont {
+    display: flex;
+}
+
+.btnSwal{
+    background-color: #F9B621!important;
+}
+

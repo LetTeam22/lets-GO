@@ -67,12 +67,12 @@ const Dates = ({ component }) => {
       startDate={
         parameters.date?.from
           ? new Date(`${parameters.date.from}${parameters.date.timeZone}`)
-          : new Date()
+          : null
       }
       endDate={
         parameters.date?.to
           ? new Date(`${parameters.date.to}${parameters.date.timeZone}`)
-          : new Date()
+          : null
       }
       onStartDateChange={(date) => handleStartDateChange(date)}
       onEndDateChange={(date) => handleEndDateChange(date)}
