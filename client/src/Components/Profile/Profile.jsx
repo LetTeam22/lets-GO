@@ -3,20 +3,21 @@ import s from "./Profile.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllFavorites, getBookingsByUserEmail, getUser } from "../../Redux/actions";
+import { getAllFavorites, getBookingsByUserEmail, getUser, updateBooking } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 import { removeFavoriteFromDb, bookingToQualify } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping } from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
 import { convertDate, reverseDate } from '../../helpers/convertDate.js';
 import { useState } from "react";
-import { CancelBooking } from './CancelBooking/CancelBooking';
 import { RenderFavorite } from '../Cloudinary/renderFavorite';
 import swal from "sweetalert";
+import { useHistory } from "react-router-dom";
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
+  const history = useHistory();
   const userLogged = useSelector(state => state.user);
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
@@ -57,6 +58,17 @@ export const Profile = () => {
       status: 'cancelled'
     })
   };
+
+  const handleCancelled = e => {
+    e.preventDefault()
+    dispatch(updateBooking(booking))
+    swal("Reserva cancelada. El equipo de let's GO se contactará con vos")
+    history.push('/home')
+  };
+
+  const handleBack = () => {
+    setBooking({})
+  }
 
   const bookingStatus = (endDate, idBooking) => {
     const todayToModify = new Date();
@@ -138,7 +150,18 @@ export const Profile = () => {
           <div className={s.containerRes}>
             <AiFillShopping style={iconStyle} />
             <span className={s.title}>TUS RESERVAS:</span>
-            {!!Object.keys(booking).length && <CancelBooking booking={booking} />}
+            {!!Object.keys(booking).length &&
+              <div className={s.box2cancel}>
+                <h3 className={s.cancel}>Estas a punto de cancelar la siguiente reserva </h3>
+                <span className={s.cancelText}>Fecha: {booking.startDate} / {booking.endDate} </span>
+                <span className={s.cancelText}>Precio: ${booking.totalPrice}</span>
+                <span className={s.cancel}>¿CONFIRMÁS LA CANCELACIÓN?</span>
+                <div className={s.containBtn}>
+                  <button className={s.btnCanc} onClick={handleCancelled}>OK</button>
+                  <button className={s.btnBack} onClick={handleBack}>DESHACER</button>
+                </div>
+              </div>
+           }
             {!!userBookings.length ? userBookings?.map(b => (
 
               <div className={b.status === 'cancelled' ? s.boxCancel : s.box2} key={b.idBooking} >

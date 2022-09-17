@@ -132,6 +132,7 @@ export const Contact = () => {
                             value={input.message}
                             onChange={e => handleChange(e)}
                             maxLength= '500'
+                            className={s.textAr}
                         />
                     </div>
                     <span className={s.required}>*</span>

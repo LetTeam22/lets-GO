@@ -50,3 +50,29 @@
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }
 
+.containbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    color:  #f0efef;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 3.5vh;
+    width: 6vw;
+    border: none;
+    background: #F9B621;
+    cursor: pointer;
+    border-radius: .2rem;
+}
+
+.btn:hover {
+    color: #d89c1c;
+    background: #d7d7d7;
+}
+
+.contain {
+    margin-bottom: 20rem;
+}

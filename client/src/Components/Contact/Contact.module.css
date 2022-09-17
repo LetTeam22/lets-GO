@@ -75,9 +75,10 @@ p {
     align-items: center;
     justify-content: flex-start;
     margin-left: 1rem;
+    
 }
 
-textarea {
+.textAr {
     text-decoration: none;
     border: none;
     overflow-y: scroll;
