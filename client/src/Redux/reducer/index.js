@@ -66,7 +66,7 @@ const initialState = {
     mpInfo: '',
     adventure: {},
     bikeRating: [],
-    filterExperience: { startDate: null, endDate: null, sort: null },
+    filterExperience: { startDate: null, endDate: null, sort: "all" },
     likes: [],
     allAdventures: []
 }
