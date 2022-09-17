@@ -81,7 +81,7 @@ export const ShoppingCart = () => {
 
   accs.map(acc => {
     return bookings.map(book => {
-      if (book.accs.includes(acc.id)) {
+      if (book.hasOwnProperty('accs') && book.accs.includes(acc.id)) {
         acc.cantidad++;
       }
       return null

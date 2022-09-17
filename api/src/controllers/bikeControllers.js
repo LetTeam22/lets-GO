@@ -60,16 +60,16 @@ const getRenderedBikes = async (req, res, next) => {
                 // price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
                 status: 'active',
 
-                //search
-                [Op.or]: [
-                    { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
-                    { type: { [Op.substring]: searchLow } },
-                    { traction: { [Op.substring]: searchLow } },
-                    { wheelSize: { [Op.eq]: searchNum } },
-                    { color: { [Op.substring]: searchLow } },
-                    { price: { [Op.eq]: searchNum } },
-                    { rating: { [Op.eq]: searchNum } },
-                ]
+                // search
+                // [Op.or]: [
+                //     { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
+                //     { type: { [Op.substring]: searchLow } },
+                //     { traction: { [Op.substring]: searchLow } },
+                //     { wheelSize: { [Op.eq]: searchNum } },
+                //     { color: { [Op.substring]: searchLow } },
+                //     { price: { [Op.eq]: searchNum } },
+                //     { rating: { [Op.eq]: searchNum } },
+                // ]
             },
 
             // ordenamiento
@@ -88,6 +88,20 @@ const getRenderedBikes = async (req, res, next) => {
         bikes = bikes.filter(bike => {
             const finalPrice = applyDiscount(bike.price, bike.discount)
             return finalPrice >= priceMin && finalPrice <= priceMax
+        })
+
+        // filtro de busqueda para buscar precios con descuento
+        bikes = bikes.filter(bike => {
+            const finalPrice = applyDiscount(bike.price, bike.discount)
+            return (
+                bike.name.includes(searchLow) || bike.name.includes(searchUp) ||
+                bike.type.includes(searchLow) ||
+                bike.traction.includes(searchLow) ||
+                bike.wheelSize === searchNum ||
+                bike.color.includes(searchLow) ||
+                finalPrice === searchNum ||
+                bike.rating === searchNum
+            )
         })
 
         // filtro de fecha
