@@ -7,7 +7,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 2rem 2rem .5rem 2rem ;
+    padding: 2rem 10rem .5rem 2rem ;
     border-bottom: 1px solid rgb(180, 179, 179);
 }
 
@@ -50,7 +50,7 @@
 .edit {
     display: flex;
     justify-content: flex-end;
-    margin-right: 2.6rem;
+    margin-right: 11rem;
     margin-top: .2rem;
     font-size: 1rem;
     background-color: transparent;
@@ -60,46 +60,100 @@
     color: rgb(187, 185, 185);
 }
 
-/* /////////////////////////////////////////////////////// */
-/* FAV + RESERVAS */
+/* /////////////////////////////////////////////////////////// */
+/* FAV Y RES */
 
 .mainContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-align: center;
-    align-items: center;
+    /* text-align: center; */
+    /* align-items: center; */
 }
+
+/* /////////////////////////////////////////////////////////// */
+/* FAVORITE */
 
 .containerFav {
     display: flex;
     flex-direction: column; 
     align-items: center;
     width: 35%;
-    height: 200vh;
+    /* height: 200vh; */
     padding: 1rem;
     border-right: 1px solid rgb(180, 179, 179);
 }
+
+.box1 {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+    background-color: rgb(238, 238, 238);
+    padding: 1rem;
+    margin: 0rem 2rem 1rem 0;
+    box-shadow: 0px 0px 10px 1px #bbbbbb; 
+    cursor: pointer; 
+} 
+
+.btnRemove {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    font-size: .8rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    list-style: none;
+    color: rgb(111, 111, 111);
+    margin-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+.containBike {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+}
+
+.titleBike {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    color: #da9d1a;
+}
+
+.detail {
+    font-size: .9rem;
+    font-weight: 500;
+    color: #333333;
+}
+
+/* /////////////////////////////////////////////////////// */
+/* RESERVAS */
 
 .containerRes {
     display: flex;
     flex-direction: column; 
     align-items: center;
     width: 35%;
-    height: 200vh;
+    /* height: 200vh; */
     padding: 1rem;
 }
 
 .btnChoose {
-    display: flex;
-    justify-content: center;
-    width: 8rem;
-    height: 2rem;
-    padding: .5rem;
-    align-items: center;
-    font-size: .9rem;
-    list-style: none;
+    line-height: 1;
+    padding: 0;
+    font-size: .8rem;
+    width: 6vw;
+    height: 4vh;
+    background-color: transparent;
     border-radius: 0.5rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+    list-style: none;
     color: rgb(255, 255, 255);
     background: #F9B621;
 }
@@ -110,21 +164,24 @@
     box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
 }
 
+.hola {
+    background-color: #da9d1a;
+}
+
 .btnGo {
-    width: 6rem;
-    height: 2rem;
-    padding: .5rem;
-    margin-bottom: .8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 1;
+    padding: 0;
     font-size: .8rem;
-    font-weight: 600;
+    width: 3vw;
+    height: 3.5vh;
+    background-color: transparent;
+    border-radius: 0.3rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
     list-style: none;
-    border-radius: 0.5rem;
     color: rgb(255, 255, 255);
     background: #F9B621;
-    margin-bottom: .5;
 }
 
 .btnGo:hover {
@@ -150,10 +207,14 @@
 
 .box2 {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: left;
     text-align: left;
-    border-bottom: 1px solid rgb(180, 179, 179);
+    background-color: rgb(238, 238, 238);
+    padding: 1rem;
+    margin: 2rem 0rem 1rem 2rem;
+    box-shadow: 0px 0px 10px 1px #bbbbbb;  
 }
 
 .titleList2 {
@@ -163,32 +224,29 @@
     color: #da9d1a;
 }
 
-.titleList2a{
-    font-size: .9rem;
-    font-weight: 700;
-    letter-spacing: .1rem;
-    color: #da9d1a;
-    background-color: #dddddd;
-    margin-bottom: 1rem;
-}
-
 .list2 {
     font-size: .9rem;
-    font-weight: 300;
+    font-weight: 600;
     color: #333333;
 }
 
-.opinion {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333333;
+.status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #da9d1a;
 }
 
 .flex {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     align-items: center;
+}
+
+.opinion {
+    font-size: .9rem;
+    font-weight: 500;
+    color: #333333;
 }
 
 .flex1 {
@@ -196,145 +254,149 @@
     flex-direction: row;
     margin-bottom: 1rem;
     align-items: center;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #da9d1a;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 10px 1px #bbbbbb;    
 }
-/* .allPage{
-    width: 100%;
-    height: calc(100vh - 6rem);
+
+/* CANCELADO */
+/* ///////////////////////////////////////// */
+
+.flexCancel {
     display: flex;
-    align-items: center;
-} */
-
-
-/* .box1 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    padding: .5rem;
-    height: 40%;
-    background-color: #f9b52192;
-    overflow-y: scroll;
-} */
-
-/* .box2 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    padding: .5rem;
-    height: 40%;
-    background-color: #f9b52192;
-    overflow-y: scroll;
+    flex-direction: row;
     margin-bottom: 1rem;
-} */
-
-
-
-/* .containerList1 {
-    display: flex;
     align-items: center;
-} */
+    margin-bottom: .5rem;
+}
 
-/* .containerList1 > ul {
-    margin: 0;
-    padding: .5rem;
-} */
-
-/* .containerLis2 {
+.boxCancel {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    background-color: #cecece71;
-} */
+    justify-content: left;
+    text-align: left;
+    padding: 1rem;
+    margin: 2rem 0rem 1rem 2rem;
+    box-shadow: 0px 0px 10px 1px #bbbbbb;  
+}
 
-/* .btnRemove {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: #b8b8b7;
-    border-radius: .2rem;
-    cursor: pointer;
-    box-shadow: 0px 0px 5px 1px #646464;
-} */
-
-/* .list {
+.titleCancel {
     font-size: .9rem;
-    color: #333333;
-    padding-left: .5rem;
-    padding-bottom: .5rem;
-} */
+    font-weight: 700;
+    letter-spacing: .1rem;
+    color: #939393;
+}
 
-/* .list2 {
-    font-size: .9rem;
-    color: #333333;
-    padding-left: .5rem;
-    padding-bottom: .5rem;
-} */
-
-/* .infoAndImage {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-} */
-
-/* .information {
-    gap: 50%;
-    display: flex;
-    flex-direction: column;
-} */
-
-/* .h4 {
-    margin:0;
-    font-size: .8rem;
+.statusCancel {
+    font-size: 1.2rem;
     font-weight: 500;
-    color: #484848;
-} */
+    color: #3e3d3d; 
+}
+
+.list2Cancel{
+    font-size: .9rem;
+    font-weight: 600;
+    color: #939393;
+}
 
 
-
-/* .btnHome, .btnEdit{
-    color:#F9B621!important;
-    background-color:#333333!important;
-    font-weight: 500!important;
-    position: absolute!important;
-} */
-
-/* .btnHome{
-    bottom: 1rem;
-    left: 2rem;
-} */
-
-/* .btnEdit{
-    bottom: 1rem;
-    right: 1rem;
-} */
-
-/* .background{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed;
-    background-position-x: center;
-    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png');
-} */
-
-/* .btnGo {
-    position: relative;
-    margin-right: .5rem;
-    align-items: center;
-    font-size: .7rem;
-    width: 2rem;
-    height: 1.3rem;
-    border: none;
-    border-radius: .4rem;
+.btnCancel {
+    line-height: 1;
+    padding: 0;
+    font-size: .8rem;
+    width: 5vw;
+    height: 3.5vh;
+    border-radius: 0.3rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: 0px 0px 10px 1px #bbbbbb;  
     cursor: pointer;
     list-style: none;
-    color: #3f3e3e;
-    z-index: 100;
-    box-shadow: rgb(0, 0, 0) 0px 0px 3px;
-} */
+    color: rgb(36, 36, 36);
+}
+
+.btnCancel:hover {
+    background-color: red;
+    color: white;
+}
+
+/* /////////////////////////////////////////////////////// */
+
+.box2cancel {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    border: .5rem solid #E81C24;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 5rem;
+    box-shadow: 0px 0px 10px 1px #bbbbbb;  
+}
+
+.cancel {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #E81C24;
+}
+
+.cancelText {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #E81C24;
+}
+
+.containBtn {
+   display: flex;
+   padding: 0;
+   margin: 0; 
+}
+
+.btnCanc {
+    line-height: 1;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: .8rem;
+    width: 4vw;
+    height: 3.5vh;
+    background-color: transparent;
+    border-radius: 0.3rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+    list-style: none;
+    color: #E81C24;
+    background: #ffffff;
+}
+
+.btnBack {
+    line-height: 1;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: .8rem;
+    width: 5vw;
+    height: 3.5vh;
+    background-color: transparent;
+    border-radius: 0.3rem;
+    border-color: rgba(255, 251, 251, 0.453);
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+    list-style: none;
+    color: #E81C24;
+    background: #ffffff;
+    margin-left: 1rem;
+}
+
+.btnCanc:hover {
+    color:#ffffff;
+    background: #E81C24;
+}
+
+.btnBack:hover {
+    background: #d5d5d5;
+    color: #393939;
+} 

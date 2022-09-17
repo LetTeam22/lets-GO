@@ -21,7 +21,8 @@
     background-color: #f0efef;
     height: 400vh;
     width: 18%;
-    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205);
+    z-index: 2;
 }
 
 .right {
@@ -30,5 +31,36 @@
     height: 400vh;
     width: 18%;
     right: 0;
-    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267);
+    z-index: 2;
+}
+
+.divSticky{
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 6rem;
+    padding: 0 2rem;
+    background-color: #f0efef;
+    margin:0px auto;
+    border-radius: 0.1rem;
+    z-index: 1;
+}
+
+.containFiltersSelected{
+    display: flex;
+    flex-direction: row;
+    width: 20rem;
+}
+
+.divDateAndOrder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 1rem;
+    margin:0px auto;
+    width: 55vw;
 }

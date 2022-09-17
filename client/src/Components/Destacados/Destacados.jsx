@@ -58,7 +58,7 @@ export const Destacados = () => {
                   return (
                     <div key= {bike.idBike} className={`${s.destacadas} ${s.slide}`} id={s.one}>
                         <Link to={`/bike/${bike.idBike}`}>
-                          <RenderOneImage publicId={bike.image} />
+                          <RenderOneImage publicId={bike.image} alt={bike.name} />
                         </Link>
                         <Link to={`/bike/${bike.idBike}`}><h4 className={s.name}>{bike.name}</h4></Link>
                         <div className={s.dataCont}>

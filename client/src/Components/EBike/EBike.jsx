@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './EBike.module.css'
 
 export const EBike = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -85,9 +88,12 @@ export const EBike = () => {
                             Debés tener en cuenta que una e-bike es recomendable en zonas con grandes cuestas, ya sea en montañas o incluso en ciudades que, debido a su orografía, cuentan con calles con con pendientes, algunas muy pronunciadas,
                             que pueden necesitar de una ayuda a la hora de superarlas sin ser un ciclista profesional.
                         </p>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
+                        </div>
                     </div>
                 </section>
             </div>
-            </>
-            )
+        </>
+    )
 }

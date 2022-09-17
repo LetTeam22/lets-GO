@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import s from './Adventure.module.css';
-import { addAdventure } from '../../Redux/actions';
-import { adventures } from './data';
+import { addAdventure, getAllAdventures } from '../../Redux/actions';
 import CardAdventures from './CardAdventures';
 import Chatbot from "../ChatBot/ChatBot";
 
@@ -14,10 +13,12 @@ export const Adventure = () => {
     totalAdv: 0
   })
   const history = useHistory()
+  const adventures = useSelector((state) => state.allAdventures)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+    dispatch(getAllAdventures())
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -54,36 +55,36 @@ export const Adventure = () => {
 
   return (
     <>
-    <Chatbot/>
+      <Chatbot />
       <div className={s.left} />
       <div className={s.right} />
       <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>
-      { adventures.map(a => <CardAdventures
-          key={a.id}
-          id={a.id}
-          name={a.name}
-          date={a.date}
-          image={a.image}
-          description={a.description}
-          conditions={a.conditions}
-          price={a.price}
-          difficulty={a.difficulty}
-          handleCheck={handleCheck}
-        />
+      {adventures.map(a => <CardAdventures
+        key={a.idAdv}
+        id={a.idAdv}
+        name={a.name}
+        date={a.date}
+        image={a.image}
+        description={a.description}
+        conditions={a.conditions}
+        price={a.price}
+        difficulty={a.difficulty}
+        handleCheck={handleCheck}
+      />
       )}
-        <div className={s.container}>
-          <p className={s.precioTotal}>Total ${adicional()}</p>
-        </div>
-        <div className={s.containerBtn}>
-          <button
-            className={s.btn2}
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            {" "}
-            Agregar al carrito{" "}
-          </button>
+      <div className={s.container}>
+        <p className={s.precioTotal}>Total ${adicional()}</p>
+      </div>
+      <div className={s.containerBtn}>
+        <button
+          className={s.btn2}
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          {" "}
+          Agregar al carrito{" "}
+        </button>
       </div>
     </>
   )

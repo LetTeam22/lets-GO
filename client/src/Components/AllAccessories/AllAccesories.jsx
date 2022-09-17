@@ -12,7 +12,7 @@ import ChatBot from '../ChatBot/ChatBot';
 export const AllAccesories = () => {
     const dispatch = useDispatch();
     const allAccs = useSelector(state => state.accesories)
-console.log(allAccs)
+
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getAccesories())

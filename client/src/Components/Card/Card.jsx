@@ -122,9 +122,9 @@ export const Card = ({
   return (
     <div className={s.container}>
           {bikeIsFavorite(idBike) ? (
-            <AiFillHeart style={iconStyle} onClick={handleFav} />
+            <AiFillHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
           ) : (
-            <AiOutlineHeart style={iconStyle} onClick={handleFav} />
+            <AiOutlineHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
           )}
       
       <Link to={"/bike/" + idBike}>
@@ -136,9 +136,9 @@ export const Card = ({
             </div>
           )}
           {/^(https?)[^\s]*$/i.test(image) ? (
-            <img src={image} alt="img not found" className={s.imgCard} />
+            <img src={image} alt={name} className={s.imgCard} />
           ) : (
-            <RenderOneImage publicId={image}></RenderOneImage>
+            <RenderOneImage publicId={image} alt={name}></RenderOneImage>
           )}
           <div>
             <h3 className={s.name}>{name}</h3>

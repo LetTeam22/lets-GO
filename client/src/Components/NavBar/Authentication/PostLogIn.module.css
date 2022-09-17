@@ -15,7 +15,6 @@
 .btnBack, .btnProfile{
     position: absolute;
     margin-top: 20rem;
-    /* top:5rem; */
     width: 8rem;
     height: 3rem;
     color: #595858;
@@ -27,14 +26,13 @@
     cursor:pointer;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
 }
-/* f9b521 */
-
-.btnBack{
-    left: 38%;
-}
 
 .btnProfile{
     left: 55%;
+}
+
+.btnBack{
+    left: 38%;
 }
 
 .btnProfile:hover, .btnBack:hover{
@@ -43,7 +41,6 @@
 
 .buttons {
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
     justify-content: space-evenly;
 }

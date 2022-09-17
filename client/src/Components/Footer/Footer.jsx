@@ -17,6 +17,7 @@ const faqs = '/faqs'
 const normative = '/normative'
 const policies = '/policies'
 const payments = '/payments'
+const about = '/about'
 
 export const Footer = () => {
 
@@ -26,13 +27,13 @@ export const Footer = () => {
             <div className={s.services}>
                 <h5 className={s.h5}>SERVICIO AL CLIENTE</h5>
                 <a className={s.footerSpan} href={faqs} cursor='pointer'>
-                    <span className={s.footerSpan}>Preguntas Frecuentes</span>
+                    <span className={s.footerSpan}>Preguntas frecuentes</span>
                 </a>
                 <a href={howToRent} className={s.footerSpan} cursor='pointer'>
                     <span className={s.footerSpan}>Cómo alquilar</span>
                 </a>
                 <a href={payments} className={s.footerSpan} cursor='pointer'>
-                    <span className={s.footerSpan}>Pagos y Retiros</span>
+                    <span className={s.footerSpan}>Pagos y retiros</span>
                 </a>
                 <a className={s.footerSpan} href={terms} cursor='pointer'>
                     <span className={s.footerSpan}>Términos y condiciones</span>
@@ -60,8 +61,10 @@ export const Footer = () => {
                 </a>
             </div>
             <div className={s.company}>
-                <h5 className={s.h5}>COMPAÑIA</h5>
-                <span className={s.footerSpan}>Sobre nosotros</span>
+                <h5 className={s.h5}>COMPAÑÍA</h5>
+                <a className={s.footerSpan} href={about} cursor='pointer'>
+                    <span className={s.footerSpan}>Sobre nosotros</span>
+                </a>
                 <a className={s.footerSpan} href={contact} cursor='pointer'>
                     <span className={s.footerSpan}>Contacto</span>
                 </a>

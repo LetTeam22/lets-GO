@@ -155,6 +155,10 @@
 
 .icon {
     margin: auto 1.5rem;
+    color: #6e6e6e;
+}
+.icon:hover{
+    color: #6e6e6e;
 }
 
 .btnSwal{
