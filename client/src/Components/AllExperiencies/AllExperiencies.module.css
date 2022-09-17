@@ -42,13 +42,16 @@
     top: 6rem;
     z-index: 1;
     padding: 0 2rem;
-    background-color: #F5F5F5;
-    box-shadow: rgba(0, 0, 0, 0.776) 0px 0px 10px;
+    background-color: #f0efef;
+    width: 54.5vw;
+    margin:0px auto;
+    border-radius: 0.1rem;
 }
 
 .containFiltersSelected{
     display: flex;
     flex-direction: row;
+    width: 20rem;
 }
 
 .divDateAndOrder{
@@ -57,4 +60,6 @@
     align-items: center;
     width: 50%;
     gap: 1rem;
+    margin:0px auto;
+    width: 55vw;
 }
