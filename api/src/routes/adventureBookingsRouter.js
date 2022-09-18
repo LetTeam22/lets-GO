@@ -3,7 +3,7 @@ const { getAdvBookingsById, postAdvBookings } = require('../controllers/advBooki
 
 const router = Router();
 
-router.get('/:id', getAdvBookingsById);
+router.get('/:userId', getAdvBookingsById);
 router.post('/', postAdvBookings)
 
 module.exports = router
