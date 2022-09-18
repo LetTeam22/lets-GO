@@ -121,7 +121,7 @@ hr {
     appearance: none;
 }
 
-.counter {
+.counter, .hidde {
     position: absolute;
     color: white;
     border: 1px solid red;
@@ -133,6 +133,19 @@ hr {
     bottom: 0.8rem;
     left: 2.2rem;
     font-size: 0.8rem;
+}
+.hidde{
+    visibility: hidden;
+}
+
+.backNotification{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    cursor:default;
 }
 
 .notifications {
@@ -160,6 +173,8 @@ hr {
     align-items: center;
     justify-content: center;
     margin-left: 1rem;
+    position: relative;
+    z-index: 100;
 }
 
 .spanNotification {

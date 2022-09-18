@@ -10,33 +10,51 @@ const getAllAdventures = async (req, res, next) => {
     }
 }
 
-//Get adventure Bookings
 
-const getAdvBookingsById = (req, res, next) => {
-    const { userId } = req.params
-    if (!userId) return res.sendStatus(400)
-    try {
-        let advBookings = advBookings.findAll({
-            where: { userIdUser: userId }
-        })
-    } catch (error) {
-        next(error)
-    }
+// Post
+const postAdventure = async (req, res, next) => {
+    
+    const { name, description, conditions, image, price, difficulty, date, status } = req.body
+    
+    if (!name) return res.sendStatus(400)
+
+    let adv = { name, description, conditions, image, price, difficulty, date, status }
+    let advCreated = await Adventures.create(acc)
+    
+    res.send(advCreated)
 }
 
-const postAdvBookings = async (req, res, next) => {
-    const { userId, adventureNames } = req.body
-    if (!userId || !adventureNames) return res.sendStatus(400)
+// Update
+const updateAdventure = async (req, res, next) => {
+    
+    const {idAdv, name, description, conditions, image, price, difficulty, date, status} = req.body
+    
+    const adv = await Adventures.findByPk(idAdv);
+
+    if (adv) {
+        if(name) adv.name = name
+        if(description) adv.description = description
+        if(conditions) adv.conditions = conditions
+        if(image) adv.image = image
+        if(price) adv.price = price
+        if(difficulty) adv.difficulty = difficulty
+        if(date) adv.date = date
+        if(status) adv.status = status
+        await adv.save()
+        res.send(adv)
+    }else res.send({e:'aventura no existe'})
+}
+
+// Update prices
+const updatePricesAdv = async (req, res, next) => {
+    const { percentage } = req.body
     try {
-        let advBookingsData = { userId }
-        let advBookingsCreated = await AdvBookings.create(advBookingsData)
-        let adventuresBooked = await Adventures.findAll({
-            where: {
-                name: adventureNames
-            }
+        const adventures = await Adventures.findAll();
+        percentage && adventures.forEach(a => {
+            a.price = Math.round(Number(a.price) * (1 + Number(percentage)))
+            a.save()
         })
-        await advBookingsCreated.addAdventures(adventuresBooked)
-        res.send(advBookingsCreated)
+        res.send('Precios de aventuras actualizados')
     } catch (error) {
         next(error)
     }
@@ -44,6 +62,7 @@ const postAdvBookings = async (req, res, next) => {
 
 module.exports = {
     getAllAdventures,
-    getAdvBookingsById,
-    postAdvBookings
+    postAdventure,
+    updateAdventure,
+    updatePricesAdv
 }

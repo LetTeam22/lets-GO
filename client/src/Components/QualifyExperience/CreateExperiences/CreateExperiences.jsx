@@ -123,7 +123,8 @@ export const CreateExperiences = () => {
                 name='textExperience'
                 placeholder='Sumate a los leters que cuentan historias...'
                 maxLength= '500'
-                />
+                className={s.textAr}
+              />
             </div>
           </div>
           { errors.textExperience && <span className={s.errSpan}>{errors.textExperience}</span> }

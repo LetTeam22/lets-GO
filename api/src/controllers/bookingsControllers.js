@@ -1,5 +1,6 @@
 const { User, Bike, Booking, Accesories, Experience } = require('../db');
 const { Op } = require("sequelize");
+const { sortBookings } = require('./helpers');
 
 async function getAllBookings(req, res, next) {
   try {
@@ -25,9 +26,9 @@ async function getAllBookings(req, res, next) {
         }
       ]
     })
-    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }
@@ -57,9 +58,9 @@ async function getBookingsByUserId(req, res, next) {
       ]
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
-    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }
@@ -93,9 +94,9 @@ async function getBookingsByUserEmail(req, res, next) {
       ],
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
-    bookings.sort((a, b) => a.endDate < b.endDate ? 1 : a.endDate > b.endDate ? -1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }

@@ -12,12 +12,11 @@ import { convertDate, reverseDate } from '../../helpers/convertDate.js';
 import { useState } from "react";
 import { RenderFavorite } from '../Cloudinary/renderFavorite';
 import swal from "sweetalert";
-import { useHistory } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
   const dispatch = useDispatch();
-  const history = useHistory();
   const userLogged = useSelector(state => state.user);
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
@@ -59,11 +58,12 @@ export const Profile = () => {
     })
   };
 
-  const handleCancelled = e => {
+  const handleCancelled = async e => {
     e.preventDefault()
-    dispatch(updateBooking(booking))
+    await dispatch(updateBooking(booking))
     swal("Reserva cancelada. El equipo de let's GO se contactará con vos")
-    history.push('/home')
+    dispatch(getBookingsByUserEmail(user?.email))
+    setBooking({})
   };
 
   const handleBack = () => {
@@ -104,6 +104,7 @@ export const Profile = () => {
   return isLoading ? <Loading /> :
     (
       <>
+      <ChatBot/>
         <div className={s.containerUs}>
           <div className={s.infoUs}>
             <h4 className={s.usLet}>USUARIO LETER:</h4>
@@ -126,7 +127,7 @@ export const Profile = () => {
             <AiFillHeart style={iconStyle} />
             <span className={s.title}>TUS let's GO FAVORITAS:</span>
             {!!favorites.length ? favorites?.map(f => (
-              <>
+             <React.Fragment key={f.idBike}>
                 <span className={s.btnRemove} onClick={() => handleRemoveFav(f.idBike)}>x ELIMINAR DE FAVORITOS x</span>
                 <Link className={s.box1} to={`/bike/${f.idBike}`}>
                   <div className={s.containBike}>
@@ -138,7 +139,7 @@ export const Profile = () => {
                   </div>
                   <RenderFavorite publicId={f.image} />
                 </Link>
-              </>
+              </React.Fragment>
             ))
               :<>
                 <span className={s.span}>Todavía no elegiste favoritas</span>
@@ -161,7 +162,7 @@ export const Profile = () => {
                   <button className={s.btnBack} onClick={handleBack}>DESHACER</button>
                 </div>
               </div>
-           }
+            }
             {!!userBookings.length ? userBookings?.map(b => (
 
               <div className={b.status === 'cancelled' ? s.boxCancel : s.box2} key={b.idBooking} >

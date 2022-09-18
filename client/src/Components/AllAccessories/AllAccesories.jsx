@@ -5,6 +5,7 @@ import s from './AllAccessories.module.css';
 import EachAccesory from './EachAccesory';
 import Loading from '../Loading/Loading';
 import { Link } from "react-router-dom";
+import ChatBot from '../ChatBot/ChatBot';
 
 // import aux_axesorios from '../../image/aux_/aux_axesorios.png';
 
@@ -19,10 +20,11 @@ export const AllAccesories = () => {
 
     return (
         <>
+        <ChatBot/>
             <div className={s.left} />
             <div className={s.right} />
             <div className={s.container}>
-                <h1 className={s.h1}>TODO LO QUE NECESITÁS PARA TU AVENTURA</h1>  
+                <h1 className={s.h1}>TODO LO QUE NECESITAS PARA TU AVENTURA</h1>  
             </div>     
             { allAccs.length ? allAccs.filter(acc => acc.status === 'active').map((a) => {
                     return (
