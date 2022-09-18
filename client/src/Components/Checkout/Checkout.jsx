@@ -23,13 +23,14 @@ export default function Checkout() {
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
     const advBookings = JSON.parse(localStorage.getItem('postedAdventures'))
-
+    
+    async function Maxi() {
+        await dispatch(setParameters("resetAllPlusDates"));
+        await dispatch(postBookings(booking))
+        await dispatch(postAdvBookings(advBookings))
+    };
+    
     useEffect(() => {
-        async function Maxi() {
-            await dispatch(setParameters("resetAllPlusDates"));
-            await dispatch(postBookings(booking))
-            await dispatch(postAdvBookings(advBookings))
-        };
         Maxi();
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
