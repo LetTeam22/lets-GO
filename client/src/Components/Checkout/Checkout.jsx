@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setParameters, postBookings, postAdvBookings } from "../../Redux/actions";
+import { setParameters, postBookings } from "../../Redux/actions";
 import emailjs from '@emailjs/browser';
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -22,13 +22,11 @@ export default function Checkout() {
     }
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
-    const advBookings = JSON.parse(localStorage.getItem('postedAdventures'))
 
     useEffect(() => {
         async function Maxi() {
             await dispatch(setParameters("resetAllPlusDates"));
             await dispatch(postBookings(booking))
-            await dispatch(postAdvBookings(advBookings))
         };
         Maxi();
         window.scrollTo(0, 0);

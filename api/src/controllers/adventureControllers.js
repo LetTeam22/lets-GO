@@ -1,4 +1,4 @@
-const { Adventures, AdvBookings, User } = require('../db')
+const { Adventures } = require('../db')
 
 // Get all adventures
 const getAllAdventures = async (req, res, next) => {
@@ -13,36 +13,36 @@ const getAllAdventures = async (req, res, next) => {
 
 // Post
 const postAdventure = async (req, res, next) => {
-    
+
     const { name, description, conditions, image, price, difficulty, date, status } = req.body
-    
+
     if (!name) return res.sendStatus(400)
 
     let adv = { name, description, conditions, image, price, difficulty, date, status }
     let advCreated = await Adventures.create(adv)
-    
+
     res.send(advCreated)
 }
 
 // Update
 const updateAdventure = async (req, res, next) => {
-    
-    const {idAdv, name, description, conditions, image, price, difficulty, date, status} = req.body
-    
+
+    const { idAdv, name, description, conditions, image, price, difficulty, date, status } = req.body
+
     const adv = await Adventures.findByPk(idAdv);
 
     if (adv) {
-        if(name) adv.name = name
-        if(description) adv.description = description
-        if(conditions) adv.conditions = conditions
-        if(image) adv.image = image
-        if(price) adv.price = price
-        if(difficulty) adv.difficulty = difficulty
-        if(date) adv.date = date
-        if(status) adv.status = status
+        if (name) adv.name = name
+        if (description) adv.description = description
+        if (conditions) adv.conditions = conditions
+        if (image) adv.image = image
+        if (price) adv.price = price
+        if (difficulty) adv.difficulty = difficulty
+        if (date) adv.date = date
+        if (status) adv.status = status
         await adv.save()
         res.send(adv)
-    }else res.send({e:'aventura no existe'})
+    } else res.send({ e: 'aventura no existe' })
 }
 
 // Update prices
