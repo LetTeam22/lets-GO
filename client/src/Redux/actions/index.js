@@ -324,7 +324,7 @@ export const getAllAdventures = () => {
 
 export const postAdvBookings = (payload) => {
     return (dispatch) => {
-        return axios.post('/adventures', payload)
+        return axios.post('/adventurebookings', payload)
             .then(dispatch({ type: POST_ADV_BOOKINGS, payload }))
             .catch(error => console.log(error))
     }
