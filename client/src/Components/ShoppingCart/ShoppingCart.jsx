@@ -130,6 +130,7 @@ export const ShoppingCart = () => {
 
 
   const totalDias = (from, to) => {
+    if (!from || !to) return 0
     const date1 = new Date(from);
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
@@ -249,7 +250,10 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-        <Dates component='cart' />
+        <div className={s.fechasCont}>
+          <Dates component='cart' />
+          <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+        </div>
 
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
