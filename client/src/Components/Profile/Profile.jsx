@@ -13,6 +13,7 @@ import { useState } from "react";
 import { RenderFavorite } from '../Cloudinary/renderFavorite';
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
+import ChatBot from "../ChatBot/ChatBot";
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
@@ -104,6 +105,7 @@ export const Profile = () => {
   return isLoading ? <Loading /> :
     (
       <>
+      <ChatBot/>
         <div className={s.containerUs}>
           <div className={s.infoUs}>
             <h4 className={s.usLet}>USUARIO LETER:</h4>
