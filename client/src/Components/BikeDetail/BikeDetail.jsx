@@ -51,10 +51,6 @@ export const BikeDetail = () => {
     const filteredBikes = bookings.filter(b => b.bike !== Number(bikeId))
     localStorage.setItem("booking", JSON.stringify([...filteredBikes, input]));
     dispatch(addBooking(input));
-    setInput({
-      accs: [],
-      totalAcc: 0
-    });
     swal({
       title: "Bicicleta añadida al carrito",
       icon: "success",

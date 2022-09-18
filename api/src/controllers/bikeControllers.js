@@ -78,7 +78,7 @@ const getRenderedBikes = async (req, res, next) => {
             // incluye las reservas asociadas
             include: {
                 model: Booking,
-                attributes: ['startDate', 'endDate'],
+                attributes: ['startDate', 'endDate', 'status'],
                 through: { attributes: [] }
         }
 

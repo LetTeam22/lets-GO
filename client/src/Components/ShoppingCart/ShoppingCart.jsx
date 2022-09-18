@@ -25,7 +25,7 @@ export const ShoppingCart = () => {
   const history = useHistory()
   const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+  const Adventures = JSON.parse(localStorage.getItem("adventure")) || {};
 
 
   const parameters = useSelector(state => state.parameters);
@@ -56,8 +56,8 @@ export const ShoppingCart = () => {
     cartBikes.push(pushedbike);
   })
 
-  Adventures.length && Adventures.forEach(adv => {
-    const advFound = allAdventures.find(a => a.idAdv === adv.adv[0])
+  Adventures.hasOwnProperty('adv') && Adventures.adv.forEach(adv => {
+    const advFound = allAdventures.find(a => a.idAdv === adv)
     if (advFound) {
       const pushedAdv = {
         id: advFound.idAdv,
@@ -130,6 +130,7 @@ export const ShoppingCart = () => {
 
 
   const totalDias = (from, to) => {
+    if (!from || !to) return 0
     const date1 = new Date(from);
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
@@ -172,7 +173,6 @@ export const ShoppingCart = () => {
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems) + subTotalAdv;
 
   const total = Math.floor(subTotal * 1.02);
-  console.log(total)
 
   let preference = {
     items: [{
@@ -204,11 +204,11 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
-  const deleteAdventure = (e, id) => {
+  const deleteAdventure = (e, id, price) => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
+    localStorage.setItem("adventure", JSON.stringify({adv: Adventures.adv.filter(ad => ad !== id), totalAdv: Adventures.totalAdv - price}))
   }
 
   useEffect(() => {
@@ -250,7 +250,10 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-        <Dates component='cart' />
+        <div className={s.fechasCont}>
+          <Dates component='cart' />
+          <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+        </div>
 
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
@@ -304,7 +307,7 @@ export const ShoppingCart = () => {
                           <TableCell>{adventure.name}</TableCell>
                           <TableCell align="center">1</TableCell>
                           <TableCell align="center">-</TableCell>
-                          <TableCell align="center">{adventure.price}</TableCell>
+                          <TableCell align="center">{`$ ${Number(adventure.price).toLocaleString('es-AR')}`}</TableCell>
                         </TableRow>
                       )
                     })
@@ -363,7 +366,7 @@ export const ShoppingCart = () => {
                     <img src={adv.image} alt="" />
                     <h2 className={s.advName}>{adv.name}</h2>
                     <div className={s.advBtn}>
-                      <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      <button onClick={(e) => deleteAdventure(e, adv.id, adv.price)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
                   </div>
                 )
