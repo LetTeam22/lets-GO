@@ -61,7 +61,12 @@ export const Menu = ({socket}) => {
       }])
     })
   }, [socket]);
+
   if(isLoading) return null
+
+  let hash = {}
+  const notUnicas = notifications.filter(not => hash[not.type] ? false : hash[not.type] = true);
+  
   return (
     <div className={s.menu} >
       <Link to='/'><img src={logo} alt='logo' className={s.icon} /></Link>
@@ -121,11 +126,12 @@ export const Menu = ({socket}) => {
         <div className={s.containerBell}>
           <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
           <div className={notifications.length? s.counter : s.hidde}>{notifications.length}</div>
+          { !!notUnicas.length && <div className={notUnicas.length? s.counter : s.hidde}>{notUnicas.length}</div> }
           {
             open && (
                 <div className={s.notifications}>
                   {
-                    notifications?.map(n => {
+                    notUnicas?.map(n => {
                       if(n.hasOwnProperty('senderName')) {
                         return (
                             <>

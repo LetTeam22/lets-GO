@@ -23,7 +23,6 @@
 }
 
 .btn2 {
-    position: relative;
     line-height: 1;
     padding: 0;
     font-size: .9rem;
@@ -53,9 +52,14 @@
 }
 
 .containerBtn {
+    position: sticky;
+    top: 6rem;
     display: flex;
     justify-content: center;
-    margin-bottom: 5rem;
+    background-color: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    z-index: 1;
 }
 
 .left {
@@ -63,7 +67,8 @@
     background-color: #f0efef;
     height: 400vh;
     width: 18%;
-    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205);
+    z-index: 2
 }
 
 .right {
@@ -72,6 +77,7 @@
     height: 400vh;
     width: 18%;
     right: 0;
-    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267);
+    z-index: 2
 }
 

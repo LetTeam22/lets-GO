@@ -18,7 +18,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
-import { adventures as allAdventures } from '../Adventure/data';
+
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ export const ShoppingCart = () => {
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
   const mpInfo = useSelector((state) => state.mpInfo);
+  const allAdventures = useSelector(state => state.allAdventures)
   let cartBikes = [];
   let cartAdventures = [];
   const { user, isLoading } = useAuth0();
@@ -55,10 +56,10 @@ export const ShoppingCart = () => {
   })
 
   Adventures.length && Adventures.forEach(adv => {
-    const advFound = allAdventures.find(a => a.id === adv.adv[0])
+    const advFound = allAdventures.find(a => a.idAdv === adv.adv[0])
     if (advFound) {
       const pushedAdv = {
-        id: advFound.id,
+        id: advFound.idAdv,
         name: advFound.name,
         price: advFound.price,
         image: advFound.image,
@@ -80,7 +81,7 @@ export const ShoppingCart = () => {
 
   accs.map(acc => {
     return bookings.map(book => {
-      if(book.accs.includes(acc.id)) {
+      if (book.hasOwnProperty('accs') && book.accs.includes(acc.id)) {
         acc.cantidad++;
       }
       return null
@@ -148,7 +149,7 @@ export const ShoppingCart = () => {
 
   let subTotalItems = 0
   cartBikes.forEach(bike => {
-    allAccs.length && bike.accesories.forEach(el => {
+    allAccs.length && bike.accesories?.forEach(el => {
       const objAcc = allAccs.find(a => a.idAcc === el)
       const price = Number(objAcc.price)
       subTotalItems += price * totalDias(date.from, date.to)
@@ -254,8 +255,8 @@ export const ShoppingCart = () => {
                         <TableRow key={bike.bikeId} >
                           <TableCell>{bike.name}</TableCell>
                           <TableCell align="center">1</TableCell>
-                          <TableCell align="center">{finalPrice(bike.price, bike.discount)}</TableCell>
-                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? totalPerBike(finalPrice(bike.price, bike.discount)) : 0}</TableCell>
+                          <TableCell align="center">{`$ ${finalPrice(bike.price, bike.discount).toLocaleString('es-AR')}`}</TableCell>
+                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? `$ ${totalPerBike(finalPrice(bike.price, bike.discount)).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                         </TableRow>
                       )
                     })
@@ -263,14 +264,15 @@ export const ShoppingCart = () => {
                 }
                 {
                   cartBikes.length && accs.length
+
                   ? accs.map(acc => {
                     if(acc.cantidad > 0) {
                       return (
                         <TableRow key={acc.id} >
                           <TableCell>{acc.name}</TableCell>
                           <TableCell align="center">{acc.cantidad}</TableCell>
-                          <TableCell align="center">{Number(acc.price)}</TableCell>
-                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? subTotalPerItems(acc.price, acc.cantidad) : 0}</TableCell>
+                          <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
+                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                         </TableRow>
                       )
                     }
@@ -295,15 +297,15 @@ export const ShoppingCart = () => {
                 <TableRow>
                   <TableCell rowSpan={3} />
                   <TableCell align="left" colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${subTotal.toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell colSpan={2} align="left">Tax</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${parseInt(subTotal * 0.02).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" colSpan={2}>Total</TableCell>
-                  <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(total) ? `$ ${parseInt(total).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -314,7 +316,7 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
-                      <RenderOneImage publicId={bike.image} className={s.img} />
+                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
@@ -341,7 +343,7 @@ export const ShoppingCart = () => {
             {
               cartAdventures.length ? cartAdventures.map(adv => {
                 return (
-                  <div className={s.cardAdventure} key={adv.id} >
+                  <div className={s.cardAdventure} key={adv.idAdv} >
                     <img src={adv.image} alt="" />
                     <h2 className={s.advName}>{adv.name}</h2>
                     <div className={s.advBtn}>
@@ -378,9 +380,9 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-            <Link to='/home' className={s.containerBtnHome}><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
-            <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
-          </div>
+          <Link to='/home'><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+          <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
+        </div>
         : <Loading />
   )
 };

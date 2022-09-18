@@ -56,26 +56,31 @@
     color: white
 }
 
-.p, .edit {
+.p{
     position: relative;
     margin: 1rem 0 0;
     font-size: .8rem;
     font-weight: 300;
 }
-
+.edit {
+    background: #4c4c4c;
+    color: white;
+    font-size: .8rem;
+    text-decoration: none;
+    border: none;
+    overflow-y: scroll;
+    resize: none;
+    height: 9rem;
+    width: 100%;
+    outline: none;
+    margin-top: 1rem;
+}
 .iconBtn {
     background-color: transparent;
     border: none;
     appearance: none;
     margin-top: 1rem;
     margin-right: 1rem;
-}
-
-.edit {
-    background: #333333;
-    color: white;
-    line-height: 1.4rem;
-    /* width: 180%; */
 }
 
 .iconCont {

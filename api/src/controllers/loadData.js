@@ -1,12 +1,13 @@
-const { User, Bike, Booking, Experience, Accesories} = require("../db");
+const { User, Bike, Booking, Experience, Accesories, Adventures } = require("../db");
 const jsonUser = require('../data/users.json')
 const jsonBike = require('../data/bikes.json')
 const jsonBooking = require('../data/bookings.json')
 const jsonExperience = require('../data/experiences.json')
 const jsonAccs = require('../data/accesories.json')
-const {postBooking} = require('./bookingsControllers')
-const {createExperience} = require('./experienceControllers')
-const {} = require('./accesoriesControllers')
+const jsonAdvs = require('../data/adventure.json')
+const { postBooking } = require('./bookingsControllers')
+const { createExperience } = require('./experienceControllers')
+const { } = require('./accesoriesControllers')
 
 async function loadAllModelsInDB() {
 
@@ -18,13 +19,16 @@ async function loadAllModelsInDB() {
 
   await Bike.bulkCreate(jsonBike)
   console.log('Bikes loaded ok to DB');
-  
+
+  await Adventures.bulkCreate(jsonAdvs);
+  console.log('Adventrures loaded ok to DB')
+
   await Promise.all(
     jsonBooking.map(booking => {
-      return postBooking({body:booking},{sendStatus:()=>{},send:()=>{}},()=>{})
+      return postBooking({ body: booking }, { sendStatus: () => { }, send: () => { } }, () => { })
     })
-    ); console.log('Bookings loaded ok to DB')
-    
+  ); console.log('Bookings loaded ok to DB')
+
   await Experience.bulkCreate(jsonExperience)
   // await Promise.all(
   //   jsonExperience.map(experience => {

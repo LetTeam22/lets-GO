@@ -6,9 +6,10 @@ import {
     GET_ALL_BOOKINGS, GET_ALL_USERS, SET_BIKES_DETAIL, POST_EXPERIENCE,
     GET_ALL_EXPERIENCES, GET_DISABLED_DATES, GET_USER_BOOKINGS,
     GET_ALL_FAVORITES, UPDATE_BOOKING, UPDATE_EXPERIENCE, UPDATE_ACCESORIE,
-    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, GET_USER_NOTIFICATIONS,
-    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, 
-    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES, UPDATE_EXPERIENCES_STATE
+    UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE,
+    CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING,
+    SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES,
+    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -65,9 +66,9 @@ const initialState = {
     mpInfo: '',
     adventure: {},
     bikeRating: [],
-    userNotifications: [],
-    filterExperience:{startDate:null, endDate:null, sort:null},
-    likes: []
+    filterExperience: { startDate: null, endDate: null, sort: "all" },
+    likes: [],
+    allAdventures: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -235,21 +236,16 @@ function rootReducer(state = initialState, action) {
             }
         case GET_HISTORY_RATING:
             let newarray = action.payload?.map(element => {
-                let currentRating = element.bookings[0].bikes.find( a => {
+                let currentRating = element.bookings[0].bikes.find(a => {
                     return a.idBike === element.idBike
                 })
-                return {idBike:element.idBike, rating:currentRating.rating}
+                return { idBike: element.idBike, rating: currentRating.rating }
             })
             // console.log('nuevo arregloooo',newarray)
             if (!action.payload.length) newarray = []
             return {
                 ...state,
                 bikeRating: newarray
-            }
-        case GET_USER_NOTIFICATIONS: 
-            return {
-                ...state,
-                userNotifications: action.payload
             }
         case CREATE_ACCESORIE:
             return {
@@ -275,27 +271,32 @@ function rootReducer(state = initialState, action) {
         case SET_SORT_FILTER_EXPERIENCE:
             return {
                 ...state,
-                filterExperience:{...state.filterExperience, ...action.payload}
+                filterExperience: { ...state.filterExperience, ...action.payload }
             }
         case FILTER_EXPERIENCE_BY_DATE:
             return {
                 ...state,
                 allExperiences: action.payload
             }
-        case POST_NEW_LIKE: 
+        case POST_NEW_LIKE:
             return {
                 ...state,
                 likes: [...state.likes, action.payload]
             }
-        case DELETE_LIKE: 
+        case DELETE_LIKE:
             return {
-                ...state, 
-                likes: state.likes.filter(f => f.idExperience !== action.idExperience)
+                ...state,
+                likes: state.likes.filter(f => f.idExperience !== action.payload.idExperience)
             }
-        case GET_ALL_LIKES: 
+        case GET_ALL_LIKES:
             return {
                 ...state,
                 likes: action.payload
+            }
+        case GET_ALL_ADVENTURES:
+            return {
+                ...state,
+                allAdventures: action.payload
             }
         default: return state
     }

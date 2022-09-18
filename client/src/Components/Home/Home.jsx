@@ -170,6 +170,7 @@ export const Home = ({socket}) => {
               ))}
             </div>
           )}
+          {!!renderedBikes.length && <Pagination />}
         </div>
       </div>
     </div>

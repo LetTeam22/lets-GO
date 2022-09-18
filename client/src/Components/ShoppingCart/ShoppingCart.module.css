@@ -123,7 +123,7 @@
 }
 
 .reserveBtn:hover, .btn:hover, .returnBtn:hover {
-    background-color: #D6802B;
+    background-color: #F9B621;
     color: white;
 }
 
@@ -166,9 +166,8 @@
 .containerBtn {
     display: flex;
     column-gap: 5rem;
-    width: 100%;
+    width: calc(100% - 15rem);
     align-items: baseline;
-    margin-left: 15rem;
 }
 
 .btnSwal{
@@ -213,7 +212,7 @@
 .sincarrito {
     /* margin-left: auto;
     margin-right: auto; */
-    margin-left: 60%;
+    margin-left: 63%;
     margin-right: 53%;
     width: 30rem;
     margin-top: 5rem;

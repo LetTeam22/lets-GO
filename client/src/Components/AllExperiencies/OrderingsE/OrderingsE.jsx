@@ -21,7 +21,7 @@ const OrderingsE = () => {
     <section className={s.container}>
       <span className={s.spanOrderings}>Ordenar por nombre:</span>
       <select
-        value="name"
+        value={filterExperience.sort}
         onChange={handleNameSort}
         className={
           filterExperience.sort === 'nameASC' ||
@@ -30,7 +30,7 @@ const OrderingsE = () => {
         }
         id="nameSort"
       >
-        <option value=""></option>
+        <option value="masActual"></option>
         <option value="nameASC">A-Z</option>
         <option value="nameDESC">Z-A</option>
       </select>

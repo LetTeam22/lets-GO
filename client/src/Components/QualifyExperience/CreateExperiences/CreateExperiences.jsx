@@ -56,32 +56,36 @@ export const CreateExperiences = () => {
       ...input,
       [e.target.name]: e.target.value,
     }))
-
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setLoading(true);
-    const data = new FormData()
-    data.append('file',toUpload)
-    data.append('upload_preset','Experiences')
-    const res = toUpload? await axios.post(url, data):"";
-    const file = toUpload? await res.data:"";
-    if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, firstName: input.firstName === '' ? user.firstName : input.firstName }))
-    else await dispatch(postExperience({...input, imgExperience: undefined, firstName: input.firstName === '' ? user.firstName : input.firstName }))
-    setInput({
-      textExperience: '',
-      imgExperience: '',
-      bookingIdBooking: userBookings.idBooking,
-      firstName: ''
-    })
-    setLoading(false)
-    swal('Gracias por contarnos tu experiencia')
-    history.push('/allExperiencies')
+    try {
+      setLoading(true);
+      const data = new FormData()
+      data.append('file',toUpload)
+      data.append('upload_preset','Experiences')
+      const res = toUpload? await axios.post(url, data):"";
+      const file = toUpload? await res.data:"";
+      if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, firstName: input.firstName === '' ? user.firstName : input.firstName }))
+      else await dispatch(postExperience({...input, imgExperience: undefined, firstName: input.firstName === '' ? user.firstName : input.firstName }))
+      setInput({
+        textExperience: '',
+        imgExperience: '',
+        bookingIdBooking: userBookings.idBooking,
+        firstName: ''
+      })
+      setLoading(false)
+      swal('Gracias por contarnos tu experiencia')
+      history.push('/allExperiencies')
+    } catch (error) {
+      history.push('/allExperiencies')
+      swal('Tu experiencia no fue publicada porque no se reconoce el formato de la imagen adjunta. Por favor vuelve a intentarlo.')
+    }
   };
 
   const disabled = Object.keys(errors).length || !input.textExperience;
-  const alreadyQualified = allExperiences.find(e => e.bookingIdBooking === userBookings.idBooking);
+  const alreadyQualified = allExperiences.filter(e => e.status === 'active').find(e => e.bookingIdBooking === userBookings.idBooking);
   if (loading) return <Loading/>;
   
   return ( 
@@ -98,7 +102,14 @@ export const CreateExperiences = () => {
             { user.firstName !== null
               ? <span className={s.span}>{user.firstName}</span>
               : <div className={s.inputs}>
-                  <input type='text' name='firstName' placeholder='Name' value={input.firstName} onChange={handleChange} />
+                  <input 
+                    type='text'
+                    name='firstName'
+                    placeholder='Nombre'
+                    value={input.firstName}
+                    onChange={handleChange}
+                    maxLength= '30'
+                  />
                 </div>   
             }
           </div>
@@ -111,13 +122,20 @@ export const CreateExperiences = () => {
                 onChange={handleChange}
                 name='textExperience'
                 placeholder='Sumate a los leters que cuentan historias...'
-                />
+                maxLength= '500'
+                className={s.textAr}
+              />
             </div>
           </div>
           { errors.textExperience && <span className={s.errSpan}>{errors.textExperience}</span> }
           <div className={s.container}>
             <IoAttach color='#F9B621' size='2rem' />
-            <input id='fileToUpload' type='file' onChange={handleChange} name='file' style={{ color: 'white', fontFamily: 'Roboto' }} />
+            <input id='fileToUpload' 
+              type='file' 
+              onChange={handleChange} 
+              name='file' 
+              style={{ color: 'white', fontFamily: 'Roboto' }}
+              accept="image/*"/>
           </div>
           <div className={s.containerBtn} >
             <TbSend color='white' size='2rem' />
