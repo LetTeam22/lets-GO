@@ -32,7 +32,7 @@ export const adventures = [
     },
     {
         name: "Luna tucumana",
-        description: "Hay pocas maneras de conocer bien una ciudad como cuando la recorrés en bici. Let’s go te ofrece un paseo nocturno en familia o con amigos para conocer los sitios históricos más importantes de San Miguel de Tucumán y la movida de sus barrios más emblemáticos. El itinerario termina con una cena para probar una exquisitez de la gastronomía tucumana: las empanadas de carne cortada a cuchillo, únicas en el mundo.",
+        description: "Hay pocas maneras de conocer bien una ciudad como cuando la recorrés en bici. Let's go te ofrece un paseo nocturno en familia o con amigos para conocer los sitios históricos más importantes de San Miguel de Tucumán y la movida de sus barrios más emblemáticos. El itinerario termina con una cena para probar una exquisitez de la gastronomía tucumana: las empanadas de carne cortada a cuchillo, únicas en el mundo.",
         conditions: "Incluye cuatro bicicletas Let City o Let Folding a elección (según disponibilidad),  con su respectivo casco, candado y luces; recorrido guiado de dos horas y cena con bebidas sin alcohol.",
         image: "https://res.cloudinary.com/pflet/image/upload/v1662927342/Let/Adventures/Captura_de_Pantalla_2022-09-11_a_la_s_08.47.07_ll6tqz.png",
         publicImg: "Let/Adventures/Captura_de_Pantalla_2022-09-11_a_la_s_08.47.07_ll6tqz",

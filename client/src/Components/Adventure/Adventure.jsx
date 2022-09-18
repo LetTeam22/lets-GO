@@ -59,6 +59,9 @@ export const Adventure = () => {
       <div className={s.left} />
       <div className={s.right} />
       <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>
+      <div className={s.containerBtn}>
+        <button className={s.btn2} onClick={handleClick}>Agregar al carrito</button>
+      </div>
       {adventures.map(a => <CardAdventures
         key={a.idAdv}
         id={a.idAdv}
@@ -75,17 +78,7 @@ export const Adventure = () => {
       <div className={s.container}>
         <p className={s.precioTotal}>Total ${adicional()}</p>
       </div>
-      <div className={s.containerBtn}>
-        <button
-          className={s.btn2}
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          {" "}
-          Agregar al carrito{" "}
-        </button>
-      </div>
+
     </>
   )
 };
