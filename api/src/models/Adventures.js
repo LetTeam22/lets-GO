@@ -29,10 +29,13 @@ module.exports = (sequelize) => {
         },
         difficulty: {
             type: DataTypes.STRING,
-
         },
         date: {
             type: DataTypes.STRING,
         },
+        status: {
+          type: DataTypes.ENUM('active', 'deleted'),
+          defaultValue: 'active'
+        }
     })
 }
