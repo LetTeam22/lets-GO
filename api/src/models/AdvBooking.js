@@ -17,6 +17,6 @@ module.exports = (sequelize) => {
             defaultValue: 'confirmed'
         }
     }, {
-        timestams: false
+        timestamps: false
     })
 }
