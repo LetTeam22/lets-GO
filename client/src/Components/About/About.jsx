@@ -24,17 +24,17 @@ export const About = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Marzo de 2022. Los integrantes del equipo de desarrollo dábamos nuestros primeros pasos en el mundo del desarrollo web.
-                            Tímidamente durante las primeras clases y, sobretodo, en los standups, nos fuimos acercando, creando pequeños vinculos que florecieron luego en grandes amistades.
+                            Marzo de 2022. Dábamos nuestros primeros pasos en el mundo del desarrollo web.
+                            Tímidamente durante las primeras clases y, sobretodo, en los Standups, nos fuimos acercando, creando pequeños vinculos que florecieron en grandes amistades.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Con el paso de las clases, del tiempo y los desafíos que se presentaban día a día, fuimos forjando un férreo compañerismo, a base de horas y horas de trabajo. Cada uno en su casa, haciéndolo de manera individual, pero con un gran sentido de grupo y apoyo mutuo.
+                            Con el paso de las clases, del tiempo y los desafíos que se presentaban día a día, fuimos creando un gran compañerismo, a base de horas y horas de trabajo. Cada uno en su casa, haciéndolo de manera individual, pero con un gran sentido de grupo y apoyo mutuo.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Pasaron los durísimos checkpoints, M1, M2, M3, el proyecto individual y después nos encontramos con la última gran prueba: el famoso e intimidante proyecto grupal.
-                            Nos presentaron la idea de crear una pagina web para un e-commerce con un tematica a elección. A priori, algo muy simple.
+                            Pasaron los durísimos Checkpoints, M1, M2, M3, el Proyecto Individual y después nos encontramos con la última gran prueba: el famoso e intimidante Proyecto Grupal.
+                            La consigna era crear una pagina web para un e-commerce, tematica a elección. A priori, algo muy simple.
                         </p>
                         <p style={{ color: "black" }}>
                             Pero la realidad nos tenía una sorpresa...
@@ -97,46 +97,47 @@ export const About = () => {
                             Integrantes
                             <span></span>
                         </h3>
-                        <div className={s.grid}>
-                            <div>
+                        <div className={s.space}>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Nicolás Balbi</p>
                                 <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" >
                                     <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} alt="Nicolás Balbi" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/sole-dato-ok/" >
                                     <p style={{ color: "black" }}>Soledad Dato</p>
                                     <img src="https://avatars.githubusercontent.com/u/89033815?v=4" className={s.circleImg} alt="Soledad Dato" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/felipe-jure/">
                                     <p style={{ color: "black" }}>Felipe Jure</p>
                                     <img src="https://avatars.githubusercontent.com/u/94187041?v=4" className={s.circleImg} alt="Felipe Jure" />
 
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" >
                                     <p style={{ color: "black" }}>Lucía Meyer</p>
                                     <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} alt="Lucía Meyer" />
                                 </a>
                             </div>
-                            <div>
-
+                        </div>
+                        <div className={s.space1}>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/leandro-pappalardo/" >
                                     <p style={{ color: "black" }}>Leandro Pappalardo</p>
                                     <img src="https://avatars.githubusercontent.com/u/94720565?v=4" className={s.circleImg} alt="Leandro Pappalardo" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Juan Martín Silva</p>
                                 <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" >
                                     <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} alt="Juan Martín Silva" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Máximo Tovar</p>
                                 <a href="https://www.linkedin.com/in/mrtovar10/">
                                     <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} alt="Máximo Tovar" />
