@@ -9,6 +9,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
+    z-index: 5;
 }
 
 .services, .guia, .company {

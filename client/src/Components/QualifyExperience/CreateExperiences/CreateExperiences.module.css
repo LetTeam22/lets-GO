@@ -143,3 +143,16 @@ body {
     font-size: 1rem;
     padding-top: .5rem;
 }
+
+.textAr {
+    text-decoration: none;
+    border: none;
+    overflow-y: scroll;
+    resize: none;
+    height: 9rem;
+    width: 100%;
+    border-radius: .9rem;
+    outline: none;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
