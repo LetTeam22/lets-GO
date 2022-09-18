@@ -10,7 +10,6 @@
     width: 8rem;
     height: 1.3rem;
     border: none;
-    /* background: #a3a3a35b; */
     border-radius: .4rem;
     cursor: pointer;
     list-style: none;
@@ -21,6 +20,6 @@
 
 .selContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
 }

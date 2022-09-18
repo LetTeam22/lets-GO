@@ -61,7 +61,11 @@ export const Adventure = () => {
       <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>
       <div className={s.containerBtn}>
         <button className={s.btn2} onClick={handleClick}>Agregar al carrito</button>
+        <p className={s.precioTotal}>Total ${adicional()}</p>
       </div>
+      {/* <div className={s.container}>
+        
+      </div> */}
       {adventures.map(a => <CardAdventures
         key={a.idAdv}
         id={a.idAdv}
@@ -75,10 +79,6 @@ export const Adventure = () => {
         handleCheck={handleCheck}
       />
       )}
-      <div className={s.container}>
-        <p className={s.precioTotal}>Total ${adicional()}</p>
-      </div>
-
     </>
   )
 };

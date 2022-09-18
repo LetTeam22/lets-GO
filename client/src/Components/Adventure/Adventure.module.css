@@ -42,8 +42,8 @@
 .precioTotal{
     color: #484848;
     font-family: 'Roboto';
-    margin-top: 1rem;
     font-weight: 600;
+    margin-left: 1rem;
 }
 
 .containerAdic {
@@ -55,6 +55,7 @@
     position: sticky;
     top: 6rem;
     display: flex;
+    align-items: center;
     justify-content: center;
     background-color: white;
     padding-bottom: 1rem;
