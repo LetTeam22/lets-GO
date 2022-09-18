@@ -13,13 +13,14 @@
     transition: background-color .3s linear;
 }
 
-input {
+.text {
     border: none;
     text-decoration: none;
     background-color: transparent;
-    /* color: #FFFFFF; */
     font-size: 0.938rem;
     outline: none;
+    font-family: 'Roboto';
+    color:white;
 }
 
 .lupa {
@@ -32,11 +33,6 @@ input {
     width: fit-content;
     border: none;
     cursor: pointer;
-}
-
-.text {
-    font-family: 'Roboto';
-    color:white;
 }
 
 @media (max-width:1300px) {
