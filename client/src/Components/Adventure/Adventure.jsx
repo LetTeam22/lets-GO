@@ -13,7 +13,8 @@ export const Adventure = () => {
     totalAdv: 0
   })
   const history = useHistory()
-  const adventures = useSelector((state) => state.allAdventures)
+  let adventures = useSelector((state) => state.allAdventures)
+  const bookedAdventures = JSON.parse(localStorage.getItem("adventure") || "{}");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,8 +23,8 @@ export const Adventure = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
-    const bookedAdventures = JSON.parse(localStorage.getItem("adventure") || "[]");
-    localStorage.setItem("adventure", JSON.stringify([...bookedAdventures, input]));
+    const adventureLS = bookedAdventures.hasOwnProperty('adv') ? {adv: [...bookedAdventures.adv, ...input.adv], totalAdv: bookedAdventures.totalAdv + input.totalAdv} : input
+    localStorage.setItem("adventure", JSON.stringify(adventureLS));
     dispatch(addAdventure(input));
     setInput({
       adv: [],
@@ -47,11 +48,14 @@ export const Adventure = () => {
   const adicional = () => {
     let adic = 0
     input.adv.forEach(ad => {
-      adic += Number(adventures[(ad - 1)].price)
+      adic += Number(adventures.find(a => a.idAdv === ad).price)
     })
     input.totalAdv = adic
     return input.totalAdv;
   };
+
+  // filtro aventuras ya agregadas al carrito
+  if (bookedAdventures.hasOwnProperty('adv') && bookedAdventures.adv.length) adventures = adventures.filter(a => !bookedAdventures.adv.includes(a.idAdv))
 
   return (
     <>
