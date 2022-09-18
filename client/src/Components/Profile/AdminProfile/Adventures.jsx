@@ -4,43 +4,54 @@ import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
-import { getAccesories } from "../../../Redux/actions";
+import { getAllAdventures } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
-import s from "./Accesories.module.css";
+import s from "./Adventures.module.css";
 
 
-export default function Accesories() {
-  const accesories = useSelector(state => state.accesories)
+export default function Adventures() {
+  const adventures = useSelector(state => state.allAdventures)
   const history = useHistory()
   const dispatch = useDispatch()
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null)
 
   useEffect(() => {
-    dispatch(getAccesories())
+    dispatch(getAllAdventures())
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rowsAccs =useMemo(() => {
-    return accesories?.map(accesorie => {
+    return adventures?.map(adventure => {
       return {
-        id: accesorie.idAcc,
-        name: accesorie.name,
-        price: accesorie.price,
-        status: accesorie.status
+        id: adventure.idAdv,
+        name: adventure.name,
+        price: adventure.price,
+        description: adventure.description,
+        conditions: adventure.conditions,
+        image: adventure.image,
+        difficulty: adventure.difficulty,
+        date: adventure.date,
+        status: adventure.status
       };
     });
-  }, [accesories]) 
+  }, [adventures]) 
 
   const columnsAccs = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 120, editable: true },
-      { field: "price", headerName: "Precio", width: 80, type: "number", editable: true },
-      { field: "status", headerName: "Estado", width: 100, type: "singleSelect",
+      { field: "name", headerName: "Nombre", width: 150, editable: true },
+      { field: "description", headerName: "Descripcion", width: 150, editable: true },
+      { field: "conditions", headerName: "Condicion", width: 150, editable: true },
+      { field: "image", headerName: "Imagen", width: 120, editable: true },
+      { field: "difficulty", headerName: "Dificultad", width: 100, type: "singleSelect",
+      valueOptions: ["baja", "media", "alta"], editable: true },
+      { field: "date", headerName: "Fechas", width: 150, editable: true },
+      { field: "price", headerName: "Precio", width: 100, type: "number", editable: true },
+      { field: "status", headerName: "Estado", width: 80, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },
-      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
+      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'adventures'}} /> }
     ];
   }, [rowId]) 
 
@@ -50,7 +61,7 @@ export default function Accesories() {
 
 
   return (
-    <div className={s.accesories}>
+    <div className={s.adventures}>
       <div className={s.container}>
       <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
