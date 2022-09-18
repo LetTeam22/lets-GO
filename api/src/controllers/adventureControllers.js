@@ -19,7 +19,7 @@ const postAdventure = async (req, res, next) => {
     if (!name) return res.sendStatus(400)
 
     let adv = { name, description, conditions, image, price, difficulty, date, status }
-    let advCreated = await Adventures.create(acc)
+    let advCreated = await Adventures.create(adv)
     
     res.send(advCreated)
 }

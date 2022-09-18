@@ -16,7 +16,7 @@
         "image": "https://res.cloudinary.com/pflet/image/upload/v1662927344/Let/Adventures/Ciclistas_tafi_ca0hvt.jpg",
         "publicImg": "Let/Adventures/Ciclistas_tafi_ca0hvt",
         "price": "15000",
-        "difficulty": "media-alta",
+        "difficulty": "media",
         "date": "Todos los viernes"
     },
     {
@@ -26,7 +26,7 @@
         "image": "https://res.cloudinary.com/pflet/image/upload/v1662927402/Let/Adventures/parapente_cu7xgs.jpg",
         "publicImg": "Let/Adventures/parapente_cu7xgs",
         "price": "3500",
-        "difficulty": "baja-media",
+        "difficulty": "media",
         "date": "Martes, jueves y sábados"
     },
     {

@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING
         },
         difficulty: {
-            type: DataTypes.STRING,
+            type: DataTypes.ENUM('baja', 'media', 'alta'),
         },
         date: {
             type: DataTypes.STRING,

@@ -8,6 +8,7 @@ import {
   updateExperience,
   updateUser,
   updateAccesorie,
+  updateAdventure,
 } from "../../../Redux/actions";
 import swal from "sweetalert";
 
@@ -226,6 +227,51 @@ export default function Action({ params, rowId, setRowId, origin }) {
         const result = dispatch(
           updateAccesorie({ idAcc: id, status, price, name })
         );
+        if (result) {
+          setSuccess(true);
+          setRowId(null);
+        }
+      }
+    }
+    if (origin === "adventures") {
+      const { id, name, description, image, date, price, status } = params.row;
+      if (status === "deleted") {
+        swal({
+          title: "Estas seguro?",
+          text: "Estas eliminando esta aventura!",
+          dangerMode: true,
+          icon: "warning",
+          buttons: {
+            cancel: {
+              text: "cancelar",
+              value: null,
+              visible: true,
+              closeModal: true,
+            },
+            confirm: {
+              text: "si",
+              value: true,
+              visible: true,
+              closeModal: true,
+            },
+          },
+        }).then((value) => {
+          if (value) {
+            swal({
+              title: "Felicidades!",
+              text: "Eliminaste la aventura!",
+              icon: "success",
+              button: false,
+            });
+            const result = dispatch(updateAdventure({ idAdv: id, name, description, image, date, price, status}));
+            if (result) {
+              setSuccess(true);
+              setRowId(null);
+            }
+          }
+        });
+      } else {
+        const result = dispatch(updateAdventure({ idAdv: id, name, description, image, date, price, status }));
         if (result) {
           setSuccess(true);
           setRowId(null);
