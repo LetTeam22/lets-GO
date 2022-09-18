@@ -116,17 +116,9 @@ export const ShoppingCart = () => {
       userId: userLogged?.idUser,
       bikeIds: postbikeIds,
       AccIds: ids,
-    }
-  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
-
-  //Armo objeto que se envia al back de aventure bookings
-
-  let postedAdventures = useMemo(() => {
-    return {
-      userId: userLogged?.idUser,
       adventureNames: cartAdventures.map(ad => ad.name)
     }
-  }, [userLogged?.idUser, cartAdventures])
+  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds, cartAdventures]);
 
 
   const totalDias = (from, to) => {
@@ -208,7 +200,7 @@ export const ShoppingCart = () => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify({adv: Adventures.adv.filter(ad => ad !== id), totalAdv: Adventures.totalAdv - price}))
+    localStorage.setItem("adventure", JSON.stringify({ adv: Adventures.adv.filter(ad => ad !== id), totalAdv: Adventures.totalAdv - price }))
   }
 
   useEffect(() => {
@@ -231,8 +223,7 @@ export const ShoppingCart = () => {
 
   useEffect(() => {
     localStorage.setItem('postedBooking', JSON.stringify({ ...postedBooking, totalPrice: total }))
-    localStorage.setItem('postedAdventures', JSON.stringify(postedAdventures))
-  }, [total, postedBooking, postedAdventures])
+  }, [total, postedBooking])
 
   useEffect(() => {
     if (email && !isNaN(total)) {

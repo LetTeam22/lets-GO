@@ -1,4 +1,4 @@
-const { User, Bike, Booking, Accesories, Experience } = require('../db');
+const { User, Bike, Booking, Accesories, Experience, Adventures } = require('../db');
 const { Op } = require("sequelize");
 const { sortBookings } = require('./helpers');
 
@@ -19,6 +19,13 @@ async function getAllBookings(req, res, next) {
         },
         {
           model: Accesories,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        },
+        {
+          model: Adventures,
           attributes: ['name'],
           through: {
             attributes: []
@@ -50,6 +57,13 @@ async function getBookingsByUserId(req, res, next) {
         },
         {
           model: Accesories,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        },
+        {
+          model: Adventures,
           attributes: ['name'],
           through: {
             attributes: []
@@ -91,6 +105,13 @@ async function getBookingsByUserEmail(req, res, next) {
           attributes: ['email'],
           where: { email: email }
         },
+        {
+          model: Adventures,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        }
       ],
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
@@ -125,8 +146,8 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
-  if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
+  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice, adventureNames = [] } = req.body
+  if (!startDate || !endDate || !userId || !totalPrice) return res.sendStatus(400)
   try {
     let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
     let bookingCreated = await Booking.create(booking)
@@ -140,8 +161,14 @@ async function postBooking(req, res, next) {
         idAcc: AccIds
       }
     })
+    let adventuresForBooking = await Adventures.findAll({
+      where: {
+        name: adventureNames
+      }
+    })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
+    await bookingCreated.addAdventures(adventuresForBooking)
     res.send('The booking was created successfully')
   } catch (error) {
     next(error)
