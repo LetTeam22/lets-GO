@@ -10,6 +10,7 @@
 
 .searchBar:hover {
     background-color: #ffffff0e;
+    transition: background-color .3s linear;
 }
 
 input {

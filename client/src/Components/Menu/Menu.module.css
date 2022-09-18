@@ -53,7 +53,9 @@
     background: #F9B621;
     padding: .8rem;
     border-radius: .2rem;
+    transition: all .5s linear;
 }
+
 .span::after{
     content: '';
     display: block;
