@@ -172,7 +172,6 @@ export const ShoppingCart = () => {
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems) + subTotalAdv;
 
   const total = Math.floor(subTotal * 1.02);
-  console.log(total)
 
   let preference = {
     items: [{
