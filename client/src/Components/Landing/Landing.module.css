@@ -21,6 +21,7 @@
     left: 0;
     right: 0;
     z-index: 0;
+    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -29,10 +30,6 @@
 }
 
 @keyframes changeImage {
-    0% {
-        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
-    }
-
     20% {
         background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686247/Let/image/fondos/slice2_pw2u18.png');
     }
