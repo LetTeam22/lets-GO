@@ -53,7 +53,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    isAuthenticated && socket?.emit('newUserOnline', user)
+    isAuthenticated && user && socket?.emit('newUserOnline', user)
   }, [socket, user, isAuthenticated]);
 
   return (

@@ -53,7 +53,7 @@
     background: #F9B621;
     padding: .8rem;
     border-radius: .2rem;
-    transition: all .5s linear;
+    transition: all .5s ease-out;
 }
 
 .span::after{
@@ -132,7 +132,7 @@ hr {
     justify-content: center;
     background-color: red;
     bottom: 0.8rem;
-    left: 2.2rem;
+    left: 1rem;
     font-size: 0.8rem;
 }
 .hidde{

@@ -22,12 +22,13 @@ export default function Checkout() {
     }
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
-
+   
+    async function Maxi() {
+        await dispatch(setParameters("resetAllPlusDates"));
+        await dispatch(postBookings(booking))
+    };
+    
     useEffect(() => {
-        async function Maxi() {
-            await dispatch(setParameters("resetAllPlusDates"));
-            await dispatch(postBookings(booking))
-        };
         Maxi();
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
