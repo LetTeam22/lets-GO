@@ -1,14 +1,15 @@
-const { Adventures, advBookings } = require('../db')
+const { Adventures, AdvBookings, User } = require('../db')
 
 // Get all adventures
 const getAllAdventures = async (req, res, next) => {
     try {
-        const allAdventures = await Adventures.findAll()
+        let allAdventures = await Adventures.findAll()
         res.send(allAdventures)
     } catch (error) {
         next(error);
     }
 }
+
 
 // Post
 const postAdventure = async (req, res, next) => {

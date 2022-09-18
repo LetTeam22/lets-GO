@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo, getAllAdventures } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -26,6 +26,7 @@ export const ShoppingCart = () => {
   const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
   const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
@@ -89,6 +90,7 @@ export const ShoppingCart = () => {
   });
 
 
+
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
   if (strBikeIds !== date.bikeIds) {
@@ -117,6 +119,16 @@ export const ShoppingCart = () => {
     }
   }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
 
+  //Armo objeto que se envia al back de aventure bookings
+
+  let postedAdventures = useMemo(() => {
+    return {
+      userId: userLogged?.idUser,
+      adventureNames: cartAdventures.map(ad => ad.name)
+    }
+  }, [userLogged?.idUser, cartAdventures])
+
+
   const totalDias = (from, to) => {
     const date1 = new Date(from);
     const date2 = new Date(to);
@@ -136,6 +148,7 @@ export const ShoppingCart = () => {
       subTotalAdv = acc + Number(cur.price)
     )
   }, 0)
+
 
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
@@ -159,6 +172,7 @@ export const ShoppingCart = () => {
   const subTotal = parseInt(subTotalBike) + parseInt(subTotalItems) + subTotalAdv;
 
   const total = Math.floor(subTotal * 1.02);
+  console.log(total)
 
   let preference = {
     items: [{
@@ -202,6 +216,7 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
+    dispatch(getAllAdventures())
     dispatch(
       setParameters({
         ...parameters,
@@ -216,7 +231,8 @@ export const ShoppingCart = () => {
 
   useEffect(() => {
     localStorage.setItem('postedBooking', JSON.stringify({ ...postedBooking, totalPrice: total }))
-  }, [total, postedBooking])
+    localStorage.setItem('postedAdventures', JSON.stringify(postedAdventures))
+  }, [total, postedBooking, postedAdventures])
 
   useEffect(() => {
     if (email && !isNaN(total)) {
@@ -265,20 +281,20 @@ export const ShoppingCart = () => {
                 {
                   cartBikes.length && accs.length
 
-                  ? accs.map(acc => {
-                    if(acc.cantidad > 0) {
-                      return (
-                        <TableRow key={acc.id} >
-                          <TableCell>{acc.name}</TableCell>
-                          <TableCell align="center">{acc.cantidad}</TableCell>
-                          <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
-                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
-                        </TableRow>
-                      )
-                    }
-                    return null
-                  })
-                  : <></> 
+                    ? accs.map(acc => {
+                      if (acc.cantidad > 0) {
+                        return (
+                          <TableRow key={acc.id} >
+                            <TableCell>{acc.name}</TableCell>
+                            <TableCell align="center">{acc.cantidad}</TableCell>
+                            <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
+                            <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
+                          </TableRow>
+                        )
+                      }
+                      return null
+                    })
+                    : <></>
                 }
                 {
                   cartAdventures.length

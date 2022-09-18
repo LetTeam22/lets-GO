@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setParameters, postBookings } from "../../Redux/actions";
+import { setParameters, postBookings, postAdvBookings } from "../../Redux/actions";
 import emailjs from '@emailjs/browser';
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -27,6 +27,7 @@ export default function Checkout() {
         async function Maxi() {
             await dispatch(setParameters("resetAllPlusDates"));
             await dispatch(postBookings(booking))
+            await dispatch(postAdvBookings())
         };
         Maxi();
         window.scrollTo(0, 0);
