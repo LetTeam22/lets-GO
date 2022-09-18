@@ -29,7 +29,7 @@ const getRenderedBikes = async (req, res, next) => {
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
-    const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
+    const searchUp = search ? search[0].toUpperCase() + search.substring(1).toLowerCase() : ''
     const searchNum = isNaN(Number(search)) ? -1 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
