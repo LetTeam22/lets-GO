@@ -23,7 +23,7 @@ export const Menu = ({socket}) => {
   const experience = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/experiencias1_mhaxqa.png'
   const accesorie = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/accesorios1_tt68un.png';
   const userDB = useSelector(state => state.user);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
 
@@ -61,6 +61,8 @@ export const Menu = ({socket}) => {
       }])
     })
   }, [socket]);
+
+  if(isLoading) return null
 
   let hash = {}
   const notUnicas = notifications.filter(not => hash[not.type] ? false : hash[not.type] = true);
@@ -123,7 +125,8 @@ export const Menu = ({socket}) => {
         </Link>
         <div className={s.containerBell}>
           <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
-          { !!notUnicas.length && <div className={s.counter}>{notUnicas.length}</div> }
+          <div className={notifications.length? s.counter : s.hidde}>{notifications.length}</div>
+          { !!notUnicas.length && <div className={notUnicas.length? s.counter : s.hidde}>{notUnicas.length}</div> }
           {
             open && (
                 <div className={s.notifications}>
@@ -132,6 +135,7 @@ export const Menu = ({socket}) => {
                       if(n.hasOwnProperty('senderName')) {
                         return (
                             <>
+                              <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                               <Link to='/allExperiencies'>
                                 <div className={s.notification}>
                                   <ImHeart size='1rem' color='#F9B621' />
@@ -144,6 +148,7 @@ export const Menu = ({socket}) => {
                       } else if(n.hasOwnProperty('type') && n.type === 'Login') {
                         return (
                           <>
+                            <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                             <div className={s.notification}>
                               <MdCheck size='1.5rem' color='#F9B621' />
                               <span className={s.spanNotification}>{n.content}</span>
@@ -154,6 +159,7 @@ export const Menu = ({socket}) => {
                       } else if(n.hasOwnProperty('type') && n.type === 'shoppingCart') {
                         return (
                           <>
+                                <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                             <Link to='/cart'>
                               <div className={s.notification}>
                                 <BsBook size='1.5rem' color='#F9B621' />
@@ -166,6 +172,7 @@ export const Menu = ({socket}) => {
                       } else if(n.hasOwnProperty('type') && n.type === 'newDiscount') {
                         return (
                           <>
+                            <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                             <Link to='/home'>
                               <div className={s.notification}>
                                 <AiOutlinePercentage size='1.5rem' color='#F9B621' />
