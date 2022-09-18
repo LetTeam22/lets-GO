@@ -88,6 +88,7 @@
 .searchBtn:hover {
     color: #d89c1c;
     background: #FFFFFF;
+    transition: all .3s linear;
 }
 
 .flechas {

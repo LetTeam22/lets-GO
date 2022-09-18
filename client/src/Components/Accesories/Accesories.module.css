@@ -70,6 +70,7 @@
 .btn:hover {
     background-color: #F9B621;
     color: #F2F2F2;
+    transition: all .3s linear;
 }
 
 @media (max-width:1140px) {
