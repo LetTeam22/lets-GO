@@ -7,9 +7,16 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             primaryKey: true,
         },
-        adventuresNames: {
-            type: DataTypes.ENUM("Trasmontaña", "Escapada a Tafí del Valle", "Circuito de las yungas", "Luna tucumana"),
+        userId: {
+            type: DataTypes.INTEGER,
             allowNull: false
+        },
+        status: {
+            type: DataTypes.ENUM('confirmed', 'cancelled'),
+            allowNull: false,
+            defaultValue: 'confirmed'
         }
+    }, {
+        timestams: false
     })
 }
