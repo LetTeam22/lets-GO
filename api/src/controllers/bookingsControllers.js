@@ -8,7 +8,7 @@ async function getAllBookings(req, res, next) {
       include: [
         {
           model: User,
-          attributes: ['firstName'],
+          attributes: ['email', 'firstName'],
         },
         {
           model: Bike,

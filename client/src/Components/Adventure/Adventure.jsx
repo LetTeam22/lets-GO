@@ -70,7 +70,7 @@ export const Adventure = () => {
       {/* <div className={s.container}>
         
       </div> */}
-      {adventures.map(a => <CardAdventures
+      {adventures.filter(a => a.status === 'active').map(a => <CardAdventures
         key={a.idAdv}
         id={a.idAdv}
         name={a.name}

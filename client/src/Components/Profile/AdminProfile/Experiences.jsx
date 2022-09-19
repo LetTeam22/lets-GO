@@ -25,6 +25,7 @@ export default function Experiences() {
       return {
         id: exp.idExperience,
         booking: exp.bookingIdBooking,
+        email: exp.booking.user.email,
         description: exp.textExperience,
         status: exp.status,
       };
@@ -35,6 +36,7 @@ export default function Experiences() {
     return [
       { field: "id", headerName: "ID", width: 50 },
       { field: "booking", headerName: "ID de Reserva", width: 100 },
+      { field: "email", headerName: "Email de User", width: 220 },
       { field: "description", headerName: "Descripción", width: 600 },
       {
         field: "status",

@@ -234,7 +234,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
       }
     }
     if (origin === "adventures") {
-      const { id, name, description, image, date, price, status } = params.row;
+      const { id, name, description, conditions, image, date, price, difficulty, status } = params.row;
       if (status === "deleted") {
         swal({
           title: "Estas seguro?",
@@ -263,7 +263,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
               icon: "success",
               button: false,
             });
-            const result = dispatch(updateAdventure({ idAdv: id, name, description, image, date, price, status}));
+            const result = dispatch(updateAdventure({ idAdv: id, name, description, conditions, image, date, price, difficulty, status}));
             if (result) {
               setSuccess(true);
               setRowId(null);
@@ -271,7 +271,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
           }
         });
       } else {
-        const result = dispatch(updateAdventure({ idAdv: id, name, description, image, date, price, status }));
+        const result = dispatch(updateAdventure({ idAdv: id, name, description, conditions, image, date, price, difficulty, status }));
         if (result) {
           setSuccess(true);
           setRowId(null);
