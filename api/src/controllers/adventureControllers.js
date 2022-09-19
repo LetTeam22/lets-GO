@@ -14,12 +14,12 @@ const getAllAdventures = async (req, res, next) => {
 // Post
 const postAdventure = async (req, res, next) => {
 
-    const { name, description, conditions, image, price, difficulty, date, status } = req.body
+    let { name, description, conditions, image, price, difficulty, date } = req.body
 
-    if (!name) return res.sendStatus(400)
-
-    let adv = { name, description, conditions, image, price, difficulty, date, status }
-    let advCreated = await Adventures.create(adv)
+    if (!name || !description || !conditions || !image || !price || !date) return res.sendStatus(400)
+    date = date.join(', ')
+    const adv = { name, description, conditions, image, price, difficulty, date }
+    const advCreated = await Adventures.create(adv)
 
     res.send(advCreated)
 }

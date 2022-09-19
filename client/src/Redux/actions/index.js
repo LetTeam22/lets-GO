@@ -9,7 +9,7 @@ import {
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
-    GET_ALL_ADVENTURES, UPDATE_ADVENTURE
+    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -327,3 +327,11 @@ export const getAllAdventures = () => {
             .then(res => dispatch({ type: GET_ALL_ADVENTURES, payload: res.data }))
     }
 }
+
+export const createAdventure = (adventure) => {
+    return async (dispatch) => {
+        axios.post('/adventures/create', adventure)
+            .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
+    }
+}
+

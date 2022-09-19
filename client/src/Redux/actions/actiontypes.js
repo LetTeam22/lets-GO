@@ -42,3 +42,4 @@ export const GET_ALL_LIKES = 'GET_ALL_LIKES';
 export const POST_NEW_LIKE = 'POST_NEW_LIKE';
 export const DELETE_LIKE = 'DELETE_LIKE';
 export const GET_ALL_ADVENTURES = 'GET_ALL_ADVENTURES';
+export const CREATE_ADVENTURE = 'CREATE_ADVENTURE';
