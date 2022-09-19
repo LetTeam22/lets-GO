@@ -96,6 +96,36 @@
     .text1{
         width: 90%;
     }
+
+    .video {
+        width: 50%;
+    }
+
+    .btn {
+        width: 10%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .video {
+        width: 60%;
+    }
+}
+
+@media (max-width: 850px) {
+    .video {
+        width: 70%;
+    }
+}
+
+@media (max-width: 750px) {
+    .video {
+        width: 80%;
+    }
+
+    .btn {
+        width: 15%;
+    }
 }
 
 @media (max-width:600px) {
@@ -105,5 +135,9 @@
     }
     .text1{
         width: 100%;
+    }
+
+    .video {
+        width: 90%;
     }
 }
