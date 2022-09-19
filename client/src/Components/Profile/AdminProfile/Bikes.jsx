@@ -72,7 +72,7 @@ export default function Bikes({socket}) {
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
-      { field: "rating", headerName: "Rating", width: 70, editable: true },
+      { field: "rating", headerName: "Rating", width: 70 },
       {
         field: "price",
         headerName: "Precio",
