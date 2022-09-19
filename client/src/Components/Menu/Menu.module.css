@@ -34,9 +34,6 @@
     background-color: #333333;
     display:none
 }
-/* .responsiveIcons{
-    !important;
-} */
 
 .span {
     font-family: 'Roboto';
@@ -46,14 +43,14 @@
     line-height: 1.75rem;
     padding: .8rem;
     position: relative;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .span:hover {
     color: #ffffff;
-    background: #F9B621;
+    background-color: #F9B621;
     padding: .8rem;
     border-radius: .2rem;
-    transition: all .5s ease-out;
 }
 
 .span::after{
