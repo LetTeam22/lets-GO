@@ -98,7 +98,7 @@
     font-size: 1rem;
     font-family: 'Roboto';
     font-style: normal;
-    border: 2px solid #D6802B;
+    border: 2px solid #F9B621;
     background-color: transparent;
     border-radius: 0.3rem;
     cursor: pointer;
@@ -125,6 +125,7 @@
 .reserveBtn:hover, .btn:hover, .returnBtn:hover {
     background-color: #F9B621;
     color: white;
+    transition: all .5s linear;
 }
 
 .titleEmpty {
@@ -283,4 +284,14 @@
     display: flex;
     justify-content: center;
     margin-top: 3.8rem;
+}
+
+.fechasCont {
+    display: flex;
+}
+
+.spanDias {
+    padding-top: 2.5rem;
+    margin-left: 6.7rem;
+    cursor: auto;
 }

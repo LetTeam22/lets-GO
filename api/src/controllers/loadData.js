@@ -21,7 +21,7 @@ async function loadAllModelsInDB() {
   console.log('Bikes loaded ok to DB');
 
   await Adventures.bulkCreate(jsonAdvs);
-  console.log('Adventrures loaded ok to DB')
+  console.log('Adventures loaded ok to DB')
 
   await Promise.all(
     jsonBooking.map(booking => {

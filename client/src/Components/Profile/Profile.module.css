@@ -21,6 +21,7 @@
 
 .containerImg :hover{
     box-shadow: rgb(75, 75, 75) 0px 0px .5rem;
+    transition: all .5s linear;
 }
 
 .infoUs {
@@ -162,6 +163,7 @@
     color: #F9B621;
     background:rgb(255, 255, 255);
     box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    transition: all .5s linear;
 }
 
 .hola {
@@ -188,6 +190,7 @@
     color: #F9B621;
     background:rgb(255, 255, 255);
     box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    transition: all .5s linear;
 }
 
 .span {
@@ -320,6 +323,7 @@
 .btnCancel:hover {
     background-color: red;
     color: white;
+    transition: all .5s linear;
 }
 
 /* /////////////////////////////////////////////////////// */
@@ -394,9 +398,11 @@
 .btnCanc:hover {
     color:#ffffff;
     background: #E81C24;
+    transition: all .5s linear;
 }
 
 .btnBack:hover {
     background: #d5d5d5;
     color: #393939;
+    transition: all .5s linear;
 } 

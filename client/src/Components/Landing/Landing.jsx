@@ -5,7 +5,7 @@ import { Destacados } from "../Destacados/Destacados";
 import { Accesories } from "../Accesories/Accesories";
 import { Experiencies } from "../Experiencies/Experiencies";
 import { useDispatch } from "react-redux";
-import { getFamousBikes } from "../../Redux/actions";
+import { getAllExperiences, getFamousBikes } from "../../Redux/actions";
 import { QuienesSomos } from "./QuienesSomos/QuienesSomos";
 import Chatbot from "../ChatBot/ChatBot";
 
@@ -33,6 +33,7 @@ export const Landing = ({socket}) => {
 
   useEffect(() => {
     dispatch(getFamousBikes());
+    dispatch(getAllExperiences());
   }, [dispatch])
 
   return (

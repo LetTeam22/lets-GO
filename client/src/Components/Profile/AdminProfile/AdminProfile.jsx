@@ -38,6 +38,11 @@ export const AdminProfile = () => {
     history.push("/adminprofile/experiences");
   };
 
+  const seeAdventures = () => {
+    history.push("/adminprofile/adventures");
+  };
+  
+
   const seeAccesories = () => {
     history.push("/adminprofile/accesories");
   };
@@ -106,6 +111,17 @@ export const AdminProfile = () => {
             onClick={seeExperiences}
           >
             Ver Experiencias
+          </Button>
+        </div>
+        <div>
+          <h2 className={s.h2}>Aventuras</h2>
+          <Button
+            variant="contained"
+            color="success"
+            className={s.btnBook}
+            onClick={seeAdventures}
+          >
+            Ver Aventuras
           </Button>
         </div>
         <div>

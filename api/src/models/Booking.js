@@ -10,11 +10,9 @@ module.exports = (sequelize) => {
     },
     startDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
     },
     endDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
     },
     totalPrice: {
       type:DataTypes.INTEGER,

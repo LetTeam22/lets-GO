@@ -24,21 +24,20 @@ export const About = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Marzo de 2022. Los integrantes del equipo de desarrollo dabamos nuestros primeros pasos en el mundo del desarrollo web.
-                            Timidamente durante las primeras clases, y sobretodo en los standups, nos fuimos acercando, creando pequeños vinculos que florecieron luego en grandes amistades.
+                            Marzo de 2022. Dábamos nuestros primeros pasos en el mundo del desarrollo web.
+                            Tímidamente durante las primeras clases y, sobretodo, en los Standups, nos fuimos acercando, creando pequeños vinculos que florecieron en grandes amistades.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Con el paso de las clases, el tiempo y los desafios que se prestaban dia a dia, fue forjando un ferreo compañerismo, a base de horas y horas de trabajo, cada uno en su casa, individual, pero con un gran sentido de grupo, de apoyo mutuo.
+                            Con el paso de las clases, del tiempo y los desafíos que se presentaban día a día, fuimos creando un gran compañerismo, a base de horas y horas de trabajo. Cada uno en su casa, haciéndolo de manera individual, pero con un gran sentido de grupo y apoyo mutuo.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Pasaron los durisimos checkpoint, M1, M2, M3, proyecto individual y nos encontramos con el ultima gran prueba. El famoso e intimidante proyecto grupal.
-                            Nos presentaron una idea, crear una pagina web para un e-commerce con un tematica a elección.
-                            A priori, algo muy simple.
+                            Pasaron los durísimos Checkpoints, M1, M2, M3, el Proyecto Individual y después nos encontramos con la última gran prueba: el famoso e intimidante Proyecto Grupal.
+                            La consigna era crear una pagina web para un e-commerce, tematica a elección. A priori, algo muy simple.
                         </p>
                         <p style={{ color: "black" }}>
-                            Pero la realidad nos tenia una sorpresa...
+                            Pero la realidad nos tenía una sorpresa...
                         </p>
 
                         <h3 className={s.heading}>
@@ -47,14 +46,14 @@ export const About = () => {
                         </h3>
 
                         <p style={{ color: "black" }}>
-                            Así, de la fusion de diversas ideas y misiones, nace let's GO. Ofrecemos un medio de transporte agil, que aporte a nuestra salud fisica (y por queé no mental) y al cuidado del medio ambiente, aliviana el transito vehicular y hace que tu viaje sea mas que solo un viaje, sea toda una experiencia.
+                            Así, de la fusion de diversas ideas y misiones, nace let's GO. Ofrecemos un medio de transporte ágil, que aporte a nuestra salud física (y por qué no mental) y al cuidado del medio ambiente. Aliviana el tránsito vehicular y hace que tu viaje sea no solo un viaje, sino toda una experiencia.
                         </p>
                         <p style={{ color: "black" }}>
-                            Nos ubicamos en la provincia de Tucuman, el jardín de la Republica, mas precisamente en su capital, la cual por su orografía nos brinda un excelente emplazamiento para disfrutar de tu Let preferida en diferentes situaciones, terrenos, y exigencias.
+                            Nos ubicamos en la provincia de Tucumán, el Jardín de la República, más precisamente en su capital. Esta ciudad por su orografía nos brinda un excelente emplazamiento para disfrutar de tu Let preferida en diferentes situaciones, terrenos y exigencias.
                         </p>
 
                         <p style={{ color: "black" }}>
-                            Por ello te ofrecemos una amplia gama de bicicletas, adaptadas para un gran rango de usos y necesidades. Desde un simple paseo por la ciudad o traslados del día a diá, hasta aventuras en la montaña para los mas valientes y experimentados.
+                            Por eso te ofrecemos una amplia gama de bicicletas, adaptadas para un gran rango de usos y necesidades. Desde un simple paseo por la ciudad o traslados del día a día, hasta aventuras en la montaña para los más valientes y experimentados.
                         </p>
 
                         <h3 className={s.heading}>
@@ -98,46 +97,47 @@ export const About = () => {
                             Integrantes
                             <span></span>
                         </h3>
-                        <div className={s.grid}>
-                            <div>
+                        <div className={s.space}>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Nicolás Balbi</p>
                                 <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" >
                                     <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} alt="Nicolás Balbi" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/sole-dato-ok/" >
                                     <p style={{ color: "black" }}>Soledad Dato</p>
                                     <img src="https://avatars.githubusercontent.com/u/89033815?v=4" className={s.circleImg} alt="Soledad Dato" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/felipe-jure/">
                                     <p style={{ color: "black" }}>Felipe Jure</p>
                                     <img src="https://avatars.githubusercontent.com/u/94187041?v=4" className={s.circleImg} alt="Felipe Jure" />
 
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" >
                                     <p style={{ color: "black" }}>Lucía Meyer</p>
                                     <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} alt="Lucía Meyer" />
                                 </a>
                             </div>
-                            <div>
-
+                        </div>
+                        <div className={s.space1}>
+                            <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/leandro-pappalardo/" >
                                     <p style={{ color: "black" }}>Leandro Pappalardo</p>
                                     <img src="https://avatars.githubusercontent.com/u/94720565?v=4" className={s.circleImg} alt="Leandro Pappalardo" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Juan Martín Silva</p>
                                 <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" >
                                     <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} alt="Juan Martín Silva" />
                                 </a>
                             </div>
-                            <div>
+                            <div className={s.each}>
                                 <p style={{ color: "black" }}>Máximo Tovar</p>
                                 <a href="https://www.linkedin.com/in/mrtovar10/">
                                     <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} alt="Máximo Tovar" />

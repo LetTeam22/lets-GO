@@ -20,6 +20,41 @@ export const BikeDetail = () => {
   const history = useHistory();
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
 
+  //para renderizar video por tipo de bici
+  const videoTouring = "https://res.cloudinary.com/pflet/video/upload/v1663533446/Let/TecnologyBikes/touring_oh9l1o.mp4"
+  const videoMTB = "https://res.cloudinary.com/pflet/video/upload/v1663531860/Let/TecnologyBikes/mtb_mssr6o.mp4"
+  const videoTandem = "https://res.cloudinary.com/pflet/video/upload/v1663534192/Let/TecnologyBikes/ta%CC%81ndem_sm4olo.mp4"
+  const videoCity = "https://res.cloudinary.com/pflet/video/upload/v1663533477/Let/TecnologyBikes/city_sgwxk7.mp4"
+  const videoBMX = "https://res.cloudinary.com/pflet/video/upload/v1663547587/Let/TecnologyBikes/bmxShort_wwmkzt.mp4"
+  const videoFolding = "https://res.cloudinary.com/pflet/video/upload/v1663547870/Let/TecnologyBikes/folding_x0izl7.mp4"
+
+  const bikeVideo = (video) => {
+    if (video === 'touring') return videoTouring
+    if (video === "mtb") return videoMTB
+    if (video === "tandem") return videoTandem
+    if (video === "city") return videoCity
+    if (video === "bmx") return videoBMX
+    if (video === "folding") return videoFolding
+  }
+
+  //para renderizar tecnologías por tipo de bici
+
+  const techTouring = "https://res.cloudinary.com/pflet/image/upload/v1663555014/Let/TecnologyBikes/TechTouring_jzqkrg.png"
+  const techMTB = "https://res.cloudinary.com/pflet/image/upload/v1663553069/Let/TecnologyBikes/TechMTB_jfne9z.png"
+  const techTandem = "https://res.cloudinary.com/pflet/image/upload/v1663562939/Let/TecnologyBikes/TechTandem_iqp4yw.png"
+  const techCity = "https://res.cloudinary.com/pflet/image/upload/v1663558628/Let/TecnologyBikes/TechCity_qdb8se.png"
+  const techBMX = "https://res.cloudinary.com/pflet/image/upload/v1663560790/Let/TecnologyBikes/TechBMX_yxhr7c.png"
+  const techFolding = "https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png"
+
+  const bikeTech = (tech) =>{
+    if (tech === 'touring') return techTouring
+    if (tech === "mtb") return techMTB
+    if (tech === "tandem") return techTandem
+    if (tech === "city") return techCity
+    if (tech === "bmx") return techBMX
+    if (tech === "folding") return techFolding
+  }
+
   // me fijo si la bici ya esta en el carrito para ver si hay accesorios ya seleccionados que tienen que aparecer checked
   const biciEnCarrito = bookings.find(b => b.bike === Number(bikeId))
 
@@ -27,7 +62,7 @@ export const BikeDetail = () => {
     bike: parseInt(bikeId, 10),
     accs: [],
     totalAcc: 0
-  })     
+  })
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,7 +77,7 @@ export const BikeDetail = () => {
   // lleno el input si la bici está en el carrito y tiene accesorios
   const fillInput = () => {
     if (biciEnCarrito && biciEnCarrito.accs.length) {
-      setInput({...input, accs: [...biciEnCarrito.accs]})
+      setInput({ ...input, accs: [...biciEnCarrito.accs] })
     }
   }
 
@@ -51,10 +86,6 @@ export const BikeDetail = () => {
     const filteredBikes = bookings.filter(b => b.bike !== Number(bikeId))
     localStorage.setItem("booking", JSON.stringify([...filteredBikes, input]));
     dispatch(addBooking(input));
-    setInput({
-      accs: [],
-      totalAcc: 0
-    });
     swal({
       title: "Bicicleta añadida al carrito",
       icon: "success",
@@ -103,7 +134,7 @@ export const BikeDetail = () => {
 
   return (
     <>
-    <Chatbot/>
+      <Chatbot />
       {!!bike.length ? <Loading /> :
         <div className={s.container}>
           <div className={s.name}>
@@ -149,7 +180,7 @@ export const BikeDetail = () => {
               <div className={s.prCont}>
                 <h4 className={s.pr}>¡Llevala con vos por</h4>
                 <h4 className={Number(bike.discount) ? s.prOld : s.pr}>${bike.price}</h4>
-                { !!Number(bike.discount) && <h4 className={s.pr}>${finalPrice(bike.price, bike.discount)}</h4> }
+                {!!Number(bike.discount) && <h4 className={s.pr}>${finalPrice(bike.price, bike.discount)}</h4>}
                 <h4 className={s.pr}>por día!</h4>
               </div>
             </div>
@@ -169,12 +200,12 @@ export const BikeDetail = () => {
                 {
                   allAccs?.filter(acc => acc.status === 'active').map(acc => {
                     return (
-                      <Accesory 
+                      <Accesory
                         key={acc.idAcc}
-                        id={acc.idAcc} 
-                        name={acc.name} 
-                        handleCheck={handleCheck} 
-                        price={acc.price} 
+                        id={acc.idAcc}
+                        name={acc.name}
+                        handleCheck={handleCheck}
+                        price={acc.price}
                         image={acc.image}
                         defaultChecked={biciEnCarrito && biciEnCarrito.accs.includes(acc.idAcc)}
                       />
@@ -222,10 +253,13 @@ export const BikeDetail = () => {
               />
             </div>
           </div>
+          <div className={s.video}>
+            <video style={{width:"100%"}} autoPlay muted loop src={bikeVideo(bike.type)}></video>
+          </div>
           <div className={s.titleAccAndTech}>
             <h2 className={s.titleTA}>Tecnología</h2>
           </div>
-          <img className={s.tech} src="https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png" alt="Detalles de la bicicleta" />
+          <img className={s.tech} src={bikeTech(bike.type)} alt="Detalles de la bicicleta" />
         </div>
       }
     </>

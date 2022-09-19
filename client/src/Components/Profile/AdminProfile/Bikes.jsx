@@ -31,7 +31,7 @@ export default function Bikes({socket}) {
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
+    return diffDays + 1;
   };
 
   const rowsBikes = useMemo(() => {
@@ -72,7 +72,7 @@ export default function Bikes({socket}) {
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
-      { field: "rating", headerName: "Rating", width: 70, editable: true },
+      { field: "rating", headerName: "Rating", width: 70 },
       {
         field: "price",
         headerName: "Precio",

@@ -4,7 +4,6 @@ import { BsFacebook, BsInstagram, BsWhatsapp, BsGithub } from 'react-icons/bs';
 
 
 
-
 const github = 'https://github.com/LetTeam22/PF-Let';
 const terms = '/terms'
 const definition = '/definition'
@@ -18,6 +17,8 @@ const normative = '/normative'
 const policies = '/policies'
 const payments = '/payments'
 const about = '/about'
+const instagram = "https://www.instagram.com/letsgo_bicis/?igshid=YmMyMTA2M2Y%3D"
+const facebook = "https://www.facebook.com/Lets-GO-102754839265301"
 
 export const Footer = () => {
 
@@ -68,23 +69,25 @@ export const Footer = () => {
                 <a className={s.footerSpan} href={contact} cursor='pointer'>
                     <span className={s.footerSpan}>Contacto</span>
                 </a>
-                <div className={s.icons} >
-
-                    <BsFacebook
-                        color='white'
-                        size='20px'
-                        onMouseOver={({ target }) => target.style.color = "#F9B621"}
-                        onMouseOut={({ target }) => target.style.color = "white"}
-                        cursor='pointer'
-                    />
-
-                    <BsInstagram
-                        color='white'
-                        size='20px'
-                        onMouseOver={({ target }) => target.style.color = "#F9B621"}
-                        onMouseOut={({ target }) => target.style.color = "white"}
-                        cursor='pointer'
-                    />
+                <div className={s.icons}>
+                    <a href={facebook} target="_blank" rel="noopener noreferrer">
+                        <BsFacebook
+                            color='white'
+                            size='20px'
+                            onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                            onMouseOut={({ target }) => target.style.color = "white"}
+                            cursor='pointer'
+                        />
+                    </a>
+                    <a href={instagram} target="_blank" rel="noopener noreferrer">
+                        <BsInstagram
+                            color='white'
+                            size='20px'
+                            onMouseOver={({ target }) => target.style.color = "#F9B621"}
+                            onMouseOut={({ target }) => target.style.color = "white"}
+                            cursor='pointer'
+                        />
+                    </a>
 
                     <BsWhatsapp
                         color='white'

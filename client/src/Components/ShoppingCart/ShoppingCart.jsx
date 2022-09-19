@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo, getAllAdventures } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -25,7 +25,8 @@ export const ShoppingCart = () => {
   const history = useHistory()
   const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+  const Adventures = JSON.parse(localStorage.getItem("adventure")) || {};
+
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
@@ -55,8 +56,8 @@ export const ShoppingCart = () => {
     cartBikes.push(pushedbike);
   })
 
-  Adventures.length && Adventures.forEach(adv => {
-    const advFound = allAdventures.find(a => a.idAdv === adv.adv[0])
+  Adventures.hasOwnProperty('adv') && Adventures.adv.forEach(adv => {
+    const advFound = allAdventures.find(a => a.idAdv === adv)
     if (advFound) {
       const pushedAdv = {
         id: advFound.idAdv,
@@ -89,6 +90,7 @@ export const ShoppingCart = () => {
   });
 
 
+
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
   if (strBikeIds !== date.bikeIds) {
@@ -114,10 +116,13 @@ export const ShoppingCart = () => {
       userId: userLogged?.idUser,
       bikeIds: postbikeIds,
       AccIds: ids,
+      adventureNames: cartAdventures.map(ad => ad.name)
     }
-  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
+  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds, cartAdventures]);
+
 
   const totalDias = (from, to) => {
+    if (!from || !to) return 0
     const date1 = new Date(from);
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
@@ -136,6 +141,7 @@ export const ShoppingCart = () => {
       subTotalAdv = acc + Number(cur.price)
     )
   }, 0)
+
 
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
@@ -190,11 +196,11 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
-  const deleteAdventure = (e, id) => {
+  const deleteAdventure = (e, id, price) => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
+    localStorage.setItem("adventure", JSON.stringify({ adv: Adventures.adv.filter(ad => ad !== id), totalAdv: Adventures.totalAdv - price }))
   }
 
   useEffect(() => {
@@ -202,6 +208,7 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
+    dispatch(getAllAdventures())
     dispatch(
       setParameters({
         ...parameters,
@@ -234,7 +241,13 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-        <Dates component='cart' />
+        {
+           !bookings.length && Adventures.adv ? <></> :
+          <div className={s.fechasCont}>
+            <Dates component='cart' />
+            <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+          </div>
+        }
 
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
@@ -265,20 +278,20 @@ export const ShoppingCart = () => {
                 {
                   cartBikes.length && accs.length
 
-                  ? accs.map(acc => {
-                    if(acc.cantidad > 0) {
-                      return (
-                        <TableRow key={acc.id} >
-                          <TableCell>{acc.name}</TableCell>
-                          <TableCell align="center">{acc.cantidad}</TableCell>
-                          <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
-                          <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
-                        </TableRow>
-                      )
-                    }
-                    return null
-                  })
-                  : <></> 
+                    ? accs.map(acc => {
+                      if (acc.cantidad > 0) {
+                        return (
+                          <TableRow key={acc.id} >
+                            <TableCell>{acc.name}</TableCell>
+                            <TableCell align="center">{acc.cantidad}</TableCell>
+                            <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
+                            <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
+                          </TableRow>
+                        )
+                      }
+                      return null
+                    })
+                    : <></>
                 }
                 {
                   cartAdventures.length
@@ -288,7 +301,7 @@ export const ShoppingCart = () => {
                           <TableCell>{adventure.name}</TableCell>
                           <TableCell align="center">1</TableCell>
                           <TableCell align="center">-</TableCell>
-                          <TableCell align="center">{adventure.price}</TableCell>
+                          <TableCell align="center">{`$ ${Number(adventure.price).toLocaleString('es-AR')}`}</TableCell>
                         </TableRow>
                       )
                     })
@@ -347,7 +360,7 @@ export const ShoppingCart = () => {
                     <img src={adv.image} alt="" />
                     <h2 className={s.advName}>{adv.name}</h2>
                     <div className={s.advBtn}>
-                      <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      <button onClick={(e) => deleteAdventure(e, adv.id, adv.price)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
                   </div>
                 )
@@ -367,11 +380,10 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === ''
+                    bookings.length && (postedBooking.startDate === '' || postedBooking.endDate === '')
                       ? <></>
                       : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
-
                 </div>
               </div>
             )

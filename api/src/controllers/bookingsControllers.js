@@ -1,5 +1,6 @@
-const { User, Bike, Booking, Accesories, Experience } = require('../db');
+const { User, Bike, Booking, Accesories, Experience, Adventures } = require('../db');
 const { Op } = require("sequelize");
+const { sortBookings } = require('./helpers');
 
 async function getAllBookings(req, res, next) {
   try {
@@ -7,7 +8,7 @@ async function getAllBookings(req, res, next) {
       include: [
         {
           model: User,
-          attributes: ['firstName'],
+          attributes: ['email', 'firstName'],
         },
         {
           model: Bike,
@@ -22,12 +23,19 @@ async function getAllBookings(req, res, next) {
           through: {
             attributes: []
           }
+        },
+        {
+          model: Adventures,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
         }
       ]
     })
-    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }
@@ -53,13 +61,20 @@ async function getBookingsByUserId(req, res, next) {
           through: {
             attributes: []
           }
+        },
+        {
+          model: Adventures,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
         }
       ]
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
-    bookings.sort((a, b) => a.endDate < b.endDate ? -1 : a.endDate > b.endDate ? 1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }
@@ -90,12 +105,19 @@ async function getBookingsByUserEmail(req, res, next) {
           attributes: ['email'],
           where: { email: email }
         },
+        {
+          model: Adventures,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+        }
       ],
     })
     if (!bookings.length) return res.send({ msg: 'This user has no bookings' })
-    bookings.sort((a, b) => a.endDate < b.endDate ? 1 : a.endDate > b.endDate ? -1 : 0)
-    bookings.sort((a, b) => a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0)
-    res.send(bookings)
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings(bookings)
+    res.send(sortedBookings)
   } catch (error) {
     next(error)
   }
@@ -124,10 +146,14 @@ async function getBookingsByBikeIds(req, res, next) {
 }
 
 async function postBooking(req, res, next) {
-  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice } = req.body
-  if (!startDate || !endDate || !userId || !bikeIds.length || !totalPrice) return res.sendStatus(400)
+  const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice, adventureNames = [] } = req.body
+  
+  if (!userId || !totalPrice) return res.sendStatus(400)
   try {
-    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+    let booking = {}
+    if(startDate && endDate) booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+    else booking = { userIdUser: userId, totalPrice: Number(totalPrice) }
+    
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
       where: {
@@ -139,8 +165,14 @@ async function postBooking(req, res, next) {
         idAcc: AccIds
       }
     })
+    let adventuresForBooking = await Adventures.findAll({
+      where: {
+        name: adventureNames
+      }
+    })
     await bookingCreated.addBike(bikes)
     await bookingCreated.addAccesories(accesoriesForBooking)
+    await bookingCreated.addAdventures(adventuresForBooking)
     res.send('The booking was created successfully')
   } catch (error) {
     next(error)
