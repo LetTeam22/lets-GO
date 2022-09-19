@@ -8,8 +8,6 @@ export const Experiencies = () => {
     
     const allExperiences = useSelector((state) => state.allExperiences);
 
-    console.log(allExperiences);
-
     return (
         <div className={s.experiencies}>
             <span className={s.title}>EXPERIENCIAS</span>
