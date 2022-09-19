@@ -15,7 +15,7 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
 export default function PostLogIn() {
     const postlogin = "https://res.cloudinary.com/pflet/image/upload/v1662686157/Let/image/postlogin_esasff.png"
     const dispatch = useDispatch()
-    const { user, isLoading } = useAuth0()
+    const { user, isLoading, isAuthenticated } = useAuth0()
     const history = useHistory()
     const allUsers = useSelector(state => state.allUsers)
 
@@ -29,6 +29,8 @@ export default function PostLogIn() {
     }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
     
     if(isLoading) return <Loading/>
+    if(!isAuthenticated) history.push('/home')
+
     localStorage.setItem('email', user?.email);
 
     const userLogged = allUsers.find(us => us.email === user?.email)
@@ -39,7 +41,7 @@ export default function PostLogIn() {
         await dispatch(createUser({ email: user.email }))
         dispatch(getUser(user?.email))
         dispatch(getAllFavorites(user?.email))
-        history.push(localStorage.getItem('url'))
+        history.push(localStorage.getItem('url') ? localStorage.getItem('url') : '/home')
         localStorage.removeItem('url')
         sendEmail(e);
     }

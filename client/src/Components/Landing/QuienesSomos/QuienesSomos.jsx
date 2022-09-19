@@ -19,7 +19,8 @@ export const QuienesSomos = () => {
                     </p>
                 </div>
                 <div className={s.video}> 
-                <video style={{width:'100%'}} autoPlay muted loop src="https://res.cloudinary.com/pflet/video/upload/v1663353793/samples/YERKA_Bikes_l_2017_Promo_mubeix.mp4"></video></div>
+                    <video style={{width:'100%'}} autoPlay muted loop src="https://res.cloudinary.com/pflet/video/upload/v1663353793/samples/YERKA_Bikes_l_2017_Promo_mubeix.mp4"></video>
+                </div>
                 <div className={s.text1}>
                     <h3 className={s.title}>El proyecto</h3>
                     <p className={s.p}>
