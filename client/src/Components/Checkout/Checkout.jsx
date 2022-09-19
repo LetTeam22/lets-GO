@@ -12,7 +12,6 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 export default function Checkout() {
 
     const img = 'https://res.cloudinary.com/pflet/image/upload/v1663030250/Let/image/compra-07_xzwr6e.png'
-    console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
 
     const dispatch = useDispatch();
 

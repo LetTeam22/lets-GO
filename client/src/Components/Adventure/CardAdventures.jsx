@@ -23,7 +23,7 @@ const CardAdventures = ({ id, handleCheck, name, description, date, conditions, 
                         onClick={handleCheck}
                         className={s.input}
                     />
-                    <label htmlFor={id}>Me subo a esta aventura</label>
+                    <label className={s.label} htmlFor={id}>Me subo a esta aventura</label>
                 </div>
 
             </div>
