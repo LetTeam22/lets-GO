@@ -10,12 +10,17 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 export default function Checkout() {
+
+    console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
+
     const dispatch = useDispatch();
     const history = useHistory();
-    const { user } = useAuth0();
+    // const { user } = useAuth0();
+
+    const userEmail = localStorage.getItem('email');
 
     const sendEmail = () => {
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: user?.email }, PUBLIC_KEY)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: userEmail }, PUBLIC_KEY)
             .then((result) => {
             }, (error) => {
             })
@@ -24,17 +29,17 @@ export default function Checkout() {
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
    
     async function Maxi() {
+        await sendEmail();
         await dispatch(setParameters("resetAllPlusDates"));
         await dispatch(postBookings(booking))
     };
-    
+
     useEffect(() => {
         Maxi();
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
         localStorage.removeItem("adventure");
-        sendEmail();
         history.push('/home');
     },)
 
