@@ -27,8 +27,8 @@ export default function Action({ params, rowId, setRowId, origin }) {
       const { role, status, email } = params.row;
       if (status === "banned") {
         swal({
-          title: "Estas seguro?",
-          text: "Estas inhabilitando este usuario!",
+          title: "Estás seguro?",
+          text: "Estás inhabilitando este usuario!",
           dangerMode: true,
           icon: "warning",
           buttons: {
