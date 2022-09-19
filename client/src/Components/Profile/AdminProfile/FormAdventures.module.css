@@ -1,0 +1,186 @@
+.allPage{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5252527f;
+}
+
+.back{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.container{
+    height: 35rem;
+    width: 50rem;
+    padding-top: 2rem;
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #c1c1c1;
+    border-radius: 0.2rem;
+    box-shadow: 0px -1px 8px 2px #333333;
+}
+
+.titulo {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 0;
+}
+.form{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.nameAndPrice{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.name{
+    width: 90%;
+}
+.nameAndPrice section > div{
+    display: flex;
+    gap: 1rem;
+}
+.nameAndPrice section > div > div{
+    width: 45%;
+}
+
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.h6{
+    display: block;
+    width: 100%;
+}
+
+.day{
+    color: #333333!important;
+}
+
+.nameAndImg{
+    width: 50%;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+}
+.nameAndImg label{
+    width: 100%;
+}
+
+.nameAndImg label img{
+    width: 100%;
+    height: 100%;
+    background-color:#525252
+}
+.img {
+    width: 100%;
+    height: 100%;
+    color: #333333!important;
+}
+.iconCamera{
+    opacity: 0;
+    position: absolute;
+    color: #333333!important;
+}
+.imgContainer:hover > .img {
+    opacity: 0.5;
+}
+.imgContainer:hover > .iconCamera{
+    opacity: 1;
+}
+.textArea{
+    width: 45rem!important;
+}
+.btnSend:disabled{
+    background-color: #525252!important;
+    color:#ffd57a!important
+}
+.btnHome{
+    color:#F9B621!important;
+    background-color:#333333!important;
+    font-weight: 1000!important;
+    position: absolute!important;
+    bottom: 0.7rem;
+    left: 0.7rem;
+}
+.btnSend{
+    color:#F9B621!important;
+    background-color:#333333!important;
+    font-weight: 1000!important;
+    position: absolute!important;
+    bottom: 0.7rem;
+    right: 0.7rem;
+}
+
+.swalBtn{
+    background-color: #F9B621!important;
+}
+.swalBtn:hover{
+    background-color: #d39307!important;
+}
+
+@media (max-width:850px) {
+    .container{
+        width: 95%;
+    }
+    .textArea{
+        width: 90%!important;
+    }
+}
+
+@media (max-width:560px) {
+    .container{
+        height: 40rem;
+    }
+    .nameAndImg{
+        height: 10rem;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .nameAndPrice{
+        width: 100%;
+        margin-bottom: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .textArea{
+        width: 90%!important;
+    }
+}
+
+@media (max-width:460px) {
+    .nameAndImg{
+        bottom: 2.8rem;
+    }
+}
+
+@media (max-width:320px) {
+    .boxes{
+        margin-bottom: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
