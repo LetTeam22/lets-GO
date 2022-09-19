@@ -12,12 +12,25 @@
     row-gap: 10rem;
 }
 
-.btnBack, .btnProfile{
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.img {
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+}
+
+.btnHome {
     position: absolute;
-    margin-top: 20rem;
+    margin-top: 21rem;
     width: 8rem;
     height: 3rem;
-    color: #343333;
+    color: #1e1e1e;
     background-color:#ffffff ;
     font-size: .9rem;
     font-weight: 600;
@@ -27,26 +40,7 @@
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
 }
 
-.btnProfile{
-    left: 55%;
-}
-
-.btnBack{
-    left: 38%;
-}
-
-.btnProfile:hover, .btnBack:hover{
+.btnHome:hover{
     background-color: #d39307;
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.postlogin{
-    margin-left: auto;
-    margin-right: auto;
-    height: 20%;
+    color: #ffffff;
 }
