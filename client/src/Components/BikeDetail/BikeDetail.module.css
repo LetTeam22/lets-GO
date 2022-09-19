@@ -197,6 +197,16 @@
     width: 100%;
 }
 
+.containerVideo{
+    background-color: white;
+}
+
+.video{
+    display: block;
+    padding: 3rem;
+    background-color: white;
+}
+
 .titleTA{
     display: flex;
     align-items: center;
