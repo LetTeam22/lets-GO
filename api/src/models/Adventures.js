@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
         },
         conditions: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
         },
         image: {
             type: DataTypes.STRING,
