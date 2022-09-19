@@ -123,8 +123,8 @@ export const Menu = ({socket}) => {
             <img className={s.carrito} src={carrito} alt='carrito' />
           </button>
         </Link>
-        <div className={s.containerBell}>
-          <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
+        <div className={s.containerBell}onClick={(e) => handleOpen(e)} >
+          <button className={s.bellBtn}><img src={bell} className={s.bell} alt='bell' ></img></button>
           <div className={notifications.length? s.counter : s.hidde}>{notifications.length}</div>
           { !!notUnicas.length && <div className={notUnicas.length? s.counter : s.hidde}>{notUnicas.length}</div> }
           {
