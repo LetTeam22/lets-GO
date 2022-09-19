@@ -137,9 +137,8 @@ export const Contact = () => {
 
                 <div className={s.containerBtn}>
                     <TbSend color='white' size='2rem'/>
-                    <input type='submit' value='Send' disabled={disabled()}/>
+                    <input className={s.inputSend} type='submit' value='Enviar' disabled={disabled()}/>
                 </div>
-
             </form>
         </div>
     )

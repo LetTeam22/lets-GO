@@ -136,3 +136,7 @@ p {
     margin-left: .5rem;
     font-size: 1.2rem;  
 }
+
+.inputSend {
+    background-color: transparent;
+}
