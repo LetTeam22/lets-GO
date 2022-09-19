@@ -11,11 +11,40 @@ import {
   updateAdventure,
 } from "../../../Redux/actions";
 import swal from "sweetalert";
+import emailjs from '@emailjs/browser';
+
+const PUBLIC_KEY_USER = process.env.REACT_APP_EMAILJS_PUBLIC_KEY3;
+const SERVICE_ID_USER = process.env.REACT_APP_EMAILJS_SERVICE_ID3;
+const TEMPLATE_ID_USER = process.env.REACT_APP_EMAILJS_TEMPLATE_ID4;
+
+// const PUBLIC_KEY_BOOKING = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+// const SERVICE_ID_BOOKING = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+// const TEMPLATE_ID_BOOKING = process.env.REACT_APP_EMAILJS_TEMPLATE_ID5;
+
 
 export default function Action({ params, rowId, setRowId, origin }) {
+
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const sendEmailBannedUser = (email) => {
+    emailjs.send(SERVICE_ID_USER, TEMPLATE_ID_USER, { email: email }, PUBLIC_KEY_USER)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+  };
+
+  // const sendEmailCanceledBook = (email) => {
+  //   emailjs.send(SERVICE_ID_BOOKING, TEMPLATE_ID_BOOKING, { email: email }, PUBLIC_KEY_BOOKING)
+  //       .then((result) => {
+  //           console.log(result.text);
+  //       }, (error) => {
+  //           console.log(error.text);
+  //       });
+  // };
 
   useEffect(() => {
     if (rowId === params.id && success) setSuccess(false);
@@ -53,6 +82,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
               icon: "success",
               button: false,
             });
+            sendEmailBannedUser(email);
             const result = dispatch(
               updateUser({
                 email,
@@ -92,6 +122,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
     }
     if (origin === "bookings") {
       const { id, status } = params.row;
+
       if (status === "cancelled") {
         swal({
           title: "Estas seguro?",
