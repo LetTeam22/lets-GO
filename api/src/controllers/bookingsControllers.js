@@ -147,9 +147,13 @@ async function getBookingsByBikeIds(req, res, next) {
 
 async function postBooking(req, res, next) {
   const { startDate, endDate, userId, bikeIds, AccIds = [], totalPrice, adventureNames = [] } = req.body
-  if (!startDate || !endDate || !userId || !totalPrice) return res.sendStatus(400)
+  
+  if (!userId || !totalPrice) return res.sendStatus(400)
   try {
-    let booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+    let booking = {}
+    if(startDate && endDate) booking = { startDate, endDate, userIdUser: userId, totalPrice: Number(totalPrice) }
+    else booking = { userIdUser: userId, totalPrice: Number(totalPrice) }
+    
     let bookingCreated = await Booking.create(booking)
     let bikes = await Bike.findAll({
       where: {
