@@ -130,7 +130,6 @@ export default function Action({ params, rowId, setRowId, origin }) {
     if (origin === "bookings") {
       const { id, status, idUser } = params.row;
       const user = allUsers.find(u => u.idUser === idUser);
-      console.log(user);
       if (status === "cancelled") {
         swal({
           title: "Estas seguro?",

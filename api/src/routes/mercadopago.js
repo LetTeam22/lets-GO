@@ -12,43 +12,48 @@ let id_compra = 1;
 
 //Generamos la url de MP
 router.get('/', async (req, res, next) => {
-
     const { totalPrice, email } = req.query;
 
-    const user = await User.findOne({
-        where: {
-            email
-        }
-    })
-
-    if (user.idUser && totalPrice) {
-        let preference = {
-            items: [{
-                title: 'Reserva',
-                unit_price: parseInt(totalPrice, 10),
-                quantity: 1
-            }],
-            external_reference: `${id_compra++}`,
-            payment_methods: {
-                excluded_payment_types: [{ id: 'atm' }],
-                installments: 6
-            },
-            back_urls: {
-                success: `${BACK_URL}/mercadopago/pagos/${user.idUser}`,
-                failure: `${BACK_URL}/mercadopago/pagos`,
-                pending: `${BACK_URL}/mercadopago/pagos`,
+    try {
+        const user = await User.findOne({
+            where: {
+                email
             }
+        })
+    
+        if (user.idUser && totalPrice) {
+            let preference = {
+                items: [{
+                    title: 'Reserva',
+                    unit_price: parseInt(totalPrice, 10),
+                    quantity: 1
+                }],
+                external_reference: `${id_compra++}`,
+                payment_methods: {
+                    excluded_payment_types: [{ id: 'atm' }],
+                    installments: 6
+                },
+                back_urls: {
+                    success: `${BACK_URL}/mercadopago/pagos/${user.idUser}`,
+                    failure: `${BACK_URL}/mercadopago/pagos`,
+                    pending: `${BACK_URL}/mercadopago/pagos`,
+                }
+            }
+    
+            mercadopago.preferences.create(preference)
+                .then(function (response) {
+                    global.id = response.body.id;
+                    res.json({ id: global.id });
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
         }
-
-        mercadopago.preferences.create(preference)
-            .then(function (response) {
-                global.id = response.body.id;
-                res.json({ id: global.id });
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+        
+    } catch (error) {
+        console.log(error)
     }
+    
 })
 
 // Ruta que recibe la informacion del pago

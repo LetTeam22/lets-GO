@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllFavorites, getBookingsByUserEmail, getUser, updateBooking } from "../../Redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { removeFavoriteFromDb, bookingToQualify } from "../../Redux/actions";
 import { AiFillHeart, AiFillShopping } from 'react-icons/ai';
 import RenderProfilePic from "../Cloudinary/renderProfilePic";
@@ -13,6 +13,7 @@ import { useState } from "react";
 import { RenderFavorite } from '../Cloudinary/renderFavorite';
 import swal from "sweetalert";
 import ChatBot from "../ChatBot/ChatBot";
+import emailjs from '@emailjs/browser';
 
 export const Profile = () => {
   const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
@@ -20,19 +21,34 @@ export const Profile = () => {
   const userLogged = useSelector(state => state.user);
   const favorites = useSelector(state => state.favorites);
   const userBookings = useSelector(state => state.userBookings);
-  const { isLoading, user } = useAuth0();
+  const { isLoading, user, isAuthenticated } = useAuth0();
   const [booking, setBooking] = useState({});
+  const history = useHistory();
+  const PUBLIC_KEY_BOOKING = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+  const SERVICE_ID_BOOKING = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID_BOOKING = process.env.REACT_APP_EMAILJS_TEMPLATE_ID5;
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!userLogged) dispatch(getUser(user?.email))
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
-
   useEffect( () => {
     if (user?.email) dispatch(getBookingsByUserEmail(user?.email))
     if (user?.email) dispatch(getAllFavorites(user?.email))
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if(isLoading) return <Loading/>
+  if(!isAuthenticated) history.push('/home')
+
+  const sendEmailCanceledBook = (email) => {
+    emailjs.send(SERVICE_ID_BOOKING, TEMPLATE_ID_BOOKING, { email: email }, PUBLIC_KEY_BOOKING)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+  };
 
   const handleRemoveFav = idBike => {
     dispatch(removeFavoriteFromDb({ bikeId: idBike, email: userLogged.email }))
@@ -48,7 +64,6 @@ export const Profile = () => {
   };
 
   const handleClick = b => {
-    console.log(b)
     window.scrollTo(0, 0);
     setBooking({
       idBooking: b.idBooking,
@@ -64,6 +79,7 @@ export const Profile = () => {
     e.preventDefault()
     await dispatch(updateBooking(booking))
     swal("Reserva cancelada. El equipo de let's GO se contactará con vos")
+    sendEmailCanceledBook(user?.email);
     dispatch(getBookingsByUserEmail(user?.email))
     setBooking({})
   };
@@ -94,8 +110,7 @@ export const Profile = () => {
 
   const showedName = (userLogged.firstName && userLogged.lastName) ? `${userLogged.firstName} ${userLogged.lastName}` : userLogged.firstName ? userLogged.firstName : userLogged?.email
 
-  return isLoading ? <Loading /> :
-    (
+  return (
       <>
       <ChatBot/>
         <div className={s.containerUs}>
