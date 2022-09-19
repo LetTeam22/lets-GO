@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { setParameters, postBookings } from "../../Redux/actions";
 import emailjs from '@emailjs/browser';
 import s from './Checkout.module.css'
@@ -15,7 +15,6 @@ export default function Checkout() {
     console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const userEmail = localStorage.getItem('email');
 
