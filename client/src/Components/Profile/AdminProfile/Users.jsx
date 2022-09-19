@@ -64,7 +64,7 @@ export default function Users() {
         headerName: "Estado",
         width: 100,
         type: "singleSelect",
-        valueOptions: ["active", "banned", "deleted"],
+        valueOptions: ["active", "banned"],
         editable: true,
       },
       {
