@@ -25,10 +25,10 @@ export default function Action({ params, rowId, setRowId, origin }) {
     setLoading(true);
     if (origin === "users") {
       const { role, status, email } = params.row;
-      if (status === "deleted") {
+      if (status === "banned") {
         swal({
           title: "Estas seguro?",
-          text: "Estas eliminando este usuario!",
+          text: "Estas inhabilitando este usuario!",
           dangerMode: true,
           icon: "warning",
           buttons: {
@@ -49,7 +49,7 @@ export default function Action({ params, rowId, setRowId, origin }) {
           if (value) {
             swal({
               title: "Felicidades!",
-              text: "Eliminaste el usuario!",
+              text: "Inhabilitaste el usuario!",
               icon: "success",
               button: false,
             });
