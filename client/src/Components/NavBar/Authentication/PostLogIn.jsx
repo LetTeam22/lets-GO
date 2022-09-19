@@ -67,8 +67,8 @@ export default function PostLogIn() {
         <div className={s.background}>
             <div className={s.buttons}>
                 <img src={postlogin} className={s.postlogin} alt='postlogin' ></img>
-                <button className={s.btnBack} onClick={e => goBack(e)}>Volver</button>
-                <button className={s.btnProfile} onClick={e => goProfile(e)}>Revisa tu perfil</button>
+                <button className={s.btnBack} onClick={e => goBack(e)}>VOLVER</button>
+                <button className={s.btnProfile} onClick={e => goProfile(e)}>IR AL PERFIL</button>
             </div>
         </div>
     )

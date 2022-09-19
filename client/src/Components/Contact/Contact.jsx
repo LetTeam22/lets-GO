@@ -80,7 +80,6 @@ export const Contact = () => {
 
                 <div className={s.containerInputs} >
                     <FaRegUser color='#F9B621' size='2rem'/>
-                    <div className={s.inputs} >
                         <input
                             type='text'
                             name='user_name'
@@ -88,14 +87,13 @@ export const Contact = () => {
                             value={input.user_name}
                             onChange={e => handleChange(e)}
                             maxLength= '30'
+                            className={s.inputs}
                         />
-                    </div>
                     <span className={s.required}>*</span>
                 </div>
 
                 <div className={s.containerInputs} >
                     <BsPhone color='#F9B621' size='2rem' />
-                    <div className={s.inputs}>
                         <input
                             type='number'
                             name='user_number'
@@ -103,14 +101,13 @@ export const Contact = () => {
                             value={input.user_number}
                             onChange={e => handleChange(e)}
                             maxLength= '12'
+                            className={s.inputs}
                         />
-                    </div>
                     <span className={s.span}>*</span>
                 </div>
 
                 <div className={s.containerInputs} >
                     <HiOutlineMail color='#F9B621' size='2rem' />
-                    <div className={s.inputs} >
                         <input 
                             type='email'
                             name='user_email'
@@ -118,8 +115,8 @@ export const Contact = () => {
                             value={input.user_email}
                             onChange={e => handleChange(e)}
                             maxLength= '30'
+                            className={s.inputs}
                         />
-                    </div>
                     <span className={s.required}>*</span>
                 </div>
 

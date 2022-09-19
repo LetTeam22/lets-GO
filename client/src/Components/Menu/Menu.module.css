@@ -95,6 +95,7 @@ hr {
     background-color: transparent;
     width: fit-content;
     border: none;
+    margin-right: 10px;
 }
 
 .bell {

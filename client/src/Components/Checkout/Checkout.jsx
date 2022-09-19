@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { setParameters, postBookings } from "../../Redux/actions";
 import emailjs from '@emailjs/browser';
-import { useAuth0 } from "@auth0/auth0-react";
+import s from './Checkout.module.css'
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -11,6 +11,7 @@ const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 export default function Checkout() {
 
+    const img = 'https://res.cloudinary.com/pflet/image/upload/v1663030250/Let/image/compra-07_xzwr6e.png'
     console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
 
     const dispatch = useDispatch();
@@ -28,26 +29,26 @@ export default function Checkout() {
 
     const booking = JSON.parse(localStorage.getItem('postedBooking'));
    
-    async function Maxi() {
+    async function checkOut() {
         await sendEmail();
         await dispatch(setParameters("resetAllPlusDates"));
         await dispatch(postBookings(booking))
     };
 
     useEffect(() => {
-        Maxi();
+        checkOut();
         window.scrollTo(0, 0);
         localStorage.removeItem("booking");
         localStorage.removeItem("date");
         localStorage.removeItem("adventure");
-        history.push('/home');
-    },)
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <>
-            <h1>
-                Felicidades por tu compra
-            </h1>
-        </>
+        <div className={s.background}>
+            <Link to='/home' className={s.container}>
+                <img src={img} className={s.img} alt='img' />
+                <button className={s.btnHome}>¡OK!</button>
+            </Link>
+        </div>
     )
 }

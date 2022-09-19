@@ -241,10 +241,13 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-        <div className={s.fechasCont}>
-          <Dates component='cart' />
-          <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
-        </div>
+        {
+           !bookings.length && Adventures.adv ? <></> :
+          <div className={s.fechasCont}>
+            <Dates component='cart' />
+            <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+          </div>
+        }
 
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
@@ -377,11 +380,10 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === ''
+                    bookings.length && (postedBooking.startDate === '' || postedBooking.endDate === '')
                       ? <></>
                       : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
-
                 </div>
               </div>
             )
