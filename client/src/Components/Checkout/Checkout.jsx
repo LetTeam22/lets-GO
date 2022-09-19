@@ -16,9 +16,9 @@ export default function Checkout() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { user } = useAuth0();
 
     const userEmail = localStorage.getItem('email');
+
 
     const sendEmail = () => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { email: userEmail }, PUBLIC_KEY)
