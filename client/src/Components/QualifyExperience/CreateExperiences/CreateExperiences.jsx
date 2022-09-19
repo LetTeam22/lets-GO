@@ -139,7 +139,7 @@ export const CreateExperiences = () => {
           </div>
           <div className={s.containerBtn} >
             <TbSend color='white' size='2rem' />
-            <input disabled={disabled} type='submit' value='Enviar' />
+            <input className={s.inputSend} disabled={disabled} type='submit' value='Enviar' />
           </div>
         </form>
       }

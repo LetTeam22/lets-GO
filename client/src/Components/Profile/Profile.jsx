@@ -76,7 +76,7 @@ export const Profile = () => {
     const todayToModify = new Date();
     const today = convertDate(todayToModify)
     const cancelled = userBookings.find(b => b.status === 'cancelled' && b.idBooking === idBooking)
-    if(endDate === null) return 'EN CAMINO'
+    if(endDate === null) return ''
     if(cancelled) return 'CANCELADA'
     if(today < endDate) return 'EN CAMINO'
     if(today > endDate) return 'FINALIZADA'
@@ -168,8 +168,8 @@ export const Profile = () => {
                   { b.startDate === null ? <></> :
                     <>
                       <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA: </span>
-                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.startDate)} / </span>
-                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> {reverseDate(b.endDate)}</span>
+                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{reverseDate(b.startDate)} / </span>
+                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{reverseDate(b.endDate)}</span>
                     </>
                   }
                 </div>
@@ -190,7 +190,7 @@ export const Profile = () => {
                   <>
                       <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS: </span>
                       {!!b.accesories.length && b.accesories.map(acc => (
-                        <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} - </span>
+                        <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{ acc.name} - </span>
                       ))}
                   </>
                 }
@@ -199,18 +199,27 @@ export const Profile = () => {
                 <div className={s.flex}>
                   <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● AVENTURAS: </span>
                   {!!b.adventures.length && b.adventures.map(acc => (
-                    <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} - </span>
+                    <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{ acc.name} - </span>
                   ))}
                 </div>
 
                 <div className={s.flex}>
                   <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL: </span>
-                  <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>${b.totalPrice}</span>
+                  <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> ${b.totalPrice}</span>
                 </div>
 
                 <div className={s.flex}>
-                  <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO: </span>
-                  <span className={b.status === 'cancelled' ? s.titleCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
+                { b.startDate === null && b.status === "confirmed" ? 
+                  <span className={s.titleList2}>Nos contactaremos para coordinar los detalles de tu Aventura</span>
+                  :
+                  <>
+                    <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO: </span>
+                    <span className={b.status === 'cancelled' ? s.titleCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
+                  </>
+                }
+                {
+                  b.startDate === null && b.status === "cancelled" && <span className={s.titleCancel}>CANCELADA</span>
+                }
                 </div>
 
                 {bookingStatus(b.endDate, b.idBooking) === 'FINALIZADA' &&
@@ -223,7 +232,7 @@ export const Profile = () => {
                     </Link>
                   </>
                 }
-                {bookingStatus(b.endDate, b.idBooking) === 'EN CAMINO' && b.status === 'confirmed' &&
+                {(bookingStatus(b.endDate, b.idBooking) === 'EN CAMINO' || b.startDate === null) && b.status === 'confirmed' &&
                   <>
                     <div className={s.flexCancel}>
                       <span className={s.opinion}>PODÉS CANCELAR TU RESERVA HACIENDO CLICK EN EL SIGUIENTE ENLACE</span>
