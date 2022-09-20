@@ -23,27 +23,27 @@ export const SearchBar = () => {
         const search = input
         setInput('')
         dispatch(setCurrentPage(1));
-        if (search.includes('bici')) {
+        if (search.toLowerCase().includes('bici')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/home')
         }
-        if (search.includes('accesorio')) {
+        if (search.toLowerCase().includes('accesorio')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/allAccessories')
         }
-        if (search.includes('aventura')) {
+        if (search.toLowerCase().includes('aventura')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/adventure')
         }
-        if (search.includes('experiencia')) {
+        if (search.toLowerCase().includes('experiencia')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/allExperiencies')
         }
-        if (search.includes('contact')) {
+        if (search.toLowerCase().includes('contact')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/contact')
         }
-        if (search.includes('perfil') || search.includes('reserva') || search.includes('favorit')) {
+        if (search.toLowerCase().includes('perfil') || search.toLowerCase().includes('reserva') || search.toLowerCase().includes('favorit')) {
             dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
             return history.push('/bike/profile')
         }

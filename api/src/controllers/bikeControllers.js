@@ -27,6 +27,7 @@ const getRenderedBikes = async (req, res, next) => {
     // ajusto algunos parametros de query
     const priceMin = !minPriceFilter ? 0 : minPriceFilter
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
+    const searchReg = search ? search : ''
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
     const searchUp = search ? search[0].toUpperCase() + search.substring(1).toLowerCase() : ''
@@ -94,7 +95,7 @@ const getRenderedBikes = async (req, res, next) => {
         bikes = bikes.filter(bike => {
             const finalPrice = applyDiscount(bike.price, bike.discount)
             return (
-                bike.name.includes(searchLow) || bike.name.includes(searchUp) ||
+                bike.name.includes(searchReg) || bike.name.includes(searchLow) || bike.name.includes(searchUp) ||
                 bike.type.includes(searchLow) ||
                 bike.traction.includes(searchLow) ||
                 bike.wheelSize === searchNum ||
