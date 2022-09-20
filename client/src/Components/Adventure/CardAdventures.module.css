@@ -118,3 +118,7 @@ input[type="checkbox"]:checked + label:before {
 .label {
     color: #333333;
 }
+
+.btnSwal{
+    background-color: #F9B621!important;
+}
