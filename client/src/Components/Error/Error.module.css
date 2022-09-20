@@ -1,0 +1,42 @@
+.btnHome {
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: 49rem;
+    margin-bottom: 10rem;
+    width: 8rem;
+    height: 3rem;
+    color: #1e1e1e;
+    background-color: #ffffff;
+    font-size: .9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+}
+
+.btnHome:hover {
+    background-color: #d39307;
+    color: #ffffff;
+}
+
+.background {
+    background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10rem;
+}
+
+.img {
+    position: fixed;
+    margin-left: 20rem;
+    margin-top: 5rem;
+    z-index: 100;
+}
