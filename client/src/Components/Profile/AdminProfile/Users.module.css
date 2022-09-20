@@ -50,6 +50,10 @@
     position: absolute;
 }
 
+.edit path{
+    color: #f9b621;
+}
+
 @media (max-width:650px) {
     .users{
         margin-top: 4rem;

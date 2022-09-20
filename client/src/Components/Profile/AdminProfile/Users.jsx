@@ -5,6 +5,7 @@ import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { Avatar } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { BiEdit } from 'react-icons/bi';
 import { getAllUsers } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import RenderProfilePic from "../../Cloudinary/renderProfilePic";
@@ -61,7 +62,7 @@ export default function Users() {
       { field: "email", headerName: "Email", width: 300 },
       {
         field: "status",
-        headerName: "Estado",
+        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
         width: 100,
         type: "singleSelect",
         valueOptions: ["active", "banned"],
@@ -69,7 +70,7 @@ export default function Users() {
       },
       {
         field: "role",
-        headerName: "Rol",
+        headerName: <div>Rol <BiEdit className={s.edit}/></div>,
         width: 115,
         type: "singleSelect",
         valueOptions: ["Administrador", "Usuario"],

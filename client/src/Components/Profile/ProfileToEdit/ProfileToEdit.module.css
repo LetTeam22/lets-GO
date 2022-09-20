@@ -40,9 +40,17 @@
     padding-bottom: 2rem;
     color: #ffffff;
 }
+
 .nameAndImg h2{
     color: #f9b621;
 }
+
+.nameAndImg label{
+    width: 4.5rem;
+    height: 4.5rem;
+    overflow: hidden;
+}
+
 .nameAndImg label span:hover{
     background-color: #5e5d5d6c;
     width: 5rem;
@@ -54,9 +62,7 @@
 }
 .img {
     position: absolute;
-    top: 0;
-    left: -1rem;
-    width: 4rem;
+    width: 4.5rem;
 }
 .iconCamera{
     opacity: 0;
