@@ -64,31 +64,30 @@ export const About = () => {
                         <div>
                             <div>
                                 <p style={{ color: "black" }}>Front End</p>
-                                <a href="https://es.reactjs.org/" style={{ color: "black" }}>React</a> <span>  ||  </span>
-                                <a href="https://es.redux.js.org/" style={{ color: "black" }}>Redux</a>
+                                <a href="https://es.reactjs.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">React</a> <span>  ||  </span>
+                                <a href="https://es.redux.js.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Redux</a>
                             </div>
                             <div>
                                 <p style={{ color: "black" }}>Back End</p>
-                                <a href="https://nodejs.org/es/" style={{ color: "black" }}>NodeJS</a><span>  ||  </span>
-                                <a href="https://expressjs.com/es/" style={{ color: "black" }}>Express</a><span>  ||  </span>
-                                <a href="https://www.postgresql.org/" style={{ color: "black" }}>PostgreSQL</a><span>  ||  </span>
-                                <a href="https://sequelize.org/" style={{ color: "black" }}>Sequelize</a>
+                                <a href="https://nodejs.org/es/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">NodeJS</a><span>  ||  </span>
+                                <a href="https://expressjs.com/es/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Express</a><span>  ||  </span>
+                                <a href="https://www.postgresql.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">PostgreSQL</a><span>  ||  </span>
+                                <a href="https://sequelize.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Sequelize</a>
                             </div>
                             <div>
                                 <p style={{ color: "black" }}>Deploy</p>
-                                <a href="https://vercel.com/" style={{ color: "black" }}>Vercel</a><span>  ||  </span>
-                                <a href="https://www.heroku.com/" style={{ color: "black" }}>Heroku</a>
+                                <a href="https://vercel.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Vercel</a><span>  ||  </span>
+                                <a href="https://www.heroku.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Heroku</a>
                             </div>
                             <div>
                                 <p style={{ color: "black" }}>Librerías</p>
-                                <a href="https://socket.io/" style={{ color: "black" }} >Socket.IO</a><span>  ||  </span>
-                                <a href="https://cloudinary.com/" style={{ color: "black" }}>Cloudinary</a><span>  ||  </span>
-                                <a href="https://www.npmjs.com/package/@coreui/coreui" style={{ color: "black" }}>coreui</a><span>  ||  </span>
-                                <a href="https://auth0.com/" style={{ color: "black" }}>Autoh0</a><span>  ||  </span>
-                                <a href="https://sweetalert.js.org/" style={{ color: "black" }}>Sweet Alert</a><span>  ||  </span>
-                                <a href="https://coreui.io/" style={{ color: "black" }}>CoreUI</a><span>  ||  </span>
-                                <a href="https://www.emailjs.com/" style={{ color: "black" }}>EmailJS </a><span>  ||  </span>
-                                <a href="https://mui.com/" style={{ color: "black" }}>MaterialUI</a>
+                                <a href="https://socket.io/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer" >Socket.IO</a><span>  ||  </span>
+                                <a href="https://cloudinary.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Cloudinary</a><span>  ||  </span>
+                                <a href="https://auth0.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Autoh0</a><span>  ||  </span>
+                                <a href="https://sweetalert.js.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">Sweet Alert</a><span>  ||  </span>
+                                <a href="https://coreui.io/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">CoreUI</a><span>  ||  </span>
+                                <a href="https://www.emailjs.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">EmailJS </a><span>  ||  </span>
+                                <a href="https://mui.com/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">MaterialUI</a>
                             </div>
 
                         </div>
@@ -100,25 +99,25 @@ export const About = () => {
                         <div className={s.space}>
                             <div className={s.each}>
                                 <p style={{ color: "black" }}>Nicolás Balbi</p>
-                                <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" >
+                                <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank" rel="noopener noreferrer">
                                     <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} alt="Nicolás Balbi" />
                                 </a>
                             </div>
                             <div className={s.each}>
-                                <a href="https://www.linkedin.com/in/sole-dato-ok/" >
+                                <a href="https://www.linkedin.com/in/sole-dato-ok/" target="_blank" rel="noopener noreferrer">
                                     <p style={{ color: "black" }}>Soledad Dato</p>
                                     <img src="https://avatars.githubusercontent.com/u/89033815?v=4" className={s.circleImg} alt="Soledad Dato" />
                                 </a>
                             </div>
                             <div className={s.each}>
-                                <a href="https://www.linkedin.com/in/felipe-jure/">
+                                <a href="https://www.linkedin.com/in/felipe-jure/" target="_blank" rel="noopener noreferrer">
                                     <p style={{ color: "black" }}>Felipe Jure</p>
                                     <img src="https://avatars.githubusercontent.com/u/94187041?v=4" className={s.circleImg} alt="Felipe Jure" />
 
                                 </a>
                             </div>
                             <div className={s.each}>
-                                <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" >
+                                <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" target="_blank" rel="noopener noreferrer">
                                     <p style={{ color: "black" }}>Lucía Meyer</p>
                                     <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} alt="Lucía Meyer" />
                                 </a>
@@ -126,20 +125,20 @@ export const About = () => {
                         </div>
                         <div className={s.space1}>
                             <div className={s.each}>
-                                <a href="https://www.linkedin.com/in/leandro-pappalardo/" >
+                                <a href="https://www.linkedin.com/in/leandro-pappalardo/" target="_blank" rel="noopener noreferrer">
                                     <p style={{ color: "black" }}>Leandro Pappalardo</p>
                                     <img src="https://avatars.githubusercontent.com/u/94720565?v=4" className={s.circleImg} alt="Leandro Pappalardo" />
                                 </a>
                             </div>
                             <div className={s.each}>
                                 <p style={{ color: "black" }}>Juan Martín Silva</p>
-                                <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" >
+                                <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" target="_blank" rel="noopener noreferrer">
                                     <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} alt="Juan Martín Silva" />
                                 </a>
                             </div>
                             <div className={s.each}>
                                 <p style={{ color: "black" }}>Máximo Tovar</p>
-                                <a href="https://www.linkedin.com/in/mrtovar10/">
+                                <a href="https://www.linkedin.com/in/mrtovar10/" target="_blank" rel="noopener noreferrer">
                                     <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} alt="Máximo Tovar" />
                                 </a>
                             </div>
