@@ -65,12 +65,12 @@
     cursor: pointer;
     border-radius: 0.2rem;
     background-color: #F5F5F5;
+    transition: all .3s linear;
 }
 
 .btn:hover {
     background-color: #F9B621;
     color: #F2F2F2;
-    transition: all .3s linear;
 }
 
 @media (max-width:1140px) {

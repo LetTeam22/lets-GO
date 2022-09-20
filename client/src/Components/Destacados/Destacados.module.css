@@ -23,6 +23,7 @@
     display: flex;
     animation: scroll 40s linear infinite;
     -webkit-animation: scroll 40s linear infinite;
+    -moz-animation: scroll 40s linear infinite;
     width: calc(25rem * 24);
 }
 
@@ -32,7 +33,7 @@
 
 .slider .slide img {
     width: 100%;
-} 
+}
 
 @keyframes scroll {
     0% {
@@ -64,7 +65,7 @@
     align-items: center;
     justify-content: center;
     row-gap: 0.5rem;
-} 
+}
 
 #one, #three {
     background-color: #F2F2F2;
@@ -96,17 +97,12 @@
     padding-top: .5rem;
 }
 
-
 .rodadoCont {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 2rem;
     padding-top: .5rem;
-}
-
-.dataCont svg{
-    width: 2rem;
 }
 
 .price {
@@ -181,7 +177,6 @@
     display: flex;
     justify-content: center;
     margin-bottom: .5rem;
-    align-items: flex-start;
 }
 
 .rodadoCont {
@@ -191,7 +186,10 @@
     height: 2rem;
 }
 
+
 .icon {
     margin: auto 1.5rem;
 }
+
+
 

@@ -80,13 +80,14 @@
     border: none;
     background: #F9B621;
     cursor: pointer;
-    border-radius: .2rem;
+    border-radius: .3rem;
+    transition: all .3s linear;
+    opacity: 0.85;
 }
 
 .searchBtn:hover {
     color: #d89c1c;
-    background: #FFFFFF;
-    transition: all .3s linear;
+    background: #333333;
 }
 
 .flechas {
