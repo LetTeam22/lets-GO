@@ -1,12 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getAllExperiences } from '../../Redux/actions';
 import s from './Experiencies.module.css';
 
 
 export const Experiencies = () => {
     
     const allExperiences = useSelector((state) => state.allExperiences);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllExperiences());
+    }, [dispatch])
 
     return (
         <div className={s.experiencies}>
@@ -15,7 +22,7 @@ export const Experiencies = () => {
             <h1 className={s.h1}>0% emisión 100% emoción</h1>
             <div className={s.experiencesImg}>
                 {
-                    allExperiences?.slice(0, 5).map(experience => {
+                    allExperiences?.filter(e => e.status === 'active').slice(0, 5).map(experience => {
                         return (
                             <div className={s.img}>
                                 <img src={experience.imgExperience} alt="img" className={s.experienceImg} />
