@@ -64,7 +64,7 @@ export default function Bookings() {
       { field: "ernings", headerName: "Ganancias", width: 100 },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (

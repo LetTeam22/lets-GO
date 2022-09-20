@@ -136,13 +136,13 @@ export const AdminProfile = () => {
             >
               Ver Aventuras
             </Button>
-          </div>
-          <div className={s.buttons}>
-            <AddCircleIcon
-              className={s.addBtn}
-              color="primary"
-              onClick={addAdvs}
-            />
+            <div className={s.buttons}>
+              <AddCircleIcon
+                className={s.addBtn}
+                color="primary"
+                onClick={addAdvs}
+              />
+            </div>
           </div>
         </div>
         <div>

@@ -100,7 +100,7 @@ export default function Bikes({socket}) {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (
