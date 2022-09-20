@@ -17,6 +17,9 @@ export const BikeDefinition = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>Qué es una bicicleta: definición y significado</h2>
                         </div>
@@ -95,9 +98,6 @@ export const BikeDefinition = () => {
                             La bicicleta se ha convertido en un medio de transporte saludable, ecológico y sostenible, y es fácil funcionar con él.
                             Pero, si además contás con una empresa como la nuestra que se ocupa del mantenimiento de tu bici y de su reparación para que  solo tengás que centrarte en disfrutar, las ventajas son mucho mayores.
                         </p>
-                        <div className={s.containerBtn}>
-                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-                        </div>
                     </div>
                 </section>
             </div>

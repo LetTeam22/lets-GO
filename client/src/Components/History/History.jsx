@@ -16,6 +16,9 @@ export const History = () => {
             <div className={s.right} />
             <div className={s.pageBlock}>
                 <div className={s.container}>
+                    <div className={s.containerBtn}>
+                        <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                    </div>
                     <div className={s.pageHeading}>
                         <h2>
                             Los orígenes de la bicicleta
@@ -57,9 +60,6 @@ export const History = () => {
                         El inventor al que le debemos la bicicleta moderna es John Kemp Starley. Este inglés sacó al mercado la Safety Bicycle, o lo que es lo mismo, la "bicicleta de seguridad”,
                         cuyo diseño es mucho más cercano a lo que conocemos hoy en día, ya que tenía frenos y una estructura similar a la de ahora. Este modelo de bici fue puesto en el mercado en 1885 y, tres años después, se le añadieron unos neumáticos con cámara de aire, una invención de John Boyd Dunlop.
                     </p>
-                    <div className={s.containerBtn}>
-                        <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-                    </div>
                 </div>
             </div>
         </>
