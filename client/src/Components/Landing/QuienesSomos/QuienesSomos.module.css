@@ -75,7 +75,7 @@
     color: #333333;
     background: #F9B621;
     padding: 0;
-    font-size: .7rem;
+    font-size: 1rem;
     font-weight: 700;
     display: flex;
     justify-content: center;
@@ -86,6 +86,12 @@
     border-radius: .2rem;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    transition: all .3s linear;
+}
+
+.btn:hover {
+    color: #d89c1c;
+    background: #333333;
 }
 
 @media (max-width:1140px) {

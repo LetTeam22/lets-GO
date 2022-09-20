@@ -11,15 +11,15 @@
 
 .h1{
     display: flex;
-    margin-left: 3rem;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.5rem;
     margin-top: 2rem;
     font-weight: 300;
     height: 10%;
     justify-content: center;
     padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: #787877
+    color: #787877;
 }
 
 .btn2 {
@@ -34,9 +34,15 @@
     box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
     cursor: pointer;
     list-style: none;
-    color: rgb(255, 255, 255);
-    background: #F9B621;
-    border-radius: 6px 6px 6px 6px;
+    color: #F9B621;
+    background: #333333;
+    border-radius: .5rem;
+    transition: all .5s linear;
+}
+
+.btn2:hover {
+    background-color: #F9B621;
+    color: #333333;
 }
 
 .precioTotal{
@@ -67,7 +73,7 @@
     position: fixed;
     background-color: #f0efef;
     height: 400vh;
-    width: 18%;
+    width: 12%;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205);
     z-index: 2
 }
@@ -76,7 +82,7 @@
     position: fixed;
     background-color: #f0efef;
     height: 400vh;
-    width: 18%;
+    width: 12%;
     right: 0;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267);
     z-index: 2
@@ -84,4 +90,57 @@
 
 .btnSwal{
     background-color: #F9B621!important;
+}
+
+@media (max-width: 1000px) {
+
+    .h1 {
+        margin-top: 4rem;
+        margin-left: 1rem;
+    }
+
+    .containerBtn {
+        top: 9rem;
+    }
+
+    .btn2 {
+        width: 7rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .h1 {
+        margin-top: 4rem;
+        margin-left: 0rem;
+        font-size: 1.3rem; 
+    }
+
+    .containerBtn {
+        top: 6rem;
+    }
+
+    .left, .right {
+        width: 10%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .containerBtn {
+        top: 9rem;
+    }
+
+    .h1 {
+        font-size: 1.15rem; 
+    }
+
+    .left, .right {
+        width: 9%;
+    }
+}
+
+@media (max-width: 550px) {
+    .left, .right {
+        width: 7%;
+    }
 }

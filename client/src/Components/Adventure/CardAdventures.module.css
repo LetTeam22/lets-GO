@@ -14,7 +14,7 @@
 }
 
 .blogCard:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, 0.555);
 }
 
@@ -122,3 +122,87 @@ input[type="checkbox"]:checked + label:before {
 .btnSwal{
     background-color: #F9B621!important;
 }
+
+@media (max-width: 1750px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 45%;
+    }
+    
+    .description {
+        padding: .8rem;
+    }
+}
+
+@media (max-width: 1600px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 50%;
+    }
+    
+    .description {
+        padding: .6rem;
+    }
+}
+
+@media (max-width: 1400px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 57%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 60%;
+    }
+    
+
+}
+
+@media (max-width: 850px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 65%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 65%;
+    }
+
+    .imgcard {
+        height: 25vh;
+    }
+    
+    .description {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .blogCard {
+        flex-direction: column;
+        width: 65%;
+    }
+
+    .imgcard {
+        height: 20vh;
+    }
+    
+    .description {
+        padding: 1rem;
+    }
+}
+
+

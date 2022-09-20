@@ -88,7 +88,7 @@ export const Adventure = () => {
       <h1 className={s.h1}>EXCLUSIVO PARA LETERS AVENTUREROS</h1>
       <div className={s.containerBtn}>
         <button className={s.btn2} onClick={handleClick}>
-          Agregar al carrito
+          AGREGAR AL CARRITO
         </button>
         <p className={s.precioTotal}>Total ${adicional()}</p>
       </div>
