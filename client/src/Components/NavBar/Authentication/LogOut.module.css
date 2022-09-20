@@ -30,6 +30,15 @@
     position: relative;
     justify-content: center;
 }
+.containerLog button{
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .name{
     position: absolute;
