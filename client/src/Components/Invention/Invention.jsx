@@ -17,6 +17,9 @@ export const Invention = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>La invención de la bici</h2>
                         </div>
@@ -116,9 +119,6 @@ export const Invention = () => {
                             Karl Drais, McMillan, Michaux, Gavin Dalzell, James Starley, John Kemp Starley…
                             las dudas sobre quién inventó la bicicleta siguen estando muy presentes, pero de lo que sí hay certezas es que este medio de transporte es una forma sostenible, divertida y económica de desplazarse.
                         </p>
-                        <div className={s.containerBtn}>
-                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-                        </div>
                     </div>
                 </section>
             </div>

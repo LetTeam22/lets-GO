@@ -20,6 +20,9 @@ export const Payments = () => {
       <div className={s.page}>
         <section className={s.pageBlock}>
           <div className={s.container}>
+            <div className={s.containerBtn}>
+              <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+            </div>
             <div className={s.pageHeading}>
               <h2>PAGOS Y RETIROS</h2>
             </div>
@@ -116,9 +119,6 @@ export const Payments = () => {
             <p style={{ color: "black" }}>
               Si después de leer esta información te queda alguna duda, {<a className={s.a} href={contacto}>contactate</a>} con nosotros que te responderemos a la brevedad.
             </p>
-            <div className={s.containerBtn}>
-              <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-            </div>
           </div>
         </section >
       </div >

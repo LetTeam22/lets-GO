@@ -53,13 +53,13 @@ export const Footer = () => {
                     <span className={s.footerSpan}>Historia de la bicicleta</span>
                 </a>
                 <a className={s.footerSpan} href={ebike} cursor='pointer'>
-                    <span className={s.footerSpan}>Como funciona una bicicleta electrica</span>
+                    <span className={s.footerSpan}>Cómo funciona una bicicleta eléctrica</span>
                 </a>
                 <a className={s.footerSpan} href={invention} cursor='pointer'>
-                    <span className={s.footerSpan}>Invencion de la bici</span>
+                    <span className={s.footerSpan}>Invención de la bici</span>
                 </a>
                 <a href={normative} className={s.footerSpan} cursor='pointer'>
-                    <span className={s.footerSpan}>Normativa bicicletas</span>
+                    <span className={s.footerSpan}>Normativa sobre el uso de bicicletas</span>
                 </a>
             </div>
             <div className={s.company}>
