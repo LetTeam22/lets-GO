@@ -41,6 +41,10 @@
     color: #ffffff;
 }
 
+.nameAndImg h2{
+    color: #f9b621;
+}
+
 .nameAndImg label{
     width: 4.5rem;
     height: 4.5rem;

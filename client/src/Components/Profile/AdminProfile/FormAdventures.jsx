@@ -232,7 +232,7 @@ export default function FormAdventures({ setAddAdv }) {
                     </div>
                   ) : (
                     <div className={s.divImg}>
-                      <img src={adventure} className={s.img} alt="aventura" />
+                      <img src={adventure} className={s.icon} alt="aventura" />
                     </div>
                   )}
                 <BsCameraFill className={s.iconCamera} />
