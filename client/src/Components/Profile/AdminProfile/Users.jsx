@@ -77,7 +77,7 @@ export default function Users() {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 150,
         renderCell: (params) => (

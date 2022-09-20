@@ -40,7 +40,7 @@ export default function Accesories() {
       { field: "status", headerName: "Estado", width: 100, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },
-      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
+      { field: "action", headerName: "Guardar", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
     ];
   }, [rowId]) 
 

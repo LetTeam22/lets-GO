@@ -48,7 +48,7 @@ export default function Experiences() {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (

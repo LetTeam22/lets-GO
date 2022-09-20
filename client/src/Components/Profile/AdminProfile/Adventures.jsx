@@ -51,7 +51,7 @@ export default function Adventures() {
       { field: "status", headerName: "Estado", width: 80, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },
-      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'adventures'}} /> }
+      { field: "action", headerName: "Guardar", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'adventures'}} /> }
     ];
   }, [rowId]) 
 
