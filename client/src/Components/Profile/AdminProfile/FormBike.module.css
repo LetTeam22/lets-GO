@@ -72,10 +72,16 @@
     justify-content: center;
 }
 .img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain!important;
+}
+
+.divImg {
     width: 20rem;
     height: 20rem;
-    color: #333333!important;
 }
+
 .iconCamera{
     opacity: 0;
     position: absolute;
