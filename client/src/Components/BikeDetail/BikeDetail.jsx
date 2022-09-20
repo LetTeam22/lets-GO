@@ -46,7 +46,7 @@ export const BikeDetail = () => {
   const techBMX = "https://res.cloudinary.com/pflet/image/upload/v1663560790/Let/TecnologyBikes/TechBMX_yxhr7c.png"
   const techFolding = "https://res.cloudinary.com/pflet/image/upload/v1662686159/Let/image/Technology_h3knbm.png"
 
-  const bikeTech = (tech) =>{
+  const bikeTech = (tech) => {
     if (tech === 'touring') return techTouring
     if (tech === "mtb") return techMTB
     if (tech === "tandem") return techTandem
@@ -225,36 +225,16 @@ export const BikeDetail = () => {
                   }}
                 >
                   {" "}
-                  Agregar al carrito{" "}
+                  AGREGAR AL CARRITO{" "}
                 </button>
               </div>
             </div>
           </div>
-          <div className={s.gallery}>
-            <div>
-              <img
-                className={s.photo}
-                src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2020/07/tn-photo-verge-s8i-belt-drive-web.jpg.webp?itok=UGa8TR7B"
-                alt="Detalles de la bicicleta"
-              />
-            </div>
-            <div>
-              <img
-                className={s.photo}
-                src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2015/09/noded7i-highlight-3-0.jpg.webp?itok=NcKQBP4q"
-                alt="Detalles de la bicicleta"
-              />
-            </div>
-            <div>
-              <img
-                className={s.photo}
-                src="https://www.ternbicycles.com/sites/default/files/styles/small_rectangle_2x/public/images/bikes/other/2020/07/tn-photo-verge-s8i-andros-valo-web.jpg.webp?itok=ZPRHKwen"
-                alt="Detalles de la bicicleta"
-              />
-            </div>
+          <div className={s.titleAccAndTech} style={{marginTop:"3rem"}}>
+            <h2 className={s.titleTA} >En acción</h2>
           </div>
           <div className={s.video}>
-            <video style={{width:"100%"}} autoPlay muted loop src={bikeVideo(bike.type)}></video>
+            <video style={{ width: "100%" }} autoPlay muted loop src={bikeVideo(bike.type)}></video>
           </div>
           <div className={s.titleAccAndTech}>
             <h2 className={s.titleTA}>Tecnología</h2>
