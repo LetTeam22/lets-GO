@@ -96,7 +96,7 @@ export const Profile = () => {
     if(cancelled) return 'CANCELADA'
     if(today < endDate) return 'EN CAMINO'
     if(today > endDate) return 'FINALIZADA'
-    if( today === endDate) return 'Tu viaje es hoy'
+    if(today === endDate) return 'Tu viaje es hoy'
   };
 
   const iconStyle = {
@@ -182,8 +182,8 @@ export const Profile = () => {
                 <div className={s.flex}>
                   { b.startDate === null ? <></> :
                     <>
-                      <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA: </span>
-                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{reverseDate(b.startDate)} / </span>
+                      <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● FECHA:&nbsp;</span>
+                      <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{reverseDate(b.startDate)} /&nbsp;</span>
                       <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{reverseDate(b.endDate)}</span>
                     </>
                   }
@@ -192,9 +192,9 @@ export const Profile = () => {
                 <div className={s.flex}>
                 { b.startDate === null ? <></> :
                   <>
-                    <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI: </span>
-                    {b.bikes.map(bike => (
-                      <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} - </span>
+                    <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI:&nbsp;</span>
+                    {b.bikes.map((bike, i) => (
+                      <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} {i < b.bikes.length - 1 && '-'}&nbsp;</span>
                     ))}
                   </>
                 }
@@ -203,23 +203,23 @@ export const Profile = () => {
                 <div className={s.flex}>
                 { b.startDate === null ? <></> :
                   <>
-                      <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS: </span>
-                      {!!b.accesories.length && b.accesories.map(acc => (
-                        <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{ acc.name} - </span>
+                      <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS:&nbsp;</span>
+                      {!!b.accesories.length && b.accesories.map((acc, i) => (
+                        <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} {i < b.accesories.length - 1 && '-'}&nbsp;</span>
                       ))}
                   </>
                 }
                 </div>
 
                 <div className={s.flex}>
-                  <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● AVENTURAS: </span>
-                  {!!b.adventures.length && b.adventures.map(acc => (
-                    <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{ acc.name} - </span>
+                  <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● AVENTURAS:&nbsp;</span>
+                  {!!b.adventures.length && b.adventures.map((adv, i) => (
+                    <span key={adv.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{adv.name} {i < b.adventures.length - 1 && '-'}&nbsp;</span>
                   ))}
                 </div>
 
                 <div className={s.flex}>
-                  <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL: </span>
+                  <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● PRECIO TOTAL:&nbsp;</span>
                   <span className={b.status === 'cancelled' ? s.list2Cancel : s.list2}> ${b.totalPrice}</span>
                 </div>
 
@@ -228,8 +228,8 @@ export const Profile = () => {
                   <span className={s.titleList2}>Nos contactaremos para coordinar los detalles de tu Aventura</span>
                   :
                   <>
-                    <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO: </span>
-                    <span className={b.status === 'cancelled' ? s.titleCancel : s.status}>⇢ {bookingStatus(b.endDate, b.idBooking)}</span>
+                    <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ESTADO:&nbsp;</span>
+                    <span className={b.status === 'cancelled' ? s.titleCancel : s.status}>⇢ &nbsp;{bookingStatus(b.endDate, b.idBooking)}</span>
                   </>
                 }
                 {
