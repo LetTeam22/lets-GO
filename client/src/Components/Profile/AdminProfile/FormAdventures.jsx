@@ -91,7 +91,7 @@ export default function FormAdventures({ setAddAdv }) {
         setPhoto(undefined);
         const data = new FormData();
         data.append("file", toUpload);
-        data.append("upload_preset", "ProfilePictures");
+        data.append("upload_preset", "Adventures");
         const res = await fetch(
           `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
@@ -226,11 +226,15 @@ export default function FormAdventures({ setAddAdv }) {
                   value={input.image}
                   name="image"
                 />
-                {photo ? (
-                  <img src={photo} alt="photoAcc" className={s.img} />
-                ) : (
-                  <img src={adventure} className={s.img} alt="aventura" />
-                )}
+                  {photo ? (
+                    <div className={s.divImg}>
+                      <img src={photo} alt="photoAcc" className={s.img} />
+                    </div>
+                  ) : (
+                    <div className={s.divImg}>
+                      <img src={adventure} className={s.img} alt="aventura" />
+                    </div>
+                  )}
                 <BsCameraFill className={s.iconCamera} />
               </IconButton>
             </div>

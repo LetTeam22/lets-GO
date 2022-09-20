@@ -24,7 +24,7 @@ export const Experiencies = () => {
                 {
                     allExperiences?.filter(e => e.status === 'active').slice(0, 5).map(experience => {
                         return (
-                            <div className={s.img}>
+                            <div className={s.img} key={experience.bookingIdBooking}>
                                 <img src={experience.imgExperience} alt="img" className={s.experienceImg} />
                                 <div className={s.hoverDiv}>
                                     <h3>{experience.firstName}</h3>

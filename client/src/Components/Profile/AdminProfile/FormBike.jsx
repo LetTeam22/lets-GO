@@ -90,7 +90,7 @@ export default function FormBike({ setAddBike }) {
         setPhoto(undefined);
         const data = new FormData();
         data.append("file", toUpload);
-        data.append("upload_preset", "ProfilePictures");
+        data.append("upload_preset", `Bikes_${input.type}`);
         const res = await fetch(
           `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
@@ -247,7 +247,9 @@ export default function FormBike({ setAddBike }) {
                     id="image"
                   />
                   {photo ? (
-                    <img src={photo} alt="photoBike" className={s.img} />
+                    <div className={s.divImg}>
+                      <img src={photo} alt="photoBike" className={s.img} />
+                    </div>
                   ) : (
                     <GiDutchBike className={s.img} />
                   )}
