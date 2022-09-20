@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti';
+import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getAllAdventures } from "../../../Redux/actions";
@@ -40,15 +41,15 @@ export default function Adventures() {
   const columnsAccs = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 150, editable: true },
-      { field: "description", headerName: "Descripcion", width: 150, editable: true },
-      { field: "conditions", headerName: "Condicion", width: 150, editable: true },
-      { field: "image", headerName: "Imagen", width: 120, editable: true },
-      { field: "difficulty", headerName: "Dificultad", width: 100, type: "singleSelect",
+      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 150, editable: true },
+      { field: "description", headerName: <div>Descripción <BiEdit className={s.edit}/></div>, width: 150, editable: true },
+      { field: "conditions", headerName: <div>Condición <BiEdit className={s.edit}/></div>, width: 150, editable: true },
+      { field: "image", headerName: <div>Imagen <BiEdit className={s.edit}/></div>, width: 120, editable: true },
+      { field: "difficulty", headerName: <div>Dificultad <BiEdit className={s.edit}/></div>, width: 100, type: "singleSelect",
       valueOptions: ["baja", "media", "alta"], editable: true },
-      { field: "date", headerName: "Fechas", width: 150, editable: true },
-      { field: "price", headerName: "Precio", width: 100, type: "number", editable: true },
-      { field: "status", headerName: "Estado", width: 80, type: "singleSelect",
+      { field: "date", headerName: <div>Fechas <BiEdit className={s.edit}/></div>, width: 150, editable: true },
+      { field: "price", headerName: <div>Precio <BiEdit className={s.edit}/></div>, width: 100, type: "number", editable: true },
+      { field: "status", headerName: <div>Estado <BiEdit className={s.edit}/></div>, width: 80, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },
       { field: "action", headerName: "Guardar", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'adventures'}} /> }
