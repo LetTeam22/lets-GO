@@ -40,6 +40,9 @@
     padding-bottom: 2rem;
     color: #ffffff;
 }
+.nameAndImg h2{
+    color: #f9b621;
+}
 .nameAndImg label span:hover{
     background-color: #5e5d5d6c;
     width: 5rem;
