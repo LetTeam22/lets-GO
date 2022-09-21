@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './CardExperiences.module.css'
-import { BiLike, BiTrash, BiEdit, BiSave } from 'react-icons/bi';
-import { AiFillLike } from 'react-icons/ai';
+import { BiTrash, BiEdit, BiSave } from 'react-icons/bi';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addLikeToDb, removeLikeFromDb, updateExperience, updateExperiencesState } from '../../Redux/actions';
 import swal from 'sweetalert';
@@ -118,7 +118,7 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 <h1 className={s.name}>{firstName}</h1>
                 <h1 className={s.h1}>{startDate} / {endDate}</h1>
                 <div className={s.containH1}> 
-                    { bikes.map( b =>  <h1 className={s.h1} key={b.name}> {b.name} ・ </h1> )}
+                    { bikes.map( b => <h1 className={s.h1} key={b.name}>    {b.name} |   </h1> )}
                 </div>
                 <>
                 {
@@ -130,8 +130,8 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                 <div className={s.iconCont}>
                     {
                         experienceIsLike(idExperience)
-                            ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><AiFillLike size='1.5rem' color='#F9B621' /></button>    
-                            :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><BiLike size='1.5rem' color='#F9B621' /></button>
+                            ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><FaHeart size='1.5rem' color='#F9B621' /></button>    
+                            :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><FaRegHeart size='1.5rem' color='#F9B621' /></button>
                     }
                     {
                         isAuthenticated && user.email === email &&
@@ -139,7 +139,7 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                         {
                             idExperience === input.id ? 
                             <button onClick={e =>  handleSave(e, email)} className={s.iconBtn}><BiSave size='1.5rem' color='#F9B621' /></button> :
-                            <>
+                            <> 
                                 <button onClick={e =>  handleEdit(e, email)} className={s.iconBtn}><BiEdit size='1.5rem' color='#F9B621' /></button>
                                 <button onClick={e =>  handleDelete(e, email)} className={s.iconBtn}><BiTrash size='1.5rem' color='#F9B621' /></button>
                             </> 

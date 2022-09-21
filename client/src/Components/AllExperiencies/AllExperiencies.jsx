@@ -41,26 +41,28 @@ export const AllExperiencies = ({socket}) => {
             <div className={s.container}>
                 <h1 className={s.h1}>LAS LET EN PRIMERA PERSONA</h1>
             </div>
-            { 
-            allExperiences==='nothing'?<ExperiencesNotFound/>:
-            allExperiences?.length ? allExperiences?.filter(e => e.status === 'active').map((e) =>{
-                    return (
-                        <CardExperience
-                            key = {e.idExperience}
-                            idExperience={e.idExperience}
-                            firstName= {e.firstName}
-                            imgExperience={e.imgExperience}
-                            textExperience={e.textExperience}
-                            startDate={reverseDate(e.booking.startDate)}
-                            endDate={reverseDate(e.booking.endDate)}
-                            bikes={e.booking.bikes}
-                            socket={socket}
-                            email={e.email}
-                            numberOfLikes={e.numberOfLikes}
-                        />
-                    )
-            }) : <Loading/> 
-            }
+            <div className={s.containerCards}>
+                { 
+                allExperiences==='nothing'?<ExperiencesNotFound/>:
+                allExperiences?.length ? allExperiences?.filter(e => e.status === 'active').map((e) =>{
+                        return (
+                            <CardExperience
+                                key = {e.idExperience}
+                                idExperience={e.idExperience}
+                                firstName= {e.firstName}
+                                imgExperience={e.imgExperience}
+                                textExperience={e.textExperience}
+                                startDate={reverseDate(e.booking.startDate)}
+                                endDate={reverseDate(e.booking.endDate)}
+                                bikes={e.booking.bikes}
+                                socket={socket}
+                                email={e.email}
+                                numberOfLikes={e.numberOfLikes}
+                            />
+                        )
+                }) : <Loading/> 
+                }
+            </div>
         </>
     )
 };
