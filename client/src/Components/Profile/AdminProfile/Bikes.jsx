@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getBikes } from "../../../Redux/actions";
@@ -67,7 +68,7 @@ export default function Bikes({socket}) {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 150, editable: true },
+      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 150, editable: true },
       { field: "type", headerName: "Tipo", width: 80 },
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
@@ -75,15 +76,15 @@ export default function Bikes({socket}) {
       { field: "rating", headerName: "Rating", width: 70 },
       {
         field: "price",
-        headerName: "Precio",
+        headerName: <div>Precio <BiEdit className={s.edit}/></div>,
         width: 70,
         type: "number",
         editable: true,
       },
       {
         field: "discount",
-        headerName: "Descuento",
-        width: 90,
+        headerName: <div>Descuento <BiEdit className={s.edit}/></div>,
+        width: 100,
         type: "singleSelect",
         valueOptions: fillDiscounts(),
         editable: true,
@@ -92,7 +93,7 @@ export default function Bikes({socket}) {
       { field: "totalBookings", headerName: "Cantidad alq", width: 100 },
       {
         field: "status",
-        headerName: "Estado",
+        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
         width: 80,
         type: "singleSelect",
         valueOptions: ["active", "service", "deleted"],
@@ -100,7 +101,7 @@ export default function Bikes({socket}) {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (

@@ -35,8 +35,8 @@ export const ShoppingCart = () => {
   const allBikes = useSelector((state) => state.allBikes);
   const mpInfo = useSelector((state) => state.mpInfo);
   const allAdventures = useSelector(state => state.allAdventures)
-  let cartBikes = [];
-  let cartAdventures = [];
+  let cartBikes = []; // eslint-disable-next-line
+  let cartAdventures = []; 1
   const { user, isLoading } = useAuth0();
 
   const [loading, setLoading] = useState(false);
@@ -242,11 +242,11 @@ export const ShoppingCart = () => {
         <hr color="#595858" size='0.5px' />
 
         {
-           !bookings.length && Adventures.adv ? <></> :
-          <div className={s.fechasCont}>
-            <Dates component='cart' />
-            <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
-          </div>
+          !bookings.length && Adventures.adv ? <></> :
+            <div className={s.fechasCont}>
+              <Dates component='cart' />
+              <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+            </div>
         }
 
         <div className={s.containerDiv}>

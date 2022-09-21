@@ -17,11 +17,25 @@
     background-color: rgb(238, 238, 238);
     padding: .5rem;
     border-radius: 3rem;
+    transition: box-shadow 0.5s linear ;
+}
+.img:hover{
+    box-shadow: rgb(75, 75, 75) 0px 0px .5rem;
+
+}
+.containerImg{
+    border-radius: 50%;
+    overflow: hidden;
+    transition: box-shadow 0.5s linear;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.containerImg :hover{
+.containerImg:hover{
     box-shadow: rgb(75, 75, 75) 0px 0px .5rem;
-    transition: all .5s linear;
 }
 
 .infoUs {

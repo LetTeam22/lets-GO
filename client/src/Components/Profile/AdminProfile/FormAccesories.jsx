@@ -85,7 +85,7 @@ export default function FormBike({ setAddAcc }) {
         setPhoto(undefined);
         const data = new FormData();
         data.append("file", toUpload);
-        data.append("upload_preset", "ProfilePictures");
+        data.append("upload_preset", "accesories");
         const res = await fetch(
           `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
           {
@@ -163,7 +163,9 @@ export default function FormBike({ setAddAcc }) {
                   id="image"
                 />
                 {photo ? (
-                  <img src={photo} alt="photoAcc" className={s.img} />
+                  <div className={s.divImg}>
+                    <img src={photo} alt="photoAcc" className={s.img} />
+                  </div>
                 ) : (
                   <MdHandyman className={s.img} />
                 )}

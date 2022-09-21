@@ -2,13 +2,13 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from 'react-icons/ti';
+import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getAccesories } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
 import s from "./Accesories.module.css";
-
 
 export default function Accesories() {
   const accesories = useSelector(state => state.accesories)
@@ -35,19 +35,18 @@ export default function Accesories() {
   const columnsAccs = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 120, editable: true },
-      { field: "price", headerName: "Precio", width: 80, type: "number", editable: true },
-      { field: "status", headerName: "Estado", width: 100, type: "singleSelect",
+      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 120, editable: true },
+      { field: "price", headerName: <div>Precio <BiEdit className={s.edit}/></div>, width: 80, type: "number", editable: true },
+      { field: "status", headerName: <div>Estado <BiEdit className={s.edit}/></div>, width: 100, type: "singleSelect",
       valueOptions: ["active", "deleted"],
       editable: true },
-      { field: "action", headerName: "Action", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
+      { field: "action", headerName: "Guardar", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
     ];
   }, [rowId]) 
 
   const handleClick = () => {
     history.goBack()
   }
-
 
   return (
     <div className={s.accesories}>

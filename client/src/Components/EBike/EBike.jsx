@@ -17,6 +17,9 @@ export const EBike = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>¿Cómo funciona una bici eléctrica?</h2>
                         </div>
@@ -88,9 +91,6 @@ export const EBike = () => {
                             Debés tener en cuenta que una e-bike es recomendable en zonas con grandes cuestas, ya sea en montañas o incluso en ciudades que, debido a su orografía, cuentan con calles con con pendientes, algunas muy pronunciadas,
                             que pueden necesitar de una ayuda a la hora de superarlas sin ser un ciclista profesional.
                         </p>
-                        <div className={s.containerBtn}>
-                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-                        </div>
                     </div>
                 </section>
             </div>

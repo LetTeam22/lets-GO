@@ -18,6 +18,9 @@ export const PrivacyPolicies = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>Política de privacidad</h2>
                         </div>
@@ -151,9 +154,6 @@ export const PrivacyPolicies = () => {
                                 </p>
 
                             </div>
-                        </div>
-                        <div className={s.containerBtn}>
-                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
                         </div>
                     </div>
                 </section>

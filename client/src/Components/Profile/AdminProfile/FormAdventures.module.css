@@ -42,16 +42,43 @@
     margin: 0;
 }
 .form{
-    display: flex;
     width: 90%;
+    display: flex;
     align-items: center;
+    gap: 1rem;
 }
 .nameAndPrice{
     display: flex;
     width: 50%;
     flex-direction: column;
-    gap: 5rem;
+    gap: 1.5rem;
 }
+.name{
+    width: 90%;
+}
+.nameAndPrice section > div{
+    display: flex;
+    gap: 1rem;
+}
+.nameAndPrice section > div > div{
+    width: 45%;
+}
+
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.h6{
+    display: block;
+    width: 100%;
+}
+
+.day{
+    color: #333333!important;
+}
+
 .nameAndImg{
     width: 50%;
     height: 20rem;
@@ -61,16 +88,22 @@
 .nameAndImg label{
     width: 100%;
 }
+
 .img {
     width: 100%;
     height: 100%;
     object-fit: contain!important;
-    color: #333333!important;
+}
+.icon{
+    width: 100%;
+    height: 100%;
+    object-fit: contain!important;
+    background-color: #525252;
 }
 
-.divImg{
+.divImg {
     width: 20rem;
-    height: 20rem;
+    height: 15rem;
 }
 
 .iconCamera{
@@ -125,21 +158,36 @@
 }
 
 @media (max-width:560px) {
+    .container{
+        height: 40rem;
+    }
     .nameAndImg{
         height: 10rem;
         position: absolute;
-        bottom: 3rem;
+        bottom: 1rem;
         left: 50%;
         transform: translate(-50%);
     }
     .nameAndPrice{
         width: 100%;
-        margin-top: 2rem;
         margin-bottom: 1rem;
         flex-direction: column;
         gap: 1rem;
     }
     .textArea{
         width: 90%!important;
+    }
+}
+
+@media (max-width:460px) {
+    .nameAndImg{
+        bottom: 2.8rem;
+    }
+}
+
+@media (max-width:320px) {
+    .boxes{
+        margin-bottom: 1rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 }

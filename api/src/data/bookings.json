@@ -274,5 +274,22 @@
         ],
         "totalPrice": 3500,
         "adventureNames": []
+    },
+    {
+        "startDate": "2022-05-12",
+        "endDate": "2022-05-12",
+        "userId": 2,
+        "bikeIds": [
+            31,
+            32,
+            33
+        ],
+        "AccIds": [
+            6,
+            7,
+            8
+        ],
+        "totalPrice": 2774,
+        "adventureNames": []
     }
 ]

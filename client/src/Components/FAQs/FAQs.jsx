@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import s from './FAQs.module.css'
 
 export const FAQs = () => {
-    
+
     const history = useHistory()
     const contacto = '/contact'
     const how = '/how'
@@ -20,6 +20,9 @@ export const FAQs = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>PREGUNTAS FRECUENTES</h2>
                         </div>
@@ -93,10 +96,6 @@ export const FAQs = () => {
                         <p style={{ color: "black" }}>
                             Por el momento el stock de bicicletas está destinado solamente a alquiler. Pero como sabemos que apenas te subas a una Let no vas a querer bajarte más, escribinos y consultanos por descuentos exclusivos para alquileres prolongados.
                         </p>
-
-                        <div className={s.containerBtn}>
-                            <button onClick={() => history.goBack()} className={s.btn2}>Atrás</button>
-                        </div>
                     </div>
                 </section>
             </div>

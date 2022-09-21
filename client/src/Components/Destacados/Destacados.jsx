@@ -62,12 +62,12 @@ export const Destacados = () => {
                         </Link>
                         <Link to={`/bike/${bike.idBike}`}><h4 className={s.name}>{bike.name}</h4></Link>
                         <div className={s.dataCont}>
-                          <span className={s.type}>{bike.type} </span>
+                          <span className={s.type}>{bike.type}</span>
                           {
                             bike.traction === 'eléctrica' ? <GiElectric size='2.5rem' className={s.icon} /> : <GoGear size='2.5rem' className={s.icon} />
                           } 
                           <div className={s.rodadoCont}>
-                              <img className={s.rueda} src="https://res.cloudinary.com/pflet/image/upload/v1662686110/Let/image/rueda_bici_kouezn.png" alt='Rodado '/>
+                              <img className={s.rueda} src="https://res.cloudinary.com/pflet/image/upload/v1662686110/Let/image/rueda_bici_kouezn.png" alt='Rodado' />
                               <span className={s.rodado}>{bike.wheelSize}</span>
                           </div>
                         </div>

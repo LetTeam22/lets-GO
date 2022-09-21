@@ -44,6 +44,10 @@
     font-family: 'Roboto' 'sans-serif'
 }
 
+.edit path{
+    color: #f9b621;
+}
+
 @media (max-width:650px) {
     .experiences{
         margin-top: 4rem;
