@@ -7,29 +7,49 @@
     background-size: 100%;
 }
 
-.name {
-    flex-direction: column;
-    padding-left: 1rem;
-    border-bottom: solid 0.1rem #F9B621;
-    display: flex;
-    margin-top: .5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+.initial{
+    width: 100%;
+    height: calc(100vh - 6rem);
+}
+.name, .row {
     width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+}
+.name{
+    height: 5rem;
+    padding-bottom: 0.5rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: solid 0.1rem #F9B621;
 }
 
 .name > p {
     color: #4d4c4c;
     font-weight: 500;
+    margin: 0;
 }
 
 .title {
     font-size: 2.5rem;
     font-weight: 500;
-    margin: 2rem 0 0 0;
+    margin: 0;
     color: #4d4c4c;
 }
 
+.row {
+    margin-top: 1rem;
+    height: calc(100vh - 12rem);
+}
+
+.txt {
+    width: 40%;
+    font-size: large;
+    background-color: rgb(77, 77, 77, 0.1);
+    padding: 1rem;
+}
 .ph{
     font-family: 'Roboto';
     font-weight:500;
@@ -37,48 +57,27 @@
     color: #4d4c4c; 
 }
 
-.row {
-    flex-direction: row;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+.containerDetails{
+    width: 100%;
     display: flex;
-    width: 95%;
-}
-.icon{
-    width: 80%;
-    height: auto;
-}
-.txt {
-    width: 33.33%;
-    order: 1;
-    display: block;
-    font-size: large;
-    background-color: rgb(77, 77, 77, 0.1);
-    padding-left: 1rem;
-    padding-top: 2rem;
-    padding-right: 1rem;
-    font-family: "Roboto";
-    font-weight:400 ;
-}
-.parameters{
-    font-family: 'Roboto';
-    font-weight: 400;
-    margin:0.5%;
-    margin-left: 0.1%;
-    text-align: left;
-    color: #4d4c4c; 
-}
-.cont{
-    display: flex; 
-    flex-direction: row; 
-    height:"4vh";
-    margin-bottom: 1rem;
+    flex-direction: column;
+    align-content: flex-start;
+    gap: 1rem;
 }
 
-.contimg{
-    width: 10%;
+.cont{
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    gap: 1rem;
+}
+.icon{
+    width: 3.8rem;
+}
+.parameters{
+    font-weight: 400;
+    color: #4d4c4c;
+    margin: 0;
 }
 
 .contp{
@@ -87,12 +86,19 @@
 
 .prCont {
     display: flex;
+    margin-top: 2rem;
+    width: 22rem;
+}
+.prCont h4:first-child{
+    width: 11.9rem;
+}
+.prCont h4:last-child{
+    width: 4.9rem;
 }
 
 .pr, .prOld {
     font-family: 'Roboto';
     font-size: 1.2rem;
-    /* width: 100%; */
     letter-spacing: 0.03rem;
     color: #4d4c4c; 
     padding-right: .5rem;
@@ -109,22 +115,14 @@
 }
 
 .image1 {
-    order: 2;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
 }
 
-.image2 {
-    float: right;
-    display: block;
-    padding-right: 1rem;
-}
-
-.img {
-    filter: brightness(1.1);
-    mix-blend-mode: multiply;
-    width: 90%;
+.image1 img{
+    width: 100%;
+    object-fit: contain;
 }
 
 .btn2 {
@@ -309,3 +307,98 @@ input[type="checkbox"]:checked + label:before {
 .labelBlack {
     color:#4d4c4c
 }
+
+@media (max-width:1140px) {
+    .row{
+        height: calc(100vh - 16rem);
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .txt{
+        background-color: transparent;
+        margin-top: 1rem;
+        width: 90vw;
+        padding: 0;
+        padding-top: 1rem;
+    }
+    .ph{
+        margin: 0;
+    }
+    .containerDetails{
+        height: 4rem;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .prCont{
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .cont{
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .icon{
+        height: 2rem;
+    }
+    .parameters{
+        text-align: center;
+    }
+    .desc{
+        width: 90vw;
+        max-height: 7rem;
+        overflow: scroll;
+    }
+    .image1{
+        align-items: center;
+    }
+    .image1 img{
+        width: 80%;
+    }
+}
+
+@media (max-width:650px) {
+    .initial{
+        margin-top: 4rem;
+    }
+    .name p{
+        display:none;
+    }
+    .containerDetails{
+        display: grid; 
+        grid-template-columns: repeat(2,1fr);
+    }
+    .icon{
+        height: 1rem;
+        width: 2rem;
+    }
+    .parameters{
+        font-size: 0.8rem;
+        width: 7rem;
+    }
+    .image1 img{
+        width: 22rem;
+    }
+}
+
+@media (max-width:480px) {
+    
+    .image1 img{
+        width: 18rem;
+    }
+}
+
+@media (max-width:430px) {
+    .parameters{
+        width: 4rem;
+    }
+    .row{
+        gap: 3rem;
+    }
+} 
