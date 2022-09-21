@@ -1,8 +1,6 @@
 const { Server } = require("socket.io");
 const httpServer = require("./app");
 const { User } = require('./db');
-const { createNotification } = require('./controllers/notificationsControllers');
-const { postBooking } = require("./controllers/bookingsControllers");
 const { FRONT_URL } = process.env; 
 
 const io = new Server(httpServer, {
@@ -79,14 +77,20 @@ const getUser = async (email) => {
 
 io.on("connection", (socket) => {
 
+    socket.on('newDiscount', (input) => {
+        io.emit('newDiscountNot', input)
+    })
+
+    socket.on('shoppingCart', () => {
+        io.to(socket.id).emit('shoppingCartNot');
+    })
+
     socket.on("likeExperience",  async ({
         senderName,
         receiverName,
-        senderEmail
     }) => {
         try {
             const receiver = await getUser(receiverName);
-            await createNotification('like', senderName, receiver, senderEmail);
             io.to(receiver?.socketId).emit("getLike", {
                 senderName
             });

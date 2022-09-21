@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './FAQs.module.css'
 
 export const FAQs = () => {
 
+    const history = useHistory()
     const contacto = '/contact'
     const how = '/how'
-    const promotions = '/promotions'
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
 
     return (
         <>
@@ -18,6 +20,9 @@ export const FAQs = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>PREGUNTAS FRECUENTES</h2>
                         </div>
@@ -50,7 +55,7 @@ export const FAQs = () => {
 
                         <p style={{ color: "black" }}>
                             Cuando ingresés al detalle de alguna Let que te haya gustado, vas a tener la posibilidad de seleccionar los distintos accesorios que te ofrecemos, todos con un costo adicional cuyo total se indica de forma visible antes de pasar al carrito para concretar tu reserva.
-                            
+
                         </p>
 
                         <h3 className={s.heading}>
@@ -91,7 +96,6 @@ export const FAQs = () => {
                         <p style={{ color: "black" }}>
                             Por el momento el stock de bicicletas está destinado solamente a alquiler. Pero como sabemos que apenas te subas a una Let no vas a querer bajarte más, escribinos y consultanos por descuentos exclusivos para alquileres prolongados.
                         </p>
-                        
                     </div>
                 </section>
             </div>

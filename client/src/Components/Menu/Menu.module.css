@@ -34,9 +34,6 @@
     background-color: #333333;
     display:none
 }
-/* .responsiveIcons{
-    !important;
-} */
 
 .span {
     font-family: 'Roboto';
@@ -46,14 +43,16 @@
     line-height: 1.75rem;
     padding: .8rem;
     position: relative;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .span:hover {
     color: #ffffff;
-    background: #F9B621;
+    background-color: #F9B621;
     padding: .8rem;
     border-radius: .2rem;
 }
+
 .span::after{
     content: '';
     display: block;
@@ -93,12 +92,12 @@ hr {
     background-color: transparent;
     width: fit-content;
     border: none;
+    margin-right: 10px;
 }
 
 .bell {
     width: 1.4rem;
     cursor:pointer;
-    margin-left: 1rem;
 }
 
 
@@ -112,6 +111,7 @@ hr {
     display: flex;
     flex-direction: column;
     position: relative;
+    cursor: pointer;
 }
 
 .bellBtn {
@@ -120,7 +120,7 @@ hr {
     appearance: none;
 }
 
-.counter {
+.counter, .hidde {
     position: absolute;
     color: white;
     border: 1px solid red;
@@ -130,8 +130,21 @@ hr {
     justify-content: center;
     background-color: red;
     bottom: 0.8rem;
-    left: 2.2rem;
+    left: 1rem;
     font-size: 0.8rem;
+}
+.hidde{
+    visibility: hidden;
+}
+
+.backNotification{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    cursor:default;
 }
 
 .notifications {
@@ -159,6 +172,8 @@ hr {
     align-items: center;
     justify-content: center;
     margin-left: 1rem;
+    position: relative;
+    z-index: 100;
 }
 
 .spanNotification {
@@ -210,6 +225,7 @@ hr {
         color: #f4b220;
         background-color: #333333;
         font-size: 3rem!important;
+        width: 3rem;
     }
     .img img{
         width:3rem;

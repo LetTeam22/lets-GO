@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LogIn from '../NavBar/Authentication/LogIn';
 import LogOut from '../NavBar/Authentication/LogOut';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import { Link, useLocation } from "react-router-dom";
-import { TbDiscount2, TbMessageDots } from 'react-icons/tb';
+import { TbMessageDots } from 'react-icons/tb';
 import { ImHeart } from 'react-icons/im';
 import { MdCheck } from 'react-icons/md';
-import { getUserNotifications } from '../../Redux/actions/index';
+import { BsBook } from 'react-icons/bs';
+import { AiOutlinePercentage } from 'react-icons/ai';
 
 export const Menu = ({socket}) => {
 
@@ -19,13 +20,12 @@ export const Menu = ({socket}) => {
   const bell = 'https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/bell_kcl5ww.png'
   const adm = 'https://res.cloudinary.com/pflet/image/upload/v1662735766/Let/image/adm_xyp2tl.png'
   const adventure = 'https://res.cloudinary.com/pflet/image/upload/v1662748275/Let/image/adv_hyo69c.png'
-  const experience = 'https://res.cloudinary.com/pflet/image/upload/v1662742235/Let/image/exp_clwf94.png'
+  const experience = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/experiencias1_mhaxqa.png'
+  const accesorie = 'https://res.cloudinary.com/pflet/image/upload/v1663262862/Let/image/accesorios1_tt68un.png';
   const userDB = useSelector(state => state.user);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();
   const url = location.pathname;
-  const dispatch = useDispatch();
-  // const userNotifications = useSelector(state => state.userNotifications);
 
   const [ notifications, setNotifications ] = useState([]);
   const [ open, setOpen ] = useState(false);
@@ -41,21 +41,34 @@ export const Menu = ({socket}) => {
   useEffect(() => {
     socket?.on('getLike', data => {
       setNotifications(prevNotifications => [...prevNotifications, data])
-    })
+    });
     socket?.on('login', () => {
       setNotifications(prevNotifications => [...prevNotifications, {
         type: 'Login',
         content: 'Usuario logueado correctamente'
+      }]);
+    });
+    socket?.on('shoppingCartNot', () => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'shoppingCart',
+        content: 'Finaliza tu reserva'
+      }]);
+    })
+    socket?.on('newDiscountNot', (data) => {
+      setNotifications(prevNotifications => [...prevNotifications, {
+        type: 'newDiscount',
+        content: `Aprovecha que tenemos un ${data.discount}% de descuento en algunas de nuestras bicis seleccionadas`
       }])
     })
   }, [socket]);
 
-  useEffect(() => {
-    isAuthenticated && dispatch(getUserNotifications(user?.email));
-  }, [dispatch, user, isAuthenticated]);
+  if(isLoading) return null
+
+  let hash = {}
+  const notUnicas = notifications.filter(not => hash[not.type] ? false : hash[not.type] = true);
   
   return (
-    <div className={s.menu}>
+    <div className={s.menu} >
       <Link to='/'><img src={logo} alt='logo' className={s.icon} /></Link>
       <div className={s.options}>
         <div>
@@ -67,19 +80,19 @@ export const Menu = ({socket}) => {
             </Link>
         </div>
         <div >
+          <Link to='/allAccessories'>
+            <div className={url === '/promotions'? s.active : null}>
+            <img src={accesorie} className={s.responsiveIcons} alt='accesorios'/>
+            </div>
+            <span className={s.span}>ACCESORIOS</span>
+          </Link>
+        </div>
+        <div >
           <Link to='/adventure'>
           <div className={url === '/adventure'? `${s.active} ${s.img}` : s.img}>
               <img src={adventure} className={s.responsiveIcons} alt='aventura'/>
             </div>
             <span className={s.span}>AVENTURAS</span>
-          </Link>
-        </div>
-        <div >
-          <Link to='/promotions'>
-            <div className={url === '/promotions'? s.active : null}>
-              <TbDiscount2 className={s.responsiveIcons}/>
-            </div>
-            <span className={s.span}>BENEFICIOS</span>
           </Link>
         </div>
         <div >
@@ -110,17 +123,19 @@ export const Menu = ({socket}) => {
             <img className={s.carrito} src={carrito} alt='carrito' />
           </button>
         </Link>
-        <div className={s.containerBell}>
-          <button className={s.bellBtn} onClick={(e) => handleOpen(e)}><img src={bell} className={s.bell} alt='bell' ></img></button>
-          <div className={s.counter}>{notifications.length}</div>
+        <div className={s.containerBell}onClick={(e) => handleOpen(e)} >
+          <button className={s.bellBtn}><img src={bell} className={s.bell} alt='bell' ></img></button>
+          <div className={notifications.length? s.counter : s.hidde}>{notifications.length}</div>
+          { !!notUnicas.length && <div className={notUnicas.length? s.counter : s.hidde}>{notUnicas.length}</div> }
           {
             open && (
                 <div className={s.notifications}>
                   {
-                    notifications?.map(n => {
+                    notUnicas?.map(n => {
                       if(n.hasOwnProperty('senderName')) {
                         return (
                             <>
+                              <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                               <Link to='/allExperiencies'>
                                 <div className={s.notification}>
                                   <ImHeart size='1rem' color='#F9B621' />
@@ -133,6 +148,7 @@ export const Menu = ({socket}) => {
                       } else if(n.hasOwnProperty('type') && n.type === 'Login') {
                         return (
                           <>
+                            <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                             <div className={s.notification}>
                               <MdCheck size='1.5rem' color='#F9B621' />
                               <span className={s.spanNotification}>{n.content}</span>
@@ -140,7 +156,33 @@ export const Menu = ({socket}) => {
                             <hr />
                           </>
                         )
-                      }
+                      } else if(n.hasOwnProperty('type') && n.type === 'shoppingCart') {
+                        return (
+                          <>
+                                <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
+                            <Link to='/cart'>
+                              <div className={s.notification}>
+                                <BsBook size='1.5rem' color='#F9B621' />
+                                <span className={s.spanNotification}>{n.content}</span>
+                              </div>
+                              <hr />
+                            </Link>
+                          </>
+                        )
+                      } else if(n.hasOwnProperty('type') && n.type === 'newDiscount') {
+                        return (
+                          <>
+                            <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
+                            <Link to='/home'>
+                              <div className={s.notification}>
+                                <AiOutlinePercentage size='1.5rem' color='#F9B621' />
+                                <span className={s.spanNotification}>{n.content}</span>
+                              </div>
+                              <hr />
+                            </Link>
+                          </>
+                        )
+                      }else return <div></div>
                     })
                   }
                 </div>

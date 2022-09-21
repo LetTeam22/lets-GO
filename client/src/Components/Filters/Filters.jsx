@@ -5,6 +5,7 @@ import s from './Filters.module.css';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider } from '@mui/material';
 import { GiElectric } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
+import { finalPrice } from '../../helpers/applyDiscount';
 
 const Filters = ({ handleParameter }) => {
 
@@ -12,9 +13,13 @@ const Filters = ({ handleParameter }) => {
     const parameters = useSelector(state => state.parameters);
     const allBikes = useSelector((state) => state.allBikes);
     let renderedBikes = useSelector((state) => state.renderedBikes);
-    const realMinPrice = allBikes.length ? Math.min(...allBikes.map(b => Number(b.price))) : 0
-    const realMaxPrice = allBikes.length ? Math.max(...allBikes.map(b => Number(b.price))) : 2000
     const bookings = JSON.parse(localStorage.getItem("booking")) || [];
+
+    // calculo precio real minimo y maximo para el slider (con descuentos aplicados)
+    const activeBikes = allBikes.length ? allBikes.filter(b => b.status === 'active') : ''
+    const finalPrices = activeBikes.length ? activeBikes.map(b => finalPrice(b.price, b.discount)) : ''
+    const realMinPrice = finalPrices.length ? Math.min(...finalPrices) : 0
+    const realMaxPrice = finalPrices.length ? Math.max(...finalPrices) : 2000
 
     // filtro bicis ya agregadas al carrito
     renderedBikes = renderedBikes.filter(rb => !bookings.find(bk => bk.bike === rb.idBike))

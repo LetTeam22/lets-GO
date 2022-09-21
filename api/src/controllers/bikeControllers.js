@@ -27,22 +27,24 @@ const getRenderedBikes = async (req, res, next) => {
     // ajusto algunos parametros de query
     const priceMin = !minPriceFilter ? 0 : minPriceFilter
     const priceMax = typeof maxPriceFilter === 'undefined' ? 999999 : maxPriceFilter
+    const searchReg = search ? search : ''
     const searchLow = search ? search.toLowerCase().replace('negra','negro').replace('blanca','blanco').replace('roja','rojo')
                                 .replace('amarilla','amarillo').replace('mecanica','mecánica').replace('electrica','eléctrica') : ''
-    const searchUp = search ? search[0].toUpperCase() + search.substring(1) : ''
+    const searchUp = search ? search[0].toUpperCase() + search.substring(1).toLowerCase() : ''
     const searchNum = isNaN(Number(search)) ? -1 : Number(search)
     const fromDate = !fromDateFilter ? '9999-12-31' : fromDateFilter
     const toDate = !toDateFilter ? '1000-01-01' : toDateFilter
+    const applyDiscount = (price, discount) => Math.round(Number(price) * (1 - Number(discount) / 100))
 
     // array de ordenamiento de sequelize
-    let arrSorts = []
-    if (sortsOrder) {
-        arrSorts = sortsOrder.split(',').map(sort => {
-            if (sort === 'price') return ['price', priceSort.toUpperCase()]
-            if (sort === 'rating') return ['rating', ratingSort.toUpperCase()]
-            if (sort === 'name') return ['name', nameSort.toUpperCase()]
-        })
-    } 
+    // let arrSorts = []
+    // if (sortsOrder) {
+    //     arrSorts = sortsOrder.split(',').map(sort => {
+    //         if (sort === 'price') return ['price', priceSort.toUpperCase()]
+    //         if (sort === 'rating') return ['rating', ratingSort.toUpperCase()]
+    //         if (sort === 'name') return ['name', nameSort.toUpperCase()]
+    //     })
+    // } 
 
     try {
 
@@ -56,31 +58,51 @@ const getRenderedBikes = async (req, res, next) => {
                 traction: tractionFilter ? tractionFilter : { [Op.not]: null },
                 wheelSize: wheelSizeFilter ? wheelSizeFilter : { [Op.not]: null },
                 color: colorFilter ? colorFilter : { [Op.not]: null },
-                price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
+                // price: minPriceFilter || maxPriceFilter ? { [Op.between]: [priceMin, priceMax] } : { [Op.not]: null },
                 status: 'active',
 
-                //search
-                [Op.or]: [
-                    { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
-                    { type: { [Op.substring]: searchLow } },
-                    { traction: { [Op.substring]: searchLow } },
-                    { wheelSize: { [Op.eq]: searchNum } },
-                    { color: { [Op.substring]: searchLow } },
-                    { price: { [Op.eq]: searchNum } },
-                    { rating: { [Op.eq]: searchNum } },
-                ]
+                // search
+                // [Op.or]: [
+                //     { name: { [Op.or]: [ { [Op.substring]: searchLow }, { [Op.substring]: searchUp } ] } },
+                //     { type: { [Op.substring]: searchLow } },
+                //     { traction: { [Op.substring]: searchLow } },
+                //     { wheelSize: { [Op.eq]: searchNum } },
+                //     { color: { [Op.substring]: searchLow } },
+                //     { price: { [Op.eq]: searchNum } },
+                //     { rating: { [Op.eq]: searchNum } },
+                // ]
             },
 
             // ordenamiento
-            order: arrSorts,
+            // order: arrSorts,
 
             // incluye las reservas asociadas
             include: {
                 model: Booking,
-                attributes: ['startDate', 'endDate'],
+                attributes: ['startDate', 'endDate', 'status'],
                 through: { attributes: [] }
         }
 
+        })
+
+        // filtro de precio con descuento
+        bikes = bikes.filter(bike => {
+            const finalPrice = applyDiscount(bike.price, bike.discount)
+            return finalPrice >= priceMin && finalPrice <= priceMax
+        })
+
+        // filtro de busqueda para buscar precios con descuento
+        bikes = bikes.filter(bike => {
+            const finalPrice = applyDiscount(bike.price, bike.discount)
+            return (
+                bike.name.includes(searchReg) || bike.name.includes(searchLow) || bike.name.includes(searchUp) ||
+                bike.type.includes(searchLow) ||
+                bike.traction.includes(searchLow) ||
+                bike.wheelSize === searchNum ||
+                bike.color.includes(searchLow) ||
+                finalPrice === searchNum ||
+                bike.rating === searchNum
+            )
         })
 
         // filtro de fecha
@@ -91,6 +113,19 @@ const getRenderedBikes = async (req, res, next) => {
             })
             return available
         })
+
+        // ordenamientos con precio con descuento
+        if (sortsOrder) {
+            const arrSorts = sortsOrder.split(',').reverse()
+            arrSorts.forEach(s => {
+                if (s === 'price' && priceSort === 'asc') bikes.sort((a, b) => applyDiscount(a.price, a.discount) < applyDiscount(b.price, b.discount) ? -1 : applyDiscount(a.price, a.discount) > applyDiscount(b.price, b.discount) ? 1 : 0)
+                if (s === 'price' && priceSort === 'desc') bikes.sort((a, b) => applyDiscount(a.price, a.discount) > applyDiscount(b.price, b.discount) ? -1 : applyDiscount(a.price, a.discount) < applyDiscount(b.price, b.discount) ? 1 : 0)
+                if (s === 'rating' && ratingSort === 'asc') bikes.sort((a, b) => a.rating < b.rating ? -1 : a.rating > b.rating ? 1 : 0)
+                if (s === 'rating' && ratingSort === 'desc') bikes.sort((a, b) => a.rating > b.rating ? -1 : a.rating < b.rating ? 1 : 0)
+                if (s === 'name' && nameSort === 'asc') bikes.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
+                if (s === 'name' && nameSort === 'desc') bikes.sort((a, b) => a.name > b.name ? -1 : a.name < b.name ? 1 : 0)
+            })
+        }
 
         // bikes a renderizar
         res.send(bikes)

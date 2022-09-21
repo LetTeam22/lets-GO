@@ -22,15 +22,32 @@ export const SearchBar = () => {
         if (!input) return
         const search = input
         setInput('')
-        if (search.includes('bici')) return history.push('/home')
-        if (search.includes('accesorio')) return history.push('/allAccessories')
-        if (search.includes('aventura')) return history.push('/adventure')
-        if (search.includes('beneficio') || search.includes('promocion') || search.includes('descuento')) return history.push('/promotions')
-        if (search.includes('experiencia')) return history.push('/allExperiencies')
-        if (search.includes('contact')) return history.push('/contact')
-        if (search.includes('perfil') || search.includes('reserva') || search.includes('favorit')) return history.push('/bike/profile')
-        dispatch(setParameters({...parameters, search: {selected: ['search'], search: search}}))
         dispatch(setCurrentPage(1));
+        if (search.toLowerCase().includes('bici')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/home')
+        }
+        if (search.toLowerCase().includes('accesorio')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/allAccessories')
+        }
+        if (search.toLowerCase().includes('aventura')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/adventure')
+        }
+        if (search.toLowerCase().includes('experiencia')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/allExperiencies')
+        }
+        if (search.toLowerCase().includes('contact')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/contact')
+        }
+        if (search.toLowerCase().includes('perfil') || search.toLowerCase().includes('reserva') || search.toLowerCase().includes('favorit')) {
+            dispatch(setParameters({...parameters, search: {selected: [], search: ''}}))
+            return history.push('/bike/profile')
+        }
+        dispatch(setParameters({...parameters, search: {selected: ['search'], search: search}}))
         history.push('/home')
     }
 

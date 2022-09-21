@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORTDB 
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORTDB
 } = process.env;
 
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`, {
@@ -14,31 +14,31 @@ const {
 let sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
-        database: DB_NAME,
-        dialect: "postgres",
-        host: DB_HOST,
-        port: PORTDB,
-        username: DB_USER,
-        password: DB_PASSWORD,
-        pool: {
-          max: 3,
-          min: 1,
-          idle: 10000,
+      database: DB_NAME,
+      dialect: "postgres",
+      host: DB_HOST,
+      port: PORTDB,
+      username: DB_USER,
+      password: DB_PASSWORD,
+      pool: {
+        max: 3,
+        min: 1,
+        idle: 10000,
+      },
+      dialectOptions: {
+        ssl: {
+          require: true,
+          // Ref.: https://github.com/brianc/node-postgres/issues/2009
+          rejectUnauthorized: false,
         },
-        dialectOptions: {
-          ssl: {
-            require: true,
-            // Ref.: https://github.com/brianc/node-postgres/issues/2009
-            rejectUnauthorized: false,
-          },
-          keepAlive: true,
-        },
-        ssl: true,
-      })
+        keepAlive: true,
+      },
+      ssl: true,
+    })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`,
-        { logging: false, native: false }
-      );
+      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`,
+      { logging: false, native: false }
+    );
 
 const basename = path.basename(__filename);
 
@@ -61,7 +61,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Bike, Booking, Accesories,Experience, Order, Historyrating, Notifications } = sequelize.models;
+const { User, Bike, Booking, Accesories, Experience, Order, Historyrating, Adventures } = sequelize.models;
 
 // Aca vendrian las relaciones
 User.hasMany(Booking)
@@ -87,9 +87,14 @@ Order.belongsTo(User);
 Booking.belongsToMany(Historyrating, { through: 'score_history' })
 Historyrating.belongsToMany(Booking, { through: 'score_history' })
 
-//Relacion User-Notifications
-User.hasMany(Notifications);
-Notifications.belongsTo(User);
+// Relacion para agregar likes a las experiencias
+Experience.belongsToMany(User, { through: 'fav_experiences' })
+User.belongsToMany(Experience, { through: 'fav_experiences' })
+
+// Relacion entre aventuras y bookings
+Adventures.belongsToMany(Booking, { through: 'adventure_bookings' })
+Booking.belongsToMany(Adventures, { through: 'adventure_bookings' })
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

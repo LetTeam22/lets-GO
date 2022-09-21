@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { BiEdit } from 'react-icons/bi';
 import { ThemeProvider } from "@emotion/react";
 import { getAllExperiences } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
@@ -25,6 +26,7 @@ export default function Experiences() {
       return {
         id: exp.idExperience,
         booking: exp.bookingIdBooking,
+        email: exp.booking.user.email,
         description: exp.textExperience,
         status: exp.status,
       };
@@ -35,10 +37,11 @@ export default function Experiences() {
     return [
       { field: "id", headerName: "ID", width: 50 },
       { field: "booking", headerName: "ID de Reserva", width: 100 },
+      { field: "email", headerName: "Email de User", width: 220 },
       { field: "description", headerName: "Descripción", width: 600 },
       {
         field: "status",
-        headerName: "Estado",
+        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
         width: 80,
         type: "singleSelect",
         valueOptions: ["active", "deleted"],
@@ -46,7 +49,7 @@ export default function Experiences() {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (

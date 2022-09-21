@@ -6,14 +6,14 @@ export const Accesory = ({id, name, handleCheck, price, image, defaultChecked}) 
 
   return (
     <div className={s.boxes} >
-      <input
+      <input 
         id={id}
         type="checkbox"
         name={name}
         onClick={handleCheck}
         defaultChecked={defaultChecked}
       />
-      <label htmlFor={id}>{name}</label>
+      <label style={{color:"#484848"}} className={s.precio} htmlFor={id}>{name}</label>
       <p className={s.precio}>$ {price} / día</p>
       <RenderAccesories publicId={image} />
     </div>

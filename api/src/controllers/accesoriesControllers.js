@@ -51,7 +51,7 @@ const updateAccesory = async (req, res, next) => {
     }else res.send({e:'accesorio no existe'})
 }
 
-// Update
+// Update prices
 const updatePricesAcc = async (req, res, next) => {
     const { percentage } = req.body
     try {

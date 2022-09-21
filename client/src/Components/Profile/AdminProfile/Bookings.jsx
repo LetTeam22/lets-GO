@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getAllBookings } from "../../../Redux/actions";
@@ -25,7 +26,7 @@ export default function Bookings() {
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
+    return diffDays + 1;
   };
 
   const rowsBookings = useMemo(() => {
@@ -33,6 +34,7 @@ export default function Bookings() {
       return {
         id: book.idBooking,
         idUser: book.userIdUser,
+        email: book.user.email,
         start: book.startDate,
         finish: book.endDate,
         days: totalDays(book.startDate, book.endDate),
@@ -47,13 +49,14 @@ export default function Bookings() {
     return [
       { field: "id", headerName: "ID", width: 50 },
       { field: "idUser", headerName: "User ID", width: 80 },
+      { field: "email", headerName: "Email", width: 220 },
       { field: "start", headerName: "Desde", width: 100 },
       { field: "finish", headerName: "Hasta", width: 100 },
       { field: "days", headerName: "Días", width: 50 },
       { field: "bikes", headerName: "Bicicletas", width: 400 },
       {
         field: "status",
-        headerName: "Status",
+        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
         width: 100,
         type: "singleSelect",
         valueOptions: ["confirmed", "cancelled"],
@@ -62,7 +65,7 @@ export default function Bookings() {
       { field: "ernings", headerName: "Ganancias", width: 100 },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (

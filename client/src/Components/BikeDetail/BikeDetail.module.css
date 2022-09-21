@@ -126,20 +126,30 @@
 }
 
 .btn2 {
+    position: relative;
     line-height: 1;
     padding: 0;
     font-size: .9rem;
-    width: 9vw;
-    height: 7vh;
+    font-weight: 700;
+    width: 7rem;
+    height: 2.5rem;
     background-color: transparent;
-    border-radius: 0.5rem;
-    border-color: rgba(255, 251, 251, 0.453);
+    border-radius: 0.2rem;
+    border: none;
     box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
     cursor: pointer;
-    list-style: none;
     color: rgb(255, 255, 255);
     background: #F9B621;
     border-radius: 6px 6px 6px 6px;
+    transition: all .3s linear;
+    letter-spacing: .03rem;
+    line-height: 1rem;
+}
+
+.btn2:hover {
+    background-color: #FFFFFF;
+    color: #F9B621;
+    /* border: solid .1rem #F9B621 */
 }
 
 .gallery{
@@ -195,6 +205,16 @@
     width: 100%;
 }
 
+.containerVideo{
+    background-color: white;
+}
+
+.video{
+    display: block;
+    padding: 3rem;
+    background-color: white;
+}
+
 .titleTA{
     display: flex;
     align-items: center;
@@ -209,7 +229,6 @@
     padding-top: .7rem;
     background: white;
     width: 17vh;
-
 }
 
 /*Checkboxes styles*/
@@ -251,6 +270,7 @@ input[type="checkbox"]:checked + label:before {
     border-left-color: transparent;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+    color:#4d4c4c
 }
 
 .btnSwal{
@@ -282,6 +302,10 @@ input[type="checkbox"]:checked + label:before {
     font-family: 'Roboto';
     margin-top: 1rem;
     font-weight: 600;
+}
+
+.labelBlack {
+    color:#4d4c4c
 }
 
 @media (max-width:1140px) {

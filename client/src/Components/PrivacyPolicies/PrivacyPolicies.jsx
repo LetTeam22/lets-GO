@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import s from './PrivacyPolicies.module.css'
 
 
 export const PrivacyPolicies = () => {
+
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -15,6 +18,9 @@ export const PrivacyPolicies = () => {
             <div className={s.page}>
                 <section className={s.pageBlock}>
                     <div className={s.container}>
+                        <div className={s.containerBtn}>
+                            <button onClick={() => history.goBack()} className={s.btn2}>VOLVER</button>
+                        </div>
                         <div className={s.pageHeading}>
                             <h2>Política de privacidad</h2>
                         </div>
@@ -146,7 +152,7 @@ export const PrivacyPolicies = () => {
                                     Para asegurarnos de que fuiste vos quien envió la solicitud, es posible que te pidamos que incluyas una prueba de su identificación junto con tu solicitud. Sólo te preguntaremos esto si es necesario para identificarte, y te pedimos que también hagás ilegibles la foto del DNI.
                                     Destruiremos la copia de tu prueba de identificación inmediatamente después de haber determinado su identidad.
                                 </p>
-                                
+
                             </div>
                         </div>
                     </div>

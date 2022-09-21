@@ -10,7 +10,8 @@
 }
 
 .loginSpan:hover {
-    color: #F9B621
+    color: #F9B621;
+    transition: color .5s linear;
 }
 
 .personaBtn {

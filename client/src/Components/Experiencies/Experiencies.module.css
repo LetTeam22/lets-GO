@@ -45,11 +45,148 @@
     margin-top: 1rem;
 }
 
-.imgExperiencies {
+.experiencesImg {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    text-align: center;
+}
+
+.img {
+    position: relative;
+    padding: 1px;
+}
+
+.experienceImg {
     width: 100%;
 }
 
-@media (max-width:650px) {
+.hoverDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    background-color: #333333;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: opacity .5s linear;
+}
+
+.hoverDiv:hover {
+    opacity: .7;
+}
+
+.hoverDiv h3, .hoverDiv span, .hoverDiv p {
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.hoverDiv p {
+    font-size: .8rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+.experiencesBtn {
+    grid-area: 2 / 3 / 3 / 4;
+    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    animation: changeImage 25s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1.5rem;
+    width: fit-content;
+    background-color: #333333;
+    opacity: .8;
+    border-radius: .8rem;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-weight: 400;
+    transition: background-color .5s linear;
+}
+
+.btn:hover {
+    background-color: #F9B621;
+}
+
+
+@keyframes changeImage {
+    20% {
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686247/Let/image/fondos/slice2_pw2u18.png');
+    }
+
+    40% {
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686133/Let/image/fondos/slice3_boy63a.png');
+    }
+
+    60% {
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662730834/Let/image/fondos/slice4_ln7tvb.png');
+    }
+
+    80% {
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686243/Let/image/fondos/slice5_pavr5j.png');
+    }
+
+    100% {
+        background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686118/Let/image/fondos/slice1_aa7zkf.png');
+    }
+}
+
+@media (max-width: 1100px) {
+    .hoverDiv p {
+        font-size: .6rem;
+        margin-left: .3rem;
+        margin-right: .3rem;
+    }
+
+    .hoverDiv span {
+        font-size: .6rem;
+    }
+
+    .hoverDiv h3 {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .btn {
+        padding: 1rem;
+        font-size: .8rem;
+    }
+
+    .hoverDiv p {
+        font-size: .5rem;
+        margin-left: .3rem;
+        margin-right: .3rem;
+    }
+
+    .hoverDiv span {
+        font-size: .5rem;
+    }
+
+    .hoverDiv h3 {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width:700px) {
     .text {
         width: 30rem;
     }
@@ -58,6 +195,18 @@
         width: 20rem;
         font-size: 2.3rem;
         margin-top: 2rem;
+    }
+
+    .experiencesImg {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .experiencesBtn {
+        grid-area: 3 / 2 / 4 / 3;
     }
 }
 
@@ -73,5 +222,24 @@
         font-size: 1.8rem;
         margin-top: 2rem;
         line-height: 3rem;
+    }
+
+    .experiencesImg {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .experiencesBtn {
+        grid-area: 3 / 2 / 4 / 3;
+    }
+}
+
+@media (max-width: 450px) {
+    .btn {
+        padding: .6rem;
+        font-size: .6rem;
     }
 }

@@ -16,7 +16,7 @@
 
 .coverGrid{
     height: 27rem;
-    max-width: 72rem;
+    max-width: 73rem;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -67,6 +67,10 @@
 
 .hidde{
     display: none;
+}
+
+.edit path{
+    color: #f9b621;
 }
 
 @media (max-width:770px) {

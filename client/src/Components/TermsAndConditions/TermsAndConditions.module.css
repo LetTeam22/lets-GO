@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 .page {
-display: block
+    display: block
 }
 
 .pageBlock {
@@ -19,23 +19,12 @@ display: block
     padding-right: 24rem;
     box-sizing: border-box;
 }
+
 .pageHeading {
     text-align: center;
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
-}
-
-h2 {
-    display: flex;
-    font-family: 'Roboto';
-    font-size: 1.5rem;
-    font-weight: 300;
-    height: 10%;
-    justify-content: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: #787877
 }
 
 .row {
@@ -45,7 +34,7 @@ h2 {
 
 .row::before {
     content: " ";
-    display: table;  
+    display: table;
 }
 
 .column {
@@ -58,7 +47,7 @@ h2 {
 .heading {
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1.25em;
     margin-bottom: 1rem;
     word-spacing: 0.09em;
     line-height: 1.5;
@@ -67,7 +56,8 @@ h2 {
     margin-top: 1rem;
 }
 
-h3.heading>span, .h3.heading>span {
+h3.heading>span,
+.h3.heading>span {
     display: block;
     margin-top: 0.6rem;
     width: 3.2rem;
@@ -102,7 +92,7 @@ ul.featuredList li:before {
     margin-right: 0.5rem;
 }
 
-ul li{
+ul li {
     margin-bottom: 0.5rem;
 }
 
@@ -139,4 +129,36 @@ p {
     width: 18%;
     right: 0;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
+}
+
+.containerBtn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.btn2 {
+    position: relative;
+    line-height: 1;
+    padding: 0;
+    font-size: .9rem;
+    font-weight: 700;
+    width: 5rem;
+    height: 2rem;
+    background-color: transparent;
+    border-radius: 0.2rem;
+    border: none;
+    box-shadow: inset 0 5px 10px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 50%);
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background: #F9B621;
+    border-radius: 6px 6px 6px 6px;
+    transition: all .3s linear;
+    letter-spacing: .03rem;
+}
+
+.btn2:hover {
+    background-color: #FFFFFF;
+    color: #F9B621;
+    /* border: solid .1rem #F9B621 */
 }

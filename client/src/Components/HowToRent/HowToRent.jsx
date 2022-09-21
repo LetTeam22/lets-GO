@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import s from './HowToRent.module.css'
+// import s from './HowToRent.module.css'
 
 export const HowToRent = () => {
     useEffect(() => {

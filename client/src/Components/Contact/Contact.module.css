@@ -37,7 +37,7 @@
 .containerInputs {
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
+    /* column-gap: 2rem; */
 }
 
 p {
@@ -51,21 +51,13 @@ p {
 .inputs {
     background-color: #FFFFFF;
     border-radius: .7rem;
-    width: 25rem;
+    width: 22vw;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.inputs input {
-    margin-left: 0.7rem;
-    border: none;
+    margin-left: 1rem;
     text-decoration: none;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 0.9rem;
-    width: 100%;
+    border: none;
 }
 
 .inputs input[type=number]::-webkit-inner-spin-button, 
@@ -79,17 +71,19 @@ p {
 .textArea {
     background-color: #FFFFFF;
     border-radius: .7rem;
-    width: 25rem;
+    width: 22vw;
     height: 10rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-left: 1rem;
+    
 }
 
-textarea {
+.textAr {
     text-decoration: none;
     border: none;
-    overflow: scroll;
+    overflow-y: scroll;
     resize: none;
     height: 9rem;
     width: 100%;
@@ -109,6 +103,11 @@ textarea {
     padding: 0.5rem;
     border-radius: 1rem;
     cursor: pointer;
+    transition: transform .5s linear;
+}
+
+.containerBtn:hover {
+    transform: scale(1.05);
 }
 
 .containerBtn input {
@@ -125,4 +124,306 @@ textarea {
     width: 50%;
     margin: 0;
     color: #ffffff8c;
+}
+
+.required {
+    padding: 0;
+    margin: 0;
+    color: red;
+    margin-left: .5rem;
+    font-size: 1.2rem;
+}
+
+.span {
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    margin-left: .5rem;
+    font-size: 1.2rem;  
+}
+
+.inputSend {
+    background-color: transparent;
+}
+
+@media (min-width: 2200px) {
+    .containerBtn {
+        width: 10rem;
+    }
+}
+
+@media (max-width: 2200px) {
+    .form {
+        width: 40%;
+    }
+
+    .inputs, .textArea {
+        width: 22vw;
+    }
+
+    .containerBtn {
+        width: 9rem;
+    }
+}
+
+@media (max-width: 2000px) {
+    .form {
+        width: 45%;
+    }
+
+    .inputs, .textArea {
+        width: 22vw;
+    }
+}
+
+@media (max-width: 1800px) {
+    .form {
+        width: 45%;
+    }
+
+    .inputs, .textArea {
+        width: 22vw;
+    }
+}
+
+@media (max-width: 1650px) {
+    .logo {
+        width: 12rem;
+    }
+
+    .p {
+        font-size: 1.2rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 50%;
+        row-gap: 2.4rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 25vw;
+    }
+
+    .textAr {
+        height: 5rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+}
+
+
+@media (max-width: 1500px) {
+    .form {
+        width: 60%;
+    }
+
+    .inputs, .textArea {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logo {
+        width: 12rem;
+    }
+
+    .p {
+        font-size: 1.1rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 65%;
+        row-gap: 2.2rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 35vw;
+    }
+
+    .textAr {
+        height: 5rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+}
+
+@media (max-width: 1050px){
+    .logo {
+        width: 11rem;
+    }
+
+    .p {
+        font-size: 1rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 70%;
+        row-gap: 2rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 40vw;
+    }
+
+    .textAr {
+        height: 5rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .logo {
+        width: 10rem;
+    }
+
+    .p {
+        font-size: .9rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 75%;
+        row-gap: 1.8rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 45vw;
+    }
+
+    .textAr {
+        height: 5rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .logo {
+        width: 9rem;
+    }
+
+    .p {
+        font-size: .8rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 75%;
+        row-gap: 1.8rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 45vw;
+    }
+
+    .textAr {
+        height: 5rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        width: 8rem;
+    }
+
+    .p {
+        font-size: .65rem;
+        margin-bottom: 0rem;
+    }
+
+    .containerBtn {
+        width: 7rem;
+    }
+
+    .form {
+        width: 80%;
+        row-gap: 1.8rem;
+    }
+
+    .containerInputs {
+        width: fit-content;
+        height: 100%;
+        margin-top: 0rem;
+    }
+
+    .inputs, .textArea {
+        width: 50vw;
+    }
+
+    .textAr {
+        height: 5.1rem;
+    }
+
+    .textArea {
+        height: 6rem;
+    }
+
 }

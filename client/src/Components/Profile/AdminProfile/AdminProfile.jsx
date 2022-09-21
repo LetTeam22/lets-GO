@@ -6,19 +6,23 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import s from "./AdminProfile.module.css";
 import Loading from "../../Loading/Loading";
 import FormBike from "./FormBike";
-import FormAccesories from './FormAccesories';
+import FormAccesories from "./FormAccesories";
 import FormPriceBike from "./FormPriceBike";
 import FormPriceAcc from "./FormPriceAcc";
+import FormAdventures from "./FormAdventures";
 
 export const AdminProfile = () => {
   const { isLoading, user } = useAuth0();
   const history = useHistory();
   const [addBike, setAddBike] = useState(false);
   const [addAcc, setAddAcc] = useState(false);
+  const [addAdv, setAddAdv] = useState(false);
   const [addPriceBike, setAddPriceBike] = useState(false);
   const [addPriceAcc, setAddPriceAcc] = useState(false);
-  const inflationIcon = 'https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png'
-  const background = "https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png"
+  const inflationIcon =
+    "https://res.cloudinary.com/pflet/image/upload/v1663093017/Let/image/amarillo_bgypp5.png";
+  const background =
+    "https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png";
   if (isLoading) return <Loading />;
   if (!user) history.goBack();
 
@@ -38,6 +42,10 @@ export const AdminProfile = () => {
     history.push("/adminprofile/experiences");
   };
 
+  const seeAdventures = () => {
+    history.push("/adminprofile/adventures");
+  };
+
   const seeAccesories = () => {
     history.push("/adminprofile/accesories");
   };
@@ -46,8 +54,11 @@ export const AdminProfile = () => {
     addBike ? setAddBike(false) : setAddBike(true);
   };
   const addAccs = () => {
-    addAcc ? setAddAcc(false) : setAddAcc(true)
-  }
+    addAcc ? setAddAcc(false) : setAddAcc(true);
+  };
+  const addAdvs = () => {
+    addAdv ? setAddAdv(false) : setAddAdv(true);
+  };
   return (
     <section className={s.allPage}>
       <div className={s.up}>
@@ -88,13 +99,19 @@ export const AdminProfile = () => {
               Ver Bicicletas
             </Button>
             <div className={s.buttons}>
-            <AddCircleIcon
-              className={s.addBtn}
-              color="primary"
-              onClick={addBikes}
+              <AddCircleIcon
+                className={s.addBtn}
+                color="primary"
+                onClick={addBikes}
               />
-            <img src={inflationIcon} alt="aumentar precio" onClick={() => addPriceBike? setAddPriceBike(false): setAddPriceBike(true)} />
-              </div>
+              <img
+                src={inflationIcon}
+                alt="aumentar precio"
+                onClick={() =>
+                  addPriceBike ? setAddPriceBike(false) : setAddPriceBike(true)
+                }
+              />
+            </div>
           </div>
         </div>
         <div>
@@ -109,25 +126,51 @@ export const AdminProfile = () => {
           </Button>
         </div>
         <div>
-          <h2 className={s.h2}>Accesorios</h2>
-            <div className={s.couple}>
-              <Button
-                variant="contained"
-                color="success"
-                className={s.btnBook}
-                onClick={seeAccesories}
-              >
-                Ver Accesorios
-              </Button>
-              <div className={s.buttons}>
+          <h2 className={s.h2}>Aventuras</h2>
+          <div className={s.couple}>
+            <Button
+              variant="contained"
+              color="success"
+              className={s.btnBook}
+              onClick={seeAdventures}
+            >
+              Ver Aventuras
+            </Button>
+            <div className={s.buttons}>
               <AddCircleIcon
-                  className={s.addBtn}
-                  color="primary"
-                  onClick={addAccs}
-                />
-                <img src={inflationIcon} alt="aumentar precio" onClick={() => addPriceAcc? setAddPriceAcc(false): setAddPriceAcc(true)} />
-                </div>
-              </div>
+                className={s.addBtn}
+                color="primary"
+                onClick={addAdvs}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 className={s.h2}>Accesorios</h2>
+          <div className={s.couple}>
+            <Button
+              variant="contained"
+              color="success"
+              className={s.btnBook}
+              onClick={seeAccesories}
+            >
+              Ver Accesorios
+            </Button>
+            <div className={s.buttons}>
+              <AddCircleIcon
+                className={s.addBtn}
+                color="primary"
+                onClick={addAccs}
+              />
+              <img
+                src={inflationIcon}
+                alt="aumentar precio"
+                onClick={() =>
+                  addPriceAcc ? setAddPriceAcc(false) : setAddPriceAcc(true)
+                }
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div className={addBike ? s.show : s.hidde}>
@@ -136,17 +179,16 @@ export const AdminProfile = () => {
       <div className={addAcc ? s.show : s.hidde}>
         <FormAccesories setAddAcc={setAddAcc} />
       </div>
+      <div className={addAdv ? s.show : s.hidde}>
+        <FormAdventures setAddAdv={setAddAdv} />
+      </div>
       <div className={addPriceBike ? s.show : s.hidde}>
-        <FormPriceBike setAddPriceBike={setAddPriceBike}/>
+        <FormPriceBike setAddPriceBike={setAddPriceBike} />
       </div>
       <div className={addPriceAcc ? s.show : s.hidde}>
-        <FormPriceAcc setAddPriceAcc={setAddPriceAcc}/>
+        <FormPriceAcc setAddPriceAcc={setAddPriceAcc} />
       </div>
-      <img
-        src={background}
-        alt="fondo"
-        className={s.background}
-      />
+      <img src={background} alt="fondo" className={s.background} />
     </section>
   );
 };

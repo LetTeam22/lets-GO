@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getBikes } from "../../../Redux/actions";
@@ -10,7 +11,7 @@ import Action from "./Action";
 import GroupDiscount from "./GroupDiscount";
 import s from "./Bikes.module.css";
 
-export default function Bikes() {
+export default function Bikes({socket}) {
   const bikes = useSelector((state) => state.allBikes);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function Bikes() {
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
+    return diffDays + 1;
   };
 
   const rowsBikes = useMemo(() => {
@@ -67,23 +68,23 @@ export default function Bikes() {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: "Nombre", width: 150, editable: true },
+      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 150, editable: true },
       { field: "type", headerName: "Tipo", width: 80 },
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
       { field: "color", headerName: "Color", width: 80 },
-      { field: "rating", headerName: "Rating", width: 70, editable: true },
+      { field: "rating", headerName: "Rating", width: 70 },
       {
         field: "price",
-        headerName: "Precio",
+        headerName: <div>Precio <BiEdit className={s.edit}/></div>,
         width: 70,
         type: "number",
         editable: true,
       },
       {
         field: "discount",
-        headerName: "Descuento",
-        width: 90,
+        headerName: <div>Descuento <BiEdit className={s.edit}/></div>,
+        width: 100,
         type: "singleSelect",
         valueOptions: fillDiscounts(),
         editable: true,
@@ -92,7 +93,7 @@ export default function Bikes() {
       { field: "totalBookings", headerName: "Cantidad alq", width: 100 },
       {
         field: "status",
-        headerName: "Estado",
+        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
         width: 80,
         type: "singleSelect",
         valueOptions: ["active", "service", "deleted"],
@@ -100,7 +101,7 @@ export default function Bikes() {
       },
       {
         field: "action",
-        headerName: "Action",
+        headerName: "Guardar",
         type: "actions",
         width: 80,
         renderCell: (params) => (
@@ -146,7 +147,7 @@ export default function Bikes() {
               Descuentos grupales
             </div>
             <div className={seeDiscount ? s.show : s.hidde}>
-              <GroupDiscount setSeeDiscount={setSeeDiscount} />
+              <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
             </div>
           </div>
         </ThemeProvider>

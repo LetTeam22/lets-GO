@@ -16,7 +16,7 @@
 
 .coverGrid{
     height: 27rem;
-    max-width: 57.2rem;
+    max-width: 71rem;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -42,6 +42,10 @@
 .list *{
     color: white;
     font-family: 'Roboto' 'sans-serif'
+}
+
+.edit path{
+    color: #f9b621;
 }
 
 @media (max-width:650px) {

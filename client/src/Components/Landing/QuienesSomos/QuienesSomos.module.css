@@ -75,7 +75,7 @@
     color: #333333;
     background: #F9B621;
     padding: 0;
-    font-size: .7rem;
+    font-size: 1rem;
     font-weight: 700;
     display: flex;
     justify-content: center;
@@ -86,6 +86,12 @@
     border-radius: .2rem;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    transition: all .3s linear;
+}
+
+.btn:hover {
+    color: #d89c1c;
+    background: #333333;
 }
 
 @media (max-width:1140px) {
@@ -96,6 +102,36 @@
     .text1{
         width: 90%;
     }
+
+    .video {
+        width: 50%;
+    }
+
+    .btn {
+        width: 10%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .video {
+        width: 60%;
+    }
+}
+
+@media (max-width: 850px) {
+    .video {
+        width: 70%;
+    }
+}
+
+@media (max-width: 750px) {
+    .video {
+        width: 80%;
+    }
+
+    .btn {
+        width: 15%;
+    }
 }
 
 @media (max-width:600px) {
@@ -105,5 +141,9 @@
     }
     .text1{
         width: 100%;
+    }
+
+    .video {
+        width: 90%;
     }
 }

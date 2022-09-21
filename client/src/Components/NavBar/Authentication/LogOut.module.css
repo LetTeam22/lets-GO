@@ -2,6 +2,13 @@
     color: #FFFFFF;
     cursor:pointer;
     margin-right: 10px;
+    font-size: .8rem;
+    letter-spacing: .1rem
+}
+
+.loginSpan:hover {
+    color: #F9B621;
+    transition: color .5s linear;
 }
 
 .personaBtn {
@@ -13,7 +20,7 @@
 .persona {
     width: 1.5rem;
     cursor:pointer;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .containerLog{
@@ -21,14 +28,34 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    justify-content: center;
+}
+.containerLog button{
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name{
     position: absolute;
     top: 2.1rem;
     width: 10rem;
-    margin-right: 1.7rem;
     color:#ffffff94;
     text-align: center;
     font-size: .7rem;
+    /* margin-top: .1rem; */
+}
+
+.profilePic {
+    background-color: transparent;
+    border: none;
+}
+
+.profilePic img {
+    border-radius: 50%;
+    width: 2.2rem;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo } from "../../Redux/actions";
+import { getAccesories, getBikes, getUser, setParameters, getDisabledDates, sendMpInfo, getAllAdventures } from "../../Redux/actions";
 import s from "./ShoppingCart.module.css";
 import Dates from "../Dates/Dates";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -18,14 +18,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Mp from '../MercadoPago/MercadoPago';
 import { finalPrice } from '../../helpers/applyDiscount';
-import { adventures as allAdventures } from '../Adventure/data';
+
 
 export const ShoppingCart = () => {
   const dispatch = useDispatch();
   const history = useHistory()
-
+  const imgEmpty = 'https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png'
   const bookings = JSON.parse(localStorage.getItem("booking")) || [];
-  const Adventures = JSON.parse(localStorage.getItem("adventure")) || [];
+  const Adventures = JSON.parse(localStorage.getItem("adventure")) || {};
+
 
   const parameters = useSelector(state => state.parameters);
   const date = useSelector(state => state.parameters.date);
@@ -33,8 +34,9 @@ export const ShoppingCart = () => {
   const allAccs = useSelector((state) => state.accesories);
   const allBikes = useSelector((state) => state.allBikes);
   const mpInfo = useSelector((state) => state.mpInfo);
-  let cartBikes = [];
-  let cartAdventures = [];
+  const allAdventures = useSelector(state => state.allAdventures)
+  let cartBikes = []; // eslint-disable-next-line
+  let cartAdventures = []; 1
   const { user, isLoading } = useAuth0();
 
   const [loading, setLoading] = useState(false);
@@ -54,11 +56,11 @@ export const ShoppingCart = () => {
     cartBikes.push(pushedbike);
   })
 
-  Adventures.length && Adventures.forEach(adv => {
-    const advFound = allAdventures.find(a => a.id === adv.adv[0])
+  Adventures.hasOwnProperty('adv') && Adventures.adv.forEach(adv => {
+    const advFound = allAdventures.find(a => a.idAdv === adv)
     if (advFound) {
       const pushedAdv = {
-        id: advFound.id,
+        id: advFound.idAdv,
         name: advFound.name,
         price: advFound.price,
         image: advFound.image,
@@ -68,6 +70,26 @@ export const ShoppingCart = () => {
   })
 
   let postbikeIds = cartBikes.map((bikes) => bikes.idBike);
+
+  const accs = allAccs.map(acc => {
+    return {
+      name: acc.name,
+      price: acc.price,
+      id: acc.idAcc,
+      cantidad: 0,
+    }
+  });
+
+  accs.map(acc => {
+    return bookings.map(book => {
+      if (book.hasOwnProperty('accs') && book.accs.includes(acc.id)) {
+        acc.cantidad++;
+      }
+      return null
+    });
+  });
+
+
 
   // Obtengo fechas deshabilitadas para el calendario segun las reservas de las bicis en el carrito
   const strBikeIds = postbikeIds.join()
@@ -82,7 +104,7 @@ export const ShoppingCart = () => {
   }, []);
 
   bookings.length && bookings.forEach(book => {
-    book.accs.forEach(acc => {
+    book.hasOwnProperty('accs') && book.accs.length && book.accs.forEach(acc => {
       !ids.includes(acc) && ids.push(acc)
     })
   })
@@ -94,10 +116,13 @@ export const ShoppingCart = () => {
       userId: userLogged?.idUser,
       bikeIds: postbikeIds,
       AccIds: ids,
+      adventureNames: cartAdventures.map(ad => ad.name)
     }
-  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds]);
+  }, [date.from, date.to, ids, userLogged?.idUser, postbikeIds, cartAdventures]);
+
 
   const totalDias = (from, to) => {
+    if (!from || !to) return 0
     const date1 = new Date(from);
     const date2 = new Date(to);
     const diffTime = Math.abs(date2 - date1);
@@ -117,15 +142,20 @@ export const ShoppingCart = () => {
     )
   }, 0)
 
+
   const subTotalBike = cartBikes.reduce((acc, cur) => {
     return (
       acc + finalPrice(cur.price, cur.discount) * totalDias(date.from, date.to)
     );
   }, 0);
 
+  const subTotalPerItems = (price, cantidad) => {
+    return price * cantidad * totalDias(date.from, date.to)
+  }
+
   let subTotalItems = 0
   cartBikes.forEach(bike => {
-    allAccs.length && bike.accesories.forEach(el => {
+    allAccs.length && bike.accesories?.forEach(el => {
       const objAcc = allAccs.find(a => a.idAcc === el)
       const price = Number(objAcc.price)
       subTotalItems += price * totalDias(date.from, date.to)
@@ -166,12 +196,11 @@ export const ShoppingCart = () => {
     localStorage.setItem('booking', JSON.stringify(bookings.filter(booking => booking.bike !== id)));
   }
 
-  const deleteAdventure = (e, id) => {
+  const deleteAdventure = (e, id, price) => {
     e.preventDefault();
     setLoading(true);
     cartAdventures = cartAdventures.filter(a => a.id !== id);
-    localStorage.setItem("adventure", JSON.stringify(Adventures.filter(ad => ad.adv[0] !== id)))
-
+    localStorage.setItem("adventure", JSON.stringify({ adv: Adventures.adv.filter(ad => ad !== id), totalAdv: Adventures.totalAdv - price }))
   }
 
   useEffect(() => {
@@ -179,6 +208,7 @@ export const ShoppingCart = () => {
     dispatch(getBikes());
     dispatch(getAccesories());
     dispatch(getUser(user?.email));
+    dispatch(getAllAdventures())
     dispatch(
       setParameters({
         ...parameters,
@@ -211,7 +241,13 @@ export const ShoppingCart = () => {
         </div>
         <hr color="#595858" size='0.5px' />
 
-        <Dates component='cart' />
+        {
+          !bookings.length && Adventures.adv ? <></> :
+            <div className={s.fechasCont}>
+              <Dates component='cart' />
+              <span className={s.spanDias}>{`Total días: ${totalDias(date.from, date.to)}`}</span>
+            </div>
+        }
 
         <div className={s.containerDiv}>
           <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
@@ -232,42 +268,57 @@ export const ShoppingCart = () => {
                         <TableRow key={bike.bikeId} >
                           <TableCell>{bike.name}</TableCell>
                           <TableCell align="center">1</TableCell>
-                          <TableCell align="center">{finalPrice(bike.price, bike.discount)}</TableCell>
-                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? totalPerBike(finalPrice(bike.price, bike.discount)) : 0}</TableCell>
+                          <TableCell align="center">{`$ ${finalPrice(bike.price, bike.discount).toLocaleString('es-AR')}`}</TableCell>
+                          <TableCell align="center">{!isNaN(totalPerBike(finalPrice(bike.price, bike.discount))) ? `$ ${totalPerBike(finalPrice(bike.price, bike.discount)).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                         </TableRow>
                       )
                     })
                     : <></>
                 }
                 {
-                  cartBikes.length && allAccs.length
-                    ? cartBikes.map(bike => {
-                      return bike.accesories?.map(el => {
-                        const objAcc = allAccs.find(a => a.idAcc === el)
+                  cartBikes.length && accs.length
+
+                    ? accs.map(acc => {
+                      if (acc.cantidad > 0) {
                         return (
-                          <TableRow key={objAcc.idAcc} >
-                            <TableCell>{objAcc.name}</TableCell>
-                            <TableCell align="center">1</TableCell>
-                            <TableCell align="center">{Number(objAcc.price)}</TableCell>
-                            <TableCell align="center">{!isNaN(totalPerBike(Number(objAcc.price))) ? totalPerBike(Number(objAcc.price)) : 0}</TableCell>
+                          <TableRow key={acc.id} >
+                            <TableCell>{acc.name}</TableCell>
+                            <TableCell align="center">{acc.cantidad}</TableCell>
+                            <TableCell align="center">{`$ ${Number(acc.price).toLocaleString('es-AR')}`}</TableCell>
+                            <TableCell align="center">{!isNaN(subTotalPerItems(acc.price, acc.cantidad)) ? `$ ${subTotalPerItems(acc.price, acc.cantidad).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                           </TableRow>
                         )
-                      })
+                      }
+                      return null
+                    })
+                    : <></>
+                }
+                {
+                  cartAdventures.length
+                    ? cartAdventures.map((adventure) => {
+                      return (
+                        <TableRow key={adventure.id} >
+                          <TableCell>{adventure.name}</TableCell>
+                          <TableCell align="center">1</TableCell>
+                          <TableCell align="center">-</TableCell>
+                          <TableCell align="center">{`$ ${Number(adventure.price).toLocaleString('es-AR')}`}</TableCell>
+                        </TableRow>
+                      )
                     })
                     : <></>
                 }
                 <TableRow>
                   <TableCell rowSpan={3} />
                   <TableCell align="left" colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? subTotal : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${subTotal.toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell colSpan={2} align="left">Tax</TableCell>
-                  <TableCell align="center">{!isNaN(subTotal) ? parseInt(subTotal * 0.02) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(subTotal) ? `$ ${parseInt(subTotal * 0.02).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" colSpan={2}>Total</TableCell>
-                  <TableCell align="center">{!isNaN(total) ? parseInt(total) : 0}</TableCell>
+                  <TableCell align="center">{!isNaN(total) ? `$ ${parseInt(total).toLocaleString('es-AR')}` : '$ 0'}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -278,8 +329,8 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
+                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <h2 className={s.bikeName}>{bike.name}</h2>
-                      <RenderOneImage publicId={bike.image} className={s.img} />
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
                           const objAcc = allAccs.find(a => a.idAcc === el)
@@ -302,16 +353,14 @@ export const ShoppingCart = () => {
                 })
                 : <></>
             }
-          </div>
-          <div>
             {
               cartAdventures.length ? cartAdventures.map(adv => {
                 return (
-                  <div className={s.cardBike} key={adv.id} >
-                    <h2 className={s.bikeName}>{adv.name}</h2>
-                    <RenderOneImage publicId={adv.image} className={s.img} />
-                    <div className={s.buttonCont}>
-                      <button onClick={(e) => deleteAdventure(e, adv.id)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                  <div className={s.cardAdventure} key={adv.idAdv} >
+                    <img src={adv.image} alt="" />
+                    <h2 className={s.advName}>{adv.name}</h2>
+                    <div className={s.advBtn}>
+                      <button onClick={(e) => deleteAdventure(e, adv.id, adv.price)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                     </div>
                   </div>
                 )
@@ -331,11 +380,10 @@ export const ShoppingCart = () => {
                     </button>
                   </Link>
                   {
-                    postedBooking.startDate === '' || postedBooking.endDate === ''
+                    bookings.length && (postedBooking.startDate === '' || postedBooking.endDate === '')
                       ? <></>
                       : <Mp preference={preference} mpInfo={mpInfo} postedBooking={postedBooking} total={total} />
                   }
-
                 </div>
               </div>
             )
@@ -344,12 +392,8 @@ export const ShoppingCart = () => {
       </div>
       : !cartBikes.length
         ? <div className={s.containerEmptyCart}>
-          <img src="https://res.cloudinary.com/pflet/image/upload/v1662686140/Let/image/sincarrito_wrpmlx.png" alt="sin carrito" className={s.sincarrito} />
-          <div className={s.div}>
-            <Link to='/home' className={s.containerBtnHome}>
-              <button className={s.returnBtn}>VOLVER AL HOME</button>
-            </Link>
-          </div>
+          <Link to='/home'><button className={s.returnBtn}>VOLVER AL HOME</button></Link>
+          <img src={imgEmpty} alt="sin carrito" className={s.sincarrito} />
         </div>
         : <Loading />
   )

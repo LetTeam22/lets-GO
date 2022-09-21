@@ -1,0 +1,35 @@
+.background {
+    background-image: url("https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png");
+    background-color: white;
+}
+
+.imgContainer {
+    margin-left: 3rem;
+    margin-bottom: 5rem;
+    margin-top: -10rem;
+    width: 110%
+}
+
+.btnHome {
+    position: relative;
+    margin-left: 37rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-size: 1rem;
+    font-weight: 500;
+    height: 3rem;
+    width: 10rem;
+    border: none;
+    background: #F9B621;
+    cursor: pointer;
+    border-radius: .3rem;
+    transition: all .3s linear;
+    opacity: 0.85;
+}
+
+.btnHome:hover {
+    color: #d89c1c;
+    background: #333333;
+}

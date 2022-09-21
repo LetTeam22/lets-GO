@@ -10,6 +10,12 @@
     width: 55%;
     box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
     overflow-y: scroll; 
+    transition: transform 0.5s linear;
+}
+
+.blogCard:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, 0.555);
 }
 
 .imgcard{
@@ -23,6 +29,7 @@
 .description {
     padding: 1rem;
     position: relative;
+    width: 100%;
 }
 
 .h1 {
@@ -55,28 +62,38 @@
     color: white
 }
 
-.p {
+.p{
     position: relative;
     margin: 1rem 0 0;
     font-size: .8rem;
     font-weight: 300;
 }
-
+.edit {
+    background: #4c4c4c;
+    color: white;
+    font-size: .8rem;
+    text-decoration: none;
+    border: none;
+    overflow-y: scroll;
+    resize: none;
+    height: 9rem;
+    width: 100%;
+    outline: none;
+    margin-top: 1rem;
+}
 .iconBtn {
     background-color: transparent;
     border: none;
     appearance: none;
     margin-top: 1rem;
+    margin-right: 1rem;
 }
 
-.containerLikes {
+.iconCont {
     display: flex;
-    flex-direction: row;
-    column-gap: .5rem;
-    align-items: flex-end;
 }
 
-.likes {
-    color: #F9B621;
-    font-size: 1rem;
+.btnSwal{
+    background-color: #F9B621!important;
 }
+

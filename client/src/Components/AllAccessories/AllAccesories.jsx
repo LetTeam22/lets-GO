@@ -4,13 +4,15 @@ import { getAccesories } from '../../Redux/actions';
 import s from './AllAccessories.module.css';
 import EachAccesory from './EachAccesory';
 import Loading from '../Loading/Loading';
+import { Link } from "react-router-dom";
+import ChatBot from '../ChatBot/ChatBot';
 
 // import aux_axesorios from '../../image/aux_/aux_axesorios.png';
 
 export const AllAccesories = () => {
     const dispatch = useDispatch();
     const allAccs = useSelector(state => state.accesories)
-console.log(allAccs)
+
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getAccesories())
@@ -18,6 +20,7 @@ console.log(allAccs)
 
     return (
         <>
+        <ChatBot/>
             <div className={s.left} />
             <div className={s.right} />
             <div className={s.container}>
@@ -35,7 +38,7 @@ console.log(allAccs)
                     )
             }) : <Loading /> }
         <div className={s.containerBtn}>
-            <button className={s.btn}>BUSCAR BICI</button>
+            <Link to= '/home'><button className={s.btn}>BUSCAR BICI</button></Link>
         </div>
         </>
     )

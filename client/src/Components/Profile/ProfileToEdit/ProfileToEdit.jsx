@@ -69,28 +69,20 @@ export const ProfileToEdit = () => {
       )
     );
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    if(toUpload){
-    setUploading(true)  
-    const data = new FormData()
-    data.append('file',toUpload)
-    data.append('upload_preset','ProfilePictures')
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-    {
-      method:'POST',
-      body:data
-    })
-    const file = await res.json() 
-    // console.log(file)
-    setUploadedImage(file.public_id)
-    await dispatch(
-      updateUser({ ...input, email: user.email, profilePic:file.public_id})
-    );}
-    else{
-      await dispatch(updateUser({ ...input, email: user.email}))
+    if(toUpload) {
+      setUploading(true)  
+      const data = new FormData()
+      data.append('file',toUpload)
+      data.append('upload_preset','ProfilePictures')
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, { method:'POST', body:data })
+      const file = await res.json() 
+      setUploadedImage(file.public_id)
+      await dispatch(updateUser({...input, email: user.email, profilePic: file.public_id }))
+    } else{
+      await dispatch(updateUser({ ...input, email: user.email }))
     }
-    // console.log('usuario logueado',userLogged)
     dispatch(getUser(userLogged.email));
     setInput({
       firstName: "",
@@ -99,12 +91,13 @@ export const ProfileToEdit = () => {
     });
     setToUpload('')
     setUploading(false)
+    history.push('/bike/profile')
     return swal("Felicidades!", "Tus datos fueron modificados!", "success");
   };
-  // console.log('photo',photo)
+
+
   const disabled = Object.keys(errors).length > 0 ||
    !(input.firstName || input.lastName || input.cellphone || toUpload)
-  //  !!!(input.firstName && input.lastName && input.cellphone & photo)
   const name = (userLogged.firstName && userLogged.lastName)?
   `${userLogged.firstName} ${userLogged.lastName}`:
   userLogged.firstName? userLogged.firstName:
@@ -200,7 +193,7 @@ export const ProfileToEdit = () => {
               color="success"
               className={s.btnHome}
               onClick={() => history.push("/")}>
-              Go Home
+              HOME
             </Button>
             <Button
               variant="contained"
@@ -210,7 +203,7 @@ export const ProfileToEdit = () => {
               disabled={disabled}
               onClick={handleSubmit}
             >
-              Send
+              ENVIAR
             </Button>
       </div>
       <div className={s.background}></div>
