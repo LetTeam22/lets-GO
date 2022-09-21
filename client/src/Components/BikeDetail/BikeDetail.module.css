@@ -254,7 +254,8 @@ input[type="checkbox"] + label:before {
     border: 1px solid #F9B621;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50%!important;
+    transform: translateY(-50%);
     opacity: .6;
     -webkit-transition: all .12s, border-color .08s;
     transition: all .12s, border-color .08s;
@@ -312,6 +313,7 @@ input[type="checkbox"]:checked + label:before {
     .row{
         height: calc(100vh - 15rem);
         margin-top: 0;
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -336,7 +338,7 @@ input[type="checkbox"]:checked + label:before {
     }
     .prCont{
         position: absolute;
-        bottom: 4.5rem;
+        bottom: 0;
         left: 50%;
         transform: translateX(-50%);
     }
@@ -364,11 +366,25 @@ input[type="checkbox"]:checked + label:before {
     .image1 img{
         height: 100%;
     }
+    .precio{
+        margin-top: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width:950px){
+    .containerAcc{
+        grid-template-columns: repeat(3, 1fr)
+    }
 }
 
 @media (max-width:650px) {
     .initial{
         margin-top: 4rem;
+        height: calc(100vh - 10rem);
+    }
+    .row{
+        height: calc(100vh - 17rem);
     }
     .name p{
         display:none;
@@ -385,11 +401,24 @@ input[type="checkbox"]:checked + label:before {
         font-size: 0.8rem;
         width: 7rem;
     }
+    .prCont{
+        bottom: -1rem;
+    }
     .image1{
-        height: calc(100% - 20rem);
+        height: calc(100% - 15rem);
     }
     .image1 img{
         max-width: 90vw;
+    }
+    .containerGral{
+        flex-direction: column;
+    }
+    .containerAccesories {
+        flex-direction: row;
+        width: 100%;
+    }
+    .containerAcc{
+        grid-template-columns: repeat(2, 1fr)
     }
 }
 
@@ -413,8 +442,8 @@ input[type="checkbox"]:checked + label:before {
     .pr{
         font-size: 1rem;
     }
-    .proCont{
-        bottom: 3.5rem;
+    .prCont{
+        bottom: -1.5rem;
     }
     .prCont h4:first-child{
         width: 10.1rem;
@@ -423,3 +452,12 @@ input[type="checkbox"]:checked + label:before {
         width: 4.2rem;
     }
 } 
+
+@media (max-width:300px) {
+    .containerAcc{
+        grid-template-columns: repeat(1, 1fr)
+    }
+    .containerAccesories {
+        flex-direction: column;
+    }
+}

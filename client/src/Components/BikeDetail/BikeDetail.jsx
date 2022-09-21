@@ -211,7 +211,7 @@ export const BikeDetail = () => {
               </div>
             </div>
           </div>
-          {/* <div>
+          <div>
             <div className={s.titleAccAndTech}>
               <h2 className={s.titleTA}>Accesorios opcionales</h2>
             </div>
@@ -237,7 +237,6 @@ export const BikeDetail = () => {
                   })}
               </div>
               <div className={s.containerAccesories}>
-                .
                 <div>
                   <p className={s.precioTotal}>Total adicional</p>
                   <p className={s.precioTotal}>$ {adicional()} / dia</p>
@@ -253,7 +252,7 @@ export const BikeDetail = () => {
                 </button>
               </div>
             </div>
-          </div> */}
+          </div>
           <div className={s.titleAccAndTech} style={{ marginTop: "3rem" }}>
             <h2 className={s.titleTA}>En acción</h2>
           </div>
