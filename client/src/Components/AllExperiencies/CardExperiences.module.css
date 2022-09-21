@@ -21,7 +21,8 @@
 .imgcard{
     display: flex;
     flex-direction: row;
-    height: 33vh;
+    height: 20vw;
+    width: 28vw;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -29,14 +30,14 @@
 .description {
     padding: 1rem;
     position: relative;
-    width: 100%;
+    width: 28vw;
+    height: 20vw;
 }
 
 .h1 {
     text-align: left;
     font-size: .9rem;
     color: #F9B621;
-    margin: 0;
 }
 
 .name {
@@ -46,14 +47,20 @@
     color: #F9B621;
     margin: 0;
     padding-top: .5rem;
-    padding-bottom: .2rem;
+    padding-bottom: .4rem;
 }
+
+.h1, .name {
+    margin-left: .5rem;
+}
+
 .containH1 {
     display: flex;
     flex-direction: row;
     text-align: left;
     font-size: 1rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .h2 {
@@ -82,6 +89,9 @@
     margin-top: 1rem;
 }
 .iconBtn {
+    position: absolute;
+    top: .5rem;
+    left: 90%;
     background-color: transparent;
     border: none;
     appearance: none;
@@ -97,3 +107,65 @@
     background-color: #F9B621!important;
 }
 
+@media (max-width: 1900px) {
+    .blogCard {
+        width: 60%;
+    }
+
+    .description {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .blogCard {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .imgcard {
+        width: 100%;
+        height: 25vw;
+    }
+}
+
+
+@media (max-width: 1150px) {
+    .imgcard {
+        height: 27vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .blogCard {
+        width: 80%;
+    }
+
+    .iconBtn {
+        left: 95%;
+    }
+}
+
+@media (max-width: 800px) {
+    .iconBtn {
+        left: 95%;
+    }
+}
+
+@media (max-width: 700px) {
+    .blogCard {
+        width: 70%;
+    }
+
+    .imgcard {
+        height: 35vw;
+    }
+
+    .iconBtn {
+        left: 95%;
+    }
+}
+
+@media (max-width: 500px) {
+
+}

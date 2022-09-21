@@ -8,7 +8,9 @@
     justify-content: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    color: #787877
+    color: #787877;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .container {
@@ -59,8 +61,93 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 60%;
     gap: 1rem;
     margin:0px auto;
-    width: 55vw;
+}
+
+@media (max-width: 2000px) {
+    .right, .left {
+        width: 16%;
+    }
+}
+
+@media (max-width: 1850px) {
+    .right, .left {
+        width: 13%;
+    }
+}
+
+@media (max-width: 1700px) {
+    .right, .left {
+        width: 10%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .right, .left {
+        width: 5%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .right, .left {
+        width: 0%;
+    }
+
+    .containerCards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1150px) {
+    .containerCards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .left, .right {
+        width: 0%;
+    }
+
+    .divDateAndOrder {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .containerCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .divDateAndOrder {
+        width: 90%;
+    }
+}
+
+@media (max-width: 700px) {
+    .containerCards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .divDateAndOrder {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .divSticky {
+        padding: 0;
+        top: 9rem;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .h1 {
+        font-size: 1.5rem;
+    }
 }
