@@ -155,7 +155,7 @@
     grid-row-gap: 0.5rem;
     grid-column-gap: .5rem;
     height: 5rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 }
 
 .accs {
@@ -285,7 +285,7 @@
     border-radius: 1.5rem;
 }
 
-.hoverDiv, .hoverDivAccs {
+.hoverDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,11 +300,7 @@
     transition: opacity .5s linear;
 }
 
-.hoverDivAccs {
-    justify-content: flex-end;
-}
-
-.hoverDiv:hover, .hoverDivAccs:hover {
+.hoverDiv:hover {
     opacity: .9;
 }
 
@@ -325,13 +321,11 @@
 .fechasCont {
     display: flex;
     width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .spanDias {
-    /* padding-top: 2.5rem; */
     margin-left: 2rem;
     cursor: auto;
     width: fit-content;
@@ -342,6 +336,7 @@
     width: 30%;
     display: block;
     overflow-x: auto;
+    margin-left: 3rem;
 }
 
 
@@ -398,15 +393,14 @@
         width: 27vh;
     }
 
-    
-
     .containerBtn {
         justify-content: center;
     }
-}
 
-@media (max-width: 1450px) {
-
+    .fechasCont {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 1300px) {
@@ -417,10 +411,6 @@
         margin-right: 9rem;
         margin-left: 9rem;
     }
-}
-
-@media (max-width: 1150px) {
-
 }
 
 @media (max-width: 1000px) {
@@ -450,6 +440,10 @@
 
     .fechasCont {
         width: 75%;
+    }
+
+    .table {
+        margin-left: 1rem;
     }
 }
 
@@ -487,10 +481,3 @@
     }
 }
 
-@media (max-width: 550px) {
-
-}
-
-@media (max-width: 400px) {
-
-}

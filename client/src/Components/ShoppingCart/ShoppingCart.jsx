@@ -331,20 +331,20 @@ export const ShoppingCart = () => {
                     <div className={s.cardBike} key={bike.idBike} >
                       <h2 className={s.bikeName}>{bike.name}</h2>
                       <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
-                      <div className={s.hoverDivAccs}>
-                        <div className={s.accesoriesPreview}>
-                          {bike.accesories?.map((el) => {
-                            const objAcc = allAccs.find(a => a.idAcc === el)
-                            return (
-                              <div key={objAcc.idAcc}>
-                                <RenderAccCart
-                                  className={s.imgCloud}
-                                  publicId={objAcc.image}
-                                />
-                              </div>
-                            )
-                          })}
-                        </div>
+                      <div className={s.accesoriesPreview}>
+                        {bike.accesories?.map((el) => {
+                          const objAcc = allAccs.find(a => a.idAcc === el)
+                          return (
+                            <div key={objAcc.idAcc}>
+                              <RenderAccCart
+                                className={s.imgCloud}
+                                publicId={objAcc.image}
+                              />
+                            </div>
+                          )
+                        })}
+                      </div>
+                      <div className={s.hoverDiv}>
                         <div className={s.buttonCont}>
                           <button onClick={(e) => editItem(e, bike.idBike)} className={s.deleteBtn}><BiEdit color='#F9B621' size='2rem' className={s.trashIcon} /></button>
                           <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
