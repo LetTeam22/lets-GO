@@ -1,6 +1,6 @@
 
 .mercadopago-button {
-    width: 15rem;
+    width: 16rem;
     height: 3.5rem;
 }
 
@@ -12,4 +12,12 @@
 
 .cho-container button{
     position: absolute;
+}
+
+@media (max-width: 750px) {
+    .cho-container {
+        position: inherit;
+        height: 8rem;
+        margin-right: 15.5rem;
+    }
 }
