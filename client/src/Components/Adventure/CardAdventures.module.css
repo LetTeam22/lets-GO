@@ -11,6 +11,7 @@
     width: 55%;
     box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
     transition: transform 0.5s linear;
+    overflow-y: scroll; 
 }
 
 .blogCard:hover {
@@ -123,86 +124,34 @@ input[type="checkbox"]:checked + label:before {
     background-color: #F9B621!important;
 }
 
+@media (max-width: 2000px) {
+}
+
 @media (max-width: 1750px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 45%;
-    }
-    
-    .description {
-        padding: .8rem;
-    }
 }
 
 @media (max-width: 1600px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 50%;
-    }
-    
-    .description {
-        padding: .6rem;
-    }
 }
 
 @media (max-width: 1400px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 57%;
-    }
 }
 
 @media (max-width: 1000px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 60%;
-    }
-    
-
 }
 
 @media (max-width: 850px) {
-
-    .blogCard {
-        flex-direction: column;
-        width: 65%;
-    }
 }
 
 @media (max-width: 650px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 65%;
-    }
-
-    .imgcard {
-        height: 25vh;
-    }
-    
-    .description {
-        padding: 1rem;
-    }
 }
 
 @media (max-width: 550px) {
 
-    .blogCard {
-        flex-direction: column;
-        width: 65%;
-    }
-
-    .imgcard {
-        height: 20vh;
-    }
-    
-    .description {
-        padding: 1rem;
-    }
 }
 
 
