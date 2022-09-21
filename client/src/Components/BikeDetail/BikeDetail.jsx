@@ -166,7 +166,7 @@ export const BikeDetail = () => {
             <div className={s.titleAccAndTech}>
               <h2 className={s.titleTA}>Accesorios opcionales</h2>
             </div>
-            {/* <div className={s.containerGral}>
+            <div className={s.containerGral}>
               <div className={s.containerAcc}>
                 {allAccs
                   ?.filter((acc) => acc.status === "active")
@@ -203,7 +203,7 @@ export const BikeDetail = () => {
                   Agregar al carrito{" "}
                 </button>
               </div>
-            </div> */}
+            </div>
           </div>
           <div className={s.gallery}>
             <div>

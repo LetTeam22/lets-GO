@@ -87,7 +87,13 @@
 .prCont {
     display: flex;
     margin-top: 2rem;
-    width: 20rem;
+    width: 22rem;
+}
+.prCont h4:first-child{
+    width: 11.9rem;
+}
+.prCont h4:last-child{
+    width: 4.9rem;
 }
 
 .pr, .prOld {
@@ -282,55 +288,93 @@ input[type="checkbox"]:checked + label:before {
     .row{
         height: calc(100vh - 16rem);
         margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
     .txt{
         background-color: transparent;
+        margin-top: 1rem;
+        width: 90vw;
+        padding: 0;
+        padding-top: 1rem;
+    }
+    .ph{
+        margin: 0;
+    }
+    .containerDetails{
+        height: 4rem;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .prCont{
+        position: absolute;
+        bottom: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .cont{
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .icon{
+        height: 2rem;
+    }
+    .parameters{
+        text-align: center;
     }
     .desc{
         width: 90vw;
+        max-height: 7rem;
+        overflow: scroll;
     }
     .image1{
-        align-items: flex-end;
+        align-items: center;
     }
     .image1 img{
         width: 80%;
     }
 }
 
-@media (max-width:800px) {
-    .image1{
-        margin-bottom: 4rem;
-    }
-}
-
-@media (max-width:690px) {
+@media (max-width:650px) {
     .initial{
-        height: calc(100vh - 12rem);
-        margin-top: 3rem;
+        margin-top: 4rem;
     }
-    .txt{
-        width: 20rem;
+    .name p{
+        display:none;
     }
-    .row{
-        height: calc(100vh - 18rem);
-    }
-    .cont{
-        height: 1rem;
-        align-items: center;
-        font-size: 1rem;
+    .containerDetails{
+        display: grid; 
+        grid-template-columns: repeat(2,1fr);
     }
     .icon{
+        height: 1rem;
         width: 2rem;
     }
-    .ph{
-        line-height: 1.5rem;
-        font-size: 1rem;
+    .parameters{
+        font-size: 0.8rem;
+        width: 7rem;
+    }
+    .image1 img{
+        width: 22rem;
     }
 }
 
-@media (max-width:570px) {
-    .image1{
-        margin-bottom: 0;
-        align-items: center;
+@media (max-width:480px) {
+    
+    .image1 img{
+        width: 18rem;
     }
 }
+
+@media (max-width:430px) {
+    .parameters{
+        width: 4rem;
+    }
+    .row{
+        gap: 3rem;
+    }
+} 
