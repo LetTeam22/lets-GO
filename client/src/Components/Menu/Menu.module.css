@@ -254,9 +254,6 @@ hr {
 }
 
 @media (max-width:650px) {
-    .menu{
-        justify-content: space-around;
-    }
     .searchbarContainer{
         position: absolute;
         top: 5.9rem;
