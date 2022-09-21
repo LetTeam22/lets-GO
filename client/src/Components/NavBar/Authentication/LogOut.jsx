@@ -31,12 +31,12 @@ export default function LogOut() {
       >
         Cerrar sesión
       </span>
-      <div className={s.containerLog}>
+      <div className={userLogged && userLogged.profilePic ? s.containerProfilePic :s.containerLog}>
         <button className={userLogged && userLogged.profilePic ? s.profilePic : s.personaBtn} onClick={() => history.push('/bike/profile')}>
           {
             userLogged && userLogged.profilePic ?
             <RenderProfilePic publicId={userLogged.profilePic} alt={userLogged.email} /> :
-            <img src={logedPerson} className={s.persona} alt="persona"></img>
+              <img src={logedPerson} className={s.persona} alt="persona"></img>
           }
         </button>
         <span className={s.name}>{ name }</span>
