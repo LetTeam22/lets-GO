@@ -40,6 +40,7 @@
 }
 
 .row {
+    gap: 1rem;
     margin-top: 1rem;
     height: calc(100vh - 12rem);
 }
@@ -86,8 +87,7 @@
 
 .prCont {
     display: flex;
-    margin-top: 2rem;
-    width: 22rem;
+    margin-top: 1rem;
 }
 .prCont h4:first-child{
     width: 11.9rem;
@@ -121,7 +121,7 @@
 }
 
 .image1 img{
-    width: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -254,7 +254,8 @@ input[type="checkbox"] + label:before {
     border: 1px solid #F9B621;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50%!important;
+    transform: translateY(-50%);
     opacity: .6;
     -webkit-transition: all .12s, border-color .08s;
     transition: all .12s, border-color .08s;
@@ -310,14 +311,16 @@ input[type="checkbox"]:checked + label:before {
 
 @media (max-width:1140px) {
     .row{
-        height: calc(100vh - 16rem);
+        height: calc(100vh - 15rem);
         margin-top: 0;
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
     }
     .txt{
+        height: 11rem;
         background-color: transparent;
         margin-top: 1rem;
         width: 90vw;
@@ -335,7 +338,7 @@ input[type="checkbox"]:checked + label:before {
     }
     .prCont{
         position: absolute;
-        bottom: 5rem;
+        bottom: 0;
         left: 50%;
         transform: translateX(-50%);
     }
@@ -352,20 +355,36 @@ input[type="checkbox"]:checked + label:before {
     }
     .desc{
         width: 90vw;
-        max-height: 7rem;
+        max-height: 4rem;
         overflow: scroll;
     }
     .image1{
-        align-items: center;
+        height: calc(100% - 16rem);
+        width: 95vw;
+        justify-content: center;
     }
     .image1 img{
-        width: 80%;
+        height: 100%;
+    }
+    .precio{
+        margin-top: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width:950px){
+    .containerAcc{
+        grid-template-columns: repeat(3, 1fr)
     }
 }
 
 @media (max-width:650px) {
     .initial{
         margin-top: 4rem;
+        height: calc(100vh - 10rem);
+    }
+    .row{
+        height: calc(100vh - 17rem);
     }
     .name p{
         display:none;
@@ -382,23 +401,63 @@ input[type="checkbox"]:checked + label:before {
         font-size: 0.8rem;
         width: 7rem;
     }
-    .image1 img{
-        width: 22rem;
+    .prCont{
+        bottom: -1rem;
     }
-}
-
-@media (max-width:480px) {
-    
+    .image1{
+        height: calc(100% - 15rem);
+    }
     .image1 img{
-        width: 18rem;
+        max-width: 90vw;
+    }
+    .containerGral{
+        flex-direction: column;
+    }
+    .containerAccesories {
+        flex-direction: row;
+        width: 100%;
+    }
+    .containerAcc{
+        grid-template-columns: repeat(2, 1fr)
     }
 }
 
 @media (max-width:430px) {
+    .title{
+        font-size: 2rem;
+    }
     .parameters{
         width: 4rem;
     }
-    .row{
-        gap: 3rem;
+    .txt{
+        padding-top: 0;
+        height: 12.5rem;
+    }
+    .desc{
+        max-height: 5rem;
+    }
+    .ph{
+        font-size: 1rem;
+    }
+    .pr{
+        font-size: 1rem;
+    }
+    .prCont{
+        bottom: -1.5rem;
+    }
+    .prCont h4:first-child{
+        width: 10.1rem;
+    }
+    .prCont h4:last-child{
+        width: 4.2rem;
     }
 } 
+
+@media (max-width:300px) {
+    .containerAcc{
+        grid-template-columns: repeat(1, 1fr)
+    }
+    .containerAccesories {
+        flex-direction: column;
+    }
+}
