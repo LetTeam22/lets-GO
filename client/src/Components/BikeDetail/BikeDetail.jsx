@@ -147,118 +147,121 @@ export const BikeDetail = () => {
   return (
     <>
       <Chatbot />
-      {!!bike.length ? <Loading /> :
-        <div className={s.container}>
-          <div className={s.initial}>
-            <div className={s.name}>
-              <h3 className={s.title}>{bike.name}</h3>
-              <p>Estás a punto de hacer tu mejor elección...</p>
-            </div>
-            <div className={s.row}>
-              <div className={s.txt}>
-                <div className={s.desc}>
-                  <p className={s.ph}>{bike.description}</p>
-                </div>
-                <br />
-                <div className={s.containerDetails}>
-                  <div className={s.cont}>
-                    <img className={s.icon} src={icon} alt="" />
-                    <p className={s.parameters}>Tipo {bike.type} </p>
+      {
+        !!bike.length 
+        ? <Loading /> 
+        :
+          <div className={s.container}>
+            <div className={s.initial}>
+              <div className={s.name}>
+                <h3 className={s.title}>{bike.name}</h3>
+                <p>Estás a punto de hacer tu mejor elección...</p>
+              </div>
+              <div className={s.row}>
+                <div className={s.txt}>
+                  <div className={s.desc}>
+                    <p className={s.ph}>{bike.description}</p>
                   </div>
-                  <div className={s.cont}>
-                    <img className={s.icon} src={icon} alt="" />
-                    <p className={s.parameters}>Tracción {bike.traction}</p>
+                  <br />
+                  <div className={s.containerDetails}>
+                    <div className={s.cont}>
+                      <img className={s.icon} src={icon} alt="" />
+                      <p className={s.parameters}>Tipo {bike.type} </p>
+                    </div>
+                    <div className={s.cont}>
+                      <img className={s.icon} src={icon} alt="" />
+                      <p className={s.parameters}>Tracción {bike.traction}</p>
+                    </div>
+                    <div className={s.cont}>
+                      <img className={s.icon} src={icon} alt="" />
+                      <p className={s.parameters}> Rodado {bike.wheelSize}</p>
+                    </div>
+                    <div className={s.cont}>
+                      <img className={s.icon} src={icon} alt="" />
+                      <p className={s.parameters}> Puntuación {bike.rating}/10</p>
+                    </div>
                   </div>
-                  <div className={s.cont}>
-                    <img className={s.icon} src={icon} alt="" />
-                    <p className={s.parameters}> Rodado {bike.wheelSize}</p>
+                  <div className={s.prCont}>
+                    <h4 className={s.pr}>¡Llevala con vos por</h4>
+                    <h4 className={Number(bike.discount) ? s.prOld : s.pr}>
+                      ${bike.price}
+                    </h4>
+                    {!!Number(bike.discount) && (
+                      <h4 className={s.pr}>
+                        ${finalPrice(bike.price, bike.discount)}
+                      </h4>
+                    )}
+                    <h4 className={s.pr}>por día!</h4>
                   </div>
-                  <div className={s.cont}>
-                    <img className={s.icon} src={icon} alt="" />
-                    <p className={s.parameters}> Puntuación {bike.rating}/10</p>
-                  </div>
+                  <p className={s.parameters}> Puntuación {bike.rating}/10</p>
                 </div>
                 <div className={s.prCont}>
                   <h4 className={s.pr}>¡Llevala con vos por</h4>
-                  <h4 className={Number(bike.discount) ? s.prOld : s.pr}>
-                    ${bike.price}
-                  </h4>
-                  {!!Number(bike.discount) && (
-                    <h4 className={s.pr}>
-                      ${finalPrice(bike.price, bike.discount)}
-                    </h4>
-                  )}
+                  <h4 className={Number(bike.discount) ? s.prOld : s.pr}>${bike.price}</h4>
+                  {!!Number(bike.discount) && <h4 className={s.pr}>${finalPrice(bike.price, bike.discount)}</h4>}
                   <h4 className={s.pr}>por día!</h4>
                 </div>
-                <p className={s.parameters}> Puntuación {bike.rating}/10</p>
-              </div>
-              <div className={s.prCont}>
-                <h4 className={s.pr}>¡Llevala con vos por</h4>
-                <h4 className={Number(bike.discount) ? s.prOld : s.pr}>${bike.price}</h4>
-                {!!Number(bike.discount) && <h4 className={s.pr}>${finalPrice(bike.price, bike.discount)}</h4>}
-                <h4 className={s.pr}>por día!</h4>
-              </div>
 
-              <div className={s.image1}>
-                  <RenderBikeDetail publicId={bike.image} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className={s.titleAccAndTech}>
-              <h2 className={s.titleTA}>Accesorios opcionales</h2>
-            </div>
-            <div className={s.containerGral}>
-              <div className={s.containerAcc}>
-                {allAccs
-                  ?.filter((acc) => acc.status === "active")
-                  .map((acc) => {
-                    return (
-                      <Accesory
-                        key={acc.idAcc}
-                        id={acc.idAcc}
-                        name={acc.name}
-                        handleCheck={handleCheck}
-                        price={acc.price}
-                        image={acc.image}
-                        defaultChecked={
-                          biciEnCarrito &&
-                          biciEnCarrito.accs.includes(acc.idAcc)
-                        }
-                      />
-                    );
-                  })}
-              </div>
-              <div className={s.containerAccesories}>
-                .
-                <div>
-                  <p className={s.precioTotal}>Total adicional</p>
-                  <p className={s.precioTotal}>$ {adicional()} / dia</p>
+                <div className={s.image1}>
+                    <RenderBikeDetail publicId={bike.image} />
                 </div>
-                <button
-                  className={s.btn2}
-                  onClick={(e) => {
-                    handleClick(e);
-                  }}
-                >
-                  {" "}
-                  AGREGAR AL CARRITO{" "}
-                </button>
               </div>
             </div>
+            <div>
+              <div className={s.titleAccAndTech}>
+                <h2 className={s.titleTA}>Accesorios opcionales</h2>
+              </div>
+              <div className={s.containerGral}>
+                <div className={s.containerAcc}>
+                  {allAccs
+                    ?.filter((acc) => acc.status === "active")
+                    .map((acc) => {
+                      return (
+                        <Accesory
+                          key={acc.idAcc}
+                          id={acc.idAcc}
+                          name={acc.name}
+                          handleCheck={handleCheck}
+                          price={acc.price}
+                          image={acc.image}
+                          defaultChecked={
+                            biciEnCarrito &&
+                            biciEnCarrito.accs.includes(acc.idAcc)
+                          }
+                        />
+                      );
+                    })}
+                </div>
+                <div className={s.containerAccesories}>
+                  .
+                  <div>
+                    <p className={s.precioTotal}>Total adicional</p>
+                    <p className={s.precioTotal}>$ {adicional()} / dia</p>
+                  </div>
+                  <button
+                    className={s.btn2}
+                    onClick={(e) => {
+                      handleClick(e);
+                    }}
+                  >
+                    {" "}
+                    AGREGAR AL CARRITO{" "}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={s.titleAccAndTech} style={{marginTop:"3rem"}}>
+              <h2 className={s.titleTA} >En acción</h2>
+            </div>
+            <div className={s.video}>
+              <video style={{ width: "100%" }} autoPlay muted loop src={bikeVideo(bike.type)}></video>
+            </div>
+            <div className={s.titleAccAndTech}>
+              <h2 className={s.titleTA}>Tecnología</h2>
+            </div>
+            <img className={s.tech} src={bikeTech(bike.type)} alt="Detalles de la bicicleta" />
           </div>
-          <div className={s.titleAccAndTech} style={{marginTop:"3rem"}}>
-            <h2 className={s.titleTA} >En acción</h2>
-          </div>
-          <div className={s.video}>
-            <video style={{ width: "100%" }} autoPlay muted loop src={bikeVideo(bike.type)}></video>
-          </div>
-          <div className={s.titleAccAndTech}>
-            <h2 className={s.titleTA}>Tecnología</h2>
-          </div>
-          <img className={s.tech} src={bikeTech(bike.type)} alt="Detalles de la bicicleta" />
-        </div>
-      )}
+      }
     </>
   );
 };
