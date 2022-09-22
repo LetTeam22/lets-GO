@@ -5,7 +5,12 @@ import Filters from "../Filters/Filters";
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 import Dates from "../Dates/Dates";
-import { getBikes, getRenderedBikes, getUser,getAllFavorites } from "../../Redux/actions/";
+import {
+  getBikes,
+  getRenderedBikes,
+  getUser,
+  getAllFavorites,
+} from "../../Redux/actions/";
 import { NotFound } from "../NotFound/NotFound";
 import s from "./Home.module.css";
 import Orderings from "../Orderings/Orderings";
@@ -14,13 +19,14 @@ import { FiltersSelected } from "../FiltersSelected/FiltersSelected";
 import { useAuth0 } from "@auth0/auth0-react";
 import ChatBot from "../ChatBot/ChatBot";
 
-export const Home = ({socket}) => {
-  const {user } = useAuth0();
+export const Home = ({ socket }) => {
+  const { user } = useAuth0();
   const dispatch = useDispatch();
   const allBikes = useSelector((state) => state.allBikes);
   let renderedBikes = useSelector((state) => state.renderedBikes);
   const paginate = useSelector((state) => state.paginate);
   const parameters = useSelector((state) => state.parameters);
+  const [show, setShow] = useState(false);
 
   const bookings = useMemo(() => {
     return JSON.parse(localStorage.getItem("booking")) || [];
@@ -28,8 +34,7 @@ export const Home = ({socket}) => {
 
   const Adventures = useMemo(() => {
     return JSON.parse(localStorage.getItem("adventure")) || [];
-  }, [])
-  
+  }, []);
 
   let [cardId, setCardId] = useState(1);
 
@@ -38,8 +43,8 @@ export const Home = ({socket}) => {
   }, []);
 
   useEffect(() => {
-    if (user?.email) dispatch(getUser(user?.email))
-    if (user?.email) dispatch(getAllFavorites(user?.email))
+    if (user?.email) dispatch(getUser(user?.email));
+    if (user?.email) dispatch(getAllFavorites(user?.email));
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -47,10 +52,14 @@ export const Home = ({socket}) => {
   }, [parameters]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if(Array.isArray(bookings) && Array.isArray(Adventures) && (bookings.length || Adventures.length)) {
-      socket?.emit('shoppingCart')
+    if (
+      Array.isArray(bookings) &&
+      Array.isArray(Adventures) &&
+      (bookings.length || Adventures.length)
+    ) {
+      socket?.emit("shoppingCart");
     }
-  }, [socket, bookings, Adventures])
+  }, [socket, bookings, Adventures]);
 
   const handleChangeIdCard = () => {
     setCardId(1);
@@ -68,7 +77,9 @@ export const Home = ({socket}) => {
   if (!allBikes.length) loading = true;
 
   // filtro bicis ya agregadas al carrito
-  renderedBikes = renderedBikes.filter(rb => !bookings.find(bk => bk.bike === rb.idBike))
+  renderedBikes = renderedBikes.filter(
+    (rb) => !bookings.find((bk) => bk.bike === rb.idBike)
+  );
 
   // defino notFound
   let notFound = false;
@@ -122,29 +133,69 @@ export const Home = ({socket}) => {
     dispatch(setCurrentPage(1));
   };
 
-  return (
-      loading? <Loading />
-      :
+  const handleShowFilters = () => {
+    if (show) setShow(false);
+    else setShow(true);
+  };
+
+  return loading ? (
+    <Loading />
+  ) : (
     <div className={s.containerHome}>
-      <ChatBot/>
+      <ChatBot />
       <div className={s.encabezado}>
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1662686147/Let/image/encabezado_fsuvbq.png" alt="encabezado" className={s.encabezado} />
+        <img
+          src="https://res.cloudinary.com/pflet/image/upload/v1662686147/Let/image/encabezado_fsuvbq.png"
+          alt="encabezado"
+          className={s.encabezado}
+        />
       </div>
 
-      <div className={s.divSticky}>
-        <div className={s.containFiltersSelected}>
-          {!!parameters.search.selected.length && (<FiltersSelected select={parameters.search} handleDelete={deleteSearch} />)}
-          {!!parameters.filters.selected.length && (<FiltersSelected select={parameters.filters} handleDelete={deleteFilter} />)}
-          {!!parameters.sorts.selected.length && (<FiltersSelected select={parameters.sorts} handleDelete={deleteSort} />)}
-        </div>
-
-        <div className={s.divDateAndOrder}>
-          <Dates component='home'/>
-          <Orderings handleParameter={handleParameter} />
-        </div>
-      </div>
+      
+      
       <div className={s.filterwrapp}>
-        <div className={s.containerFilter}><Filters handleParameter={handleParameter} /></div>
+        <div className={show? s.backgroundGray : s.nothing} onClick={handleShowFilters}></div>
+        <div className={`${s.responsiveFilter} ${show ? s.show : s.hidden}`}>
+          <div className={s.containerFilter}>
+
+
+            <div className={`${s.divSticky} ${show? s.down : s.up}`}>
+        <div className={s.containFiltersSelected}>
+          {!!parameters.search.selected.length && (
+            <FiltersSelected
+              select={parameters.search}
+              handleDelete={deleteSearch}
+            />
+          )}
+          {!!parameters.sorts.selected.length && (
+            <FiltersSelected
+              select={parameters.sorts}
+              handleDelete={deleteSort}
+            />
+          )}
+          {!!parameters.filters.selected.length && (
+            <FiltersSelected
+              select={parameters.filters}
+              handleDelete={deleteFilter}
+            />
+          )}
+        </div>
+
+         <div className={`${s.divDateAndOrder} ${show? s.appear : null}`}>
+          <Dates component="home" />
+          <Orderings handleParameter={handleParameter} />
+        </div> 
+      </div>
+            <Filters handleParameter={handleParameter} />
+
+
+
+
+          </div>
+        </div>
+        <button onClick={handleShowFilters} className={s.burguerButton}>
+        <span className={s.burguerForm}></span>
+      </button>
         <div className={s.divPaginationAndBikes}>
           {!!renderedBikes.length && <Pagination />}
           {notFound && <NotFound />}
@@ -152,20 +203,21 @@ export const Home = ({socket}) => {
             <div className={s.containerCards}>
               {currentBikes?.map((e) => (
                 <div key={e.idBike}>
-                    <Card key={e.idBike}
-                      name={e.name}
-                      type={e.type}
-                      image={e.image}
-                      traction={e.traction}
-                      wheelSize={e.wheelSize}
-                      price={e.price}
-                      discount={e.discount}
-                      rating={e.rating}
-                      color={e.color}
-                      idBike={e.idBike}
-                      id={cardId++}
-                      socket={socket}
-                    />
+                  <Card
+                    key={e.idBike}
+                    name={e.name}
+                    type={e.type}
+                    image={e.image}
+                    traction={e.traction}
+                    wheelSize={e.wheelSize}
+                    price={e.price}
+                    discount={e.discount}
+                    rating={e.rating}
+                    color={e.color}
+                    idBike={e.idBike}
+                    id={cardId++}
+                    socket={socket}
+                  />
                 </div>
               ))}
             </div>
