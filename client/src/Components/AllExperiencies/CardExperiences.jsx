@@ -121,18 +121,20 @@ export const CardExperience = ({ imgExperience, textExperience, firstName, start
                     { bikes.map( b => <h1 className={s.h1} key={b.name}>    {b.name} |   </h1> )}
                 </div>
                 <>
-                {
-                    idExperience === input.id ? 
-                    <textarea className={s.edit} type='text' value={input.text} onChange={handleInputChange} maxLength= '300'/> :
-                    <p className={s.p}>{textExperience}</p>
-                }
+                    {
+                        idExperience === input.id ? 
+                        <textarea className={s.edit} type='text' value={input.text} onChange={handleInputChange} maxLength= '300'/> :
+                        <p className={s.p}>{textExperience}</p>
+                    }
                 </>
-                <div className={s.iconCont}>
+                <>
                     {
                         experienceIsLike(idExperience)
-                            ?   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><FaHeart size='1.5rem' color='#F9B621' /></button>    
-                            :   <button onClick={e =>  handleLike(e, email)} className={s.iconBtn}><FaRegHeart size='1.5rem' color='#F9B621' /></button>
+                            ?   <button onClick={e =>  handleLike(e, email)} className={s.likeBtn}><FaHeart size='1.5rem' color='#F9B621' /></button>    
+                            :   <button onClick={e =>  handleLike(e, email)} className={s.likeBtn}><FaRegHeart size='1.5rem' color='#F9B621' /></button>
                     }
+                </>
+                <div className={s.iconCont}>
                     {
                         isAuthenticated && user.email === email &&
                         <>
