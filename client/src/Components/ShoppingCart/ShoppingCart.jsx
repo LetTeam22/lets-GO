@@ -250,8 +250,8 @@ export const ShoppingCart = () => {
         }
 
         <div className={s.containerDiv}>
-          <TableContainer className={s.table} sx={{ minWidth: 700, width: '30%', marginLeft: '2rem' }} >
-            <Table sx={{ minWidth: 700, width: '30%' }} aria-label="spanning table">
+          <TableContainer className={s.table} >
+            <Table aria-label="spanning table">
               <TableHead>
                 <TableRow>
                   <TableCell>Item</TableCell>
@@ -329,8 +329,8 @@ export const ShoppingCart = () => {
                 ? cartBikes.map(bike => {
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
-                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <h2 className={s.bikeName}>{bike.name}</h2>
+                      <RenderOneImage publicId={bike.image} alt={bike.name} className={s.img} />
                       <div className={s.accesoriesPreview}>
                         {bike.accesories?.map((el) => {
                           const objAcc = allAccs.find(a => a.idAcc === el)
@@ -344,9 +344,11 @@ export const ShoppingCart = () => {
                           )
                         })}
                       </div>
-                      <div className={s.buttonCont}>
-                        <button onClick={(e) => editItem(e, bike.idBike)} className={s.deleteBtn}><BiEdit color='#F9B621' size='2rem' className={s.trashIcon} /></button>
-                        <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      <div className={s.hoverDiv}>
+                        <div className={s.buttonCont}>
+                          <button onClick={(e) => editItem(e, bike.idBike)} className={s.deleteBtn}><BiEdit color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                          <button onClick={(e) => deleteItem(e, bike.idBike)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                        </div>
                       </div>
                     </div>
                   )
@@ -358,9 +360,11 @@ export const ShoppingCart = () => {
                 return (
                   <div className={s.cardAdventure} key={adv.idAdv} >
                     <img src={adv.image} alt="" />
-                    <h2 className={s.advName}>{adv.name}</h2>
-                    <div className={s.advBtn}>
-                      <button onClick={(e) => deleteAdventure(e, adv.id, adv.price)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                    <div className={s.hoverDiv} >
+                      <h2 className={s.advName}>{adv.name}</h2>
+                      <div className={s.advBtn}>
+                        <button onClick={(e) => deleteAdventure(e, adv.id, adv.price)} className={s.deleteBtn}><BiTrash color='#F9B621' size='2rem' className={s.trashIcon} /></button>
+                      </div>
                     </div>
                   </div>
                 )

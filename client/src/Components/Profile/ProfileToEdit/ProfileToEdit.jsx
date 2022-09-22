@@ -31,12 +31,14 @@ export const ProfileToEdit = () => {
   const cloudName = 'pflet'
   const {isLoading, user } = useAuth0();
   const history = useHistory();
+  const userLogged = useSelector(state=>state.user)
   useEffect(() => {
     if(user) dispatch(getUser(user?.email));
-    if(!user) history.push("/")
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    if(!isLoading) {
+      if(!user?.email) history.push("/")
+    }
+  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
   // const userLogged = useSelector((state) => state.user);
-  const userLogged = useSelector(state=>state.user)
   const [input, setInput] = useState({
     firstName: "",
     lastName: "",
@@ -49,6 +51,7 @@ export const ProfileToEdit = () => {
   const [uploading, setUploading] = useState(false)
   // console.log(userLogged)
   if (isLoading || uploading) return <Loading />;
+  if (!isLoading && !user?.email) return <Loading />;
   const handleChange = (e) => {
     setInput({
       ...input,

@@ -167,3 +167,9 @@
 .btnSwal{
     background-color: #F9B621!important;
 }
+
+@media (max-width:350px) {
+    .card img, .cardTwo img{
+        width: 90%;
+    }
+}

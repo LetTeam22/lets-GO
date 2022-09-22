@@ -13,7 +13,7 @@ export const Accesory = ({id, name, handleCheck, price, image, defaultChecked}) 
         onClick={handleCheck}
         defaultChecked={defaultChecked}
       />
-      <label style={{color:"#484848"}} className={s.precio} htmlFor={id}>{name}</label>
+      <label style={{color:"#484848"}} htmlFor={id}><bold>{name}</bold></label>
       <p className={s.precio}>$ {price} / día</p>
       <RenderAccesories publicId={image} />
     </div>

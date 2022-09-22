@@ -61,7 +61,7 @@ const Dates = ({ component }) => {
   return (
     <CDateRangePicker
       footer
-      placeholder={["Fecha desde", "Fecha hasta"]}
+      placeholder={["Desde", "Hasta"]}
       format="d/M/yyyy"
       minDate={hours >= 18 ? today : yesterday}
       startDate={

@@ -18,7 +18,7 @@
 .titleDiv {
     flex-direction: column;
     align-items: center;
-    width: 20%;
+    width: 100%;
     margin-top: 2rem;
 }
 
@@ -55,7 +55,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .img {
@@ -104,6 +104,7 @@
     cursor: pointer;
     margin-top: 2rem;
     margin-bottom: 3rem;
+    transition: all .5s linear;
 }
 
 .btn {
@@ -119,13 +120,14 @@
     border: none;
     border-radius: 0.3rem;
     cursor:pointer;
-    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px; 
+    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    transition: all .5s linear; 
 }
 
 .reserveBtn:hover, .btn:hover, .returnBtn:hover {
     background-color: #F9B621;
     color: white;
-    transition: all .5s linear;
+    
 }
 
 .titleEmpty {
@@ -153,8 +155,7 @@
     grid-row-gap: 0.5rem;
     grid-column-gap: .5rem;
     height: 5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1.5rem;
 }
 
 .accs {
@@ -169,6 +170,7 @@
     column-gap: 5rem;
     width: calc(100% - 15rem);
     align-items: baseline;
+    margin-left: 50%;
 }
 
 .btnSwal{
@@ -189,17 +191,25 @@
 
 .previewItems {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 2rem;
     grid-row-gap: 1rem;
     margin-right: 10rem;
+    margin-left: 10rem;
 }
 
 .cardBike {
     padding: 1.5rem;
     border-radius: 1.5rem;
-    border: 1px solid #333333;
     height: 26rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1)
+    );
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.36);
 }
 
 .containerEmptyCart {
@@ -249,16 +259,20 @@
     font-weight: 300;
     font-size: 1rem;
     color: #ffffff;
+    transition: all .5s linear;
 }
 
 .buttonCont {
     display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .cardAdventure {
+    position: relative;
+    height: 18rem;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.36);
     border-radius: 1.5rem;
-    border: 1px solid #333333;
-    height: 26rem;
 }
 
 .cardAdventure:hover {
@@ -266,10 +280,28 @@
 }
 
 .cardAdventure img {
-    height: 60%;
+    height: 100%;
     width: 100%;
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
+    border-radius: 1.5rem;
+}
+
+.hoverDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    background-color: #333333;
+    border-radius: 1.5rem;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: opacity .5s linear;
+}
+
+.hoverDiv:hover {
+    opacity: .9;
 }
 
 .advName {
@@ -277,7 +309,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 1.5rem;
-    color: #333333;
+    color: #ffffff;
 }
 
 .advBtn {
@@ -288,10 +320,164 @@
 
 .fechasCont {
     display: flex;
+    width: 50%;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .spanDias {
-    padding-top: 2.5rem;
-    margin-left: 6.7rem;
+    margin-left: 2rem;
     cursor: auto;
+    width: fit-content;
 }
+
+
+.table {
+    width: 30%;
+    display: block;
+    overflow-x: auto;
+    margin-left: 3rem;
+}
+
+
+@media (max-width: 2400px) {
+    .previewItems {
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 6rem;
+    }
+}
+
+@media (max-width: 2200px) {
+    .containerBtn{
+        margin-left: 40%;
+    }
+}
+
+@media (max-width: 2050px) {
+    .containerBtn{
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 1900px) {
+    .containerBtn{
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1750px) {
+    .previewItems {
+        margin-right: 2rem;
+    }
+
+    .containerBtn{
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .containerDiv {
+        flex-direction: column-reverse;
+    }
+
+    .previewItems {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 5rem;
+        grid-row-gap: 2rem;
+        margin-right: 6rem;
+        margin-left: 6rem;
+        margin-bottom: 4rem;
+    }
+
+    .cardBike, .cardAdventure {
+        width: 27vh;
+    }
+
+    .containerBtn {
+        justify-content: center;
+    }
+
+    .fechasCont {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1300px) {
+    .previewItems {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 8rem;
+        grid-row-gap: 3rem;
+        margin-right: 9rem;
+        margin-left: 9rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .previewItems {
+        grid-column-gap: 4rem;
+        grid-row-gap: 3rem;
+        margin-right: 5rem;
+        margin-left: 5rem;
+    }
+
+    .fechasCont {
+        width: 60%;
+    }
+
+    .containerBtn {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 850px) {
+    .previewItems {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 3rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fechasCont {
+        width: 75%;
+    }
+
+    .table {
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .containerBtn {
+        margin-left: 0;
+    }
+
+    .containerBtn {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .titleDiv {
+        margin-top: 5rem;
+    }
+
+    .fechasCont {
+        width: 95%;
+    }
+
+    .containerBtn {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .reserveBtn {
+        width: fit-content;
+    }
+}
+

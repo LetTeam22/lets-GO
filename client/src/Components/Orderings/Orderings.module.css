@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: row;
-    column-gap: 0.5rem;
     align-items: center;
 }
 
@@ -14,25 +13,30 @@
 }
 
 .orderings {
-    color: rgb(86, 85, 85);
-    background: #e1e0e0;
-    box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
+    width: 1.2rem;
+    margin-right: 1rem;
     padding: 0;
-    font-size: .9rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.3vw;
-    height: 3.1vh;
-    cursor: pointer;
+    color: rgb(86, 85, 85);
+    background: #e1e0e0;
+    font-size: .9rem;
     list-style: none;
     border-radius: .2rem;
     border: none ;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
-    margin-right: 2.5rem;
+    cursor: pointer;
 }
 
 .orderings.act {
     background-color: #ef8d24bd;
     font-weight:500;
+}
+
+@media (max-width:600px) {
+    .container{
+        flex-direction: column;
+        gap: 0.3rem;
+    }
 }
