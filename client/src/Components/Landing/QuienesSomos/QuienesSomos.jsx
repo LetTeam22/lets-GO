@@ -4,6 +4,8 @@ import s from './QuienesSomos.module.css';
 
 
 export const QuienesSomos = () => {
+
+    const url = 'https://res.cloudinary.com/pflet/video/upload/v1663803785/Let/Others/lets_GO_bzvzfp.mp4'
     return (
         <div className={s.container}>
             <span className={s.mainTitle}>¿QUIÉNES SOMOS?</span>
@@ -18,8 +20,10 @@ export const QuienesSomos = () => {
                         Para conocer cómo alquilar una bici mirá el siguiente video
                     </p>
                 </div>
-                <div className={s.video}> 
-                    <video style={{width:'100%'}} autoPlay muted loop src="https://res.cloudinary.com/pflet/video/upload/v1663353793/samples/YERKA_Bikes_l_2017_Promo_mubeix.mp4"></video>
+                <div className={s.video}>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                    <video style={{width:'100%'}} autoPlay muted loop src={url}></video>
+                </a>
                 </div>
                 <div className={s.text1}>
                     <h3 className={s.title}>El proyecto</h3>

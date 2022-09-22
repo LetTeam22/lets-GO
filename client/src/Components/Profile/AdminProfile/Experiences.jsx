@@ -65,6 +65,7 @@ export default function Experiences() {
 
   return (
     <div className={s.experiences}>
+      <h1 className={s.h1}>EXPERIENCIAS</h1>
       <div className={s.container}>
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>
