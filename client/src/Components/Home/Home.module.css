@@ -262,6 +262,9 @@
     .show + .burguerButton{
         top: 24rem;
     }
+    .up{
+        top: -7rem;
+    }
 }
 
 @media (max-width:350px) {
