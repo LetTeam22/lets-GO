@@ -216,7 +216,7 @@ export const BikeDetail = () => {
               <div className={s.containerAccesories}>.
                 <div>
                   <p className={s.precioTotal}>Total adicional</p>
-                  <p className={s.precioTotal}>$ {adicional()} / dia</p>
+                  <p className={s.precioTotal}>$ {adicional()} / día</p>
                 </div>
                 <button
                   className={s.btn2}
