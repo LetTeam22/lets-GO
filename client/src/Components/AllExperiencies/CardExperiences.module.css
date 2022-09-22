@@ -88,10 +88,18 @@
     outline: none;
     margin-top: 1rem;
 }
-.iconBtn {
+.likeBtn {
     position: absolute;
     top: .5rem;
     left: 90%;
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.iconBtn {
     background-color: transparent;
     border: none;
     appearance: none;
