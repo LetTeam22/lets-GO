@@ -51,13 +51,13 @@ export const Menu = ({socket}) => {
     socket?.on('shoppingCartNot', () => {
       setNotifications(prevNotifications => [...prevNotifications, {
         type: 'shoppingCart',
-        content: 'Finaliza tu reserva'
+        content: 'Finalizá tu reserva'
       }]);
     })
     socket?.on('newDiscountNot', (data) => {
       setNotifications(prevNotifications => [...prevNotifications, {
         type: 'newDiscount',
-        content: `Aprovecha que tenemos un ${data.discount}% de descuento en algunas de nuestras bicis seleccionadas`
+        content: `Aprovechá que tenemos un ${data.discount}% de descuento en algunas de nuestras bicis seleccionadas`
       }])
     })
   }, [socket]);
