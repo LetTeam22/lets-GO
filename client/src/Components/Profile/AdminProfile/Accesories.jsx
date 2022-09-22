@@ -50,6 +50,7 @@ export default function Accesories() {
 
   return (
     <div className={s.accesories}>
+      <h1 className={s.h1}>ACCESORIOS</h1>
       <div className={s.container}>
       <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>

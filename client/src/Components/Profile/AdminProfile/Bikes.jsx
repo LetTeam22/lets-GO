@@ -117,6 +117,7 @@ export default function Bikes({socket}) {
 
   return (
     <div className={s.bikes}>
+      <h1 className={s.h1}>BICICLETAS</h1>
       <div className={s.container}>
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>

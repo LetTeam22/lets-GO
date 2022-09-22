@@ -81,6 +81,7 @@ export default function Bookings() {
 
   return (
     <div className={s.bookings}>
+      <h1 className={s.h1}>RESERVAS</h1>
       <div className={s.container}>
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>
