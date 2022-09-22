@@ -66,35 +66,13 @@
     margin:0px auto;
 }
 
-@media (max-width: 2000px) {
-    .right, .left {
-        width: 16%;
-    }
-}
-
-@media (max-width: 1850px) {
-    .right, .left {
-        width: 13%;
-    }
-}
-
-@media (max-width: 1700px) {
-    .right, .left {
-        width: 10%;
-    }
-}
-
-@media (max-width: 1500px) {
-    .right, .left {
-        width: 5%;
-    }
-}
-
 @media (max-width: 1300px) {
-    .right, .left {
+
+    .left, .right {
         width: 0%;
     }
 
+    
     .containerCards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
