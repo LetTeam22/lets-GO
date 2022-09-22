@@ -94,6 +94,7 @@ export default function Users() {
   };
   return (
     <div className={s.users}>
+      <h1 className={s.h1}>USUARIOS</h1>
       <div className={s.container}>
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>

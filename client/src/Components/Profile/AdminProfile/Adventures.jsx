@@ -63,6 +63,7 @@ export default function Adventures() {
 
   return (
     <div className={s.adventures}>
+      <h1 className={s.h1}>AVENTURAS</h1>
       <div className={s.container}>
       <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>

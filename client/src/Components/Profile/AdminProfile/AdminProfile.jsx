@@ -88,7 +88,7 @@ export const AdminProfile = () => {
             className={s.btnBook}
             onClick={seeUsers}
           >
-            Ver usuarios
+             Ver usuarios
           </Button>
         </div>
       </div>
