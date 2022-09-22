@@ -250,7 +250,7 @@ export const ShoppingCart = () => {
         }
 
         <div className={s.containerDiv}>
-          <TableContainer className={s.table} >
+          <TableContainer className={s.table} sx={{width: '1000px'}} >
             <Table aria-label="spanning table">
               <TableHead>
                 <TableRow>

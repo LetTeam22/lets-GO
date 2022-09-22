@@ -320,15 +320,15 @@
 
 .fechasCont {
     display: flex;
-    width: 50%;
+    width: 35%;
     justify-content: flex-start;
     align-items: center;
 }
 
 .spanDias {
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     cursor: auto;
-    width: fit-content;
+    width: 60%;
 }
 
 
