@@ -43,6 +43,10 @@
     width: 100%;
     max-height: 10rem;
     overflow: scroll;
+    overflow-x: hidden;
+}
+.descriptionDiv::-webkit-scrollbar{
+    display: none;
 }
 
 .p {
