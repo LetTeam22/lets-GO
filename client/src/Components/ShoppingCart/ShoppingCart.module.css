@@ -63,6 +63,7 @@
     mix-blend-mode: multiply;
 }
 
+
 .img_aux {
     width: 100%;
     margin-top: 5rem;
@@ -271,6 +272,7 @@
 .cardAdventure {
     position: relative;
     height: 18rem;
+    width: 20rem;
     box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.36);
     border-radius: 1.5rem;
 }
@@ -389,8 +391,17 @@
         margin-bottom: 4rem;
     }
 
-    .cardBike, .cardAdventure {
-        width: 27vh;
+    .cardBike {
+        width: 20rem;
+    }
+
+    .cardAdventure {
+        height: 18rem;
+        width: 20rem;
+    }
+
+    .cardBike  img {
+        width: 100%;
     }
 
     .containerBtn {
@@ -401,6 +412,10 @@
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+@media (max-width: 1450px) {
+    
 }
 
 @media (max-width: 1300px) {
