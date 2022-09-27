@@ -254,8 +254,7 @@ input[type="checkbox"] + label:before {
     border: 1px solid #F9B621;
     position: absolute;
     left: 0;
-    top: 50%!important;
-    transform: translateY(-50%);
+    top: 0;
     opacity: .6;
     -webkit-transition: all .12s, border-color .08s;
     transition: all .12s, border-color .08s;
@@ -263,7 +262,6 @@ input[type="checkbox"] + label:before {
 
 input[type="checkbox"]:checked + label:before {
     width: 10px;
-    top: -5px;
     left: 5px;
     border-radius: 0;
     opacity: 1;

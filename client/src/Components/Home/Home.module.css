@@ -80,12 +80,16 @@
     height: 61rem;
     margin-left: auto;
     margin-right: auto;
+    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0.5rem;
     grid-row-gap: 0.5rem;
     overflow-y: scroll;
+}
+.containerCards::-webkit-scrollbar{
+    display: none;
 }
 
 /* Boton cuando se hace responsive */
@@ -96,7 +100,7 @@
 .burguerForm{
     width: 2.5rem;
     height: 0.5rem;
-    background-color: bisque;
+    background-color: #F9B621;
     border-radius: 0.3rem;
     transform: translateY(1.5rem) translateX(0.1rem);    
     transform-origin: top left;
@@ -108,7 +112,7 @@
     display: block;
     width: 100%;
     height: 0.5rem;
-    background-color: bisque;
+    background-color: #F9B621;
     border-radius: 0.3rem;
     transition: transform .5s ease; 
 }
@@ -187,7 +191,7 @@
         height: 3.5rem;
         width: 3.5rem;
         border-radius: 50%;
-        background-color: black;
+        background-color: #333333;
         border: none;
         transition: top 1s;
     }
