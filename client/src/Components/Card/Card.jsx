@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./Card.module.css";
 import RenderOneImage from "../Cloudinary/renderOneImage";
 import { Link } from "react-router-dom";
@@ -27,16 +27,16 @@ export const Card = ({
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useAuth0();
   const favorites = useSelector((state) => state.favorites);
-  // const [iconStyle, setIconStyle] = useState({
-  //   color: "orange",
-  //   width: "1.7rem",
-  //   height: "1.7rem",
-  //   position: "absolute",
-  //   top: "1rem",
-  //   left: "50%",
-  //   transform: "translate(-50%)",
-  //   zIndex: '1'
-  // });
+  const [iconStyle, setIconStyle] = useState({
+    color: "orange",
+    width: "1.7rem",
+    height: "1.7rem",
+    position: "absolute",
+    top: "1rem",
+    left: "50%",
+    transform: "translate(-50%)",
+    zIndex: '1'
+  });
   const imgRat0 =
     "https://res.cloudinary.com/pflet/image/upload/v1662686116/Let/image/stars/0stars_e0ehyc.png";
   const imgRat05 =
@@ -106,7 +106,7 @@ export const Card = ({
             },
           },
         });
-        // handleFilledOut()
+        handleFilledOut()
       } else {
         dispatch(removeFavoriteFromDb({ bikeId: idBike, email: email }));
         // console.log('desde card' + idBike)
@@ -118,8 +118,31 @@ export const Card = ({
     return favorites.find((b) => b.idBike === idBike) ? true : false;
   };
 
-  const iconStyle = {
-    color: "orange",
+  // const iconStyle = {
+  //   color: "orange",
+  //   width: "1.7rem",
+  //   height: "1.7rem",
+  //   position: "absolute",
+  //   top: "1rem",
+  //   left: "50%",
+  //   transform: "translate(-50%)",
+  //   zIndex: '1'
+  // };
+
+  const handleOver = () => {
+    setIconStyle({color: "orange",
+      width: "2.2rem",
+      height: "2.2rem",
+      position: "absolute",
+      top: "1.1rem",
+      left: "50%",
+      transform: "translate(-50%)",
+      zIndex: '1'
+    })
+  }
+
+  const handleOut = () => {
+    setIconStyle({color: "orange",
     width: "1.7rem",
     height: "1.7rem",
     position: "absolute",
@@ -127,62 +150,39 @@ export const Card = ({
     left: "50%",
     transform: "translate(-50%)",
     zIndex: '1'
-  };
+    })
+  }
 
-  // const handleOver = () => {
-  //   setIconStyle({color: "orange",
-  //     width: "2.2rem",
-  //     height: "2.2gisrem",
-  //     position: "absolute",
-  //     top: "1.1rem",
-  //     left: "50%",
-  //     transform: "translate(-50%)",
-  //     zIndex: '1'
-  //   })
-  // }
+  const handleFilledOver = () => {
+    setIconStyle({color: "orange",
+      width: "2.2rem",
+      height: "2.2rem",
+      position: "absolute",
+      top: "1.1rem",
+      left: "50%",
+      transform: "translate(-50%)",
+      zIndex: '1'
+    })
+  }
 
-  // const handleOut = () => {
-  //   setIconStyle({color: "orange",
-  //   width: "1.7rem",
-  //   height: "1.7rem",
-  //   position: "absolute",
-  //   top: "1rem",
-  //   left: "50%",
-  //   transform: "translate(-50%)",
-  //   zIndex: '1'
-  //   })
-  // }
-
-  // const handleFilledOver = () => {
-  //   setIconStyle({color: "orange",
-  //     width: "2.2rem",
-  //     height: "2.2rem",
-  //     position: "absolute",
-  //     top: "1.1rem",
-  //     left: "50%",
-  //     transform: "translate(-50%)",
-  //     zIndex: '1'
-  //   })
-  // }
-
-  // const handleFilledOut = () => {
-  //   setIconStyle({color: "orange",
-  //   width: "1.7rem",
-  //   height: "1.7rem",
-  //   position: "absolute",
-  //   top: "1rem",
-  //   left: "50%",
-  //   transform: "translate(-50%)",
-  //   zIndex: '1'
-  //   })
-  // }
+  const handleFilledOut = () => {
+    setIconStyle({color: "orange",
+    width: "1.7rem",
+    height: "1.7rem",
+    position: "absolute",
+    top: "1rem",
+    left: "50%",
+    transform: "translate(-50%)",
+    zIndex: '1'
+    })
+  }
 
   return (
     <div className={s.container}>
           {bikeIsFavorite(idBike) ? (
-            <AiFillHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
+            <AiFillHeart cursor='pointer' style={iconStyle} onClick={handleFav} onMouseOver={handleFilledOver} onMouseOut={handleFilledOut}/>
           ) : (
-            <AiOutlineHeart cursor='pointer' style={iconStyle} onClick={handleFav} />
+            <AiOutlineHeart cursor='pointer' style={iconStyle} onClick={handleFav} onMouseOver={handleOver} onMouseOut={handleOut}/>
           )}
       
       <Link to={"/bike/" + idBike}>
