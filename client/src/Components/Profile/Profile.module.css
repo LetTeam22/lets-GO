@@ -79,57 +79,55 @@
 /* FAV Y RES */
 
 .mainContainer {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* text-align: center; */
-    /* align-items: center; */
 }
 
 /* /////////////////////////////////////////////////////////// */
 /* FAVORITE */
 
 .containerFav {
+    width: 50%;
+    padding: 1rem;
     display: flex;
     flex-direction: column; 
     align-items: center;
-    width: 35%;
-    /* height: 200vh; */
-    padding: 1rem;
     border-right: 1px solid rgb(180, 179, 179);
 }
 
 .box1 {
+    width: 37rem;
+    margin: 0;
+    padding: 1rem;
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: space-around;
     text-align: left;
     background-color: rgb(238, 238, 238);
-    padding: 1rem;
-    margin: 0rem 2rem 1rem 0;
     box-shadow: 0px 0px 10px 1px #bbbbbb; 
     cursor: pointer; 
 } 
 
 .btnRemove {
+    margin-top: 1rem;
+    padding: 0;
+    padding-bottom: .5rem;
     display: flex;
     justify-content: flex-start;
-    padding: 0;
     font-size: .8rem;
     font-weight: 600;
     border-radius: 0.5rem;
-    cursor: pointer;
     list-style: none;
     color: rgb(111, 111, 111);
-    margin-top: 1rem;
-    padding-bottom: .5rem;
+    cursor: pointer;
 }
 
 .containBike {
+    margin-top: .5rem;
     display: flex;
     flex-direction: column;
-    margin-top: .5rem;
 }
 
 .titleBike {
@@ -149,20 +147,19 @@
 /* RESERVAS */
 
 .containerRes {
+    width: 50%;
+    padding: 1rem;
     display: flex;
     flex-direction: column; 
     align-items: center;
-    width: 35%;
-    /* height: 200vh; */
-    padding: 1rem;
 }
 
 .btnChoose {
     line-height: 1;
     padding: 0;
     font-size: .8rem;
-    width: 6vw;
-    height: 4vh;
+    width: 5rem;
+    height: 2rem;
     background-color: transparent;
     border-radius: 0.5rem;
     border-color: rgba(255, 251, 251, 0.453);
@@ -188,8 +185,8 @@
     line-height: 1;
     padding: 0;
     font-size: .8rem;
-    width: 3vw;
-    height: 3.5vh;
+    width: 3rem;
+    height: 2rem;
     background-color: transparent;
     border-radius: 0.3rem;
     border-color: rgba(255, 251, 251, 0.453);
@@ -223,14 +220,14 @@
 }
 
 .box2 {
+    width: 37rem;
+    margin: 1rem 0;
+    padding: 1rem;
     display: flex;
-    width: 100%;
     flex-direction: column;
     justify-content: left;
     text-align: left;
     background-color: rgb(238, 238, 238);
-    padding: 1rem;
-    margin: 2rem 0rem 1rem 2rem;
     box-shadow: 0px 0px 10px 1px #bbbbbb;  
 }
 
@@ -290,13 +287,13 @@
 }
 
 .boxCancel {
+    width: 37rem;
+    margin: 2rem 0rem;
+    padding: 1rem;
     display: flex;
-    width: 100%;
     flex-direction: column;
     justify-content: left;
     text-align: left;
-    padding: 1rem;
-    margin: 2rem 0rem 1rem 2rem;
     box-shadow: 0px 0px 10px 1px #bbbbbb;  
 }
 
@@ -321,17 +318,17 @@
 
 
 .btnCancel {
-    line-height: 1;
+    width: 5rem;
+    height: 2rem;
     padding: 0;
+    line-height: 1;
     font-size: .8rem;
-    width: 5vw;
-    height: 3.5vh;
+    list-style: none;
+    color: rgb(36, 36, 36);
     border-radius: 0.3rem;
     border-color: rgba(255, 251, 251, 0.453);
     box-shadow: 0px 0px 10px 1px #bbbbbb;  
     cursor: pointer;
-    list-style: none;
-    color: rgb(36, 36, 36);
 }
 
 .btnCancel:hover {
@@ -343,16 +340,14 @@
 /* /////////////////////////////////////////////////////// */
 
 .box2cancel {
+    width: 37rem;
+    margin: 2rem 0;
+    padding: 2rem;
     display: flex;
-    width: 100%;
     flex-direction: column;
     justify-content: left;
     text-align: left;
     border: .5rem solid #E81C24;
-    padding: 2rem;
-    margin-top: 2rem;
-    margin-left: 1rem;
-    margin-bottom: 5rem;
     box-shadow: 0px 0px 10px 1px #bbbbbb;  
 }
 
@@ -379,8 +374,8 @@
     padding: 0;
     margin-top: 1rem;
     font-size: .8rem;
-    width: 4vw;
-    height: 3.5vh;
+    width: 4rem;
+    height: 2rem;
     background-color: transparent;
     border-radius: 0.3rem;
     border-color: rgba(255, 251, 251, 0.453);
@@ -396,8 +391,8 @@
     padding: 0;
     margin-top: 1rem;
     font-size: .8rem;
-    width: 5vw;
-    height: 3.5vh;
+    width: 6rem;
+    height: 2rem;
     background-color: transparent;
     border-radius: 0.3rem;
     border-color: rgba(255, 251, 251, 0.453);
@@ -420,3 +415,49 @@
     color: #393939;
     transition: all .5s linear;
 } 
+
+@media (max-width:1250px) {
+    .mainContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .containerFav{
+        width: 90%;
+        border-right: none;
+        border-bottom: 1px solid rgb(180, 179, 179);
+    }
+    .title{
+        width: 100vw;
+        text-align: center;
+    }
+}
+
+@media (max-width:650px) {
+    .containerUs{
+        margin-top: 4rem;
+        padding: 0;
+    }
+    .box1{
+        width: 20rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    .box2cancel, .boxCancel{
+        width: 20rem;
+    }
+    .cancel{
+        text-align: justify;
+    }
+    .box2{
+        width: 20rem;
+    }
+    .flex{
+        align-items: flex-start;
+    }
+    .flex > div{
+        width: 14rem;
+    }
+    .box2 .flex:nth-child(3) div, .boxCancel .flex:nth-child(3) div{
+        width: 9rem;
+    }
+}

@@ -115,7 +115,7 @@ export const ProfileToEdit = () => {
           onClick={() => history.push("/bike/profile")}>
           Volver
         </Button>
-        <div>
+        <div className={s.logoContainer}>
           <img src={logo} alt='logo' className={s.logo} />
         </div>
         <p className={s.etiquetap}>EDITA SOLO LOS CAMPOS QUE DESEAS ACTUALIZAR</p>

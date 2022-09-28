@@ -7,7 +7,8 @@
 }
 
 .container{
-    width: 35%;
+    width: 90%;
+    max-width: 45rem;
     padding-bottom: 10rem;
     border-radius: 2rem;
     box-shadow: 0px -1px 8px 2px #5e5d5d;
@@ -125,10 +126,13 @@ input::placeholder{
     padding-left:0.5rem;
 }
 
+.logoContainer{
+    width: 90%;
+    display: flex;
+    justify-content: end;
+}
 .logo {
-    margin-left: 17rem;
     width: 5rem;
-    display: block;
 }
 
 .etiquetap {
@@ -147,4 +151,16 @@ input::placeholder{
 
 .input{
     color: #ffffff!important;
+}
+
+@media (max-width:650px) {
+    .allPage{
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width:550px) {
+    .allPage{
+        margin-top: 4rem;
+    }
 }
