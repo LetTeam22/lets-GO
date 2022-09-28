@@ -63,6 +63,7 @@
     mix-blend-mode: multiply;
 }
 
+
 .img_aux {
     width: 100%;
     margin-top: 5rem;
@@ -212,23 +213,6 @@
     box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.36);
 }
 
-.containerEmptyCart {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    height: calc(100vh - 6rem);
-    align-items: center;
-}
-
-.sincarrito {
-    /* margin-left: auto;
-    margin-right: auto; */
-    margin-left: 63%;
-    margin-right: 53%;
-    width: 30rem;
-    margin-top: 5rem;
-    /* margin-bottom: 5rem; */
-}
 
 .div{
     position: absolute;
@@ -241,26 +225,6 @@
     align-content: center;
 }
 
-.containerEmptyCart a{
-    display: flex;
-    /* width: 30rem;
-    margin: 5rem 0; */
-}
-
-.returnBtn {
-    position: absolute;
-    top: 25rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0.8rem;
-    background-color: transparent;
-    border: 1px solid #D6802B;
-    border-radius: 0.5rem;
-    font-weight: 300;
-    font-size: 1rem;
-    color: #ffffff;
-    transition: all .5s linear;
-}
 
 .buttonCont {
     display: flex;
@@ -271,6 +235,7 @@
 .cardAdventure {
     position: relative;
     height: 18rem;
+    width: 20rem;
     box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.36);
     border-radius: 1.5rem;
 }
@@ -340,6 +305,38 @@
 }
 
 
+/* cuando no hay nada en el carrito */
+
+.containerEmptyCart {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: calc(100vh - 6rem);
+    align-items: center;
+}
+
+.sincarrito {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+    margin-top: 5rem;
+}
+
+.returnBtn {
+    position: absolute;
+    top: 27rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 1px solid #D6802B;
+    border-radius: 0.5rem;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: all .5s linear;
+}
+
 @media (max-width: 2400px) {
     .previewItems {
         grid-template-columns: repeat(2, 1fr);
@@ -389,8 +386,17 @@
         margin-bottom: 4rem;
     }
 
-    .cardBike, .cardAdventure {
-        width: 27vh;
+    .cardBike {
+        width: 20rem;
+    }
+
+    .cardAdventure {
+        height: 18rem;
+        width: 20rem;
+    }
+
+    .cardBike  img {
+        width: 100%;
     }
 
     .containerBtn {
@@ -401,6 +407,10 @@
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+@media (max-width: 1450px) {
+    
 }
 
 @media (max-width: 1300px) {
@@ -479,5 +489,27 @@
     .reserveBtn {
         width: fit-content;
     }
+}
+
+@media (max-width: 500px) {
+    .sincarrito{
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .returnBtn{
+        top: 22rem;
+        font-size: 0.7rem;
+    }
+    ;
+}
+
+@media (max-width: 320px) {
+    .returnBtn{
+        top: 20rem;
+        font-size: 0.6rem;
+    }
+    ;
 }
 

@@ -250,7 +250,7 @@ export const ShoppingCart = () => {
         }
 
         <div className={s.containerDiv}>
-          <TableContainer className={s.table} sx={{width: '1000px'}} >
+          <TableContainer className={s.table} >
             <Table aria-label="spanning table">
               <TableHead>
                 <TableRow>
@@ -327,6 +327,7 @@ export const ShoppingCart = () => {
             {
               cartBikes.length && allAccs.length
                 ? cartBikes.map(bike => {
+                  console.log(bike);
                   return (
                     <div className={s.cardBike} key={bike.idBike} >
                       <h2 className={s.bikeName}>{bike.name}</h2>
