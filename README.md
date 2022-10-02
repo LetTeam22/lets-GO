@@ -2,9 +2,7 @@
 <h2 align="center">
 👋 Bienvenidos a let's GO - 
 <hr>
-
 &nbsp;&nbsp;
-
 
 <h2 align="center">
 🚀 El Proyecto
@@ -12,41 +10,42 @@
 
 l𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el bootcamp de Henry. En su desarrollo aplicamos todas las tecnologías y conocimientos aprendidos durante la carrera de Full Stack Developer.
     
-La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr el funcionamiento intuitivo, rápido y simple del sitio para completar la experiencia del usuario.
+La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
     
-Para conocerlo, hacé cick en el siguiente enlace: <a href="https://pf-let.vercel.app/"><img src="https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png" alt="git" width="20" height="20"/></a> 
+Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="git" height="20"/></a> 
 <hr>
-
 &nbsp;&nbsp;
 
 <h2 align="center">
 ✅ Objetivos Grupales
 </h2>
-- Cree una aplicación de JavaScript desde cero.
-- Aplicar las habilidades aprendidas durante el bootcamp.
-- Implementar el flujo de trabajo GIT en un entorno de real de trabajo colaborativo.
-- Utilizar metodología ágil scrum.
+<p>
+● Cree una aplicación de JavaScript desde cero.
+● Aplicar las habilidades aprendidas durante el bootcamp.
+● Implementar el flujo de trabajo GIT en un entorno de real de trabajo colaborativo.
+● Utilizar metodología ágil scrum.
+</p>
 <hr>
-
 &nbsp;&nbsp;
 
 <h2 align="center">
-✅ Objetivos Tech
+💻 Objetivos Tech
 </h2>
-- Auth de terceros integrada
-- Filtros y ordenamientos combinados
-- Utilizar servicios de almacenamiento multimedia basado en la nube
-- Notificaciones
-- Persistencia de datos através de LocalStorage
-- Reviews / Puntuación 
-- Dashboard administradores
-- Deploy
+<p>
+● Auth de terceros integrada
+● Filtros y ordenamientos combinados
+● Utilizar servicios de almacenamiento multimedia basado en la nube
+● Notificaciones
+● Persistencia de datos através de LocalStorage
+● Reviews / Puntuación 
+● Dashboard administradores
+● Deploy
+</p>
 <hr>
-
 &nbsp;&nbsp;
 
 <h2 align="center">
- Tecnologías
+⚙ Tecnologías
 </h2>
 
 ### Front End:
@@ -58,7 +57,6 @@ NodeJS | Express | PostgreSQL | Sequelize
 ### Librerías:
 Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI
 <hr>
-
 &nbsp;&nbsp;
 
 <p align="center">
@@ -73,17 +71,16 @@ Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI
 <a href="https://sequelize.org" target="_blank"> <img src="https://www.vectorlogo.zone/logos/sequelizejs/sequelizejs-icon.svg" alt="sequelize" width="40" height="40"/> </a>
 <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
 <hr>
-
 &nbsp;&nbsp;
 
 <h2 align="center">
 🚀 Sobre Nosotros
 </h2>
-<p>
-    Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
+Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
 
-    El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, dieron como resultando no solo un gran resultado sino la motivación de seguir creciendo juntos en nuevos desafíos.
-</p>
+El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, dieron como resultando no solo un gran resultado sino la motivación de seguir creciendo juntos en nuevos desafíos.
+<hr>
+&nbsp;&nbsp;
 
 <h2 align="center">
 ⭐ Integrantes
@@ -128,10 +125,8 @@ Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI
 </h2>
 
 <div>
-    <a href="mailto:henrylet22@gmail.com">
-     <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="Felipe Ciro Gmail" height="50" width="50" />
-     </a>
-<div/>
+     <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50" /><label>henrylet22@gmail.com</label>
+</div>
 <br/>
-<p><label>henrylet22@gmail.com</label></p>
+
 
