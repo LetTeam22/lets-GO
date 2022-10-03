@@ -6,18 +6,22 @@
 <h3 align="center">🚀 El Proyecto</h3>
 <p>
 𝗹𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
-&nbsp;
-La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
-&nbsp;    
-Para conocerlo, hacé cick en el siguiente enlace: 
 </p>
-<a href="https://pf-let.vercel.app/" target="_BLANK" alt="git" height="20"><img src="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="html5" height="30"/></a> 
+&nbsp;
+<p>
+La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
+</p>
+&nbsp;
+<p>   
+Para conocerlo, hacé cick en el siguiente enlace:
+<a href="https://pf-let.vercel.app/" target="_BLANK" alt="git" height="20"><img src="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="html5" height="40"/></a> 
 &nbsp;<hr/>
+</p>
 
 <h3 align="center">✅ Objetivos Grupales</h3>
 <h5>● Crear desde cero una aplicación en lenguaje JavaScript.</h5>
 <h5>● Aplicar las habilidades aprendidas durante el bootcamp.</h5>
-<h5>● Implementar el flujo de trabajo GIT en un entorno real de trabajo colaborativo.</h5>
+<h5>● Implementar el flujo de GIT en un entorno real de trabajo colaborativo.</h5>
 <h5>● Utilizar la metodología ágil Scrum.</h5>
 &nbsp;<hr/>
 
@@ -34,13 +38,13 @@ Para conocerlo, hacé cick en el siguiente enlace:
 
 <h3 align="center">⚙ Tecnologías</h3>
 
-<h4>●Front End:</h4>
+<h4><h5>● </h5>Front End:</h4>
 <h5>HTML | CSS | Javascript | React | Redux</h5>
 
-<h4>● Back End:</h4>
+<h4><h5>● </h5>Back End:</h4>
 <h5>NodeJS | Express | PostgreSQL | Sequelize</h5>
 
-<h4>● Librerías</h4>
+<h4><h5>● </h5>Librerías</h4>
 <h5>Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI</h5>
 &nbsp;
 <p align="center">
@@ -59,8 +63,10 @@ Para conocerlo, hacé cick en el siguiente enlace:
 <h3 align="center">🖤 Sobre Nosotros</h3>
 <p>
 Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
-&nbsp;  
-El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
+</p>
+&nbsp;
+<p>
+El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron motivo no solo de un gran resultado sino también de las ganas de seguir creciendo juntos en nuevos desafíos.
 </p>
 &nbsp;<hr/>
 
@@ -68,30 +74,30 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
 <p  align="center">
     <h4>Nicolás Balbi</h4>
     <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/78773506?v=4" alt="Nicolás Balbi" height='40'/></a>
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/nico_fgeoeg.png" alt="Nicolás Balbi" height='40'/></a>
     <h4>Soledad Dato</h4>
     <a href="https://www.linkedin.com/in/sole-dato-ok/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/89033815?v=4" alt="Nicolás Balbi" height='60' />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/sole_eqyxhd.png" alt="Sole" height='60' />
     </a>
     <h4>Felipe Jure</h4>
     <a href="https://www.linkedin.com/in/felipe-jure/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/94187041?v=4" alt="Nicolás Balbi" height='60' />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/feli_udwxhq.png" alt="Feli" height='60' />
     </a>
     <h4>Lucía Meyer</h4>
-    <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/97004970?v=4" alt="Nicolás Balbi" height='60' />
+    <a href="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/lu_kmltzt.png" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/97004970?v=4" alt="Lu" height='60' />
     </a>
     <h4>Leandro Pappalardo</h4>
     <a href="https://www.linkedin.com/in/leandro-pappalardo/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/94720565?v=4" alt="Nicolás Balbi" height='60' />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/lea_idzgpq.png" alt="Lea" height='60' />
     </a>
     <h4>Máximo Tovar</h4>
     <a href="https://www.linkedin.com/in/mrtovar10/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/20747050?v=4" alt="Nicolás Balbi" height='60' />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/maxi_n73dmp.png" alt="Maxi" height='60' />
     </a>
     <h4>Juan Martín Silva</h4>
     <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/97624280?v=4" alt="Nicolás Balbi" height='60' />
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/tincho_ojrl5o.png" alt="Tincho" height='60' />
     </a>
 </p>
 &nbsp;<hr/>
