@@ -1,9 +1,9 @@
 .containerComp {
+    margin-top: 0;
+    padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    margin-top: 0;
-    padding-bottom: 2rem;
 }
 .containerTit {
     background-color: #ffffff;
@@ -11,8 +11,11 @@
 }
 
 .h1 {
+    width: 80%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
-    margin-left: 3rem;
     font-size: 1.5rem;
     padding-top: 3rem;
     padding-bottom: 1rem;
@@ -23,30 +26,31 @@
 }
 
 .p {
-    width: 40rem;
-    font-weight: 400;
-    font-size: 1rem;
-    text-align: center;
-    letter-spacing: 0.07em;
-    color: rgb(87, 87, 87);
+    max-width: 40rem;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.07em;
+    color: rgb(87, 87, 87);
 }
 
 .left {
+    height: 100vh;
+    width: 15%;
     position: fixed;
     background-color: #f0efef;
-    height: 400vh;
-    width: 18%;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
 }
 
 .right {
+    width: 15%;
+    right: 0;
     position: fixed;
     background-color: #f0efef;
-    height: 400vh;
-    width: 18%;
-    right: 0;
+    height: 100vh;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }
 
@@ -57,15 +61,15 @@
 }
 
 .btn {
+    height: 2rem;
+    width: 6rem;
     color:  #f0efef;
+    background: #F9B621;
     font-size: 1rem;
     font-weight: 700;
-    height: 3.5vh;
-    width: 6vw;
     border: none;
-    background: #F9B621;
-    cursor: pointer;
     border-radius: .2rem;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -75,4 +79,25 @@
 
 .contain {
     margin-bottom: 20rem;
+}
+
+@media (max-width:900px) {
+    .left{
+        width: 5%;
+    }
+    .right{
+        width: 5%;
+    }
+}
+
+@media (max-width:750px) {
+    .formAlr{
+        width: 20rem;
+    }
+}
+
+@media (max-width:650px) {
+    .h1{
+        margin-top: 2rem;
+    }
 }

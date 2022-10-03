@@ -10,6 +10,23 @@
     box-shadow: 5px 5px 6px 2px rgb(0 0 0 / 25%), -5px -5px 20px 5px rgb(0 0 0 / 24%);
 }
 
+.corazon{
+    color: #F9B621;
+    width: 5rem;
+    height: 5rem;
+    transition: transform 1s;
+    width: 1.7rem;
+    height: 1.7rem;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    z-index: 1;
+    cursor: pointer;
+}
+.corazon:hover{
+    transform: scale(1.3);
+}
+
 .card, .cardTwo {
     position: relative;
     display: flex;

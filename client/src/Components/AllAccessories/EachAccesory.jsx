@@ -10,7 +10,9 @@ const EachAccesory = ({ imgAcc, Description, Name, Price }) => {
             <div className={s.description}>
                 <h2 className={s.h2}>Customizá tu experiencia</h2>
                 <h1 className={s.h1}>{Name}</h1>
-                <p className={s.p}>{Description}</p>
+                <div className={s.descriptionDiv}>
+                    <p className={s.p}>{Description}</p>
+                </div>
                 <p className={s.p}>A tan solo $ {Price} / día</p>
             </div>
         </div >
