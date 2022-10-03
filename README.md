@@ -1,52 +1,39 @@
 <h4>video</h4>
-<h2 align="center">
-👋 Bienvenidos a let's GO - 
+<h2 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <hr>
+&nbsp;&nbsp;
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-🚀 El Proyecto
-</h2>
-
-l𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el bootcamp de Henry. En su desarrollo aplicamos todas las tecnologías y conocimientos aprendidos durante la carrera de Full Stack Developer.
+<h2 align="center">🚀 El Proyecto</h2>
+𝗹𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
     
 La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
     
-Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="git" height="20"/></a> 
+Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="git" height="20"></a> 
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-✅ Objetivos Grupales
-</h2>
-<p>
-● Cree una aplicación de JavaScript desde cero.
-● Aplicar las habilidades aprendidas durante el bootcamp.
-● Implementar el flujo de trabajo GIT en un entorno de real de trabajo colaborativo.
-● Utilizar metodología ágil scrum.
-</p>
+<h2 align="center">✅ Objetivos Grupales</h2>
+<span>● Crear desde cero una aplicación en lenguaje JavaScript.</span>
+<span>● Aplicar las habilidades aprendidas durante el bootcamp.</span>
+<span>● Implementar el flujo de trabajo GIT en un entorno real de trabajo colaborativo.</span>
+<span>● Utilizar la metodología ágil Scrum.</span>
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-💻 Objetivos Tech
-</h2>
-<p>
-● Auth de terceros integrada
-● Filtros y ordenamientos combinados
-● Utilizar servicios de almacenamiento multimedia basado en la nube
-● Notificaciones
-● Persistencia de datos através de LocalStorage
-● Reviews / Puntuación 
-● Dashboard administradores
-● Deploy
-</p>
+<h2 align="center">💻 Objetivos Tech</h2>
+<span>● Auth de terceros integrada.</span>
+<span>● Filtros y ordenamientos combinados.</span>
+<span>● Utilizar servicios de almacenamiento multimedia basado en la nube.</span>
+<span>● Notificaciones y mailing.</span>
+<span>● Persistencia de datos a través de LocalStorage.</span>
+<span>● Reviews / Puntuación.</span>
+<span>● Dashboard administradores.</span>
+<span>● Deploy.</span>
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-⚙ Tecnologías
-</h2>
+<h2 align="left">⚙ Tecnologías</h2>
 
 ### Front End:
 HTML | CSS | Javascript | React | Redux
@@ -73,18 +60,14 @@ Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-🚀 Sobre Nosotros
-</h2>
+<h2 align="center">🚀 Sobre Nosotros</h2>
 Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
 
-El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, dieron como resultando no solo un gran resultado sino la motivación de seguir creciendo juntos en nuevos desafíos.
+El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
 <hr>
 &nbsp;&nbsp;
 
-<h2 align="center">
-⭐ Integrantes
-</h2>
+<h2 align="center">⭐ Integrantes</h2>
 
 <p  align="center">
     <h4>Nicolás Balbi</h4>
@@ -116,16 +99,12 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
     </a>
 </p>
 <hr>
-
 &nbsp;&nbsp;
 
-
-<h2 align="center">
-📌 Contacto
-</h2>
+<h2 align="center">📌 Contacto</h2>
 
 <div>
-     <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50" /><label>henrylet22@gmail.com</label>
+     <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50"/><label>henrylet22@gmail.com</label>
 </div>
 <br/>
 
