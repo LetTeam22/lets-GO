@@ -1,18 +1,17 @@
 <h4>video</h4>
 
 <h3 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h3>
-
 &nbsp;<hr/>
 
 <h3 align="center">🚀 El Proyecto</h3>
-<p>
+<h5>
 𝗹𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
 &nbsp;
 La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
 &nbsp;    
 Para conocerlo, hacé cick en el siguiente enlace: 
-</p>
-<a href="https://pf-let.vercel.app/" alt="git" height="20"><img src="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="html5" height="30"/></a> 
+</h5>
+<a href="https://pf-let.vercel.app/" target="_BLANK" alt="git" height="20"><img src="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="html5" height="30"/></a> 
 &nbsp;<hr/>
 
 <h3 align="center">✅ Objetivos Grupales</h3>
@@ -35,17 +34,15 @@ Para conocerlo, hacé cick en el siguiente enlace:
 
 <h3 align="center">⚙ Tecnologías</h3>
 
-<h4>Front End:</h4>
-<h5>● HTML | CSS | Javascript | React | Redux</h5>
+<h4>●Front End:</h4>
+<h5>HTML | CSS | Javascript | React | Redux</h5>
 
-<h4>Back End:</h4>
-<h5>● NodeJS | Express | PostgreSQL | Sequelize</h5>
+<h4>● Back End:</h4>
+<h5>NodeJS | Express | PostgreSQL | Sequelize</h5>
 
-<h4>FLibrerías</h4>
-<h5>● Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI</h5>
-&nbsp;<hr/>
-
-
+<h4>● Librerías</h4>
+<h5>Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI</h5>
+&nbsp;
 <p align="center">
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/600px-HTML5_Badge.svg.png" alt="html5" width="40" height="40"/> </a>
 <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/121-css3-512.png" alt="css3" width="40" height="40"/> </a>
@@ -60,14 +57,14 @@ Para conocerlo, hacé cick en el siguiente enlace:
 &nbsp;<hr/>
 
 <h3 align="center">🖤 Sobre Nosotros</h3>
+<h5>
 Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
 &nbsp;  
 El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
+</h5>
 &nbsp;<hr/>
 
-
 <h3 align="center">⭐ Integrantes</h3>
-
 <p  align="center">
     <h4>Nicolás Balbi</h4>
     <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank">
