@@ -1,6 +1,7 @@
 <h4>video</h4>
 
 <h3 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h3>
+
 &nbsp;<hr/>
 
 <h3 align="center">🚀 El Proyecto</h3>
@@ -44,6 +45,7 @@ Para conocerlo, hacé cick en el siguiente enlace:
 <h5>● Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI</h5>
 &nbsp;<hr/>
 
+
 <p align="center">
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/600px-HTML5_Badge.svg.png" alt="html5" width="40" height="40"/> </a>
 <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/121-css3-512.png" alt="css3" width="40" height="40"/> </a>
@@ -62,6 +64,7 @@ Somos un grupo de personas que se encontraron cursando la carrera de Full Stack 
 &nbsp;  
 El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
 &nbsp;<hr/>
+
 
 <h3 align="center">⭐ Integrantes</h3>
 
@@ -102,3 +105,4 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
      <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50"/><h5>henrylet22@gmail.com</h5>
 </div>
 &nbsp;<hr/>
+
