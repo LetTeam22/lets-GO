@@ -1,7 +1,6 @@
 <h4>video</h4>
 
 <h2 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h2>
-<hr>
 &nbsp;&nbsp;
 
 <h2 align="center">🚀 El Proyecto</h2>
@@ -10,31 +9,27 @@
 La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
     
 Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="git" height="20"></a> 
-<hr>
 &nbsp;&nbsp;
 
 <h2 align="center">✅ Objetivos Grupales</h2>
-<span>● Crear desde cero una aplicación en lenguaje JavaScript.</span>
-<span>● Aplicar las habilidades aprendidas durante el bootcamp.</span>
-<span>● Implementar el flujo de trabajo GIT en un entorno real de trabajo colaborativo.</span>
-<span>● Utilizar la metodología ágil Scrum.</span>
-<hr>
+<h5>● Crear desde cero una aplicación en lenguaje JavaScript.</h5>
+<h5>● Aplicar las habilidades aprendidas durante el bootcamp.</h5>
+<h5>● Implementar el flujo de trabajo GIT en un entorno real de trabajo colaborativo.</h5>
+<h5>● Utilizar la metodología ágil Scrum.</h5>
 &nbsp;&nbsp;
 
 <h2 align="center">💻 Objetivos Tech</h2>
-<h4>● Auth de terceros integrada.</h4>
-&nbsp;
-<h4>● Filtros y ordenamientos combinados.</h4>
-<h4>● Utilizar servicios de almacenamiento multimedia basado en la nube.</h4>
-<h4>● Notificaciones y mailing.</h4>
-<h4>● Persistencia de datos a través de LocalStorage.</h4>
-<h4>● Reviews / Puntuación.</h4>
-<h4>● Dashboard administradores.</h4>
-<h4>● Deploy.</h4>
-<hr>
+<h5>● Auth de terceros integrada.</h5>
+<h5>● Filtros y ordenamientos combinados.</h5>
+<h5>● Utilizar servicios de almacenamiento multimedia basado en la nube.</h5>
+<h5>● Notificaciones y mailing.</h5>
+<h5>● Persistencia de datos a través de LocalStorage.</h5>
+<h5>● Reviews / Puntuación.</h5>
+<h5>● Dashboard administradores.</h5>
+<h5>● Deploy.</h5>
 &nbsp;&nbsp;
 
-<h2 align="left">⚙ Tecnologías</h2>
+<h2 align="center">⚙ Tecnologías</h2>
 
 ### Front End:
 HTML | CSS | Javascript | React | Redux
@@ -58,14 +53,12 @@ Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI
 <a href="https://www.postgresql.org" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" alt="postgresql" width="40" height="40"/> </a> 
 <a href="https://sequelize.org" target="_blank"> <img src="https://www.vectorlogo.zone/logos/sequelizejs/sequelizejs-icon.svg" alt="sequelize" width="40" height="40"/> </a>
 <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
-<hr>
 &nbsp;&nbsp;
 
 <h2 align="center">🚀 Sobre Nosotros</h2>
 Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
 
 El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
-<hr>
 &nbsp;&nbsp;
 
 <h2 align="center">⭐ Integrantes</h2>
@@ -99,7 +92,6 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
         <img src="https://avatars.githubusercontent.com/u/97624280?v=4" alt="Nicolás Balbi" height='60' />
     </a>
 </p>
-<hr>
 &nbsp;&nbsp;
 
 <h2 align="center">📌 Contacto</h2>
