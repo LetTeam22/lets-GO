@@ -1,12 +1,13 @@
 <h4>video</h4>
-<h2 align="center">👋 Bienvenidos a let's GO <hr>
+
+<h2 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <hr>
 &nbsp;&nbsp;
 <hr>
 &nbsp;&nbsp;
 
 <h2 align="center">🚀 El Proyecto</h2>
-l𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
-    
+𝗹𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
+
 La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
     
 Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="git" height="20"></a> 
