@@ -4,13 +4,13 @@
 &nbsp;<hr/>
 
 <h3 align="center">🚀 El Proyecto</h3>
-<h5>
+<p>
 𝗹𝗲𝘁'𝘀 𝗚𝗢 es nuestro Proyecto Final de carrera en el Bootcamp de Henry. En su desarrollo aplicamos las tecnologías y conocimientos aprendidos durante las carrera de Full Stack Developer.
 &nbsp;
 La consigna era crear un e-commerce, quisimos ir un poco más allá y encontrar el diferencial dentro de los modelos de negocios tradicionales, aportando valor agregado y generando fidelización del consumidor con la marca. Sumamos estos objetivos a la premisa de lograr un funcionamiento del sitio intuitivo, rápido y simple para garantizar una buena experiencia del usuario.
 &nbsp;    
 Para conocerlo, hacé cick en el siguiente enlace: 
-</h5>
+</p>
 <a href="https://pf-let.vercel.app/" target="_BLANK" alt="git" height="20"><img src="https://res.cloudinary.com/pflet/image/upload/v1664750221/Let/GitHub/img_readme_tn01kl.png" alt="html5" height="30"/></a> 
 &nbsp;<hr/>
 
@@ -57,11 +57,11 @@ Para conocerlo, hacé cick en el siguiente enlace:
 &nbsp;<hr/>
 
 <h3 align="center">🖤 Sobre Nosotros</h3>
-<h5>
+<p>
 Somos un grupo de personas que se encontraron cursando la carrera de Full Stack Developer en el Bootcamp de Henry. Habernos elegido como compañeros y compartir mil horas de producción con un objetivo común, dieron como resultado una linda amistad y una idea novedosa.
 &nbsp;  
 El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron pilares en el avance del proyecto. Estas cualidades sumadas a las grandes habilidades técnicas de cada integrante, fueron la consecuencia no solo un gran resultado sino también de la motivación de seguir creciendo juntos en nuevos desafíos.
-</h5>
+</p>
 &nbsp;<hr/>
 
 <h3 align="center">⭐ Integrantes</h3>
@@ -98,8 +98,6 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
 
 <h3 align="center">📌 Contacto</h3>
 
-<div>
-     <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50"/><h5>henrylet22@gmail.com</h5>
-</div>
+<h5>henrylet22@gmail.com <img align="center" src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="let_mail" height="20" width="50"/></h5>
 &nbsp;<hr/>
 
