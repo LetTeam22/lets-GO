@@ -1,7 +1,6 @@
 <h4>video</h4>
 
-<h2 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <hr>
-&nbsp;&nbsp;
+<h2 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h2>
 <hr>
 &nbsp;&nbsp;
 
@@ -23,14 +22,15 @@ Para conocerlo, hacé cick en el siguiente enlace: <a href="https://res.cloudina
 &nbsp;&nbsp;
 
 <h2 align="center">💻 Objetivos Tech</h2>
-<span>● Auth de terceros integrada.</span>
-<span>● Filtros y ordenamientos combinados.</span>
-<span>● Utilizar servicios de almacenamiento multimedia basado en la nube.</span>
-<span>● Notificaciones y mailing.</span>
-<span>● Persistencia de datos a través de LocalStorage.</span>
-<span>● Reviews / Puntuación.</span>
-<span>● Dashboard administradores.</span>
-<span>● Deploy.</span>
+<h4>● Auth de terceros integrada.</h4>
+&nbsp;
+<h4>● Filtros y ordenamientos combinados.</h4>
+<h4>● Utilizar servicios de almacenamiento multimedia basado en la nube.</h4>
+<h4>● Notificaciones y mailing.</h4>
+<h4>● Persistencia de datos a través de LocalStorage.</h4>
+<h4>● Reviews / Puntuación.</h4>
+<h4>● Dashboard administradores.</h4>
+<h4>● Deploy.</h4>
 <hr>
 &nbsp;&nbsp;
 
