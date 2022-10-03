@@ -71,34 +71,48 @@ El equipo se ensambló desde un inicio, la colaboración y el entusiasmo fueron 
 &nbsp;<hr/>
 
 <h3 align="center">⭐ Integrantes</h3>
-<p  align="center">
-    <h4>Nicolás Balbi</h4>
-    <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/nico_fgeoeg.png" alt="Nicolás Balbi" height='40'/></a>
-    <h4>Soledad Dato</h4>
-    <a href="https://www.linkedin.com/in/sole-dato-ok/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/sole_eqyxhd.png" alt="Sole" height='60' />
-    </a>
-    <h4>Felipe Jure</h4>
-    <a href="https://www.linkedin.com/in/felipe-jure/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/feli_udwxhq.png" alt="Feli" height='60' />
-    </a>
-    <h4>Lucía Meyer</h4>
-    <a href="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/lu_kmltzt.png" target="_blank">
-        <img src="https://avatars.githubusercontent.com/u/97004970?v=4" alt="Lu" height='60' />
-    </a>
-    <h4>Leandro Pappalardo</h4>
-    <a href="https://www.linkedin.com/in/leandro-pappalardo/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/lea_idzgpq.png" alt="Lea" height='60' />
-    </a>
-    <h4>Máximo Tovar</h4>
-    <a href="https://www.linkedin.com/in/mrtovar10/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759439/Let/GitHub/maxi_n73dmp.png" alt="Maxi" height='60' />
-    </a>
-    <h4>Juan Martín Silva</h4>
-    <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" target="_blank">
-        <img src="https://res.cloudinary.com/pflet/image/upload/v1664759438/Let/GitHub/tincho_ojrl5o.png" alt="Tincho" height='60' />
-    </a>
+
+<h4>Nicolás Balbi</h4>
+<p>
+    <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759905/Let/GitHub/nico_t0hdxv.png" alt="Nicolás Balbi" height='60'/></a>
+    <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/nicobalbi"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p> 
+<h4>Soledad Dato</h4>
+<p>
+    <a href="https://www.linkedin.com/in/sole-dato-ok/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759906/Let/GitHub/sole_jju8y1.png" alt="Sole" height='60' /></a>
+    <a href="https://www.linkedin.com/in/sole-dato-ok/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/soledato"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p> 
+<h4>Felipe Jure</h4>
+<p>
+    <a href="https://www.linkedin.com/in/felipe-jure/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759905/Let/GitHub/feli_wlfyds.png" alt="Feli" height='60' /></a>
+    <a href="https://www.linkedin.com/in/felipe-jure/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/felipejure"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p>
+<h4>Lucía Meyer</h4>
+<p>
+    <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759906/Let/GitHub/lu_il2dnr.png" alt="Lu" height='60' /></a>
+    <a href="https://www.linkedin.com/in/lucia-meyer-65633a143/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/LuciaMeyer"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p>    
+<h4>Leandro Pappalardo</h4>
+<p>
+    <a href="https://www.linkedin.com/in/leandro-pappalardo/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759905/Let/GitHub/lea_dfvtvj.png" alt="Lea" height='60' /></a>
+    <a href="https://www.linkedin.com/in/leandro-pappalardo/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/leandropap"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p>
+<h4>Máximo Tovar</h4>
+<p>
+    <a href="https://www.linkedin.com/in/mrtovar10/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759905/Let/GitHub/maxi_svmtwn.png" alt="Maxi" height='60' /></a>
+    <a href="https://www.linkedin.com/in/mrtovar10/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/mrtovar10"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
+</p>
+<h4>Juan Martín Silva</h4>
+<p>
+    <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" target="_blank"><img src="https://res.cloudinary.com/pflet/image/upload/v1664759905/Let/GitHub/tincho_xkhxo0.png" alt="Tincho" height='60' /></a>
+    <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='linkedin' height='60'></a>
+    <a href="https://github.com/juanmarsilva"><img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='60'></a>
 </p>
 &nbsp;<hr/>
 
