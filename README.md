@@ -1,4 +1,4 @@
-<a href="https://www.youtube.com/watch?v=-TOVqECdiIw"><img src="https://res.cloudinary.com/pflet/image/upload/v1664801764/Let/GitHub/img_video_eobxxu.png" alt="git" height="20"/></a> 
+<a href="https://www.youtube.com/watch?v=-TOVqECdiIw" target="_BLANK"><img src="https://res.cloudinary.com/pflet/image/upload/v1664801764/Let/GitHub/img_video_eobxxu.png" alt="git"/></a> 
 
 <h3 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h3>
 &nbsp;<hr/>
