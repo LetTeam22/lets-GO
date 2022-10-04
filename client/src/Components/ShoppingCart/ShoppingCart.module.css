@@ -69,13 +69,6 @@
     margin-top: 5rem;
 }
 
-.totalPrice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
-
 .bikeName {
     font-family: 'Roboto';
     font-style: normal;
@@ -128,7 +121,6 @@
 .reserveBtn:hover, .btn:hover, .returnBtn:hover {
     background-color: #F9B621;
     color: white;
-    
 }
 
 .titleEmpty {
@@ -166,12 +158,19 @@
     font-size: 1rem;
 }
 
+.totalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
 .containerBtn {
     display: flex;
     column-gap: 5rem;
-    width: calc(100% - 15rem);
+    width: 100%;
     align-items: baseline;
-    margin-left: 50%;
+    margin-left: 40%;
 }
 
 .btnSwal{
@@ -285,7 +284,7 @@
 
 .fechasCont {
     display: flex;
-    width: 35%;
+    width: 45%;
     justify-content: flex-start;
     align-items: center;
 }
@@ -302,6 +301,31 @@
     display: block;
     overflow-x: auto;
     margin-left: 3rem;
+}
+
+.creditContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%!important;
+    position: absolute;
+    z-index: 100;
+    margin: auto;
+    background-color: #333333;
+    opacity: .5;
+}
+
+.creditCards {
+    position: absolute;
+    width: 50%;
+    height: 30rem;
+    border-radius: 1.5rem;
+    background-color: #ffffff;
+    border: 1px solid red;
+    margin-bottom: 10rem;
+    opacity: 1;
 }
 
 
@@ -362,6 +386,7 @@
     }
 }
 
+
 @media (max-width: 1750px) {
     .previewItems {
         margin-right: 2rem;
@@ -400,7 +425,8 @@
     }
 
     .containerBtn {
-        justify-content: center;
+        justify-content: flex-start;
+        margin-left: 20%;
     }
 
     .fechasCont {
@@ -421,6 +447,22 @@
         margin-right: 9rem;
         margin-left: 9rem;
     }
+
+    .containerBtn {
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .containerBtn {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 25rem;
+    }
+    .reserveBtn {
+        margin: 1rem;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -436,7 +478,7 @@
     }
 
     .containerBtn {
-        justify-content: flex-start;
+        margin-left: 10%;
     }
 }
 
