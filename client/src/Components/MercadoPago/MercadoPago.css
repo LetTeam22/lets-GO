@@ -14,6 +14,15 @@
     position: absolute;
 }
 
+@media(max-width: 1150px) {
+    .cho-container {
+        position: inherit;
+        height: 8rem;
+        margin-right: 15.5rem;
+        margin-top: 1rem;
+    }
+}
+
 @media (max-width: 750px) {
     .cho-container {
         position: inherit;

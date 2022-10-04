@@ -39,6 +39,7 @@ import { PrivacyPolicies } from './Components/PrivacyPolicies/PrivacyPolicies';
 import { Payments } from './Components/PaymentsAndCheckout/Payments';
 import { About } from './Components/About/About'
 import Adventures from './Components/Profile/AdminProfile/Adventures';
+import CreditCards from './Components/CreditCards/CreditCards';
 
 const REACT_APP_BACK_URL = process.env.REACT_APP_BACK_URL;
 
@@ -93,6 +94,7 @@ function App() {
         <Route exact path='/policies'><PrivacyPolicies /></Route>
         <Route exact path='/payments'><Payments /></Route>
         <Route exact path='/about'><About /></Route>
+        <Route exact path='/creditCards'><CreditCards /></Route>
         <Route exact path='*'><Error /></Route>
       </Switch>
       <Footer />
