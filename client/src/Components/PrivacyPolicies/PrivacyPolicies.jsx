@@ -65,7 +65,7 @@ export const PrivacyPolicies = () => {
                                     </li>
                                 </ul>
                                 <h3 className={s.heading}>
-                                    ¿¿Cómo utilizamos tus datos personales?
+                                    ¿Cómo utilizamos tus datos personales?
                                     <span></span>
                                 </h3>
                                 <p style={{ color: "black" }}>

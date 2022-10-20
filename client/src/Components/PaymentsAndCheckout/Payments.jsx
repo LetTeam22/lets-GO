@@ -115,7 +115,6 @@ export const Payments = () => {
                 Let's GO trasladará a los inscriptos en trafic hasta el paraje de largada designado por la organización de la carrera.
               </li>
             </ul>
-
             <p style={{ color: "black" }}>
               Si después de leer esta información te queda alguna duda, {<a className={s.a} href={contacto}>contactate</a>} con nosotros que te responderemos a la brevedad.
             </p>
