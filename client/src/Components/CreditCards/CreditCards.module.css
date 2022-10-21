@@ -1,0 +1,168 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 3rem;
+    color: #333333;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 45rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards {
+    width: 100%;
+    height: 27.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5rem;
+    margin-bottom: 5rem;
+}
+
+.visaCard, .masterCard {
+    width: 23.5rem;
+    height: 53%;
+    border-radius: 1rem;
+    opacity: .9;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.visaCard {
+    background: #2b2f77;
+    background: -webkit-linear-gradient(90deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+    background: linear-gradient(90deg, #2b2f77 0%, #141852 50%, #070b34 100%);
+}
+
+.masterCard {
+    background: #606c88;
+    background: -webkit-linear-gradient(90deg, #606c88 0%, #3f4c6b 100%);
+    background: linear-gradient(90deg, #606c88 0%, #3f4c6b 100%);
+}
+
+.cards h4 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    color: black;
+}
+
+.icon {
+    width: 4.5rem;
+    grid-area: 1 / 1 / 2 / 2;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.visaIcon {
+    width: 4.5rem;
+    grid-area: 1 / 1 / 2 / 2;
+    margin-left: 1rem;
+    margin-top: .2rem;
+}
+
+.divNumber {
+    grid-area: 3 / 1 / 4 / 5;
+    display: flex;
+    align-items: center;
+}
+
+.divNumber button {
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+}
+
+.number {
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.5rem;
+    color: #e4e3e3;
+    margin-left: 18%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: none;
+    appearance: none;
+}
+
+.name {
+    grid-area: 4 / 1 / 5 / 3;
+    margin-left: 1rem;
+
+}
+
+.spanName {
+    grid-area: 5 / 1 / 6 / 3;
+    margin-left: 1rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #e4e3e3;
+}
+
+.venc {
+    grid-area: 4 / 3 / 5 / 5;
+}
+
+.spanVenc {
+    grid-area: 5 / 3 / 6 / 5;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #e4e3e3;
+}
+
+.cod {
+    grid-area: 6 / 1 / 7 / 3;
+    margin-left: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.spanCod {
+    grid-area: 6 / 3 / 7 / 5;
+    margin-top: .5rem;
+    margin-bottom: .7rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #e4e3e3;
+}
+
+@media (max-width: 850px) {
+    .cards {
+        flex-direction: column;
+        row-gap: 5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .masterCard, .visaCard {
+        width: 20rem;
+    }
+}

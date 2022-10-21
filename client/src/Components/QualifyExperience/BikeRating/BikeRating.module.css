@@ -59,24 +59,23 @@
     color: white; 
 }
 
-
 .btn {
+    width: 3rem;
+    height: 2rem;
+    margin-right: .5rem;
     padding: 0;
-    background-color: #F9B621;
-    color: rgb(100, 100, 100);
-    font-size: .9rem;
-    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 4vw;
-    height: 4vh;
-    cursor: pointer;
+    color: rgb(100, 100, 100);
+    background-color: #F9B621;
+    font-size: .9rem;
+    font-weight: 600;
     list-style: none;
-    border-radius: .2rem;
     border: none;
+    border-radius: .2rem;
     box-shadow: rgba(0, 0, 0, 0.532) 0px 0px 6px 0px;
-    margin-right: .5rem;
+    cursor: pointer;
 }
 
 .ratingUs {
@@ -90,4 +89,15 @@
     color: rgb(85, 84, 84);
     font-weight: 600;
     font-size: 1.1rem;
+}
+
+@media (max-width:750px) {
+    .container{
+        width: 20rem;
+        flex-direction: column-reverse;
+    }
+    .card{
+        align-items: center;
+        margin-left: 0;
+    }
 }

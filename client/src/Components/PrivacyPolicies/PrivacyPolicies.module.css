@@ -13,11 +13,9 @@
 }
 
 .container {
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 24rem;
-    padding-right: 24rem;
-    box-sizing: border-box;
 }
 
 .pageHeading {
@@ -45,15 +43,13 @@
 }
 
 .heading {
-    font-weight: bold;
+    width: 80%;
+    margin: 1rem auto;
     text-transform: uppercase;
     font-size: 1.25em;
-    margin-bottom: 1rem;
-    word-spacing: 0.09em;
     line-height: 1.5;
+    word-spacing: 0.09em;
     color: #000;
-    font-weight: normal;
-    margin-top: 1rem;
 }
 
 h3.heading>span,
@@ -65,7 +61,7 @@ h3.heading>span,
     background: #F9B621;
 }
 
-ul {
+.featuredList {
     font-size: 1em;
     font-weight: 400;
     line-height: 1.57;
@@ -78,55 +74,61 @@ ul {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
-}
-
-ul.featuredList {
     list-style: none;
     padding: 0;
 }
 
-ul.featuredList li:before {
+.featuredList li::before {
     color: #333333;
     font-family: 'FontAwesome';
     content: "\f00c";
     margin-right: 0.5rem;
 }
 
-ul li {
+.featuredList li {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0.5rem;
-}
-
-li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
 
-p {
+.column > p {
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: justify;
     font-size: 1em;
     font-weight: 300;
     font-family: 'Roboto';
     line-height: 1.75;
-    display: block;
-    margin: 0 0 0.5em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+}
+
+.container > p > a, .featuredList li a{
+    color: black;
+    font-weight: 700;
+}
+.container > p > a:hover, .featuredList li a:hover{
+    color: #F9B621;
 }
 
 .left {
     position: fixed;
     background-color: #f0efef;
-    height: 400vh;
-    width: 18%;
+    height: 100vh;
+    width: 15%;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.205)
 }
 
 .right {
     position: fixed;
     background-color: #f0efef;
-    height: 400vh;
-    width: 18%;
+    height: 100vh;
+    width: 15%;
     right: 0;
     box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.267)
 }
@@ -161,4 +163,34 @@ p {
     background-color: #FFFFFF;
     color: #F9B621;
     /* border: solid .1rem #F9B621 */
+}
+
+@media (max-width:900px) {
+    .left{
+        width: 5%;
+    }
+    .right{
+        width: 5%;
+    }
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width:650px) {
+    .container{
+        margin-top: 3rem;
+    }
+    .heading{
+        width: 100%;
+        margin-left: 2.5%;
+        font-size: 1em;
+        font-weight: bold;
+    }
+    .column > p{
+        width: 95%;
+    }
+    .featuredList li {
+        width: 95%;
+    }
 }

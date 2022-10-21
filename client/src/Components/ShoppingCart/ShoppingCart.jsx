@@ -39,6 +39,7 @@ export const ShoppingCart = () => {
   let cartAdventures = []; 1
   const { user, isLoading } = useAuth0();
 
+
   const [loading, setLoading] = useState(false);
 
   const email = localStorage.getItem('email');
@@ -379,6 +380,9 @@ export const ShoppingCart = () => {
             ? (
               <div className={s.totalPrice}>
                 <div className={s.containerBtn}>
+                  <Link to="/creditCards" target='_blank'>
+                    <button className={s.reserveBtn}>TARJETAS DE PRUEBA</button>
+                  </Link>
                   <Link to="/home">
                     <button className={s.reserveBtn}>
                       BUSCAR MAS BICICLETAS

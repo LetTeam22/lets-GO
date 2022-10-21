@@ -193,9 +193,11 @@ export const Profile = () => {
                 { b.startDate === null ? <></> :
                   <>
                     <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● BICI:&nbsp;</span>
-                    {b.bikes.map((bike, i) => (
-                      <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} {i < b.bikes.length - 1 && '-'}&nbsp;</span>
-                    ))}
+                    <div>
+                      {b.bikes.map((bike, i) => (
+                        <span key={bike.name} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{bike.name} {i < b.bikes.length - 1 && '-'}&nbsp;</span>
+                      ))}
+                    </div>
                   </>
                 }
                 </div>
@@ -204,9 +206,11 @@ export const Profile = () => {
                 { b.startDate === null ? <></> :
                   <>
                       <span className={b.status === 'cancelled' ? s.titleCancel : s.titleList2}>● ACCESORIOS:&nbsp;</span>
-                      {!!b.accesories.length && b.accesories.map((acc, i) => (
-                        <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} {i < b.accesories.length - 1 && '-'}&nbsp;</span>
-                      ))}
+                      <div>
+                        {!!b.accesories.length && b.accesories.map((acc, i) => (
+                          <span key={acc.list2} className={b.status === 'cancelled' ? s.list2Cancel : s.list2}>{acc.name} {i < b.accesories.length - 1 && '-'}&nbsp;</span>
+                        ))}
+                      </div>
                   </>
                 }
                 </div>

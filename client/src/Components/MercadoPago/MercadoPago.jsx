@@ -24,15 +24,22 @@ const Mp = ( {preference, mpInfo} ) => {
                 container.removeChild(btn)
             }
             if(isAuthenticated) {
-                mercadopago.checkout({
-                    preference: {
-                        id: mpInfo.id
-                    },
-                    render: {
-                        container: '.cho-container',
-                        label: 'RESERVAR',
-                    }
-                })
+                // swal({
+                //     title: "Precaución",
+                //     icon: 'info',
+                //     text: 'Esta es una versión de prueba de Mercado Pago, para poder probar la pasarela de pagos deberas utilizar una tarjeta de prueba..'
+                // })
+                // .then(res => {
+                    mercadopago.checkout({
+                        preference: {
+                            id: mpInfo.id
+                        },
+                        render: {
+                            container: '.cho-container',
+                            label: 'RESERVAR',
+                        }
+                    })
+                // })
             } else {
                 swal({
                     title: 'Precaucion',

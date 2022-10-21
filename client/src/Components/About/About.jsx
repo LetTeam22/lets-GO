@@ -61,7 +61,7 @@ export const About = () => {
                             <span></span>
                         </h3>
 
-                        <div>
+                        <div className={s.tecnologies}>
                             <div>
                                 <p style={{ color: "black" }}>Front End</p>
                                 <a href="https://es.reactjs.org/" style={{ color: "black" }} target="_blank" rel="noopener noreferrer">React</a> <span>  ||  </span>
@@ -98,8 +98,8 @@ export const About = () => {
                         </h3>
                         <div className={s.space}>
                             <div className={s.each}>
-                                <p style={{ color: "black" }}>Nicolás Balbi</p>
                                 <a href="https://www.linkedin.com/in/nicol%C3%A1s-balbi-263373b4/" target="_blank" rel="noopener noreferrer">
+                                    <p style={{ color: "black" }}>Nicolás Balbi</p>
                                     <img src="https://avatars.githubusercontent.com/u/78773506?v=4" className={s.circleImg} alt="Nicolás Balbi" />
                                 </a>
                             </div>
@@ -122,8 +122,6 @@ export const About = () => {
                                     <img src="https://avatars.githubusercontent.com/u/97004970?v=4" className={s.circleImg} alt="Lucía Meyer" />
                                 </a>
                             </div>
-                        </div>
-                        <div className={s.space1}>
                             <div className={s.each}>
                                 <a href="https://www.linkedin.com/in/leandro-pappalardo/" target="_blank" rel="noopener noreferrer">
                                     <p style={{ color: "black" }}>Leandro Pappalardo</p>
@@ -131,14 +129,14 @@ export const About = () => {
                                 </a>
                             </div>
                             <div className={s.each}>
-                                <p style={{ color: "black" }}>Juan Martín Silva</p>
                                 <a href="https://www.linkedin.com/in/juan-martin-silva-0b981a191/" target="_blank" rel="noopener noreferrer">
+                                    <p style={{ color: "black" }}>Juan Martín Silva</p>
                                     <img src="https://avatars.githubusercontent.com/u/97624280?v=4" className={s.circleImg} alt="Juan Martín Silva" />
                                 </a>
                             </div>
                             <div className={s.each}>
-                                <p style={{ color: "black" }}>Máximo Tovar</p>
                                 <a href="https://www.linkedin.com/in/mrtovar10/" target="_blank" rel="noopener noreferrer">
+                                    <p style={{ color: "black" }}>Máximo Tovar</p>
                                     <img src="https://avatars.githubusercontent.com/u/20747050?v=4" className={s.circleImg} alt="Máximo Tovar" />
                                 </a>
                             </div>
