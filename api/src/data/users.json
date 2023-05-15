@@ -16,7 +16,8 @@
         "email": "leandropap@gmail.com"
     },
     {   
-        "email": "luciameyer1603@gmail.com"
+        "email": "luciameyer1603@gmail.com",
+        "isAdmin": true
     },
     {   
         "email": "mrtovar10@gmail.com"
