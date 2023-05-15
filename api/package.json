@@ -23,6 +23,7 @@
     "mercadopago": "^1.5.14",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
+    "openai": "^3.2.1",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
     "socket.io": "^4.5.2"
