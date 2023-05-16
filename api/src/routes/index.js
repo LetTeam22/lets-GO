@@ -8,9 +8,7 @@ const generalRouter = require('./generalRouter')
 const mercadopago = require('./mercadopago')
 const adventuresRouter = require('./adventureRouter');
 const apiGptRouter = require('./apiGptRouter')
-// 
-const { Configuration, OpenAIApi } = require('openai');
-require('dotenv').config();
+
 
 
 

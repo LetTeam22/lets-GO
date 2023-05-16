@@ -2,15 +2,14 @@ const { Configuration, OpenAIApi } = require('openai');
 require('dotenv').config();
 const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
 const openai = new OpenAIApi(configuration);
+const { promptPrueba } = require('./prompt')
 
 
 const testingApiGPT = async (req, res) => {
     try {
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `
-                hola, como estas?              
-            `,
+            prompt: promptPrueba,
             temperature: 0.6,
             max_tokens:100
           });
