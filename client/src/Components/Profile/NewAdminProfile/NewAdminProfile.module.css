@@ -1,0 +1,20 @@
+.panel{
+    height: calc(100vh - 6rem);
+    display: flex;
+    flex-direction: row;
+}
+
+.lateral{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333333;
+}
+
+.tables{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}

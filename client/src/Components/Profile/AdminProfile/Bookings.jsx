@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from "react-icons/ti";
+// import { useHistory } from "react-router-dom";
+// import { TiArrowBackOutline } from "react-icons/ti";
 import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
@@ -12,7 +12,7 @@ import s from "./Bookings.module.css";
 
 export default function Bookings() {
   const bookings = useSelector((state) => state.allBookings);
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
@@ -48,12 +48,12 @@ export default function Bookings() {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "idUser", headerName: "User ID", width: 80 },
-      { field: "email", headerName: "Email", width: 220 },
+      { field: "idUser", headerName: "User ID", width: 60 },
+      { field: "email", headerName: "Email", width: 200 },
       { field: "start", headerName: "Desde", width: 100 },
       { field: "finish", headerName: "Hasta", width: 100 },
       { field: "days", headerName: "Días", width: 50 },
-      { field: "bikes", headerName: "Bicicletas", width: 400 },
+      { field: "bikes", headerName: "Bicicletas", width: 250 },
       {
         field: "status",
         headerName: <div>Estado <BiEdit className={s.edit}/></div>,
@@ -75,19 +75,19 @@ export default function Bookings() {
     ];
   }, [rowId]);
 
-  const handleClick = () => {
-    history.goBack();
-  };
+  // const handleClick = () => {
+  //   history.goBack();
+  // };
 
   return (
     <div className={s.bookings}>
-      <h1 className={s.h1}>RESERVAS</h1>
-      <div className={s.container}>
+      {/* <h1 className={s.h1}>RESERVAS</h1> */}
+      {/* <div className={s.container}> */}
         <ThemeProvider theme={theme}>
-          <div className={s.coverGrid}>
-        <span className={s.goBack} onClick={handleClick}>
+          {/* <div className={s.coverGrid}> */}
+        {/* <span className={s.goBack} onClick={handleClick}>
           <TiArrowBackOutline />
-        </span>
+        </span> */}
             <DataGrid
               rows={rowsBookings}
               columns={columnsBookings}
@@ -108,9 +108,9 @@ export default function Bookings() {
               }}
               onCellEditCommit={(params) => setRowId(params.id)}
             />
-          </div>
+          {/* </div> */}
         </ThemeProvider>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
