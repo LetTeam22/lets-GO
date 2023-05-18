@@ -3,6 +3,8 @@
     width: 100%;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    padding-left: 10%;
+    text-align: start;
     font-family: roboto;
     font-weight: 400;
     font-size: larger;
@@ -15,10 +17,10 @@
 }
 
 .button:hover{
-    background-color: #f9b6217d;
+    background-color: #221d1d;
 }
 
 .active{
-    background-color: #F9B621;
+    background-color: #221d1d;
     font-weight: 700;
 }

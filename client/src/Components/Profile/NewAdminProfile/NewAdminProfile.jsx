@@ -16,13 +16,14 @@ export const NewAdminProfile = () => {
   return (
     <section className={s.panel}>
       <div className={s.lateral}>
-        {dashboardItems.map(({ value, table }) => {
+        {dashboardItems.map(({ value, table, childrens }) => {
           return (
             <Button
               onClick={handleClick}
               active={active}
               value={value}
               table={table}
+              childrens={childrens}
             >
               {value}
             </Button>

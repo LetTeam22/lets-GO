@@ -14,6 +14,20 @@ export const dashboardItems = [
   {
     value: "Usuarios",
     table: <Users />,
+    childrens: [
+      {
+        value: "Usuarios",
+        table: <Users />,
+      },
+      {
+        value: "Usuarios",
+        table: <Users />,
+      },
+      {
+        value: "Usuarios",
+        table: <Users />,
+      }
+    ]
   },
   {
     value: "Bicicletas",
