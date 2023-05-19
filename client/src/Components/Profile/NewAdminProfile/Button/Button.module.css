@@ -1,0 +1,26 @@
+.button{
+    height: 4rem;
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 10%;
+    text-align: start;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: larger;
+    letter-spacing: 0.05rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.3rem;
+    color: white;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.button:hover{
+    background-color: #221d1d;
+}
+
+.active{
+    background-color: #221d1d;
+    font-weight: 700;
+}

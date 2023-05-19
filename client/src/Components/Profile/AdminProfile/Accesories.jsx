@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from 'react-icons/ti';
-import { BiEdit } from 'react-icons/bi';
+import { BiEdit } from "react-icons/bi";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getAccesories } from "../../../Redux/actions";
@@ -11,50 +9,77 @@ import Action from "./Action";
 import s from "./Accesories.module.css";
 
 export default function Accesories() {
-  const accesories = useSelector(state => state.accesories)
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const accesories = useSelector((state) => state.accesories);
+  const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
-  const [rowId, setRowId] = useState(null)
+  const [rowId, setRowId] = useState(null);
 
   useEffect(() => {
-    dispatch(getAccesories())
+    dispatch(getAccesories());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const rowsAccs =useMemo(() => {
-    return accesories?.map(accesorie => {
+  const rowsAccs = useMemo(() => {
+    return accesories?.map((accesorie) => {
       return {
         id: accesorie.idAcc,
         name: accesorie.name,
         price: accesorie.price,
-        status: accesorie.status
+        status: accesorie.status,
       };
     });
-  }, [accesories]) 
+  }, [accesories]);
 
   const columnsAccs = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 120, editable: true },
-      { field: "price", headerName: <div>Precio <BiEdit className={s.edit}/></div>, width: 80, type: "number", editable: true },
-      { field: "status", headerName: <div>Estado <BiEdit className={s.edit}/></div>, width: 100, type: "singleSelect",
-      valueOptions: ["active", "deleted"],
-      editable: true },
-      { field: "action", headerName: "Guardar", type:'actions', width: 80, renderCell: (params) => <Action {...{params,rowId, setRowId, origin:'accesories'}} /> }
+      {
+        field: "name",
+        headerName: (
+          <div>
+            Nombre <BiEdit className={s.edit} />
+          </div>
+        ),
+        width: 120,
+        editable: true,
+      },
+      {
+        field: "price",
+        headerName: (
+          <div>
+            Precio <BiEdit className={s.edit} />
+          </div>
+        ),
+        width: 80,
+        type: "number",
+        editable: true,
+      },
+      {
+        field: "status",
+        headerName: (
+          <div>
+            Estado <BiEdit className={s.edit} />
+          </div>
+        ),
+        width: 100,
+        type: "singleSelect",
+        valueOptions: ["active", "deleted"],
+        editable: true,
+      },
+      {
+        field: "action",
+        headerName: "Guardar",
+        type: "actions",
+        width: 80,
+        renderCell: (params) => (
+          <Action {...{ params, rowId, setRowId, origin: "accesories" }} />
+        ),
+      },
     ];
-  }, [rowId]) 
-
-  const handleClick = () => {
-    history.goBack()
-  }
+  }, [rowId]);
 
   return (
-    <div className={s.accesories}>
-      <h1 className={s.h1}>ACCESORIOS</h1>
-      <div className={s.container}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
-      <span className={s.goBack} onClick={handleClick}><TiArrowBackOutline/></span>
         <DataGrid
           rows={rowsAccs}
           columns={columnsAccs}
@@ -70,16 +95,12 @@ export default function Accesories() {
           sx={{
             [`& .${gridClasses.row}`]: {
               bgcolor: (theme) =>
-                theme.palette.mode === "light"
-                  ? '#494949'
-                  : '#191616',
+                theme.palette.mode === "light" ? "#494949" : "#191616",
             },
           }}
           onCellEditCommit={(params) => setRowId(params.id)}
         />
-        </div>
-      </ThemeProvider>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }

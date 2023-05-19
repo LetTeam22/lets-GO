@@ -1,41 +1,12 @@
 .bookings{
-    width: 100%;
-    height: calc(100vh - 8rem);
-    position: relative;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 2rem;
-}
-
-.container{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-}
-.coverGrid{
-    height: 30rem;
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.goBack{
-    position: absolute;
-    top: 0;
-    left: -3rem;
-}
-.goBack svg{
-    width: 3rem;
-    height: 3rem;
-    color: #333333!important;
+    width: 90%;
+    height: 90%;
 }
 
 .list{
     margin-left: auto;
     margin-right: auto;
     background-color: #333333;
-    /* margin-top: 2rem; */
 }
 
 .list *{

@@ -111,19 +111,9 @@ export default function Bikes({socket}) {
     ];
   }, [rowId]);
 
-  const handleClick = () => {
-    history.goBack();
-  };
-
   return (
-    <div className={s.bikes}>
-      <h1 className={s.h1}>BICICLETAS</h1>
-      <div className={s.container}>
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>
-        <span className={s.goBack} onClick={handleClick}>
-          <TiArrowBackOutline />
-        </span>
             <DataGrid
               rows={rowsBikes}
               columns={columnsBookings}
@@ -152,7 +142,5 @@ export default function Bikes({socket}) {
             </div>
           </div>
         </ThemeProvider>
-      </div>
-    </div>
   );
 }
