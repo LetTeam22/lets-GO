@@ -11,8 +11,8 @@ export const SubItems = ({ children, onClick, active, childrens, value }) => {
       <div className={s.btnAndBox}>
         <Button onClick={() => setShow(!show)} active={active} value={value}>
           {children}
+          <Box show={show}/>
         </Button>
-        <Box show={show}/>
       </div>
 
       {show &&
