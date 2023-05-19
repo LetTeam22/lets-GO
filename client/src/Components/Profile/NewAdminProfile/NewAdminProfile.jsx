@@ -3,7 +3,6 @@ import s from "./NewAdminProfile.module.css";
 import { Button } from "./Button/Button";
 import { dashboardItems } from "./DashboardItems";
 import Bookings from "../AdminProfile/Bookings";
-import { Box } from "./Box/Box";
 
 export const NewAdminProfile = () => {
   const [showTable, setShowTable] = useState(<Bookings />);
