@@ -12,37 +12,29 @@ export const dashboardItems = [
     table: <Bookings />,
   },
   {
-    value: "Usuarios",
-    table: <Users />,
+    value: "Inventario",
+    table: null,
     childrens: [
       {
-        value: "Usuarios",
-        table: <Users />,
+        value: "Bicicletas",
+        table: <Bikes />,
       },
       {
-        value: "Usuarios",
-        table: <Users />,
+        value: "Accesorios",
+        table: <Accesories />,
       },
       {
-        value: "Usuarios",
-        table: <Users />,
+        value: "Aventuras",
+        table: <Adventures />,
       }
     ]
   },
   {
-    value: "Bicicletas",
-    table: <Bikes />,
+    value: "Usuarios",
+    table: <Users />,
   },
   {
     value: "Experiencias",
     table: <Experiences />,
-  },
-  {
-    value: "Aventuras",
-    table: <Adventures />,
-  },
-  {
-    value: "Accesorios",
-    table: <Accesories />,
   },
 ];
