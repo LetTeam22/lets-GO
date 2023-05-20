@@ -16,15 +16,14 @@ export const Button = ({ children, onClick, active, childrens, table, value }) =
     );
   } else {
     return (
-        
-        <SubItems 
-            onClick={onClick}
-            active={active}
-            value={value}
-            table={table}
-            children={children}
-            childrens={childrens}
-        />
-    )
+      <SubItems
+        onClick={onClick}
+        active={active}
+        value={value}
+        table={table}
+        children={children}
+        childrens={childrens}
+      />
+    );
   }
 };
