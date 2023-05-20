@@ -1,17 +1,22 @@
 .panel{
-    height: calc(100vh - 6rem);
+    height: calc(100vh - 1rem);
     display: flex;
     flex-direction: row;
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
 }
 
 .lateral{
     width: 20%;
-    height: 100vh;
+    height: calc(100vh - 1rem);
+    padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     background-color: #484747;
-    padding-bottom: 5rem;
+}
+
+.buttons{
+    margin-bottom: 1rem;
 }
 
 .tables {
@@ -20,46 +25,4 @@
     align-items: center;
     width: 100%;
     margin: 2rem auto 0 auto;
-}
-
-.containerUs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem auto 3rem auto;
-}
-
-.containerImg{
-    border-radius: 50%;
-    overflow: hidden;
-    transition: box-shadow 0.5s linear;
-}
-
-.containerImg:hover{
-    box-shadow: rgb(216, 214, 214) 0px 0px .5rem;
-}
-
-.img {
-    width: 6rem;
-    height: 6rem;
-    background-color: rgb(109, 108, 108);
-    padding: .5rem;
-    border-radius: 3rem;
-    transition: box-shadow 0.5s linear ;
-}
-
-.data {
-    margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    color: #F9B621;
-}
-
-.line {
-    background-color: #F9B621;
-    width: 50%;
-    height: .2rem;
-    margin-top: .5rem;
 }
