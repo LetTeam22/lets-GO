@@ -19,6 +19,23 @@ const testingApiGPT = async (req, res) => {
     }
 }
 
+const getApiGPTresponse = async (prompt, temperature = 0.6, max_tokens = 100) => {
+    const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt,
+        temperature,
+        max_tokens
+    });
+    const finalResponse = response.data.choices[0].text.substring(2)
+    return finalResponse
+}
+
+const getExperiencePrompt = expText => {
+    return `Cual es la capital de ${expText}?`
+}
+
 module.exports = {
-    testingApiGPT
+    testingApiGPT,
+    getApiGPTresponse,
+    getExperiencePrompt
 }
