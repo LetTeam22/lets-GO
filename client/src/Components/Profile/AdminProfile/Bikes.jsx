@@ -10,6 +10,8 @@ import theme from "../MaterialUIColors";
 import Action from "./Action";
 import GroupDiscount from "./GroupDiscount";
 import s from "./Bikes.module.css";
+import FormBike from "./FormBike";
+import FormPriceBike from './FormPriceBike'
 
 export default function Bikes({socket}) {
   const bikes = useSelector((state) => state.allBikes);
@@ -18,6 +20,10 @@ export default function Bikes({socket}) {
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
   const [seeDiscount, setSeeDiscount] = useState(false);
+  const [addBike, setAddBike] = useState(false);
+  const [addPriceBike, setAddPriceBike] = useState(false);
+
+
 
   useEffect(() => {
     dispatch(getBikes());
@@ -111,6 +117,14 @@ export default function Bikes({socket}) {
     ];
   }, [rowId]);
 
+  const addBikes = () => {
+    addBike ? setAddBike(false) : setAddBike(true);
+  };
+
+  const setBikesPrices = () => {
+    addPriceBike ? setAddPriceBike(false) : setAddPriceBike(true);
+  };
+
   return (
         <ThemeProvider theme={theme}>
           <div className={s.coverGrid}>
@@ -139,6 +153,14 @@ export default function Bikes({socket}) {
             </div>
             <div className={seeDiscount ? s.show : s.hidde}>
               <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
+            </div>          
+            <button className={s.editBike} onClick={addBikes}>Agregar Bicileta</button>
+            <button className={s.editBike} onClick={setBikesPrices}>Ajustar Precio</button>
+            <div className={addBike ? s.show : s.hidde}>
+              <FormBike setAddBike={setAddBike} />
+            </div>
+            <div className={addPriceBike ? s.show : s.hidde}>
+              <FormPriceBike setAddPriceBike={setAddPriceBike} />
             </div>
           </div>
         </ThemeProvider>

@@ -35,3 +35,27 @@
     padding-top: 1rem;
     color: #787877;
 }
+
+.show{
+    display: flex;
+}
+
+.hidde{
+    display: none;
+}
+
+.editAcc{
+    margin-top: 0.5rem;
+    margin-left: .2rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border-color: rgb(169, 169, 169);
+    font-size: small;
+    color: black;
+    background-color: #f9b621;
+    cursor: pointer;
+}
+
+.editAcc:hover{
+    background-color: #d39307;
+}

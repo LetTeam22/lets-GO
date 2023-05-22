@@ -29,6 +29,7 @@
     background-color: #f9b621;
     cursor: pointer;
 }
+
 .discountBtn:hover{
     background-color: #d39307;
 }
@@ -75,4 +76,42 @@
     justify-content: center;
     padding-top: 1rem;
     color: #787877;
+}
+
+.show{
+    display: flex;
+}
+
+.hidde{
+    display: none;
+}
+
+.editBike{
+    position: relative;
+    top: 0.5rem;
+    left: 3rem;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border-color: grey;
+    font-size: small;
+    color: black;
+    background-color: #f9b621;
+    cursor: pointer;
+}
+
+.editBike{
+    margin-left: .5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border-color: rgb(169, 169, 169);
+    font-size: small;
+    color: black;
+    background-color: #f9b621;
+    cursor: pointer;
+}
+
+.editBike:hover{
+    background-color: #d39307;
 }
