@@ -5,6 +5,8 @@ import Bikes from "../AdminProfile/Bikes";
 import Experiences from "../AdminProfile/Experiences";
 import Adventures from "../AdminProfile/Adventures";
 import Accesories from "../AdminProfile/Accesories";
+import Contacto  from "../AdminProfile/Contacto";
+import Metricas  from "../AdminProfile/Metricas"
 
 export const dashboardItems = [
   {
@@ -34,7 +36,22 @@ export const dashboardItems = [
     table: <Users />,
   },
   {
-    value: "Experiencias",
-    table: <Experiences />,
+    value: "Interacciones",
+    table: null,
+    childrens: [
+      {
+        value: "Experiencias",
+        table: <Experiences />,
+      },
+      {
+        value: "Form. Contacto",
+        table: <Contacto />,
+      }
+    ]
+  },
+  {
+    value: "Métricas",
+    table: <Metricas />,
   },
 ];
+

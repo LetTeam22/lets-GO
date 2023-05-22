@@ -24,5 +24,16 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 2rem auto 0 auto;
+    /* margin: 2rem auto 0 auto; */
+    margin: 0 auto 0 auto;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(99, 99, 99);
+    border-radius: 10px;
 }

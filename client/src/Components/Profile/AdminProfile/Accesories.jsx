@@ -7,12 +7,20 @@ import { getAccesories } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
 import s from "./Accesories.module.css";
+import FormAccesories from "./FormAccesories";
+import FormPriceAcc from "./FormPriceAcc";
+
+
 
 export default function Accesories() {
   const accesories = useSelector((state) => state.accesories);
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
+  const [addAcc, setAddAcc] = useState(false);
+  const [addPriceAcc, setAddPriceAcc] = useState(false);
+
+
 
   useEffect(() => {
     dispatch(getAccesories());
@@ -77,6 +85,14 @@ export default function Accesories() {
     ];
   }, [rowId]);
 
+  const addAccs = () => {
+    addAcc ? setAddAcc(false) : setAddAcc(true);
+  };
+
+  const SetPriceAccs = () => {
+    addPriceAcc ? setAddPriceAcc(false) : setAddPriceAcc(true)
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
@@ -100,6 +116,14 @@ export default function Accesories() {
           }}
           onCellEditCommit={(params) => setRowId(params.id)}
         />
+        <button className={s.editAcc} onClick={addAccs}>Agregar Accesorio</button>
+        <button className={s.editAcc} onClick={SetPriceAccs}>Ajustar Precio</button>
+        <div className={addAcc ? s.show : s.hidde}>
+          <FormAccesories setAddAcc={setAddAcc} />
+        </div>
+        <div className={addPriceAcc ? s.show : s.hidde}>
+          <FormPriceAcc setAddPriceAcc={setAddPriceAcc} />
+        </div>
       </div>
     </ThemeProvider>
   );

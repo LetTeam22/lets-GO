@@ -35,3 +35,26 @@
     padding-top: 1rem;
     color: #787877;
 }
+
+.show{
+    display: flex;
+}
+
+.hidde{
+    display: none;
+}   
+
+.editAdv{
+    margin-top: .5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border-color: rgb(169, 169, 169);
+    font-size: small;
+    color: black;
+    background-color: #f9b621;
+    cursor: pointer;
+}
+
+.editAdv:hover{
+    background-color: #d39307;
+}

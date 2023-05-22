@@ -7,12 +7,16 @@ import { getAllAdventures } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
 import s from "./Adventures.module.css";
+import FormAdventures from "./FormAdventures";
+
 
 export default function Adventures() {
   const adventures = useSelector((state) => state.allAdventures);
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
+  const [addAdv, setAddAdv] = useState(false);
+
 
   useEffect(() => {
     dispatch(getAllAdventures());
@@ -134,6 +138,10 @@ export default function Adventures() {
     ];
   }, [rowId]);
 
+  const addAdvs = () => {
+    addAdv ? setAddAdv(false) : setAddAdv(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
@@ -157,6 +165,10 @@ export default function Adventures() {
           }}
           onCellEditCommit={(params) => setRowId(params.id)}
         />
+        <button className={s.editAdv} onClick={addAdvs}>Agregar Aventura</button>
+        <div className={addAdv ? s.show : s.hidde}>
+          <FormAdventures setAddAdv={setAddAdv} />
+        </div>
       </div>
     </ThemeProvider>
   );
