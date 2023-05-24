@@ -1,12 +1,23 @@
 .containerBtn{
     width: 100%;
     overflow: hidden;
+    max-height: 4rem;
+    transition: max-height 0.7s ease-in-out;
 }
 
 .active{
-    overflow: auto;
+    overflow: visible;
+    max-height: 30rem;
 }
 
 .containerBtn section{
     margin-left: 10%;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.7s ease-in-out, opacity 0.3s ease-out 0.3s;
+}
+
+.active section{
+    transform: translateY(0);
+    opacity: 1;
 }

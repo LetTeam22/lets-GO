@@ -12,7 +12,6 @@ export const SubItems = ({ children, onClick, active, childrens, value }) => {
         {children}
         <Box show={show} onClick={() => setShow(!show)} />
       </Button>
-      {show && (
         <section>
           {childrens.map(({ value, table, childrens }) => {
             return (
@@ -28,7 +27,6 @@ export const SubItems = ({ children, onClick, active, childrens, value }) => {
             );
           })}
         </section>
-      )}
     </div>
   );
 };
