@@ -48,15 +48,5 @@
         "summary":"resumen corto del texto",
         "sentiment":"positivo",
         "translation":"traduction Nico"
-    },
-    {
-        "imgExperience": "https://res.cloudinary.com/pflet/image/upload/v1663710885/Experiences/360_F_93727237_obSrMPr3GkMUEsFlh2EHOfFNWxNuH5Pw_vamypb.jpg",
-        "textExperience": " Gracias a let's Go, las tardes de domingo tomaron un nuevo significado. Antes era el dia de prepararse para el trabajo. Ahora alquilamos una bici tandem y gracias a sus sillas para bebes, podemos disfrutar paseos en familia de una manera sana, divertida y novedosa",
-        "bookingIdBooking": 8,
-        "firstName": "Lea",
-        "email": "leandropap@gmail.com",
-        "summary":"resumen corto del texto",
-        "sentiment":"positivo",
-        "translation":"traduction Lea"
     }
 ]

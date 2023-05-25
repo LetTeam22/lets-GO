@@ -150,7 +150,8 @@ export const getAllBookings = () => {
 };
 
 export const postExperience = (payload) => {
-    return dispatch => axios.post('/experience/create', payload)
+    // nueva ruta: /experience/createGPT
+    return dispatch => axios.post('/experience/create', payload) 
         .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
         .catch(err => console.log(err))
 };
