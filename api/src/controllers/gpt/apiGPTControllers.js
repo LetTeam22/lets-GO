@@ -30,12 +30,8 @@ const getApiGPTresponse = async (prompt, temperature = 0.6, max_tokens = 100) =>
     return finalResponse
 }
 
-const getExperiencePrompt = expText => {
-    return `Cual es la capital de ${expText}?`
-}
 
 module.exports = {
     testingApiGPT,
     getApiGPTresponse,
-    getExperiencePrompt
 }

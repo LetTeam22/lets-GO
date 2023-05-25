@@ -36,6 +36,7 @@ export const Contact = () => {
         e.preventDefault();
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then((result) => {
+                // post al back para guardar info
                 swal({
                     title: 'Mensaje enviado con exito!',
                     text: "Pronto nos estaremos contactando con usted. Muchas gracias por comunicarse con let's GO",
@@ -49,12 +50,7 @@ export const Contact = () => {
                     icon: 'error'
                 })
             });
-        setInput({
-            user_name: '',
-            user_number: '',
-            user_email: '',
-            message: '',
-        });
+        // borro el setInput ya que al irnos del componente se resetea el estado local
         history.push('/home')
     };
 
