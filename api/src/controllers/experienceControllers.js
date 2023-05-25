@@ -107,9 +107,30 @@ una vez que tenemos ese string hacemos un split para acceder a cada parte
 async function createExperience(req, res, next) {
     let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
-    const prompt = getExperiencePrompt(textExperience)
-    const gptResponse = await getApiGPTresponse(prompt)
+    // const prompt = getExperiencePrompt(textExperience)
+    // const gptResponse = await getApiGPTresponse(prompt)
     try {
+        const post = await Experience.create({
+            imgExperience,
+            textExperience,
+            bookingIdBooking,
+            firstName, 
+            email,
+            // summary: gptResponse
+        });
+        res.send(post)
+    } catch (error) {
+        next(error)
+    }
+};
+
+// crea una experiencia y la procesa con la api GPT
+async function createExperienceWithApiGPT(req, res, next) {
+    let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
+    if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
+    try {
+        const prompt = getExperiencePrompt(textExperience)
+        const gptResponse = await getApiGPTresponse(prompt)
         const post = await Experience.create({
             imgExperience,
             textExperience,
@@ -123,6 +144,7 @@ async function createExperience(req, res, next) {
         next(error)
     }
 };
+
 
 // Actualiza Experiencia (recibe por body el ID de experiencia y los datos a cambiar)
 // Devuelve la experiencia actualizada
@@ -197,4 +219,4 @@ const deleteLike = async (req, res, next) => {
 }
 
 
-module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}
+module.exports = {experienceDetails, createExperience, createExperienceWithApiGPT, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}
