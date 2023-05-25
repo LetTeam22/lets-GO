@@ -16,7 +16,6 @@ router.get('/details',experienceDetails)
 //Crea una experiencia, recibe ID de Booking a la cual va esa experiencia
 // ruta: /experience/create
 router.post('/create',createExperience)
-router.post('/createGPT',createExperienceWithApiGPT)
 
 // actualiza los datos de una experiencia, recibe ID de experiencia. (recibe por body)
 // Si el ID no esta en la DB arroja un error "Experiencia no existe"

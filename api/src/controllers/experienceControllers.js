@@ -1,5 +1,6 @@
 const {User, Experience, Booking, Bike} = require ('../db.js');
-const { getApiGPTresponse, getExperiencePrompt } = require('./gpt/apiGPTControllers.js');
+const { getApiGPTresponse } = require('./gpt/apiGPTControllers.js');
+const { getExperiencePrompt } = require('./gpt/prompt.js')
 
 
 // Devuelve todas las experiencias
@@ -96,40 +97,28 @@ async function experienceDetails (req, res, next) {
     else res.send('Experiencia de usuario no existe')
 };
 
-// crea una experiencia, necesita recibir ID de booking
+// crea una experiencia, y la procesa con la api GPT. Necesita recibir ID de booking
+/*
+Falta definir bien el prompt para poder recibir una estructura string de la siguiente manera: "parte1 - parte2 - parte3"
+donde --> parte1: resumen, parte2 --> sentimiento, parte3 --> traducción
+una vez que tenemos ese string hacemos un split para acceder a cada parte
+*/
+
 async function createExperience(req, res, next) {
     let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
+    const prompt = getExperiencePrompt(textExperience)
+    const gptResponse = await getApiGPTresponse(prompt)
     try {
         const post = await Experience.create({
             imgExperience,
             textExperience,
             bookingIdBooking,
             firstName, 
-            email
+            email,
+            summary: gptResponse
         });
         res.send(post)
-    } catch (error) {
-        next(error)
-    }
-};
-
-// crea una experiencia y la procesa con la api GPT
-async function createExperienceWithApiGPT(req, res, next) {
-    let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
-    // if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
-    try {
-        const prompt = getExperiencePrompt(textExperience)
-        const gptResponse = await getApiGPTresponse(prompt)
-        // const post = await Experience.create({
-        //     imgExperience,
-        //     textExperience,
-        //     bookingIdBooking,
-        //     firstName, 
-        //     email
-        // });
-        // res.send(post)
-        res.send(gptResponse)
     } catch (error) {
         next(error)
     }
@@ -208,4 +197,4 @@ const deleteLike = async (req, res, next) => {
 }
 
 
-module.exports = {experienceDetails, createExperience, createExperienceWithApiGPT, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}
+module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}
