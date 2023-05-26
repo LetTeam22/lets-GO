@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useState,useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   FormControl,
   InputLabel,
@@ -9,55 +9,54 @@ import {
   Button,
   FormHelperText,
   IconButton,
-} from "@mui/material";
-import { IoSend } from "react-icons/io5";
-import { BsCameraFill } from "react-icons/bs";
-import theme from "../MaterialUIColors";
-import { ThemeProvider } from "@emotion/react";
-import swal from "sweetalert";
-import s from "./ProfileToEdit.module.css";
-import Loading from "../../Loading/Loading";
-// import image from "../../../image/persona_logeada.png";
-import validate from "../validateFunction";
-import { updateUser } from "../../../Redux/actions";
-import RenderProfilePic from "../../Cloudinary/renderProfilePic";
-import { getUser } from "../../../Redux/actions/index";
-// import logo from '../../../image/logo.png';
+} from '@mui/material';
+import { IoSend } from 'react-icons/io5';
+import { BsCameraFill } from 'react-icons/bs';
+import theme from '../MaterialUIColors';
+import { ThemeProvider } from '@emotion/react';
+import swal from 'sweetalert';
+import s from './ProfileToEdit.module.css';
+import Loading from '../../Loading/Loading';
+import validate from '../validateFunction';
+import { updateUser } from '../../../Redux/actions';
+import RenderProfilePic from '../../Cloudinary/renderProfilePic';
+import { getUser } from '../../../Redux/actions/index';
 
 export const ProfileToEdit = () => {
   const logo = 'https://res.cloudinary.com/pflet/image/upload/v1663098045/Let/image/logo1_bdo7fl.png'
-  const image = "https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png"
+  const image = 'https://res.cloudinary.com/pflet/image/upload/v1662686111/Let/image/persona_logeada_hatkhk.png'
   const dispatch = useDispatch();
   const cloudName = 'pflet'
-  const {isLoading, user } = useAuth0();
   const history = useHistory();
-  const userLogged = useSelector(state=>state.user)
-  useEffect(() => {
-    if(user) dispatch(getUser(user?.email));
-    if(!isLoading) {
-      if(!user?.email) history.push("/")
-    }
-  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
-  // const userLogged = useSelector((state) => state.user);
-  const [input, setInput] = useState({
-    firstName: "",
-    lastName: "",
-    cellphone: ""
-  });
+  const userLogged = useSelector(state=>state.user);
+  const {isLoading, user } = useAuth0();
   const [errors, setErrors] = useState({});
   const [photo, setPhoto] = useState(undefined);
   const [toUpload, setToUpload] = useState('');
   const [uploadedImage, setUploadedImage] = useState(userLogged.profilePic)
   const [uploading, setUploading] = useState(false)
-  // console.log(userLogged)
+  const [input, setInput] = useState({
+    firstName: '',
+    lastName: '',
+    cellphone: ''
+  });
+
+  useEffect(() => {
+    if(user) dispatch(getUser(user?.email));
+    if(!isLoading) {
+      if(!user?.email) history.push('/')
+    }
+  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (isLoading || uploading) return <Loading />;
   if (!isLoading && !user?.email) return <Loading />;
+  
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.id]: e.target.value,
     });
-    if (e.target.id === "profilePic"){
+    if (e.target.id === 'profilePic'){
       setPhoto(URL.createObjectURL(e.target.files[0]));
       setToUpload(e.target.files[0])
     }
@@ -72,6 +71,7 @@ export const ProfileToEdit = () => {
       )
     );
   };
+
   const handleSubmit = async e => {
     e.preventDefault();
     if(toUpload) {
@@ -87,17 +87,13 @@ export const ProfileToEdit = () => {
       await dispatch(updateUser({ ...input, email: user.email }))
     }
     dispatch(getUser(userLogged.email));
-    setInput({
-      firstName: "",
-      lastName: "",
-      cellphone: "",
-    });
-    setToUpload('')
-    setUploading(false)
-    history.push('/bike/profile')
-    return swal("Felicidades!", "Tus datos fueron modificados!", "success");
+    window.history.go(-1);
+    return swal('Felicidades!', 'Tus datos fueron modificados!', 'success');
   };
 
+  const goBack = () => {
+    window.history.go(-1);
+  };
 
   const disabled = Object.keys(errors).length > 0 ||
    !(input.firstName || input.lastName || input.cellphone || toUpload)
@@ -109,10 +105,10 @@ export const ProfileToEdit = () => {
     <section className={s.allPage}>
       <div className={s.container}>
         <Button
-          variant="contained"
-          color="success"
+          variant='contained'
+          color='success'
           className={s.btnBack}
-          onClick={() => history.push("/bike/profile")}>
+          onClick={goBack}>
           Volver
         </Button>
         <div className={s.logoContainer}>
@@ -122,18 +118,18 @@ export const ProfileToEdit = () => {
         <div className={s.nameAndImg}>
           <h2>{name}</h2>
           <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="label"
+            color='primary'
+            aria-label='upload picture'
+            component='label'
             className={s.imgContainer}
           >
             <input
               hidden
-              accept="image/*"
-              type="file"
+              accept='image/*'
+              type='file'
               onChange={handleChange}
               // value={input.profilePic}
-              id="profilePic"
+              id='profilePic'
             />
             {uploadedImage && !photo?
             <RenderProfilePic publicId={uploadedImage}
@@ -152,10 +148,10 @@ export const ProfileToEdit = () => {
         <form className={s.form} onSubmit={handleSubmit}>
           <ThemeProvider theme={theme}>
             <FormControl>
-              <InputLabel htmlFor="firstName">Nombre</InputLabel>
+              <InputLabel htmlFor='firstName'>Nombre</InputLabel>
               <Input
-                id="firstName"
-                aria-describedby="my-helper-text"
+                id='firstName'
+                aria-describedby='my-helper-text'
                 error={errors.firstName ? true : false}
                 placeholder={userLogged?userLogged.firstName?userLogged.firstName:'Vacio':'Vacio'}
                 value={input.firstName}
@@ -164,26 +160,26 @@ export const ProfileToEdit = () => {
               />
             </FormControl>
             <FormControl>
-              <InputLabel htmlFor="lastName">Apellido</InputLabel>
+              <InputLabel htmlFor='lastName'>Apellido</InputLabel>
               <Input
-                id="lastName"
-                aria-describedby="my-helper-text"
+                id='lastName'
+                aria-describedby='my-helper-text'
                 error={errors.lastName ? true : false}
                 placeholder={userLogged?userLogged.lastName?userLogged.lastName:'Vacio':'Vacio'}
                 value={input.lastName}
                 onChange={handleChange}
                 className={s.input}
               />
-              <FormHelperText id="my-helper-text"></FormHelperText>
+              <FormHelperText id='my-helper-text'></FormHelperText>
             </FormControl>
             <FormControl>
-              <InputLabel htmlFor="cellphone">Telefono</InputLabel>
+              <InputLabel htmlFor='cellphone'>Telefono</InputLabel>
               <Input
-                id="cellphone"
-                aria-describedby="my-helper-text"
+                id='cellphone'
+                aria-describedby='my-helper-text'
                 error={errors.cellphone ? true : false}
                 placeholder={userLogged?userLogged.cellphone?userLogged.cellphone:'Vacio':'Vacio'}
-                type="tel"
+                type='tel'
                 value={input.cellphone}
                 onChange={handleChange}
                 className={s.input}
@@ -192,17 +188,17 @@ export const ProfileToEdit = () => {
           </ThemeProvider>
         </form>
             <Button
-              variant="contained"
-              color="success"
+              variant='contained'
+              color='success'
               className={s.btnHome}
-              onClick={() => history.push("/")}>
+              onClick={() => history.push('/')}>
               HOME
             </Button>
             <Button
-              variant="contained"
+              variant='contained'
               endIcon={<IoSend />}
               className={s.btnSend}
-              type="submit"
+              type='submit'
               disabled={disabled}
               onClick={handleSubmit}
             >

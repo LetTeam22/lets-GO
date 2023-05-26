@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 import { postExperience, getAllExperiences } from '../../../Redux/actions';
+// import { postExperienceWithApiGPT } from '../../../Redux/actions';
 import s from './CreateExperiences.module.css'
 import { IoAttach } from 'react-icons/io5';
 import swal from 'sweetalert';
@@ -68,14 +69,17 @@ export const CreateExperiences = () => {
       const res = toUpload? await axios.post(url, data):"";
       const file = toUpload? await res.data:"";
       if(file?.url || false) await dispatch(postExperience({...input, imgExperience: file.url, firstName: input.firstName === '' ? user.firstName : input.firstName }))
-      else await dispatch(postExperience({...input, imgExperience: undefined, firstName: input.firstName === '' ? user.firstName : input.firstName }))
-      setInput({
-        textExperience: '',
-        imgExperience: '',
-        bookingIdBooking: userBookings.idBooking,
-        firstName: ''
-      })
-      setLoading(false)
+      else await dispatch(postExperience({
+          ...input,
+          imgExperience: undefined,
+          firstName: input.firstName === '' ? user.firstName : input.firstName
+      }))
+      // crear una experiencia y procesala con api GPT
+      // else await dispatch(postExperienceWithApiGPT({
+      //     ...input,
+      //     imgExperience: undefined,
+      //     firstName: input.firstName === '' ? user.firstName : input.firstName
+      // }))
       swal('Gracias por contarnos tu experiencia')
       history.push('/allExperiencies')
     } catch (error) {
