@@ -1,4 +1,3 @@
-const promptPrueba = `Hola, como estás?`
 
 // const getExperiencePrompt = expText => {
 //     return `A partir del texto delimitado por comillas triples, haz las siguientes cuatro tareas: 
@@ -20,12 +19,14 @@ const promptPrueba = `Hola, como estás?`
 //             `
 // }
 
+
+// PROMPT EXPERIENCE
 const getSummaryPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, crea un resumen de máximo 4 palabras en español.
 
                 '''${expText}''' 
             `
-}
+};
 
 const getSentimentPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, identifica cuál es el sentimiento de la experiencia brindada por el usuario y da la respuesta
@@ -33,7 +34,7 @@ const getSentimentPrompt = expText => {
 
                 '''${expText}''' 
             `
-}
+};
 
 const getLanguagePrompt = expText => {
     return `A partir del texto delimitado por comillas triples, identifica cuál es el idioma del texto y da la respuesta con la primer letra en mayúscula y 
@@ -41,20 +42,31 @@ const getLanguagePrompt = expText => {
 
                 '''${expText}''' 
             `
-}
+};
 
 const getTranslationPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, traduce el texto al español.
 
                 '''${expText}''' 
             `
-}
+};
+
+// PROMPT ADVENTURE
+const getTextCorrection = text => {
+    return `A partir del texto delimitado por comillas triples, devuelve el mismo texto en español corrigiendo ortografía y gramática. Tratar de "vos" no de "tu".
+
+                '''${text}''' 
+            `
+};
+
+
+
 
 
 module.exports = {
-    promptPrueba,
     getSummaryPrompt,
     getSentimentPrompt,
     getLanguagePrompt,
-    getTranslationPrompt
+    getTranslationPrompt,
+    getTextCorrection,
 };

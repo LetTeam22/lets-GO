@@ -97,18 +97,9 @@ async function experienceDetails (req, res, next) {
     else res.send('Experiencia de usuario no existe')
 };
 
-// crea una experiencia, y la procesa con la api GPT. Necesita recibir ID de booking
-/*
-Falta definir bien el prompt para poder recibir una estructura string de la siguiente manera: "parte1 - parte2 - parte3"
-donde --> parte1: resumen, parte2 --> sentimiento, parte3 --> traducción
-una vez que tenemos ese string hacemos un split para acceder a cada parte
-*/
-
 async function createExperience(req, res, next) {
     let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
-    // const prompt = getExperiencePrompt(textExperience)
-    // const gptResponse = await getApiGPTresponse(prompt)
     try {
         const post = await Experience.create({
             imgExperience,
@@ -116,7 +107,6 @@ async function createExperience(req, res, next) {
             bookingIdBooking,
             firstName, 
             email,
-            // summary: gptResponse
         });
         res.send(post)
     } catch (error) {

@@ -150,8 +150,13 @@ export const getAllBookings = () => {
 };
 
 export const postExperience = (payload) => {
-    // nueva ruta: /experience/createGPT
     return dispatch => axios.post('/experience/create', payload) 
+        .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const postExperienceWithApiGPT = (payload) => {
+    return dispatch => axios.post('/experience/createGPT', payload) 
         .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
         .catch(err => console.log(err))
 };
@@ -330,8 +335,16 @@ export const getAllAdventures = () => {
 }
 
 export const createAdventure = (adventure) => {
+    console.log(adventure)
     return async (dispatch) => {
         axios.post('/adventures/create', adventure)
+            .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
+    }
+}
+
+export const createAdventureWithApiGPT = (adventure) => {
+    return async (dispatch) => {
+        axios.post('/adventures/createGPT', adventure)
             .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
     }
 }

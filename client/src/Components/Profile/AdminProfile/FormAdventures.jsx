@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAdventure } from "../../../Redux/actions";
+// import { createAdventureWithApiGPT } from "../../../Redux/actions";
 import validateFunctionAdvs from "./ValidateFunctionAdvs";
 import s from "./FormAdventures.module.css";
 import {
@@ -101,6 +102,8 @@ export default function FormAdventures({ setAddAdv }) {
         );
         const file = await res.json();
         dispatch(createAdventure({ ...input, image: file.url }));
+        // crear una Aventura y procesala con api GPT
+        // dispatch(createAdventureWithApiGPT({ ...input, image: file.url }));
         setInput({
           name: "",
           description: "",
@@ -128,9 +131,6 @@ export default function FormAdventures({ setAddAdv }) {
   const back = () => {
     setAddAdv(false);
   };
-
-  console.log(input);
-  console.log(errors)
 
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
