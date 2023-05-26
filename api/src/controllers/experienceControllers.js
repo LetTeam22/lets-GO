@@ -1,6 +1,6 @@
 const {User, Experience, Booking, Bike} = require ('../db.js');
 const { getApiGPTresponse } = require('./gpt/apiGPTControllers.js');
-const { getExperiencePrompt } = require('./gpt/prompt.js')
+const { getSummaryPrompt, getSentimentPrompt, getLanguagePrompt, getTranslationPrompt } = require('./gpt/prompt.js')
 
 
 // Devuelve todas las experiencias
@@ -129,15 +129,21 @@ async function createExperienceWithApiGPT(req, res, next) {
     let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
     try {
-        const prompt = getExperiencePrompt(textExperience)
-        const gptResponse = await getApiGPTresponse(prompt)
+        const summaryPrompt = getSummaryPrompt(textExperience)
+        const sentimentPrompt = getSentimentPrompt(textExperience)
+        const languagePrompt = getLanguagePrompt(textExperience)
+        const [summary, sentiment, language] = await Promise.all([getApiGPTresponse(summaryPrompt, 0, 200), getApiGPTresponse(sentimentPrompt, 0, 200), getApiGPTresponse(languagePrompt, 0, 200)])
+        const translation = language === 'Español.' ? 'N/A' : await getApiGPTresponse(getTranslationPrompt(textExperience), 0, 200)
         const post = await Experience.create({
             imgExperience,
             textExperience,
             bookingIdBooking,
             firstName, 
             email,
-            summary: gptResponse
+            summary,
+            sentiment: sentiment.substring(0,sentiment.length - 1),
+            language: language.substring(0,language.length - 1),
+            translation,
         });
         res.send(post)
     } catch (error) {

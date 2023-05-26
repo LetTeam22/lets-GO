@@ -42,10 +42,14 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    translation: {
+    language: {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    translation: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    }
   }, {
     timestamps: false
   });
