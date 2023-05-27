@@ -1,0 +1,29 @@
+[
+    {
+        "name": "TheMax",
+        "phone": "584124894268",
+        "email": "mrtovar10@gmail.com",
+        "message": "Hola, me podrian dar un presupuesto de 12 lets para el sabado de 24 Junio, es para una actividad deportiva en mi empresa, gracias",
+        "summary":"resumen corto del texto",
+        "sentiment":"neutro",
+        "translation":"traduction TheMax"
+    },
+    {
+        "name": "Audi",
+        "phone": "5555555555555",
+        "email": "Audirabravo16@gmail.com",
+        "message": "Hola, nunca he usado su plataforma y quisera un instructivo de inicio a fin del proceso de cómo alquilar una let. gracias!",
+        "summary":"resumen corto del texto",
+        "sentiment":"neutro",
+        "translation":"traduction Audi"
+    },
+    {
+        "name": "Lean",
+        "phone": "45618156548",
+        "email": "henrylet22@gmail.com",
+        "message": "El domingo pasado alquilé una let BlackCity, le fallan los cambios por favor arreglen esa falla. No pude completar mi rutina de bici por su culpa",
+        "summary":"resumen corto del texto",
+        "sentiment":"negativo",
+        "translation":"traduction Miguel"
+    }
+]
