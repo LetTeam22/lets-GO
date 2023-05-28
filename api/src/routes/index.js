@@ -7,6 +7,7 @@ const experienceRouter = require('./experienceRouter');
 const generalRouter = require('./generalRouter')
 const mercadopago = require('./mercadopago')
 const adventuresRouter = require('./adventureRouter');
+const contactRouter = require('./contactRouter');
 
 
 
@@ -18,7 +19,8 @@ router.use('/user', userRouter);
 router.use('/experience', experienceRouter);
 router.use('/general', generalRouter);
 router.use('/mercadopago', mercadopago);
-router.use('/adventures', adventuresRouter)
+router.use('/adventures', adventuresRouter);
+router.use('/contact',contactRouter);
 
 
 
