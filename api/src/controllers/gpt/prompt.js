@@ -20,7 +20,7 @@
 // }
 
 
-// PROMPT EXPERIENCE
+// PROMPT SUMMARY FROM EXPERIENCE OR CONTACT
 const getSummaryPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, crea un resumen de máximo 4 palabras en español.
 
@@ -28,6 +28,7 @@ const getSummaryPrompt = expText => {
             `
 };
 
+// PROMPT SENTIMENT FROM EXPERIENCE
 const getSentimentPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, identifica cuál es el sentimiento de la experiencia brindada por el usuario y da la respuesta
             en una sola palabra, ya sea "Positiva" o "Negativa".
@@ -36,6 +37,7 @@ const getSentimentPrompt = expText => {
             `
 };
 
+// PROMPT LANGUAGE FROM EXPERIENCE
 const getLanguagePrompt = expText => {
     return `A partir del texto delimitado por comillas triples, identifica cuál es el idioma del texto y da la respuesta con la primer letra en mayúscula y 
             el resto en minúscula.
@@ -44,6 +46,7 @@ const getLanguagePrompt = expText => {
             `
 };
 
+// PROMPT TRANSLATION FROM EXPERIENCE
 const getTranslationPrompt = expText => {
     return `A partir del texto delimitado por comillas triples, traduce el texto al español.
 
@@ -59,7 +62,14 @@ const getTextCorrection = text => {
             `
 };
 
+// PROMPT SENTIMENT FROM CONTACT
+const getSentimentContactPrompt = expText => {
+    return `A partir del texto delimitado por comillas triples, identifica cuál es el sentimiento y da la respuesta
+            en una sola palabra, ya sea "Positivo", "Negativo" o "Neutro".
 
+                '''${expText}''' 
+            `
+};
 
 
 
@@ -69,4 +79,5 @@ module.exports = {
     getLanguagePrompt,
     getTranslationPrompt,
     getTextCorrection,
+    getSentimentContactPrompt,
 };
