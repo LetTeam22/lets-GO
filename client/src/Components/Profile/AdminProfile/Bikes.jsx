@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from "react-icons/ti";
+// import { useHistory } from "react-router-dom";
+// import { TiArrowBackOutline } from "react-icons/ti";
 import { BiEdit } from 'react-icons/bi';
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
@@ -15,7 +15,7 @@ import FormPriceBike from './FormPriceBike'
 
 export default function Bikes({socket}) {
   const bikes = useSelector((state) => state.allBikes);
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);

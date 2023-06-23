@@ -9,7 +9,7 @@ import {
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
-    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE
+    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -335,7 +335,6 @@ export const getAllAdventures = () => {
 }
 
 export const createAdventure = (adventure) => {
-    console.log(adventure)
     return async (dispatch) => {
         axios.post('/adventures/create', adventure)
             .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
@@ -349,3 +348,20 @@ export const createAdventureWithApiGPT = (adventure) => {
     }
 }
 
+export const postContact = (payload) => {
+    return dispatch => axios.post('/contact/save', payload) 
+        .then(res => dispatch({ type: POST_CONTACT, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const postContactWithApiGPT = (payload) => {
+    return dispatch => axios.post('/contact/saveGPT', payload) 
+        .then(res => dispatch({ type: POST_CONTACT, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const cleanContact = (payload) => {
+    return dispatch => {
+        dispatch({ type: CLEAN_CONTACT, payload})
+    }
+}

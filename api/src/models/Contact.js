@@ -40,6 +40,10 @@ module.exports = (sequelize) => {
           type: DataTypes.TEXT,
           allowNull: true,
         },
+        reply: {
+          type: DataTypes.BOOLEAN,
+          allowNull: true,
+        },
     }, {
         timestamps: false
     });
