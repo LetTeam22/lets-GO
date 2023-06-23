@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const {saveContactMessage, saveContactMessageGPT} = require ('../controllers/contactControllers')
+const {saveContactMessage, saveContactMessageGPT, allContacts} = require ('../controllers/contactControllers')
 
 const router = Router();
 
@@ -10,5 +10,9 @@ router.post('/save',saveContactMessage);
 //Guarda el mensaje enviado a traves del form de contacto
 // ruta: /contact/saveGPT
 router.post('/saveGPT',saveContactMessageGPT);
+
+// Devuelve todos los mensajes de contacto
+// ruta: /contact/getall
+router.get('/getall', allContacts)
 
 module.exports = router;

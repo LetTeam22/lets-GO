@@ -1,11 +1,10 @@
 const {Contact} = require ('../db.js');
 const { getApiGPTresponse, getContactPrompt } = require('./gpt/apiGPTControllers.js');
-const { getSummaryPrompt, getSentimentContactPrompt, getLanguagePrompt, getTranslationPrompt } = require('./gpt/prompt.js');
+const { getSummaryPrompt, getSentimentPrompt, getLanguagePrompt, getTranslationPrompt, getReplyPrompt } = require('./gpt/prompt.js');
 
 // guarda el msj del form de contacto en la db
 async function saveContactMessage(req, res, next) {
     let { name, phone, email, message} = req.body
-    // if(!message) res.send({ msg: 'faltan datos' })
     try {
         const post = await Contact.create({
             name,
@@ -13,7 +12,8 @@ async function saveContactMessage(req, res, next) {
             email,
             message,
         });
-        res.send(post)
+        let msj = 'Muchas gracias por comunicarse con lets GO! Esperamos que vuelvas a visitarnos pronto'
+        res.send(msj)
     } catch (error) {
         next(error)
     }
@@ -22,27 +22,46 @@ async function saveContactMessage(req, res, next) {
 // guarda el msj del form de contacto y lo procesa con la apiGPT
 async function saveContactMessageGPT(req, res, next) {
     let { name, phone, email, message} = req.body
-    // if(!message) res.send({ msg: 'faltan datos' })
     try {
         const summaryPrompt = getSummaryPrompt(message)
-        const sentimentPrompt = getSentimentContactPrompt(message)
+        const sentimentPrompt = getSentimentPrompt(message)
         const languagePrompt = getLanguagePrompt(message)
-        const [summary, sentiment, language] = await Promise.all([getApiGPTresponse(summaryPrompt, 0, 200), getApiGPTresponse(sentimentPrompt, 0, 200), getApiGPTresponse(languagePrompt, 0, 200)])
-        const translation = language === 'Español.' ? 'N/A' : await getApiGPTresponse(getTranslationPrompt(textExperience), 0, 200)
+        const replyPrompt = getReplyPrompt(message)
+        const [summary, sentiment, language, reply] = await Promise.all([getApiGPTresponse(summaryPrompt, 0, 200), getApiGPTresponse(sentimentPrompt, 0, 200), getApiGPTresponse(languagePrompt, 0, 200), getApiGPTresponse(replyPrompt, 0, 200)])
+        const translation = language === 'Español.' ? 'N/A' : await getApiGPTresponse(getTranslationPrompt(message), 0, 200)
         const post = await Contact.create({
             name,
             phone,
             email,
             message,
             summary,
-            sentiment: sentiment.substring(0,sentiment.length - 1),
+            sentiment,
             language: language.substring(0,language.length - 1),
             translation,
+            reply
         });
-        res.send(post)
+        let msjNegative = 'Lamentamos el inconveniente, nos contactaremos a la brevedad.'
+        let msjPositive = 'Muchas gracias por comunicarse con lets GO! Esperamos que vuelvas a visitarnos pronto.'
+        let response 
+        sentiment === 'Negativo' ? response = msjNegative : response = msjPositive
+        res.send(response)
     } catch (error) {
         next(error)
     }
 };
 
-module.exports = {saveContactMessage, saveContactMessageGPT}
+async function allContacts(req, res, next) {
+    try {
+        const contacts = await Contact.findAll();
+        if(contacts.length) res.send(contacts)
+        else res.send('nothing')      
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {
+    saveContactMessage,
+    saveContactMessageGPT,
+    allContacts
+}
