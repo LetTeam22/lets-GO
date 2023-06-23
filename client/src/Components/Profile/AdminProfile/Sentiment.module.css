@@ -1,0 +1,13 @@
+.negative{
+    color: #dd0303;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.negative:hover{
+    color: #dd0303;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}

@@ -7,12 +7,16 @@ import { getAllExperiences } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
 import Action from "./Action";
 import s from "./Experiences.module.css";
+import { Sentiment } from "./Sentiment";
+import { Summary } from "./Summary";
+import { ModalExperience } from "./ModalExperience";
 
 export default function Experiences() {
   let experiences = useSelector((state) => state.allExperiences);
   const dispatch = useDispatch();
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
+  const [show, setShow] = useState(null);
 
   useEffect(() => {
     dispatch(getAllExperiences());
@@ -23,19 +27,37 @@ export default function Experiences() {
       return {
         id: exp.idExperience,
         booking: exp.bookingIdBooking,
-        email: exp.booking.user.email,
-        description: exp.textExperience,
+        email: exp.email,
+        description: exp.summary,
+        sentiment: exp.sentiment,
+        language: exp.language,
         status: exp.status,
       };
     });
   }, [experiences]);
 
+  const showExperience = (experienceId) => {
+    setShow(experienceId)
+
+  }
+
   const columnsExperiences = useMemo(() => {
     return [
-      { field: "id", headerName: "ID", width: 50 },
-      { field: "booking", headerName: "ID de Reserva", width: 100 },
-      { field: "email", headerName: "Email de User", width: 220 },
-      { field: "description", headerName: "Descripción", width: 600 },
+      { field: "id", headerName: "Nº exp", width: 60 },
+      { field: "booking", headerName: "ID Reserva", width: 85 },
+      { field: "email", headerName: "Usuario", width: 220 },
+      { 
+        field: "description", 
+        headerName: "Resumen", 
+        width: 250,
+        renderCell: (params) => <Summary {...{ params, showExperience }}/>,
+      },
+      { field: "sentiment", 
+        headerName: "Sentimiento", 
+        width: 100,
+        renderCell: (params) => <Sentiment params={params}/>,
+       },
+      { field: "language", headerName: "Lenguaje original", width: 130 },
       {
         field: "status",
         headerName: (
@@ -61,6 +83,7 @@ export default function Experiences() {
   }, [rowId]);
 
   return (
+    <>
     <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
         <DataGrid
@@ -85,5 +108,10 @@ export default function Experiences() {
         />
       </div>
     </ThemeProvider>
+    <div className={!!show? s.modalWindow : s.hide}>
+      <span className={s.background} onClick={() => setShow(null)}></span>
+      <ModalExperience experienceId={show} />
+    </div>
+    </>
   );
 }
