@@ -35,3 +35,31 @@
     padding-top: 1rem;
     color: #787877;
 }
+
+/* CSS de ventana modal */ 
+
+.modalWindow{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background{
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    cursor: default;
+}
+
+.hide{
+    display: none;
+}

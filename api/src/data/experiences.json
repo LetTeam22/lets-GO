@@ -53,5 +53,16 @@
         "sentiment": "Positiva",
         "language": "Español",
         "translation": "N/A"
+    },
+    {
+        "imgExperience": "https://res.cloudinary.com/pflet/image/upload/v1662428398/Let/Experiences/montaña.jpg",
+        "textExperience": "Es una cagada la bicicleta. No me gusto para nada pasar por esta situacion",
+        "bookingIdBooking": 2,
+        "firstName": "Nico",
+        "email": "nicolasbalbi90@gmail.com",
+        "summary": "Iniciativa ambiental negativa.",
+        "sentiment": "Negativa",
+        "language": "Español",
+        "translation": "N/A"
     }
 ]
