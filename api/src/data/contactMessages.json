@@ -31,6 +31,16 @@
         "language": "Español",
         "translation": "N/A",
         "reply": true
-
+    },
+    {
+        "name": "Lean",
+        "phone": "45618156548",
+        "email": "henrylet22@gmail.com",
+        "message": "Last Sunday, I rented a BlackCity bike, and it has issues with the gears. Please fix this problem. I couldn't complete my biking routine because of it.",
+        "summary":"Let BlackCity has gear issues",
+        "sentiment":"Negativo",
+        "language": "Ingles",
+        "translation": "El domingo pasado alquilé una let BlackCity, le fallan los cambios por favor arreglen esa falla. No pude completar mi rutina de bici por su culpa",
+        "reply": true
     }
 ]

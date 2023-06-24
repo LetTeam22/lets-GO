@@ -1,9 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
-// import { TiArrowBackOutline } from "react-icons/ti";
-import { BiEdit } from 'react-icons/bi';
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import React, { useMemo, useState } from "react";
+import { BiEdit } from "react-icons/bi";
 import { ThemeProvider } from "@emotion/react";
 import { getBikes } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
@@ -11,23 +7,16 @@ import Action from "./Action";
 import GroupDiscount from "./GroupDiscount";
 import s from "./Bikes.module.css";
 import FormBike from "./FormBike";
-import FormPriceBike from './FormPriceBike'
+import FormPriceBike from "./FormPriceBike";
+import { Table } from "./Table";
+import { useGetElements } from "./usehooks";
 
-export default function Bikes({socket}) {
-  const bikes = useSelector((state) => state.allBikes);
-  // const history = useHistory();
-  const dispatch = useDispatch();
-  const [pageSize, setPageSize] = useState(5);
+export default function Bikes({ socket }) {
+  const bikes = useGetElements({getElements:getBikes, elements:'allBikes'})
   const [rowId, setRowId] = useState(null);
   const [seeDiscount, setSeeDiscount] = useState(false);
   const [addBike, setAddBike] = useState(false);
   const [addPriceBike, setAddPriceBike] = useState(false);
-
-
-
-  useEffect(() => {
-    dispatch(getBikes());
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toogleDiscount = () => {
     seeDiscount ? setSeeDiscount(false) : setSeeDiscount(true);
@@ -74,7 +63,16 @@ export default function Bikes({socket}) {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "name", headerName: <div>Nombre <BiEdit className={s.edit}/></div>, width: 150, editable: true },
+      {
+        field: "name",
+        headerName: (
+          <div>
+            Nombre <BiEdit className={s.edit} />
+          </div>
+        ),
+        width: 150,
+        editable: true,
+      },
       { field: "type", headerName: "Tipo", width: 80 },
       { field: "traction", headerName: "Traccion", width: 100 },
       { field: "wheelSize", headerName: "Rodado", width: 80 },
@@ -82,14 +80,22 @@ export default function Bikes({socket}) {
       { field: "rating", headerName: "Rating", width: 70 },
       {
         field: "price",
-        headerName: <div>Precio <BiEdit className={s.edit}/></div>,
+        headerName: (
+          <div>
+            Precio <BiEdit className={s.edit} />
+          </div>
+        ),
         width: 70,
         type: "number",
         editable: true,
       },
       {
         field: "discount",
-        headerName: <div>Descuento <BiEdit className={s.edit}/></div>,
+        headerName: (
+          <div>
+            Descuento <BiEdit className={s.edit} />
+          </div>
+        ),
         width: 100,
         type: "singleSelect",
         valueOptions: fillDiscounts(),
@@ -99,7 +105,11 @@ export default function Bikes({socket}) {
       { field: "totalBookings", headerName: "Cantidad alq", width: 100 },
       {
         field: "status",
-        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
+        headerName: (
+          <div>
+            Estado <BiEdit className={s.edit} />
+          </div>
+        ),
         width: 80,
         type: "singleSelect",
         valueOptions: ["active", "service", "deleted"],
@@ -126,43 +136,28 @@ export default function Bikes({socket}) {
   };
 
   return (
-        <ThemeProvider theme={theme}>
-          <div className={s.coverGrid}>
-            <DataGrid
-              rows={rowsBikes}
-              columns={columnsBookings}
-              pageSize={pageSize}
-              onPageSizeChange={(newNumber) => setPageSize(newNumber)}
-              rowsPerPageOptions={[5, 10, 15]}
-              className={s.list}
-              getRowId={(row) => row.id}
-              getRowSpacing={(params) => ({
-                top: params.isFirstVisible ? 0 : 5,
-                bottom: params.isLastVisible ? 0 : 5,
-              })}
-              sx={{
-                [`& .${gridClasses.row}`]: {
-                  bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#494949" : "#191616",
-                },
-              }}
-              onCellEditCommit={(params) => setRowId(params.id)}
-            />
-            <div className={s.discountBtn} onClick={toogleDiscount}>
-              Descuentos grupales
-            </div>
-            <div className={seeDiscount ? s.show : s.hidde}>
-              <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
-            </div>          
-            <button className={s.editBike} onClick={addBikes}>Agregar Bicileta</button>
-            <button className={s.editBike} onClick={setBikesPrices}>Ajustar Precio</button>
-            <div className={addBike ? s.show : s.hidde}>
-              <FormBike setAddBike={setAddBike} />
-            </div>
-            <div className={addPriceBike ? s.show : s.hidde}>
-              <FormPriceBike setAddPriceBike={setAddPriceBike} />
-            </div>
-          </div>
-        </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <div className={s.coverGrid}>
+        <Table setRowId={setRowId} rows={rowsBikes} columns={columnsBookings} />
+        <div className={s.discountBtn} onClick={toogleDiscount}>
+          Descuentos grupales
+        </div>
+        <div className={seeDiscount ? s.show : s.hidde}>
+          <GroupDiscount setSeeDiscount={setSeeDiscount} socket={socket} />
+        </div>
+        <button className={s.editBike} onClick={addBikes}>
+          Agregar Bicileta
+        </button>
+        <button className={s.editBike} onClick={setBikesPrices}>
+          Ajustar Precio
+        </button>
+        <div className={addBike ? s.show : s.hidde}>
+          <FormBike setAddBike={setAddBike} />
+        </div>
+        <div className={addPriceBike ? s.show : s.hidde}>
+          <FormPriceBike setAddPriceBike={setAddPriceBike} />
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }

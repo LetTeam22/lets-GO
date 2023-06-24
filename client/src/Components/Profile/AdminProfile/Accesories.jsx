@@ -1,7 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useMemo, useState } from "react";
 import { BiEdit } from "react-icons/bi";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { ThemeProvider } from "@emotion/react";
 import { getAccesories } from "../../../Redux/actions";
 import theme from "../MaterialUIColors";
@@ -9,22 +7,16 @@ import Action from "./Action";
 import s from "./Accesories.module.css";
 import FormAccesories from "./FormAccesories";
 import FormPriceAcc from "./FormPriceAcc";
+import { Table } from "./Table";
+import { useGetElements } from "./usehooks";
 
 
 
 export default function Accesories() {
-  const accesories = useSelector((state) => state.accesories);
-  const dispatch = useDispatch();
-  const [pageSize, setPageSize] = useState(5);
+  const accesories = useGetElements({getElements:getAccesories, elements:'accesories'})
   const [rowId, setRowId] = useState(null);
   const [addAcc, setAddAcc] = useState(false);
   const [addPriceAcc, setAddPriceAcc] = useState(false);
-
-
-
-  useEffect(() => {
-    dispatch(getAccesories());
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rowsAccs = useMemo(() => {
     return accesories?.map((accesorie) => {
@@ -96,25 +88,10 @@ export default function Accesories() {
   return (
     <ThemeProvider theme={theme}>
       <div className={s.coverGrid}>
-        <DataGrid
+        <Table
+          setRowId={setRowId}
           rows={rowsAccs}
           columns={columnsAccs}
-          pageSize={pageSize}
-          onPageSizeChange={(newNumber) => setPageSize(newNumber)}
-          rowsPerPageOptions={[5, 10, 15]}
-          className={s.list}
-          getRowId={(row) => row.id}
-          getRowSpacing={(params) => ({
-            top: params.isFirstVisible ? 0 : 5,
-            bottom: params.isLastVisible ? 0 : 5,
-          })}
-          sx={{
-            [`& .${gridClasses.row}`]: {
-              bgcolor: (theme) =>
-                theme.palette.mode === "light" ? "#494949" : "#191616",
-            },
-          }}
-          onCellEditCommit={(params) => setRowId(params.id)}
         />
         <button className={s.editAcc} onClick={addAccs}>Agregar Accesorio</button>
         <button className={s.editAcc} onClick={SetPriceAccs}>Ajustar Precio</button>

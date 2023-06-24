@@ -39,7 +39,6 @@ export default function Experiences() {
 
   const showExperience = (experienceId) => {
     setShow(experienceId)
-
   }
 
   const columnsExperiences = useMemo(() => {
@@ -51,7 +50,7 @@ export default function Experiences() {
         field: "description", 
         headerName: "Resumen", 
         width: 250,
-        renderCell: (params) => <Summary {...{ params, showExperience }}/>,
+        renderCell: (params) => <Summary {...{ params, showFcn:showExperience }}/>,
       },
       { field: "sentiment", 
         headerName: "Sentimiento", 
