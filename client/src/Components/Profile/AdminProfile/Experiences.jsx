@@ -9,6 +9,7 @@ import Action from "./Action";
 import s from "./Experiences.module.css";
 import { Sentiment } from "./Sentiment";
 import { Summary } from "./Summary";
+import { Language } from "./Language";
 import { ModalExperience } from "./ModalExperience";
 
 export default function Experiences() {
@@ -24,7 +25,7 @@ export default function Experiences() {
   if (experiences === "Aún no existen experiencias") experiences = [];
   const rowsExperiences = useMemo(() => {
     return experiences?.map((exp) => {
-      return {
+      return {  
         id: exp.idExperience,
         booking: exp.bookingIdBooking,
         email: exp.email,
@@ -56,7 +57,11 @@ export default function Experiences() {
         width: 100,
         renderCell: (params) => <Sentiment params={params}/>,
        },
-      { field: "language", headerName: "Lenguaje original", width: 130 },
+      { field: "language",
+        headerName: "Lenguaje original",
+        width: 130,
+        renderCell: (params) => <Language params={params}/>,
+      },
       {
         field: "status",
         headerName: (

@@ -1,8 +1,15 @@
+.containNeg{
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .negative{
     color: #f9b621;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    margin-right: 1rem;
 }
 
 .negative:hover{

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import s from './Contact.module.css';
 import { useHistory } from 'react-router-dom';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import { FaRegUser } from 'react-icons/fa';
 import { BsPhone } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
@@ -13,9 +13,9 @@ import Chatbot from '../ChatBot/ChatBot';
 import { postContactWithApiGPT, postContact, cleanContact} from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-// const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID2;
-// const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
-// const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID2;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID2;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY2;
 
 export const Contact = () => {
   const history = useHistory();
@@ -56,14 +56,12 @@ export const Contact = () => {
     // guarda el msj de contacto y procesala con api GPT
     dispatch(postContactWithApiGPT(input));
     setLoadin(true);
-
-    // VER, NO ANDA EMAILJS
-    // emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-    //     .then((result) => {
-    //         console.log('todo bien');
-    //     }, (error) => {
-    //         console.log('todo mal', error)
-    //     });
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+        .then((result) => {
+            console.log('todo bien', result);
+        }, (error) => {
+            console.log('todo mal', error)
+        });
   };
 
   const handleChange = (e) => {
