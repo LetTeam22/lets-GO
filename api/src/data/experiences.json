@@ -1,13 +1,13 @@
 [
     {
         "imgExperience": "https://res.cloudinary.com/pflet/image/upload/v1661970867/Let/Experiences/bike.jpg",
-        "textExperience": "My experience with let's GO has been incredible from start to finish. On the third day of my reservation, my tire got punctured. I contacted them, and they fixed it for me at their location that same day. Without a doubt, I highly recommend them.",
+        "textExperience": "La mia esperienza con Let's Go è stata fantastica dall'inizio alla fine. Il terzo giorno della mia prenotazione, ho avuto una gomma a terra. Li ho contattati e me l'hanno riparato nella loro sede lo stesso giorno. Li consiglio vivamente vivamente.",
         "bookingIdBooking": 16,
         "firstName": "Sole",
         "email": "soledato@gmail.com",
         "summary":"Experiencia increíble.",
-        "sentiment":"Positiva",
-        "language":"Inglés",
+        "sentiment":"Positivo",
+        "language":"Italiano",
         "translation":"Mi experiencia con Let's Go ha sido increíble desde el principio hasta el final. El tercer día de mi reserva, se me pinchó una llanta. Los contacté y me la arreglaron en su ubicación ese mismo día. Sin duda, los recomiendo altamente."
     },
     {
@@ -17,7 +17,7 @@
         "firstName": "Maxi",
         "email": "mrtovar10@gmail.com",
         "summary": "Bicicleta maravillosa y cara.",
-        "sentiment": "Positiva",
+        "sentiment": "Positivo",
         "language": "Español",
         "translation": "N/A"
     },
@@ -28,29 +28,29 @@
         "firstName": "Feli",
         "email": "felipe.jure05@gmail.com",
         "summary": "Solución de transporte.",
-        "sentiment": "Positiva",
+        "sentiment": "Positivo",
         "language": "Español",
         "translation": "N/A"
     },
     {
         "imgExperience": "https://res.cloudinary.com/pflet/image/upload/v1662428403/Let/Experiences/patrick-hendry-AJ11OhGy_7M-unsplash_hohsnk.jpg",
-        "textExperience": "Fui de viaje con mi novia a Tucumán y alquilamos las bicis para recorrer distintos senderos en los cerros cercanos a la ciudad. Las bicis están en excelente estado y cumplieron con nuestras expectativas. Ahora planeamos en volver para correr el Trasmontaña y estamos seguros de que elegiremos a let's Go para hacerlo.",
+        "textExperience": "I went on a trip with my girlfriend to Tucumán and we rented bikes to explore different trails in the mountains near the city. The bikes are in excellent condition and met our expectations. Now we plan to come back to participate in the Trasmontaña race, and we are sure we will choose let's Go to do it.",
         "bookingIdBooking": 4,
         "firstName": "Tincho",
         "email": "juanmartinsilva74@gmail.com",
         "summary": "Viaje a Tucumán exitoso.",
-        "sentiment": "Positiva",
-        "language": "Español",
-        "translation": "N/A"
+        "sentiment": "Positivo",
+        "language": "Inglés",
+        "translation": "Fui de viaje con mi novia a Tucumán y alquilamos bicicletas para recorrer diferentes senderos en las montañas cercanas a la ciudad. Las bicicletas están en excelentes condiciones y cumplieron con nuestras expectativas. Ahora tenemos pensado volver para participar en la carrera de Trasmontaña, y estamos seguros de que elegiremos let's Go para hacerlo."
     },
     {
         "imgExperience": "https://res.cloudinary.com/pflet/image/upload/v1662428398/Let/Experiences/montaña.jpg",
         "textExperience": "Quiero felicitar a los chicos de let's GO por esta iniciativa. Estuve en Tucumán de paseo y recorrí la ciudad de punta a punta arriba de una Let plegable, súper práctica y liviana. Ojalá puedan expandirse a otras ciudades. Es fundamental que empecemos a tomarnos en serio el cuidado del ambiente. Los let's GO se dieron cuenta de esto y armaron una idea genial.",
-        "bookingIdBooking": 2,
+        "bookingIdBooking": 3,
         "firstName": "Nico",
         "email": "nicolasbalbi90@gmail.com",
         "summary": "Iniciativa ambiental positiva.",
-        "sentiment": "Positiva",
+        "sentiment": "Positivo",
         "language": "Español",
         "translation": "N/A"
     },
@@ -61,7 +61,7 @@
         "firstName": "Nico",
         "email": "nicolasbalbi90@gmail.com",
         "summary": "Iniciativa ambiental negativa.",
-        "sentiment": "Negativa",
+        "sentiment": "Negativo",
         "language": "Español",
         "translation": "N/A"
     }

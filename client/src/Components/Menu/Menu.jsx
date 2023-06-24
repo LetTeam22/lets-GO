@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import s from './Menu.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -131,10 +131,10 @@ export const Menu = ({socket}) => {
             open && (
                 <div className={s.notifications}>
                   {
-                    notUnicas?.map(n => {
+                    notUnicas?.map((n,i) => {
                       if(n.hasOwnProperty('senderName')) {
                         return (
-                            <>
+                            <React.Fragment key={i}>
                               <div className={s.backNotification} onClick={() => {setNotifications([]); setOpen(false)}}></div>
                               <Link to='/allExperiencies'>
                                 <div className={s.notification}>
@@ -143,7 +143,7 @@ export const Menu = ({socket}) => {
                                 </div>
                                 <hr />
                               </Link>
-                            </>
+                            </React.Fragment>
                           )
                       } else if(n.hasOwnProperty('type') && n.type === 'Login') {
                         return (

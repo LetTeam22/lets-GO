@@ -1,23 +1,3 @@
-// const getExperiencePrompt = expText => {
-//     return `A partir del texto delimitado por comillas triples, haz las siguientes cuatro tareas:
-
-//                 1. Crea un resumen de máximo 4 palabras.
-//                 2. ¿Cuál es el sentimiento de la experiencia brindada por el usuario? Da la respuesta en una sola palabra, ya sea "Positiva" o "Negativa".
-//                 3. ¿Cuál es el idioma del texto? La respuesta debe tener la primer letra en mayúscula y el resto en minúscula.
-//                 4. Si el idioma no es español, traduce el texto al español. Si ya es español, la respuesta debería ser "N/A".
-
-//                 Devuelve el resultado en formato json con las siguientes propiedades (enumeradas respectivamente):
-//                 1. summary
-//                 2. sentiment
-//                 3. language
-//                 4. translation
-
-//                 La respuesta debe ser solo el json.
-
-//                 '''${expText}'''
-//             `
-// }
-
 // PROMPT SUMMARY FROM EXPERIENCE OR CONTACT
 const getSummaryPrompt = (expText) => {
   return `A partir del texto delimitado por comillas triples, crea un resumen de máximo 4 palabras en español.
