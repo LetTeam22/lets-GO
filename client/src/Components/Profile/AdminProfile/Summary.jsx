@@ -3,10 +3,11 @@ import { FaRegEye } from "react-icons/fa";
 import s from './Summary.module.css';
 
 
-export const Summary = ({ params, showExperience }) => {
+export const Summary = ({ params, showFcn, fromContact }) => {
     const { value, id } = params
     const handleClick = () => {
-        showExperience(id)
+        const parameter = fromContact? params.row.message : id
+        showFcn(parameter)
     }
     return (
         <>
