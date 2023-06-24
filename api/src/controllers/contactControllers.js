@@ -1,4 +1,4 @@
-const {Contact} = require ('../db.js');
+const { Contact } = require ('../db');
 const { getApiGPTresponse, getContactPrompt } = require('./gpt/apiGPTControllers.js');
 const { getSummaryPrompt, getSentimentPrompt, getLanguagePrompt, getTranslationPrompt, getReplyPrompt } = require('./gpt/prompt.js');
 
@@ -53,10 +53,11 @@ async function saveContactMessageGPT(req, res, next) {
 async function allContacts(req, res, next) {
     try {
         const contacts = await Contact.findAll();
-        if(contacts.length) res.send(contacts)
-        else res.send('nothing')      
+        console.log(contacts)
+        if(contacts.length) return res.send(contacts)
+        else return res.send('nothing')      
     } catch (error) {
-        next(error)
+        return res.status(400).send(error)
     }
 }
 

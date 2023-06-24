@@ -5,6 +5,10 @@
     font-size: inherit;
 }
 
-.container > span:first-child{
+.toDefault{
     cursor: default;
+}
+
+.toClick{
+    cursor: pointer;
 }
