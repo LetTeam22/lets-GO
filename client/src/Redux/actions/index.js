@@ -9,7 +9,7 @@ import {
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
-    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT
+    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -364,4 +364,12 @@ export const cleanContact = (payload) => {
     return dispatch => {
         dispatch({ type: CLEAN_CONTACT, payload})
     }
-}
+};
+
+export const getAllContacts = () => {
+    return dispatch => axios.get('/contact/getall', ) 
+        .then(res => dispatch({ type: GET_ALL_CONTACTS, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+

@@ -9,7 +9,7 @@ import {
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE,
     CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING,
     SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES,
-    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT
+    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -69,7 +69,8 @@ const initialState = {
     filterExperience: { startDate: null, endDate: null, sort: "all" },
     likes: [],
     allAdventures: [],
-    contactResponse: false
+    contactResponse: false,
+    allContacts: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -316,6 +317,11 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 contactResponse: action.payload
+            }
+        case GET_ALL_CONTACTS:
+            return {
+                ...state,
+                allContacts: action.payload
             }     
         default: return state
     }

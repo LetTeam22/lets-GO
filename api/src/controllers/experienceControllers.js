@@ -131,7 +131,7 @@ async function createExperienceWithApiGPT(req, res, next) {
             firstName, 
             email,
             summary,
-            sentiment: sentiment.substring(0,sentiment.length - 1),
+            sentiment,
             language: language.substring(0,language.length - 1),
             translation,
         });
