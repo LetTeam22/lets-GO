@@ -51,13 +51,13 @@ export const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     // guarda el msj de contacto
-    dispatch(postContact(input))
+    // dispatch(postContact(input))
 
     // guarda el msj de contacto y procesala con api GPT
-    // dispatch(postContactWithApiGPT(input));
+    dispatch(postContactWithApiGPT(input));
+    setLoadin(true);
 
     // VER, NO ANDA EMAILJS
-    // setLoadin(true);
     // emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
     //     .then((result) => {
     //         console.log('todo bien');
