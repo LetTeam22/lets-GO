@@ -5,7 +5,7 @@ export const Sentiment = ({ params }) => {
   const { value, row } = params;
   return (
     <>
-      {value === "Negativa" ? 
+      {value === "Negativa" || value === "Negativo" ? 
         <a className={s.negative} href={`mailto:${row.email}`}>{value}</a>
         : 
         <div>{value}</div>

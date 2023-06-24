@@ -7,6 +7,8 @@ import { getAllContacts } from "../../../Redux/actions";
 import s from "./Experiences.module.css";
 import { Summary } from "./Summary";
 import { ModalContact } from "./ModalContact";
+import { Sentiment } from "./Sentiment";
+import { Language } from "./Language";
 
 const Contacto = () => {
   const contacts = useGetElements({
@@ -55,8 +57,12 @@ const Contacto = () => {
         width: 400,
         renderCell: (params) => <Summary {...{ params, showFcn:showMessage, fromContact:true }} />,
       },
-      { field: "sentiment", headerName: "Sentimiento", width: 120 },
-      { field: "language", headerName: "Idioma", width: 120 },
+      { field: "sentiment", 
+      headerName: "Sentimiento", 
+      width: 120,
+      renderCell: (params) => <Sentiment params={params}/>,
+     },
+      { field: "language", headerName: "Idioma", width: 100, renderCell: (params) => <Language params={params} showFcn={showMessage}/>, },
     ];
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
 

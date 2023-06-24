@@ -6,13 +6,14 @@ import s from './Summary.module.css';
 export const Summary = ({ params, showFcn, fromContact }) => {
     const { value, id } = params
     const handleClick = () => {
-        const parameter = fromContact? params.row.message : id
+        const message = fromContact && params.row.language === 'Español'? params.row.message : params.row.translation
+        const parameter = fromContact? message : id
         showFcn(parameter)
     }
     return (
         <>
         <div className={s.container}>
-            <span>
+            <span className={s.toDefault}>
                 {value}
             </span> 
             <span onClick={handleClick}>
