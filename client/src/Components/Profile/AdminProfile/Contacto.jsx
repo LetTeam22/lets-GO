@@ -7,8 +7,9 @@ import { getAllContacts } from "../../../Redux/actions";
 import s from "./Experiences.module.css";
 import { Summary } from "./Summary";
 import { ModalContact } from "./ModalContact";
+import { ModalSum } from "./ModalSum";
 import { Sentiment } from "./Sentiment";
-import { Language } from "./Language";
+import { LanguageContact } from './LanguageContact'
 
 const Contacto = () => {
   const contacts = useGetElements({
@@ -16,10 +17,17 @@ const Contacto = () => {
     elements: "allContacts",
   });
   const [show, setShow] = useState(null);
+  const [showSum, setShowSum] = useState(null);
+
 
   const showMessage = (message) => {
     setShow(message);
   };
+
+  const showSummary = (parameter) => {
+    setShowSum(parameter);
+  };
+
 
   const rowsContacts = useMemo(() => {
     return contacts?.map((contact) => {
@@ -48,23 +56,33 @@ const Contacto = () => {
 
   const columnsContacts = useMemo(() => {
     return [
-      { field: "id", headerName: "ID", width: 50 },
+      { field: "id", headerName: "N°", width: 50 },
       { field: "email", headerName: "Usuario", width: 220 },
       { field: "phone", headerName: "Telefono", width: 150 },
       {
         field: "summary",
-        headerName: "Resumen",
-        width: 400,
-        renderCell: (params) => <Summary {...{ params, showFcn:showMessage, fromContact:true }} />,
+        headerName: "Resumen Español",
+        width: 350,
+        renderCell: (params) => (
+          <Summary {...{ params, showSummary, fromContact: true }} />
+        ),
       },
-      { field: "sentiment", 
-      headerName: "Sentimiento", 
-      width: 120,
-      renderCell: (params) => <Sentiment params={params}/>,
-     },
-      { field: "language", headerName: "Idioma", width: 100, renderCell: (params) => <Language params={params} showFcn={showMessage}/>, },
+      {
+        field: "sentiment",
+        headerName: "Sentimiento",
+        width: 120,
+        renderCell: (params) => <Sentiment params={params} />,
+      },
+      {
+        field: "language",
+        headerName: "Idioma Original",
+        width: 120,
+        renderCell: (params) => (
+          <LanguageContact params={params} showFcn={showMessage} />
+        ),
+      },
     ];
-  }, []);// eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -75,7 +93,11 @@ const Contacto = () => {
       </ThemeProvider>
       <div className={!!show ? s.modalWindow : s.hide}>
         <span className={s.background} onClick={() => setShow(null)}></span>
-        <ModalContact message={show} />
+        <ModalContact show={show} />
+      </div>
+      <div className={!!showSum ? s.modalWindow : s.hide}>
+        <span className={s.background} onClick={() => setShowSum(null)}></span>
+        <ModalSum showSum={showSum} />
       </div>
     </>
   );

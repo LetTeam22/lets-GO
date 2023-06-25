@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: inherit;
+  align-items: center
+}
+
+.container > span:first-child {
+  cursor: default;
+}
+
+.toClick{
+  cursor: pointer;
+}
+
+.language {
+  color: #f9b621;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}

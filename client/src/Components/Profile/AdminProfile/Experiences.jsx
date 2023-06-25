@@ -9,8 +9,9 @@ import Action from "./Action";
 import s from "./Experiences.module.css";
 import { Sentiment } from "./Sentiment";
 import { Summary } from "./Summary";
-import { Language } from "./Language";
+import { LanguageExp } from "./LanguageExp";
 import { ModalExperience } from "./ModalExperience";
+import { ModalTextExperience } from './ModalTextExperience'
 
 export default function Experiences() {
   let experiences = useSelector((state) => state.allExperiences);
@@ -18,6 +19,8 @@ export default function Experiences() {
   const [pageSize, setPageSize] = useState(5);
   const [rowId, setRowId] = useState(null);
   const [show, setShow] = useState(null);
+  const [showText, setShowText] = useState(null);
+
 
   useEffect(() => {
     dispatch(getAllExperiences());
@@ -33,6 +36,8 @@ export default function Experiences() {
         sentiment: exp.sentiment,
         language: exp.language,
         status: exp.status,
+        translation: exp.translation,
+        textExperience: exp.textExperience
       };
     });
   }, [experiences]);
@@ -41,14 +46,18 @@ export default function Experiences() {
     setShow(experienceId)
   }
 
+  const showTextExperience = (textExperience, translation) => {
+    setShowText(textExperience, translation)
+  }
+
   const columnsExperiences = useMemo(() => {
     return [
-      { field: "id", headerName: "Nº exp", width: 60 },
-      { field: "booking", headerName: "ID Reserva", width: 85 },
+      { field: "id", headerName: "Nº Exp.", width: 60 },
+      { field: "booking", headerName: "N° Reserva", width: 85 },
       { field: "email", headerName: "Usuario", width: 220 },
       { 
         field: "description", 
-        headerName: "Resumen", 
+        headerName: "Resumen Español", 
         width: 250,
         renderCell: (params) => <Summary {...{ params, showFcn:showExperience }}/>,
       },
@@ -58,9 +67,9 @@ export default function Experiences() {
         renderCell: (params) => <Sentiment params={params}/>,
        },
       { field: "language",
-        headerName: "Lenguaje original",
+        headerName: "Idioma Original",
         width: 130,
-        renderCell: (params) => <Language params={params}/>,
+        renderCell: (params) => <LanguageExp params={params} showTextExperience={showTextExperience}/>,
       },
       {
         field: "status",
@@ -115,6 +124,10 @@ export default function Experiences() {
     <div className={!!show? s.modalWindow : s.hide}>
       <span className={s.background} onClick={() => setShow(null)}></span>
       <ModalExperience experienceId={show} />
+    </div>
+    <div className={!!showText? s.modalWindow : s.hide}>
+      <span className={s.background} onClick={() => setShowText(null)}></span>
+      <ModalTextExperience showText={showText} />
     </div>
     </>
   );

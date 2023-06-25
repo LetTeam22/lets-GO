@@ -3,6 +3,7 @@
     min-height: 30%;
     margin-top: 6rem;
     padding-inline: 3rem;
+    padding-top: 1rem;
     position: relative;
     z-index: 1;
     background-color: #484747;
@@ -21,6 +22,15 @@
 }
 
 .title{
-    font-size: x-large;
+    font-size: 1.3rem;
     font-weight: bold;
+}
+
+.tite1{
+    font-size: 1rem;
+
+}
+
+.text {
+    font-size: 1rem;
 }
