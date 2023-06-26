@@ -9,7 +9,8 @@ import {
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE,
     CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING,
     SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES,
-    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS
+    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS,
+    GET_DATA_CHART_SENTIMENT,
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -70,7 +71,8 @@ const initialState = {
     likes: [],
     allAdventures: [],
     contactResponse: false,
-    allContacts: []
+    allContacts: [],
+    dataChartSentimentExp: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -322,7 +324,12 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allContacts: action.payload
-            }     
+            }
+        case GET_DATA_CHART_SENTIMENT:
+            return {
+                ...state,
+                dataChartSentimentExp: action.payload
+            }      
         default: return state
     }
 }
