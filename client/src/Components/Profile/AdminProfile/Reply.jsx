@@ -2,16 +2,16 @@ import React from "react";
 import s from "./Sentiment.module.css";
 import { AiOutlineMail } from "react-icons/ai";
 
-export const Sentiment = ({ params }) => {
+export const Reply = ({ params }) => {
   const { value, row } = params;
-
   const mail = `mailto:${row.email}`;
+  console.log(params);
 
   return (
     <>
-      {value === "Negativo" ? (
+      {!!value ? (
         <div className={s.contain}>
-          <span className={s.span}>{value}</span>
+          <span className={s.span}>Si</span>
           <a href={mail} target="_blank" rel="noreferrer">
             <div className={s.icon}>
               <AiOutlineMail />
@@ -19,7 +19,7 @@ export const Sentiment = ({ params }) => {
           </a>
         </div>
       ) : (
-        <div className={s.spanN}>{value}</div>
+        <div className={s.spanN}>No</div>
       )}
     </>
   );

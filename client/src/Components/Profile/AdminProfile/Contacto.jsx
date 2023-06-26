@@ -10,6 +10,7 @@ import { ModalContact } from "./ModalContact";
 import { ModalSum } from "./ModalSum";
 import { Sentiment } from "./Sentiment";
 import { LanguageContact } from './LanguageContact'
+import { Reply } from "./Reply";
 
 const Contacto = () => {
   const contacts = useGetElements({
@@ -40,6 +41,7 @@ const Contacto = () => {
         sentiment,
         language,
         translation,
+        reply
       } = contact;
       return {
         id: idContact,
@@ -50,6 +52,7 @@ const Contacto = () => {
         sentiment,
         language,
         translation,
+        reply
       };
     });
   }, [contacts]);
@@ -62,7 +65,7 @@ const Contacto = () => {
       {
         field: "summary",
         headerName: "Resumen Español",
-        width: 350,
+        width: 330,
         renderCell: (params) => (
           <Summary {...{ params, showSummary, fromContact: true }} />
         ),
@@ -79,6 +82,14 @@ const Contacto = () => {
         width: 120,
         renderCell: (params) => (
           <LanguageContact params={params} showFcn={showMessage} />
+        ),
+      },
+      {
+        field: "reply",
+        headerName: "Respuesta",
+        width: 100,
+        renderCell: (params) => (
+          <Reply params={params} />
         ),
       },
     ];

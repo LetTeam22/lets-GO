@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegEye } from "react-icons/fa";
-import s from "./Summary.module.css";
+import s from "./Sentiment.module.css";
+
 
 export const Summary = ({ params, showFcn, showSummary, fromContact }) => {
   const { value, id } = params;
@@ -14,10 +15,12 @@ export const Summary = ({ params, showFcn, showSummary, fromContact }) => {
   };
   return (
     <>
-      <div className={s.container}>
-        <span className={s.toDefault}>{value}</span>
+      <div className={s.contain}>
+        <span className={s.spanN}>{value}</span>
         <span onClick={handleClick}>
-          <FaRegEye />
+          <div className={s.icon}>
+            <FaRegEye />
+          </div>
         </span>
       </div>
     </>
