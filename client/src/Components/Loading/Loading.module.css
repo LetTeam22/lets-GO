@@ -1,3 +1,24 @@
+.contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rem;
+    position: relative;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png');
+}
+
+.span{
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #333333;
+    text-align: center;
+}
+
 .spinner{
     position: absolute;
     top: 0;
@@ -8,20 +29,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position-x: center;
-    background-image: url('https://res.cloudinary.com/pflet/image/upload/v1662686161/Let/image/fondo_huellas_u2a4wr.png');
 }
 .seMueve{
-    width: 100%;
+    width: 100vh;
     animation: mueve 6s linear infinite
 }
 .gira{
     width: 15rem;
     animation: gira 2.5s linear infinite
 }
+
 
 @keyframes gira {
     0%{
@@ -37,5 +54,15 @@
     }
     100%{
         transform: translateX(110%);
+    }
+}
+
+@media (max-width:900px) {
+    .span{
+        font-size: .9rem;
+
+    }
+    .gira{
+        width: 7rem;
     }
 }

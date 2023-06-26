@@ -1,20 +1,46 @@
-.containNeg{
+.contain{
+    width: 100%;
     display: flex;
-    margin-top: auto;
-    margin-bottom: auto;
+    justify-content: space-between;
+    font-size: inherit;
 }
 
-.negative{
+.toDefault{
+    cursor: default;
+}
+
+.span {
     color: #f9b621;
-    font-weight: bold;
     cursor: pointer;
     text-decoration: none;
     margin-right: 1rem;
+    transition: all 0.3s ease-out;
 }
 
-.negative:hover{
+.span:hover{
     color: #f9b621;
     font-weight: bold;
     position: relative;
     z-index: 1;
+    transition: all 0.3s ease-out;
+}
+
+.spanN {
+    cursor: default;
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-out;
+    padding: .2rem;
+    cursor: pointer;
+}
+
+.icon:hover{
+    background-color: #f9b52180;
+    border-radius: 3rem;
+    transition: all 0.3s ease-out;
+    
 }

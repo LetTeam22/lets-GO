@@ -6,6 +6,7 @@ import { addAdventure, getAllAdventures } from "../../Redux/actions";
 import CardAdventures from "./CardAdventures";
 import Chatbot from "../ChatBot/ChatBot";
 import swal from "sweetalert";
+import Loading from "../Loading/Loading";
 
 export const Adventure = () => {
   const dispatch = useDispatch();
@@ -79,6 +80,8 @@ export const Adventure = () => {
     adventures = adventures.filter(
       (a) => !bookedAdventures.adv.includes(a.idAdv)
     );
+
+  if(!adventures.length) return <Loading />
 
   return (
     <>

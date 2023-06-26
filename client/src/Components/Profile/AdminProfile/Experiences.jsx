@@ -52,8 +52,8 @@ export default function Experiences() {
 
   const columnsExperiences = useMemo(() => {
     return [
-      { field: "id", headerName: "Nº Exp.", width: 60 },
-      { field: "booking", headerName: "N° Reserva", width: 85 },
+      { field: "id", headerName: "Nº Exp.", width: 70 },
+      { field: "booking", headerName: "N° Res.", width: 70 },
       { field: "email", headerName: "Usuario", width: 220 },
       { 
         field: "description", 
@@ -63,7 +63,7 @@ export default function Experiences() {
       },
       { field: "sentiment", 
         headerName: "Sentimiento", 
-        width: 100,
+        width: 120,
         renderCell: (params) => <Sentiment params={params}/>,
        },
       { field: "language",

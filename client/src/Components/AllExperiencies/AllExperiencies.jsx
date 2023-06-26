@@ -27,6 +27,8 @@ export const AllExperiencies = ({socket}) => {
         if(user?.email) dispatch(getAllLikes(user?.email))
     }, [dispatch, user]);
     
+    if(!allExperiences.length) return <Loading />
+
     return (
         <>
         <Chatbot/>
