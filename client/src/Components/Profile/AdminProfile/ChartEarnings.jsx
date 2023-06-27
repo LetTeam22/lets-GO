@@ -1,6 +1,7 @@
 import React from "react";
 import { getDataChartEarnings } from "../../../Redux/actions";
 import { useGetElements } from "./usehooks";
+import s from './CardChartSentiment.module.css';
 import {
   LineChart,
   Line,
@@ -14,6 +15,8 @@ export const ChartEarnings = () => {
   const data = useGetElements({getElements: getDataChartEarnings, elements: "dataChartEarnings"});
     const perMonth = data[1].earnings
   return (
+    <div className={s.cardContainer}>
+    <h4 className={s.title}>Ganancias en el {data[0].year}</h4>
     <LineChart
       width={600}
       height={300}
@@ -26,5 +29,6 @@ export const ChartEarnings = () => {
       <YAxis />
       <Tooltip />
     </LineChart>
+    </div>
   );
 };
