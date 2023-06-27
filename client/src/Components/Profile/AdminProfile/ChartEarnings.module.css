@@ -1,0 +1,21 @@
+.mainContainerData{
+    display: flex;
+    flex-direction: column;
+}
+ .containerGraph{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 1rem;
+   border-radius: 0.5rem;
+   box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+ }
+
+ .containerData{
+    margin-top: 3rem;
+ }
+
+ .title{
+   color: "#242020";
+ }
+

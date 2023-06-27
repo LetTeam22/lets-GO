@@ -2,7 +2,6 @@ const { User, Experience, Booking, Bike, Contact } = require("../db.js");
 
 // Devuelve todas las experiencias
 async function getSentimentsStats(req, res, next) {
-
   try {
     const experiences = await Experience.findAll({
       include: {
@@ -47,7 +46,7 @@ async function getSentimentsStats(req, res, next) {
       type: "sentiment",
       arraySentiments: contacts,
     });
-    
+
     const data = [experienceSentiments, contactSentiments];
     res.send(data);
   } catch (error) {
@@ -56,44 +55,63 @@ async function getSentimentsStats(req, res, next) {
 }
 
 // devuelve las ganancias en la fecha pasada por params
-const getEarnings = async (req, res) => {
-    const { year } = req.params
-    // LO IDEAL SERIA PONER EL CORRIENTE AÑO   new Date().getFullYear().toString()
-    // PERO NO TENEMOS NINGUNA RESERVA EN 2023
-    if(isNaN(Number(year)) || year.length !== 4) return res.status(400).send({message: 'Debe enviar un año en formato YYYY'})
-    const bookings = await Booking.findAll();
+const getEarnings = async (req, res, next) => {
+  const { year } = req.params;
+  // LO IDEAL SERIA PONER EL CORRIENTE AÑO   new Date().getFullYear().toString()
+  // PERO NO TENEMOS NINGUNA RESERVA EN 2023
+  try {
+    if (isNaN(Number(year)) || year.length !== 4)
+      return res
+        .status(400)
+        .send({ message: "Debe enviar un año en formato YYYY" });
 
-    const bookingsFiltered = bookings.filter(book => book.status === "confirmed");
+    const bookings = await Booking.findAll();
+    const bookingsFiltered = bookings.filter(
+      (book) => book.status === "confirmed"
+    );
 
     const bookingsByDates = ({ year, arrayBookings }) => {
       const sameDate = arrayBookings.filter((book) => {
         const startBooking = book.startDate.split("-")[0];
         return year === startBooking;
       });
-      const totalEarnings = sameDate.reduce((acc, curr) => acc + curr.totalPrice, 0);
-      const YearEarnings = {name: 'Ganancias', type: 'Year', year, earnings:totalEarnings}
-      const allMonths = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-      const objMonths = allMonths.map(month => {
+      const totalEarnings = sameDate.reduce(
+        (acc, curr) => acc + curr.totalPrice,
+        0
+      );
+      const YearEarnings = {
+        name: "Ganancias", type: "Year", year, earnings: totalEarnings};
+      const allMonths = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ];
+      const objMonths = allMonths.map((month) => {
         return {
-          month, 
-          earnings: 0
-        }
-      })
+          month,
+          earnings: 0,
+        };
+      });
 
-      sameDate.forEach(book => {
+      sameDate.forEach((book) => {
         const month = book.startDate.split("-")[1];
-        objMonths[Number(month)].earnings += book.totalPrice
-      })
+        objMonths[Number(month)].earnings += book.totalPrice;
+      });
 
-      const monthsEarnings = { name: 'Ganancias', type: 'Month', earnings: objMonths}
-      res.send([YearEarnings, monthsEarnings])
+      const monthsEarnings = {
+        name: "Ganancias",
+        type: "Month",
+        earnings: objMonths,
+      };
+      res.send([YearEarnings, monthsEarnings]);
     };
-    const bookingsEarnings = bookingsByDates({year, arrayBookings: bookingsFiltered})
-    res.status(200).send(bookingsEarnings)
-}
-
+    const bookingsEarnings = bookingsByDates({
+      year,
+      arrayBookings: bookingsFiltered,
+    });
+    res.status(200).send(bookingsEarnings);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   getSentimentsStats,
-  getEarnings
+  getEarnings,
 };
