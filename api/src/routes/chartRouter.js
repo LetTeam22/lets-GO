@@ -1,8 +1,9 @@
 const { Router } = require('express');
-const { getSentimentsStats} = require('../controllers/chartControllers');
+const { getSentimentsStats, getEarnings } = require('../controllers/chartControllers');
 
 const router = Router();
-router.get('/', getSentimentsStats) // /chart
+router.get('/sentiments', getSentimentsStats) // sentimientos
 
+router.get('/earnings/:year', getEarnings) // ganancias por reservas
 
 module.exports = router;

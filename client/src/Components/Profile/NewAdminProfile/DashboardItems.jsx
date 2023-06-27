@@ -6,7 +6,8 @@ import Experiences from "../AdminProfile/Experiences";
 import Adventures from "../AdminProfile/Adventures";
 import Accesories from "../AdminProfile/Accesories";
 import Contacto  from "../AdminProfile/Contacto";
-import Metricas  from "../AdminProfile/Metricas"
+import { ChartSentiment }  from "../AdminProfile/ChartSentiment"
+import { ChartEarnings } from "../AdminProfile/ChartEarnings";
 
 export const dashboardItems = [
   {
@@ -51,7 +52,18 @@ export const dashboardItems = [
   },
   {
     value: "Métricas",
-    table: <Metricas />,
+    table: null,
+    childrens: [
+      {
+        value: 'Sentimientos',
+        table: <ChartSentiment />,
+      },
+      {
+        value: 'Ganancias',
+        table: <ChartEarnings />,
+      }
+      
+    ]
   },
 ];
 

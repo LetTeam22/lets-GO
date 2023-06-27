@@ -11,6 +11,7 @@ import {
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
     GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS, 
     GET_DATA_CHART_SENTIMENT,
+    GET_DATA_CHART_EARNINGS,
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -374,7 +375,12 @@ export const getAllContacts = () => {
 };
 
 export const getDataChartSentimentExp = () => {
-    return dispatch => axios(`/chart`)
+    return dispatch => axios(`/chart/sentiments`)
         .then(res => dispatch({ type: GET_DATA_CHART_SENTIMENT, payload: res.data }))
 };
 
+
+export const getDataChartEarnings = (year = '2022') => {
+    return dispatch => axios(`/chart/earnings/${year}`)
+        .then(res => dispatch({ type: GET_DATA_CHART_EARNINGS, payload: res.data }))
+};
