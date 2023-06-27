@@ -10,7 +10,8 @@ import { TbSend } from 'react-icons/tb';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import Chatbot from '../ChatBot/ChatBot';
-import { postContactWithApiGPT, postContact, cleanContact} from '../../Redux/actions';
+import { postContactWithApiGPT, cleanContact} from '../../Redux/actions';
+// import { postContact} from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID2;
@@ -34,7 +35,7 @@ export const Contact = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if(typeof(contactResponse) === 'string') {
@@ -46,7 +47,7 @@ export const Contact = () => {
         dispatch(cleanContact(false))
         history.push('/home')
     };
-  }, [contactResponse]);
+  }, [contactResponse]);// eslint-disable-line react-hooks/exhaustive-deps
 
   const sendEmail = (e) => {
     e.preventDefault();

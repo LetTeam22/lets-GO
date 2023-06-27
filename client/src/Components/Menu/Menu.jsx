@@ -202,7 +202,7 @@ export const Menu = ({ socket }) => {
                   );
                 } else if (n.hasOwnProperty("type") && n.type === "Login") {
                   return (
-                    <>
+                    <React.Fragment key={i}>
                       <div
                         className={s.backNotification}
                         onClick={() => {
@@ -215,7 +215,7 @@ export const Menu = ({ socket }) => {
                         <span className={s.spanNotification}>{n.content}</span>
                       </div>
                       <hr />
-                    </>
+                    </React.Fragment>
                   );
                 } else if (
                   n.hasOwnProperty("type") &&
