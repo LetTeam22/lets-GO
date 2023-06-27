@@ -1,31 +1,33 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import s from "./ChartExpSentiment.module.css";
+import React from "react";
 import { getDataChartSentimentExp } from "../../../Redux/actions";
-import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis} from 'recharts'
+import { CardChartSentiment } from "./CardChartSentiment";
+import s from './ChartSentiment.module.css';
+import { useGetElements } from "./usehooks";
 
 export const ChartSentiment = () => {
-  const data = useSelector(state => state.dataChartSentimentExp);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-      dispatch(getDataChartSentimentExp())
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  console.log(data)
+  const data = useGetElements({ getElements: getDataChartSentimentExp, elements: 'dataChartSentimentExp' })
+  const totalSentiments = data?.reduce(
+    (curr, {...acc}) => {
+      if (curr.type === "sentiment") {
+        acc.Positivo += curr.Positivo;
+        acc.Negativo += curr.Negativo;
+        acc.Neutro += curr.Neutro;
+        delete acc.name
+      }
+      return acc;
+    },
+    { Positivo: 0, Negativo: 0, Neutro: 0 }
+  );
+  const sentiments = data?.filter(chart => chart.type === 'sentiment')
+  const bars = [
+    {value:'Positivo', color:'#377539'}, 
+    {value:'Negativo', color:'#753737'},
+    {value:'Neutro', color:'#1c1a1a'}
+  ]
   return (
-    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <h4 style={{color:'#ffffff'}}>Análisis de sentimientos (Experiencia y Contactos)</h4>
-      <ResponsiveContainer width={700} aspect={2}>
-        <BarChart data={data} width={200} height={200} margin={{top:5,left:10,right:30,bottom:5}}> 
-          <CartesianGrid strokeDasharray={"4 1"}/>
-          <XAxis dataKey={"Sentimiento"}/>
-          <YAxis/>
-          <Legend/>
-          <Bar dataKey={"positivo"} fill="#000000"/>
-          <Bar dataKey={"negativo"} fill="#f9b621"/>
-          <Bar dataKey={"neutro"} fill="#787877"/>
-        </BarChart>
-      </ResponsiveContainer>
+    <div className={s.container}>
+      <CardChartSentiment title={"Totales"} data={[totalSentiments]} bars={bars}/>
+      <CardChartSentiment title={'Comparativo'} data={sentiments} bars={bars} />
     </div>
   );
 };

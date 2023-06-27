@@ -21,7 +21,7 @@ export const AdminData = () => {
             </Link>
             :
             <Link to='/editProfile'>
-              <img img className={s.img} src={image} alt={userLogged?.firstName || null} />
+              <img className={s.img} src={image} alt={userLogged?.firstName || null} />
             </Link>
           }
         </div>
