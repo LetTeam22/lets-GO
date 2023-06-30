@@ -1,6 +1,6 @@
 import React from "react";
 import { getDataChartSentimentExp } from "../../../Redux/actions";
-import { CardChartSentiment } from "./CardChartSentiment";
+import { CardBarChart } from "./CardBarChart";
 import s from './ChartSentiment.module.css';
 import { useGetElements } from "./usehooks";
 
@@ -26,8 +26,8 @@ export const ChartSentiment = () => {
   ]
   return (
     <div className={s.container}>
-      <CardChartSentiment title={"Totales"} data={[totalSentiments]} bars={bars}/>
-      <CardChartSentiment title={'Comparativo'} data={sentiments} bars={bars} />
+      <CardBarChart title={"Totales"} data={[totalSentiments]} bars={bars}/>
+      <CardBarChart title={'Comparativo'} data={sentiments} bars={bars} />
     </div>
   );
 };
