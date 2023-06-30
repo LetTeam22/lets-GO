@@ -8,16 +8,16 @@ import {
 import theme from "../MaterialUIColors";
 import { ThemeProvider } from "@emotion/react";
 
-export const ChartBikesSelect = ({value, setValue, properties}) => {
+export const ChartBikesSelect = ({value, setValue, properties, title}) => {
   return (
     <ThemeProvider theme={theme}>
     <FormControl variant="standard" sx={{ m: 1, minWidth: 170 }}>
-      <InputLabel id="property">Propiedad</InputLabel>
+      <InputLabel id={title}>{title}</InputLabel>
       <Select
-        labelId="property"
-        id="property"
+        labelId={title}
+        id={title}
         value={value.value}
-        label="property"
+        label={title}
         onChange={(e) => {
             const prop = properties.find(p => p.value === e.target.value)
             setValue({...value, name: prop.name, value:e.target.value})}
