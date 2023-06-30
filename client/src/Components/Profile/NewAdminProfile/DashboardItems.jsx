@@ -8,6 +8,7 @@ import Accesories from "../AdminProfile/Accesories";
 import Contacto  from "../AdminProfile/Contacto";
 import { ChartSentiment }  from "../AdminProfile/ChartSentiment"
 import { ChartEarnings } from "../AdminProfile/ChartEarnings";
+import { ChartBikes } from "../AdminProfile/ChartBikes";
 
 export const dashboardItems = [
   {
@@ -61,8 +62,11 @@ export const dashboardItems = [
       {
         value: 'Ganancias',
         table: <ChartEarnings />,
+      },
+      {
+        value: 'Bicicletas',
+        table: <ChartBikes />,
       }
-      
     ]
   },
 ];

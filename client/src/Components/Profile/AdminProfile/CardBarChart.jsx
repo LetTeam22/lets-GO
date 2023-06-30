@@ -1,5 +1,5 @@
 import React from "react";
-import s from './CardChartSentiment.module.css';
+import s from './CardBarChart.module.css';
 import {
   Bar,
   BarChart,
@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 
-export const CardChartSentiment = ({ title, data, bars }) => {
+export const CardBarChart = ({ title, data, bars }) => {
   return (
     <div className={s.cardContainer}>
       <h4 className={s.title}>{title}</h4>

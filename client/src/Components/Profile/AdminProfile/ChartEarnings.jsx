@@ -27,7 +27,7 @@ export const ChartEarnings = () => {
           width={600}
           height={300}
           data={perMonth}
-          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          margin={{ top: 5, right: 35, bottom: 5, left: 5 }}
         >
           <Line type='monotone' dataKey='earnings' stroke='#8884d8' />
           <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
