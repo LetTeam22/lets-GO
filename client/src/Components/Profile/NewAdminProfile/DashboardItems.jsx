@@ -9,6 +9,7 @@ import Contacto  from "../AdminProfile/Contacto";
 import { ChartSentiment }  from "../AdminProfile/ChartSentiment"
 import { ChartEarnings } from "../AdminProfile/ChartEarnings";
 import { ChartBikes } from "../AdminProfile/ChartBikes";
+import { ChartBookings } from "../AdminProfile/ChartBookings";
 
 export const dashboardItems = [
   {
@@ -66,6 +67,10 @@ export const dashboardItems = [
       {
         value: 'Bicicletas',
         table: <ChartBikes />,
+      },
+      {
+        value: 'Reservaciones',
+        table: <ChartBookings />,
       }
     ]
   },

@@ -10,7 +10,7 @@ import {
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
     GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS, 
-    GET_DATA_CHART_SENTIMENT,
+    GET_DATA_CHART_SENTIMENT, GET_DATA_CHART_BOOKINGS,
     GET_DATA_CHART_EARNINGS,
 } from './actiontypes'
 
@@ -384,3 +384,9 @@ export const getDataChartEarnings = (year = '2022') => {
     return dispatch => axios(`/chart/earnings/${year}`)
         .then(res => dispatch({ type: GET_DATA_CHART_EARNINGS, payload: res.data }))
 };
+
+export const getDataChartBookings = (year = '2022') => {
+    return dispatch => axios(`/chart/bookings/${year}`)
+        .then(res => dispatch({ type: GET_DATA_CHART_BOOKINGS, payload: res.data }))
+};
+

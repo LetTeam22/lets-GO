@@ -52,8 +52,60 @@ const convertMonth = (monthStr) => {
     }
   };
 
+  const getBookingsPerYear = ({bookings, year}) => {
+    // filtra las reservas por un año en particular
+    const getFilterBookingsPerYear = ({ bookings, year }) => {
+        return bookings.filter(book => {
+            const [yearBook] = book.startDate.split("-");
+            return yearBook === year
+        })
+    }
+
+    /* crea un arreglo de objetos que tiene los meses y la cantidad de bicicletas, 
+    accesorios o aventuras que se reservaron en ese mes.
+    Ej: [{ month: 'Enero', bikes: 5, accesories: 8, adventures: 0}, ...] */
+    const getBookingsByMonths = ({ bookings }) => {
+      const objElements = {}
+      const elements = ['bikes', 'adventures', 'accesories']
+      elements.forEach(el => {
+        objElements[el] = []
+      })
+      const allMonths = [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre", 
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+    ];
+      const objMonth = allMonths.map((month) => {
+        return {
+          month, 
+          ...objElements
+        }
+      }) 
+      bookings.forEach((book) => {
+        const month = book.startDate.split('-')[1]
+        const index = Number(month)
+        elements.forEach(el => {
+          objMonth[index][el] = objMonth[index][el].concat(book[el])
+        })
+      });
+      return objMonth;
+    };
+    const yearBookings = getFilterBookingsPerYear({bookings, year})
+    return getBookingsByMonths({ bookings:yearBookings })
+  }
+
 module.exports = {
-  sortBookings
+  sortBookings,
+  getBookingsPerYear
 }
 
   

@@ -6,7 +6,7 @@ import { useGetElements } from "./usehooks";
 import { ChartBikesSelect } from "./ChartBikesSelect";
 import { CardBarChart } from "./CardBarChart";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", '#5F9EA0', '#9370D8', '#008080', '#708090'];
+export const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", '#5F9EA0', '#9370D8', '#008080', '#708090'];
 const properties = [
   {
     value:'type',
