@@ -103,9 +103,36 @@ const convertMonth = (monthStr) => {
     return getBookingsByMonths({ bookings:yearBookings })
   }
 
+  const getCompletedBookings = ({bookings, accesories, adventures, bikes}) => {
+    // agrega la cantidad 
+    const getUniqueNames = (elements, value) => {
+      const element = elements.map(e => e[value])
+      const uniques = new Set(element)
+      return Array.from(uniques)
+    }
+
+    // const typeBikes = bikes.map(bike => bike.type)
+
+    const uniqueAccesories = getUniqueNames(accesories, 'name')
+
+    const uniqueAdventures = getUniqueNames(adventures, 'name')
+
+    const uniqueTypeBikes = getUniqueNames(bikes, 'type')
+
+    const uniqueTractionBikes = getUniqueNames(bikes, 'traction')
+
+    const uniqueColorBikes = getUniqueNames(bikes, 'color')
+
+    const uniqueWheelSize = getUniqueNames(bikes, 'wheelSize')
+
+    return uniqueTypeBikes
+  }
+
+
 module.exports = {
   sortBookings,
-  getBookingsPerYear
+  getBookingsPerYear,
+  getCompletedBookings
 }
 
   
