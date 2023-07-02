@@ -1,4 +1,5 @@
-const { User, Experience, Booking, Bike, Contact } = require("../db.js");
+const { User, Experience, Booking, Bike, Contact, Accesories, Adventures } = require("../db.js");
+const { sortBookings, getBookingsPerYear } = require('./helpers');
 
 // Devuelve todas las experiencias
 async function getSentimentsStats(req, res, next) {
@@ -111,7 +112,51 @@ const getEarnings = async (req, res, next) => {
   }
 };
 
+const getYearBookings = async (req, res, next) => {
+  const { year } = req.params
+
+  try{
+
+      const allBookings = await Booking.findAll({
+        include: [
+          {
+            model: Bike,
+            attributes: ['name', 'type', 'traction', 'wheelSize', 'color'],
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: Accesories,
+            attributes: ['name'],
+            through: {
+              attributes: []
+            }
+          },
+          {
+            model: Adventures,
+            attributes: ['name'],
+            through: {
+              attributes: []
+            }
+          }
+        ]
+      })
+    // ordenar fechas de menor a mayor y por estado
+    const sortedBookings = sortBookings (allBookings)
+
+    const monthlyBookings = getBookingsPerYear({bookings:sortedBookings, year })
+    
+    res.send(monthlyBookings)
+  } 
+  catch (error) {
+    next(error);
+  }
+
+}
+
 module.exports = {
   getSentimentsStats,
   getEarnings,
+  getYearBookings
 };

@@ -2,14 +2,7 @@ import React from 'react';
 import { getDataChartEarnings } from '../../../Redux/actions';
 import { useGetElements } from './usehooks';
 import s from './ChartEarnings.module.css';
-import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from 'recharts';
+import { CardLineChart } from './CardLineChart';
 
 export const ChartEarnings = () => {
   const data = useGetElements({
@@ -17,26 +10,14 @@ export const ChartEarnings = () => {
     elements: 'dataChartEarnings',
   });
   const perMonth = data[1]?.earnings;
-  console.log(perMonth);
-
   return (
     <div className={s.mainContainerData}>
-      <div className={s.containerGraph}>
-        <h4 className={s.title}>Ganancias en el {data[0]?.year}</h4>
-        <LineChart
-          width={600}
-          height={300}
-          data={perMonth}
-          margin={{ top: 5, right: 35, bottom: 5, left: 5 }}
-        >
-          <Line type='monotone' dataKey='earnings' stroke='#8884d8' />
-          <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
-          <XAxis dataKey='month' />
-          <YAxis />
-          <Tooltip />
-        </LineChart>
-      </div>
-      <div className={s.containerData}>
+      <CardLineChart 
+        data={perMonth} 
+        filterElement={'earnings'} 
+        title={`Ganancias en el ${data[0]?.year}`}
+      />
+      <div>
         <span>Acumulado: ${data[0]?.earnings}.-</span>
       </div>
     </div>

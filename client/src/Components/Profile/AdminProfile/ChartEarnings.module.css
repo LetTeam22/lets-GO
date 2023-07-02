@@ -1,6 +1,7 @@
 .mainContainerData{
     display: flex;
     flex-direction: column;
+    gap: 3rem;
 }
  .containerGraph{
    display: flex;
@@ -12,8 +13,8 @@
  }
 
  .containerData{
-    margin-top: 3rem;
- }
+  margin-inline: auto; 
+}
 
  .title{
    color: "#242020";
