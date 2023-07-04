@@ -91,7 +91,7 @@ const convertMonth = (monthStr) => {
         }
       }) 
       bookings.forEach((book) => {
-        const month = book.startDate.split('-')[1]
+        const month = book.startDate.split('-')[1] - 1
         const index = Number(month)
         elements.forEach(el => {
           objMonth[index][el] = objMonth[index][el].concat(book[el])
@@ -172,10 +172,92 @@ const convertMonth = (monthStr) => {
   }
 
 
+  const generateAdditionalData = (data, count) => {
+    const additionalData = [];
+  
+    for (let i = 0; i < count; i++) {
+      data.forEach((item) => {
+        const newItem = { ...item };
+  
+        // Generar información inventada para las propiedades adicionales
+        newItem.startDate = generateRandomDate();
+        newItem.endDate = generateRandomDate();
+        newItem.userId = generateRandomUserId();
+        newItem.bikeIds = generateRandomBikeIds();
+        newItem.AccIds = generateRandomAccIds();
+        newItem.totalPrice = generateRandomPrice();
+        newItem.adventureNames = generateRandomAdventureNames();
+  
+        additionalData.push(newItem);
+      });
+    }
+  
+    return additionalData;
+  };
+  
+  // Funciones para generar información aleatoria
+  const generateRandomDate = () => {
+    const start = new Date(2022, 0, 1); // 1 de enero de 2022
+    const end = new Date(2022, 11, 31); // 31 de diciembre de 2022
+    const randomTimestamp = start.getTime() + Math.random() * (end.getTime() - start.getTime());
+    const randomDate = new Date(randomTimestamp);
+  
+    // Formatear la fecha como "yyyy-mm-dd"
+    const formattedDate = randomDate.toISOString().split('T')[0];
+  
+    return formattedDate;
+  };
+  
+  const generateRandomUserId = () => {
+    return Math.floor(Math.random() * 10) + 1; // Generar un ID de usuario aleatorio del 1 al 10
+  };
+  
+  const generateRandomBikeIds = () => {
+    const bikeIds = [];
+  
+    for (let i = 0; i < 3; i++) {
+      const randomId = Math.floor(Math.random() * 33) + 1; // Generar un ID de bicicleta aleatorio del 1 al 33
+      bikeIds.push(randomId);
+    }
+  
+    return bikeIds;
+  };
+  
+  const generateRandomAccIds = () => {
+    const accIds = [];
+  
+    for (let i = 0; i < 3; i++) {
+      const randomId = Math.floor(Math.random() * 8) + 1; // Generar un ID de accesorio aleatorio del 1 al 8
+      accIds.push(randomId);
+    }
+  
+    return accIds;
+  };
+  
+  const generateRandomPrice = () => {
+    return Math.floor(Math.random() * 5000) + 1000; // Generar un precio aleatorio entre 1000 y 6000
+  };
+  
+  const generateRandomAdventureNames = () => {
+    const adventureNames = [];
+  
+    const randomNum = Math.random();
+  
+    if (randomNum < 0.5) {
+      adventureNames.push('Trasmontaña');
+    } else if (randomNum < 0.8) {
+      adventureNames.push('Escapada a Tafí del Valle');
+    }
+    // Puedes agregar más aventuras inventadas aquí según tus necesidades
+  
+    return adventureNames;
+  };
+
 module.exports = {
   sortBookings,
   getBookingsPerYear,
-  getCompletedBookings
+  getCompletedBookings,
+  generateAdditionalData
 }
 
   

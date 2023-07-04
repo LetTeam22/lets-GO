@@ -6,6 +6,7 @@ const jsonExperience = require('../data/experiences.json')
 const jsonAccs = require('../data/accesories.json')
 const jsonAdvs = require('../data/adventure.json')
 const jsonContacts = require('../data/contactMessages.json')
+const { generateAdditionalData } = require('./helpers')
 const { postBooking } = require('./bookingsControllers')
 const { createExperience } = require('./experienceControllers')
 const { } = require('./accesoriesControllers')
@@ -27,11 +28,13 @@ async function loadAllModelsInDB() {
   await Adventures.bulkCreate(jsonAdvs);
   console.log('Adventures loaded ok to DB')
 
+  const additionalBookings = generateAdditionalData(jsonBooking, 6)
   await Promise.all(
-    jsonBooking.map(booking => {
+    additionalBookings.map(booking => {
       return postBooking({ body: booking }, { sendStatus: () => { }, send: () => { } }, () => { })
     })
-  ); console.log('Bookings loaded ok to DB')
+  ); 
+  console.log('Bookings loaded ok to DB')
 
   await Experience.bulkCreate(jsonExperience)
   // await Promise.all(

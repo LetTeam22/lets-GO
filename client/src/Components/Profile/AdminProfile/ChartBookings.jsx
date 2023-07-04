@@ -18,11 +18,10 @@ export const ChartBookings = () => {
   });
   const [state, setState] = useState({
     property: "type",
-    kind: "mtb",
-    element: "accessories",
+    element: "all",
     year: "2022",
     show: "year",
-    month: 'Noviembre'
+    month: 'Enero'
   });
 
   const allMonths = allBookings?.map(book => {
