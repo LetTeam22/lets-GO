@@ -89,9 +89,8 @@ const getEarnings = async (req, res, next) => {
           earnings: 0,
         };
       });
-
       sameDate.forEach((book) => {
-        const month = book.startDate.split("-")[1];
+        const month = book.startDate.split("-")[1] - 1;
         objMonths[Number(month)].earnings += book.totalPrice;
       });
 
