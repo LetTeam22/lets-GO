@@ -7,22 +7,9 @@ import { RadioSection } from "./RadioSection";
 import { ChartBikesSelect } from "./ChartBikesSelect";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { CardBarChart } from "./CardBarChart";
+import { COLORS, properties } from "./ChartBikes";
 
-export const elements = ["bikes", "adventures", "accesories"];
-const bars = {
-  bikes: {
-    type: ['bmx', 'mtb', 'city', 'tandem', 'touring', 'folding'],
-    traction: ['mecánica', 'eléctrica'],
-    color: ['negro', 'verde', 'blanco', 'rojo', 'azul', 'gris', 'amarillo'],
-    wheelSize: [16, 20, 24, 26, 29],
-  },
-  accesories: {
-    name: ['Canasto', 'Calzado', 'Casco', 'Silla portabebés', 'Botella']
-  },
-  adventures: {
-    name: ['Trasmontaña', 'Escapada a Tafí del Valle']
-  }
-}
+export const elements = ["bikes", "adventures", "accessories"];
 
 export const ChartBookings = () => {
   const allBookings = useGetElements({
@@ -32,34 +19,40 @@ export const ChartBookings = () => {
   const [state, setState] = useState({
     property: "type",
     kind: "mtb",
-    element: "accesories",
+    element: "accessories",
     year: "2022",
     show: "year",
     month: 'Noviembre'
   });
 
+  const allMonths = allBookings?.map(book => {
+    const { month } = book
+    return {
+      value: month,
+      name: month
+    }
+  })
+
   const getBookingsByYear = (bookings) => {
     return bookings?.map((booking) => {
+      const { month, bikes, adventures, accessories } = booking
       return {
-        ...booking,
-        bikes: booking.bikes.length,
-        adventures: booking.adventures.length,
-        accesories: booking.accesories.length,
+        month,
+        bikes: bikes.total,
+        adventures: adventures.total,
+        accessories: accessories.total,
       };
     });
   };
 
   const getBookingsByMonth = (bookings, month) => {
-    return bookings?.filter(book => book.month === month)
+    const book = bookings?.find(book => book.month === month)
+    return book && book[state.element]?.description
   }
 
   const handleChange = (e) => {
-    setState({ ...state, element: e.target.value });
-  };
-
-  const handleChangeShow = (e, value) => {
-    if(state.element === 'all') setState({...state,show: value, element:'bikes'})
-    else setState({ ...state, show: value });
+    if(state.element === 'all') setState({...state,[e.target.name]: e.target.value, element:'bikes'})
+    else setState({ ...state, [e.target.name]: e.target.value });
   };
 
   const monthlyData = getBookingsByMonth(allBookings, state.month)
@@ -67,48 +60,68 @@ export const ChartBookings = () => {
   const data = state.show === 'year'?
     getBookingsByYear(allBookings)
     :
-    monthlyData.map(book => ({month:book.month, element:book[state.element]}))
+    state.element === 'bikes' ?
+      monthlyData[state.property]
+      :
+      monthlyData
   
-  console.log({data}, {element:state.element})
+  const bars = state.show === 'month' && data?.map((obj, i) => {
+      const [ value ] = Object.keys(obj)
+      return {value, color:COLORS[i]}
+    })
   return (
     <div className={s.containerBookings}>
       <section className={s.mainContainerData}>
-        {state.show === "year" ? (
-          <>
-            <CardLineChart
-              data={data}
-              filterElement={state.element}
-              title={"Reservas"}
-            />
-            <div className={s.containerData}>
-              <RadioSection value={state.element} handleChange={handleChange} />
-            </div>
-          </>
-        ) : (
-          <CardBarChart
-          title={data.month}
-          data={data.element}
-          bars={[{value: 'accesorios', color: 'FFFFFF'}]}
+        {state.show === "year" ? 
+          <CardLineChart
+            data={data}
+            filterElement={state.element}
+            title={"Reservas"}
           />
-        )}
+        : 
+          <CardBarChart
+          title={state.month}
+          data={data}
+          bars={bars}
+          />
+        }
+        <div className={s.containerData}>
+          <RadioSection value={state.element} name={'element'} handleChange={handleChange} show={state.show === 'year'}/>
+        </div>
       </section>
       <aside className={s.asideBookings}>
         <ToggleButtonGroup
           color="primary"
           value={state.show}
           exclusive
-          onChange={handleChangeShow}
+          name={'show'}
+          onChange={handleChange}
           aria-label="Platform"
         >
-          <ToggleButton value="year">Año</ToggleButton>
-          <ToggleButton value="month">Mes</ToggleButton>
+          <ToggleButton value="year" name={'show'}>Año</ToggleButton>
+          <ToggleButton value="month" name={'show'}>Mes</ToggleButton>
         </ToggleButtonGroup>
-        {/* <ChartBikesSelect
-        value ={}
-        handleChange 
-        properties 
-        title
-      /> */}
+        {state.show === 'month'?
+        <>
+        <ChartBikesSelect
+        value={state.month}
+        name={'month'}
+        handleChange={handleChange}
+        properties={allMonths} 
+        title={'Mes'}
+        />
+        <ChartBikesSelect
+          value={state.property}
+          handleChange={handleChange}
+          properties={properties} 
+          name={'property'}
+          title={'Propiedad'}
+          disabled={state.element !== 'bikes'}
+        />
+        </>
+        :
+        <div></div>
+      }
       </aside>
     </div>
   );

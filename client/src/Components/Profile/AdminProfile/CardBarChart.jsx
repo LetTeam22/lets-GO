@@ -11,15 +11,16 @@ import {
 } from "recharts";
 
 export const CardBarChart = ({ title, data, bars }) => {
+  const size = bars.length > 4 ? 400 : 200
   return (
     <div className={s.cardContainer}>
       <h4 className={s.title}>{title}</h4>
-      <ResponsiveContainer width={500} aspect={2}>
+      <ResponsiveContainer width={500} height={300}>
         <BarChart
           data={data}
-          width={200}
-          height={200}
-          margin={{ top: 5, left: 10, right: 30, bottom: 5 }}
+          width={size}
+          height={size}
+          margin={{ top: 5, left: 0, right: 10, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray={"4 1"} />
           <XAxis dataKey={"name" || 'sentiment'} />

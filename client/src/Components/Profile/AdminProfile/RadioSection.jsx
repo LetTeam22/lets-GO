@@ -4,29 +4,24 @@ import {
   RadioGroup,
   FormControlLabel,
   FormControl,
-  // FormLabel,
 } from "@mui/material";
-import theme from "../MaterialUIColors";
-import { ThemeProvider } from "@emotion/react";
 
-export const RadioSection = ({ value, handleChange }) => {
+export const RadioSection = ({ value, handleChange, show }) => {
   return (
-    <ThemeProvider theme={theme}>
       <FormControl>
-        {/* <FormLabel id="label">Elije lo que quieres evaluar</FormLabel> */}
         <RadioGroup
           row
           aria-labelledby="label"
-          name="elements"
+          name="element"
           value={value}
           onChange={handleChange}
         >
-          <FormControlLabel
+          {show && <FormControlLabel
             value="all"
             control={<Radio />}
             label="Todos"
             labelPlacement="bottom"
-          />
+          />}
           <FormControlLabel
             value="bikes"
             control={<Radio />}
@@ -40,13 +35,12 @@ export const RadioSection = ({ value, handleChange }) => {
             labelPlacement="bottom"
           />
           <FormControlLabel
-            value="accesories"
+            value="accessories"
             control={<Radio />}
             label="Accesorios"
             labelPlacement="bottom"
           />
         </RadioGroup>
       </FormControl>
-    </ThemeProvider>
   );
 };
