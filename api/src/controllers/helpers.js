@@ -103,9 +103,79 @@ const convertMonth = (monthStr) => {
     return getBookingsByMonths({ bookings:yearBookings })
   }
 
+  const getCompletedBookings = ({bookings, accesories, adventures, bikes}) => {
+    // obtiene los accesorios, aventuras y las caracteristicas de las bicis
+    const getDbNames = (elements, value) => {
+      const element = elements.map(e => {
+        return value === 'name'? e[value].replaceAll(' ', '_') : e[value]
+      })
+      const uniques = new Set(element)
+      return Array.from(uniques)
+    }
+    const dbAccesories = getDbNames(accesories, 'name')
+    const dbAdventures = getDbNames(adventures, 'name')
+    const dbTypeBikes = getDbNames(bikes, 'type')
+    const dbTractionBikes = getDbNames(bikes, 'traction')
+    const dbColorBikes = getDbNames(bikes, 'color')
+    const dbWheelSize = getDbNames(bikes, 'wheelSize')
+
+    // aca empieza la funcion
+    
+    const result = bookings.map((book) => {
+      const { month, accesories, adventures, bikes } = book;
+
+      const getAccAndAdvDescription = (dbElements, bookElements) => {
+        return dbElements.map((element) => {
+          const count = bookElements.filter((el) => {
+            const elementName = el?.name.replaceAll(' ', '_')
+            return elementName === element
+          }).length
+          return { [element]: count };
+        });
+      }
+      const getBikesDescription = ({dbBikes, characteristic}) => {
+        return dbBikes.map((charac) => {
+          const count = bikes.filter((b) => b[characteristic] === charac).length;
+          return { [charac]: count };
+        })
+      }
+        
+      const accessoriesDescription = getAccAndAdvDescription(dbAccesories, accesories)
+  
+      const adventuresDescription = getAccAndAdvDescription(dbAdventures, adventures)
+  
+      const bikesDescription = {
+        type: getBikesDescription({dbBikes: dbTypeBikes, characteristic: 'type'}),
+        color: getBikesDescription({dbBikes: dbColorBikes, characteristic: 'color'}),
+        traction: getBikesDescription({dbBikes: dbTractionBikes, characteristic: 'traction'}),
+        wheelSize: getBikesDescription({dbBikes: dbWheelSize, characteristic: 'wheelSize'})
+      };
+    
+      return {
+        month,
+        accessories: {
+          total: accesories.length,
+          description: accessoriesDescription
+        },
+        adventures: {
+          total: adventures.length,
+          description: adventuresDescription
+        },
+        bikes: {
+          total: bikes.length,
+          description: bikesDescription
+        }
+      };
+    });
+
+    return result;
+  }
+
+
 module.exports = {
   sortBookings,
-  getBookingsPerYear
+  getBookingsPerYear,
+  getCompletedBookings
 }
 
   

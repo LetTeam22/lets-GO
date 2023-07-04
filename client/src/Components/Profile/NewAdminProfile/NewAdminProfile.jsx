@@ -4,6 +4,8 @@ import { Button } from "./Button/Button";
 import { dashboardItems } from "./DashboardItems";
 import Bookings from "../AdminProfile/Bookings";
 import { AdminData } from "./AdminData/AdminData";
+import theme from "../MaterialUIColors";
+import { ThemeProvider } from "@emotion/react";
 
 export const NewAdminProfile = () => {
   const [showTable, setShowTable] = useState(<Bookings />);
@@ -15,6 +17,7 @@ export const NewAdminProfile = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <section className={s.panel}>
       <div className={s.lateral}>
         <AdminData />
@@ -38,5 +41,6 @@ export const NewAdminProfile = () => {
 
       <aside className={s.tables}>{showTable}</aside>
     </section>
+    </ThemeProvider>
   );
 };

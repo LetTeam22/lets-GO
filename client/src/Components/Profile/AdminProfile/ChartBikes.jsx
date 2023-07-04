@@ -7,7 +7,7 @@ import { ChartBikesSelect } from "./ChartBikesSelect";
 import { CardBarChart } from "./CardBarChart";
 
 export const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", '#5F9EA0', '#9370D8', '#008080', '#708090'];
-const properties = [
+export const properties = [
   {
     value:'type',
     name:'Tipo'
@@ -32,9 +32,10 @@ const modality = [
   },
   {
     value:'rating',
-    name:'rating'
+    name:'Rating'
   }
 ]
+
 
 export const ChartBikes = () => {
   const [property, setProperty] = useState({
@@ -90,24 +91,27 @@ export const ChartBikes = () => {
       color: COLORS[index]
     }
   })
-  console.log({bars})
+
+  const handleChangeProperty = (e) => {
+      const prop = properties.find(p => p.value === e.target.value)
+      setProperty({...property, name: prop.name, value:e.target.value})
+  }
+
+  const handleChangeMode = (e) => {
+    const prop = modality.find(p => p.value === e.target.value)
+    setMode({...mode, name: prop.name, value:e.target.value})
+}
 
   return (
     <div className={s.container}>
       {mode.value === 'stock' ?
-      <CardPieChart data={filteredBikes} COLORS={COLORS} title={`Bicicletas por ${property.name}`}/>
+      <CardPieChart data={filteredBikes} title={`Bicicletas por ${property.name}`}  COLORS={COLORS}/>
       :
-      <CardBarChart title={`Bicicletas por ${property.name}`} data={ratedBikes} bars={bars} />
+      <CardBarChart data={ratedBikes} title={`Bicicletas por ${property.name}`} bars={bars} />
     }
       <aside className={s.aside}>
-        <section className={s.besideSection}>
-          <h3>Selecciona propiedad</h3>
-          <ChartBikesSelect value={property} setValue={setProperty} properties={properties} title={'Propiedad'}/>
-        </section>
-        <section className={s.besideSection}>
-          <h3>Selecciona modalidad</h3>
-          <ChartBikesSelect value={mode} setValue={setMode} properties={modality} title={'Modalidad'}/>
-        </section>
+          <ChartBikesSelect value={property.value} handleChange={handleChangeProperty} properties={properties} title={'Propiedad'}/>
+          <ChartBikesSelect value={mode.value} handleChange={handleChangeMode} properties={modality} title={'Modalidad'}/>
         <h4 className={s.total}>{`Total: ${bikes.length} bicicletas`}</h4>
       </aside>
     </div>

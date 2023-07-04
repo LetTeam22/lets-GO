@@ -3,29 +3,33 @@ import {
     FormControl,
     InputLabel,
     Select,
-    MenuItem
+    MenuItem,
   } from "@mui/material";
-import theme from "../MaterialUIColors";
-import { ThemeProvider } from "@emotion/react";
+import s from "./ChartBikes.module.css";
 
-export const ChartBikesSelect = ({value, setValue, properties, title}) => {
+export const ChartBikesSelect = ({value, handleChange, properties, title, name, disabled}) => {
   return (
-    <ThemeProvider theme={theme}>
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 170 }}>
+    <section className={disabled? s.disabled : s.besideSection}>
+    <h3>Selecciona {title}</h3>
+    <FormControl variant="standard" sx={{ m: 1, minWidth: 170 }} disabled={disabled}>
       <InputLabel id={title}>{title}</InputLabel>
       <Select
         labelId={title}
         id={title}
-        value={value.value}
+        value={value}
+        name={name}
         label={title}
-        onChange={(e) => {
-            const prop = properties.find(p => p.value === e.target.value)
-            setValue({...value, name: prop.name, value:e.target.value})}
-        }
+        onChange={handleChange}
       >
-        {properties.map(property => <MenuItem value={property.value}>{property.name}</MenuItem>)}
+        {properties.map(property => 
+        <MenuItem 
+          value={property.value} 
+          key={property.value}
+        >
+          {property.name}
+        </MenuItem>)}
       </Select>
     </FormControl>
-    </ThemeProvider>
+    </section>
   );
 };

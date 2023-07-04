@@ -1,5 +1,5 @@
 const { User, Experience, Booking, Bike, Contact, Accesories, Adventures } = require("../db.js");
-const { sortBookings, getBookingsPerYear } = require('./helpers');
+const { sortBookings, getBookingsPerYear, getCompletedBookings } = require('./helpers');
 
 // Devuelve todas las experiencias
 async function getSentimentsStats(req, res, next) {
@@ -121,7 +121,7 @@ const getYearBookings = async (req, res, next) => {
         include: [
           {
             model: Bike,
-            attributes: ['name', 'type', 'traction', 'wheelSize', 'color'],
+            attributes: ['type', 'traction', 'wheelSize', 'color'],
             through: {
               attributes: []
             }
@@ -146,8 +146,22 @@ const getYearBookings = async (req, res, next) => {
     const sortedBookings = sortBookings (allBookings)
 
     const monthlyBookings = getBookingsPerYear({bookings:sortedBookings, year })
+
+    // llamar a todas las aventuras y accesorios para tener las cantidades
+    const accesories = await Accesories.findAll({
+      attributes: ['name']
+    })
+
+    const adventures = await Adventures.findAll({
+      attributes: ['name']
+    })
+
+    const bikes = await Bike.findAll({
+      attributes: ['type', 'traction', 'color', 'wheelSize']
+    })
+    const completeBookings = getCompletedBookings({bookings:monthlyBookings, accesories, adventures, bikes })
     
-    res.send(monthlyBookings)
+    res.send(completeBookings)
   } 
   catch (error) {
     next(error);
