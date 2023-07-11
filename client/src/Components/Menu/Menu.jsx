@@ -20,8 +20,10 @@ export const Menu = ({ socket }) => {
     "https://res.cloudinary.com/pflet/image/upload/v1662686105/Let/image/carrito_wohy11.png";
   const bell =
     "https://res.cloudinary.com/pflet/image/upload/v1662686104/Let/image/bell_kcl5ww.png";
+  // const adm =
+  //   "https://res.cloudinary.com/pflet/image/upload/v1662735766/Let/image/adm_xyp2tl.png";
   const adm =
-    "https://res.cloudinary.com/pflet/image/upload/v1662735766/Let/image/adm_xyp2tl.png";
+    "https://res.cloudinary.com/pflet/image/upload/v1688912141/Let/Others/logo_ADM-04_tjvlah.png";
   const adventure =
     "https://res.cloudinary.com/pflet/image/upload/v1662748275/Let/image/adv_hyo69c.png";
   const experience =
