@@ -20,7 +20,7 @@ const postAdventure = async (req, res, next) => {
 
     let { name, description, conditions, image, price, difficulty, date } = req.body
 
-    if (!name || !description || !conditions || !image || !price || !date) return res.sendStatus(400)
+    if (!name || !description || !conditions || !image || !price || !date) return res.send({ msg: 'faltan datos' })
     date = date.join(', ')
     const adv = { name, description, conditions, image, price, difficulty, date }
     const advCreated = await Adventures.create(adv)
@@ -31,7 +31,8 @@ const postAdventure = async (req, res, next) => {
 // crea una aventura y la procesa con api GPT
 const postAdventureWithApiGPT = async (req, res, next) => {
     let { name, description, conditions, image, price, difficulty, date } = req.body
-    if (!name || !description || !conditions || !image || !price || !date) return res.sendStatus(400)
+    if (!name || !description || !conditions || !image || !price || !date) return res.send({ msg: 'faltan datos' })
+    date = date.join(', ')
     try {
         const correctedDescrPrompt = getTextCorrection(description)
         const correctedConditPromt = getTextCorrection(conditions)
