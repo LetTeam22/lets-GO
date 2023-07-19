@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Maxi",
+        "phone": "584124894268",
+        "email": "mrtovar10@gmail.com",
+        "message": "Hola, me podrian dar un presupuesto de 12 lets para el sabado de 24 Junio, es para una actividad deportiva en mi empresa, gracias",
+        "summary":"Presupuesto, sábado, actividad deportiva.",
+        "sentiment":"Neutro",
+        "language": "Español",
+        "translation": "N/A",
+        "reply": true
+    },
+    {
+        "name": "Audi",
+        "phone": "5637204857",
+        "email": "audirabravo16@gmail.com",
+        "message": "Hola, nunca he usado su plataforma y quisera un instructivo de inicio a fin del proceso de cómo alquilar una let. gracias!",
+        "summary":"Instructivo alquiler de let",
+        "sentiment":"Neutro",
+        "language": "Español",
+        "translation": "N/A",
+        "reply": true
+    },
+    {
+        "name": "Lean",
+        "phone": "45618156548",
+        "email": "leandro_p@gmail.com",
+        "message": "El domingo pasado alquilé una let BlackCity, le fallan los cambios por favor arreglen esa falla. No pude completar mi rutina de bici por su culpa",
+        "summary":"Let BlackCity cambios fallan",
+        "sentiment":"Negativo",
+        "language": "Español",
+        "translation": "N/A",
+        "reply": true
+    },
+    {
+        "name": "John",
+        "phone": "94736403687",
+        "email": " john.williams@gmail.com",
+        "message": "Hi there! I recently visited your province, and my friends recommended renting bikes with you to explore the area. I just wanted to say a big thank you! I had an amazing time, and your service was flawless. Sending you a big hug!",
+        "summary":"Visita agradable, servicio impecable.",
+        "sentiment":"Positivo",
+        "language": "Ingles",
+        "translation": "Hola, estuve de visita en su provincia, mis amigos me recomendaron alquilar bicis con ustedes para recorrer la zona y quería agradecerles! La pasé muy bien, el servicio impecable. Un abrazo!",
+        "reply": false
+    }
+]

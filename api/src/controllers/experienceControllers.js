@@ -1,4 +1,6 @@
-const {User, Experience, Booking, Bike} = require ('../db.js')
+const {User, Experience, Booking, Bike} = require ('../db.js');
+const { getApiGPTresponse } = require('./gpt/apiGPTControllers.js');
+const { getSummaryPrompt, getSentimentPrompt, getLanguagePrompt, getTranslationPrompt } = require('./gpt/prompt.js')
 
 
 // Devuelve todas las experiencias
@@ -95,7 +97,6 @@ async function experienceDetails (req, res, next) {
     else res.send('Experiencia de usuario no existe')
 };
 
-// crea una experiencia, necesita recibir ID de booking
 async function createExperience(req, res, next) {
     let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
     if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
@@ -105,13 +106,41 @@ async function createExperience(req, res, next) {
             textExperience,
             bookingIdBooking,
             firstName, 
-            email
+            email,
         });
         res.send(post)
     } catch (error) {
         next(error)
     }
 };
+
+// crea una experiencia y la procesa con la api GPT
+async function createExperienceWithApiGPT(req, res, next) {
+    let { imgExperience, textExperience, bookingIdBooking, firstName, email } = req.body
+    if(!textExperience && !bookingIdBooking && !firstName) res.send({ msg: 'faltan datos' })
+    try {
+        const summaryPrompt = getSummaryPrompt(textExperience)
+        const sentimentPrompt = getSentimentPrompt(textExperience)
+        const languagePrompt = getLanguagePrompt(textExperience)
+        const [summary, sentiment, language] = await Promise.all([getApiGPTresponse(summaryPrompt, 0, 200), getApiGPTresponse(sentimentPrompt, 0, 200), getApiGPTresponse(languagePrompt, 0, 200)])
+        const translation = language === 'Español.' ? 'N/A' : await getApiGPTresponse(getTranslationPrompt(textExperience), 0, 200)
+        const post = await Experience.create({
+            imgExperience,
+            textExperience,
+            bookingIdBooking,
+            firstName, 
+            email,
+            summary,
+            sentiment,
+            language: language.substring(0,language.length - 1),
+            translation,
+        });
+        res.send(post)
+    } catch (error) {
+        next(error)
+    }
+};
+
 
 // Actualiza Experiencia (recibe por body el ID de experiencia y los datos a cambiar)
 // Devuelve la experiencia actualizada
@@ -186,4 +215,4 @@ const deleteLike = async (req, res, next) => {
 }
 
 
-module.exports = {experienceDetails, createExperience, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}
+module.exports = {experienceDetails, createExperience, createExperienceWithApiGPT, updateExperience, allExperiences, getRenderedExperiences, getAllLikes, postLike, deleteLike}

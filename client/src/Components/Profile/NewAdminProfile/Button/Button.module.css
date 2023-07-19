@@ -1,0 +1,29 @@
+.button{
+    height: 4rem;
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 9%;
+    position: relative;
+    text-align: start;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.05rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: background-color 0.5s ease-in-out;
+}
+
+
+.button:hover{
+    background-color: #3b3b3b;
+}
+
+.active{
+    background-color: #333333;
+    font-weight: 600;
+}

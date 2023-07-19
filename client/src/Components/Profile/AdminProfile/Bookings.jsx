@@ -1,25 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { TiArrowBackOutline } from "react-icons/ti";
-import { BiEdit } from 'react-icons/bi';
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
-import { ThemeProvider } from "@emotion/react";
+import React, { useMemo, useState } from "react";
+import { BiEdit } from "react-icons/bi";
 import { getAllBookings } from "../../../Redux/actions";
-import Action from "./Action";
+import { ThemeProvider } from "@emotion/react";
 import theme from "../MaterialUIColors";
+import Action from "./Action";
 import s from "./Bookings.module.css";
+import { Table } from "./Table";
+import { useGetElements } from "./usehooks";
 
 export default function Bookings() {
-  const bookings = useSelector((state) => state.allBookings);
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const [pageSize, setPageSize] = useState(5);
+  const bookings = useGetElements({getElements:getAllBookings, elements:'allBookings'})
   const [rowId, setRowId] = useState(null);
 
-  useEffect(() => {
-    dispatch(getAllBookings());
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const totalDays = (from, to) => {
     const date1 = new Date(from);
@@ -48,15 +40,19 @@ export default function Bookings() {
   const columnsBookings = useMemo(() => {
     return [
       { field: "id", headerName: "ID", width: 50 },
-      { field: "idUser", headerName: "User ID", width: 80 },
-      { field: "email", headerName: "Email", width: 220 },
+      { field: "idUser", headerName: "User ID", width: 60 },
+      { field: "email", headerName: "Email", width: 200 },
       { field: "start", headerName: "Desde", width: 100 },
       { field: "finish", headerName: "Hasta", width: 100 },
       { field: "days", headerName: "Días", width: 50 },
-      { field: "bikes", headerName: "Bicicletas", width: 400 },
+      { field: "bikes", headerName: "Bicicletas", width: 250 },
       {
         field: "status",
-        headerName: <div>Estado <BiEdit className={s.edit}/></div>,
+        headerName: (
+          <div>
+            Estado <BiEdit className={s.edit} />
+          </div>
+        ),
         width: 100,
         type: "singleSelect",
         valueOptions: ["confirmed", "cancelled"],
@@ -75,42 +71,15 @@ export default function Bookings() {
     ];
   }, [rowId]);
 
-  const handleClick = () => {
-    history.goBack();
-  };
-
   return (
     <div className={s.bookings}>
-      <h1 className={s.h1}>RESERVAS</h1>
-      <div className={s.container}>
-        <ThemeProvider theme={theme}>
-          <div className={s.coverGrid}>
-        <span className={s.goBack} onClick={handleClick}>
-          <TiArrowBackOutline />
-        </span>
-            <DataGrid
-              rows={rowsBookings}
-              columns={columnsBookings}
-              pageSize={pageSize}
-              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              rowsPerPageOptions={[5, 10, 15]}
-              className={s.list}
-              getRowId={(row) => row.id}
-              getRowSpacing={(params) => ({
-                top: params.isFirstVisible ? 0 : 5,
-                bottom: params.isLastVisible ? 0 : 5,
-              })}
-              sx={{
-                [`& .${gridClasses.row}`]: {
-                  bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#494949" : "#191616",
-                },
-              }}
-              onCellEditCommit={(params) => setRowId(params.id)}
-            />
-          </div>
-        </ThemeProvider>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Table
+          rows={rowsBookings}
+          columns={columnsBookings}
+          setRowId={setRowId}
+        />
+      </ThemeProvider>
     </div>
   );
 }

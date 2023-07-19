@@ -1,0 +1,12 @@
+.cardContainer{
+    height: 22rem;
+    width: 34rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+}

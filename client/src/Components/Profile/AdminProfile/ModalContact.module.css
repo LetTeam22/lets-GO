@@ -1,0 +1,36 @@
+.container{
+    width: 60%;
+    min-height: 30%;
+    margin-top: 6rem;
+    padding-inline: 3rem;
+    padding-top: 1rem;
+    position: relative;
+    z-index: 1;
+    background-color: #484747;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 0px 20px 2px rgba(0, 0, 0, 0.37);
+    transition: transform 0.5s linear;
+}
+
+.container:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 20px 10px rgba(0, 0, 0, 0.555);
+}
+
+.title{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.tite1{
+    font-size: 1rem;
+
+}
+
+.text {
+    font-size: 1rem;
+}

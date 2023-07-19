@@ -1,0 +1,40 @@
+.panel{
+    height: calc(100vh - 1rem);
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5rem;
+}
+
+.lateral{
+    width: 20%;
+    height: calc(100vh - 1rem);
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #484747;
+}
+
+.buttons{
+    margin-bottom: 1rem;
+}
+
+.tables {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* margin: 2rem auto 0 auto; */
+    margin: 0 auto 0 auto;
+    background-color: beige;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(99, 99, 99);
+    border-radius: 10px;
+}

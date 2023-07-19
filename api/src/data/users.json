@@ -7,7 +7,8 @@
         "email": "nicolasbalbi90@gmail.com"
     },
     {   
-        "email": "felipe.jure05@gmail.com"
+        "email": "felipe.jure05@gmail.com",
+        "isAdmin": true
     },
     {   
         "email": "juanmartinsilva74@gmail.com"
@@ -16,12 +17,19 @@
         "email": "leandropap@gmail.com"
     },
     {   
-        "email": "luciameyer1603@gmail.com"
+        "email": "luciameyer1603@gmail.com",
+        "isAdmin": true
     },
     {   
         "email": "mrtovar10@gmail.com"
     },
     {   
-        "email": "soledato@gmail.com"
+        "email": "juanjose@gmail.com"
+    },
+    {   
+        "email": "pedroguillan@gmail.com"
+    },
+    {   
+        "email": "mariadolores@gmail.com"
     }
 ]

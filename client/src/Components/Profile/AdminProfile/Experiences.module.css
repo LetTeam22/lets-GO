@@ -1,36 +1,8 @@
-.experiences{
-    width: 100%;
-    height: calc(100vh - 8rem);
-    position: relative;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 2rem;
-}
-
-.container{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-}
-
 .coverGrid{
-    height: 27rem;
+    height: 90%;
+    width: 90%;
     max-width: 71rem;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-}
-
-.goBack{
-    position: absolute;
-    top: 0;
-    left: -3rem;
-}
-.goBack svg{
-    width: 3rem;
-    height: 3rem;
-    color: #333333!important;
+    margin-inline: auto;
 }
 
 .list{
@@ -62,4 +34,32 @@
     justify-content: center;
     padding-top: 1rem;
     color: #787877;
+}
+
+/* CSS de ventana modal */ 
+
+.modalWindow{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background{
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    cursor: default;
+}
+
+.hide{
+    display: none;
 }

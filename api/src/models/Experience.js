@@ -34,6 +34,22 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    summary: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    sentiment: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    language: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    translation: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    }
   }, {
     timestamps: false
   });

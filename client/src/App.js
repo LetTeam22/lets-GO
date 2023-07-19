@@ -40,6 +40,7 @@ import { Payments } from './Components/PaymentsAndCheckout/Payments';
 import { About } from './Components/About/About'
 import Adventures from './Components/Profile/AdminProfile/Adventures';
 import CreditCards from './Components/CreditCards/CreditCards';
+import { NewAdminProfile } from './Components/Profile/NewAdminProfile/NewAdminProfile';
 
 const REACT_APP_BACK_URL = process.env.REACT_APP_BACK_URL;
 
@@ -74,6 +75,8 @@ function App() {
         <Route exact path='/cart'><ShoppingCart /></Route>
         <Route exact path='/postLogin'><PostLogIn /></Route>
         <Route exact path='/editProfile'><ProfileToEdit /></Route>
+
+        {/* rutas anitguas */}
         <Route exact path='/AdminProfile'><AdminProfile /></Route>
         <Route exact path='/AdminProfile/bookings'><Bookings /></Route>
         <Route exact path='/AdminProfile/users'><Users /></Route>
@@ -81,6 +84,11 @@ function App() {
         <Route exact path='/AdminProfile/experiences'><Experiences /></Route>
         <Route exact path='/AdminProfile/adventures'><Adventures /></Route>
         <Route exact path='/AdminProfile/accesories'><Accesories /></Route>
+
+        {/* rutas nuevas */}
+        <Route exact path='/NewAdminProfile'><NewAdminProfile /></Route>
+
+
         <Route exact path='/qualifyExperience'><QualifyExperience /></Route>
         <Route exact path='/checkout'><Checkout /></Route>
         <Route exact path='/terms'><TermsAndConditions /></Route>

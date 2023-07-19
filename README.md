@@ -1,7 +1,10 @@
-<a href="https://www.youtube.com/watch?v=-TOVqECdiIw" target="_BLANK"><img src="https://res.cloudinary.com/pflet/image/upload/v1664801764/Let/GitHub/img_video_eobxxu.png" alt="git"/></a> 
+<div align="center">
+    <a href="https://www.youtube.com/watch?v=-TOVqECdiIw" target="_BLANK">
+        <img src="https://res.cloudinary.com/pflet/image/upload/v1689099646/Let/prueba/gif_y56j94.gif" alt="git" height="400" />
+    </a>   
+</div>
 
-<h3 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h3>
-&nbsp;<hr/>
+<h3 align="center">👋 Bienvenidos a 𝗹𝗲𝘁'𝘀 𝗚𝗢 <h3><hr/>
 
 <h3 align="center">🚀 El Proyecto</h3>
 <p>
@@ -33,8 +36,7 @@ Para conocerlo, hacé cick en el siguiente enlace:
 <h5>● Persistencia de datos a través de LocalStorage.</h5>
 <h5>● Reviews / Puntuación.</h5>
 <h5>● Dashboard administradores.</h5>
-<h5>● Deploy.</h5>
-&nbsp;<hr/>
+<h5>● Deploy.</h5><hr/>
 
 <h3 align="center">⚙ Tecnologías</h3>
 

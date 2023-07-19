@@ -1,4 +1,8 @@
 const { Adventures } = require('../db')
+const { getTextCorrection  } = require('./gpt/prompt.js')
+const { getApiGPTresponse } = require('./gpt/apiGPTControllers.js');
+
+
 
 // Get all adventures
 const getAllAdventures = async (req, res, next) => {
@@ -16,13 +20,40 @@ const postAdventure = async (req, res, next) => {
 
     let { name, description, conditions, image, price, difficulty, date } = req.body
 
-    if (!name || !description || !conditions || !image || !price || !date) return res.sendStatus(400)
+    if (!name || !description || !conditions || !image || !price || !date) return res.send({ msg: 'faltan datos' })
     date = date.join(', ')
     const adv = { name, description, conditions, image, price, difficulty, date }
     const advCreated = await Adventures.create(adv)
 
     res.send(advCreated)
 }
+
+// crea una aventura y la procesa con api GPT
+const postAdventureWithApiGPT = async (req, res, next) => {
+    let { name, description, conditions, image, price, difficulty, date } = req.body
+    if (!name || !description || !conditions || !image || !price || !date) return res.send({ msg: 'faltan datos' })
+    date = date.join(', ')
+    try {
+        const correctedDescrPrompt = getTextCorrection(description)
+        const correctedConditPromt = getTextCorrection(conditions)
+        const [correctedDescr, correctedCondit] = await Promise.all([
+            getApiGPTresponse(correctedDescrPrompt, 0, 200),
+            getApiGPTresponse(correctedConditPromt, 0, 200)
+        ]);
+        const advCreated = await Adventures.create({
+            name,
+            description: correctedDescr,
+            conditions: correctedCondit,
+            image,
+            price,
+            difficulty,
+            date
+        });
+        res.send(advCreated)
+    } catch (error) {
+        next(error)
+    }
+};
 
 // Update
 const updateAdventure = async (req, res, next) => {
@@ -63,6 +94,7 @@ const updatePricesAdv = async (req, res, next) => {
 module.exports = {
     getAllAdventures,
     postAdventure,
+    postAdventureWithApiGPT,
     updateAdventure,
     updatePricesAdv
 }

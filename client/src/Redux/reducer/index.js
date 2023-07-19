@@ -9,7 +9,8 @@ import {
     UPDATE_BIKE, BOOKING_TO_QUALIFY, SEND_MP_INFO, BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE,
     CREATE_ACCESORIE, INCREASE_PRICE, INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING,
     SET_SORT_FILTER_EXPERIENCE, FILTER_EXPERIENCE_BY_DATE, POST_NEW_LIKE, DELETE_LIKE, GET_ALL_LIKES,
-    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE
+    UPDATE_EXPERIENCES_STATE, GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS,
+    GET_DATA_CHART_SENTIMENT, GET_DATA_CHART_EARNINGS, GET_DATA_CHART_BOOKINGS
 } from '../actions/actiontypes';
 
 const initialState = {
@@ -68,7 +69,12 @@ const initialState = {
     bikeRating: [],
     filterExperience: { startDate: null, endDate: null, sort: "all" },
     likes: [],
-    allAdventures: []
+    allAdventures: [],
+    contactResponse: false,
+    allContacts: [],
+    dataChartSentimentExp: [],
+    dataChartEarnings: [],
+    dataChartBookings: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -305,6 +311,36 @@ function rootReducer(state = initialState, action) {
         case CREATE_ADVENTURE:
             return {
                 ...state
+            }
+        case POST_CONTACT:
+            return {
+                ...state,
+                contactResponse: action.payload
+            } 
+        case CLEAN_CONTACT:
+            return {
+                ...state,
+                contactResponse: action.payload
+            }
+        case GET_ALL_CONTACTS:
+            return {
+                ...state,
+                allContacts: action.payload
+            }
+        case GET_DATA_CHART_SENTIMENT:
+            return {
+                ...state,
+                dataChartSentimentExp: action.payload
+            }  
+        case GET_DATA_CHART_EARNINGS:
+            return {
+                ...state,
+                dataChartEarnings: action.payload
+            }      
+        case GET_DATA_CHART_BOOKINGS:
+            return {
+                ...state,
+                dataChartBookings: action.payload
             }
         default: return state
     }

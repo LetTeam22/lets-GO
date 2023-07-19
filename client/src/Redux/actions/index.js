@@ -9,7 +9,9 @@ import {
     BIKE_RATING, CREATE_BIKE, ADD_ADVENTURE, CREATE_ACCESORIE, INCREASE_PRICE,
     INCREASE_PRICE_ACCS, DISCOUNT_BY_GROUPS, GET_HISTORY_RATING, SET_SORT_FILTER_EXPERIENCE,
     FILTER_EXPERIENCE_BY_DATE, GET_ALL_LIKES, POST_NEW_LIKE, DELETE_LIKE, UPDATE_EXPERIENCES_STATE,
-    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE
+    GET_ALL_ADVENTURES, UPDATE_ADVENTURE, CREATE_ADVENTURE, POST_CONTACT, CLEAN_CONTACT, GET_ALL_CONTACTS, 
+    GET_DATA_CHART_SENTIMENT, GET_DATA_CHART_BOOKINGS,
+    GET_DATA_CHART_EARNINGS,
 } from './actiontypes'
 
 export const setCurrentPage = payload => {
@@ -150,7 +152,13 @@ export const getAllBookings = () => {
 };
 
 export const postExperience = (payload) => {
-    return dispatch => axios.post('/experience/create', payload)
+    return dispatch => axios.post('/experience/create', payload) 
+        .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const postExperienceWithApiGPT = (payload) => {
+    return dispatch => axios.post('/experience/createGPT', payload) 
         .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
         .catch(err => console.log(err))
 };
@@ -334,4 +342,51 @@ export const createAdventure = (adventure) => {
             .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
     }
 }
+
+export const createAdventureWithApiGPT = (adventure) => {
+    return async (dispatch) => {
+        axios.post('/adventures/createGPT', adventure)
+            .then(res => dispatch({ type: CREATE_ADVENTURE, payload: res.data }))
+    }
+}
+
+export const postContact = (payload) => {
+    return dispatch => axios.post('/contact/save', payload) 
+        .then(res => dispatch({ type: POST_CONTACT, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const postContactWithApiGPT = (payload) => {
+    return dispatch => axios.post('/contact/saveGPT', payload) 
+        .then(res => dispatch({ type: POST_CONTACT, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const cleanContact = (payload) => {
+    return dispatch => {
+        dispatch({ type: CLEAN_CONTACT, payload})
+    }
+};
+
+export const getAllContacts = () => {
+    return dispatch => axios.get('/contact/getall', ) 
+        .then(res => dispatch({ type: GET_ALL_CONTACTS, payload: res.data }))
+        .catch(err => console.log(err))
+};
+
+export const getDataChartSentimentExp = () => {
+    return dispatch => axios(`/chart/sentiments`)
+        .then(res => dispatch({ type: GET_DATA_CHART_SENTIMENT, payload: res.data }))
+};
+
+
+export const getDataChartEarnings = (year = '2022') => {
+    return dispatch => axios(`/chart/earnings/${year}`)
+        .then(res => dispatch({ type: GET_DATA_CHART_EARNINGS, payload: res.data }))
+};
+
+export const getDataChartBookings = (year = '2022') => {
+    return dispatch => axios(`/chart/bookings/${year}`)
+        .then(res => dispatch({ type: GET_DATA_CHART_BOOKINGS, payload: res.data }))
+};
 
