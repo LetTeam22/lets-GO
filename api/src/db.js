@@ -21,7 +21,7 @@ const sequelize = new Sequelize(DB_DEPLOY, {
       require: true,
     }
   }
-}); 
+})
 
 //DEPLOY ANTERIOR
 // let sequelize =
