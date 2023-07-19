@@ -3,42 +3,56 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORTDB
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORTDB, DB_DEPLOY
 } = process.env;
 
+// LOCAL
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`, {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
 
-let sequelize =
-  process.env.NODE_ENV === "production"
-    ? new Sequelize({
-      database: DB_NAME,
-      dialect: "postgres",
-      host: DB_HOST,
-      port: PORTDB,
-      username: DB_USER,
-      password: DB_PASSWORD,
-      pool: {
-        max: 3,
-        min: 1,
-        idle: 10000,
-      },
-      dialectOptions: {
-        ssl: {
-          require: true,
-          // Ref.: https://github.com/brianc/node-postgres/issues/2009
-          rejectUnauthorized: false,
-        },
-        keepAlive: true,
-      },
-      ssl: true,
-    })
-    : new Sequelize(
-      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`,
-      { logging: false, native: false }
-    );
+//DEPLOY
+const sequelize = new Sequelize(DB_DEPLOY, {
+  logging: false, 
+  native: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+    }
+  }
+}); 
+
+//DEPLOY ANTERIOR
+// let sequelize =
+//   process.env.NODE_ENV === "production"
+//     ? new Sequelize({
+//       database: DB_NAME,
+//       dialect: "postgres",
+//       host: DB_HOST,
+//       port: PORTDB,
+//       username: DB_USER,
+//       password: DB_PASSWORD,
+//       pool: {
+//         max: 3,
+//         min: 1,
+//         idle: 10000,
+//       },
+//       dialectOptions: {
+//         ssl: {
+//           require: true,
+//           // Ref.: https://github.com/brianc/node-postgres/issues/2009
+//           rejectUnauthorized: false,
+//         },
+//         keepAlive: true,
+//       },
+//       ssl: true,
+//     })
+//     : new Sequelize(
+//       `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/letsgo`,
+//       { logging: false, native: false }
+//     );
+   
 
 const basename = path.basename(__filename);
 
