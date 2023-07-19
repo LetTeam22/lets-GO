@@ -10,8 +10,8 @@ import { TbSend } from 'react-icons/tb';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import Chatbot from '../ChatBot/ChatBot';
-import { postContactWithApiGPT, cleanContact} from '../../Redux/actions';
-// import { postContact} from '../../Redux/actions';
+// import { postContactWithApiGPT, cleanContact} from '../../Redux/actions';
+import { postContact, cleanContact} from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID2;
@@ -51,11 +51,12 @@ export const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    // guarda el msj de contacto
-    // dispatch(postContact(input))
 
-    // guarda el msj de contacto y procesala con api GPT
-    dispatch(postContactWithApiGPT(input));
+    // guarda el msj de contacto
+    dispatch(postContact(input))
+
+    // guarda el msj de contacto y procesa con api GPT
+    // dispatch(postContactWithApiGPT(input));
     setLoadin(true);
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
         .then((result) => {

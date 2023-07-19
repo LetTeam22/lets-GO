@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { postExperience, getAllExperiences } from "../../../Redux/actions";
-import { postExperienceWithApiGPT } from '../../../Redux/actions';
+// import { postExperienceWithApiGPT } from '../../../Redux/actions';
 import s from "./CreateExperiences.module.css";
 import { IoAttach } from "react-icons/io5";
 import swal from "sweetalert";
@@ -20,7 +20,7 @@ export const CreateExperiences = () => {
   const history = useHistory();
   const userBookings = useSelector((state) => state.userBookings);
   const user = useSelector((state) => state.user);
-  const form = useRef(); // consultar con sole
+  const form = useRef();
   const allExperiences = useSelector((state) => state.allExperiences);
   const [loading, setLoading] = useState(false);
   const [toUpload, setToUpload] = useState("");
@@ -72,29 +72,29 @@ export const CreateExperiences = () => {
       const res = toUpload ? await axios.post(url, data) : "";
       const file = toUpload ? await res.data : "";
       if (file?.url || false)
-        // dispatch(postExperience({
-        //     ...input,
-        //     imgExperience: file.url,
-        //     firstName: input.firstName === "" ? user.firstName : input.firstName,
-        //   }))
-        // crear una experiencia y procesala con api GPT
-        dispatch(postExperienceWithApiGPT({
+        dispatch(postExperience({
             ...input,
-        imgExperience: file.url,
-            firstName: input.firstName === '' ? user.firstName : input.firstName
-        }))
-      else
-        // dispatch(postExperience({
-        //     ...input,
-        //     imgExperience: undefined,
-        //     firstName: input.firstName === "" ? user.firstName : input.firstName,
-        //   }))
+            imgExperience: file.url,
+            firstName: input.firstName === "" ? user.firstName : input.firstName,
+          }))
         // crear una experiencia y procesala con api GPT
-        dispatch(postExperienceWithApiGPT({
+        // dispatch(postExperienceWithApiGPT({
+        //     ...input,
+        // imgExperience: file.url,
+        //     firstName: input.firstName === '' ? user.firstName : input.firstName
+        // }))
+      else
+        dispatch(postExperience({
             ...input,
             imgExperience: undefined,
-            firstName: input.firstName === '' ? user.firstName : input.firstName
-        }))
+            firstName: input.firstName === "" ? user.firstName : input.firstName,
+          }))
+        // crear una experiencia y procesala con api GPT
+        // dispatch(postExperienceWithApiGPT({
+        //     ...input,
+        //     imgExperience: undefined,
+        //     firstName: input.firstName === '' ? user.firstName : input.firstName
+        // }))
       swal("Gracias por contarnos tu experiencia");
       history.push("/allExperiencies");
     } catch (error) {
