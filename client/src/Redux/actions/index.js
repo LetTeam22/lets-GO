@@ -158,6 +158,7 @@ export const postExperience = (payload) => {
 };
 
 export const postExperienceWithApiGPT = (payload) => {
+    // console.log(payload)
     return dispatch => axios.post('/experience/createGPT', payload) 
         .then(res => dispatch({ type: POST_EXPERIENCE, payload: res.data }))
         .catch(err => console.log(err))

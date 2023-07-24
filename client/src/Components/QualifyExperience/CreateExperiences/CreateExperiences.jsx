@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 // import { postExperience, getAllExperiences } from "../../../Redux/actions";
-import {
-  postExperienceWithApiGPT,
-  getAllExperiences,
-} from "../../../Redux/actions";
+import {postExperienceWithApiGPT,getAllExperiences} from "../../../Redux/actions";
 import s from "./CreateExperiences.module.css";
 import { IoAttach } from "react-icons/io5";
 import swal from "sweetalert";
@@ -30,7 +27,6 @@ export const CreateExperiences = () => {
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     textExperience: "",
-    imgExperience: "",
     firstName: "",
     bookingIdBooking: userBookings.idBooking,
     email: user.email,
