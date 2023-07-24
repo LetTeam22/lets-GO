@@ -3,8 +3,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { postExperience, getAllExperiences } from "../../../Redux/actions";
-// import { postExperienceWithApiGPT } from '../../../Redux/actions';
+// import { postExperience, getAllExperiences } from "../../../Redux/actions";
+import {
+  postExperienceWithApiGPT,
+  getAllExperiences,
+} from "../../../Redux/actions";
 import s from "./CreateExperiences.module.css";
 import { IoAttach } from "react-icons/io5";
 import swal from "sweetalert";
@@ -28,8 +31,8 @@ export const CreateExperiences = () => {
   const [input, setInput] = useState({
     textExperience: "",
     imgExperience: "",
-    bookingIdBooking: userBookings.idBooking,
     firstName: "",
+    bookingIdBooking: userBookings.idBooking,
     email: user.email,
   });
 
@@ -71,37 +74,40 @@ export const CreateExperiences = () => {
       data.append("upload_preset", "Experiences");
       const res = toUpload ? await axios.post(url, data) : "";
       const file = toUpload ? await res.data : "";
-      if (file?.url || false)
-        dispatch(postExperience({
+      if (file?.url) {
+        // crear una experiencia SIN api GPT
+        // dispatch(postExperience({
+        //     ...input,
+        //     imgExperience: file.url,
+        //     firstName: input.firstName === "" ? user.firstName : input.firstName,
+        //   }))
+
+        // crear una experiencia CON api GPT
+        dispatch(postExperienceWithApiGPT({
             ...input,
             imgExperience: file.url,
             firstName: input.firstName === "" ? user.firstName : input.firstName,
-          }))
-        // crear una experiencia y procesala con api GPT
-        // dispatch(postExperienceWithApiGPT({
+        }))
+      } else {
+        // crear una experiencia SIN api GPT
+        // dispatch(postExperience({
         //     ...input,
-        // imgExperience: file.url,
-        //     firstName: input.firstName === '' ? user.firstName : input.firstName
-        // }))
-      else
-        dispatch(postExperience({
+        //     imgExperience: undefined,
+        //     firstName: input.firstName === "" ? user.firstName : input.firstName,
+        //   }))
+
+        // crear una experiencia CON api GPT
+        dispatch(postExperienceWithApiGPT({
             ...input,
             imgExperience: undefined,
             firstName: input.firstName === "" ? user.firstName : input.firstName,
-          }))
-        // crear una experiencia y procesala con api GPT
-        // dispatch(postExperienceWithApiGPT({
-        //     ...input,
-        //     imgExperience: undefined,
-        //     firstName: input.firstName === '' ? user.firstName : input.firstName
-        // }))
-      swal("Gracias por contarnos tu experiencia");
+        }))
+      }
+      swal("Gracias por contarnos tu experiencia")
       history.push("/allExperiencies");
     } catch (error) {
+      swal("Algo saió mal. Por favor vuelve a intentarlo.")
       history.push("/allExperiencies");
-      swal(
-        "Tu experiencia no fue publicada porque no se reconoce el formato de la imagen adjunta. Por favor vuelve a intentarlo."
-      );
     }
   };
 
