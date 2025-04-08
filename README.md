@@ -47,7 +47,7 @@ Para conocerlo, hacé cick en el siguiente enlace:
 <h5>NodeJS | Express | PostgreSQL | Sequelize</h5>
 
 <h4>・Librerías</h4>
-<h5>Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI</h5>
+<h5>Socket.IO | Cloudinary | Autoh0 | Sweet Alert | CoreUI | EmailJS | MaterialUI | Mercado Pago</h5>
 &nbsp;
 <p align="center">
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/600px-HTML5_Badge.svg.png" alt="html5" width="40" height="40"/> </a>
